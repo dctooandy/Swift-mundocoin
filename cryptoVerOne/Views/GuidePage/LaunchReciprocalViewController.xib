@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="280-Qa-1Ga" customClass="LaunchReciprocalViewController" customModule="betlead" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="uSe-YU-ScQ">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-launch" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-qF-DWU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amd-PW-txc">
+                        <rect key="frame" x="315" y="74" width="32" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.9221277833" green="0.93278634549999995" blue="0.9568681121" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fri-Bg-W9c">
+                        <rect key="frame" x="137" y="715" width="101" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="0.19970034246575341" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_splash_logo_01" translatesAutoresizingMaskIntoConstraints="NO" id="Ba9-ot-2cW">
+                        <rect key="frame" x="90.666666666666686" y="604" width="95" height="71"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="95" id="VJq-F6-9Tm"/>
+                            <constraint firstAttribute="height" constant="71" id="xAd-Lh-yLn"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_splash_logo_02" translatesAutoresizingMaskIntoConstraints="NO" id="mtw-MV-hPs">
+                        <rect key="frame" x="185.66666666666666" y="604" width="90.999999999999972" height="60"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="91" id="JbA-Rq-GgL"/>
+                            <constraint firstAttribute="height" constant="60" id="hMB-YP-1bo"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.0" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_splash_logo_03" translatesAutoresizingMaskIntoConstraints="NO" id="fBl-kk-IaM">
+                        <rect key="frame" x="185.66666666666666" y="664" width="90.999999999999972" height="11"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="mtw-MV-hPs" firstAttribute="leading" secondItem="Ba9-ot-2cW" secondAttribute="trailing" id="9hO-F1-Wos"/>
+                    <constraint firstItem="fBl-kk-IaM" firstAttribute="bottom" secondItem="Ba9-ot-2cW" secondAttribute="bottom" id="DIJ-Mk-syA"/>
+                    <constraint firstItem="kId-Z9-ILd" firstAttribute="trailing" secondItem="amd-PW-txc" secondAttribute="trailing" constant="28" id="FVy-PW-s3G"/>
+                    <constraint firstItem="mtw-MV-hPs" firstAttribute="top" secondItem="Ba9-ot-2cW" secondAttribute="top" id="Fgg-Dl-ldm"/>
+                    <constraint firstItem="kId-Z9-ILd" firstAttribute="bottom" secondItem="fri-Bg-W9c" secondAttribute="bottom" constant="48" id="RHp-92-ue3"/>
+                    <constraint firstAttribute="bottom" secondItem="A9b-qF-DWU" secondAttribute="bottom" id="T6n-Z0-VdU"/>
+                    <constraint firstItem="fri-Bg-W9c" firstAttribute="centerX" secondItem="uSe-YU-ScQ" secondAttribute="centerX" id="WDL-D8-DmR"/>
+                    <constraint firstAttribute="trailing" secondItem="A9b-qF-DWU" secondAttribute="trailing" id="bO1-Ua-DTb"/>
+                    <constraint firstItem="A9b-qF-DWU" firstAttribute="leading" secondItem="kId-Z9-ILd" secondAttribute="leading" id="cE9-LE-w67"/>
+                    <constraint firstItem="fBl-kk-IaM" firstAttribute="trailing" secondItem="mtw-MV-hPs" secondAttribute="trailing" id="d9J-Vl-ZLb"/>
+                    <constraint firstItem="fri-Bg-W9c" firstAttribute="top" secondItem="Ba9-ot-2cW" secondAttribute="bottom" constant="40" id="g6R-J5-wpM"/>
+                    <constraint firstItem="A9b-qF-DWU" firstAttribute="top" secondItem="uSe-YU-ScQ" secondAttribute="top" id="lG9-Uc-ri1"/>
+                    <constraint firstItem="fBl-kk-IaM" firstAttribute="leading" secondItem="Ba9-ot-2cW" secondAttribute="trailing" id="sAM-dD-7JM"/>
+                    <constraint firstItem="amd-PW-txc" firstAttribute="top" secondItem="kId-Z9-ILd" secondAttribute="top" constant="30" id="vaF-H5-0ps"/>
+                    <constraint firstItem="fBl-kk-IaM" firstAttribute="top" secondItem="mtw-MV-hPs" secondAttribute="bottom" id="xVZ-Xz-oZv"/>
+                    <constraint firstItem="A9b-qF-DWU" firstAttribute="centerX" secondItem="Ba9-ot-2cW" secondAttribute="trailing" constant="2" id="xxN-1h-PfP"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="kId-Z9-ILd"/>
+            </view>
+            <connections>
+                <outlet property="beleadLeftIcon" destination="Ba9-ot-2cW" id="xWE-sA-vbb"/>
+                <outlet property="beleadRightBottomIcon" destination="fBl-kk-IaM" id="cml-T1-yFc"/>
+                <outlet property="beleadRightTopIcon" destination="mtw-MV-hPs" id="Rcm-U4-vDR"/>
+                <outlet property="copyrightLabel" destination="fri-Bg-W9c" id="bGB-hg-qtR"/>
+                <outlet property="reciprocalLabel" destination="amd-PW-txc" id="NOv-ED-LnJ"/>
+            </connections>
+            <point key="canvasLocation" x="-143" y="90"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="bg-launch" width="375" height="812"/>
+        <image name="ic_splash_logo_01" width="84" height="71"/>
+        <image name="ic_splash_logo_02" width="94" height="45"/>
+        <image name="ic_splash_logo_03" width="92" height="10"/>
+    </resources>
+</document>

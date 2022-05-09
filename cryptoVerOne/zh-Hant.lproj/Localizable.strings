@@ -1,0 +1,42 @@
+/*
+  Localizable.strings
+  cryptoVerOne
+
+  Created by AndyChen on 2022/5/5.
+  
+*/
+"Log In" = "@Log In";
+"Sign Up" = "@Sign Up";
+"Log In to Mundocoin" = "@Log In to Mundocoin";
+"Create Your Account" = "@Create Your Account";
+"Email" = "@Email";
+"Mobile" = "@Mobile";
+"Password" = "@Password";
+"Forgot Password?" = "@Forgot Password?";
+"Get Started" = "@Get Started";
+"We have sent an email to" = "@We have sent an email to";
+"We have sent messages to" = "@We have sent messages to";
+"Phone Number" = "@Phone Number";
+"Password" = "@Password";
+"Security Verification" = "@Security Verification";
+"Resend Email" = "@Resend Email";
+"Resend in " = "@Resend in ";
+"Enter the 6-digit code" = "@Enter the 6-digit code";
+"Verify" = "@Verify";
+"Invaild email" = "@Invaild email";
+"Invaild phone" = "@Invaild phone";
+"Invaild verification code" = "@Invaild verification code";
+"Country of Residence" = "@Country of Residence";
+"Identity Verification" = "@Identity Verification";
+"Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. " = "@Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. ";
+"Let’s go" = "@Let’s go";
+"Choose a country" = "@Choose a country";
+"Send reset link" = "@Send reset link";
+"Enter your email to change your password" = "@Enter your email to change your password";
+"Reset password" = "@Reset password";
+"New Password" = "@New Password";
+"Confirm new password" = "@Confirm new password";
+"Submit" = "@Submit";
+"You’ve already change password" = "@You’ve already change password";
+"Return to log in" = "@Return to log in";
+"Registration code" = "@Registration code";

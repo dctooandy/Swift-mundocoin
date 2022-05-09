@@ -1,0 +1,95 @@
+PODS:
+  - Alamofire (4.8.2)
+  - CocoaLumberjack (3.7.4):
+    - CocoaLumberjack/Core (= 3.7.4)
+  - CocoaLumberjack/Core (3.7.4)
+  - DropDown (2.3.13)
+  - KeychainSwift (20.0.0)
+  - lottie-ios (3.2.3)
+  - Parchment (1.6.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SDWebImage (5.6.0):
+    - SDWebImage/Core (= 5.6.0)
+  - SDWebImage/Core (5.6.0)
+  - SDWebImageSVGKitPlugin (1.2.0):
+    - SDWebImage/Core (~> 5.6)
+    - SVGKit (>= 2.1)
+  - SnapKit (4.0.1)
+  - SVGKit (3.0.0):
+    - CocoaLumberjack (~> 3.0)
+  - SwiftyBeaver (1.9.5)
+  - SwiftyCrypto (0.0.1)
+  - SwiftyJWT (0.0.3):
+    - SwiftyCrypto (~> 0.0.1)
+  - Toaster (2.3.0)
+  - UPCarouselFlowLayout (1.1.2)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.8.2)
+  - DropDown
+  - KeychainSwift
+  - lottie-ios
+  - Parchment (~> 1.6.0)
+  - RxCocoa (~> 4.0)
+  - RxSwift (~> 4.0)
+  - SDWebImage (= 5.6.0)
+  - SDWebImageSVGKitPlugin (= 1.2.0)
+  - SnapKit (~> 4.0.0)
+  - SwiftyBeaver
+  - SwiftyJWT
+  - Toaster (from `https://github.com/devxoul/Toaster.git`, branch `master`)
+  - UPCarouselFlowLayout
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - CocoaLumberjack
+    - DropDown
+    - KeychainSwift
+    - lottie-ios
+    - Parchment
+    - RxCocoa
+    - RxSwift
+    - SDWebImage
+    - SDWebImageSVGKitPlugin
+    - SnapKit
+    - SVGKit
+    - SwiftyBeaver
+    - SwiftyCrypto
+    - SwiftyJWT
+    - UPCarouselFlowLayout
+
+EXTERNAL SOURCES:
+  Toaster:
+    :branch: master
+    :git: https://github.com/devxoul/Toaster.git
+
+CHECKOUT OPTIONS:
+  Toaster:
+    :commit: e291374fda2be69bed0330e4346d5fb2af08f4ba
+    :git: https://github.com/devxoul/Toaster.git
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  CocoaLumberjack: 543c79c114dadc3b1aba95641d8738b06b05b646
+  DropDown: 8a2116376c1981888557f72ec2ffc9a5e0e456ec
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
+  lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
+  Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SDWebImage: 21b19f56b4226cdfe3aefe4e6848dc43ed129a86
+  SDWebImageSVGKitPlugin: 06a811c05b9e839982baeb5251d15fe7a79abb82
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
+  SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
+  SwiftyCrypto: ab59cdb153a7ca99b657fa8d9ebd2ebbd7694bbe
+  SwiftyJWT: e46e8457138c6567a1a9ff05a6efc8ef678c1187
+  Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
+  UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
+
+PODFILE CHECKSUM: b0e4edc3f043d722364008d44f6b5255c5033f33
+
+COCOAPODS: 1.11.3

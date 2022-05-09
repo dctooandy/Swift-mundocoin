@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="lxA-3N-vx7" customClass="FirstLaunchViewController" customModule="betlead" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="ynm-FN-vkn">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-launch-baseball" translatesAutoresizingMaskIntoConstraints="NO" id="cvV-mu-DhH">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nYq-UF-n4D" userLabel="pass">
+                        <rect key="frame" x="368" y="49" width="31" height="30"/>
+                        <state key="normal" title="略过">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="有投必反" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wgd-h7-RwO" userLabel="title">
+                        <rect key="frame" x="134.5" y="426.5" width="145.5" height="43"/>
+                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="36"/>
+                        <color key="textColor" red="0.9221277833" green="0.93278634549999995" blue="0.9568681121" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="赛事不停歇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AwO-8n-RuO" userLabel="subtitle">
+                        <rect key="frame" x="146" y="497.5" width="122" height="29"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oqs-Kk-ike">
+                        <rect key="frame" x="47.5" y="579.5" width="319" height="54"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Bzv-hA-wx3">
+                                <rect key="frame" x="0.0" y="0.0" width="319" height="54"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fsN-CG-4lG">
+                                        <rect key="frame" x="0.0" y="0.0" width="155.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="先去逛逛">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Dc-H0-7PV">
+                                        <rect key="frame" x="163.5" y="0.0" width="155.5" height="54"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="登录或注册">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Bzv-hA-wx3" secondAttribute="trailing" id="Bm5-3x-E6v"/>
+                            <constraint firstItem="Bzv-hA-wx3" firstAttribute="top" secondItem="Oqs-Kk-ike" secondAttribute="top" id="IuL-RB-Hj1"/>
+                            <constraint firstAttribute="bottom" secondItem="Bzv-hA-wx3" secondAttribute="bottom" id="fn8-3Z-e4a"/>
+                            <constraint firstItem="Bzv-hA-wx3" firstAttribute="leading" secondItem="Oqs-Kk-ike" secondAttribute="leading" id="tEC-4g-PUY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="Oqs-Kk-ike" firstAttribute="width" secondItem="cvV-mu-DhH" secondAttribute="width" multiplier="0.77" id="2yz-yt-7Dx"/>
+                    <constraint firstItem="Oqs-Kk-ike" firstAttribute="centerX" secondItem="ynm-FN-vkn" secondAttribute="centerX" id="5EB-bw-6zZ"/>
+                    <constraint firstItem="cvV-mu-DhH" firstAttribute="top" secondItem="ynm-FN-vkn" secondAttribute="top" id="Byx-Bo-7T4"/>
+                    <constraint firstItem="Oqs-Kk-ike" firstAttribute="top" secondItem="AwO-8n-RuO" secondAttribute="bottom" constant="53" id="IO5-W2-7wz"/>
+                    <constraint firstItem="cvV-mu-DhH" firstAttribute="leading" secondItem="3Jk-y8-33k" secondAttribute="leading" id="Sto-WT-My8"/>
+                    <constraint firstItem="Wgd-h7-RwO" firstAttribute="centerY" secondItem="ynm-FN-vkn" secondAttribute="centerY" id="W5C-wc-xtr"/>
+                    <constraint firstItem="Oqs-Kk-ike" firstAttribute="height" secondItem="cvV-mu-DhH" secondAttribute="height" multiplier="0.06" id="gkq-xQ-8jI"/>
+                    <constraint firstItem="AwO-8n-RuO" firstAttribute="top" secondItem="Wgd-h7-RwO" secondAttribute="bottom" constant="28" id="gq0-Co-IBZ"/>
+                    <constraint firstAttribute="bottom" secondItem="cvV-mu-DhH" secondAttribute="bottom" id="jof-Mt-gAp"/>
+                    <constraint firstItem="nYq-UF-n4D" firstAttribute="top" secondItem="3Jk-y8-33k" secondAttribute="top" constant="5" id="kPp-XB-l1k"/>
+                    <constraint firstItem="Wgd-h7-RwO" firstAttribute="centerX" secondItem="ynm-FN-vkn" secondAttribute="centerX" id="o3G-8X-keH"/>
+                    <constraint firstItem="3Jk-y8-33k" firstAttribute="trailing" secondItem="cvV-mu-DhH" secondAttribute="trailing" id="qpT-F0-6WE"/>
+                    <constraint firstItem="3Jk-y8-33k" firstAttribute="trailing" secondItem="nYq-UF-n4D" secondAttribute="trailing" constant="15" id="vDT-dZ-cj5"/>
+                    <constraint firstItem="AwO-8n-RuO" firstAttribute="centerX" secondItem="Wgd-h7-RwO" secondAttribute="centerX" id="w0z-5p-H7V"/>
+                </constraints>
+                <viewLayoutGuide key="safeArea" id="3Jk-y8-33k"/>
+            </view>
+            <connections>
+                <outlet property="backgroundImageView" destination="cvV-mu-DhH" id="nSH-BJ-iNg"/>
+                <outlet property="goMainButton" destination="fsN-CG-4lG" id="OBp-3L-RAi"/>
+                <outlet property="goRegisterButton" destination="8Dc-H0-7PV" id="poF-mU-EVq"/>
+                <outlet property="lastStepButtonContentView" destination="Oqs-Kk-ike" id="NBT-y0-apr"/>
+                <outlet property="passButton" destination="nYq-UF-n4D" id="Rz3-L7-iFP"/>
+                <outlet property="subtitleLabel" destination="AwO-8n-RuO" id="tlr-JY-0Lb"/>
+                <outlet property="titleLabel" destination="Wgd-h7-RwO" id="4Rn-E4-b1U"/>
+            </connections>
+            <point key="canvasLocation" x="134.78260869565219" y="187.5"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="bg-launch-baseball" width="375" height="812"/>
+    </resources>
+</document>
