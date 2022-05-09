@@ -91,17 +91,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dty-cF-87V">
+                        <rect key="frame" x="0.0" y="420" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="oZt-Kn-WMR"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="a6e-hG-Dyn"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <color key="backgroundColor" red="0.96470588235294119" green="0.96470588235294119" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="dBg-fn-9sp" firstAttribute="top" secondItem="PQW-gX-QJU" secondAttribute="bottom" constant="8" id="3fT-nB-jNi"/>
                     <constraint firstItem="18D-pW-Ojl" firstAttribute="leading" secondItem="PQW-gX-QJU" secondAttribute="trailing" id="ClZ-KE-hl9"/>
                     <constraint firstItem="fF6-bZ-cyI" firstAttribute="top" secondItem="I46-ol-8Um" secondAttribute="bottom" constant="12" id="M97-CZ-d9p"/>
                     <constraint firstItem="a6e-hG-Dyn" firstAttribute="trailing" secondItem="I46-ol-8Um" secondAttribute="trailing" constant="24" id="P0z-Xu-nN9"/>
                     <constraint firstItem="18D-pW-Ojl" firstAttribute="width" secondItem="I46-ol-8Um" secondAttribute="width" multiplier="0.0327869" id="P68-Dd-7qA"/>
+                    <constraint firstItem="dty-cF-87V" firstAttribute="top" secondItem="dBg-fn-9sp" secondAttribute="bottom" constant="30" id="PLT-MG-Vwb"/>
                     <constraint firstItem="I46-ol-8Um" firstAttribute="top" secondItem="a6e-hG-Dyn" secondAttribute="top" constant="20" id="Pzz-SS-KID"/>
                     <constraint firstItem="18D-pW-Ojl" firstAttribute="centerX" secondItem="HtN-ef-NSx" secondAttribute="centerX" id="Qxy-XJ-Wef"/>
+                    <constraint firstItem="a6e-hG-Dyn" firstAttribute="trailing" secondItem="dty-cF-87V" secondAttribute="trailing" id="WTg-wE-E02"/>
                     <constraint firstItem="fF6-bZ-cyI" firstAttribute="height" secondItem="I46-ol-8Um" secondAttribute="height" multiplier="0.263158" id="baE-ZY-fOa"/>
                     <constraint firstItem="I46-ol-8Um" firstAttribute="leading" secondItem="a6e-hG-Dyn" secondAttribute="leading" constant="24" id="cyl-1W-ghL"/>
                     <constraint firstItem="dBg-fn-9sp" firstAttribute="centerX" secondItem="PQW-gX-QJU" secondAttribute="centerX" id="h9m-d5-DYh"/>
@@ -111,6 +120,7 @@
                     <constraint firstItem="fF6-bZ-cyI" firstAttribute="leading" secondItem="18D-pW-Ojl" secondAttribute="trailing" id="k3w-jS-bQU"/>
                     <constraint firstItem="JyD-Xp-1xC" firstAttribute="top" secondItem="fF6-bZ-cyI" secondAttribute="bottom" constant="8" id="n38-ve-5bT"/>
                     <constraint firstItem="PQW-gX-QJU" firstAttribute="height" secondItem="I46-ol-8Um" secondAttribute="height" multiplier="0.263158" id="pw5-e0-k7k"/>
+                    <constraint firstItem="dty-cF-87V" firstAttribute="leading" secondItem="a6e-hG-Dyn" secondAttribute="leading" id="qV9-TL-8vE"/>
                     <constraint firstItem="18D-pW-Ojl" firstAttribute="top" secondItem="I46-ol-8Um" secondAttribute="bottom" constant="12" id="s1e-ce-a2R"/>
                     <constraint firstItem="I46-ol-8Um" firstAttribute="height" secondItem="HtN-ef-NSx" secondAttribute="height" multiplier="0.254464" id="ykC-SB-zEx"/>
                     <constraint firstItem="fF6-bZ-cyI" firstAttribute="trailing" secondItem="I46-ol-8Um" secondAttribute="trailing" id="zAt-Dm-pl6"/>
@@ -118,6 +128,7 @@
             </view>
             <connections>
                 <outlet property="depositImg" destination="PQW-gX-QJU" id="Q5X-1a-wXP"/>
+                <outlet property="middleLineView" destination="dty-cF-87V" id="9PO-Z0-MFu"/>
                 <outlet property="withdrawImg" destination="fF6-bZ-cyI" id="5aP-JO-iJO"/>
             </connections>
             <point key="canvasLocation" x="57.971014492753625" y="80.357142857142847"/>

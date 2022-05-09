@@ -30,6 +30,13 @@
 		A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A152828EE6A009932D8 /* BoardViewController.xib */; };
 		A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A192828F32E009932D8 /* DepositViewController.swift */; };
 		A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
+		A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A212828F3D3009932D8 /* WithdrawViewController.swift */; };
+		A1973A252828F3E7009932D8 /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A242828F3E7009932D8 /* WithdrawViewController.xib */; };
+		A1973A2E2828F63B009932D8 /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
+		A1973A322828F75E009932D8 /* SubPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A312828F75E009932D8 /* SubPageViewController.swift */; };
+		A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A392829126D009932D8 /* UICollectionView+util.swift */; };
+		A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
+		A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */; };
 		A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FD1282218D6000AFC3F /* AppDelegate.swift */; };
 		A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FD7282218D6000AFC3F /* Main.storyboard */; };
 		A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDA282218DF000AFC3F /* Assets.xcassets */; };
@@ -155,6 +162,13 @@
 		A1973A152828EE6A009932D8 /* BoardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardViewController.xib; sourceTree = "<group>"; };
 		A1973A192828F32E009932D8 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
 		A1973A1D2828F35E009932D8 /* DepositViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
+		A1973A212828F3D3009932D8 /* WithdrawViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WithdrawViewController.swift; sourceTree = "<group>"; };
+		A1973A242828F3E7009932D8 /* WithdrawViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawViewController.xib; sourceTree = "<group>"; };
+		A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletPageViewController.swift; sourceTree = "<group>"; };
+		A1973A312828F75E009932D8 /* SubPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubPageViewController.swift; sourceTree = "<group>"; };
+		A1973A392829126D009932D8 /* UICollectionView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+util.swift"; sourceTree = "<group>"; };
+		A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubPageCollectionCell.swift; sourceTree = "<group>"; };
+		A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubPageCollectionCell.xib; sourceTree = "<group>"; };
 		A19C6FCE282218D6000AFC3F /* cryptoVerOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C6FD1282218D6000AFC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C6FD8282218D6000AFC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -356,6 +370,26 @@
 			path = DepositView;
 			sourceTree = "<group>";
 		};
+		A1973A202828F3B7009932D8 /* WithdrawView */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A212828F3D3009932D8 /* WithdrawViewController.swift */,
+				A1973A242828F3E7009932D8 /* WithdrawViewController.xib */,
+			);
+			path = WithdrawView;
+			sourceTree = "<group>";
+		};
+		A1973A272828F5F2009932D8 /* PagingView */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */,
+				A1973A312828F75E009932D8 /* SubPageViewController.swift */,
+				A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */,
+				A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */,
+			);
+			path = PagingView;
+			sourceTree = "<group>";
+		};
 		A19C6FC5282218D6000AFC3F = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +504,7 @@
 				A19C71D62822662B000AFC3F /* UILabel+util.swift */,
 				A19C71FC282286C1000AFC3F /* Reactive+util.swift */,
 				A1B051F12823B13F00056183 /* String+util.swift */,
+				A1973A392829126D009932D8 /* UICollectionView+util.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -593,6 +628,8 @@
 		A19C70DC28224A48000AFC3F /* WalletView */ = {
 			isa = PBXGroup;
 			children = (
+				A1973A272828F5F2009932D8 /* PagingView */,
+				A1973A202828F3B7009932D8 /* WithdrawView */,
 				A1973A182828F314009932D8 /* DepositView */,
 				A19C70DD28224A62000AFC3F /* WalletViewController.swift */,
 				A19739E92828C5B5009932D8 /* WalletViewController.xib */,
@@ -736,6 +773,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19C7145282257AB000AFC3F /* mucoin_error.json in Resources */,
+				A1973A252828F3E7009932D8 /* WithdrawViewController.xib in Resources */,
 				A19C719728225CDA000AFC3F /* MainViewController.xib in Resources */,
 				A19739CA28251BB0009932D8 /* ResetPasswordViewController.xib in Resources */,
 				A19C6FDE282218DF000AFC3F /* LaunchScreen.storyboard in Resources */,
@@ -745,6 +783,7 @@
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
+				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
@@ -815,14 +854,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1973A2E2828F63B009932D8 /* WalletPageViewController.swift in Sources */,
 				A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */,
 				A19C702C28222D97000AFC3F /* Extension.swift in Sources */,
 				A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */,
+				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,
 				A19C71A928226279000AFC3F /* LoginPostDto.swift in Sources */,
 				A19C70BE28223D82000AFC3F /* PopupBottomSheet.swift in Sources */,
 				A19C7117282255AD000AFC3F /* Log.swift in Sources */,
 				A19C71B42822636E000AFC3F /* SignupViewController.swift in Sources */,
 				A19C70BB28223D70000AFC3F /* BottomSheet.swift in Sources */,
+				A1973A322828F75E009932D8 /* SubPageViewController.swift in Sources */,
 				A19C70DA282248A0000AFC3F /* LoginAlert.swift in Sources */,
 				A19C717828225ACC000AFC3F /* AccessTokenAdapter.swift in Sources */,
 				A19C70762822366C000AFC3F /* MemberViewController.swift in Sources */,
@@ -852,6 +894,7 @@
 				A19C702828222D46000AFC3F /* DeepLinkManager.swift in Sources */,
 				A19C71EA282269E4000AFC3F /* UIStackView+util.swift in Sources */,
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
+				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
@@ -871,6 +914,7 @@
 				A19C70D42822479B000AFC3F /* UIView+util.swift in Sources */,
 				A19C70F828224D4F000AFC3F /* BasePresentAnimationController.swift in Sources */,
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
+				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestServer.swift in Sources */,
 				A19C712A282256CC000AFC3F /* Constants.swift in Sources */,

@@ -14,11 +14,14 @@ import RxSwift
 import UserNotifications
 import SafariServices
 import SDWebImage
-
 class WalletViewController: BaseViewController {
     // MARK:業務設定
+    let depositVC = DepositViewController.loadNib()
+    let withdrawVC = WithdrawViewController.loadNib()
+    fileprivate let pageVC = WalletPageViewController()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+
     // MARK: -
     // MARK:UI 設定
     private lazy var profileButton:UIButton = {
@@ -44,6 +47,8 @@ class WalletViewController: BaseViewController {
     }()
     @IBOutlet weak var depositImg: UIImageView!
     @IBOutlet weak var withdrawImg: UIImageView!
+    @IBOutlet weak var middleLineView: UIView!
+    
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -53,6 +58,7 @@ class WalletViewController: BaseViewController {
         super.viewDidLoad()
         setupNavi()
         bindingIMGview()
+        setupPagingView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,12 +83,20 @@ class WalletViewController: BaseViewController {
     }
     func bindingIMGview()
     {
-        depositImg.rx.click.subscribeSuccess { (_) in
-            
+        depositImg.rx.click.subscribeSuccess { [self] (_) in
+            self.navigationController?.pushViewController(depositVC, animated: true)
         }.disposed(by: dpg)
-        withdrawImg.rx.click.subscribeSuccess { (_) in
-            
+        withdrawImg.rx.click.subscribeSuccess { [self] (_) in
+            self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)
+    }
+    private func setupPagingView() {
+        addChild(pageVC)
+        view.addSubview(pageVC.view)
+        pageVC.view.snp.makeConstraints({ (make) in
+            make.top.equalTo(self.middleLineView.snp.bottom).offset(26)
+            make.left.bottom.right.equalToSuperview()
+        })
     }
     @objc func pushToProfile() {
         Log.i("推到個人清單")
