@@ -161,12 +161,8 @@ class LoginSignupViewController: BaseViewController {
     private func binding() {
         logoImv.rx.click
             .subscribeSuccess { [weak self] in
-                self?.bioVerifyCheck(isDev: true)
-//                self?.navigateToRouter(showBioView: true,
-//                                       route: .main)
-//                KeychainManager.share.clearToken()
-//                DeepLinkManager.share.navigation = .none
-//                self?.goMainViewController()
+//                self?.bioVerifyCheck(isDev: true)
+                self?.goWalletViewController()
             }.disposed(by: disposeBag)
         
 //        switchButton.rx.tap
@@ -234,19 +230,19 @@ class LoginSignupViewController: BaseViewController {
     // MARK: 驗證碼
     private func sendVerifyCodeForEmailLogin(_ loginDto: LoginPostDto) {
         // 傳送驗證碼供Email登入
-        Log.e("傳送驗證碼供Email登入使用")
+        Log.i("傳送驗證碼供Email登入使用")
     }
     private func sendVerifyCodeForEmailSignup(_ loginDto: SignupPostDto) {
         // 傳送驗證碼供Email登入
-        Log.e("傳送驗證碼供Email註冊使用")
+        Log.i("傳送驗證碼供Email註冊使用")
     }
     // MARK: 驗證碼
     private func sendEmailVerifyCodeForForgot(_ dto: LoginPostDto) {
         // 傳送驗證碼
-        Log.e("傳送Email驗證碼供忘記密碼使用")
+        Log.i("傳送Email驗證碼供忘記密碼使用")
     }
     private func sendVerifyCodeForPhone(_ phone: String) {
-        Log.e("傳送驗證碼供Phone使用")
+        Log.i("傳送驗證碼供Phone使用")
 //        Beans.memberServer
 //            .sendVerifyCode(phone, isLogin: isLogin)
 //            .subscribeSuccess({ [weak self] (res) in
@@ -554,12 +550,12 @@ class LoginSignupViewController: BaseViewController {
     func goWalletViewController() {
 //        tabbarVC.selected(0)
         let walletVC = WalletViewController.loadNib()
-        let walletNavVC = MuLoginNavigationController(rootViewController: walletVC)
+        let walletNavVC = MDNavigationController(rootViewController: walletVC)
         
 //        let betleadMain = BetleadNavigationController(rootViewController: tabbarVC)
         DispatchQueue.main.async {
             if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
-                print("go main")
+                print("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
             }

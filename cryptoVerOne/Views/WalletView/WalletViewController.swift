@@ -21,7 +21,29 @@ class WalletViewController: BaseViewController {
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
-   
+    private lazy var profileButton:UIButton = {
+        let backToButton = UIButton()
+        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        backToButton.setImage(image, for: .normal)
+        backToButton.addTarget(self, action:#selector(pushToProfile), for:.touchUpInside)
+        return backToButton
+    }()
+    private lazy var bellButton:UIButton = {
+        let backToButton = UIButton()
+        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        backToButton.setImage(image, for: .normal)
+        backToButton.addTarget(self, action:#selector(pushToBell), for:.touchUpInside)
+        return backToButton
+    }()
+    private lazy var boardButton:UIButton = {
+        let backToButton = UIButton()
+        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        backToButton.setImage(image, for: .normal)
+        backToButton.addTarget(self, action:#selector(pushToBoard), for:.touchUpInside)
+        return backToButton
+    }()
+    @IBOutlet weak var depositImg: UIImageView!
+    @IBOutlet weak var withdrawImg: UIImageView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -29,6 +51,8 @@ class WalletViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavi()
+        bindingIMGview()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +68,39 @@ class WalletViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupNavi()
+    {
+        title = "Wallet".localized
+        let rightBarItems = [UIBarButtonItem(customView: boardButton),UIBarButtonItem(customView: bellButton)]
+        self.navigationItem.rightBarButtonItems = rightBarItems
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
+    }
+    func bindingIMGview()
+    {
+        depositImg.rx.click.subscribeSuccess { (_) in
+            
+        }.disposed(by: dpg)
+        withdrawImg.rx.click.subscribeSuccess { (_) in
+            
+        }.disposed(by: dpg)
+    }
+    @objc func pushToProfile() {
+        Log.i("推到個人清單")
+        let userVC = UserMenuViewController.loadNib()
+        self.navigationController?.pushViewController(userVC, animated: true)
+    }
+    
+    @objc func pushToBell() {
+        Log.i("推到通知")
+        let notiVC = NotiViewController.loadNib()
+        self.navigationController?.pushViewController(notiVC, animated: true)
+    }
+    
+    @objc func pushToBoard() {
+        Log.i("推到業務清單")
+        let boardVC = BoardViewController.loadNib()
+        self.navigationController?.pushViewController(boardVC, animated: true)
+    }
 }
 // MARK: -
 // MARK: 延伸

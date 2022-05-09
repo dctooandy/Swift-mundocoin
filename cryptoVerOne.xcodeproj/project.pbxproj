@@ -21,6 +21,15 @@
 		A19739E4282808B5009932D8 /* InputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739E3282808B5009932D8 /* InputStyleView.swift */; };
 		A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E62828BC3A009932D8 /* SignupSuccessView.xib */; };
 		A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E92828C5B5009932D8 /* WalletViewController.xib */; };
+		A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A002828E59A009932D8 /* MDNavigationController.swift */; };
+		A1973A052828EBEB009932D8 /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A042828EBEB009932D8 /* UserMenuViewController.swift */; };
+		A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A072828EC81009932D8 /* UserMenuViewController.xib */; };
+		A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A0B2828ED59009932D8 /* NotiViewController.swift */; };
+		A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A0E2828ED81009932D8 /* NotiViewController.xib */; };
+		A1973A132828EE13009932D8 /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A122828EE13009932D8 /* BoardViewController.swift */; };
+		A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A152828EE6A009932D8 /* BoardViewController.xib */; };
+		A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A192828F32E009932D8 /* DepositViewController.swift */; };
+		A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
 		A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FD1282218D6000AFC3F /* AppDelegate.swift */; };
 		A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FD7282218D6000AFC3F /* Main.storyboard */; };
 		A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDA282218DF000AFC3F /* Assets.xcassets */; };
@@ -137,6 +146,15 @@
 		A19739E3282808B5009932D8 /* InputStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputStyleView.swift; sourceTree = "<group>"; };
 		A19739E62828BC3A009932D8 /* SignupSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupSuccessView.xib; sourceTree = "<group>"; };
 		A19739E92828C5B5009932D8 /* WalletViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WalletViewController.xib; sourceTree = "<group>"; };
+		A1973A002828E59A009932D8 /* MDNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MDNavigationController.swift; sourceTree = "<group>"; };
+		A1973A042828EBEB009932D8 /* UserMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewController.swift; sourceTree = "<group>"; };
+		A1973A072828EC81009932D8 /* UserMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuViewController.xib; sourceTree = "<group>"; };
+		A1973A0B2828ED59009932D8 /* NotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiViewController.swift; sourceTree = "<group>"; };
+		A1973A0E2828ED81009932D8 /* NotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotiViewController.xib; sourceTree = "<group>"; };
+		A1973A122828EE13009932D8 /* BoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewController.swift; sourceTree = "<group>"; };
+		A1973A152828EE6A009932D8 /* BoardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BoardViewController.xib; sourceTree = "<group>"; };
+		A1973A192828F32E009932D8 /* DepositViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewController.swift; sourceTree = "<group>"; };
+		A1973A1D2828F35E009932D8 /* DepositViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DepositViewController.xib; sourceTree = "<group>"; };
 		A19C6FCE282218D6000AFC3F /* cryptoVerOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C6FD1282218D6000AFC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C6FD8282218D6000AFC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -302,6 +320,42 @@
 			path = InputViews;
 			sourceTree = "<group>";
 		};
+		A1973A032828EBC2009932D8 /* UserMenu */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A042828EBEB009932D8 /* UserMenuViewController.swift */,
+				A1973A072828EC81009932D8 /* UserMenuViewController.xib */,
+			);
+			path = UserMenu;
+			sourceTree = "<group>";
+		};
+		A1973A0A2828ED32009932D8 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A0B2828ED59009932D8 /* NotiViewController.swift */,
+				A1973A0E2828ED81009932D8 /* NotiViewController.xib */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
+		A1973A112828EDFB009932D8 /* BoardView */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A122828EE13009932D8 /* BoardViewController.swift */,
+				A1973A152828EE6A009932D8 /* BoardViewController.xib */,
+			);
+			path = BoardView;
+			sourceTree = "<group>";
+		};
+		A1973A182828F314009932D8 /* DepositView */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A192828F32E009932D8 /* DepositViewController.swift */,
+				A1973A1D2828F35E009932D8 /* DepositViewController.xib */,
+			);
+			path = DepositView;
+			sourceTree = "<group>";
+		};
 		A19C6FC5282218D6000AFC3F = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +505,9 @@
 				A19C714A2822585B000AFC3F /* NavigationView */,
 				A19C70E128224ADB000AFC3F /* PromoView */,
 				A19C70DC28224A48000AFC3F /* WalletView */,
+				A1973A032828EBC2009932D8 /* UserMenu */,
+				A1973A0A2828ED32009932D8 /* Notifications */,
+				A1973A112828EDFB009932D8 /* BoardView */,
 				A19C70A128223B3F000AFC3F /* GuidePage */,
 				A19C70742822365F000AFC3F /* MemberView */,
 				A19C706428223577000AFC3F /* MainView */,
@@ -536,6 +593,7 @@
 		A19C70DC28224A48000AFC3F /* WalletView */ = {
 			isa = PBXGroup;
 			children = (
+				A1973A182828F314009932D8 /* DepositView */,
 				A19C70DD28224A62000AFC3F /* WalletViewController.swift */,
 				A19739E92828C5B5009932D8 /* WalletViewController.xib */,
 			);
@@ -566,6 +624,7 @@
 			children = (
 				A19C714B2822589A000AFC3F /* BetleadNavigationController.swift */,
 				A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */,
+				A1973A002828E59A009932D8 /* MDNavigationController.swift */,
 			);
 			path = NavigationView;
 			sourceTree = "<group>";
@@ -681,8 +740,12 @@
 				A19739CA28251BB0009932D8 /* ResetPasswordViewController.xib in Resources */,
 				A19C6FDE282218DF000AFC3F /* LaunchScreen.storyboard in Resources */,
 				A19C70A728223C46000AFC3F /* LaunchReciprocalViewController.xib in Resources */,
+				A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */,
 				A19C70AD28223CB7000AFC3F /* GuidePageViewController.xib in Resources */,
+				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
+				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
+				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
@@ -774,6 +837,7 @@
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
 				A19C70C928224614000AFC3F /* ValueDto.swift in Sources */,
 				A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */,
+				A1973A052828EBEB009932D8 /* UserMenuViewController.swift in Sources */,
 				A19C70AE28223CB7000AFC3F /* FirstLaunchViewController.swift in Sources */,
 				A19C719128225B8D000AFC3F /* CALayer+util.swift in Sources */,
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
@@ -796,10 +860,12 @@
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
+				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,
 				A19C706028223517000AFC3F /* TabbarViewController.swift in Sources */,
+				A1973A132828EE13009932D8 /* BoardViewController.swift in Sources */,
 				A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */,
 				A19C714828225827000AFC3F /* ImagetTextButton.swift in Sources */,
 				A19C70D42822479B000AFC3F /* UIView+util.swift in Sources */,
@@ -813,6 +879,7 @@
 				A19C70F128224C87000AFC3F /* Beans.swift in Sources */,
 				A19739E4282808B5009932D8 /* InputStyleView.swift in Sources */,
 				A19C719D28225D99000AFC3F /* BadgeBtn.swift in Sources */,
+				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,
@@ -828,6 +895,7 @@
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
+				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
 				A19C70E728224BF5000AFC3F /* UserDefaults+util.swift in Sources */,
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
