@@ -95,7 +95,8 @@ class WalletViewController: BaseViewController {
         view.addSubview(pageVC.view)
         pageVC.view.snp.makeConstraints({ (make) in
             make.top.equalTo(self.middleLineView.snp.bottom).offset(26)
-            make.left.bottom.right.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-5)
         })
     }
     @objc func pushToProfile() {

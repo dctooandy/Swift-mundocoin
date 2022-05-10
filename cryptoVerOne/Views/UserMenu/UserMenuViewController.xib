@@ -15,13 +15,63 @@
             <view key="view" contentMode="scaleToFill" id="TH8-ZP-7Fd">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOu-sE-TfT">
+                        <rect key="frame" x="0.0" y="126" width="414" height="1"/>
+                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Uuf-ex-HOe"/>
+                        </constraints>
+                    </view>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="D6d-sF-e3H">
+                        <rect key="frame" x="32" y="54" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="Q0w-Lp-dD3"/>
+                            <constraint firstAttribute="width" constant="48" id="Y6t-6V-Jdl"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="24"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lena@gmail.coml" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="emF-3g-wZP">
+                        <rect key="frame" x="98" y="66" width="148.5" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="GDp-5R-KfM">
+                        <rect key="frame" x="362" y="68" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="07P-Xa-YG8"/>
+                            <constraint firstAttribute="height" constant="20" id="xZt-u1-Kwh"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
                 <viewLayoutGuide key="safeArea" id="xLx-1j-dVG"/>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="GDp-5R-KfM" firstAttribute="centerY" secondItem="emF-3g-wZP" secondAttribute="centerY" id="CGc-ii-kqS"/>
+                    <constraint firstItem="emF-3g-wZP" firstAttribute="centerY" secondItem="D6d-sF-e3H" secondAttribute="centerY" id="GWn-Ha-f99"/>
+                    <constraint firstItem="D6d-sF-e3H" firstAttribute="leading" secondItem="xLx-1j-dVG" secondAttribute="leading" constant="32" id="QGq-Lg-h3r"/>
+                    <constraint firstItem="xLx-1j-dVG" firstAttribute="trailing" secondItem="NOu-sE-TfT" secondAttribute="trailing" id="T1V-Ou-BcZ"/>
+                    <constraint firstItem="NOu-sE-TfT" firstAttribute="top" secondItem="xLx-1j-dVG" secondAttribute="top" constant="82" id="YSz-kb-NxC"/>
+                    <constraint firstItem="NOu-sE-TfT" firstAttribute="top" secondItem="D6d-sF-e3H" secondAttribute="bottom" constant="24" id="cjw-Uc-3ga"/>
+                    <constraint firstItem="NOu-sE-TfT" firstAttribute="leading" secondItem="xLx-1j-dVG" secondAttribute="leading" id="g5S-ZT-aaq"/>
+                    <constraint firstItem="xLx-1j-dVG" firstAttribute="trailing" secondItem="GDp-5R-KfM" secondAttribute="trailing" constant="32" id="xbZ-FH-6Np"/>
+                    <constraint firstItem="emF-3g-wZP" firstAttribute="leading" secondItem="D6d-sF-e3H" secondAttribute="trailing" constant="18" id="y17-re-dFX"/>
+                </constraints>
             </view>
-            <point key="canvasLocation" x="-223" y="-36"/>
+            <connections>
+                <outlet property="rightArrowImage" destination="GDp-5R-KfM" id="lLW-7X-FMa"/>
+            </connections>
+            <point key="canvasLocation" x="-223.18840579710147" y="-36.160714285714285"/>
         </viewController>
     </objects>
     <resources>
+        <image name="launch-logo" width="260" height="251"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
