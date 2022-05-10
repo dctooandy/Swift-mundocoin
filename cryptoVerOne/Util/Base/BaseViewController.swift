@@ -14,15 +14,29 @@ import SnapKit
 
 
 class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDelegate{
-    
+    // MARK:業務設定
     let disposeBag = DisposeBag()
     var isNavBarTransparent:Bool
     var isEnablePopGesture = true
     var isRecoverNavBar = true
     private var isShowKeyboard = false
+    // MARK: -
+    // MARK:UI 設定
+    private lazy var backBtn:UIButton = {
+        let btn = UIButton(type: .custom)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .black
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        btn.setTitle("", for:.normal)
+        return btn
+    }()
+    // MARK: -
+    // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
     }
     
     init(isNavBarTransparent:Bool = false){
@@ -80,7 +94,11 @@ class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDele
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-    
+    // MARK: -
+    // MARK:業務方法
+    @objc func popVC() {
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     func setupKeyboard(_ constraint:NSLayoutConstraint, height:CGFloat = 240){
         let origin = constraint.constant
         let keyboardOnScreenHeight = Observable.from([

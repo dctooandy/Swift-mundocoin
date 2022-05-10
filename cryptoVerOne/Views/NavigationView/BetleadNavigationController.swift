@@ -26,9 +26,10 @@ class BetleadNavigationController:UINavigationController{
     }
     
     private lazy var backBtn:UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named:"left-arrow"), for:.normal)
-        btn.tintColor = .white
+        let btn = UIButton(type: .custom)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        btn.setImage(image, for: .normal)
+        btn.tintColor = .black
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         btn.setTitle("", for:.normal)
         return btn

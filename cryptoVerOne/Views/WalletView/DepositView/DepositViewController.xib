@@ -240,6 +240,7 @@ Please confirm the method must match the network.</string>
                 </constraints>
             </view>
             <connections>
+                <outlet property="boardView" destination="cvz-5Q-Z0V" id="kun-H4-Wqo"/>
                 <outlet property="codeImageView" destination="nm0-vB-xPB" id="Vep-cG-2VA"/>
                 <outlet property="copyImageView" destination="qJT-q8-GQs" id="hV1-KW-5ue"/>
                 <outlet property="currencyLabel" destination="unE-sc-OHy" id="1Bp-hc-gQZ"/>

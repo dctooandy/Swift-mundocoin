@@ -27,6 +27,8 @@ class DepositViewController: BaseViewController {
     @IBOutlet weak var discritpionLabel: UILabel!
     @IBOutlet weak var saveButton: CornerradiusButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
+    @IBOutlet weak var boardView: UIView!
+
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -109,8 +111,8 @@ class DepositViewController: BaseViewController {
         }
         // 顯示出我們的 activityVC。
         self.present(activityVC, animated: true, completion: nil)
-   
     }
+
 }
 // MARK: -
 // MARK: 延伸
