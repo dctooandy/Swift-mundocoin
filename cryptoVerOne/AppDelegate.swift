@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private let dpg = DisposeBag()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupAppearance()
+        initSingleton()
         launchFromNotification(options: launchOptions)
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -25,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupAppearance(){
         
         KeychainManager.share.clearToken()
+    }
+    private func initSingleton(){
+        Toast.bindSubject()
+        ToastView.appearance().bottomOffsetPortrait = 200
     }
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
         guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
