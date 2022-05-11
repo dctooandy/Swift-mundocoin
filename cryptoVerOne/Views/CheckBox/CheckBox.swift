@@ -56,7 +56,7 @@ class CheckBox: UIView {
         super.init(frame: frame)
         setupViews()
     }
-    init(boxColor: UIColor = .white, borderColor: UIColor, alwaysShowTick: Bool = false) {
+    init(boxColor: UIColor = .white, borderColor: UIColor, alwaysShowTick: Bool = false , style:Style = .tick) {
         super.init(frame: .zero)
         self.checkBackgroundColor = UIColor(rgb: 0xEDEDED)
         self.uncheckBackgroundColor = UIColor(rgb: 0xEDEDED)

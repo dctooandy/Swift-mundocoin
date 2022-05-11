@@ -68,7 +68,7 @@ class SignupViewController: BaseViewController {
 //            make.height.equalToSuperview().multipliedBy(0.275)
 //        }
         accountInputView?.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(56)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(height(270/812))

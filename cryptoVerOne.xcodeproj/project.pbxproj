@@ -144,6 +144,7 @@
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
 		A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
 		A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
+		A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -292,6 +293,7 @@
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
+		A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6F69B1172BE98FD8955C95 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -750,6 +752,7 @@
 		A1DD13AA282BED5200AB2E0A /* SecurityView */ = {
 			isa = PBXGroup;
 			children = (
+				A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */,
 			);
 			path = SecurityView;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				A19C7089282239DC000AFC3F /* Themes.swift in Sources */,
 				A19C702828222D46000AFC3F /* DeepLinkManager.swift in Sources */,
 				A19C71EA282269E4000AFC3F /* UIStackView+util.swift in Sources */,
+				A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */,
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
 				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,

@@ -11,6 +11,7 @@ import RxCocoa
 import RxSwift
 
 enum cellData {
+    // UserMenu
     case currency
     case security
     case pushNotifications
@@ -21,6 +22,11 @@ enum cellData {
     case termPolicies
     case about
     case logout
+    
+    // Security
+//    case twoFactorAuthentication
+//    case emailAuthemtication
+//    case changePassword
     
     var cellTitle:String? {
         switch self {
@@ -117,6 +123,7 @@ class UserMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var logoutLabel: UILabel!
+    @IBOutlet weak var checkBox: CheckBox!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {

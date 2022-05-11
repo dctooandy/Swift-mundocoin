@@ -20,6 +20,15 @@ class LoginPageViewController: BaseViewController {
     private var currentShowMode: ShowMode = .login {
         didSet {
             cleanTextField()
+            if currentShowMode == .forgotPW
+            {
+                pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 50)
+                pageViewcontroller?.indicatorColor = .black
+            }else
+            {
+                pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 0)
+                pageViewcontroller?.indicatorColor = .clear
+            }
             pageViewcontroller?.reloadData()
         }
     }
@@ -43,7 +52,7 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 0)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 50)
         pageViewcontroller?.menuHorizontalAlignment = .left
         pageViewcontroller?.menuItemSpacing = 20
         pageViewcontroller?.menuBackgroundColor = .clear
@@ -58,7 +67,7 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = .clear
+        pageViewcontroller?.indicatorColor = .black
         pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
         pageViewcontroller?.indicatorOptions = .visible(height: 6,
                                                         zIndex: Int.max,

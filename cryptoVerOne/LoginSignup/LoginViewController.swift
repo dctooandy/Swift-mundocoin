@@ -75,7 +75,7 @@ class LoginViewController: BaseViewController {
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(56)
+            make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(height(180/812))
