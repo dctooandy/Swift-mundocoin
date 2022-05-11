@@ -12,6 +12,7 @@ import RxSwift
 
 class InputStyleView: UIView {
     // MARK:業務設定
+    private var twoFAMode: TwoFAInputMode = .none
     private var inputMode: LoginMode = .account
     private var currentShowMode: ShowMode = .login
     private let displayPwdImg = UIImage(named: "eye-solid")!.withRenderingMode(.alwaysTemplate)
@@ -52,9 +53,21 @@ class InputStyleView: UIView {
     // MARK:Life cycle
     convenience init(inputMode: LoginMode = .account, currentShowMode: ShowMode = .login, isPWStyle:Bool = false , isRegisterStyle: Bool = false) {
         self.init(frame: .zero)
+        self.twoFAMode = .none
         self.inputMode = inputMode
         self.isPWStyle = isPWStyle
         self.isRegisterStyle = isRegisterStyle
+        self.currentShowMode = currentShowMode
+        self.setup()
+        self.bindPwdButton()
+        self.bindTextfield()
+        self.bindCancelButton()
+    }
+    convenience init(inputMode: TwoFAInputMode = .email) {
+        self.init(frame: .zero)
+        self.twoFAMode = inputMode
+        self.isPWStyle = false
+        self.isRegisterStyle = false
         self.currentShowMode = currentShowMode
         self.setup()
         self.bindPwdButton()
@@ -76,7 +89,6 @@ class InputStyleView: UIView {
         addSubview(topLabel)
         addSubview(textField)
         addSubview(invalidLabel)
-
         
         textField.delegate = self
         displayRightButton.tintColor = .black
@@ -106,43 +118,52 @@ class InputStyleView: UIView {
     {
         textField.textColor = .black
         displayRightButton.tintColor = .black
-        var placeHolderString = ""
         var topLabelString = ""
+        var placeHolderString = ""
         var invalidLabelString = ""
-        switch currentShowMode {
-        case .login:
-            placeHolderString = (isPWStyle ? inputMode.pwdPlaceholder() : inputMode.accountPlacehloder())
-        case .signup:
-            placeHolderString = (isPWStyle ? inputMode.signupPwdPlaceholder() : (isRegisterStyle ? inputMode.signuprRegisterPlaceholder():inputMode.signupAccountPlacehloder()))
-        case .forgotPW:
-            placeHolderString = (isPWStyle ? "" : inputMode.forgotAccountPlacehloder())
-        }
-        textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
-        
-        switch inputMode {
-        case .account:
-            if currentShowMode == .forgotPW
+        var offetWidth = 0.0
+        if twoFAMode == .none
+        {
+            if currentShowMode != .forgotPW && isPWStyle == true
             {
-                topLabelString = "Enter your email to change your password".localized
-            }else
-            {
-                topLabelString = (isPWStyle ? "Password".localized: (isRegisterStyle ? "Registration code".localized: "Email".localized))
+                offetWidth = 24.0
             }
-            invalidLabelString = (isPWStyle ? "Invaild verification code".localized: (isRegisterStyle ? "Invaild verification code".localized: "Invaild email".localized))
-            textField.isSecureTextEntry = isPWStyle
-
-        case .phone:
-            topLabelString = (isPWStyle ?  "Password".localized: "Phone Number".localized)
-            invalidLabelString = (isPWStyle ?  "Invaild verification code".localized: "Invaild phone".localized)
-            textField.isSecureTextEntry = isPWStyle
+            switch currentShowMode {
+            case .login:
+                placeHolderString = (isPWStyle ? inputMode.pwdPlaceholder() : inputMode.accountPlacehloder())
+            case .signup:
+                placeHolderString = (isPWStyle ? inputMode.signupPwdPlaceholder() : (isRegisterStyle ? inputMode.signuprRegisterPlaceholder():inputMode.signupAccountPlacehloder()))
+            case .forgotPW:
+                placeHolderString = (isPWStyle ? "" : inputMode.forgotAccountPlacehloder())
+            }
+            textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
+            
+            switch inputMode {
+            case .account:
+                if currentShowMode == .forgotPW
+                {
+                    topLabelString = "Enter your email to change your password".localized
+                }else
+                {
+                    topLabelString = (isPWStyle ? "Password".localized: (isRegisterStyle ? "Registration code".localized: "Email".localized))
+                }
+                invalidLabelString = (isPWStyle ? "Invaild verification code".localized: (isRegisterStyle ? "Invaild verification code".localized: "Invaild email".localized))
+                textField.isSecureTextEntry = isPWStyle
+                
+            case .phone:
+                topLabelString = (isPWStyle ?  "Password".localized: "Phone Number".localized)
+                invalidLabelString = (isPWStyle ?  "Invaild verification code".localized: "Invaild phone".localized)
+                textField.isSecureTextEntry = isPWStyle
+            }
+        }else
+        {
+            topLabelString = twoFAMode.topString()
+            placeHolderString = twoFAMode.textPlacehloder()
+            invalidLabelString = twoFAMode.invaildString()
         }
         topLabel.text = topLabelString
         invalidLabel.text = invalidLabelString
-        var offetWidth = 0.0
-        if currentShowMode != .forgotPW && isPWStyle == true
-        {
-            offetWidth = 24.0
-        }
+
         addSubview(displayRightButton)
         displayRightButton.frame.size.width = 24
         displayRightButton.setTitle(nil, for: .normal)

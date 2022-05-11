@@ -18,6 +18,7 @@ class WalletViewController: BaseViewController {
     // MARK:業務設定
     let depositVC = DepositViewController.loadNib()
     let withdrawVC = WithdrawViewController.loadNib()
+    let twoFAVC = SecurityVerificationViewController.loadNib()
     fileprivate let pageVC = WalletPageViewController()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
@@ -87,7 +88,8 @@ class WalletViewController: BaseViewController {
             self.navigationController?.pushViewController(depositVC, animated: true)
         }.disposed(by: dpg)
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
-            self.navigationController?.pushViewController(withdrawVC, animated: true)
+            self.navigationController?.pushViewController(twoFAVC, animated: true)
+//            self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)
     }
     private func setupPagingView() {

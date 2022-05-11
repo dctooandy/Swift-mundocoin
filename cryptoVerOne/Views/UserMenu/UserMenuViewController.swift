@@ -15,8 +15,8 @@ class UserMenuViewController: BaseViewController {
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
-   
     @IBOutlet weak var rightArrowImage: UIImageView!
+    @IBOutlet weak var tableView: UITableView!
     private lazy var backBtn:UIButton = {
         let btn = UIButton(type: .custom)
         let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
@@ -32,6 +32,7 @@ class UserMenuViewController: BaseViewController {
         super.viewDidLoad()
         title = "User Menu"
         setupUI()
+        bind()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -53,7 +54,90 @@ class UserMenuViewController: BaseViewController {
         rightArrowImage.image = image
         rightArrowImage.tintColor = .black
         rightArrowImage.transform = rightArrowImage.transform.rotated(by: .pi)
+
+        tableView.tableFooterView = nil
+        tableView.registerXibCell(type: UserMenuTableViewCell.self)
+        tableView.separatorStyle = .none
+    }
+    func bind()
+    {
+//        currencyLabel.rx.click.subscribeSuccess { (_) in
+//            if let url = URL(string: "itms-apps://apple.com/app/id388497605") {
+//                UIApplication.shared.open(url)
+//            }
+//        }.disposed(by: dpg)
     }
 }
 // MARK: -
 // MARK: 延伸
+extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
+{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return (section == 0 ? 4 : 6)
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+            let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                cell.cellData = .currency
+            case 1:
+                cell.cellData = .security
+            case 2:
+                cell.cellData = .pushNotifications
+            case 3:
+                cell.cellData = .addressBook
+            default:
+                break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                cell.cellData = .language
+            case 1:
+                cell.cellData = .faceID
+            case 2:
+                cell.cellData = .helpSupport
+            case 3:
+                cell.cellData = .termPolicies
+            case 4:
+                cell.cellData = .about
+            case 5:
+                cell.cellData = .logout
+            default:
+                break
+            }
+        default:
+            break
+        }
+            return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let header = UIView()
+        let titleLable = UILabel(frame: CGRect(x: 32, y: 20, width: 300, height: 24))
+        titleLable.text = section == 0 ?  "Account" : "App Settings"
+        titleLable.font = Fonts.pingFangTCRegular(18)
+        header.addSubview(titleLable)
+        header.backgroundColor = .clear
+        return header
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 64
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+}

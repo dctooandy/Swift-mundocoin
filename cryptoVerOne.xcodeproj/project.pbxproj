@@ -37,6 +37,13 @@
 		A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A392829126D009932D8 /* UICollectionView+util.swift */; };
 		A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
 		A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */; };
+		A1973A7E282A95D2009932D8 /* UserMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */; };
+		A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */; };
+		A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */; };
+		A1973A88282AB37D009932D8 /* SecurityVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */; };
+		A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */; };
+		A1973A8F282AB572009932D8 /* TwoFAVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */; };
+		A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */; };
 		A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FD1282218D6000AFC3F /* AppDelegate.swift */; };
 		A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FD7282218D6000AFC3F /* Main.storyboard */; };
 		A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDA282218DF000AFC3F /* Assets.xcassets */; };
@@ -169,6 +176,13 @@
 		A1973A392829126D009932D8 /* UICollectionView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+util.swift"; sourceTree = "<group>"; };
 		A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubPageCollectionCell.swift; sourceTree = "<group>"; };
 		A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubPageCollectionCell.xib; sourceTree = "<group>"; };
+		A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuTableViewCell.swift; sourceTree = "<group>"; };
+		A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuTableViewCell.xib; sourceTree = "<group>"; };
+		A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+util.swift"; sourceTree = "<group>"; };
+		A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityVerificationViewController.swift; sourceTree = "<group>"; };
+		A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityVerificationViewController.xib; sourceTree = "<group>"; };
+		A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyView.swift; sourceTree = "<group>"; };
+		A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyView.xib; sourceTree = "<group>"; };
 		A19C6FCE282218D6000AFC3F /* cryptoVerOne.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A19C6FD1282218D6000AFC3F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A19C6FD8282218D6000AFC3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -337,6 +351,7 @@
 		A1973A032828EBC2009932D8 /* UserMenu */ = {
 			isa = PBXGroup;
 			children = (
+				A1973A7B282A95AF009932D8 /* UserMenuCell */,
 				A1973A042828EBEB009932D8 /* UserMenuViewController.swift */,
 				A1973A072828EC81009932D8 /* UserMenuViewController.xib */,
 			);
@@ -388,6 +403,26 @@
 				A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */,
 			);
 			path = PagingView;
+			sourceTree = "<group>";
+		};
+		A1973A7B282A95AF009932D8 /* UserMenuCell */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */,
+				A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */,
+			);
+			path = UserMenuCell;
+			sourceTree = "<group>";
+		};
+		A1973A86282AB33A009932D8 /* SecurityVerification */ = {
+			isa = PBXGroup;
+			children = (
+				A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */,
+				A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */,
+				A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */,
+				A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */,
+			);
+			path = SecurityVerification;
 			sourceTree = "<group>";
 		};
 		A19C6FC5282218D6000AFC3F = {
@@ -505,6 +540,7 @@
 				A19C71FC282286C1000AFC3F /* Reactive+util.swift */,
 				A1B051F12823B13F00056183 /* String+util.swift */,
 				A1973A392829126D009932D8 /* UICollectionView+util.swift */,
+				A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -534,6 +570,7 @@
 		A19C70632822356D000AFC3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1973A86282AB33A009932D8 /* SecurityVerification */,
 				A19739E228280866009932D8 /* InputViews */,
 				A19C71DF282268B1000AFC3F /* ImageVerify */,
 				A19C71C028226454000AFC3F /* CheckBox */,
@@ -782,6 +819,7 @@
 				A19C70AD28223CB7000AFC3F /* GuidePageViewController.xib in Resources */,
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
+				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
@@ -789,6 +827,7 @@
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
 				A19C70CD282246DF000AFC3F /* BetleadTabbar.xib in Resources */,
+				A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */,
 				A19C7142282257AB000AFC3F /* mucoin_question.json in Resources */,
 				A19C719428225C56000AFC3F /* LoginSignupViewController.xib in Resources */,
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
@@ -797,6 +836,7 @@
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
+				A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */,
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
@@ -863,6 +903,7 @@
 				A19C70BE28223D82000AFC3F /* PopupBottomSheet.swift in Sources */,
 				A19C7117282255AD000AFC3F /* Log.swift in Sources */,
 				A19C71B42822636E000AFC3F /* SignupViewController.swift in Sources */,
+				A1973A7E282A95D2009932D8 /* UserMenuTableViewCell.swift in Sources */,
 				A19C70BB28223D70000AFC3F /* BottomSheet.swift in Sources */,
 				A1973A322828F75E009932D8 /* SubPageViewController.swift in Sources */,
 				A19C70DA282248A0000AFC3F /* LoginAlert.swift in Sources */,
@@ -930,11 +971,13 @@
 				A19C70EA28224C4B000AFC3F /* Date+util.swift in Sources */,
 				A19C711428225542000AFC3F /* BuildConfig.swift in Sources */,
 				A19C71DD28226889000AFC3F /* ImageVerifyView.swift in Sources */,
+				A1973A88282AB37D009932D8 /* SecurityVerificationViewController.swift in Sources */,
 				A19C70FD28224D78000AFC3F /* BaseBottomSheet.swift in Sources */,
 				A19C706628223584000AFC3F /* MainViewController.swift in Sources */,
 				A19C71B32822636E000AFC3F /* LoginViewController.swift in Sources */,
 				A19C718B28225B25000AFC3F /* ResponseDto.swift in Sources */,
 				A19C70DE28224A62000AFC3F /* WalletViewController.swift in Sources */,
+				A1973A8F282AB572009932D8 /* TwoFAVerifyView.swift in Sources */,
 				A19C71DA28226817000AFC3F /* ConfirmPopupView.swift in Sources */,
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
@@ -944,6 +987,7 @@
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
+				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,
 				A19C71C7282264A3000AFC3F /* Fonts.swift in Sources */,
 				A19C70E328224AE8000AFC3F /* PromotionViewController.swift in Sources */,
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
