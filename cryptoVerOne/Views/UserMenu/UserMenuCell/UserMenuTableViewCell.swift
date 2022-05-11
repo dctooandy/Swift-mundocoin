@@ -189,7 +189,7 @@ class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務方法
     func setupUI()
     {
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         arrowImageView.image = image
         arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
    

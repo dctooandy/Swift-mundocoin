@@ -145,6 +145,11 @@
 		A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
 		A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
 		A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */; };
+		A1DD13B1282C027E00AB2E0A /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */; };
+		A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13B4282C08E100AB2E0A /* PushNotiViewController.swift */; };
+		A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
+		A1DD13BD282C0B8300AB2E0A /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */; };
+		A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -294,6 +299,11 @@
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
 		A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
+		A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecurityViewController.xib; sourceTree = "<group>"; };
+		A1DD13B4282C08E100AB2E0A /* PushNotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotiViewController.swift; sourceTree = "<group>"; };
+		A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushNotiViewController.xib; sourceTree = "<group>"; };
+		A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
+		A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6F69B1172BE98FD8955C95 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -578,6 +588,7 @@
 		A19C70632822356D000AFC3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A1DD13BA282C0B3300AB2E0A /* PersonalInfoView */,
 				A1973A86282AB33A009932D8 /* SecurityVerification */,
 				A19739E228280866009932D8 /* InputViews */,
 				A19C71DF282268B1000AFC3F /* ImageVerify */,
@@ -587,6 +598,7 @@
 				A1DD13AA282BED5200AB2E0A /* SecurityView */,
 				A19C70DC28224A48000AFC3F /* WalletView */,
 				A1973A032828EBC2009932D8 /* UserMenu */,
+				A1DD13B3282C08A200AB2E0A /* PushNotification */,
 				A1973A0A2828ED32009932D8 /* Notifications */,
 				A1973A112828EDFB009932D8 /* BoardView */,
 				A19C70A128223B3F000AFC3F /* GuidePage */,
@@ -753,8 +765,27 @@
 			isa = PBXGroup;
 			children = (
 				A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */,
+				A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */,
 			);
 			path = SecurityView;
+			sourceTree = "<group>";
+		};
+		A1DD13B3282C08A200AB2E0A /* PushNotification */ = {
+			isa = PBXGroup;
+			children = (
+				A1DD13B4282C08E100AB2E0A /* PushNotiViewController.swift */,
+				A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */,
+			);
+			path = PushNotification;
+			sourceTree = "<group>";
+		};
+		A1DD13BA282C0B3300AB2E0A /* PersonalInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */,
+				A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */,
+			);
+			path = PersonalInfoView;
 			sourceTree = "<group>";
 		};
 		C1D87ED3CABD1D00F989E28E /* Frameworks */ = {
@@ -838,6 +869,7 @@
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
+				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
@@ -858,8 +890,10 @@
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
+				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
+				A1DD13B1282C027E00AB2E0A /* SecurityViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -944,6 +978,7 @@
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
+				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
@@ -978,6 +1013,7 @@
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestServer.swift in Sources */,
 				A19C712A282256CC000AFC3F /* Constants.swift in Sources */,
+				A1DD13BD282C0B8300AB2E0A /* PersonalInfoViewController.swift in Sources */,
 				A19C71BE28226414000AFC3F /* AccountInputView.swift in Sources */,
 				A1B051CE2823782E00056183 /* VerifyViewController.swift in Sources */,
 				A19C70F128224C87000AFC3F /* Beans.swift in Sources */,

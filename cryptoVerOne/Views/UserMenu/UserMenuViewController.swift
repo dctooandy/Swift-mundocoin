@@ -17,10 +17,10 @@ class UserMenuViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var rightArrowImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
-    var securityVC = SecurityViewController()
+    @IBOutlet weak var topButton: UIButton!
     private lazy var backBtn:UIButton = {
         let btn = UIButton(type: .custom)
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         btn.setImage(image, for: .normal)
         btn.tintColor = .black
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
@@ -51,7 +51,7 @@ class UserMenuViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         rightArrowImage.image = image
         rightArrowImage.tintColor = .black
         rightArrowImage.transform = rightArrowImage.transform.rotated(by: .pi)
@@ -68,6 +68,10 @@ class UserMenuViewController: BaseViewController {
 //                UIApplication.shared.open(url)
 //            }
 //        }.disposed(by: dpg)
+        topButton.rx.tap.subscribeSuccess { [self](_) in
+            let personalVC = PersonalInfoViewController.share
+            self.navigationController?.pushViewController(personalVC, animated: true)
+        }.disposed(by: dpg)
     }
 }
 // MARK: -
@@ -128,10 +132,13 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //currency
             case 1:
                 Log.i("security")
+                let securityVC = SecurityViewController.share
                 self.navigationController?.pushViewController(securityVC, animated: true)
                 //security
             case 2:
                 Log.i("pushNotifications")
+                let pushVC = PushNotiViewController.share
+                self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
             case 3:
                 Log.i("addressBook")

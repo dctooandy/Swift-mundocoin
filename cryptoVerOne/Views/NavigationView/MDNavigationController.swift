@@ -16,7 +16,7 @@ class MDNavigationController:UINavigationController{
     // MARK:UI 設定
     private lazy var backBtn:UIButton = {
         let btn = UIButton(type: .custom)
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         btn.setImage(image, for: .normal)
         btn.tintColor = .black
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)

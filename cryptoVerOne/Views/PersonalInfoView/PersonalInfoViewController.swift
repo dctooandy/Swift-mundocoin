@@ -1,5 +1,5 @@
 //
-//  SecurityViewController.swift
+//  PersonalInfoViewController.swift
 //  cryptoVerOne
 //
 //  Created by AndyChen on 2022/5/11.
@@ -9,11 +9,11 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class SecurityViewController: BaseViewController {
+class PersonalInfoViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    static let share: SecurityViewController = SecurityViewController.loadNib()
+    static let share: PersonalInfoViewController = PersonalInfoViewController.loadNib()
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
@@ -22,7 +22,7 @@ class SecurityViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Security"
+        title = "Personal info".localized
         setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -48,24 +48,22 @@ class SecurityViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
-extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
+extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
 {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
         switch indexPath.row {
         case 0:
-            cell.cellData = .twoFactorAuthentication
+            cell.cellData = .registrationInfo
         case 1:
-            cell.cellData = .emailAuthemtication
-        case 2:
-            cell.cellData = .changePassword
+            cell.cellData = .memberSince
         default:
             break
         }
@@ -74,14 +72,11 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            Log.i("twoFactorAuthentication")
-        //twoFactorAuthentication
+            Log.i("registrationInfo")
+        //registrationInfo
         case 1:
-            Log.i("emailAuthemtication")
-        //emailAuthemtication
-        case 2:
-            Log.i("changePassword")
-        //changePassword
+            Log.i("memberSince")
+        //memberSince
         default:
             break
         }

@@ -62,7 +62,7 @@ class VerifyViewController: BaseViewController {
     }()
     private lazy var backBtn:UIButton = {
         let btn = UIButton()
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         btn.setImage(image, for: .normal)
 //        btn.setImage(UIImage(named:"left-arrow"), for:.normal)
         btn.tintColor = .black

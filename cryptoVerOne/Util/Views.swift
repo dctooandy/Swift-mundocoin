@@ -76,6 +76,10 @@ class Views {
         return isFull ? 250 + 90 : 90
     }
     
+    static func backImageHeight() -> CGFloat {
+        return 14.0
+    }
+    
     static var launchImage:UIImage? {
         
         switch UIDevice.current.name {

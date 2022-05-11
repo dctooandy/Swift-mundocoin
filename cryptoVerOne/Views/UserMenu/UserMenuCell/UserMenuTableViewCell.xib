@@ -44,27 +44,27 @@
                         <rect key="frame" x="148" y="0.0" width="230" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock the app" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjR-ah-gjk">
-                                <rect key="frame" x="0.0" y="18" width="118" height="20.5"/>
+                                <rect key="frame" x="0.0" y="18" width="134" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.67450980392156867" green="0.67450980392156867" blue="0.67450980392156867" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJm-se-Fvj">
-                                <rect key="frame" x="123" y="12.5" width="51" height="31"/>
+                                <rect key="frame" x="139" y="12.5" width="51" height="31"/>
                             </switch>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="YB8-fl-qNJ">
-                                <rect key="frame" x="177" y="19" width="18" height="18"/>
+                                <rect key="frame" x="193" y="19" width="18" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="PGJ-3h-7gD"/>
                                     <constraint firstAttribute="width" constant="18" id="pBa-5D-ZO9"/>
                                 </constraints>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="af2-vY-jTu">
-                                <rect key="frame" x="200" y="13" width="30" height="30"/>
+                                <rect key="frame" x="216" y="21" width="14" height="14"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="O7c-Mh-4qv"/>
-                                    <constraint firstAttribute="width" constant="30" id="QZ2-B6-QVC"/>
+                                    <constraint firstAttribute="height" constant="14" id="O7c-Mh-4qv"/>
+                                    <constraint firstAttribute="width" constant="14" id="QZ2-B6-QVC"/>
                                 </constraints>
                             </imageView>
                         </subviews>

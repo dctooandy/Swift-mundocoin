@@ -50,7 +50,7 @@ class LoginSignupViewController: BaseViewController {
     }()
     private lazy var backToButton:UIButton = {
         let backToButton = UIButton()
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
+        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         backToButton.setImage(image, for: .normal)
         backToButton.tintColor = .black
         backToButton.addTarget(self, action:#selector(backToLoginView), for:.touchUpInside)
