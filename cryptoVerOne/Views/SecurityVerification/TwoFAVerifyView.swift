@@ -56,6 +56,9 @@ enum TwoFAViewMode {
 class TwoFAVerifyView: UIView {
     // MARK:業務設定
     private let onSecondSendVerifyClick = PublishSubject<Any>()
+    private let onsubmitBothClick = PublishSubject<(String,String)>()
+    private let onSubmitOnlyEmailClick = PublishSubject<String>()
+    private let onSubmitOnlyTwoFAClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     var twoFAViewMode : TwoFAViewMode = .both {
         didSet{
@@ -208,10 +211,52 @@ class TwoFAVerifyView: UIView {
         emailInputView.rxSendVerifyAction().subscribeSuccess { [weak self](_) in
             self?.onSecondSendVerifyClick.onNext(())
         }.disposed(by: dpg)
+        submitButton.rx.tap.subscribeSuccess { [self](_) in
+            submitAction()
+        }.disposed(by: dpg)
     }
+    
+    func submitAction()
+    {
+        switch self.twoFAViewMode {
+        case .both:
+            if let emailString = self.emailInputView.textField.text,
+               let twoFAString = self.twoFAInputView.textField.text
+            {
+                onsubmitBothClick.onNext((emailString,twoFAString))
+            }
+        case .onlyEmail:
+            if let emailString = self.emailInputView.textField.text
+            {
+                onSubmitOnlyEmailClick.onNext((emailString))
+            }
+        case .onlyTwoFA:
+            if let twoFAString = self.twoFAInputView.textField.text
+            {
+                onSubmitOnlyTwoFAClick.onNext((twoFAString))
+            }
+        }
+    }
+    
     func rxSecondSendVerifyAction() -> Observable<(Any)>
     {
         return onSecondSendVerifyClick.asObserver()
+    }
+    func rxSubmitBothAction() -> Observable<(String,String)>
+    {
+        return onsubmitBothClick.asObserver()
+    }
+    func rxSubmitOnlyEmailAction() -> Observable<(String)>
+    {
+        return onSubmitOnlyEmailClick.asObserver()
+    }
+    func rxSubmitOnlyTwiFAAction() -> Observable<(String)>
+    {
+        return onSubmitOnlyTwoFAClick.asObserver()
+    }
+    func cleanTimer()
+    {
+        emailInputView.resetTimerAndAll()
     }
 }
 // MARK: -

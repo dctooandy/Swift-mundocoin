@@ -142,6 +142,8 @@
 		A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
 		A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
+		A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -288,6 +290,8 @@
 		A1B051ED2823B0FF00056183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1B051F02823B10300056183 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
+		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
+		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC6F69B1172BE98FD8955C95 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -419,6 +423,8 @@
 			children = (
 				A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */,
 				A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */,
+				A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */,
+				A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */,
 				A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */,
 				A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */,
 			);
@@ -840,6 +846,7 @@
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
+				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
 			);
@@ -995,6 +1002,7 @@
 				A19C70C128223DC1000AFC3F /* CancelButton.swift in Sources */,
 				A19C710428224DCF000AFC3F /* BottomSheetDismissAnimationController.swift in Sources */,
 				A19C710128224DBD000AFC3F /* BottomSheetPresentAnimationController.swift in Sources */,
+				A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

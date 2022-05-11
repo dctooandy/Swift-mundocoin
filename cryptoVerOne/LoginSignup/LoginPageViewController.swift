@@ -11,10 +11,7 @@ import Parchment
 import RxSwift
 
 class LoginPageViewController: BaseViewController {
-    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
-    private var loginViewControllers = [LoginViewController]()
-    private var signupViewControllers = [SignupViewController]()
-    private var forgotViewControllers = [ForgotViewController]()
+    // MARK:業務設定
     private let verifyCodeBtnClick = PublishSubject<String>()
     private let signupBtnClick = PublishSubject<SignupPostDto>()
     private let loginBtnClick = PublishSubject<LoginPostDto>()
@@ -26,19 +23,21 @@ class LoginPageViewController: BaseViewController {
             pageViewcontroller?.reloadData()
         }
     }
-//    private var isLogin: Bool = true {
-//        didSet {
-//            cleanTextField()
-//            pageViewcontroller?.reloadData()
-//        }
-//    }
-    
+    // MARK: -
+    // MARK:UI 設定
+    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
+    private var loginViewControllers = [LoginViewController]()
+    private var signupViewControllers = [SignupViewController]()
+    private var forgotViewControllers = [ForgotViewController]()
+    // MARK: -
+    // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupVC()
         setupMenu()
     }
-    
+    // MARK: -
+    // MARK:業務方法
     private func setupMenu() {
         pageViewcontroller = PagingViewController<PagingIndexItem>()
         pageViewcontroller?.delegate = self
@@ -211,7 +210,8 @@ class LoginPageViewController: BaseViewController {
     
 }
 
-// MARK: - Page menu delegate datasource
+// MARK: -
+// MARK: 延伸
 extension LoginPageViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemForIndex index: Int) -> T where T : PagingItem, T : Comparable, T : Hashable {
         switch currentShowMode {

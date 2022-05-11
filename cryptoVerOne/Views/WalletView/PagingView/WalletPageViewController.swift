@@ -17,8 +17,6 @@ class WalletPageViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
-    private var subPageViewControllers = [SubPageViewController]()
     private var currentPageMode: WalletPageMode = .spot {
         didSet {
             pageViewcontroller?.reloadData()
@@ -26,6 +24,8 @@ class WalletPageViewController: BaseViewController {
     }
     // MARK: -
     // MARK:UI 設定
+    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
+    private var subPageViewControllers = [SubPageViewController]()
    
     // MARK: -
     // MARK:Life cycle

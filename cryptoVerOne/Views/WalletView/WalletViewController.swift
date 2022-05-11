@@ -88,7 +88,11 @@ class WalletViewController: BaseViewController {
             self.navigationController?.pushViewController(depositVC, animated: true)
         }.disposed(by: dpg)
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
+            // 測試 
             twoFAVC.securityViewMode = .defaultMode
+            twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
+                Log.i("Submit成功")
+            }.disposed(by: dpg)
             self.navigationController?.pushViewController(twoFAVC, animated: true)
 //            self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)

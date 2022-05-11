@@ -295,13 +295,7 @@ class InputStyleView: UIView {
         if countTime == 0 {
 //            tfRightBtn.setImageTitle(image: nil, title: rightBtnTitle())
 //            tfRightBtn.isEnabled = true
-            verifyResentLabel.text = "Send".localized
-            verifyResentLabel.textColor = .black
-            resetDisplayBtnUI()
-            timer?.invalidate()
-            timer = nil
-            countTime = 60
-            verifyResentLabel.isUserInteractionEnabled = true
+            resetTimerAndAll()
             return
         }
         verifyResentLabel.text = "Resend in ".localized + "\(countTime) s"
@@ -314,6 +308,16 @@ class InputStyleView: UIView {
         {
             textField.text = string
         }
+    }
+    func resetTimerAndAll()
+    {
+        verifyResentLabel.text = "Send".localized
+        verifyResentLabel.textColor = .black
+        resetDisplayBtnUI()
+        timer?.invalidate()
+        timer = nil
+        countTime = 60
+        verifyResentLabel.isUserInteractionEnabled = true
     }
     func sendRequestForVerify()
     {
