@@ -582,6 +582,7 @@
 				A19C71C028226454000AFC3F /* CheckBox */,
 				A19C714A2822585B000AFC3F /* NavigationView */,
 				A19C70E128224ADB000AFC3F /* PromoView */,
+				A1DD13AA282BED5200AB2E0A /* SecurityView */,
 				A19C70DC28224A48000AFC3F /* WalletView */,
 				A1973A032828EBC2009932D8 /* UserMenu */,
 				A1973A0A2828ED32009932D8 /* Notifications */,
@@ -744,6 +745,13 @@
 				A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */,
 			);
 			path = VerifyView;
+			sourceTree = "<group>";
+		};
+		A1DD13AA282BED5200AB2E0A /* SecurityView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SecurityView;
 			sourceTree = "<group>";
 		};
 		C1D87ED3CABD1D00F989E28E /* Frameworks */ = {

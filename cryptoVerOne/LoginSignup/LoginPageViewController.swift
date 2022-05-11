@@ -43,7 +43,7 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 50)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 0)
         pageViewcontroller?.menuHorizontalAlignment = .left
         pageViewcontroller?.menuItemSpacing = 20
         pageViewcontroller?.menuBackgroundColor = .clear
@@ -58,7 +58,7 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = .black
+        pageViewcontroller?.indicatorColor = .clear
         pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
         pageViewcontroller?.indicatorOptions = .visible(height: 6,
                                                         zIndex: Int.max,

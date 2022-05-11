@@ -97,7 +97,7 @@ class SignupViewController: BaseViewController {
     
     func modeTitle() -> String {
         switch  loginMode {
-        case .account: return "Email".localized
+        case .account: return "".localized
         case .phone: return "Mobile".localized
         }
     }
