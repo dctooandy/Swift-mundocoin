@@ -8,14 +8,22 @@
 import Foundation
 import RxCocoa
 import RxSwift
-
+enum SecurityViewMode {
+    case defaultMode
+    case selectedMode
+}
 class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var securityViewMode : SecurityViewMode = .defaultMode {
+        didSet{
+      
+        }
+    }
     // MARK: -
     // MARK:UI 設定
-    var twoFAVerifyView = TwoFAVerifyView.loadNib()
+    var twoFAVerifyView = TwoFAVerifyView()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -25,6 +33,7 @@ class SecurityVerificationViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupUI()
+        bind()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -38,7 +47,9 @@ class SecurityVerificationViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        twoFAVerifyView.twoFAViewMode = .both
+        let twoFAView = TwoFAVerifyView.loadNib()
+        twoFAView.twoFAViewMode = .both
+        self.twoFAVerifyView = twoFAView
         view.addSubview(twoFAVerifyView)
         let height = self.navigationController?.navigationBar.frame.maxY ?? 44
         twoFAVerifyView.snp.makeConstraints { (make) in
@@ -47,7 +58,16 @@ class SecurityVerificationViewController: BaseViewController {
             make.trailing.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-
+    }
+    func bind()
+    {
+        bindAction()
+    }
+    func bindAction()
+    {
+        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
+            Log.i("發送驗證傳送請求")
+        }.disposed(by: dpg)
     }
 }
 // MARK: -

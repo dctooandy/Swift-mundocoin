@@ -19,9 +19,13 @@ class InputStyleView: UIView {
     private let undisplayPwdImg =  UIImage(named: "eye-slash-solid")!.withRenderingMode(.alwaysTemplate)
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
+    private let onSendClick = PublishSubject<Any>()
+    private let onPasteClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var isPWStyle : Bool = false
     private var isRegisterStyle : Bool = false
+    private var timer: Timer?
+    private var countTime = 60
     // MARK: -
     // MARK:UI 設定
     let topLabel: UILabel = {
@@ -46,6 +50,14 @@ class InputStyleView: UIView {
         lb.isHidden = true
         return lb
     }()
+    let verifyResentLabel: UILabel = {
+        let lb = UILabel()
+        lb.textAlignment = .center
+        lb.textColor = .black
+        lb.text = "Send".localized
+        lb.font = Fonts.pingFangTCSemibold(14)
+        return lb
+    }()
     let displayRightButton = UIButton()
     let cancelRightButton = UIButton()
     
@@ -62,6 +74,7 @@ class InputStyleView: UIView {
         self.bindPwdButton()
         self.bindTextfield()
         self.bindCancelButton()
+        timer?.invalidate()
     }
     convenience init(inputMode: TwoFAInputMode = .email) {
         self.init(frame: .zero)
@@ -73,6 +86,7 @@ class InputStyleView: UIView {
         self.bindPwdButton()
         self.bindTextfield()
         self.bindCancelButton()
+        timer?.invalidate()
     }
     
     override init(frame: CGRect) {
@@ -81,6 +95,10 @@ class InputStyleView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        timer?.invalidate()
     }
     // MARK: -
     // MARK:業務方法
@@ -121,7 +139,8 @@ class InputStyleView: UIView {
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
-        var offetWidth = 0.0
+        var offetWidth : CGFloat = 0.0
+        var rightLabelWidth : CGFloat = 0.0
         if twoFAMode == .none
         {
             if currentShowMode != .forgotPW && isPWStyle == true
@@ -157,6 +176,13 @@ class InputStyleView: UIView {
             }
         }else
         {
+            addSubview(verifyResentLabel)
+            verifyResentLabel.text = twoFAMode.rightLabelString()
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+            verifyResentLabel.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10)
+                make.centerY.equalTo(textField)
+            }
             topLabelString = twoFAMode.topString()
             placeHolderString = twoFAMode.textPlacehloder()
             invalidLabelString = twoFAMode.invaildString()
@@ -169,7 +195,7 @@ class InputStyleView: UIView {
         displayRightButton.setTitle(nil, for: .normal)
         displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
         displayRightButton.snp.remakeConstraints { (make) in
-            make.right.equalToSuperview().offset(-10)
+            make.right.equalToSuperview().offset(-10 - rightLabelWidth)
             make.centerY.equalTo(textField)
             make.height.equalTo(24)
             make.width.equalTo(offetWidth)
@@ -196,6 +222,10 @@ class InputStyleView: UIView {
             .subscribeSuccess { [weak self] in
                 self?.cancelButtonPressed()
             }.disposed(by: dpg)
+        verifyResentLabel.rx.click
+            .subscribeSuccess { [weak self] in
+                self?.verifyResentPressed()
+        }.disposed(by: dpg)
     }
     func bindTextfield()
     {
@@ -223,6 +253,79 @@ class InputStyleView: UIView {
         textField.text = ""
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
+    }
+    private func verifyResentPressed() {
+        switch twoFAMode {
+        case .email:
+            emailSendVerify()
+        case .twoFA:
+            pasteStringToTF()
+        default:
+            break
+        }
+        cancelRightButton.isHidden = true
+        textField.sendActions(for: .valueChanged)
+    }
+    func emailSendVerify()
+    {
+        Log.v("重發驗證")
+        if self.timer == nil
+        {
+            verifyResentLabel.isUserInteractionEnabled = false
+            setupTimer()
+            sendRequestForVerify()
+        }
+    }
+    func resetDisplayBtnUI()
+    {
+        var rightLabelWidth : CGFloat = 0.0
+        rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+        displayRightButton.snp.updateConstraints { (make) in
+            make.right.equalToSuperview().offset(-10 - rightLabelWidth)
+        }
+    }
+    func setupTimer()
+    {
+        timer =  Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
+    }
+    @objc func countDown()
+    {
+        print("count timer: \(countTime)")
+        countTime -= 1
+        if countTime == 0 {
+//            tfRightBtn.setImageTitle(image: nil, title: rightBtnTitle())
+//            tfRightBtn.isEnabled = true
+            verifyResentLabel.text = "Send".localized
+            verifyResentLabel.textColor = .black
+            resetDisplayBtnUI()
+            timer?.invalidate()
+            timer = nil
+            countTime = 60
+            verifyResentLabel.isUserInteractionEnabled = true
+            return
+        }
+        verifyResentLabel.text = "Resend in ".localized + "\(countTime) s"
+        verifyResentLabel.textColor = UIColor(rgb: 0xB5B5B5)
+        resetDisplayBtnUI()
+    }
+    func pasteStringToTF()
+    {
+        if let string = UIPasteboard.general.string
+        {
+            textField.text = string
+        }
+    }
+    func sendRequestForVerify()
+    {
+        onSendClick.onNext(())
+    }
+    func rxSendVerifyAction() -> Observable<(Any)>
+    {
+        return onSendClick.asObserver()
+    }
+    func rxPasteAction() -> Observable<(Any)>
+    {
+        return onPasteClick.asObserver()
     }
 }
 // MARK: -

@@ -286,6 +286,7 @@ class VerifyViewController: BaseViewController {
         Log.v("重發驗證")
         if self.timer == nil
         {
+            verifyResentLabel.isUserInteractionEnabled = false
             setupTimer()
             underLineView.isHidden = true
         }
@@ -306,6 +307,7 @@ class VerifyViewController: BaseViewController {
             underLineView.isHidden = false
             timer?.invalidate()
             timer = nil
+            verifyResentLabel.isUserInteractionEnabled = true
             countTime = 60
             return
         }

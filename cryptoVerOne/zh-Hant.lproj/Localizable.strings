@@ -52,3 +52,9 @@
 "Term & Policies" = "@Term & Policies";
 "About" = "@About";
 "Unlock the app" = "@Unlock the app";
+"Send" = "@Send";
+"Paste" = "@Paste";
+"Enter the 6-digit code sent to " = "@Enter the 6-digit code sent to ";
+"Enter the 6-digit code from google 2FA" = "@Enter the 6-digit code from google 2FA";
+"Email verification code" = "@Email verification code";
+"Google Authenticator code" = "@Google Authenticator code";

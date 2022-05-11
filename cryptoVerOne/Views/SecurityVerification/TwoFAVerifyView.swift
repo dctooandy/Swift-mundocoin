@@ -18,24 +18,32 @@ enum TwoFAInputMode {
     
     func topString() -> String {
         switch self {
-        case .email: return "Enter the 6-digit code sent to "
-        case .twoFA: return "Enter the 6-digit code from google 2FA"
+        case .email: return "Enter the 6-digit code sent to ".localized
+        case .twoFA: return "Enter the 6-digit code from google 2FA".localized
         default: return ""
         }
     }
     
     func textPlacehloder() -> String {
         switch self {
-        case .email: return "Email verification code"
-        case .twoFA: return "Google Authenticator code"
+        case .email: return "Email verification code".localized
+        case .twoFA: return "Google Authenticator code".localized
         default: return ""
         }
     }
     
     func invaildString() -> String {
         switch self {
-        case .email: return "Invaild verification code"
-        case .twoFA: return "Invaild verification code"
+        case .email: return "Invaild verification code".localized
+        case .twoFA: return "Invaild verification code".localized
+        default: return ""
+        }
+    }
+    func rightLabelString() -> String
+    {
+        switch self {
+        case .email: return "Send".localized
+        case .twoFA: return "Paste".localized
         default: return ""
         }
     }
@@ -47,7 +55,7 @@ enum TwoFAViewMode {
 }
 class TwoFAVerifyView: UIView {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onSecondSendVerifyClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var twoFAViewMode : TwoFAViewMode = .both {
         didSet{
@@ -82,7 +90,11 @@ class TwoFAVerifyView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    override func removeFromSuperview() {
+        super.removeFromSuperview()
+        emailInputView.removeFromSuperview()
+        twoFAInputView.removeFromSuperview()
+    }
     // MARK: -
     // MARK:業務方法
     func setup() {
@@ -137,6 +149,7 @@ class TwoFAVerifyView: UIView {
         bindTextfield()
         bindCancelButton()
         bindLostTwoFALabel()
+        bindAction()
     }
     func bindTextfield()
     {
@@ -165,9 +178,7 @@ class TwoFAVerifyView: UIView {
         case .onlyTwoFA:
             isTwoFAValid.skip(1).bind(to: twoFAInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
             isTwoFAValid.bind(to: submitButton.rx.isEnabled).disposed(by: dpg)
-        }
-
-        
+        }        
     }
     func bindCancelButton()
     {
@@ -191,6 +202,16 @@ class TwoFAVerifyView: UIView {
         twoFAInputView.textField.text = ""
         emailInputView.invalidLabel.isHidden = true
         twoFAInputView.invalidLabel.isHidden = true
+    }
+    func bindAction()
+    {
+        emailInputView.rxSendVerifyAction().subscribeSuccess { [weak self](_) in
+            self?.onSecondSendVerifyClick.onNext(())
+        }.disposed(by: dpg)
+    }
+    func rxSecondSendVerifyAction() -> Observable<(Any)>
+    {
+        return onSecondSendVerifyClick.asObserver()
     }
 }
 // MARK: -
