@@ -99,6 +99,7 @@ class InputStyleView: UIView {
     override func removeFromSuperview() {
         super.removeFromSuperview()
         timer?.invalidate()
+        timer = nil
     }
     // MARK: -
     // MARK:業務方法
@@ -288,6 +289,7 @@ class InputStyleView: UIView {
     {
         timer =  Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: true)
     }
+
     @objc func countDown()
     {
         print("count timer: \(countTime)")

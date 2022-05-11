@@ -56,14 +56,14 @@ enum TwoFAViewMode {
 class TwoFAVerifyView: UIView {
     // MARK:業務設定
     private let onSecondSendVerifyClick = PublishSubject<Any>()
-    private let onsubmitBothClick = PublishSubject<(String,String)>()
+    private let onSubmitBothClick = PublishSubject<(String,String)>()
     private let onSubmitOnlyEmailClick = PublishSubject<String>()
     private let onSubmitOnlyTwoFAClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     var twoFAViewMode : TwoFAViewMode = .both {
         didSet{
-            self.setup()
-            self.bind()
+            resetUI()
+            bindTextfield()
         }
     }
     
@@ -84,6 +84,8 @@ class TwoFAVerifyView: UIView {
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.setup()
+        self.bind()
     }
     
     override init(frame: CGRect) {
@@ -95,34 +97,44 @@ class TwoFAVerifyView: UIView {
     }
     override func removeFromSuperview() {
         super.removeFromSuperview()
-        emailInputView.removeFromSuperview()
-        twoFAInputView.removeFromSuperview()
+        emailInputView.resetTimerAndAll()
+        twoFAInputView.resetTimerAndAll()
     }
     // MARK: -
     // MARK:業務方法
     func setup() {
+        addSubview(emailInputView)
+        addSubview(twoFAInputView)
+        addSubview(submitButton)
+    }
+    func resetUI()
+    {
         let defaultHeight : CGFloat = height(90/812)
         var bottomY : CGFloat = height(90/812)
         switch twoFAViewMode {
         case .both:
-            addSubview(emailInputView)
-            addSubview(twoFAInputView)
             setupEmailInputView(withTop: 0)
             setupTwoFAInputView(withTop: defaultHeight)
             bottomY = height(90/812) * 2.0
         case .onlyEmail:
-            addSubview(emailInputView)
             setupEmailInputView(withTop: 0)
+            twoFAInputView.snp.updateConstraints { (make) in
+                make.height.equalTo(0)
+            }
+            twoFAInputView.isHidden = true
         case .onlyTwoFA:
-            addSubview(twoFAInputView)
             setupTwoFAInputView(withTop: 0)
+            emailInputView.snp.updateConstraints { (make) in
+                make.height.equalTo(0)
+            }
+            emailInputView.isHidden = true
         }
         lostTwoFALabel.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(bottomY)
             make.leading.equalToSuperview().offset(32)
         }
-        addSubview(submitButton)
-        submitButton.snp.makeConstraints { (make) in
+        
+        submitButton.snp.remakeConstraints { (make) in
             make.top.equalTo(lostTwoFALabel.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
@@ -131,7 +143,7 @@ class TwoFAVerifyView: UIView {
     }
     func setupEmailInputView(withTop:CGFloat)
     {
-        emailInputView.snp.makeConstraints { (make) in
+        emailInputView.snp.remakeConstraints { (make) in
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
@@ -140,7 +152,7 @@ class TwoFAVerifyView: UIView {
     }
     func setupTwoFAInputView(withTop:CGFloat)
     {
-        twoFAInputView.snp.makeConstraints { (make) in
+        twoFAInputView.snp.remakeConstraints { (make) in
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
@@ -149,7 +161,7 @@ class TwoFAVerifyView: UIView {
     }
     func bind()
     {
-        bindTextfield()
+        
         bindCancelButton()
         bindLostTwoFALabel()
         bindAction()
@@ -202,7 +214,9 @@ class TwoFAVerifyView: UIView {
     }
     func cleanTextField() {
         emailInputView.textField.text = ""
+        emailInputView.textField.sendActions(for: .valueChanged)
         twoFAInputView.textField.text = ""
+        twoFAInputView.textField.sendActions(for: .valueChanged)
         emailInputView.invalidLabel.isHidden = true
         twoFAInputView.invalidLabel.isHidden = true
     }
@@ -223,7 +237,7 @@ class TwoFAVerifyView: UIView {
             if let emailString = self.emailInputView.textField.text,
                let twoFAString = self.twoFAInputView.textField.text
             {
-                onsubmitBothClick.onNext((emailString,twoFAString))
+                onSubmitBothClick.onNext((emailString,twoFAString))
             }
         case .onlyEmail:
             if let emailString = self.emailInputView.textField.text
@@ -244,7 +258,7 @@ class TwoFAVerifyView: UIView {
     }
     func rxSubmitBothAction() -> Observable<(String,String)>
     {
-        return onsubmitBothClick.asObserver()
+        return onSubmitBothClick.asObserver()
     }
     func rxSubmitOnlyEmailAction() -> Observable<(String)>
     {

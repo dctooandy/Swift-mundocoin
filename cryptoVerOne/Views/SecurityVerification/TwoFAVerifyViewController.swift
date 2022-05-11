@@ -57,7 +57,7 @@ class TwoFAVerifyViewController: BaseViewController {
         onlyView.twoFAViewMode = twoFAViewMode
         self.verifyView = onlyView
         self.view.addSubview(self.verifyView)
-        verifyView.snp.makeConstraints { (make) in
+        verifyView.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(42)
             make.leading.trailing.bottom.equalToSuperview()
         }

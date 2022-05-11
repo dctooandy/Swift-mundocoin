@@ -58,6 +58,7 @@ class WalletViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavi()
+        bindAction()
         bindingIMGview()
         setupPagingView()
     }
@@ -82,6 +83,13 @@ class WalletViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems = rightBarItems
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
     }
+    func bindAction()
+    {
+        twoFAVC.securityViewMode = .selectedMode
+        twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
+            Log.i("Submit成功")
+        }.disposed(by: dpg)
+    }
     func bindingIMGview()
     {
         depositImg.rx.click.subscribeSuccess { [self] (_) in
@@ -89,10 +97,7 @@ class WalletViewController: BaseViewController {
         }.disposed(by: dpg)
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
             // 測試 
-            twoFAVC.securityViewMode = .defaultMode
-            twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
-                Log.i("Submit成功")
-            }.disposed(by: dpg)
+    
             self.navigationController?.pushViewController(twoFAVC, animated: true)
 //            self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)

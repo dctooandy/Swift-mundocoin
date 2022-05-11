@@ -12,6 +12,8 @@ import RxSwift
 enum SecurityViewMode {
     case defaultMode
     case selectedMode
+    case onlyEmail
+    case onlyTwoFA
 }
 class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
@@ -19,12 +21,13 @@ class SecurityVerificationViewController: BaseViewController {
     private let dpg = DisposeBag()
     var securityViewMode : SecurityViewMode = .defaultMode {
         didSet{
-            
+            setupUI()
+            bind()
         }
     }
     // MARK: -
     // MARK:UI 設定
-    var twoFAVerifyView = TwoFAVerifyView()
+    var twoFAVerifyView = TwoFAVerifyView.loadNib()
     var onlyEmailVerifyViewController = TwoFAVerifyViewController()
     var onlyTwoFAVerifyViewController = TwoFAVerifyViewController()
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
@@ -37,8 +40,10 @@ class SecurityVerificationViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setupUI()
-        bind()
+        twoFAVerifyView.cleanTextField()
+        onlyEmailVerifyViewController.verifyView.cleanTextField()
+        onlyTwoFAVerifyViewController.verifyView.cleanTextField()
+        resetHeightForView()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,19 +51,53 @@ class SecurityVerificationViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        twoFAVerifyView.removeFromSuperview()
+        twoFAVerifyView.cleanTimer()
     }
     // MARK: -
     // MARK:業務方法
     func setupUI()
     {
         switch securityViewMode {
+        case .selectedMode:
+            break
+        case .defaultMode,.onlyEmail,.onlyTwoFA:
+            view.addSubview(twoFAVerifyView)
+           
+        }
+        resetUI()
+    }
+    func resetHeightForView()
+    {
+        let height = self.navigationController?.navigationBar.frame.maxY ?? 44
+        switch securityViewMode {
+        case .selectedMode:
+            pageViewcontroller?.view.snp.remakeConstraints({ (make) in
+                make.top.equalToSuperview().offset(height + 40)
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+            })
+        case .defaultMode,.onlyEmail,.onlyTwoFA:
+            twoFAVerifyView.snp.remakeConstraints { (make) in
+                make.top.equalToSuperview().offset(height + 40)
+                make.leading.equalToSuperview()
+                make.trailing.equalToSuperview()
+                make.bottom.equalToSuperview()
+            }
+        }
+    }
+    func resetUI()
+    {
+        switch securityViewMode {
         case .defaultMode:
-            setupDefaultUI()
+            self.twoFAVerifyView.twoFAViewMode = .both
         case .selectedMode:
             setupSelectedUI()
+        case .onlyEmail:
+            self.twoFAVerifyView.twoFAViewMode = .onlyEmail
+        case .onlyTwoFA:
+            self.twoFAVerifyView.twoFAViewMode = .onlyTwoFA
         }
-
     }
     func bind()
     {
@@ -66,13 +105,22 @@ class SecurityVerificationViewController: BaseViewController {
     }
     func bindAction()
     {
-        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
+        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { (_) in
             Log.i("發送驗證傳送請求")
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,Email:\(stringData.0) ,2FA:\(stringData.1)")
             onVerifySuccessClick.onNext(())
         }.disposed(by: dpg)
+        self.twoFAVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
+            onVerifySuccessClick.onNext(())
+        }.disposed(by: dpg)
+        self.twoFAVerifyView.rxSubmitOnlyTwiFAAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
+            onVerifySuccessClick.onNext(())
+        }.disposed(by: dpg)
+        
     }
     func bindSubPageViewControllers()
     {
@@ -84,25 +132,13 @@ class SecurityVerificationViewController: BaseViewController {
             Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
             onVerifySuccessClick.onNext(())
         }.disposed(by: dpg)
+        
         self.onlyTwoFAVerifyViewController.rxSecondSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
             onVerifySuccessClick.onNext(())
         }.disposed(by: dpg)
     }
-    func setupDefaultUI()
-    {
-        let twoFAView = TwoFAVerifyView.loadNib()
-        twoFAView.twoFAViewMode = .both
-        self.twoFAVerifyView = twoFAView
-        view.addSubview(twoFAVerifyView)
-        let height = self.navigationController?.navigationBar.frame.maxY ?? 44
-        twoFAVerifyView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(height + 40)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        }
-    }
+
 
     func setupSelectedUI()
     {
@@ -131,15 +167,9 @@ class SecurityVerificationViewController: BaseViewController {
         pageViewcontroller?.contentInteraction = .none
         pageViewcontroller?.indicatorColor = .clear
 
-        let height = self.navigationController?.navigationBar.frame.maxY ?? 44
         addChild(pageViewcontroller!)
         view.addSubview(pageViewcontroller!.view)
-        pageViewcontroller?.view.snp.makeConstraints({ (make) in
-            make.top.equalToSuperview().offset(height + 40)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
-            make.bottom.equalToSuperview()
-        })
+
     }
     private func setupPageVC() {
         let emailVC = TwoFAVerifyViewController.instance(mode: .onlyEmail)
