@@ -60,3 +60,10 @@
 "Google Authenticator code" = "@Google Authenticator code";
 "E-mail" = "@E-mail";
 "2FA" = "@2FA";
+"Two-Factor Authentication" = "@Two-Factor Authentication";
+"E-Mail Authemtication" = "@E-Mail Authemtication";
+"Change Password" = "@Change Password";
+"System Notifications" = "@System Notifications";
+"Transaction Notifications" = "@Transaction Notifications";
+"Registration info" = "@Registration info";
+"Member since" = "@Member since";

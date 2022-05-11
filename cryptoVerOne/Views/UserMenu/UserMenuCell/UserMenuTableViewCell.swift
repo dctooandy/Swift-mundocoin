@@ -24,32 +24,54 @@ enum cellData {
     case logout
     
     // Security
-//    case twoFactorAuthentication
-//    case emailAuthemtication
-//    case changePassword
+    case twoFactorAuthentication
+    case emailAuthemtication
+    case changePassword
+    
+    // Push notifications
+    case systemNotifications
+    case transactionNotifications
+    
+    // Personal info
+    case registrationInfo
+    case memberSince
     
     var cellTitle:String? {
         switch self {
         case .currency:
-            return "Currency"
+            return "Currency".localized
         case .security:
-            return "Security"
+            return "Security".localized
         case .pushNotifications:
-            return "Push notifications"
+            return "Push notifications".localized
         case .addressBook:
-            return "Address book"
+            return "Address book".localized
         case .language:
-            return "Language"
+            return "Language".localized
         case .faceID:
-            return "Face ID"
+            return "Face ID".localized
         case .helpSupport:
-            return "Help & Support"
+            return "Help & Support".localized
         case .termPolicies:
-            return "Term & Policies"
+            return "Term & Policies".localized
         case .about:
-            return "About"
+            return "About".localized
         case .logout:
             return ""
+        case .twoFactorAuthentication:
+            return "Two-Factor Authentication".localized
+        case .emailAuthemtication:
+            return "E-Mail Authemtication".localized
+        case .changePassword:
+            return "Change Password".localized
+        case .systemNotifications:
+            return "System Notifications".localized
+        case .transactionNotifications:
+            return "Transaction Notifications".localized
+        case .registrationInfo:
+            return "Registration info".localized
+        case .memberSince:
+            return "Member since".localized
         }
     }
     var subTitleLabel:String? {
@@ -75,15 +97,23 @@ enum cellData {
             return "version \(versionString)"
         case .logout:
             return ""
+        case .twoFactorAuthentication,
+             .emailAuthemtication,
+             .changePassword,
+             .systemNotifications,
+             .transactionNotifications,
+             .registrationInfo,
+             .memberSince:
+            return ""
         }
     }
     var arrorColor:UIColor? {
         switch self {
-        case .currency,.language,.faceID,.about:
+        case .currency,.language,.faceID,.about,.emailAuthemtication:
             return UIColor(rgb: 0xe3e3e3)
-        case .security,.pushNotifications,.addressBook,.helpSupport,.termPolicies:
+        case .security,.pushNotifications,.addressBook,.helpSupport,.termPolicies,.twoFactorAuthentication,.changePassword:
             return .black
-        case .logout:
+        case .logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
             return .clear
         }
     }
@@ -99,7 +129,30 @@ enum cellData {
 //    }
     var switchHidden:Bool {
         switch self {
-        case .faceID:
+        case .faceID,.systemNotifications,.transactionNotifications:
+            return false
+        default :
+            return true
+        }
+    }
+    var imageHidden:Bool {
+        switch self {
+        case .twoFactorAuthentication,
+             .emailAuthemtication,
+             .changePassword,
+             .systemNotifications,
+             .transactionNotifications,
+             .registrationInfo,
+             .memberSince:
+            return true
+        default :
+            return false
+        }
+    }
+    var checkBoxHidden:Bool {
+        switch self {
+        case .twoFactorAuthentication,
+             .emailAuthemtication:
             return false
         default :
             return true
@@ -123,11 +176,12 @@ class UserMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var switchButton: UISwitch!
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var logoutLabel: UILabel!
-    @IBOutlet weak var checkBox: CheckBox!
+    @IBOutlet weak var checkBoxImageView: UIImageView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        selectionStyle = .none
         setupUI()
         bindUI()
     }
@@ -138,6 +192,7 @@ class UserMenuTableViewCell: UITableViewCell {
         let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
         arrowImageView.image = image
         arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
+   
     }
     func setupByData()
     {
@@ -151,7 +206,9 @@ class UserMenuTableViewCell: UITableViewCell {
             subTitleLabel.text = cellData.subTitleLabel
             arrowImageView.tintColor = cellData.arrorColor
             switchButton.isHidden = cellData.switchHidden
-            arrowImageView.isHidden = !cellData.switchHidden            
+            arrowImageView.isHidden = !cellData.switchHidden
+            cellImageView.isHidden = cellData.imageHidden
+            checkBoxImageView.isHidden = cellData.checkBoxHidden
         }
     }
     func bindUI()

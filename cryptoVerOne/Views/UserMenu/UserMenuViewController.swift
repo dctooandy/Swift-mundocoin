@@ -17,6 +17,7 @@ class UserMenuViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var rightArrowImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    var securityVC = SecurityViewController()
     private lazy var backBtn:UIButton = {
         let btn = UIButton(type: .custom)
         let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: 30, height: 30)).withRenderingMode(.alwaysTemplate)
@@ -58,6 +59,7 @@ class UserMenuViewController: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: UserMenuTableViewCell.self)
         tableView.separatorStyle = .none
+        
     }
     func bind()
     {
@@ -116,6 +118,59 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             break
         }
             return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.section {
+        case 0:
+            switch indexPath.row {
+            case 0:
+                Log.i("currency")
+                //currency
+            case 1:
+                Log.i("security")
+                self.navigationController?.pushViewController(securityVC, animated: true)
+                //security
+            case 2:
+                Log.i("pushNotifications")
+                //pushNotifications
+            case 3:
+                Log.i("addressBook")
+                //addressBook
+            default:
+                break
+            }
+        case 1:
+            switch indexPath.row {
+            case 0:
+                Log.i("language")
+                //language
+            case 1:
+                Log.i("faceID")
+                //faceID
+            case 2:
+                Log.i("helpSupport")
+                //helpSupport
+            case 3:
+                Log.i("termPolicies")
+                //termPolicies
+            case 4:
+                Log.i("about")
+                //about
+            case 5:
+                Log.i("logout")
+                //logout
+            default:
+                break
+            }
+        default:
+            break
+        }
+//        guard let presentingVC = presentingViewController else {return}
+//        DispatchQueue.main.async {
+//            self.dismiss(animated: true) {
+//                NewsDetailBottomSheet(newsDto: self.newsDtos[indexPath.row]).start(viewController: presentingVC)
+//            }
+//        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 56

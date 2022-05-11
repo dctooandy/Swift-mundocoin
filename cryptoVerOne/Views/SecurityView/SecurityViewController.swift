@@ -20,6 +20,7 @@ class SecurityViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Security"
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

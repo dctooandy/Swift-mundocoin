@@ -63,6 +63,7 @@ class CheckBox: UIView {
         self.checkBorderColor = UIColor(rgb: 0xEDEDED)
         self.uncheckBorderColor = UIColor(rgb: 0xEDEDED)
         self.alwaysShowTick = alwaysShowTick
+        self.style = style
         setupViews()
     }
     
