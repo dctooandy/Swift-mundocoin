@@ -60,7 +60,7 @@ class TFBeginViewController: BaseViewController {
     func bind()
     {
         goAuthButton.rx.tap.subscribeSuccess { [self](_) in
-            let twoFAVC = SecurityVerificationViewController.share
+            let twoFAVC = SecurityVerificationViewController.loadNib()
             twoFAVC.securityViewMode = .onlyEmail
             twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
                 goRebindGoogleAuth()
@@ -70,7 +70,7 @@ class TFBeginViewController: BaseViewController {
     }
     func goRebindGoogleAuth()
     {
-        let googlwAuthVC = TwoFactorAuthViewController.share
+        let googlwAuthVC = TwoFactorAuthViewController.loadNib()
         _ = self.navigationController?.pushViewController(googlwAuthVC, animated: true)
     }
 }

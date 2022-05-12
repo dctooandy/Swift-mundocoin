@@ -75,7 +75,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
         switch indexPath.row {
         case 0:
             Log.i("twoFactorAuthentication")
-            let twoFactorVC = TFBeginViewController.share
+            let twoFactorVC = TFBeginViewController.loadNib()
             self.navigationController?.pushViewController(twoFactorVC, animated: true )
         //twoFactorAuthentication
         case 1:

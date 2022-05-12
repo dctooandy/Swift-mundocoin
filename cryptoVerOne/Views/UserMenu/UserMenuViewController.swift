@@ -69,7 +69,7 @@ class UserMenuViewController: BaseViewController {
 //            }
 //        }.disposed(by: dpg)
         topButton.rx.tap.subscribeSuccess { [self](_) in
-            let personalVC = PersonalInfoViewController.share
+            let personalVC = PersonalInfoViewController.loadNib()
             self.navigationController?.pushViewController(personalVC, animated: true)
         }.disposed(by: dpg)
     }
@@ -151,7 +151,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //security
             case 2:
                 Log.i("pushNotifications")
-                let pushVC = PushNotiViewController.share
+                let pushVC = PushNotiViewController.loadNib()
                 self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
             case 3:

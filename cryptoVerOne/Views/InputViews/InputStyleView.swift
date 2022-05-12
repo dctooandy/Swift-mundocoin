@@ -41,7 +41,7 @@ class InputStyleView: UIView {
     let textField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
-        tf.font = Fonts.pingFangSCRegular(16)
+        tf.font = Fonts.sfProLight(16)
         return tf
     }()
     let invalidLabel: UILabel = {

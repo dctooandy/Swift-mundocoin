@@ -41,6 +41,7 @@ class TFFinishReViewController: BaseViewController {
         title = "Google Authentication".localized
         setupUI()
         bind()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,13 +89,17 @@ class TFFinishReViewController: BaseViewController {
     }
     func bind()
     {
+        bindButton()
+    }
+    func bindButton()
+    {
         actionButton.rx.tap.subscribeSuccess { [self](_) in
             switch viewMode {
             case .back:
                 let securityVC = SecurityViewController.share
                 _ = self.navigationController?.popToViewController(securityVC, animated:true )
             case .reverify:
-                let twoFAVC = SecurityVerificationViewController.share
+                let twoFAVC = SecurityVerificationViewController.loadNib()
                 twoFAVC.securityViewMode = .onlyEmail
                 twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
                     goRebindGoogleAuth()
@@ -103,10 +108,20 @@ class TFFinishReViewController: BaseViewController {
             }
         }.disposed(by: dpg)
     }
+
     func goRebindGoogleAuth()
     {
-        let googlwAuthVC = TwoFactorAuthViewController.share
+        let googlwAuthVC = TwoFactorAuthViewController.loadNib()
         _ = self.navigationController?.pushViewController(googlwAuthVC, animated: true)
+    }
+    @objc override func popVC() {
+        switch viewMode {
+        case .back:
+            let securityVC = SecurityViewController.share
+            _ = self.navigationController?.popToViewController(securityVC, animated:true )
+        case .reverify:
+            super.popVC()
+        }
     }
     // MARK: -
     // MARK:業務方法

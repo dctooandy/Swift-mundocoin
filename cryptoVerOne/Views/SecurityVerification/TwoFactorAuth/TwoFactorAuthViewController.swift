@@ -21,13 +21,18 @@ class TwoFactorAuthViewController: BaseViewController {
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet var twoFAInputView: UIView!
     @IBOutlet var copyInputView: UIView!
-    
+    @IBOutlet weak var bindButton: CornerradiusButton!
+    @IBOutlet weak var downloadButton: CornerradiusButton!
+    var copyView : InputStyleView!
+    var twoFAView : InputStyleView!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Google Authentication".localized
         setupUI()
+        bindButtonAction()
+        bindTextfield()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -48,9 +53,9 @@ class TwoFactorAuthViewController: BaseViewController {
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
         let image = generateQRCode(from: qrCodeString)
         codeImageView.image = image
-        let copyView = InputStyleView(inputMode: .copy)
+        copyView = InputStyleView(inputMode: .copy)
         copyView.textField.text = qrCodeString
-        let twoFAView = InputStyleView(inputMode: .twoFA)
+        twoFAView = InputStyleView(inputMode: .twoFA)
         copyInputView.addSubview(copyView)
         twoFAInputView.addSubview(twoFAView)
         copyView.snp.makeConstraints { (make) in
@@ -59,20 +64,62 @@ class TwoFactorAuthViewController: BaseViewController {
         twoFAView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-//        view.addSubview(copyInputView)
-//        view.addSubview(twoFAInputView)
-//        copyInputView.snp.remakeConstraints { (make) in
-//            make.top.equalTo(codeImageView.snp.bottom).offset(height(80/812))
-//            make.leading.equalToSuperview().offset(32)
-//            make.trailing.equalToSuperview().offset(-32)
-//            make.height.equalTo(height(90/812))
-//        }
-//        twoFAInputView.snp.remakeConstraints { (make) in
-//            make.top.equalTo(twoFAInputView.snp.bottom).offset(height(20/812))
-//            make.leading.equalToSuperview().offset(32)
-//            make.trailing.equalToSuperview().offset(-32)
-//            make.height.equalTo(height(90/812))
-//        }
+        view.addSubview(bindButton)
+        view.addSubview(downloadButton)
+        bindButton.setTitle("Bind".localized, for: .normal)
+        bindButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
+        bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        bindButton.snp.makeConstraints { (make) in
+            make.top.equalTo(twoFAInputView.snp.bottom).offset(50)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.height.equalToSuperview().multipliedBy(0.065)
+        }
+        downloadButton.setTitle("Download APP".localized, for: .normal)
+        downloadButton.setTitleColor(UIColor(rgb: 0x656565), for: .normal)
+        downloadButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        downloadButton.setBackgroundImage(UIImage(color: .white) , for: .disabled)
+        downloadButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)) , for: .normal)
+        downloadButton.layer.borderColor = UIColor(rgb: 0x656565).cgColor
+        downloadButton.layer.borderWidth = 1
+        downloadButton.snp.makeConstraints { (make) in
+            make.top.equalTo(bindButton.snp.bottom).offset(15)
+            make.centerX.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.7)
+            make.height.equalToSuperview().multipliedBy(0.065)
+        }
+    }
+    func bindButtonAction()
+    {
+        bindButton.rx.tap.subscribeSuccess { [self](_) in
+            requestForBindAuth()
+        }.disposed(by: dpg)
+        downloadButton.rx.tap.subscribeSuccess { (_) in
+            if let url = URL(string: "itms-apps://apple.com/app/id388497605") {
+                UIApplication.shared.open(url)
+            }
+        }.disposed(by: dpg)
+    }
+    func bindTextfield()
+    {
+        let isTwoFACodeValid = twoFAView.textField.rx.text
+//        let isAccountValid = accountTextField.rx.text
+            .map { [weak self] (str) -> Bool in
+                guard let strongSelf = self, let acc = str else { return false  }
+                return RegexHelper.match(pattern: .otp, input: acc)
+        }
+        isTwoFACodeValid.skip(1).bind(to: twoFAView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isTwoFACodeValid.bind(to: bindButton.rx.isEnabled)
+            .disposed(by: dpg)
+    }
+    func requestForBindAuth()
+    {
+        //網路
+        //假設成功
+        let finishVC = TFFinishReViewController.loadNib()
+        finishVC.viewMode = .back
+        self.navigationController?.pushViewController(finishVC, animated: true)
     }
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
@@ -88,6 +135,7 @@ class TwoFactorAuthViewController: BaseViewController {
 
         return nil
     }
+
     @objc override func popVC() {
         let securityVC = SecurityViewController.share
         _ = self.navigationController?.popToViewController(securityVC, animated:true )
