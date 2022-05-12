@@ -72,3 +72,9 @@
 "For security purposes, no withdrawals are permitted for 24 hours after modification of security methods." = "For security purposes, no withdrawals are permitted for 24 hours after modification of security methods.";
 "Continue" = "Continue";
 "Cancel" = "Cancel";
+"Google Authentication" = "Google Authentication";
+"Complete your Google Authentication to get started. Ensure the safety and security of Mundo." = "Complete your Google Authentication to get started. Ensure the safety and security of Mundo.";
+"You’ve enabled the Google Authenticator.  The App will generate verification codes for more protection when you logging in, redeeming, renewing, withdrawing, and changing a password in steaker." = "You’ve enabled the Google Authenticator.  The App will generate verification codes for more protection when you logging in, redeeming, renewing, withdrawing, and changing a password in steaker.";
+"Re-verify" = "Re-verify";
+"To reset 2FA will take at lease 7 Days." = "To reset 2FA will take at lease 7 Days.";
+"Copy this key to your authenticator app" = "Copy this key to your authenticator app";

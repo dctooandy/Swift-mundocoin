@@ -19,6 +19,7 @@ class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
     private let onVerifySuccessClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    static let share: SecurityVerificationViewController = SecurityVerificationViewController.loadNib()
     var securityViewMode : SecurityViewMode = .defaultMode {
         didSet{
             setupUI()

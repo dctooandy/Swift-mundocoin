@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
+import Toaster
 
 class InputStyleView: UIView {
     // MARK:業務設定
@@ -26,6 +27,7 @@ class InputStyleView: UIView {
     private var isRegisterStyle : Bool = false
     private var timer: Timer?
     private var countTime = 60
+    var offetWidth : CGFloat = 0.0
     // MARK: -
     // MARK:UI 設定
     let topLabel: UILabel = {
@@ -33,7 +35,7 @@ class InputStyleView: UIView {
         lb.textAlignment = .left
         lb.textColor = .black
         lb.text = "Email".localized
-        lb.font = Fonts.pingFangSCRegular(16)
+        lb.font = Fonts.pingFangSCRegular(14)
         return lb
     }()
     let textField: UITextField = {
@@ -140,7 +142,7 @@ class InputStyleView: UIView {
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
-        var offetWidth : CGFloat = 0.0
+        
         var rightLabelWidth : CGFloat = 0.0
         if twoFAMode == .none
         {
@@ -187,6 +189,8 @@ class InputStyleView: UIView {
             topLabelString = twoFAMode.topString()
             placeHolderString = twoFAMode.textPlacehloder()
             invalidLabelString = twoFAMode.invaildString()
+            cancelRightButton.isHidden = ( twoFAMode == .copy ? true : false)
+            textField.isUserInteractionEnabled = ( twoFAMode == .copy ? false : true)
         }
         topLabel.text = topLabelString
         invalidLabel.text = invalidLabelString
@@ -212,6 +216,9 @@ class InputStyleView: UIView {
             make.centerY.equalTo(textField)
             make.width.height.equalTo(14)
         }
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + rightLabelWidth + 14 + offetWidth , height: 10))
+        textField.rightViewMode = .always
+        textField.rightView = rightView
     }
     func bindPwdButton()
     {
@@ -261,6 +268,8 @@ class InputStyleView: UIView {
             emailSendVerify()
         case .twoFA:
             pasteStringToTF()
+        case .copy:
+            copyStringToTF()
         default:
             break
         }
@@ -284,6 +293,10 @@ class InputStyleView: UIView {
         displayRightButton.snp.updateConstraints { (make) in
             make.right.equalToSuperview().offset(-10 - rightLabelWidth)
         }
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + rightLabelWidth + 14 + offetWidth , height: 10))
+        textField.rightView = nil
+        textField.rightViewMode = .always
+        textField.rightView = rightView
     }
     func setupTimer()
     {
@@ -310,6 +323,11 @@ class InputStyleView: UIView {
         {
             textField.text = string
         }
+    }
+    func copyStringToTF()
+    {
+        UIPasteboard.general.string = textField.text
+        Toast.show(msg: "Copied")
     }
     func resetTimerAndAll()
     {

@@ -14,12 +14,14 @@ import Toaster
 enum TwoFAInputMode {
     case email
     case twoFA
+    case copy
     case none
     
     func topString() -> String {
         switch self {
         case .email: return "Enter the 6-digit code sent to ".localized
         case .twoFA: return "Enter the 6-digit code from google 2FA".localized
+        case .copy: return "Copy this key to your authenticator app".localized
         default: return ""
         }
     }
@@ -44,6 +46,7 @@ enum TwoFAInputMode {
         switch self {
         case .email: return "Send".localized
         case .twoFA: return "Paste".localized
+        case .copy: return "Copy".localized
         default: return ""
         }
     }
