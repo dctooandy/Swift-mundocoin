@@ -32,7 +32,7 @@ class LoginSignupViewController: BaseViewController {
 //            loginPageVC.reloadPageMenu(isLogin: isLogin)
 //        }
 //    }
-    private var shouldVerify = false
+    private var shouldVerify = true
     private var route: SuccessViewAction.Route? = nil
     private var backGroundVideoUrl: URL? = nil
     // MARK: -
@@ -180,10 +180,10 @@ class LoginSignupViewController: BaseViewController {
         loginPageVC.rxLoginBtnClick().subscribeSuccess { [weak self] (dto) in
             guard let strongSelf = self else { return }
             strongSelf.view.endEditing(true)
-            if strongSelf.shouldVerify {
-                strongSelf.showImageVerifyView(dto)
-                return
-            }
+//            if strongSelf.shouldVerify {
+//                strongSelf.showImageVerifyView(dto)
+//                return
+//            }
             // 發送驗證碼
             self?.sendVerifyCodeForEmailLogin(dto)
             // 推向传送验证码VC
@@ -196,17 +196,12 @@ class LoginSignupViewController: BaseViewController {
         loginPageVC.rxSignupBtnClick().subscribeSuccess { [weak self] (dto) in
             guard let strongSelf = self else { return }
             strongSelf.view.endEditing(true)
-            if strongSelf.shouldVerify {
-                strongSelf.showImageVerifyView(dto)
-                return
-            }
-            // 發送驗證碼
-            self?.sendVerifyCodeForEmailSignup(dto)
-            // 推向传送验证码VC
-            let verifyVC = VerifyViewController.loadNib()
-            verifyVC.signupDto = dto
-            self?.navigationController?.pushViewController(verifyVC, animated: true)
-//            strongSelf.signup(dto: dto)
+//            if strongSelf.shouldVerify {
+//                strongSelf.showImageVerifyView(dto)
+//                return
+//            }
+            strongSelf.showImageVerifyView(dto)
+            
         }.disposed(by: disposeBag)
         
         // 發送驗證碼
@@ -356,7 +351,8 @@ class LoginSignupViewController: BaseViewController {
             }
         } else {
             if DeepLinkManager.share.navigation != .none {
-                goMainViewController()
+//                goMainViewController()
+                goWalletViewController()
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
                     DeepLinkManager.share.navigation.toTargetVC()
                     DeepLinkManager.share.navigation = .none
@@ -587,26 +583,29 @@ class LoginSignupViewController: BaseViewController {
                                            password: pwd,
                                            loginMode: .account,
                                            showMode: self!.currentShowMode)
-                    self?.login(dto: dto, checkBioList: false, showLoadingView: false)
+                    self?.login(dto: dto, checkBioList: false, route: .wallet, showLoadingView: false)
                 case .toPersonal(let acc, let pwd):
                     
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
                                            loginMode: .account,
                                            showMode: self!.currentShowMode)
-                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+                    self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .toBet(let acc, let pwd):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
                                            loginMode: .account,
                                            showMode: self!.currentShowMode)
-                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+                    self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .clickAD(let acc, let pwd, _):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
                                            loginMode: .account,
                                            showMode: self!.currentShowMode)
-                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
+                    self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 default: break
                 }
             }.disposed(by: disposeBag)
@@ -629,9 +628,14 @@ class LoginSignupViewController: BaseViewController {
             .rxVerifySuccess()
             .subscribeSuccess { [weak self] (success) in
                 if let dto = postDto as? SignupPostDto {
-                    self?.signup(dto: dto)
+                    // 發送驗證碼
+                    self?.sendVerifyCodeForEmailSignup(dto)
+                    // 推向传送验证码VC
+                    let verifyVC = VerifyViewController.loadNib()
+                    verifyVC.signupDto = dto
+                    self?.navigationController?.pushViewController(verifyVC, animated: true)
                 } else if let dto = postDto as? LoginPostDto {
-                    self?.login(dto: dto, checkBioList: dto.loginMode == .account)
+                    self?.login(dto: dto, checkBioList: dto.loginMode == .account ,route: .wallet)
                 }
                 imageVerifyView.removeFromSuperview()
             }.disposed(by: disposeBag)

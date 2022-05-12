@@ -121,6 +121,9 @@ class AccountInputView: UIView {
         accountInputView.textField.text = ""
         passwordInputView.textField.text = ""
         registrationInputView.textField.text = ""
+        accountInputView.textField.sendActions(for: .valueChanged)
+        passwordInputView.textField.sendActions(for: .valueChanged)
+        registrationInputView.textField.sendActions(for: .valueChanged)
         accountInputView.invalidLabel.isHidden = true
         passwordInputView.invalidLabel.isHidden = true
         registrationInputView.invalidLabel.isHidden = true

@@ -68,3 +68,7 @@
 "Registration info" = "@Registration info";
 "Member since" = "@Member since";
 "Personal info" = "@Personal info";
+"Important" = "@Important";
+"For security purposes, no withdrawals are permitted for 24 hours after modification of security methods." = "@For security purposes, no withdrawals are permitted for 24 hours after modification of security methods.";
+"Continue" = "@Continue";
+"Cancel" = "@Cancel";

@@ -85,7 +85,7 @@ class WalletViewController: BaseViewController {
     }
     func bindAction()
     {
-        twoFAVC.securityViewMode = .selectedMode
+        twoFAVC.securityViewMode = .onlyEmail
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
             Log.i("Submit成功")
         }.disposed(by: dpg)

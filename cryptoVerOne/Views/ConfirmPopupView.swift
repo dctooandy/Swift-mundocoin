@@ -7,35 +7,53 @@
 //
 
 import Foundation
-
-class ConfirmPopupView: PopupBottomSheet {
+enum ConfirmIconMode {
+    case important
+    case info
     
+    var imageName: String {
+        switch self {
+        case .important:
+            return "launch-logo"
+        case .info:
+            return "arrow-circle-right"
+        }
+    }
+}
+class ConfirmPopupView: PopupBottomSheet {
+    var iconMode : ConfirmIconMode = .important
+    private lazy var titleIcon: UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage()
+        return imgView
+    }()
     private lazy var titleLabel: UILabel = {
         let lb = UILabel()
-        lb.textColor = .white
+        lb.textColor = .black
         lb.textAlignment = .center
+        lb.font = Fonts.pingFangTCRegular(18)
         return lb
     }()
-    
     
     private lazy var messageLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .center
         lb.textColor = .black
         lb.numberOfLines = 0
+        lb.font = Fonts.pingFangTCRegular(14)
         return lb
     }()
     
     private lazy var confirmButton: OKButton = {
         let btn = OKButton()
-        btn.setTitle("是", for: .normal)
+        btn.setTitle("Continue".localized, for: .normal)
         btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
         return btn
     }()
     
     private lazy var cancelButton: CancelButton = {
         let btn = CancelButton()
-        btn.setTitle("否", for: .normal)
+        btn.setTitle("Cancel".localized, for: .normal)
         btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
         return btn
     }()
@@ -43,8 +61,9 @@ class ConfirmPopupView: PopupBottomSheet {
     typealias DoneHandler = (Bool) -> ()
     var doneHandler: DoneHandler?
     
-    init(title: String, message: String, _ done: DoneHandler?) {
+    init(title: String, message: String , iconMode:ConfirmIconMode = .important, _ done: DoneHandler?) {
         super.init()
+        self.iconMode = iconMode
         titleLabel.text = title
         messageLabel.text = message
         doneHandler = done
@@ -61,6 +80,7 @@ class ConfirmPopupView: PopupBottomSheet {
     
     override func setupViews() {
         super.setupViews()
+        dismissButton.isHidden = true
         setupUI()
     }
     
@@ -69,19 +89,33 @@ class ConfirmPopupView: PopupBottomSheet {
         defaultContainer.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.75)
-            make.height.equalToSuperview().multipliedBy(0.3)
+            make.height.equalToSuperview().multipliedBy(0.32)
         }
-        
-        let titleView = GradientView()
+       // title 背景漸層
+//        let titleView = GradientView()
+//        defaultContainer.addSubview(titleView)
+//        titleView.snp.makeConstraints { (make) in
+//            make.top.left.right.equalToSuperview()
+//            make.height.equalTo(56)
+//        }
+        let titleView = UIView()
         defaultContainer.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(56)
+            make.height.equalTo(height(120.0/812.0))
         }
-        
+        titleView.addSubview(titleIcon)
+        let image = UIImage(named:iconMode.imageName)?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        titleIcon.image = image
+        titleIcon.snp.makeConstraints { (make) in
+            make.top.equalToSuperview().offset(height(40.0/812.0))
+            make.centerX.equalToSuperview()
+            make.width.height.equalTo(30)
+        }
         titleView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(height(-20.0/812.0))
         }
         
         let msgContentView = UIView()
@@ -97,15 +131,15 @@ class ConfirmPopupView: PopupBottomSheet {
             make.width.equalToSuperview().multipliedBy(0.9)
         }
         
-        let stackView = UIStackView(arrangedSubviews: [confirmButton, cancelButton])
+        let stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
         stackView.distribution = .fillEqually
         stackView.spacing = 10
         defaultContainer.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-            make.top.equalTo(msgContentView.snp.bottom).offset(20)
+//            make.top.equalTo(msgContentView.snp.bottom).offset(20)
             make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(40)
-            make.bottom.equalToSuperview().offset(-30)
+            make.height.equalTo(50)
+            make.bottom.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
     }

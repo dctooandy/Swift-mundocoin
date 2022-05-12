@@ -73,6 +73,20 @@ class UserMenuViewController: BaseViewController {
             self.navigationController?.pushViewController(personalVC, animated: true)
         }.disposed(by: dpg)
     }
+    func showLogotConfirmAlert()
+    {
+        let popVC =  ConfirmPopupView(title: "Important".localized,
+                                      message: "For security purposes, no withdrawals are permitted for 24 hours after modification of security methods.".localized ,
+                                      iconMode: .important) { [weak self] isOK in
+                                        if isOK {
+                                            Log.i("登出")
+                                        }else
+                                        {
+                                            Log.i("不登出")
+                                        }
+        }
+        popVC.start(viewController: self)
+    }
 }
 // MARK: -
 // MARK: 延伸
@@ -165,6 +179,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //about
             case 5:
                 Log.i("logout")
+                showLogotConfirmAlert()
                 //logout
             default:
                 break

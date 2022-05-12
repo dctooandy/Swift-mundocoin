@@ -12,12 +12,12 @@ class OKButton: UIButton {
     var titleColor: UIColor? = nil
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        backgroundColor = .white
+        setBackgroundImage(UIImage(color: Themes.grayLightDarker), for: .normal)
         clipsToBounds = true
         layer.cornerRadius = rect.height / 2
-        layer.borderColor = Themes.primaryBase.cgColor
+        layer.borderColor = Themes.grayLightDarker.cgColor
         layer.borderWidth = 1
-        setTitleColor(titleColor ?? Themes.primaryBase, for: .normal)
+        setTitleColor(.white, for: .normal)
     }
  
 
