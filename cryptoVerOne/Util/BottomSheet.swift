@@ -10,6 +10,7 @@ import RxSwift
 
 @objcMembers class BottomSheet: BaseViewController {
     
+    var defaultContainerHeight : CGFloat = 414.0
     let subject = PublishSubject<Any?>()
     var value:Any?
     static let bottomSheetDismissNotify = "BottomSheetDismissNotify"
@@ -78,7 +79,8 @@ import RxSwift
     }
     
     @discardableResult
-    func start(viewController:UIViewController ,animated:Bool = true ,completion:(() -> Void)? = nil) -> Observable<Any?> {
+    func start(viewController:UIViewController ,height:CGFloat = 414 ,animated:Bool = true ,completion:(() -> Void)? = nil) -> Observable<Any?> {
+        self.defaultContainerHeight = height
         self.transitioningDelegate = viewController
         viewController.present(self, animated: animated, completion: completion)
         return subject.asObserver()

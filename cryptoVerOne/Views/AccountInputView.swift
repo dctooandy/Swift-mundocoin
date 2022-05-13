@@ -130,9 +130,9 @@ class AccountInputView: UIView {
     }
     
     func setup() {
-        let accountView = InputStyleView(inputViewMode: currentShowMode.accountInputMode, isPWStyle: false)
-        let passwordView = InputStyleView(inputViewMode: .password, isPWStyle: true)
-        let registrationView = InputStyleView(inputViewMode: .registration, isPWStyle: false,isRegisterStyle: true)
+        let accountView = InputStyleView(inputViewMode: currentShowMode.accountInputMode)
+        let passwordView = InputStyleView(inputViewMode: .password)
+        let registrationView = InputStyleView(inputViewMode: .registration)
         self.accountInputView = accountView
         self.passwordInputView = passwordView
         self.registrationInputView = registrationView

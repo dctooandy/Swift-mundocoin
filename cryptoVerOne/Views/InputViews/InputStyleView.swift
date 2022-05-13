@@ -10,8 +10,9 @@ import UIKit
 import RxCocoa
 import RxSwift
 import Toaster
+import DropDown
 
-enum InputViewMode {
+enum InputViewMode :Equatable {
     case emailVerify
     case twoFAVerify
     case copy
@@ -21,7 +22,8 @@ enum InputViewMode {
     case password
     case forgotPW
     case registration
-    
+    case networkMethod(Array<String>)
+
     func topString() -> String {
         switch self {
         case .emailVerify: return "Enter the 6-digit code sent to ".localized
@@ -33,6 +35,7 @@ enum InputViewMode {
         case .password: return "Password".localized
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
+        case .networkMethod( _ ): return "Network Method".localized
         }
     }
     
@@ -70,12 +73,28 @@ enum InputViewMode {
         default: return ""
         }
     }
+    func dropDataSource() -> Array<String>
+    {
+        switch self {
+        case .networkMethod(let array):
+            return array
+        default:
+            return []
+        }
+    }
+    func isNetworkMethod() -> Bool
+    {
+        switch self {
+        case .networkMethod( _ ):
+            return true
+        default:
+            return false
+        }
+    }
 }
 class InputStyleView: UIView {
     // MARK:業務設定
     private var inputViewMode: InputViewMode = .email
-//    private var inputMode: InputViewMode = .email
-//    private var currentShowMode: ShowMode = .loginEmail
     private let displayPwdImg = UIImage(named: "eye-solid")!.withRenderingMode(.alwaysTemplate)
     private let undisplayPwdImg =  UIImage(named: "eye-slash-solid")!.withRenderingMode(.alwaysTemplate)
     private let cancelImg = UIImage(named: "icon-close")!
@@ -90,9 +109,9 @@ class InputStyleView: UIView {
     private let onClick = PublishSubject<String>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
+    private let onAddressBookClick = PublishSubject<Any>()
+    private let onScanClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    private var isPWStyle : Bool = false
-    private var isRegisterStyle : Bool = false
     private var timer: Timer?
     private var countTime = 60
     var offetWidth : CGFloat = 0.0
@@ -128,31 +147,39 @@ class InputStyleView: UIView {
         lb.font = Fonts.pingFangTCSemibold(14)
         return lb
     }()
+    let addressBookImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "launch-logo")
+        return imgView
+    }()
+    let scanImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "launch-logo")
+        return imgView
+    }()
     let displayRightButton = UIButton()
     let cancelRightButton = UIButton()
+    //DropDown
+    lazy var chooseButton:UIButton = {
+        let btn = UIButton()
+        btn.backgroundColor = .clear
+        return btn
+    }()
+    let chooseDropDown = DropDown()
+    let anchorView : UIView = {
+       let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
     
     // MARK: -
     // MARK:Life cycle
-    convenience init(inputViewMode: InputViewMode = .email, isPWStyle:Bool = false , isRegisterStyle: Bool = false) {
+    convenience init(inputViewMode: InputViewMode = .email) {
         self.init(frame: .zero)
         self.inputViewMode = inputViewMode
-        self.isPWStyle = isPWStyle
-        self.isRegisterStyle = isRegisterStyle
-//        self.currentShowMode = currentShowMode
         self.setup()
         self.bindPwdButton()
-        self.bindTextfield()
-        self.bindCancelButton()
-        timer?.invalidate()
-    }
-    convenience init(inputViewMode: InputViewMode = .emailVerify) {
-        self.init(frame: .zero)
-        self.inputViewMode = inputViewMode
-        self.isPWStyle = false
-        self.isRegisterStyle = false
-//        self.currentShowMode = currentShowMode
-        self.setup()
-        self.bindPwdButton()
+        self.bindImageView()
         self.bindTextfield()
         self.bindCancelButton()
         timer?.invalidate()
@@ -216,7 +243,9 @@ class InputStyleView: UIView {
         invalidLabelString = inputViewMode.invaildString()
         cancelRightButton.isHidden = ( inputViewMode == .copy ? true : false)
         textField.isUserInteractionEnabled = ( inputViewMode == .copy ? false : true)
-        if inputViewMode != .withdrawTo
+        if inputViewMode == .emailVerify ||
+            inputViewMode == .twoFAVerify ||
+            inputViewMode == .copy
         {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
@@ -225,31 +254,67 @@ class InputStyleView: UIView {
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
             }
+        }else if inputViewMode == .withdrawTo
+        {
+            addSubview(scanImageView)
+            addSubview(addressBookImageView)
+            scanImageView.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(18)
+            }
+            addressBookImageView.snp.makeConstraints { (make) in
+                make.right.equalTo(scanImageView.snp.left).offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(18)
+            }
+            rightLabelWidth = 18 + 18 + 20
         }
+        
         topLabel.text = topLabelString
         invalidLabel.text = invalidLabelString
         textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
         
-        addSubview(displayRightButton)
-        displayRightButton.frame.size.width = 24
-        displayRightButton.setTitle(nil, for: .normal)
-        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
-        displayRightButton.snp.remakeConstraints { (make) in
-            make.right.equalToSuperview().offset(-10 - rightLabelWidth)
-            make.centerY.equalTo(textField)
-            make.height.equalTo(24)
-            make.width.equalTo(offetWidth)
-        }
-        addSubview(cancelRightButton)
-        //設定文字刪除
-        cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        cancelRightButton.backgroundColor = .black
-        cancelRightButton.layer.cornerRadius = 7
-        cancelRightButton.layer.masksToBounds = true
-        cancelRightButton.snp.remakeConstraints { (make) in
-            make.right.equalTo(displayRightButton.snp.left).offset(-10)
-            make.centerY.equalTo(textField)
-            make.width.height.equalTo(14)
+        if inputViewMode.isNetworkMethod()
+        {
+            let textFieldMulH = height(48/812)
+            let tfWidth = width(361.0/414.0) - 40
+            addSubview(chooseButton)
+            addSubview(anchorView)
+            anchorView.snp.makeConstraints { (make) in
+                make.top.equalTo(textField.snp.bottom)
+                make.height.equalTo(textFieldMulH)
+                make.centerX.equalToSuperview()
+                make.width.equalTo(tfWidth)
+            }
+            chooseButton.snp.makeConstraints { (make) in
+                make.edges.equalTo(textField)
+            }
+            setupChooseDropdown()
+            bindChooseButton()
+        }else
+        {
+            addSubview(displayRightButton)
+            displayRightButton.frame.size.width = 24
+            displayRightButton.setTitle(nil, for: .normal)
+            displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
+            displayRightButton.snp.remakeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10 - rightLabelWidth)
+                make.centerY.equalTo(textField)
+                make.height.equalTo(24)
+                make.width.equalTo(offetWidth)
+            }
+            addSubview(cancelRightButton)
+            //設定文字刪除
+            cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
+            cancelRightButton.backgroundColor = .black
+            cancelRightButton.layer.cornerRadius = 7
+            cancelRightButton.layer.masksToBounds = true
+            cancelRightButton.snp.remakeConstraints { (make) in
+                make.right.equalTo(displayRightButton.snp.left).offset(-10)
+                make.centerY.equalTo(textField)
+                make.width.height.equalTo(14)
+            }
         }
         let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 34 + rightLabelWidth + offetWidth , height: 10))
         textField.rightViewMode = .always
@@ -270,6 +335,15 @@ class InputStyleView: UIView {
                 self?.verifyResentPressed()
         }.disposed(by: dpg)
     }
+    func bindImageView()
+    {
+        scanImageView.rx.click.subscribeSuccess { [self](_) in
+            self.onScanClick.onNext(())
+        }.disposed(by: dpg)
+        addressBookImageView.rx.click.subscribeSuccess { [self](_) in
+            self.onAddressBookClick.onNext(())
+        }.disposed(by: dpg)
+    }
     func bindTextfield()
     {
         
@@ -278,10 +352,38 @@ class InputStyleView: UIView {
     {
         
     }
-//    func changeInputMode(mode: LoginMode) {
-//        inputMode = mode
-//        resetUI()
-//    }
+    func bindChooseButton()
+    {
+        chooseButton.rx.tap.subscribeSuccess { (_) in
+            self.chooseDropDown.show()
+        }.disposed(by: dpg)
+    }
+    func setupChooseDropdown()
+    {
+        DropDown.setupDefaultAppearance()
+        chooseDropDown.anchorView = anchorView
+        
+        // By default, the dropdown will have its origin on the top left corner of its anchor view
+        // So it will come over the anchor view and hide it completely
+        // If you want to have the dropdown underneath your anchor view, you can do this:
+//        chooseDropDown.bottomOffset = CGPoint(x: 0, y:(chooseDropDown.anchorView?.plainView.bounds.height)!)
+        chooseDropDown.topOffset = CGPoint(x: 0, y:-(chooseDropDown.anchorView?.plainView.bounds.height)!)
+        // You can also use localizationKeysDataSource instead. Check the docs.
+        chooseDropDown.direction = .bottom
+        switch inputViewMode {
+        case .networkMethod(let array):
+            chooseDropDown.dataSource = array
+        default:
+            break
+        }
+        
+        // Action triggered on selection
+        chooseDropDown.selectionAction = { [weak self] (index, item) in
+//            self?.chooseButton.setTitle(item, for: .normal)
+            self?.textField.text = item
+        }
+        chooseDropDown.dismissMode = .onTap
+    }
     private func displayRightPressed() {
         textField.isSecureTextEntry = !(textField.isSecureTextEntry)
         displayRightButton.setBackgroundImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
@@ -291,6 +393,7 @@ class InputStyleView: UIView {
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
     }
+ 
     private func verifyResentPressed() {
         switch inputViewMode {
         case .emailVerify:
@@ -379,6 +482,12 @@ class InputStyleView: UIView {
     func rxPasteAction() -> Observable<(Any)>
     {
         return onPasteClick.asObserver()
+    }
+    func rxScanImagePressed() -> Observable<Any> {
+        return onScanClick.asObserver()
+    }
+    func rxAddressBookImagePressed() -> Observable<Any> {
+        return onAddressBookClick.asObserver()
     }
 }
 // MARK: -

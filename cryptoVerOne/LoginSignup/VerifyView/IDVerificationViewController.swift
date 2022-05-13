@@ -188,17 +188,4 @@ extension IDVerificationViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//       if let x = string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
-//          return true
-//       } else {
-//        if string == ""
-//        {
-//            return true
-//        }else
-//        {
-//            return false
-//        }
-//       }
-//    }
 }
