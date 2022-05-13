@@ -57,7 +57,10 @@ class KeychainManager {
         let acc = accArr[0]
         let pwd = accArr[1]
         let tel = accArr[2]
-        return LoginPostDto(account: acc.isEmpty ? tel : acc, password: pwd, loginMode: .account , showMode: .login)
+        return LoginPostDto(account: acc.isEmpty ? tel : acc,
+                            password: pwd,
+                            loginMode: .emailPage ,
+                            showMode: .loginEmail)
     }
     
     /// 儲存帳號密碼電話 格式: acc.pwd.tel

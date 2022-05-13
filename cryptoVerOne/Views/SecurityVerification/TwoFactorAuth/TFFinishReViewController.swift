@@ -96,8 +96,25 @@ class TFFinishReViewController: BaseViewController {
         actionButton.rx.tap.subscribeSuccess { [self](_) in
             switch viewMode {
             case .back:
-                let securityVC = SecurityViewController.share
-                _ = self.navigationController?.popToViewController(securityVC, animated:true )
+                if let vcArray = self.navigationController?.viewControllers
+                {
+                    var shouldDirectToWithdrawVC = true
+                    for vc in vcArray {
+                        if vc is SecurityViewController
+                        {
+                            let securityVC = SecurityViewController.share
+                            _ = self.navigationController?.popToViewController(securityVC, animated:true )
+                            shouldDirectToWithdrawVC = false
+                            break
+                        }
+                    }
+                    if shouldDirectToWithdrawVC == true
+                    {
+                        let withdrawVC = WithdrawViewController.loadNib()
+                        self.navigationController?.viewControllers = [WalletViewController.share]
+                        WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
+                    }
+                }
             case .reverify:
                 let twoFAVC = SecurityVerificationViewController.loadNib()
                 twoFAVC.securityViewMode = .onlyEmail

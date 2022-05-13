@@ -121,6 +121,12 @@ class SecurityVerificationViewController: BaseViewController {
             Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
             onVerifySuccessClick.onNext(())
         }.disposed(by: dpg)
+        self.twoFAVerifyView.rxLostGoogleAction().subscribeSuccess { (_) in
+            Log.i("跳轉綁定Google Auth")
+            let twoFAVC = TFFinishReViewController.loadNib()
+            twoFAVC.viewMode = .reverify
+            self.navigationController?.pushViewController(twoFAVC, animated: true)
+        }.disposed(by: dpg)
         
     }
     func bindSubPageViewControllers()

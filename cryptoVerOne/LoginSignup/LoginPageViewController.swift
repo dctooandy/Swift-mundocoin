@@ -17,7 +17,7 @@ class LoginPageViewController: BaseViewController {
     private let loginBtnClick = PublishSubject<LoginPostDto>()
     private let resetLinkBtnClick = PublishSubject<LoginPostDto>()
     private let forgetBtnClick = PublishSubject<Void>()
-    private var currentShowMode: ShowMode = .login {
+    private var currentShowMode: ShowMode = .loginEmail {
         didSet {
             cleanTextField()
 //            if currentShowMode == .forgotPW
@@ -81,11 +81,11 @@ class LoginPageViewController: BaseViewController {
     }
     
     private func setupVC() {
-        let accLogin = LoginViewController.instance(mode: .account)
+        let accLogin = LoginViewController.instance(mode: .emailPage)
 //        let phoneLogin = LoginViewController.instance(mode: .phone)
-        let accSignup = SignupViewController.instance(mode: .account)
+        let accSignup = SignupViewController.instance(mode: .emailPage)
 //        let phoneSignup = SignupViewController.instance(mode: .phone)
-        let accForgot = ForgotViewController.instance(mode: .account)
+        let accForgot = ForgotViewController.instance(mode: .emailPage)
         loginViewControllers = [accLogin]
         //            bindVerifyCodeBtn(obs: phoneLogin.rxVerifyCodeButtonClick)
         signupViewControllers = [accSignup]
@@ -116,9 +116,13 @@ class LoginPageViewController: BaseViewController {
     
     func startReciprocal() {
         switch currentShowMode {
-        case .login:
+        case .loginEmail:
             loginViewControllers[1].startReciprocal()
-        case .signup:
+        case .loginPhone:
+            signupViewControllers[1].startReciprocal()
+        case .signupEmail:
+            loginViewControllers[1].startReciprocal()
+        case .signupPhone:
             signupViewControllers[1].startReciprocal()
         case .forgotPW:
             break
@@ -133,9 +137,13 @@ class LoginPageViewController: BaseViewController {
     
     func setVerifyCode(code: String) {
         switch currentShowMode {
-        case .login:
+        case .loginEmail:
             loginViewControllers[1].showVerifyCode(code)
-        case .signup:
+        case .loginPhone:
+            loginViewControllers[1].showVerifyCode(code)
+        case .signupEmail:
+            signupViewControllers[1].showVerifyCode(code)
+        case .signupPhone:
             signupViewControllers[1].showVerifyCode(code)
         case .forgotPW:
             forgotViewControllers[1].showVerifyCode(code)
@@ -224,9 +232,9 @@ class LoginPageViewController: BaseViewController {
 extension LoginPageViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemForIndex index: Int) -> T where T : PagingItem, T : Comparable, T : Hashable {
         switch currentShowMode {
-        case .login:
+        case .loginEmail,.loginPhone:
             return PagingIndexItem(index: index, title: loginViewControllers[index].modeTitle()) as! T
-        case .signup:
+        case .signupEmail,.signupPhone:
             return PagingIndexItem(index: index, title: signupViewControllers[index].modeTitle()) as! T
         case .forgotPW:
             return PagingIndexItem(index: index, title: forgotViewControllers[index].modeTitle()) as! T
@@ -238,9 +246,9 @@ extension LoginPageViewController: PagingViewControllerDataSource, PagingViewCon
     }
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, viewControllerForIndex index: Int) -> UIViewController where T : PagingItem, T : Comparable, T : Hashable {
         switch currentShowMode {
-        case .login:
+        case .loginEmail,.loginPhone:
             return loginViewControllers[index]
-        case .signup:
+        case .signupEmail,.signupPhone:
             return signupViewControllers[index]
         case .forgotPW:
             return forgotViewControllers[index]
@@ -249,9 +257,9 @@ extension LoginPageViewController: PagingViewControllerDataSource, PagingViewCon
     }
     func numberOfViewControllers<T>(in pagingViewController: PagingViewController<T>) -> Int where T : PagingItem, T : Comparable, T : Hashable {
         switch currentShowMode {
-        case .login:
+        case .loginEmail,.loginPhone:
             return loginViewControllers.count
-        case .signup:
+        case .signupEmail,.signupPhone:
             return signupViewControllers.count
         case .forgotPW:
             return forgotViewControllers.count

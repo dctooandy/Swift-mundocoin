@@ -75,9 +75,9 @@ class CPasswordViewController: BaseViewController {
     {
         popVC()
     }
-    @objc func popVC(isAnimation : Bool = true)
+    @objc override func popVC()
     {
-        _ = self.navigationController?.popToRootViewController(animated: isAnimation)
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
 // MARK: -

@@ -11,46 +11,6 @@ import RxCocoa
 import RxSwift
 import Toaster
 
-enum TwoFAInputMode {
-    case email
-    case twoFA
-    case copy
-    case none
-    
-    func topString() -> String {
-        switch self {
-        case .email: return "Enter the 6-digit code sent to ".localized
-        case .twoFA: return "Enter the 6-digit code from google 2FA".localized
-        case .copy: return "Copy this key to your authenticator app".localized
-        default: return ""
-        }
-    }
-    
-    func textPlacehloder() -> String {
-        switch self {
-        case .email: return "Email verification code".localized
-        case .twoFA: return "Google Authenticator code".localized
-        default: return ""
-        }
-    }
-    
-    func invaildString() -> String {
-        switch self {
-        case .email: return "Invaild verification code".localized
-        case .twoFA: return "Invaild verification code".localized
-        default: return ""
-        }
-    }
-    func rightLabelString() -> String
-    {
-        switch self {
-        case .email: return "Send".localized
-        case .twoFA: return "Paste".localized
-        case .copy: return "Copy".localized
-        default: return ""
-        }
-    }
-}
 enum TwoFAViewMode {
     case both
     case onlyEmail
@@ -62,6 +22,7 @@ class TwoFAVerifyView: UIView {
     private let onSubmitBothClick = PublishSubject<(String,String)>()
     private let onSubmitOnlyEmailClick = PublishSubject<String>()
     private let onSubmitOnlyTwoFAClick = PublishSubject<String>()
+    private let onLostGoogleClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var twoFAViewMode : TwoFAViewMode = .both {
         didSet{
@@ -72,8 +33,8 @@ class TwoFAVerifyView: UIView {
     
     // MARK: -
     // MARK:UI 設定
-    var emailInputView = InputStyleView(inputMode: .email)
-    var twoFAInputView = InputStyleView(inputMode: .twoFA)
+    var emailInputView = InputStyleView(inputViewMode: .emailVerify)
+    var twoFAInputView = InputStyleView(inputViewMode: .twoFAVerify)
     @IBOutlet weak var lostTwoFALabel: UILabel!
     let submitButton : CornerradiusButton = {
        let btn = CornerradiusButton()
@@ -132,11 +93,12 @@ class TwoFAVerifyView: UIView {
             }
             emailInputView.isHidden = true
         }
+        lostTwoFALabel.text = "Lost google 2FA?".localized
         lostTwoFALabel.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(bottomY)
             make.leading.equalToSuperview().offset(32)
         }
-        
+        lostTwoFALabel.isHidden = (twoFAViewMode == .both ? false :true)
         submitButton.snp.remakeConstraints { (make) in
             make.top.equalTo(lostTwoFALabel.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
@@ -164,7 +126,6 @@ class TwoFAVerifyView: UIView {
     }
     func bind()
     {
-        
         bindCancelButton()
         bindLostTwoFALabel()
         bindAction()
@@ -211,8 +172,8 @@ class TwoFAVerifyView: UIView {
     }
     func bindLostTwoFALabel()
     {
-        lostTwoFALabel.rx.click.subscribeSuccess { (_) in
-            Toast.show(msg: "連接")
+        lostTwoFALabel.rx.click.subscribeSuccess { [self](_) in
+            onLostGoogleClick.onNext(())
         }.disposed(by: dpg)
     }
     func cleanTextField() {
@@ -270,6 +231,10 @@ class TwoFAVerifyView: UIView {
     func rxSubmitOnlyTwiFAAction() -> Observable<(String)>
     {
         return onSubmitOnlyTwoFAClick.asObserver()
+    }
+    func rxLostGoogleAction() -> Observable<(Any)>
+    {
+        return onLostGoogleClick.asObserver()
     }
     func cleanTimer()
     {

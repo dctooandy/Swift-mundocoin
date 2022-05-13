@@ -16,9 +16,9 @@ class ForgotViewController: BaseViewController {
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
 //    var rxVerifyCodeButtonClick: Observable<String>?
-    private var loginMode : LoginMode = .account {
+    private var loginMode : LoginMode = .emailPage {
         didSet {
-            self.loginModeDidChange()
+//            self.loginModeDidChange()
         }
     }
     // MARK: -
@@ -63,14 +63,14 @@ class ForgotViewController: BaseViewController {
     }
     func modeTitle() -> String {
         switch loginMode {
-        case .account: return "".localized
-        case .phone: return "Mobile".localized
+        case .emailPage: return "".localized
+        case .phonepPage: return "Mobile".localized
         }
     }
     
     func setup() {
         
-        accountInputView = AccountInputView(inputMode: loginMode, currentShowMode: .forgotPW, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .forgotPW, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
@@ -152,7 +152,7 @@ class ForgotViewController: BaseViewController {
 
     
     private func loginModeDidChange() {
-        accountInputView?.changeInputMode(mode: loginMode)
+//        accountInputView?.changeInputMode(mode: loginMode)
     }
 }
 

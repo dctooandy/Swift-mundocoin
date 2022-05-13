@@ -16,17 +16,17 @@ class VerifyViewController: BaseViewController {
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
     private let dpg = DisposeBag()
-    private var inputMode: LoginMode = .account
+    private var inputMode: LoginMode = .emailPage
     private var timer: Timer?
     private var countTime = 60
     var loginDto : LoginPostDto?  {
         didSet {
-//            self.loginModeDidChange()
+
         }
     }
     var signupDto : SignupPostDto?  {
         didSet {
-//            self.loginModeDidChange()
+
         }
     }
     // MARK: -
@@ -175,20 +175,20 @@ class VerifyViewController: BaseViewController {
         if let loginDto = self.loginDto
         {
             switch loginDto.loginMode {
-            case .account:
+            case .emailPage:
                 self.sentToLabel.text = "We have sent an email to".localized
                 self.userAccountLabel.text = loginDto.account
-            case .phone:
+            case .phonepPage:
                 self.sentToLabel.text = "We have sent messages to".localized
                 self.userAccountLabel.text = loginDto.account
             }
         }else if let signupDto = self.signupDto
         {
             switch signupDto.signupMode {
-            case .account:
+            case .emailPage:
                 self.sentToLabel.text = "We have sent an email to".localized
                 self.userAccountLabel.text = signupDto.account
-            case .phone:
+            case .phonepPage:
                 self.sentToLabel.text = "We have sent messages to".localized
                 self.userAccountLabel.text = signupDto.account
             }
@@ -240,7 +240,7 @@ class VerifyViewController: BaseViewController {
     // 忘記密碼 驗證完畢 跳出密碼輸入頁
         if let loginDto = self.loginDto
         {
-            if loginDto.currentShowMode == .login
+            if loginDto.currentShowMode != .forgotPW
             {
                 Log.v("登入驗證完畢,直接登入")
 //                self.popVC(isAnimation: false)

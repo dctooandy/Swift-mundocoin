@@ -53,9 +53,9 @@ class TwoFactorAuthViewController: BaseViewController {
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
         let image = generateQRCode(from: qrCodeString)
         codeImageView.image = image
-        copyView = InputStyleView(inputMode: .copy)
+        copyView = InputStyleView(inputViewMode: .copy)
         copyView.textField.text = qrCodeString
-        twoFAView = InputStyleView(inputMode: .twoFA)
+        twoFAView = InputStyleView(inputViewMode: .twoFAVerify)
         copyInputView.addSubview(copyView)
         twoFAInputView.addSubview(twoFAView)
         copyView.snp.makeConstraints { (make) in

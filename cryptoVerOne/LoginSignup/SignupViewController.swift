@@ -19,9 +19,9 @@ class SignupViewController: BaseViewController {
 //    var rxVerifyCodeButtonClick: Observable<String>?
     private var onClick = PublishSubject<SignupPostDto>()
     
-    private var loginMode : LoginMode = .account {
+    private var loginMode : LoginMode = .emailPage {
         didSet {
-            loginModeDidChange()
+//            loginModeDidChange()
         }
     }
     static func instance(mode: LoginMode) -> SignupViewController {
@@ -52,7 +52,13 @@ class SignupViewController: BaseViewController {
     
     private func setupUI() {
         
-        accountInputView = AccountInputView(inputMode: loginMode, currentShowMode: .signup, lineColor: Themes.grayLight)
+        switch loginMode {
+        case .emailPage:
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupEmail, lineColor: Themes.grayLight)
+        case .phonepPage:
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupPhone, lineColor: Themes.grayLight)
+        }
+        
 //        rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         checkboxView = CheckBoxView(title: " ",
                                     titleColor: .black,
@@ -97,8 +103,8 @@ class SignupViewController: BaseViewController {
     
     func modeTitle() -> String {
         switch  loginMode {
-        case .account: return "".localized
-        case .phone: return "Mobile".localized
+        case .emailPage: return "".localized
+        case .phonepPage: return "Mobile".localized
         }
     }
     
@@ -136,9 +142,9 @@ class SignupViewController: BaseViewController {
         return onClick.asObserver()
     }
   
-    private func loginModeDidChange() {
-        accountInputView?.changeInputMode(mode: self.loginMode)
-    }
+//    private func loginModeDidChange() {
+//        accountInputView?.changeInputMode(mode: self.loginMode)
+//    }
     
     func startReciprocal() {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)

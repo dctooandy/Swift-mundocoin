@@ -16,6 +16,7 @@ import SafariServices
 import SDWebImage
 class WalletViewController: BaseViewController {
     // MARK:業務設定
+    static let share: WalletViewController = WalletViewController.loadNib()
     let depositVC = DepositViewController.loadNib()
     let withdrawVC = WithdrawViewController.loadNib()
     let twoFAVC = SecurityVerificationViewController.loadNib()
@@ -85,7 +86,7 @@ class WalletViewController: BaseViewController {
     }
     func bindAction()
     {
-        twoFAVC.securityViewMode = .onlyEmail
+        twoFAVC.securityViewMode = .defaultMode
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
             Log.i("Submit成功")
         }.disposed(by: dpg)
@@ -96,10 +97,9 @@ class WalletViewController: BaseViewController {
             self.navigationController?.pushViewController(depositVC, animated: true)
         }.disposed(by: dpg)
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
-            // 測試 
-    
-            self.navigationController?.pushViewController(twoFAVC, animated: true)
-//            self.navigationController?.pushViewController(withdrawVC, animated: true)
+            // 測試
+//            self.navigationController?.pushViewController(twoFAVC, animated: true)
+            self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)
     }
     private func setupPagingView() {

@@ -11,14 +11,82 @@ import RxCocoa
 import RxSwift
 import Toaster
 
+enum InputViewMode {
+    case emailVerify
+    case twoFAVerify
+    case copy
+    case withdrawTo
+    case email
+    case phone
+    case password
+    case forgotPW
+    case registration
+    
+    func topString() -> String {
+        switch self {
+        case .emailVerify: return "Enter the 6-digit code sent to ".localized
+        case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
+        case .copy: return "Copy this key to your authenticator app".localized
+        case .withdrawTo: return "Withdraw to address".localized
+        case .email: return "Email".localized
+        case .phone: return "Phone Number".localized
+        case .password: return "Password".localized
+        case .forgotPW: return "Enter your email to change your password".localized
+        case .registration: return "Registration code".localized
+        }
+    }
+    
+    func textPlacehloder() -> String {
+        switch self {
+        case .emailVerify: return "Email verification code".localized
+        case .twoFAVerify: return "Google Authenticator code".localized
+        case .withdrawTo: return "Long press to paste".localized
+        case .email: return "...@mundo.com"
+        case .password: return "********".localized
+        case .forgotPW: return "...@mundo.com"
+        default: return ""
+        }
+    }
+    
+    func invaildString() -> String {
+        switch self {
+        case .emailVerify: return "Invaild verification code".localized
+        case .twoFAVerify: return "Invaild verification code".localized
+        case .withdrawTo: return "Please check the withdrawal address.".localized
+        case .email: return "Incorrect email format.".localized
+        case .phone: return "Invalid phone number.".localized
+        case .password: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
+        case .forgotPW: return "Incorrect email format.".localized
+        case .registration: return "Invalid registration code".localized
+        default: return ""
+        }
+    }
+    func rightLabelString() -> String
+    {
+        switch self {
+        case .emailVerify: return "Send".localized
+        case .twoFAVerify: return "Paste".localized
+        case .copy: return "Copy".localized
+        default: return ""
+        }
+    }
+}
 class InputStyleView: UIView {
     // MARK:業務設定
-    private var twoFAMode: TwoFAInputMode = .none
-    private var inputMode: LoginMode = .account
-    private var currentShowMode: ShowMode = .login
+    private var inputViewMode: InputViewMode = .email
+//    private var inputMode: InputViewMode = .email
+//    private var currentShowMode: ShowMode = .loginEmail
     private let displayPwdImg = UIImage(named: "eye-solid")!.withRenderingMode(.alwaysTemplate)
     private let undisplayPwdImg =  UIImage(named: "eye-slash-solid")!.withRenderingMode(.alwaysTemplate)
     private let cancelImg = UIImage(named: "icon-close")!
+    private let addressBookImgView : UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
+        return imgView
+    }()
+    private let cameraImgView : UIImageView = {
+        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
+        return imgView
+    }()
     private let onClick = PublishSubject<String>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
@@ -65,25 +133,24 @@ class InputStyleView: UIView {
     
     // MARK: -
     // MARK:Life cycle
-    convenience init(inputMode: LoginMode = .account, currentShowMode: ShowMode = .login, isPWStyle:Bool = false , isRegisterStyle: Bool = false) {
+    convenience init(inputViewMode: InputViewMode = .email, isPWStyle:Bool = false , isRegisterStyle: Bool = false) {
         self.init(frame: .zero)
-        self.twoFAMode = .none
-        self.inputMode = inputMode
+        self.inputViewMode = inputViewMode
         self.isPWStyle = isPWStyle
         self.isRegisterStyle = isRegisterStyle
-        self.currentShowMode = currentShowMode
+//        self.currentShowMode = currentShowMode
         self.setup()
         self.bindPwdButton()
         self.bindTextfield()
         self.bindCancelButton()
         timer?.invalidate()
     }
-    convenience init(inputMode: TwoFAInputMode = .email) {
+    convenience init(inputViewMode: InputViewMode = .emailVerify) {
         self.init(frame: .zero)
-        self.twoFAMode = inputMode
+        self.inputViewMode = inputViewMode
         self.isPWStyle = false
         self.isRegisterStyle = false
-        self.currentShowMode = currentShowMode
+//        self.currentShowMode = currentShowMode
         self.setup()
         self.bindPwdButton()
         self.bindTextfield()
@@ -132,7 +199,6 @@ class InputStyleView: UIView {
             make.height.equalTo(invalidH)
         }
         textField.setMaskView()
-       
         resetUI()
     }
     func resetUI()
@@ -142,59 +208,28 @@ class InputStyleView: UIView {
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
-        
         var rightLabelWidth : CGFloat = 0.0
-        if twoFAMode == .none
-        {
-            if currentShowMode != .forgotPW && isPWStyle == true
-            {
-                offetWidth = 24.0
-            }
-            switch currentShowMode {
-            case .login:
-                placeHolderString = (isPWStyle ? inputMode.pwdPlaceholder() : inputMode.accountPlacehloder())
-            case .signup:
-                placeHolderString = (isPWStyle ? inputMode.signupPwdPlaceholder() : (isRegisterStyle ? inputMode.signuprRegisterPlaceholder():inputMode.signupAccountPlacehloder()))
-            case .forgotPW:
-                placeHolderString = (isPWStyle ? "" : inputMode.forgotAccountPlacehloder())
-            }
-            textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
-            
-            switch inputMode {
-            case .account:
-                if currentShowMode == .forgotPW
-                {
-                    topLabelString = "Enter your email to change your password".localized
-                }else
-                {
-                    topLabelString = (isPWStyle ? "Password".localized: (isRegisterStyle ? "Registration code".localized: "Email".localized))
-                }
-                invalidLabelString = (isPWStyle ? "Invaild verification code".localized: (isRegisterStyle ? "Invaild verification code".localized: "Invaild email".localized))
-                textField.isSecureTextEntry = isPWStyle
-                
-            case .phone:
-                topLabelString = (isPWStyle ?  "Password".localized: "Phone Number".localized)
-                invalidLabelString = (isPWStyle ?  "Invaild verification code".localized: "Invaild phone".localized)
-                textField.isSecureTextEntry = isPWStyle
-            }
-        }else
+        offetWidth = (inputViewMode == .password ? 24.0:0.0)
+        textField.isSecureTextEntry = (inputViewMode == .password)
+        topLabelString = inputViewMode.topString()
+        placeHolderString = inputViewMode.textPlacehloder()
+        invalidLabelString = inputViewMode.invaildString()
+        cancelRightButton.isHidden = ( inputViewMode == .copy ? true : false)
+        textField.isUserInteractionEnabled = ( inputViewMode == .copy ? false : true)
+        if inputViewMode != .withdrawTo
         {
             addSubview(verifyResentLabel)
-            verifyResentLabel.text = twoFAMode.rightLabelString()
+            verifyResentLabel.text = inputViewMode.rightLabelString()
             rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
             }
-            topLabelString = twoFAMode.topString()
-            placeHolderString = twoFAMode.textPlacehloder()
-            invalidLabelString = twoFAMode.invaildString()
-            cancelRightButton.isHidden = ( twoFAMode == .copy ? true : false)
-            textField.isUserInteractionEnabled = ( twoFAMode == .copy ? false : true)
         }
         topLabel.text = topLabelString
         invalidLabel.text = invalidLabelString
-
+        textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
+        
         addSubview(displayRightButton)
         displayRightButton.frame.size.width = 24
         displayRightButton.setTitle(nil, for: .normal)
@@ -216,7 +251,7 @@ class InputStyleView: UIView {
             make.centerY.equalTo(textField)
             make.width.height.equalTo(14)
         }
-        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + rightLabelWidth + 14 + offetWidth , height: 10))
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 34 + rightLabelWidth + offetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
     }
@@ -243,19 +278,13 @@ class InputStyleView: UIView {
     {
         
     }
-    func changeInputMode(mode: LoginMode) {
-        inputMode = mode
-        resetUI()
-    }
+//    func changeInputMode(mode: LoginMode) {
+//        inputMode = mode
+//        resetUI()
+//    }
     private func displayRightPressed() {
-        
-        switch inputMode {
-        case .account:
-            textField.isSecureTextEntry = !(textField.isSecureTextEntry)
-            displayRightButton.setBackgroundImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
-        case .phone:
-            onClick.onNext(textField.text!)
-        }
+        textField.isSecureTextEntry = !(textField.isSecureTextEntry)
+        displayRightButton.setBackgroundImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
     }
     private func cancelButtonPressed() {
         textField.text = ""
@@ -263,10 +292,10 @@ class InputStyleView: UIView {
         textField.sendActions(for: .valueChanged)
     }
     private func verifyResentPressed() {
-        switch twoFAMode {
-        case .email:
+        switch inputViewMode {
+        case .emailVerify:
             emailSendVerify()
-        case .twoFA:
+        case .twoFAVerify:
             pasteStringToTF()
         case .copy:
             copyStringToTF()

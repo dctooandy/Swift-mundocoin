@@ -38,7 +38,7 @@ class ErrorHandler {
                 Toast.show(msg: "连线逾时请重新登入")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
 //                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.isLogin(true)
-                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.login)
+                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
                 })
             case .notLogin:
                 showRedictToLoginAlert()

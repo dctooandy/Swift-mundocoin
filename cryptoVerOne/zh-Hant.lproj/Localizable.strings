@@ -80,3 +80,9 @@
 "Copy this key to your authenticator app" = "@Copy this key to your authenticator app";
 "Bind" = "@Bind";
 "Download APP" = "@Download APP";
+"Lost google 2FA?" = "@Lost google 2FA?";
+"Withdraw to address" = "@Withdraw to address";
+"Please check the withdrawal address." = "@Please check the withdrawal address.";
+"8-20 charaters with any combination or letters, numbers, and symbols." = "@8-20 charaters with any combination or letters, numbers, and symbols.";
+"Incorrect email format." = "@Incorrect email format.";
+"Invalid registration code" = "@Invalid registration code";

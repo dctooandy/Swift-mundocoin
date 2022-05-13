@@ -11,16 +11,27 @@ import Toaster
 import AVFoundation
 import AVKit
 enum ShowMode {
-    case login
-    case signup
+    case loginEmail
+    case loginPhone
+    case signupEmail
+    case signupPhone
     case forgotPW
+    
+    var accountInputMode:InputViewMode {
+        switch self {
+        case .loginEmail,.signupEmail,.forgotPW:
+            return .email
+        case .signupPhone,.loginPhone:
+            return .phone
+        }
+    }
 }
 class LoginSignupViewController: BaseViewController {
     // MARK:業務設定
     fileprivate let loginPageVC = LoginPageViewController()
     static let share: LoginSignupViewController = LoginSignupViewController.loadNib()
     /// 显示注册或登入页面
-    private var currentShowMode: ShowMode = .login {
+    private var currentShowMode: ShowMode = .loginEmail {
         didSet {
             resetUI()
             loginPageVC.reloadPageMenu(currentMode: currentShowMode)
@@ -71,7 +82,8 @@ class LoginSignupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDateSelectedButton()
-        currentShowMode = .login
+        currentShowMode = .loginEmail
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:switchBtn)
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
 //        self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -100,7 +112,7 @@ class LoginSignupViewController: BaseViewController {
     }
     @objc func backToLoginView(isAnimation : Bool = true)
     {
-        currentShowMode = .login
+        currentShowMode = .loginEmail
     }
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev
@@ -121,7 +133,8 @@ class LoginSignupViewController: BaseViewController {
         }else
         {
 //            if !isLogin { return }
-            if currentShowMode != .login { return }
+            if currentShowMode != .loginEmail ||
+                currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }            
             if let loginPostDto = KeychainManager.share.getLastAccount(),
                BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) {
@@ -307,7 +320,7 @@ class LoginSignupViewController: BaseViewController {
 //                                                        pwd: dto.password)
 //                }
                 let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-                let showBioView = (dto.loginMode == .account) && checkBioList && !didAskBioLogin
+                let showBioView = (dto.loginMode == .emailPage) && checkBioList && !didAskBioLogin
 //                strongSelf.setLoginPageToDefault()
                 self.handleLoginSuccess(showLoadingView: showLoadingView,
                                               showBioView: showBioView,
@@ -396,7 +409,7 @@ class LoginSignupViewController: BaseViewController {
             .subscribeSuccess({ [weak self]_ in
                 self?.shouldVerify = false
                 DispatchQueue.main.async {
-                    if dto.signupMode == .phone {
+                    if dto.signupMode == .phonepPage {
                         guard let acc = res.0?.account, let pwd = res.0?.password else { return }
                         KeychainManager.share.saveAccPwd(acc: acc,
                                                          pwd: pwd,
@@ -470,7 +483,7 @@ class LoginSignupViewController: BaseViewController {
     // MARK: - ViewController navigation
     func changeLoginState() {// 登入註冊頁面
 //        isLogin = !isLogin
-        currentShowMode = ((currentShowMode == .login) ? .signup : .login)
+        currentShowMode = ((currentShowMode == .loginEmail) ? .signupEmail : .loginEmail)
     }
     
     func goMainViewController() {
@@ -566,6 +579,7 @@ class LoginSignupViewController: BaseViewController {
         successView?.setup(title: mode.signupSuccessTitles().title,
                           buttonTitle: mode.signupSuccessTitles().doneButtonTitle,
                           showAccount: mode.signupSuccessTitles().showAccount)
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         view.addSubview(successView!)
         successView?.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -581,28 +595,28 @@ class LoginSignupViewController: BaseViewController {
                     
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
-                                           loginMode: .account,
+                                           loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
                     self?.login(dto: dto, checkBioList: false, route: .wallet, showLoadingView: false)
                 case .toPersonal(let acc, let pwd):
                     
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
-                                           loginMode: .account,
+                                           loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
 //                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .toBet(let acc, let pwd):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
-                                           loginMode: .account,
+                                           loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
 //                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .clickAD(let acc, let pwd, _):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
-                                           loginMode: .account,
+                                           loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
 //                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
@@ -635,7 +649,7 @@ class LoginSignupViewController: BaseViewController {
                     verifyVC.signupDto = dto
                     self?.navigationController?.pushViewController(verifyVC, animated: true)
                 } else if let dto = postDto as? LoginPostDto {
-                    self?.login(dto: dto, checkBioList: dto.loginMode == .account ,route: .wallet)
+                    self?.login(dto: dto, checkBioList: dto.loginMode == .emailPage ,route: .wallet)
                 }
                 imageVerifyView.removeFromSuperview()
             }.disposed(by: disposeBag)
@@ -666,7 +680,7 @@ extension LoginSignupViewController {
     private func resetUI() {
 //        updateBottomView()
         switch currentShowMode {
-        case .login:
+        case .loginEmail,.loginPhone:
             fetchBackgroundVideo()
             backgroundImageView.isHidden = false
             switchButton.setTitle("Sign Up".localized, for: .normal)
@@ -674,7 +688,7 @@ extension LoginSignupViewController {
             logoImv.isHidden = false
             switchButton.isHidden = false
             backToButton.isHidden = true
-        case .signup:
+        case .signupEmail,.signupPhone:
             backgroundImageView.isHidden = false
             switchButton.setTitle("Log In".localized, for: .normal)
             topLabel.text = "Create Your Account".localized

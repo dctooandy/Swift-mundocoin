@@ -118,12 +118,12 @@ class LoginAlert:BaseViewController {
         
         registerBtn.rx.tap.subscribeSuccess { (_) in
 //            UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(false)
-            UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.signup)
+            UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.signupEmail)
             }.disposed(by: disposeBag)
         
         loginBtn.rx.tap.subscribeSuccess { (_) in
 //            UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-            UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.login)
+            UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
             }.disposed(by: disposeBag)
     }
     

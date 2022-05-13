@@ -20,9 +20,9 @@ class LoginViewController: BaseViewController {
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
 //    var rxVerifyCodeButtonClick: Observable<String>?
-    private var loginMode : LoginMode = .account {
+    private var loginMode : LoginMode = .emailPage {
         didSet {
-            self.loginModeDidChange()
+//            self.loginModeDidChange()
         }
     }
     // MARK: instance
@@ -64,14 +64,14 @@ class LoginViewController: BaseViewController {
     }
     func modeTitle() -> String {
         switch  loginMode {
-        case .account: return "".localized
-        case .phone: return "Mobile".localized
+        case .emailPage: return "".localized
+        case .phonepPage: return "Mobile".localized
         }
     }
     
     func setup() {
         
-        accountInputView = AccountInputView(inputMode: loginMode, currentShowMode: .login, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .loginEmail, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
@@ -97,7 +97,8 @@ class LoginViewController: BaseViewController {
             make.height.equalTo(view).multipliedBy(0.08)
         }
         // set default login mode
-        loginModeDidChange()
+//        loginModeDidChange()
+        forgetPasswordButton.isHidden = loginMode == .phonepPage
         forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
         loginButton.setTitle("Log In".localized, for: .normal)
         
@@ -127,7 +128,7 @@ class LoginViewController: BaseViewController {
         
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
-        let dto = LoginPostDto(account: account, password: password,loginMode: self.loginMode ,showMode: .login)
+        let dto = LoginPostDto(account: account, password: password,loginMode: self.loginMode ,showMode: .loginEmail)
         self.onClickLogin.onNext(dto)
         
     }
@@ -163,10 +164,9 @@ class LoginViewController: BaseViewController {
     }
 
     
-    private func loginModeDidChange() {
-        forgetPasswordButton.isHidden = loginMode == .phone
-        accountInputView?.changeInputMode(mode: loginMode)
-    }
+//    private func loginModeDidChange() {
+//        accountInputView?.changeInputMode(mode: loginMode)
+//    }
 }
 
 

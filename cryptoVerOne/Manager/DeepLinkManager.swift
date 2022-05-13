@@ -77,7 +77,7 @@ class DeepLinkManager {
                 if !UserStatus.share.isLogin {
                     DispatchQueue.main.async {
 //                        UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-                        UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.login)
+                        UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
                     }
                 } else {
                     DispatchQueue.main.async {
@@ -273,12 +273,12 @@ extension DeepLinkManager {
             case .login:
                 print("login")
 //                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.login)
+                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
                 
             case .signup:
                 print("signup")
 //                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(false)
-                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.signup)
+                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.signupEmail)
             case .appNews:
                 print("app news")
                 guard let vc = getBetLeadTabbarVC() else { return }

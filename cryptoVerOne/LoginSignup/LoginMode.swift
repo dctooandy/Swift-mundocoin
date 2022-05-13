@@ -8,57 +8,26 @@
 
 import Foundation
 enum LoginMode {
-    case phone
-    case account
+    case emailPage
+    case phonepPage
     
-    func accountPlacehloder() -> String {
+    var inputViewMode : InputViewMode {
         switch self {
-        case .account: return "...@mundo.com"
-        case .phone: return ""
+        case .emailPage: return .email
+        case .phonepPage: return .phone
         }
     }
-    func pwdPlaceholder() -> String {
-        switch self {
-        case .account: return "********"
-        case .phone: return "********"
-        }
-    }
-    
-    func signupAccountPlacehloder() -> String {
-        switch self {
-        case .account: return "...@mundo.com"
-        case .phone: return ""
-        }
-    }
-    
-    func signupPwdPlaceholder() -> String {
-        switch self {
-        case .account: return "********"
-        case .phone: return "********"
-        }
-    }
-    func signuprRegisterPlaceholder() -> String {
-        switch self {
-        case .account: return "********"
-        case .phone: return "********"
-        }
-    }
-    func forgotAccountPlacehloder() -> String {
-        switch self {
-        case .account: return "...@mundo.com"
-        case .phone: return ""
-        }
-    }
+   
     func verifyPlaceholder() -> String {
         return "Enter the 6-digit code".localized
     }
     
     func signupSuccessTitles() -> SignupSuccessTitle {
         switch self {
-        case .phone:
-            return SignupSuccessTitle(title: "完善您的个人资料", doneButtonTitle: "立即修改", showAccount: true)
-        case .account:
-            return SignupSuccessTitle(title: "欢迎加入倍利 祝您畅玩倍利", doneButtonTitle: "开始投注", showAccount: false)
+        case .phonepPage:
+            return SignupSuccessTitle(title: "Complete Info", doneButtonTitle: "Start", showAccount: true)
+        case .emailPage:
+            return SignupSuccessTitle(title: "Welcome to MundoCoin", doneButtonTitle: "Start", showAccount: false)
         }
     }
     

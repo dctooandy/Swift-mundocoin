@@ -15,7 +15,7 @@ class SubPageViewController: BaseViewController {
     private let dpg = DisposeBag()
     private var walletPageMode : WalletPageMode = .spot {
         didSet {
-//            loginModeDidChange()
+
         }
     }
     var dataDto: [Any]? = nil {

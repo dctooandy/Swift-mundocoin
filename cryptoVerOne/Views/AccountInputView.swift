@@ -14,8 +14,8 @@ import RxSwift
 class AccountInputView: UIView {
     // MARK:業務設定
     private var lineColor: UIColor = .white
-    private var inputMode: LoginMode = .account
-    private var currentShowMode: ShowMode = .login
+    private var inputMode: InputViewMode = .email
+    private var currentShowMode: ShowMode = .loginEmail
     private let dpg = DisposeBag()
     private let accountCheckPassed = BehaviorSubject(value: false)
     // MARK: -
@@ -34,7 +34,7 @@ class AccountInputView: UIView {
         super.init(coder: aDecoder)
     }
    
-    convenience init(inputMode: LoginMode, currentShowMode: ShowMode, lineColor: UIColor) {
+    convenience init(inputMode: InputViewMode, currentShowMode: ShowMode, lineColor: UIColor) {
         self.init(frame: .zero)
         self.inputMode = inputMode
         self.currentShowMode = currentShowMode
@@ -52,7 +52,7 @@ class AccountInputView: UIView {
 //        let isAccountValid = accountTextField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false  }
-                if strongSelf.inputMode == .phone {
+                if strongSelf.inputMode == .phone{
                     return RegexHelper.match(pattern:. phone, input: acc)
                 }
                 return RegexHelper.match(pattern: .mail, input: acc)
@@ -71,7 +71,6 @@ class AccountInputView: UIView {
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
                 return RegexHelper.match(pattern: .otp, input: acc)
-                
         }
         isAccountValid.skip(1).bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //        isAccountValid.skip(1).bind(to: accountInvalidLabel.rx.isHidden).disposed(by: dpg)
@@ -79,7 +78,8 @@ class AccountInputView: UIView {
         if currentShowMode == .forgotPW
         {
             isAccountValid.bind(to: accountCheckPassed).disposed(by: dpg)
-        }else if currentShowMode == .signup
+        }else if currentShowMode == .signupEmail ||
+                    currentShowMode == .signupPhone
         {
             isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
             isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
@@ -130,9 +130,9 @@ class AccountInputView: UIView {
     }
     
     func setup() {
-        let accountView = InputStyleView(inputMode: inputMode, currentShowMode: currentShowMode, isPWStyle: false)
-        let passwordView = InputStyleView(inputMode: inputMode, currentShowMode: currentShowMode, isPWStyle: true)
-        let registrationView = InputStyleView(inputMode: inputMode, currentShowMode: currentShowMode, isPWStyle: false,isRegisterStyle: true)
+        let accountView = InputStyleView(inputViewMode: currentShowMode.accountInputMode, isPWStyle: false)
+        let passwordView = InputStyleView(inputViewMode: .password, isPWStyle: true)
+        let registrationView = InputStyleView(inputViewMode: .registration, isPWStyle: false,isRegisterStyle: true)
         self.accountInputView = accountView
         self.passwordInputView = passwordView
         self.registrationInputView = registrationView
@@ -144,7 +144,7 @@ class AccountInputView: UIView {
             make.height.equalTo(height(90/812))
         }
         switch currentShowMode {
-        case .login:
+        case .loginEmail , .loginPhone:
             addSubview(passwordInputView)
             passwordInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(accountInputView.snp.bottom)
@@ -152,7 +152,7 @@ class AccountInputView: UIView {
                 make.trailing.equalToSuperview().offset(-20)
                 make.height.equalTo(height(90/812))
             }
-        case .signup:
+        case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
             addSubview(registrationInputView)
             passwordInputView.snp.makeConstraints { (make) in
@@ -173,10 +173,10 @@ class AccountInputView: UIView {
         }
     }
     
-    func changeInputMode(mode: LoginMode) {
-        inputMode = mode
-        accountInputView.resetUI()
-        passwordInputView.resetUI()
-        registrationInputView.resetUI()
-    }
+//    func changeInputMode(mode: LoginMode) {
+//        inputMode = mode
+//        accountInputView.resetUI()
+//        passwordInputView.resetUI()
+//        registrationInputView.resetUI()
+//    }
 }
