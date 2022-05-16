@@ -95,3 +95,5 @@
 "Receive amount (USDT)" = "Receive amount (USDT)";
 "Min: 10 USDT - Max: 10,000 USDT" = "Min: 10 USDT - Max: 10,000 USDT";
 "Please ensure that the address is correct and on the same network." = "Please ensure that the address is correct and on the same network.";
+"Withdraw to" = "Withdraw to";
+"Txid" = "Txid";

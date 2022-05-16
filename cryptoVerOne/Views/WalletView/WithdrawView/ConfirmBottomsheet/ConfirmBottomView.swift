@@ -13,9 +13,16 @@ class ConfirmBottomView: UIView {
     // MARK:業務設定
     private let onConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var addressString :String = "" {
+        didSet{
+            withdrawToInputView.textField.text = addressString
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var confirmButton: CornerradiusButton!
+    @IBOutlet weak var withdrawToView: UIView!
+    var withdrawToInputView : InputStyleView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -35,7 +42,11 @@ class ConfirmBottomView: UIView {
     // MARK:業務方法
     func setupUI()
     {
-        
+        withdrawToInputView = InputStyleView(inputViewMode: .withdrawTo(false))
+        withdrawToView.addSubview(withdrawToInputView)
+        withdrawToInputView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
     }
     func bindUI()
     {

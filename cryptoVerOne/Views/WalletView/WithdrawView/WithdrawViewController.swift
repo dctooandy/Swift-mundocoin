@@ -62,7 +62,7 @@ class WithdrawViewController: BaseViewController {
         feeAmountLabel.text = "1.00"
         receiveAmountLabel.text = "499.0"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
-        withdrawToView = InputStyleView(inputViewMode: .withdrawTo)
+        withdrawToView = InputStyleView(inputViewMode: .withdrawToAddress)
         methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource))
         
         withdrawToInputView.addSubview(withdrawToView)
@@ -95,6 +95,7 @@ class WithdrawViewController: BaseViewController {
             }
         }.disposed(by: dpg)
         continueButton.rx.tap.subscribeSuccess { [self](_) in
+            Log.i("開confirm")
             continueAction()
         }.disposed(by: dpg)
     }
@@ -123,22 +124,40 @@ class WithdrawViewController: BaseViewController {
     }
     func continueAction()
     {
-        confirmBottomSheet = ConfirmBottomSheet()
-        confirmBottomSheet.rxSecondConfirmAction().subscribeSuccess { [self](_) in
-            showSecurityVC()
-        }.disposed(by: dpg)
-        DispatchQueue.main.async { [self] in
-            confirmBottomSheet.start(viewController: self,height: height(674.0/896.0))
+        if let textString = withdrawToView.textField.text
+        {
+            confirmBottomSheet = ConfirmBottomSheet(address: textString)
+            confirmBottomSheet.rxSecondConfirmAction().subscribeSuccess { [self](_) in
+                Log.i("開驗證")
+                showSecurityVC()
+            }.disposed(by: dpg)
+            DispatchQueue.main.async { [self] in
+                confirmBottomSheet.start(viewController: self,height: height(674.0/896.0))
+            }
+        }else
+        {
+            
         }
     }
     func showSecurityVC()
     {
         securityVerifyVC = SecurityVerificationViewController.loadNib()
         securityVerifyVC.securityViewMode = .defaultMode
-        securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { (_) in
-            Log.i("驗證成功")
+        securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](_) in
+            Log.i("驗證成功,開Detail")
+            showTransactionDetailView()
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(securityVerifyVC, animated: true)
+    }
+    func showTransactionDetailView()
+    {
+        if let textString = withdrawToView.textField.text
+        {
+            let detailVC = TDetailViewController.loadNib()
+            detailVC.titleString = "Withdraw"
+            detailVC.addressModel = textString
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
     }
     func rxConfirmClick() -> Observable<Any>
     {

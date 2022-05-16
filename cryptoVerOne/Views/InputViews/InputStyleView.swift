@@ -16,26 +16,30 @@ enum InputViewMode :Equatable {
     case emailVerify
     case twoFAVerify
     case copy
-    case withdrawTo
+    case withdrawToAddress
     case email
     case phone
     case password
     case forgotPW
     case registration
     case networkMethod(Array<String>)
-
+    case withdrawTo(Bool)
+    case txid
+    
     func topString() -> String {
         switch self {
         case .emailVerify: return "Enter the 6-digit code sent to ".localized
         case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
         case .copy: return "Copy this key to your authenticator app".localized
-        case .withdrawTo: return "Withdraw to address".localized
+        case .withdrawToAddress: return "Withdraw to address".localized
         case .email: return "Email".localized
         case .phone: return "Phone Number".localized
         case .password: return "Password".localized
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
+        case .withdrawTo( _ ): return "Withdraw to".localized
+        case .txid: return "Txid".localized
         }
     }
     
@@ -43,7 +47,7 @@ enum InputViewMode :Equatable {
         switch self {
         case .emailVerify: return "Email verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
-        case .withdrawTo: return "Long press to paste".localized
+        case .withdrawToAddress: return "Long press to paste".localized
         case .email: return "...@mundo.com"
         case .password: return "********".localized
         case .forgotPW: return "...@mundo.com"
@@ -55,7 +59,7 @@ enum InputViewMode :Equatable {
         switch self {
         case .emailVerify: return "Invaild verification code".localized
         case .twoFAVerify: return "Invaild verification code".localized
-        case .withdrawTo: return "Please check the withdrawal address.".localized
+        case .withdrawToAddress: return "Please check the withdrawal address.".localized
         case .email: return "Incorrect email format.".localized
         case .phone: return "Invalid phone number.".localized
         case .password: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
@@ -111,10 +115,12 @@ class InputStyleView: UIView {
     private let onPasteClick = PublishSubject<Any>()
     private let onAddressBookClick = PublishSubject<Any>()
     private let onScanClick = PublishSubject<Any>()
+    private let onAddAddressClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private var timer: Timer?
     private var countTime = 60
-    var offetWidth : CGFloat = 0.0
+    var displayOffetWidth : CGFloat = 0.0
+    var cancelOffetWidth : CGFloat = 0.0
     // MARK: -
     // MARK:UI 設定
     let topLabel: UILabel = {
@@ -155,6 +161,16 @@ class InputStyleView: UIView {
     let scanImageView : UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "launch-logo")
+        return imgView
+    }()
+    let addAddressImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "arrow-circle-right")
+        return imgView
+    }()
+    let copyAddressImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "arrow-circle-right")
         return imgView
     }()
     let displayRightButton = UIButton()
@@ -236,25 +252,32 @@ class InputStyleView: UIView {
         var placeHolderString = ""
         var invalidLabelString = ""
         var rightLabelWidth : CGFloat = 0.0
-        offetWidth = (inputViewMode == .password ? 24.0:0.0)
+        displayOffetWidth = (inputViewMode == .password ? 24.0:0.0)
+        switch self.inputViewMode {
+        case .copy ,.networkMethod(_), .withdrawTo(_) ,.txid:
+            cancelOffetWidth = 0.0
+            textField.isUserInteractionEnabled = false
+        default:
+            cancelOffetWidth = 14.0
+            textField.isUserInteractionEnabled = true
+        }
         textField.isSecureTextEntry = (inputViewMode == .password)
         topLabelString = inputViewMode.topString()
         placeHolderString = inputViewMode.textPlacehloder()
         invalidLabelString = inputViewMode.invaildString()
-        cancelRightButton.isHidden = ( inputViewMode == .copy ? true : false)
-        textField.isUserInteractionEnabled = ( inputViewMode == .copy ? false : true)
+     
         if inputViewMode == .emailVerify ||
             inputViewMode == .twoFAVerify ||
             inputViewMode == .copy
         {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
-            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
             }
-        }else if inputViewMode == .withdrawTo
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+        }else if inputViewMode == .withdrawToAddress
         {
             addSubview(scanImageView)
             addSubview(addressBookImageView)
@@ -268,14 +291,8 @@ class InputStyleView: UIView {
                 make.centerY.equalTo(textField)
                 make.size.equalTo(18)
             }
-            rightLabelWidth = 18 + 18 + 20
-        }
-        
-        topLabel.text = topLabelString
-        invalidLabel.text = invalidLabelString
-        textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
-        
-        if inputViewMode.isNetworkMethod()
+            rightLabelWidth = 18 + 18 + 10
+        }else if inputViewMode.isNetworkMethod()
         {
             textField.text = "TRC20"
             let textFieldMulH = height(48/812)
@@ -293,31 +310,62 @@ class InputStyleView: UIView {
             }
             setupChooseDropdown()
             bindChooseButton()
+        }else if inputViewMode == .withdrawTo(true)
+        {
+            addSubview(addAddressImageView)
+            addSubview(copyAddressImageView)
+            copyAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(18)
+            }
+            addAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(18)
+            }
+            rightLabelWidth = 18 + 18 + 10
+        }else if inputViewMode == .txid
+        {
+            addSubview(copyAddressImageView)
+            copyAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(18)
+            }
+            rightLabelWidth = 18 + 10
         }else
         {
-            addSubview(displayRightButton)
-            displayRightButton.frame.size.width = 24
-            displayRightButton.setTitle(nil, for: .normal)
-            displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
-            displayRightButton.snp.remakeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10 - rightLabelWidth)
-                make.centerY.equalTo(textField)
-                make.height.equalTo(24)
-                make.width.equalTo(offetWidth)
-            }
-            addSubview(cancelRightButton)
-            //設定文字刪除
-            cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-            cancelRightButton.backgroundColor = .black
-            cancelRightButton.layer.cornerRadius = 7
-            cancelRightButton.layer.masksToBounds = true
-            cancelRightButton.snp.remakeConstraints { (make) in
-                make.right.equalTo(displayRightButton.snp.left).offset(-10)
-                make.centerY.equalTo(textField)
-                make.width.height.equalTo(14)
-            }
+            rightLabelWidth = 10
         }
-        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 34 + rightLabelWidth + offetWidth , height: 10))
+        
+        topLabel.text = topLabelString
+        invalidLabel.text = invalidLabelString
+        textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
+        
+        addSubview(displayRightButton)
+        displayRightButton.setTitle(nil, for: .normal)
+        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
+        displayRightButton.snp.remakeConstraints { (make) in
+            make.right.equalToSuperview().offset(-10 - rightLabelWidth)
+            make.centerY.equalTo(textField)
+            make.height.equalTo(24)
+            make.width.equalTo(displayOffetWidth)
+        }
+        addSubview(cancelRightButton)
+        //設定文字刪除
+        cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
+        cancelRightButton.backgroundColor = .black
+        cancelRightButton.layer.cornerRadius = 7
+        cancelRightButton.layer.masksToBounds = true
+        cancelRightButton.snp.remakeConstraints { (make) in
+            make.right.equalTo(displayRightButton.snp.left).offset(-10)
+            make.centerY.equalTo(textField)
+            make.height.equalTo(14)
+            make.width.equalTo(cancelOffetWidth)
+        }
+
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
     }
@@ -343,6 +391,13 @@ class InputStyleView: UIView {
         }.disposed(by: dpg)
         addressBookImageView.rx.click.subscribeSuccess { [self](_) in
             self.onAddressBookClick.onNext(())
+        }.disposed(by: dpg)
+        
+        copyAddressImageView.rx.click.subscribeSuccess { [self](_) in
+            copyStringToTF()
+        }.disposed(by: dpg)
+        addAddressImageView.rx.click.subscribeSuccess { [self](_) in
+            self.onAddAddressClick.onNext(self.textField.text!)
         }.disposed(by: dpg)
     }
     func bindTextfield()
@@ -426,7 +481,7 @@ class InputStyleView: UIView {
         displayRightButton.snp.updateConstraints { (make) in
             make.right.equalToSuperview().offset(-10 - rightLabelWidth)
         }
-        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 20 + rightLabelWidth + 14 + offetWidth , height: 10))
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightView = nil
         textField.rightViewMode = .always
         textField.rightView = rightView
@@ -489,6 +544,9 @@ class InputStyleView: UIView {
     }
     func rxAddressBookImagePressed() -> Observable<Any> {
         return onAddressBookClick.asObserver()
+    }
+    func rxAddAddressImagePressed() -> Observable<String> {
+        return onAddAddressClick.asObserver()
     }
 }
 // MARK: -

@@ -30,6 +30,8 @@
 		A16F6209282E4E2000D9CCE5 /* ConfirmBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F6208282E4E2000D9CCE5 /* ConfirmBottomSheet.swift */; };
 		A16F620C282E500000D9CCE5 /* ConfirmBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F620B282E500000D9CCE5 /* ConfirmBottomView.swift */; };
 		A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */; };
+		A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */; };
+		A16F62162831FACD00D9CCE5 /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
 		A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
 		A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
 		A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
@@ -194,6 +196,8 @@
 		A16F6208282E4E2000D9CCE5 /* ConfirmBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBottomSheet.swift; sourceTree = "<group>"; };
 		A16F620B282E500000D9CCE5 /* ConfirmBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmBottomView.swift; sourceTree = "<group>"; };
 		A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmBottomView.xib; sourceTree = "<group>"; };
+		A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDetailViewController.swift; sourceTree = "<group>"; };
+		A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDetailViewController.xib; sourceTree = "<group>"; };
 		A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuLoginNavigationController.swift; sourceTree = "<group>"; };
 		A19739C228251B33009932D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C628251B97009932D8 /* CPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPasswordViewController.swift; sourceTree = "<group>"; };
@@ -415,6 +419,15 @@
 				A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */,
 			);
 			path = ConfirmBottomsheet;
+			sourceTree = "<group>";
+		};
+		A16F62112831F9F700D9CCE5 /* TransactionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */,
+				A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */,
+			);
+			path = TransactionDetails;
 			sourceTree = "<group>";
 		};
 		A19739C128251AFB009932D8 /* ResetPasswordView */ = {
@@ -674,6 +687,7 @@
 		A19C70632822356D000AFC3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A16F62112831F9F700D9CCE5 /* TransactionDetails */,
 				A1973A86282AB33A009932D8 /* SecurityVerification */,
 				A19739E228280866009932D8 /* InputViews */,
 				A19C71DF282268B1000AFC3F /* ImageVerify */,
@@ -940,6 +954,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A16F62162831FACD00D9CCE5 /* TDetailViewController.xib in Resources */,
 				A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */,
 				A19C7145282257AB000AFC3F /* mucoin_error.json in Resources */,
 				A1973A252828F3E7009932D8 /* WithdrawViewController.xib in Resources */,
@@ -1091,6 +1106,7 @@
 				A16F61F8282E383300D9CCE5 /* TemplateView.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
 				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
+				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
 				A16F61C7282CBBD100D9CCE5 /* TFFinishReViewController.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
