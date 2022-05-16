@@ -22,6 +22,8 @@ struct RegexHelper {
         case phone
         case otp
         case coinAddress
+        case moneyAmount
+        
         var valid:String {
             switch  self {
             case .account:
@@ -43,7 +45,9 @@ struct RegexHelper {
             case .otp:
                 return "^\\d{6}$"
             case .coinAddress:
-                return "^[0-9a-zA-Z_\\.-]{1,30}+$"
+                return "^[0-9a-zA-Z_\\.-]{1,50}+$"
+            case .moneyAmount:
+                return "^[0-9\\.]{1,10}+$"
             }
         }
         var invalid:[String] {

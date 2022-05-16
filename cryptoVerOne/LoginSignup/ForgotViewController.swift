@@ -77,7 +77,7 @@ class ForgotViewController: BaseViewController {
             make.top.equalToSuperview().offset(56)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(height(90/812))
+            make.height.equalTo(90)
         }
         view.addSubview(sendResetLinkButton)
         

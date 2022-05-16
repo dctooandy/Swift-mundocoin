@@ -73,13 +73,13 @@ class TwoFAVerifyView: UIView {
     }
     func resetUI()
     {
-        let defaultHeight : CGFloat = height(90/812)
-        var bottomY : CGFloat = height(90/812)
+        let defaultHeight : CGFloat = 90
+        var bottomY : CGFloat = 90
         switch twoFAViewMode {
         case .both:
             setupEmailInputView(withTop: 0)
             setupTwoFAInputView(withTop: defaultHeight)
-            bottomY = height(90/812) * 2.0
+            bottomY = 90 * 2.0
         case .onlyEmail:
             setupEmailInputView(withTop: 0)
             twoFAInputView.snp.updateConstraints { (make) in
@@ -112,7 +112,7 @@ class TwoFAVerifyView: UIView {
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(height(90/812))
+            make.height.equalTo(90)
         }
     }
     func setupTwoFAInputView(withTop:CGFloat)
@@ -121,7 +121,7 @@ class TwoFAVerifyView: UIView {
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(height(90/812))
+            make.height.equalTo(90)
         }
     }
     func bind()

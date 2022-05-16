@@ -64,8 +64,7 @@ class TwoFactorAuthViewController: BaseViewController {
         twoFAView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        view.addSubview(bindButton)
-        view.addSubview(downloadButton)
+
         bindButton.setTitle("Bind".localized, for: .normal)
         bindButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)

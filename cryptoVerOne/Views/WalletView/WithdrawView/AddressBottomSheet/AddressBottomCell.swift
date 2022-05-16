@@ -28,11 +28,26 @@ class AddressBottomCell: UITableViewCell {
         setupUI()
         bindUI()
     }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+        bindUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
     // MARK: -
     // MARK:業務方法
     func setupUI()
     {
         
+    }
+    func setAccountData(data:UserAddressDto)
+    {
+        nameLabel.text = data.accountName
+        protocolLabel.text = data.protocolType
+        addressLabel.text = data.address
     }
     func bindUI()
     {

@@ -32,6 +32,9 @@
 		A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */; };
 		A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */; };
 		A16F62162831FACD00D9CCE5 /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
+		A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F621A2832277C00D9CCE5 /* AmountInputView.swift */; };
+		A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
+		A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
 		A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
 		A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
 		A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
@@ -198,6 +201,9 @@
 		A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmBottomView.xib; sourceTree = "<group>"; };
 		A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TDetailViewController.swift; sourceTree = "<group>"; };
 		A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TDetailViewController.xib; sourceTree = "<group>"; };
+		A16F621A2832277C00D9CCE5 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
+		A16F621D2832279F00D9CCE5 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
+		A16F622028323EE900D9CCE5 /* UserAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressDto.swift; sourceTree = "<group>"; };
 		A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuLoginNavigationController.swift; sourceTree = "<group>"; };
 		A19739C228251B33009932D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C628251B97009932D8 /* CPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPasswordViewController.swift; sourceTree = "<group>"; };
@@ -430,6 +436,15 @@
 			path = TransactionDetails;
 			sourceTree = "<group>";
 		};
+		A16F62182832275700D9CCE5 /* AmountView */ = {
+			isa = PBXGroup;
+			children = (
+				A16F621A2832277C00D9CCE5 /* AmountInputView.swift */,
+				A16F621D2832279F00D9CCE5 /* AmountInputView.xib */,
+			);
+			path = AmountView;
+			sourceTree = "<group>";
+		};
 		A19739C128251AFB009932D8 /* ResetPasswordView */ = {
 			isa = PBXGroup;
 			children = (
@@ -499,6 +514,7 @@
 		A1973A202828F3B7009932D8 /* WithdrawView */ = {
 			isa = PBXGroup;
 			children = (
+				A16F62182832275700D9CCE5 /* AmountView */,
 				A16F6206282E4CDD00D9CCE5 /* ConfirmBottomsheet */,
 				A16F61E8282E30DF00D9CCE5 /* AddressBottomSheet */,
 				A1973A212828F3D3009932D8 /* WithdrawViewController.swift */,
@@ -776,6 +792,7 @@
 				A19C71A828226279000AFC3F /* LoginPostDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
+				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -988,6 +1005,7 @@
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
+				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
 				A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */,
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
@@ -1083,6 +1101,7 @@
 				A19C719128225B8D000AFC3F /* CALayer+util.swift in Sources */,
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
+				A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
@@ -1119,6 +1138,7 @@
 				A19C70F828224D4F000AFC3F /* BasePresentAnimationController.swift in Sources */,
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
+				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestServer.swift in Sources */,

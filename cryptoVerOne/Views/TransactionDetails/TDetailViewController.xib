@@ -56,13 +56,20 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERr-Ne-b5o">
-                                        <rect key="frame" x="20" y="565" width="374" height="90"/>
+                                        <rect key="frame" x="20" y="565" width="374" height="120"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="90" id="MuB-Qm-ekh"/>
-                                            <constraint firstAttribute="height" constant="90" id="ext-Dw-07c"/>
+                                            <constraint firstAttribute="height" constant="120" id="ext-Dw-07c"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-AR-dpF" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
+                                        <rect key="frame" x="62" y="705" width="290" height="50"/>
+                                        <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="LzH-GH-Krr"/>
+                                        </constraints>
+                                        <state key="normal" title="Check History"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -70,13 +77,16 @@
                                     <constraint firstItem="ERr-Ne-b5o" firstAttribute="top" secondItem="wFt-ZR-3cx" secondAttribute="bottom" id="5Zf-P4-WTi"/>
                                     <constraint firstItem="wFt-ZR-3cx" firstAttribute="top" secondItem="zNs-v8-FJi" secondAttribute="bottom" constant="16" id="Iuy-UB-8BU"/>
                                     <constraint firstItem="W5Y-6v-m4w" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="32" id="W2B-oY-oT1"/>
+                                    <constraint firstItem="fWD-AR-dpF" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="62" id="WaS-VY-nXC"/>
                                     <constraint firstAttribute="trailing" secondItem="zNs-v8-FJi" secondAttribute="trailing" constant="32" id="b9L-FP-o8R"/>
                                     <constraint firstItem="zNs-v8-FJi" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="32" id="d79-dO-OfW"/>
                                     <constraint firstItem="wFt-ZR-3cx" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="20" id="hJw-pP-OAg"/>
                                     <constraint firstAttribute="trailing" secondItem="wFt-ZR-3cx" secondAttribute="trailing" constant="20" id="jT1-cw-H7m"/>
                                     <constraint firstItem="zNs-v8-FJi" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="20" id="mUq-c0-CnW"/>
+                                    <constraint firstAttribute="trailing" secondItem="fWD-AR-dpF" secondAttribute="trailing" constant="62" id="rxJ-gC-DLi"/>
                                     <constraint firstItem="ERr-Ne-b5o" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="20" id="sZd-Q5-ckD"/>
                                     <constraint firstItem="W5Y-6v-m4w" firstAttribute="top" secondItem="rgi-15-sLp" secondAttribute="top" id="uRD-zq-pKA"/>
+                                    <constraint firstItem="fWD-AR-dpF" firstAttribute="top" secondItem="ERr-Ne-b5o" secondAttribute="bottom" constant="20" id="x3U-Lw-Af7"/>
                                     <constraint firstAttribute="trailing" secondItem="W5Y-6v-m4w" secondAttribute="trailing" constant="32" id="yVl-FE-GyY"/>
                                 </constraints>
                             </view>
@@ -101,6 +111,8 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="checkButton" destination="fWD-AR-dpF" id="Bjj-BT-5A2"/>
+                <outlet property="txidInputViewHeight" destination="ext-Dw-07c" id="9Th-PV-Zuv"/>
                 <outlet property="txidView" destination="ERr-Ne-b5o" id="oac-AT-wdQ"/>
                 <outlet property="withdrawToView" destination="wFt-ZR-3cx" id="hFD-yG-4Xe"/>
             </connections>

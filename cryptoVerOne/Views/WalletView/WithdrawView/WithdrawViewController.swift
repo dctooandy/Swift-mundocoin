@@ -20,7 +20,6 @@ class WithdrawViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var withdrawToInputView: UIView!
     @IBOutlet weak var methodInputView: UIView!
-    
     @IBOutlet weak var feeTitle: UILabel!
     @IBOutlet weak var receiveTitle: UILabel!
     @IBOutlet weak var rangeLabel: UILabel!
@@ -28,12 +27,21 @@ class WithdrawViewController: BaseViewController {
     @IBOutlet weak var receiveAmountLabel: UILabel!
     @IBOutlet weak var continueButton: CornerradiusButton!
     @IBOutlet weak var noticeLabel: UILabel!
+    @IBOutlet weak var amountInputView: UIView!
+    var amountView : AmountInputView!
     var withdrawToView : InputStyleView!
     var methodView : InputStyleView!
     var confirmBottomSheet : ConfirmBottomSheet!
     var securityVerifyVC : SecurityVerificationViewController!
     // MARK: -
     // MARK:Life cycle
+    init(_ : Any?) {
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Withdraw"
@@ -56,11 +64,17 @@ class WithdrawViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        amountView = AmountInputView.loadNib()
+        amountView.amountTextView.text = "0"
+        amountInputView.addSubview(amountView)
+        amountView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
         rangeLabel.text = "Min: 10 USDT - Max: 10,000 USDT".localized
         feeAmountLabel.text = "1.00"
-        receiveAmountLabel.text = "499.0"
+        receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
         withdrawToView = InputStyleView(inputViewMode: .withdrawToAddress)
         methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource))
@@ -89,7 +103,10 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
             Log.i("開地址簿")
             let addressBottomSheet = AddressBottomSheet()
-            
+            addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
+                withdrawToView.textField.text = dataDto.address
+                withdrawToView.textField.sendActions(for: .valueChanged)
+            }.disposed(by: dpg)
             DispatchQueue.main.async {
                 addressBottomSheet.start(viewController: self)
             }
@@ -101,6 +118,16 @@ class WithdrawViewController: BaseViewController {
     }
     func bindTextField()
     {
+        let isAmountValid = amountView.amountTextView.rx.text
+            .map { [weak self] (str) -> Bool in
+                guard let _ = self, let acc = str else { return false  }
+                return RegexHelper.match(pattern: .moneyAmount, input: acc)
+                    && acc != "0"
+                    && acc != "0."
+                    && acc != "0.0"
+                    && acc != "0.00"
+            }
+        
         let isAddressValid = withdrawToView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
@@ -112,8 +139,8 @@ class WithdrawViewController: BaseViewController {
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .coinAddress, input: acc)
         }
-        Observable.combineLatest(isAddressValid, isProtocolValid)
-            .map { return $0.0 && $0.1 } //reget match result
+        Observable.combineLatest(isAmountValid,isAddressValid, isProtocolValid)
+            .map { return $0.0 && $0.1 && $0.2 } //reget match result
             .bind(to: continueButton.rx.isEnabled)
             .disposed(by: dpg)
         
@@ -121,6 +148,14 @@ class WithdrawViewController: BaseViewController {
             .map({$0.isEmpty})
             .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
             .disposed(by: dpg)
+        amountView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
+            if let amount = Float(amountView.amountTextView.text!)
+            {
+                let result = (amount > 1.0 ?  amount - 1.0 :0)
+                
+                receiveAmountLabel.text = String(format: "%.2f", result)
+            }
+        }.disposed(by: dpg)
     }
     func continueAction()
     {
@@ -159,6 +194,7 @@ class WithdrawViewController: BaseViewController {
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
+
     func rxConfirmClick() -> Observable<Any>
     {
         return onConfirmClick.asObserver()

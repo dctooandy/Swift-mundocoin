@@ -107,6 +107,7 @@ class UnderlinedLabel: UILabel {
             let textRange = NSMakeRange(0, text.count)
             let attributedText = NSMutableAttributedString(string: text)
             attributedText.addAttribute(NSAttributedString.Key.underlineStyle , value: NSUnderlineStyle.single.rawValue, range: textRange)
+            attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(rgb: 0x0587FF), range: textRange)
             // Add other attributes if needed
             self.attributedText = attributedText
         }

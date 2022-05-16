@@ -78,7 +78,7 @@ class LoginViewController: BaseViewController {
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(height(180/812))
+            make.height.equalTo(180)
         }
         view.addSubview(forgetPasswordButton)
         view.addSubview(loginButton)

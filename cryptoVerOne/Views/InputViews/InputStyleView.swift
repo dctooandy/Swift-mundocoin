@@ -116,6 +116,7 @@ class InputStyleView: UIView {
     private let onAddressBookClick = PublishSubject<Any>()
     private let onScanClick = PublishSubject<Any>()
     private let onAddAddressClick = PublishSubject<String>()
+    private let onTextLabelClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private var timer: Timer?
     private var countTime = 60
@@ -136,6 +137,16 @@ class InputStyleView: UIView {
         tf.borderStyle = .none
         tf.font = Fonts.sfProLight(16)
         return tf
+    }()
+    let textLabel: UnderlinedLabel = {
+        let tfLabel = UnderlinedLabel()
+        tfLabel.backgroundColor = .clear
+        tfLabel.font = Fonts.sfProLight(16)
+        tfLabel.numberOfLines = 0
+        tfLabel.adjustsFontSizeToFitWidth = true
+        tfLabel.minimumScaleFactor = 0.5
+        tfLabel.isUserInteractionEnabled = true
+        return tfLabel
     }()
     let invalidLabel: UILabel = {
         let lb = UILabel()
@@ -197,6 +208,7 @@ class InputStyleView: UIView {
         self.bindPwdButton()
         self.bindImageView()
         self.bindTextfield()
+        self.bindLabel()
         self.bindCancelButton()
         timer?.invalidate()
     }
@@ -223,23 +235,23 @@ class InputStyleView: UIView {
         
         textField.delegate = self
         displayRightButton.tintColor = .black
-        let textFieldMulH = height(48/812)
+        let topLabelH = height(17/812)
         let invalidH = height(20/812)
         topLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
-            make.height.equalTo(height(17/812))
-        }
-        textField.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(height(5/812))
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(textFieldMulH)
+            make.height.equalTo(topLabelH)
         }
         invalidLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(textField.snp.bottom)
             make.left.equalTo(textField)
             make.height.equalTo(invalidH)
+            make.bottom.equalToSuperview()
+        }
+        textField.snp.makeConstraints { (make) in
+            make.top.equalTo(topLabel.snp.bottom).offset(height(5/812)).offset(8)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.bottom.equalTo(invalidLabel.snp.top).offset(-8)
         }
         textField.setMaskView()
         resetUI()
@@ -327,6 +339,11 @@ class InputStyleView: UIView {
             rightLabelWidth = 18 + 18 + 10
         }else if inputViewMode == .txid
         {
+            addSubview(textLabel)
+            textLabel.snp.makeConstraints { (make) in
+                make.left.top.bottom.equalTo(textField)
+                make.right.equalToSuperview().offset(-35)
+            }
             addSubview(copyAddressImageView)
             copyAddressImageView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
@@ -398,6 +415,12 @@ class InputStyleView: UIView {
         }.disposed(by: dpg)
         addAddressImageView.rx.click.subscribeSuccess { [self](_) in
             self.onAddAddressClick.onNext(self.textField.text!)
+        }.disposed(by: dpg)
+    }
+    func bindLabel()
+    {
+        textLabel.rx.click.subscribeSuccess { [self](_) in
+            onTextLabelClick.onNext(textLabel.text!)
         }.disposed(by: dpg)
     }
     func bindTextfield()
@@ -547,6 +570,9 @@ class InputStyleView: UIView {
     }
     func rxAddAddressImagePressed() -> Observable<String> {
         return onAddAddressClick.asObserver()
+    }
+    func rxTextLabelClick() -> Observable<String> {
+        return onTextLabelClick.asObserver()
     }
 }
 // MARK: -

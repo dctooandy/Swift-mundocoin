@@ -30,20 +30,30 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3763.69" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nBV-Y8-qd6">
-                                                <rect key="frame" x="137" y="124" width="92" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bu4-o3-c1Y">
+                                                <rect key="frame" x="0.0" y="57" width="366" height="1"/>
+                                                <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="2bc-mB-NPJ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUF-Vl-Zbu">
+                                                <rect key="frame" x="0.0" y="58" width="366" height="135"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="AUF-Vl-Zbu" secondAttribute="bottom" id="34A-1p-VnL"/>
                                             <constraint firstItem="N8S-iw-fb0" firstAttribute="leading" secondItem="Zph-sr-bgs" secondAttribute="leading" constant="22" id="3r9-Jz-zmw"/>
+                                            <constraint firstItem="AUF-Vl-Zbu" firstAttribute="leading" secondItem="Zph-sr-bgs" secondAttribute="leading" id="4rb-gN-ZTy"/>
+                                            <constraint firstItem="AUF-Vl-Zbu" firstAttribute="top" secondItem="bu4-o3-c1Y" secondAttribute="bottom" id="6fG-zd-r58"/>
                                             <constraint firstAttribute="height" constant="193" id="ERS-1c-SFk"/>
-                                            <constraint firstAttribute="bottom" secondItem="nBV-Y8-qd6" secondAttribute="bottom" constant="40" id="OUX-Ff-Zil"/>
-                                            <constraint firstItem="nBV-Y8-qd6" firstAttribute="centerX" secondItem="Zph-sr-bgs" secondAttribute="centerX" id="dfh-cg-bpg"/>
+                                            <constraint firstItem="bu4-o3-c1Y" firstAttribute="top" secondItem="Zph-sr-bgs" secondAttribute="top" constant="57" id="L5e-KT-oPk"/>
+                                            <constraint firstItem="bu4-o3-c1Y" firstAttribute="leading" secondItem="Zph-sr-bgs" secondAttribute="leading" id="M8j-2c-BaJ"/>
                                             <constraint firstItem="N8S-iw-fb0" firstAttribute="top" secondItem="Zph-sr-bgs" secondAttribute="top" constant="24" id="mkd-5Q-DhQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="bu4-o3-c1Y" secondAttribute="trailing" id="odv-Rs-DaY"/>
+                                            <constraint firstAttribute="trailing" secondItem="AUF-Vl-Zbu" secondAttribute="trailing" id="xW4-Uv-GVO"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -184,6 +194,7 @@ and on the same network.</string>
                 </constraints>
             </view>
             <connections>
+                <outlet property="amountInputView" destination="AUF-Vl-Zbu" id="hUd-NI-adD"/>
                 <outlet property="continueButton" destination="UOw-v5-Dcg" id="vDa-HH-X6N"/>
                 <outlet property="feeAmountLabel" destination="aY2-cG-lzp" id="v3U-Dq-rRJ"/>
                 <outlet property="feeTitle" destination="q1t-4h-05m" id="bp8-Ui-Cfe"/>

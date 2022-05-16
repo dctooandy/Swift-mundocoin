@@ -141,7 +141,7 @@ class AccountInputView: UIView {
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(height(90/812))
+            make.height.equalTo(90)
         }
         switch currentShowMode {
         case .loginEmail , .loginPhone:
@@ -150,7 +150,7 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(height(90/812))
+                make.height.equalTo(90)
             }
         case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
@@ -159,13 +159,13 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(height(90/812))
+                make.height.equalTo(90)
             }
             registrationInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(passwordInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(height(90/812))
+                make.height.equalTo(90)
             }
         case .forgotPW:
             break
