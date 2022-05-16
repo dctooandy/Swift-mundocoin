@@ -15,7 +15,7 @@ class WithdrawViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let onConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var dropDataSource = ["TRC20","ERC20"]
+    var dropDataSource = ["TRC20"]
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var withdrawToInputView: UIView!

@@ -277,6 +277,7 @@ class InputStyleView: UIView {
         
         if inputViewMode.isNetworkMethod()
         {
+            textField.text = "TRC20"
             let textFieldMulH = height(48/812)
             let tfWidth = width(361.0/414.0) - 40
             addSubview(chooseButton)
