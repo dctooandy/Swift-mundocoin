@@ -31,4 +31,7 @@ class Fonts {
     static func sfProLight(_ size: CGFloat) -> UIFont {
         return UIFont(name: "SFPro-Light", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    static func PlusJakartaSansSemiBold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "PlusJakartaSans-SemiBold", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }

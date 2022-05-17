@@ -67,13 +67,11 @@ class AccountInputView: UIView {
                 return RegexHelper.match(pattern: .password, input: acc)
         }
         let isRegistrationValid = registrationInputView.textField.rx.text
-//        let isPasswordValid = passwordTextField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
-                return RegexHelper.match(pattern: .otp, input: acc)
+                return RegexHelper.match(pattern: .coinAddress, input: acc)
         }
         isAccountValid.skip(1).bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-//        isAccountValid.skip(1).bind(to: accountInvalidLabel.rx.isHidden).disposed(by: dpg)
         
         if currentShowMode == .forgotPW
         {
@@ -82,7 +80,7 @@ class AccountInputView: UIView {
                     currentShowMode == .signupPhone
         {
             isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
                 .map { return $0.0 && $0.1 && $0.2 } //reget match result
@@ -141,7 +139,7 @@ class AccountInputView: UIView {
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(90)
+            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
         switch currentShowMode {
         case .loginEmail , .loginPhone:
@@ -150,7 +148,7 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(90)
+                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
         case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
@@ -159,13 +157,13 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(90)
+                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
             registrationInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(passwordInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(90)
+                make.height.equalTo(Themes.inputViewDefaultHeight)
             }
         case .forgotPW:
             break

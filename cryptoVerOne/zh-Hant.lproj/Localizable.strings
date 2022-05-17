@@ -23,9 +23,9 @@
 "Resend in " = "@Resend in ";
 "Enter the 6-digit code" = "@Enter the 6-digit code";
 "Verify" = "@Verify";
-"Invaild email" = "@Invaild email";
-"Invaild phone" = "@Invaild phone";
-"Invaild verification code" = "@Invaild verification code";
+"Invalid email" = "@Invalid email";
+"Invalid phone" = "@Invalid phone";
+"Invalid verification code" = "@Invalid verification code";
 "Country of Residence" = "@Country of Residence";
 "Identity Verification" = "@Identity Verification";
 "Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. " = "@Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. ";

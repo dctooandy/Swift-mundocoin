@@ -28,7 +28,7 @@ class CheckBox: UIView {
     
     var checkmarkSize: CGFloat = 0.7
     
-    var checkmarkColor: UIColor = .black
+    var checkmarkColor: UIColor = .white
     
     var increasedTouchRadius: CGFloat = 5
     
@@ -58,10 +58,10 @@ class CheckBox: UIView {
     }
     init(boxColor: UIColor = .white, borderColor: UIColor, alwaysShowTick: Bool = false , style:Style = .tick) {
         super.init(frame: .zero)
-        self.checkBackgroundColor = UIColor(rgb: 0xEDEDED)
-        self.uncheckBackgroundColor = UIColor(rgb: 0xEDEDED)
-        self.checkBorderColor = UIColor(rgb: 0xEDEDED)
-        self.uncheckBorderColor = UIColor(rgb: 0xEDEDED)
+        self.checkBackgroundColor = UIColor(rgb: 0x6149f6)
+        self.uncheckBackgroundColor = UIColor(rgb: 0x6149f6)
+        self.checkBorderColor = UIColor(rgb: 0x6149f6)
+        self.uncheckBorderColor = UIColor(rgb: 0x6149f6)
         self.alwaysShowTick = alwaysShowTick
         self.style = style
         setupViews()

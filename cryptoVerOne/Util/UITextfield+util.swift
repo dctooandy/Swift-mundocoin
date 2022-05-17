@@ -12,10 +12,13 @@ extension UITextField {
     
     func setMaskView() {
         let v = UIView()
-        v.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
+//        v.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
+        v.backgroundColor = .clear
+        v.layer.borderWidth = 1
+        v.layer.borderColor = Themes.grayLighter.cgColor
         v.isUserInteractionEnabled = false
         v.alpha = 1.0
-        v.applyCornerRadius()
+        v.applyCornerRadius(radius: 10)
         addSubview(v)
         v.snp.makeConstraints { (make) in
             make.center.equalToSuperview()

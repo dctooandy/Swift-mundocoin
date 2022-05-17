@@ -32,7 +32,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
-        case .email: return "Email".localized
+        case .email: return "E-mail".localized
         case .phone: return "Phone Number".localized
         case .password: return "Password".localized
         case .forgotPW: return "Enter your email to change your password".localized
@@ -55,16 +55,16 @@ enum InputViewMode :Equatable {
         }
     }
     
-    func invaildString() -> String {
+    func invalidString() -> String {
         switch self {
-        case .emailVerify: return "Invaild verification code".localized
-        case .twoFAVerify: return "Invaild verification code".localized
+        case .emailVerify: return "Enter the 6-digit code".localized
+        case .twoFAVerify: return "Enter the 6-digit code".localized
         case .withdrawToAddress: return "Please check the withdrawal address.".localized
-        case .email: return "Incorrect email format.".localized
+        case .email: return "...@mundo.com".localized
         case .phone: return "Invalid phone number.".localized
         case .password: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
-        case .forgotPW: return "Incorrect email format.".localized
-        case .registration: return "Invalid registration code".localized
+        case .forgotPW: return "...@mundo.com".localized
+        case .registration: return "Enter the 6-digit code ".localized
         default: return ""
         }
     }
@@ -127,15 +127,20 @@ class InputStyleView: UIView {
     let topLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
-        lb.textColor = .black
+        lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
         lb.text = "Email".localized
         lb.font = Fonts.pingFangSCRegular(14)
         return lb
     }()
     let textField: UITextField = {
         let tf = UITextField()
-        tf.borderStyle = .none
+        tf.backgroundColor = .clear
+        tf.textInputView.backgroundColor = .clear
+//        tf.borderStyle = .none
         tf.font = Fonts.sfProLight(16)
+        tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
+//        tf.layer.borderWidth = 1
+//        tf.layer.borderColor = #colorLiteral(red: 0.878, green: 0.898, blue: 0.949, alpha: 1.0).cgColor
         return tf
     }()
     let textLabel: UnderlinedLabel = {
@@ -152,8 +157,10 @@ class InputStyleView: UIView {
         let lb = UILabel()
         lb.textAlignment = .left
         lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = .red
+        lb.textColor = Themes.grayLighter
         lb.isHidden = true
+        lb.numberOfLines = 0
+        lb.adjustsFontSizeToFitWidth = true
         return lb
     }()
     let verifyResentLabel: UILabel = {
@@ -235,30 +242,30 @@ class InputStyleView: UIView {
         
         textField.delegate = self
         displayRightButton.tintColor = .black
-        let topLabelH = height(17/812)
-        let invalidH = height(20/812)
+        let topLabelH = 15
+        let invalidH = inputViewMode == .password ? 39.0 : 22.0
         topLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
             make.height.equalTo(topLabelH)
         }
         invalidLabel.snp.makeConstraints { (make) in
-            make.left.equalTo(textField)
+            make.left.equalTo(topLabel)
+            make.trailing.equalTo(textField)
             make.height.equalTo(invalidH)
-            make.bottom.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-10)
         }
         textField.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(height(5/812)).offset(8)
+            make.top.equalTo(topLabel.snp.bottom).offset(7)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.bottom.equalTo(invalidLabel.snp.top).offset(-8)
+            make.bottom.equalTo(invalidLabel.snp.top)
         }
         textField.setMaskView()
         resetUI()
     }
     func resetUI()
     {
-        textField.textColor = .black
         displayRightButton.tintColor = .black
         var topLabelString = ""
         var placeHolderString = ""
@@ -276,7 +283,7 @@ class InputStyleView: UIView {
         textField.isSecureTextEntry = (inputViewMode == .password)
         topLabelString = inputViewMode.topString()
         placeHolderString = inputViewMode.textPlacehloder()
-        invalidLabelString = inputViewMode.invaildString()
+        invalidLabelString = inputViewMode.invalidString()
      
         if inputViewMode == .emailVerify ||
             inputViewMode == .twoFAVerify ||

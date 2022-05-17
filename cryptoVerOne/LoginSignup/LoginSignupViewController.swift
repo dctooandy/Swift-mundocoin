@@ -48,16 +48,21 @@ class LoginSignupViewController: BaseViewController {
     private var backGroundVideoUrl: URL? = nil
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var backgroundImageView: CustomImageView!
     @IBOutlet weak var logoImv: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     private lazy var switchButton:UIButton = {
         let rightBtn = UIButton()
         rightBtn.setTitle("Sign Up".localized, for:.normal)
-        rightBtn.setTitleColor(.black, for: .normal)
-        rightBtn.titleLabel?.font = Fonts.pingFangSCRegular(20)
+        rightBtn.setTitleColor(#colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0), for: .normal)
+        rightBtn.titleLabel?.font = Fonts.PlusJakartaSansSemiBold(20)
         rightBtn.addTarget(self, action: #selector(switchViewAction), for: .touchUpInside)
         return rightBtn
+    }()
+    private lazy var logoView:UIView = {
+        let logoView = UIView()
+        logoView.backgroundColor = .clear
+        return logoView
     }()
     private lazy var backToButton:UIButton = {
         let backToButton = UIButton()
@@ -104,7 +109,7 @@ class LoginSignupViewController: BaseViewController {
     // MARK:業務方法
     private func addDateSelectedButton() {
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchButton)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backToButton)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
         backToButton.isHidden = true
     }
     @objc func switchViewAction() {
@@ -662,19 +667,41 @@ class LoginSignupViewController: BaseViewController {
 extension LoginSignupViewController {
     
     private func setupUI() {
-        
+        logoView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 40)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
+        let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
+        let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
+        textView.contentMode = .scaleAspectFit
+        logoView.addSubview(iconView)
+        logoView.addSubview(textView)
+        iconView.snp.makeConstraints { (make) in
+            make.leading.centerY.equalToSuperview()
+            make.width.equalTo(38)
+            make.height.equalTo(38)
+        }
+        textView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconView.snp.trailing).offset(10)
+            make.width.equalTo(138)
+            make.height.equalTo(33)
+        }
 //        dismissButton.snp.makeConstraints { (make) in
 //            make.size.equalTo(height(24/812))
 //            make.top.equalToSuperview().offset(topOffset(56/812))
 //            make.left.equalToSuperview().offset(leftRightOffset(24/375))
 //        }
         
-//        backgroundImageView.snp.makeConstraints { (make) in
-//            make.top.left.right.equalToSuperview()
-//            make.height.equalToSuperview().multipliedBy(0.26)
-//        }
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+        }
+        
         resetUI()
-//        backgroundImageView.image = #imageLiteral(resourceName: "Member-Bg-purple")
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        backgroundImageView.layer.cornerRadius = 25
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
+        topLabel.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
     }
     
     private func resetUI() {
@@ -682,21 +709,21 @@ extension LoginSignupViewController {
         switch currentShowMode {
         case .loginEmail,.loginPhone:
             fetchBackgroundVideo()
-            backgroundImageView.isHidden = false
+//            backgroundImageView.isHidden = false
             switchButton.setTitle("Sign Up".localized, for: .normal)
             topLabel.text = "Log In to Mundocoin".localized
             logoImv.isHidden = false
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .signupEmail,.signupPhone:
-            backgroundImageView.isHidden = false
+//            backgroundImageView.isHidden = false
             switchButton.setTitle("Log In".localized, for: .normal)
             topLabel.text = "Create Your Account".localized
             logoImv.isHidden = true
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .forgotPW:
-            backgroundImageView.isHidden = false
+//            backgroundImageView.isHidden = false
             switchButton.setTitle("".localized, for: .normal)
             topLabel.text = "Forgot password".localized
             logoImv.isHidden = true
@@ -764,4 +791,28 @@ extension UINavigationBar {
     open override func sizeThatFits(_ size: CGSize) -> CGSize {
         return CGSize(width: UIScreen.main.bounds.width, height: 51)
     }
+}
+final class CustomImageView: UIImageView {
+
+    private var shadowLayer: CAShapeLayer!
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+//        if shadowLayer == nil {
+//            shadowLayer = CAShapeLayer()
+//            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
+//            shadowLayer.fillColor = UIColor.white.cgColor
+//
+//            shadowLayer.shadowColor = UIColor.darkGray.cgColor
+//            shadowLayer.shadowPath = shadowLayer.path
+//            shadowLayer.shadowOffset = CGSize(width: 0.0, height: -4.0)
+//            shadowLayer.shadowOpacity = 0.4
+//            shadowLayer.shadowRadius = 14
+//
+//            layer.insertSublayer(shadowLayer, at: 0)
+//            //layer.insertSublayer(shadowLayer, below: nil) // also works
+//        }
+    }
+
 }

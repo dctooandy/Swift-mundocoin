@@ -10,6 +10,13 @@ import Foundation
 
 class Themes {
     
+    static let passwordInvalidLabelHeight = 32.0
+    static let defaultInvalidLabelHeight = 15.0
+    static let inputViewDefaultHeight = 85.0 + Themes.defaultInvalidLabelHeight
+    static let inputViewPasswordHeight = 85.0 + Themes.passwordInvalidLabelHeight
+    
+    static let grayLighter = UIColor(rgb: 0xA3AED0)
+    
     static let primaryLight =  UIColor(rgb: 0xc2aaf2)
     static let primaryBase = UIColor(rgb: 0x8e73da)
     static let primaryDark = UIColor(rgb: 0x6b49aa)
@@ -72,7 +79,7 @@ class Themes {
     //BottomSheet
     static let grayDarkest = UIColor(rgb: 0x1a2233)
     static let grayDark = UIColor(rgb: 0x6c7891)
-    static let grayLighter = UIColor(rgb: 0xC2C2C2)
+    
     static let grayLightDarker = UIColor(rgb: 0x656565)
     static let grayBlack = UIColor(rgb: 0x191919)
     static let secondaryRed = UIColor(rgb: 0xff4949)

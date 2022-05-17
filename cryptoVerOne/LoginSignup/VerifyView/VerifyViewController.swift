@@ -55,8 +55,8 @@ class VerifyViewController: BaseViewController {
         let lb = UILabel()
         lb.textAlignment = .left
         lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = .red
-        lb.text = "Invaild verification code".localized
+        lb.textColor = Themes.grayLighter
+        lb.text = "Enter the 6-digit code".localized
         lb.isHidden = true
         return lb
     }()
