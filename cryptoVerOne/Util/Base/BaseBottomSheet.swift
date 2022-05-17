@@ -25,7 +25,7 @@ class BaseBottomSheet:BottomSheet {
         return btn
     }()
     
-    let separator = UIView(color: Themes.grayLighter)
+    let separator = UIView(color: Themes.grayA3AED0)
     
 //    lazy var submitBtn:UIButton = {
 //        let btn = UIButton()

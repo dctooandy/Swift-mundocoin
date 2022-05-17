@@ -40,13 +40,20 @@ class AccountInputView: UIView {
         self.currentShowMode = currentShowMode
         self.lineColor = lineColor
         self.setup()
+        self.bindStyle()
+        self.bindBorderColor()
         self.bindTextfield()
         self.bindCancelButton()
     }
     
     // MARK: -
     // MARK:業務方法
-    
+    func bindStyle()
+    {
+        Themes.chooseOrNotChoose.bind(to: accountInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+        Themes.chooseOrNotChoose.bind(to: passwordInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+        Themes.chooseOrNotChoose.bind(to: registrationInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+    }
     func bindTextfield() {
         let isAccountValid = accountInputView.textField.rx.text
 //        let isAccountValid = accountTextField.rx.text
@@ -57,6 +64,7 @@ class AccountInputView: UIView {
                 }
                 return RegexHelper.match(pattern: .mail, input: acc)
         }
+        
         let isPasswordValid = passwordInputView.textField.rx.text
 //        let isPasswordValid = passwordTextField.rx.text
             .map { [weak self] (str) -> Bool in
@@ -75,6 +83,7 @@ class AccountInputView: UIView {
         
         if currentShowMode == .forgotPW
         {
+            accountInputView.tfMaskView.rx.backgroundColor
             isAccountValid.bind(to: accountCheckPassed).disposed(by: dpg)
         }else if currentShowMode == .signupEmail ||
                     currentShowMode == .signupPhone
@@ -110,6 +119,30 @@ class AccountInputView: UIView {
             .map({$0.isEmpty})
             .bind(to: registrationInputView.cancelRightButton.rx.isHidden)
             .disposed(by: dpg)
+    }
+    
+    func bindBorderColor()
+    {
+        accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: isChoose)
+            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: false)
+            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: false)
+        }.disposed(by: dpg)
+        passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: isChoose)
+            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: false)
+            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: false)
+        }.disposed(by: dpg)
+        registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: isChoose)
+            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: false)
+            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: false)
+        }.disposed(by: dpg)
+    }
+    func changeBorderWith(textfield:UIView , isChoose:Bool)
+    {
+        textfield.layer.borderColor = (isChoose ? Themes.grayA3AED0.cgColor : Themes.grayE0E5F2.cgColor)
+        textfield.layer.borderWidth = (isChoose ? 2 : 1)
     }
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()

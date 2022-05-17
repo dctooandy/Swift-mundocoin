@@ -64,7 +64,7 @@ class SignupViewController: BaseViewController {
                                     titleColor: .black,
                                     checkBoxSize: 24,
                                     checkBoxColor: .black)
-
+        checkboxView.isSelected = true
         view.addSubview(accountInputView!)
         view.addSubview(checkboxView)
 //        accountInputView?.snp.makeConstraints { (make) in

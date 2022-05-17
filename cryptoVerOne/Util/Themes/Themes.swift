@@ -7,15 +7,29 @@
 
 import UIKit
 import Foundation
+import RxSwift
+import RxCocoa
 
 class Themes {
+    
+    static let plkMode = TFBorderStyle.share.interFaceStyle.asObservable()
+    
+    static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
+        return Themes.plkMode.map({ $0 == .light ? light : dark })
+    }
+    
+    static let chooseOrNotChoose: Observable<UIColor> = Themes.bindChooseOrNotStyle(
+        light: Themes.grayA3AED0, dark: Themes.grayE0E5F2)
     
     static let passwordInvalidLabelHeight = 32.0
     static let defaultInvalidLabelHeight = 15.0
     static let inputViewDefaultHeight = 85.0 + Themes.defaultInvalidLabelHeight
     static let inputViewPasswordHeight = 85.0 + Themes.passwordInvalidLabelHeight
     
-    static let grayLighter = UIColor(rgb: 0xA3AED0)
+    static let grayA3AED0 = UIColor(rgb: 0xA3AED0)
+    static let grayE0E5F2 = UIColor(rgb: 0xE0E5F2)
+    static let grayCCD2E3 = UIColor(rgb: 0xCCD2E3)
+    static let gray707EAE = UIColor(rgb: 0x707EAE)
     
     static let primaryLight =  UIColor(rgb: 0xc2aaf2)
     static let primaryBase = UIColor(rgb: 0x8e73da)

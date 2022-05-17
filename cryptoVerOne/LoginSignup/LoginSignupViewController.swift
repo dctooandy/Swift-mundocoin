@@ -10,6 +10,7 @@ import RxSwift
 import Toaster
 import AVFoundation
 import AVKit
+
 enum ShowMode {
     case loginEmail
     case loginPhone
@@ -115,6 +116,7 @@ class LoginSignupViewController: BaseViewController {
     @objc func switchViewAction() {
         self.changeLoginState()
     }
+
     @objc func backToLoginView(isAnimation : Bool = true)
     {
         currentShowMode = .loginEmail
@@ -185,9 +187,9 @@ class LoginSignupViewController: BaseViewController {
         
 //        switchButton.rx.tap
 //            .subscribeSuccess { [weak self] in
-////                DispatchQueue.main.async {
-////                    self?.changeLoginState()
-////                }
+//                DispatchQueue.main.async {
+//                    self?.changeLoginState()
+//                }
 //            }.disposed(by: disposeBag)
     }
     func getTabbarVC() -> TabbarViewController? {

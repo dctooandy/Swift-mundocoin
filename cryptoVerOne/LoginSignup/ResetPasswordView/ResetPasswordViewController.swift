@@ -165,8 +165,8 @@ class ResetPasswordViewController: BaseViewController {
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalToSuperview().multipliedBy(0.065)
         }
-        newPWTextField.setPlaceholder("********", with: Themes.grayLighter)
-        confirmPWTextField.setPlaceholder("********", with: Themes.grayLighter)
+        newPWTextField.setPlaceholder("********", with: Themes.grayA3AED0)
+        confirmPWTextField.setPlaceholder("********", with: Themes.grayA3AED0)
         //設定文字刪除
         newPWCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
         newPWCancelRightButton.backgroundColor = .black

@@ -55,7 +55,7 @@ class VerifyViewController: BaseViewController {
         let lb = UILabel()
         lb.textAlignment = .left
         lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = Themes.grayLighter
+        lb.textColor = Themes.grayA3AED0
         lb.text = "Enter the 6-digit code".localized
         lb.isHidden = true
         return lb
@@ -141,7 +141,7 @@ class VerifyViewController: BaseViewController {
             make.height.equalTo(invalidH)
         }
         verifyTextField.setMaskView()
-        verifyTextField.setPlaceholder(inputMode.verifyPlaceholder(), with: Themes.grayLighter)
+        verifyTextField.setPlaceholder(inputMode.verifyPlaceholder(), with: Themes.grayA3AED0)
         //設定文字刪除
         verifyCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
         verifyCancelRightButton.backgroundColor = .black

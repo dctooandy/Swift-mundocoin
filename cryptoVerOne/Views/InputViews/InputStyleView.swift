@@ -99,9 +99,9 @@ enum InputViewMode :Equatable {
 class InputStyleView: UIView {
     // MARK:業務設定
     private var inputViewMode: InputViewMode = .email
-    private let displayPwdImg = UIImage(named: "eye-solid")!.withRenderingMode(.alwaysTemplate)
-    private let undisplayPwdImg =  UIImage(named: "eye-slash-solid")!.withRenderingMode(.alwaysTemplate)
-    private let cancelImg = UIImage(named: "icon-close")!
+    private let displayPwdImg = UIImage(named: "icon-view")!.withRenderingMode(.alwaysTemplate)
+    private let undisplayPwdImg =  UIImage(named: "icon-view-hide")!.withRenderingMode(.alwaysTemplate)
+    private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
     private let addressBookImgView : UIImageView = {
         let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
         return imgView
@@ -117,6 +117,7 @@ class InputStyleView: UIView {
     private let onScanClick = PublishSubject<Any>()
     private let onAddAddressClick = PublishSubject<String>()
     private let onTextLabelClick = PublishSubject<String>()
+    private let onChooseClick = PublishSubject<Bool>()
     private let dpg = DisposeBag()
     private var timer: Timer?
     private var countTime = 60
@@ -124,6 +125,16 @@ class InputStyleView: UIView {
     var cancelOffetWidth : CGFloat = 0.0
     // MARK: -
     // MARK:UI 設定
+    let tfMaskView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.layer.borderWidth = 1
+        view.layer.borderColor = Themes.grayE0E5F2.cgColor
+        view.isUserInteractionEnabled = false
+        view.alpha = 1.0
+        view.applyCornerRadius(radius: 10)
+        return view
+    }()
     let topLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
@@ -157,7 +168,7 @@ class InputStyleView: UIView {
         let lb = UILabel()
         lb.textAlignment = .left
         lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = Themes.grayLighter
+        lb.textColor = Themes.grayA3AED0
         lb.isHidden = true
         lb.numberOfLines = 0
         lb.adjustsFontSizeToFitWidth = true
@@ -241,7 +252,7 @@ class InputStyleView: UIView {
         addSubview(invalidLabel)
         
         textField.delegate = self
-        displayRightButton.tintColor = .black
+        displayRightButton.tintColor = Themes.grayA3AED0
         let topLabelH = 15
         let invalidH = inputViewMode == .password ? 39.0 : 22.0
         topLabel.snp.makeConstraints { (make) in
@@ -261,23 +272,32 @@ class InputStyleView: UIView {
             make.trailing.equalToSuperview().offset(-20)
             make.bottom.equalTo(invalidLabel.snp.top)
         }
-        textField.setMaskView()
+        setMaskView()
         resetUI()
+    }
+    func setMaskView() {
+        textField.addSubview(tfMaskView)
+        tfMaskView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(1.10)
+            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+        }
     }
     func resetUI()
     {
-        displayRightButton.tintColor = .black
+        displayRightButton.tintColor = Themes.gray707EAE
+        cancelRightButton.tintColor = Themes.gray707EAE
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
         var rightLabelWidth : CGFloat = 0.0
-        displayOffetWidth = (inputViewMode == .password ? 24.0:0.0)
+        displayOffetWidth = (inputViewMode == .password ? 18.0:0.0)
         switch self.inputViewMode {
         case .copy ,.networkMethod(_), .withdrawTo(_) ,.txid:
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
-            cancelOffetWidth = 14.0
+            cancelOffetWidth = 18.0
             textField.isUserInteractionEnabled = true
         }
         textField.isSecureTextEntry = (inputViewMode == .password)
@@ -365,7 +385,7 @@ class InputStyleView: UIView {
         
         topLabel.text = topLabelString
         invalidLabel.text = invalidLabelString
-        textField.setPlaceholder(placeHolderString, with: Themes.grayLighter)
+        textField.setPlaceholder(placeHolderString, with: Themes.grayA3AED0)
         
         addSubview(displayRightButton)
         displayRightButton.setTitle(nil, for: .normal)
@@ -373,19 +393,17 @@ class InputStyleView: UIView {
         displayRightButton.snp.remakeConstraints { (make) in
             make.right.equalToSuperview().offset(-10 - rightLabelWidth)
             make.centerY.equalTo(textField)
-            make.height.equalTo(24)
+            make.height.equalTo(18)
             make.width.equalTo(displayOffetWidth)
         }
         addSubview(cancelRightButton)
         //設定文字刪除
+        cancelRightButton.setTitle(nil, for: .normal)
         cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        cancelRightButton.backgroundColor = .black
-        cancelRightButton.layer.cornerRadius = 7
-        cancelRightButton.layer.masksToBounds = true
         cancelRightButton.snp.remakeConstraints { (make) in
             make.right.equalTo(displayRightButton.snp.left).offset(-10)
             make.centerY.equalTo(textField)
-            make.height.equalTo(14)
+            make.height.equalTo(18)
             make.width.equalTo(cancelOffetWidth)
         }
 
@@ -581,12 +599,25 @@ class InputStyleView: UIView {
     func rxTextLabelClick() -> Observable<String> {
         return onTextLabelClick.asObserver()
     }
+    func rxChooseClick() -> Observable<Bool>
+    {
+        return onChooseClick.asObserver()
+    }
 }
 // MARK: -
 // MARK: 延伸
 extension InputStyleView: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        onChooseClick.onNext(false)
+        return true
+    }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        return true
+    }
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        onChooseClick.onNext(true)
         return true
     }
 }
