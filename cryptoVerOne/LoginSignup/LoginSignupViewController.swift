@@ -583,24 +583,31 @@ class LoginSignupViewController: BaseViewController {
                 print("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
+                Toast.show(msg: "Welcome")
             }
         }
     }
     //MARK: - 註冊成功頁面
     func showSignupSuccessView(acc: String, pwd: String, mode: LoginMode) {
         shouldVerify = false
-        successView = SignupSuccessView.loadNib()
-        successView?.account = acc
-        successView?.password = pwd
-        successView?.setup(title: mode.signupSuccessTitles().title,
-                          buttonTitle: mode.signupSuccessTitles().doneButtonTitle,
-                          showAccount: mode.signupSuccessTitles().showAccount)
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
-        view.addSubview(successView!)
-        successView?.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        bindSignupSuccessView()
+        let dto = LoginPostDto(account: acc,
+                               password: pwd,
+                               loginMode: .emailPage,
+                               showMode: self.currentShowMode)
+        self.login(dto: dto, checkBioList: false, route: .wallet, showLoadingView: false)
+        // 目前不顯示註冊成功
+//        successView = SignupSuccessView.loadNib()
+//        successView?.account = acc
+//        successView?.password = pwd
+//        successView?.setup(title: mode.signupSuccessTitles().title,
+//                          buttonTitle: mode.signupSuccessTitles().doneButtonTitle,
+//                          showAccount: mode.signupSuccessTitles().showAccount)
+//        self.navigationController?.setNavigationBarHidden(true, animated: true)
+//        view.addSubview(successView!)
+//        successView?.snp.makeConstraints { (make) in
+//            make.edges.equalToSuperview()
+//        }
+//        bindSignupSuccessView()
     }
     
     func bindSignupSuccessView() {
@@ -620,21 +627,18 @@ class LoginSignupViewController: BaseViewController {
                                            password: pwd,
                                            loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
-//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .toBet(let acc, let pwd):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
                                            loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
-//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 case .clickAD(let acc, let pwd, _):
                     let dto = LoginPostDto(account: acc,
                                            password: pwd,
                                            loginMode: .emailPage,
                                            showMode: self!.currentShowMode)
-//                    self?.login(dto: dto, checkBioList: false , route: type.route, showLoadingView: false)
                     self?.login(dto: dto, checkBioList: false , route: .wallet, showLoadingView: false)
                 default: break
                 }

@@ -275,26 +275,31 @@ class VerifyViewController: BaseViewController {
             }
         }else if let _ = self.signupDto
         {
-            Log.v("註冊驗證完畢,國碼選擇")
-            idVerifiVC.isModalInPopover = true
-            idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
-                if let dto = self.signupDto
-                {
-                    LoginSignupViewController.share.signup(dto: dto)
-                }
-            }.disposed(by: dpg)
-            idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
-                if let dto = self.signupDto
-                {
-                    self.dismiss(animated: true) {
-                        popVC()
-                        LoginSignupViewController.share.signup(dto: dto)                        
-                    }
-                }
-            }.disposed(by: dpg)
-            
-            self.present(idVerifiVC, animated: true) {
+            Log.v("註冊驗證完畢,直接登入")
+            if let dto = self.signupDto
+            {
+                LoginSignupViewController.share.signup(dto: dto)
             }
+            // 目前不用選擇國別
+//            Log.v("註冊驗證完畢,國碼選擇")
+//            idVerifiVC.isModalInPopover = true
+//            idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
+//                if let dto = self.signupDto
+//                {
+//                    LoginSignupViewController.share.signup(dto: dto)
+//                }
+//            }.disposed(by: dpg)
+//            idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
+//                if let dto = self.signupDto
+//                {
+//                    self.dismiss(animated: true) {
+//                        popVC()
+//                        LoginSignupViewController.share.signup(dto: dto)
+//                    }
+//                }
+//            }.disposed(by: dpg)
+//            self.present(idVerifiVC, animated: true) {
+//            }
         }
     }
     func verifyResentPressed()
