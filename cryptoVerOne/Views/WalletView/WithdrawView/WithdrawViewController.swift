@@ -115,6 +115,9 @@ class WithdrawViewController: BaseViewController {
             Log.i("開confirm")
             continueAction()
         }.disposed(by: dpg)
+        withdrawToView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            withdrawToView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func bindTextField()
     {

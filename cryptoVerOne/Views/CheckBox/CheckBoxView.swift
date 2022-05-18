@@ -95,6 +95,7 @@ class CheckBoxView: UIControl {
     override var isSelected: Bool {
         didSet {
             checkBox?.isCheck = self.isSelected
+            self.accountCheckPassed.onNext(self.isSelected)
         }
     }
     

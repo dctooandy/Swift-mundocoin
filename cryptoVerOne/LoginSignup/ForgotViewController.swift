@@ -25,14 +25,13 @@ class ForgotViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var sendResetLinkButton: CornerradiusButton!
     private var accountInputView: AccountInputView?
-    // MARK: instance
+    // MARK: -
+    // MARK:Life cycle
     static func instance(mode: LoginMode) -> ForgotViewController {
         let vc = ForgotViewController.loadNib()
         vc.loginMode = mode
         return vc
     }
-    // MARK: -
-    // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -81,12 +80,11 @@ class ForgotViewController: BaseViewController {
         }
         view.addSubview(sendResetLinkButton)
         
-        sendResetLinkButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
         sendResetLinkButton.snp.makeConstraints { (make) in
             make.top.equalTo(accountInputView!.snp.bottom).offset(65)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalTo(view).multipliedBy(0.08)
+            make.height.equalTo(50)
         }
         // set default login mode
         loginModeDidChange()
@@ -110,19 +108,21 @@ class ForgotViewController: BaseViewController {
         sendResetLinkButton.rx.tap.subscribeSuccess { [weak self] _ in
                 self?.sendReset()
             }.disposed(by: disposeBag)
-        sendResetLinkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        sendResetLinkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
     }
     
     private func sendReset()
     {
+        clickLoginActions()
         if let account = accountInputView?.accountInputView.textField.text
         {
             let dto = LoginPostDto(account: account, password:"",loginMode: self.loginMode ,showMode: .forgotPW)
             self.onClickLogin.onNext(dto)
         }
     }
-    
+    func clickLoginActions()
+    {
+        accountInputView?.resetTFMaskView()
+    }
 //    func startReciprocal() {
 //        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: false)

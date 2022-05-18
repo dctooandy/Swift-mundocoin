@@ -14,6 +14,7 @@
 		A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E1BA52824FF5000827148 /* ForgotViewController.xib */; };
 		A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E1BA62824FF5000827148 /* ForgotViewController.swift */; };
 		A1559DE32833AB2200755783 /* TFBorderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TFBorderStyle.swift */; };
+		A1559DE6283499D300755783 /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -184,6 +185,7 @@
 		A14E1BA52824FF5000827148 /* ForgotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotViewController.xib; sourceTree = "<group>"; };
 		A14E1BA62824FF5000827148 /* ForgotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		A1559DE22833AB2200755783 /* TFBorderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBorderStyle.swift; sourceTree = "<group>"; };
+		A1559DE5283499D300755783 /* TopBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBackButton.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -782,6 +784,7 @@
 				A19C714728225827000AFC3F /* ImagetTextButton.swift */,
 				A19C719C28225D99000AFC3F /* BadgeBtn.swift */,
 				A19C71BA282263DE000AFC3F /* CornerradiusButton.swift */,
+				A1559DE5283499D300755783 /* TopBackButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1183,6 +1186,7 @@
 				A16F61EA282E30F900D9CCE5 /* AddressBottomSheet.swift in Sources */,
 				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,
 				A19C71C7282264A3000AFC3F /* Fonts.swift in Sources */,
+				A1559DE6283499D300755783 /* TopBackButton.swift in Sources */,
 				A19C70E328224AE8000AFC3F /* PromotionViewController.swift in Sources */,
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
 				A1B051F22823B13F00056183 /* String+util.swift in Sources */,

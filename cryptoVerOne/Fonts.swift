@@ -34,4 +34,7 @@ class Fonts {
     static func PlusJakartaSansSemiBold(_ size: CGFloat) -> UIFont {
         return UIFont(name: "PlusJakartaSans-SemiBold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    static func interSemiBold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "Inter-SemiBold", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }

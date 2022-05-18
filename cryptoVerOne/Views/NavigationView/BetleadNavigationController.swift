@@ -25,13 +25,9 @@ class BetleadNavigationController:UINavigationController{
         super.viewWillAppear(animated)
     }
     
-    private lazy var backBtn:UIButton = {
-        let btn = UIButton(type: .custom)
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-        btn.setImage(image, for: .normal)
-        btn.tintColor = .black
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
-        btn.setTitle("", for:.normal)
         return btn
     }()
     

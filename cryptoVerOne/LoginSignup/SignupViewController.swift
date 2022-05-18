@@ -10,26 +10,28 @@ import UIKit
 import RxSwift
 
 class SignupViewController: BaseViewController {
+    // MARK:業務設定
+    private var timer: Timer? = nil
+    private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
+    private var onClick = PublishSubject<SignupPostDto>()
+    private var loginMode : LoginMode = .emailPage {
+        didSet {
+            //            loginModeDidChange()
+        }
+    }
+    // MARK: -
+    // MARK:UI 設定
     @IBOutlet weak var registerButton: CornerradiusButton!
     @IBOutlet weak var bottomMessageLabel: UILabel!
     private var checkboxView: CheckBoxView!
     private var accountInputView: AccountInputView?
-    private var timer: Timer? = nil
-    private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
-//    var rxVerifyCodeButtonClick: Observable<String>?
-    private var onClick = PublishSubject<SignupPostDto>()
-    
-    private var loginMode : LoginMode = .emailPage {
-        didSet {
-//            loginModeDidChange()
-        }
-    }
+    // MARK: -
+    // MARK:Life cycle
     static func instance(mode: LoginMode) -> SignupViewController {
         let vc = SignupViewController.loadNib()
         vc.loginMode = mode
         return vc
     }
-    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -40,7 +42,8 @@ class SignupViewController: BaseViewController {
         view.endEditing(true)
     }
     
-    //MARK: - UI
+    // MARK: -
+    // MARK:業務方法
     func setDefault() {
         stopTimer()
         accountInputView?.passwordInputView.displayRightButton.setTitle("发送验证码", for: .normal)
@@ -93,10 +96,10 @@ class SignupViewController: BaseViewController {
         }
         
         registerButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.bottomMessageLabel!.snp.bottom).offset(5)
+            make.top.equalTo(self.bottomMessageLabel!.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalTo(view).multipliedBy(0.08)
+            make.height.equalTo(50)
         }
         registerButton.setTitle("Get Started".localized, for: .normal)
     }
@@ -126,18 +129,20 @@ class SignupViewController: BaseViewController {
         registerButton.rx.tap.subscribeSuccess { [weak self] in
             self?.signup()
         }.disposed(by: disposeBag)
-        registerButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        registerButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
     }
     
     func signup() {
+        signupActions()
         guard let acc = accountInputView?.accountInputView.textField.text?.lowercased() else { return }
         guard let pwd = accountInputView?.passwordInputView.textField.text else { return }
         let dto = SignupPostDto(account: acc, password: pwd, signupMode: loginMode)
         self.view.endEditing(true)
         onClick.onNext(dto)
     }
-    
+    func signupActions()
+    {
+        accountInputView?.resetTFMaskView()
+    }
     func rxSignupButtonPressed() -> Observable<SignupPostDto> {
         return onClick.asObserver()
     }

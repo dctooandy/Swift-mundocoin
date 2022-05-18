@@ -25,6 +25,7 @@ enum InputViewMode :Equatable {
     case networkMethod(Array<String>)
     case withdrawTo(Bool)
     case txid
+    case securityVerification
     
     func topString() -> String {
         switch self {
@@ -40,6 +41,7 @@ enum InputViewMode :Equatable {
         case .networkMethod( _ ): return "Network Method".localized
         case .withdrawTo( _ ): return "Withdraw to".localized
         case .txid: return "Txid".localized
+        case .securityVerification: return "Security Verification".localized
         }
     }
     
@@ -51,6 +53,7 @@ enum InputViewMode :Equatable {
         case .email: return "...@mundo.com"
         case .password: return "********".localized
         case .forgotPW: return "...@mundo.com"
+        case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
         }
     }
@@ -65,6 +68,7 @@ enum InputViewMode :Equatable {
         case .password: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
         case .forgotPW: return "...@mundo.com".localized
         case .registration: return "Enter the 6-digit code ".localized
+        case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
         }
     }

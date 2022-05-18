@@ -103,7 +103,7 @@ class TwoFAVerifyView: UIView {
             make.top.equalTo(lostTwoFALabel.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
+            make.height.equalTo(50)
         }
     }
     func setupEmailInputView(withTop:CGFloat)
@@ -112,7 +112,7 @@ class TwoFAVerifyView: UIView {
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(90)
+            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
     }
     func setupTwoFAInputView(withTop:CGFloat)
@@ -121,15 +121,28 @@ class TwoFAVerifyView: UIView {
             make.top.equalTo(withTop)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(90)
+            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
     }
     func bind()
     {
+        bindUI()
         bindCancelButton()
         bindLostTwoFALabel()
         bindAction()
     }
+    func bindUI()
+    {
+        emailInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            emailInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
+        }.disposed(by: dpg)
+        twoFAInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            emailInputView.tfMaskView.changeBorderWith(isChoose:false)
+            twoFAInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
+    }
+ 
     func bindTextfield()
     {
         let isEmailValid = emailInputView.textField.rx.text

@@ -10,6 +10,11 @@ import Foundation
 import UIKit
 
 extension UIView {
+    func changeBorderWith( isChoose:Bool)
+    {
+        layer.borderColor = (isChoose ? Themes.grayA3AED0.cgColor : Themes.grayE0E5F2.cgColor)
+        layer.borderWidth = (isChoose ? 2 : 1)
+    }
     //将当前视图转为UIImage
     func asImage() -> UIImage {
         let renderer = UIGraphicsImageRenderer(bounds: bounds)

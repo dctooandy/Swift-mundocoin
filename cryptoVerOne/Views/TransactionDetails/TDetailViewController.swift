@@ -83,6 +83,10 @@ class TDetailViewController: BaseViewController {
         checkButton.rx.tap.subscribeSuccess { (_) in
             Log.i("去看金流歷史紀錄")
         }.disposed(by: dpg)
+        
+        withdrawToInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
 }
 // MARK: -

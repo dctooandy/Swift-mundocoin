@@ -88,20 +88,18 @@ class LoginViewController: BaseViewController {
             make.top.equalTo(accountInputView!.snp.bottom).offset(20)
             make.height.equalTo(18)
         }
-        
-        loginButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+
         loginButton.snp.makeConstraints { (make) in
             make.top.equalTo(self.forgetPasswordButton.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalTo(view).multipliedBy(0.08)
+            make.height.equalTo(50)
         }
         // set default login mode
 //        loginModeDidChange()
         forgetPasswordButton.isHidden = loginMode == .phonepPage
         forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
         loginButton.setTitle("Log In".localized, for: .normal)
-        
     }
     
     func showVerifyCode(_ code: String) {
@@ -120,19 +118,21 @@ class LoginViewController: BaseViewController {
         loginButton.rx.tap.subscribeSuccess { [weak self] _ in
                 self?.login()
             }.disposed(by: disposeBag)
-        loginButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        loginButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
     }
     
     private func login() {
         
+        loginActions()
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
         let dto = LoginPostDto(account: account, password: password,loginMode: self.loginMode ,showMode: .loginEmail)
+        // 登入成功後
         self.onClickLogin.onNext(dto)
-        
     }
-    
+    func loginActions()
+    {
+        accountInputView?.resetTFMaskView()
+    }
     func startReciprocal() {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: false)

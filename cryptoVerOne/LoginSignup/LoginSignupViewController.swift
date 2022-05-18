@@ -490,6 +490,15 @@ class LoginSignupViewController: BaseViewController {
     // MARK: - ViewController navigation
     func changeLoginState() {// 登入註冊頁面
 //        isLogin = !isLogin
+        for vc in loginPageVC.loginViewControllers {
+            vc.loginActions()
+        }
+        for vc in loginPageVC.signupViewControllers {
+            vc.signupActions()
+        }
+        for vc in loginPageVC.forgotViewControllers {
+            vc.clickLoginActions()
+        }
         currentShowMode = ((currentShowMode == .loginEmail) ? .signupEmail : .loginEmail)
     }
     
@@ -711,44 +720,24 @@ extension LoginSignupViewController {
         switch currentShowMode {
         case .loginEmail,.loginPhone:
             fetchBackgroundVideo()
-//            backgroundImageView.isHidden = false
             switchButton.setTitle("Sign Up".localized, for: .normal)
             topLabel.text = "Log In to Mundocoin".localized
             logoImv.isHidden = false
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .signupEmail,.signupPhone:
-//            backgroundImageView.isHidden = false
             switchButton.setTitle("Log In".localized, for: .normal)
             topLabel.text = "Create Your Account".localized
             logoImv.isHidden = true
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .forgotPW:
-//            backgroundImageView.isHidden = false
             switchButton.setTitle("".localized, for: .normal)
             topLabel.text = "Forgot password".localized
             logoImv.isHidden = true
             switchButton.isHidden = true
             backToButton.isHidden = false
         }
-//        if isLogin {
-//            fetchBackgroundVideo()
-//            backgroundImageView.isHidden = false
-////            bottomLabel.text = "还没有倍利帐号？"
-////            bottomLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//            switchButton.setTitle("Sign Up".localized, for: .normal)
-//            topLabel.text = "Log In to Mundocoin".localized
-//            logoImv.isHidden = false
-//        } else {
-//            backgroundImageView.isHidden = false
-////            VideoManager.share.removeVideoLayer()
-////            bottomLabel.text = "已经有倍利帐号？"
-////            bottomLabel.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
-//            switchButton.setTitle("Log In".localized, for: .normal)
-//            topLabel.text = "Create Your Account".localized
-//            logoImv.isHidden = true
-//        }
     }
     
 //    private func updateBottomView() {
@@ -800,21 +789,6 @@ final class CustomImageView: UIImageView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-
-//        if shadowLayer == nil {
-//            shadowLayer = CAShapeLayer()
-//            shadowLayer.path = UIBezierPath(roundedRect: bounds, cornerRadius: 12).cgPath
-//            shadowLayer.fillColor = UIColor.white.cgColor
-//
-//            shadowLayer.shadowColor = UIColor.darkGray.cgColor
-//            shadowLayer.shadowPath = shadowLayer.path
-//            shadowLayer.shadowOffset = CGSize(width: 0.0, height: -4.0)
-//            shadowLayer.shadowOpacity = 0.4
-//            shadowLayer.shadowRadius = 14
-//
-//            layer.insertSublayer(shadowLayer, at: 0)
-//            //layer.insertSublayer(shadowLayer, below: nil) // also works
-//        }
     }
 
 }

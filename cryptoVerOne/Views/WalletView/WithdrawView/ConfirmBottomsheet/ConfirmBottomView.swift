@@ -47,6 +47,9 @@ class ConfirmBottomView: UIView {
         withdrawToInputView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        withdrawToInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func bindUI()
     {

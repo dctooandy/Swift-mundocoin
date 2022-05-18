@@ -33,41 +33,38 @@ class VerifyViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var sentToLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: CustomImageView!
     fileprivate let idVerifiVC = IDVerificationViewController.loadNib()
     fileprivate let resetPWVC = ResetPasswordViewController.loadNib()
-    let verifyTopLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.textColor = .black
-        lb.text = "Security Verification".localized
-        lb.font = Fonts.pingFangSCRegular(16)
-        return lb
-    }()
-    let verifyTextField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.font = Fonts.pingFangSCRegular(16)
-        tf.keyboardType = .numberPad
-        return tf
-    }()
-    
-    let verifyInvalidLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = Themes.grayA3AED0
-        lb.text = "Enter the 6-digit code".localized
-        lb.isHidden = true
-        return lb
-    }()
-    private lazy var backBtn:UIButton = {
-        let btn = UIButton()
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-        btn.setImage(image, for: .normal)
-//        btn.setImage(UIImage(named:"left-arrow"), for:.normal)
-        btn.tintColor = .black
+    var verifyInputView : InputStyleView!
+//    let verifyTopLabel: UILabel = {
+//        let lb = UILabel()
+//        lb.textAlignment = .left
+//        lb.textColor = .black
+//        lb.text = "Security Verification".localized
+//        lb.font = Fonts.pingFangSCRegular(16)
+//        return lb
+//    }()
+//    let verifyTextField: UITextField = {
+//        let tf = UITextField()
+//        tf.borderStyle = .none
+//        tf.font = Fonts.pingFangSCRegular(16)
+//        tf.keyboardType = .numberPad
+//        return tf
+//    }()
+//
+//    let verifyInvalidLabel: UILabel = {
+//        let lb = UILabel()
+//        lb.textAlignment = .left
+//        lb.font = Fonts.pingFangSCRegular(14)
+//        lb.textColor = Themes.grayA3AED0
+//        lb.text = "Enter the 6-digit code".localized
+//        lb.isHidden = true
+//        return lb
+//    }()
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
-        btn.setTitle("", for:.normal)
         return btn
     }()
     let verifyResentLabel: UILabel = {
@@ -83,7 +80,7 @@ class VerifyViewController: BaseViewController {
         view.backgroundColor = .black
         return view
     }()
-    let verifyCancelRightButton = UIButton()
+//    let verifyCancelRightButton = UIButton()
     let verifyButton = CornerradiusButton()
     // MARK: -
     // MARK:Life cycle
@@ -97,7 +94,7 @@ class VerifyViewController: BaseViewController {
         setupUI()
         bindPwdButton()
         bindTextfield()
-        bindCancelButton()
+//        bindCancelButton()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -111,60 +108,76 @@ class VerifyViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        view.addSubview(verifyTopLabel)
-        view.addSubview(verifyTextField)
-        view.addSubview(verifyInvalidLabel)
-        view.addSubview(verifyCancelRightButton)
+        backgroundImageView.snp.makeConstraints { (make) in
+            make.bottom.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+        }
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        backgroundImageView.layer.cornerRadius = 25
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
+        
+        let verify = InputStyleView(inputViewMode: .securityVerification)
+        verifyInputView = verify
+        view.addSubview(verifyInputView)
+//        view.addSubview(verifyTopLabel)
+//        view.addSubview(verifyTextField)
+//        view.addSubview(verifyInvalidLabel)
+//        view.addSubview(verifyCancelRightButton)
         view.addSubview(verifyButton)
         view.addSubview(verifyResentLabel)
         view.addSubview(underLineView)
-        verifyTextField.delegate = self
-        verifyCancelRightButton.tintColor = .black
-        let textFieldMulH = height(48.0/812.0)
-        let invalidH = height(20.0/812.0)
-        
-        let tfWidth = width(361.0/414.0) - 40
-        verifyTextField.snp.makeConstraints { (make) in
+//        verifyInputView.textField.delegate = self
+//        verifyCancelRightButton.tintColor = .black
+//        let textFieldMulH = height(48.0/812.0)
+//        let invalidH = height(20.0/812.0)
+//        let tfWidth = width(361.0/414.0) - 40
+
+        verifyInputView.snp.makeConstraints { (make) in
             make.top.equalTo(userAccountLabel.snp.bottom).offset(80)
-            make.height.equalTo(textFieldMulH)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.centerX.equalTo(userAccountLabel)
-            make.width.equalTo(tfWidth)
+            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
-        verifyTopLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(verifyTextField.snp.top).offset(-17)
-            make.left.equalTo(verifyTextField).offset(-10)
-            make.height.equalTo(17)
-        }
-        verifyInvalidLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(verifyTextField.snp.bottom).offset(5)
-            make.left.equalTo(verifyTextField)
-            make.height.equalTo(invalidH)
-        }
-        verifyTextField.setMaskView()
-        verifyTextField.setPlaceholder(inputMode.verifyPlaceholder(), with: Themes.grayA3AED0)
+//        verifyTextField.snp.makeConstraints { (make) in
+//            make.top.equalTo(userAccountLabel.snp.bottom).offset(80)
+//            make.height.equalTo(textFieldMulH)
+//            make.centerX.equalTo(userAccountLabel)
+//            make.width.equalTo(tfWidth)
+//        }
+//        verifyTopLabel.snp.makeConstraints { (make) in
+//            make.bottom.equalTo(verifyTextField.snp.top).offset(-17)
+//            make.left.equalTo(verifyTextField).offset(-10)
+//            make.height.equalTo(17)
+//        }
+//        verifyInvalidLabel.snp.makeConstraints { (make) in
+//            make.top.equalTo(verifyTextField.snp.bottom).offset(5)
+//            make.left.equalTo(verifyTextField)
+//            make.height.equalTo(invalidH)
+//        }
+//        verifyTextField.setMaskView()
+//        verifyTextField.setPlaceholder(inputMode.verifyPlaceholder(), with: Themes.grayA3AED0)
         //設定文字刪除
-        verifyCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        verifyCancelRightButton.backgroundColor = .black
-        verifyCancelRightButton.layer.cornerRadius = 7
-        verifyCancelRightButton.layer.masksToBounds = true
-        verifyCancelRightButton.snp.makeConstraints { (make) in
-            make.right.equalTo(verifyTextField).offset(-5)
-            make.centerY.equalTo(verifyTextField)
-            make.width.height.equalTo(14)
-        }
-        verifyButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+//        verifyCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
+//        verifyCancelRightButton.backgroundColor = .black
+//        verifyCancelRightButton.layer.cornerRadius = 7
+//        verifyCancelRightButton.layer.masksToBounds = true
+//        verifyCancelRightButton.snp.makeConstraints { (make) in
+//            make.right.equalTo(verifyTextField).offset(-5)
+//            make.centerY.equalTo(verifyTextField)
+//            make.width.height.equalTo(14)
+//        }
         verifyButton.setTitle("Verify".localized, for: .normal)
-        verifyButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        verifyButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         verifyButton.snp.makeConstraints { (make) in
-            make.top.equalTo(verifyInvalidLabel.snp.bottom).offset(10)
-            make.centerX.equalTo(verifyTextField)
+            make.top.equalTo(verifyInputView.snp.bottom).offset(20)
+            make.centerX.equalTo(userAccountLabel)
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
+            make.height.equalTo(50)
         }
         verifyResentLabel.snp.makeConstraints { (make) in
             make.top.equalTo(verifyButton.snp.bottom).offset(10)
-            make.centerX.equalTo(verifyTextField)
+            make.centerX.equalTo(userAccountLabel)
             make.height.equalTo(view).multipliedBy(0.05)
         }
         underLineView.snp.makeConstraints { (make) in
@@ -200,10 +213,10 @@ class VerifyViewController: BaseViewController {
             .subscribeSuccess { [weak self] in
                 self?.verifyResentPressed()
             }.disposed(by: dpg)
-        verifyCancelRightButton.rx.tap
-            .subscribeSuccess { [weak self] in
-                self?.verifyCancelRightButtonPressed()
-            }.disposed(by: dpg)
+//        verifyCancelRightButton.rx.tap
+//            .subscribeSuccess { [weak self] in
+//                self?.verifyCancelRightButtonPressed()
+//            }.disposed(by: dpg)
         verifyButton.rx.tap
             .subscribeSuccess { [weak self] in
                 self?.verifyButtonPressed()
@@ -211,28 +224,31 @@ class VerifyViewController: BaseViewController {
     }
     func bindTextfield()
     {
-        let isValid = verifyTextField.rx.text
+        verifyInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            verifyInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
+        let isValid = verifyInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. otp, input: acc)
         }
-        isValid.skip(1).bind(to: verifyInvalidLabel.rx.isHidden).disposed(by: dpg)
+        isValid.skip(1).bind(to: verifyInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         isValid.bind(to: verifyButton.rx.isEnabled)
             .disposed(by: dpg)
     }
-    func bindCancelButton()
-    {
-        let isEmpty = verifyTextField.rx.text.map({$0 ?? ""})
-            .map({$0.isEmpty})
-        isEmpty.bind(to: verifyCancelRightButton.rx.isHidden)
-            .disposed(by: dpg)
-    }
-    private func verifyCancelRightButtonPressed()
-    {
-        verifyTextField.text = ""
-        verifyCancelRightButton.isHidden = true
-        verifyTextField.sendActions(for: .valueChanged)
-    }
+//    func bindCancelButton()
+//    {
+//        let isEmpty = verifyTextField.rx.text.map({$0 ?? ""})
+//            .map({$0.isEmpty})
+//        isEmpty.bind(to: verifyCancelRightButton.rx.isHidden)
+//            .disposed(by: dpg)
+//    }
+//    private func verifyCancelRightButtonPressed()
+//    {
+//        verifyTextField.text = ""
+//        verifyCancelRightButton.isHidden = true
+//        verifyTextField.sendActions(for: .valueChanged)
+//    }
     func verifyButtonPressed()
     {
     // 登入 驗證完畢直接登入
@@ -321,22 +337,22 @@ class VerifyViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
-extension VerifyViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-       if let x = string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
-          return true
-       } else {
-        if string == ""
-        {
-            return true
-        }else
-        {
-            return false
-        }
-       }
-    }
-}
+//extension VerifyViewController: UITextFieldDelegate {
+//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//        textField.resignFirstResponder()
+//        return true
+//    }
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//       if let x = string.rangeOfCharacter(from: NSCharacterSet.decimalDigits) {
+//          return true
+//       } else {
+//        if string == ""
+//        {
+//            return true
+//        }else
+//        {
+//            return false
+//        }
+//       }
+//    }
+//}

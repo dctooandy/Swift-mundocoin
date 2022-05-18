@@ -77,7 +77,7 @@ class Views {
     }
     
     static func backImageHeight() -> CGFloat {
-        return 14.0
+        return 30.0
     }
     
     static var launchImage:UIImage? {

@@ -20,9 +20,9 @@ class AccountInputView: UIView {
     private let accountCheckPassed = BehaviorSubject(value: false)
     // MARK: -
     // MARK:UI 設定
-    var accountInputView = InputStyleView()
-    var passwordInputView = InputStyleView()
-    var registrationInputView = InputStyleView()
+    var accountInputView : InputStyleView!
+    var passwordInputView : InputStyleView!
+    var registrationInputView : InputStyleView!
    
     // MARK: -
     // MARK:Life cycle
@@ -124,25 +124,26 @@ class AccountInputView: UIView {
     func bindBorderColor()
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: isChoose)
-            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: false)
-            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: false)
+            accountInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
+            registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: isChoose)
-            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: false)
-            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: false)
+            accountInputView.tfMaskView.changeBorderWith(isChoose:false)
+            passwordInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            changeBorderWith(textfield: registrationInputView.tfMaskView, isChoose: isChoose)
-            changeBorderWith(textfield: passwordInputView.tfMaskView, isChoose: false)
-            changeBorderWith(textfield: accountInputView.tfMaskView, isChoose: false)
+            accountInputView.tfMaskView.changeBorderWith(isChoose:false)
+            passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
+            registrationInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
     }
-    func changeBorderWith(textfield:UIView , isChoose:Bool)
+    func resetTFMaskView()
     {
-        textfield.layer.borderColor = (isChoose ? Themes.grayA3AED0.cgColor : Themes.grayE0E5F2.cgColor)
-        textfield.layer.borderWidth = (isChoose ? 2 : 1)
+        accountInputView.tfMaskView.changeBorderWith(isChoose:false)
+        passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
+        registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()

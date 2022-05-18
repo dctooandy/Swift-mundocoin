@@ -12,12 +12,9 @@ import RxCocoa
 
 class MuLoginNavigationController:UINavigationController{
     
-    private lazy var backBtn:UIButton = {
-        let btn = UIButton()
-        btn.setImage(UIImage(named:"left-arrow"), for:.normal)
-        btn.tintColor = .white
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
-        btn.setTitle("", for:.normal)
         return btn
     }()
     override func viewDidLoad() {

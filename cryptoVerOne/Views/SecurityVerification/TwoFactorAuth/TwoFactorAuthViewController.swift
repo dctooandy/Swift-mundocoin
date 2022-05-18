@@ -111,6 +111,14 @@ class TwoFactorAuthViewController: BaseViewController {
         isTwoFACodeValid.skip(1).bind(to: twoFAView.invalidLabel.rx.isHidden).disposed(by: dpg)
         isTwoFACodeValid.bind(to: bindButton.rx.isEnabled)
             .disposed(by: dpg)
+        copyView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            copyView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            twoFAView.tfMaskView.changeBorderWith(isChoose:false)
+        }.disposed(by: dpg)
+        twoFAView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            copyView.tfMaskView.changeBorderWith(isChoose:false)
+            twoFAView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func requestForBindAuth()
     {
