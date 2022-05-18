@@ -88,7 +88,7 @@ class ForgotViewController: BaseViewController {
         }
         // set default login mode
         loginModeDidChange()
-        sendResetLinkButton.setTitle("Send reset link".localized, for: .normal)
+        sendResetLinkButton.setTitle("Send".localized, for: .normal)
         
     }
     

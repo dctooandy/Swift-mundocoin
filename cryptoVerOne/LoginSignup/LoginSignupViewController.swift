@@ -20,8 +20,10 @@ enum ShowMode {
     
     var accountInputMode:InputViewMode {
         switch self {
-        case .loginEmail,.signupEmail,.forgotPW:
+        case .loginEmail,.signupEmail:
             return .email
+        case .forgotPW:
+            return .forgotPW
         case .signupPhone,.loginPhone:
             return .phone
         }
@@ -35,22 +37,16 @@ class LoginSignupViewController: BaseViewController {
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
             resetUI()
+            setNavigationLeftView(isForgotView: currentShowMode == .forgotPW ? true : false)
             loginPageVC.reloadPageMenu(currentMode: currentShowMode)
         }
     }
-//    private var isLogin: Bool = true {
-//        didSet {
-//            resetUI()
-//            loginPageVC.reloadPageMenu(isLogin: isLogin)
-//        }
-//    }
     private var shouldVerify = true
     private var route: SuccessViewAction.Route? = nil
     private var backGroundVideoUrl: URL? = nil
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var backgroundImageView: CustomImageView!
-    @IBOutlet weak var logoImv: UIImageView!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
     private lazy var switchButton:UIButton = {
         let rightBtn = UIButton()
@@ -65,13 +61,10 @@ class LoginSignupViewController: BaseViewController {
         logoView.backgroundColor = .clear
         return logoView
     }()
-    private lazy var backToButton:UIButton = {
-        let backToButton = UIButton()
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-        backToButton.setImage(image, for: .normal)
-        backToButton.tintColor = .black
-        backToButton.addTarget(self, action:#selector(backToLoginView), for:.touchUpInside)
-        return backToButton
+    private lazy var backToButton:TopBackButton = {
+        let btn = TopBackButton()
+        btn.addTarget(self, action:#selector(backToLoginView), for:.touchUpInside)
+        return btn
     }()
     private var successView: SignupSuccessView?
     private let tabbarVC = TabbarViewController()
@@ -179,7 +172,7 @@ class LoginSignupViewController: BaseViewController {
     }
     
     private func binding() {
-        logoImv.rx.click
+        logoView.rx.longPress
             .subscribeSuccess { [weak self] in
 //                self?.bioVerifyCheck(isDev: true)
                 self?.goWalletViewController()
@@ -680,45 +673,61 @@ class LoginSignupViewController: BaseViewController {
 // MARK: -
 // MARK: 延伸
 extension LoginSignupViewController {
-    
+    func setNavigationLeftView(isForgotView:Bool)
+    {
+        if isForgotView
+        {
+            self.backToButton.isHidden = false
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backToButton)
+        }else
+        {
+            self.backToButton.isHidden = true
+            let letLogoView = UIView()
+            letLogoView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 40)
+            self.logoView = letLogoView
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
+            let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
+            let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
+            textView.contentMode = .scaleAspectFit
+            logoView.addSubview(iconView)
+            logoView.addSubview(textView)
+            iconView.snp.makeConstraints { (make) in
+                make.leading.centerY.equalToSuperview()
+                make.width.equalTo(38)
+                make.height.equalTo(38)
+            }
+            textView.snp.makeConstraints { (make) in
+                make.centerY.equalToSuperview()
+                make.leading.equalTo(iconView.snp.trailing).offset(10)
+                make.width.equalTo(138)
+                make.height.equalTo(33)
+            }
+        }
+    }
     private func setupUI() {
-        logoView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 40)
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
-        let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
-        let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
-        textView.contentMode = .scaleAspectFit
-        logoView.addSubview(iconView)
-        logoView.addSubview(textView)
-        iconView.snp.makeConstraints { (make) in
-            make.leading.centerY.equalToSuperview()
-            make.width.equalTo(38)
-            make.height.equalTo(38)
-        }
-        textView.snp.makeConstraints { (make) in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(iconView.snp.trailing).offset(10)
-            make.width.equalTo(138)
-            make.height.equalTo(33)
-        }
+        setNavigationLeftView(isForgotView: false)
 //        dismissButton.snp.makeConstraints { (make) in
 //            make.size.equalTo(height(24/812))
 //            make.top.equalToSuperview().offset(topOffset(56/812))
 //            make.left.equalToSuperview().offset(leftRightOffset(24/375))
 //        }
         
-        backgroundImageView.snp.makeConstraints { (make) in
-            make.bottom.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
-        }
+
         
         resetUI()
         view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
-        backgroundImageView.layer.cornerRadius = 25
-        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
-        backgroundImageView.layer.addShadow()
+        
         topLabel.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
     }
-    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundImageView.snp.updateConstraints { (make) in
+            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+        }
+        backgroundImageView.layer.cornerRadius = 20
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
+    }
     private func resetUI() {
 //        updateBottomView()
         switch currentShowMode {
@@ -726,19 +735,16 @@ extension LoginSignupViewController {
             fetchBackgroundVideo()
             switchButton.setTitle("Sign Up".localized, for: .normal)
             topLabel.text = "Log In to Mundocoin".localized
-            logoImv.isHidden = false
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .signupEmail,.signupPhone:
             switchButton.setTitle("Log In".localized, for: .normal)
             topLabel.text = "Create Your Account".localized
-            logoImv.isHidden = true
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .forgotPW:
             switchButton.setTitle("".localized, for: .normal)
             topLabel.text = "Forgot password".localized
-            logoImv.isHidden = true
             switchButton.isHidden = true
             backToButton.isHidden = false
         }
@@ -787,12 +793,4 @@ extension UINavigationBar {
         return CGSize(width: UIScreen.main.bounds.width, height: 51)
     }
 }
-final class CustomImageView: UIImageView {
 
-    private var shadowLayer: CAShapeLayer!
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-    }
-
-}

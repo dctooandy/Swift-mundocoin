@@ -21,6 +21,7 @@ class IDVerificationViewController: BaseViewController {
     @IBOutlet weak var skipLabel: UILabel!
     @IBOutlet weak var idTitleLabel: UILabel!
     @IBOutlet weak var discriptionLabel: UILabel!
+    @IBOutlet weak var backgroundImageView: UIImageView!
     let countryTopLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
@@ -68,12 +69,21 @@ class IDVerificationViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundImageView.snp.updateConstraints { (make) in
+            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+        }
+        backgroundImageView.layer.cornerRadius = 20
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
     }
     // MARK: -
     // MARK:業務方法
     func setupUI()
     {
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
         idTitleLabel.text = "Identity Verification".localized
         discriptionLabel.text = "Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. ".localized
         view.addSubview(countryTopLabel)

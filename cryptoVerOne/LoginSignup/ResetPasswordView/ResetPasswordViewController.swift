@@ -18,62 +18,17 @@ class ResetPasswordViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
-    let newPWTopLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.textColor = .black
-        lb.text = "New Password".localized
-        lb.font = Fonts.pingFangSCRegular(16)
-        return lb
-    }()
-    let newPWTextField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.font = Fonts.pingFangSCRegular(16)
-        tf.keyboardType = .numberPad
-        return tf
-    }()
-    let newPWInvalidLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = .red
-        lb.text = "Enter the 6-digit code".localized
-        lb.isHidden = true
-        return lb
-    }()
-    let confirmPWTopLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.textColor = .black
-        lb.text = "Confirm new password".localized
-        lb.font = Fonts.pingFangSCRegular(16)
-        return lb
-    }()
-    let confirmPWTextField: UITextField = {
-        let tf = UITextField()
-        tf.borderStyle = .none
-        tf.font = Fonts.pingFangSCRegular(16)
-        tf.keyboardType = .numberPad
-        return tf
-    }()
-    
-    let confirmPWInvalidLabel: UILabel = {
-        let lb = UILabel()
-        lb.textAlignment = .left
-        lb.font = Fonts.pingFangSCRegular(14)
-        lb.textColor = .red
-        lb.text = "Enter the 6-digit code".localized
-        lb.isHidden = true
-        return lb
-    }()
+    @IBOutlet weak var backgroundImageView: UIImageView!
+    var newPasswordInputView : InputStyleView!
+    var confirmPasswordInputView : InputStyleView!
+
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
-    let newPWCancelRightButton = UIButton()
-    let confirmPWCancelRightButton = UIButton()
+//    let newPWCancelRightButton = UIButton()
+//    let confirmPWCancelRightButton = UIButton()
     let submitButton = CornerradiusButton()
     // MARK: -
     // MARK:Life cycle
@@ -96,104 +51,56 @@ class ResetPasswordViewController: BaseViewController {
         super.viewWillDisappear(animated)
 
     }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        backgroundImageView.snp.updateConstraints { (make) in
+            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+        }
+        backgroundImageView.layer.cornerRadius = 20
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
+    }
     // MARK: -
     // MARK:業務方法
     func setupUI()
     {
-        topLabel.text = "Reset password".localized
-        view.addSubview(newPWTopLabel)
-        view.addSubview(newPWTextField)
-        view.addSubview(newPWInvalidLabel)
-        view.addSubview(confirmPWTopLabel)
-        view.addSubview(confirmPWTextField)
-        view.addSubview(confirmPWInvalidLabel)
-        view.addSubview(newPWCancelRightButton)
-        view.addSubview(confirmPWCancelRightButton)
-        view.addSubview(submitButton)
-        newPWTextField.delegate = self
-        confirmPWTextField.delegate = self
-        let textFieldMulH = height(48/812)
-        let invalidH = height(20/812)
-        let tfWidth = width(361.0/414.0) - 40
-        newPWTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(80)
-            make.height.equalTo(textFieldMulH)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(tfWidth)
-        }
-        newPWTextField.setMaskView()
-        newPWTopLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(newPWTextField.snp.top).offset(-17)
-            make.left.equalTo(newPWTextField).offset(-10)
-            make.height.equalTo(17)
-        }
-        newPWInvalidLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(newPWTextField.snp.bottom).offset(5)
-            make.left.equalTo(newPWTextField)
-            make.height.equalTo(invalidH)
-        }
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
         
-        confirmPWTextField.snp.makeConstraints { (make) in
-            make.top.equalTo(newPWTextField.snp.bottom).offset(65)
-            make.height.equalTo(textFieldMulH)
-            make.centerX.equalToSuperview()
-            make.width.equalTo(tfWidth)
+        let newPasswordView = InputStyleView(inputViewMode: .newPassword)
+        newPasswordInputView = newPasswordView
+        let confirmPasswordView = InputStyleView(inputViewMode: .confirmPassword)
+        confirmPasswordInputView = confirmPasswordView
+        topLabel.text = "Reset password".localized
+        view.addSubview(newPasswordInputView)
+        view.addSubview(confirmPasswordInputView)
+        view.addSubview(submitButton)
+
+        newPasswordInputView.snp.makeConstraints { (make) in
+            make.top.equalTo(topLabel.snp.bottom).offset(80)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(Themes.inputViewPasswordHeight)
         }
-        confirmPWTextField.setMaskView()
-        confirmPWTopLabel.snp.makeConstraints { (make) in
-            make.bottom.equalTo(confirmPWTextField.snp.top).offset(-17)
-            make.left.equalTo(confirmPWTextField).offset(-10)
-            make.height.equalTo(17)
+        confirmPasswordInputView.snp.makeConstraints { (make) in
+            make.top.equalTo(newPasswordInputView.snp.bottom)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(Themes.inputViewPasswordHeight)
         }
-        confirmPWInvalidLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(confirmPWTextField.snp.bottom).offset(5)
-            make.left.equalTo(confirmPWTextField)
-            make.height.equalTo(invalidH)
-        }
+      
         submitButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
         submitButton.setTitle("Submit".localized, for: .normal)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         submitButton.snp.makeConstraints { (make) in
-            make.top.equalTo(confirmPWInvalidLabel.snp.bottom).offset(10)
-            make.centerX.equalTo(confirmPWTextField)
+            make.top.equalTo(confirmPasswordInputView.snp.bottom).offset(10)
+            make.centerX.equalTo(confirmPasswordInputView)
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
-        }
-        newPWTextField.setPlaceholder("********", with: Themes.grayA3AED0)
-        confirmPWTextField.setPlaceholder("********", with: Themes.grayA3AED0)
-        //設定文字刪除
-        newPWCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        newPWCancelRightButton.backgroundColor = .black
-        newPWCancelRightButton.layer.cornerRadius = 7
-        newPWCancelRightButton.layer.masksToBounds = true
-        newPWCancelRightButton.snp.makeConstraints { (make) in
-            make.right.equalTo(newPWTextField).offset(-5)
-            make.centerY.equalTo(newPWTextField)
-            make.width.height.equalTo(14)
-        }
-        confirmPWCancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        confirmPWCancelRightButton.backgroundColor = .black
-        confirmPWCancelRightButton.layer.cornerRadius = 7
-        confirmPWCancelRightButton.layer.masksToBounds = true
-        confirmPWCancelRightButton.snp.makeConstraints { (make) in
-            make.right.equalTo(confirmPWTextField).offset(-5)
-            make.centerY.equalTo(confirmPWTextField)
-            make.width.height.equalTo(14)
+            make.height.equalTo(50)
         }
     }
     func bindPwdButton()
     {
-        newPWCancelRightButton.rx.tap
-            .subscribeSuccess { [weak self] in
-                self?.newPWTextField.text = ""
-                self?.newPWTextField.sendActions(for: .valueChanged)
-            }.disposed(by: dpg)
-        confirmPWCancelRightButton.rx.tap
-            .subscribeSuccess { [weak self] in
-                self?.confirmPWTextField.text = ""
-                self?.confirmPWTextField.sendActions(for: .valueChanged)
-            }.disposed(by: dpg)
         submitButton.rx.tap
             .subscribeSuccess { [weak self] in
                 self?.submitButtonPressed()
@@ -201,18 +108,19 @@ class ResetPasswordViewController: BaseViewController {
     }
     func bindTextfield()
     {
-        let isNewPWValid = newPWTextField.rx.text
+        let isNewPWValid = newPasswordInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. password, input: acc)
         }
-        let isConPWValid = confirmPWTextField.rx.text
+        let isConPWValid = confirmPasswordInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return acc == self.newPWTextField.text
+                return (acc == self.newPasswordInputView.textField.text) &&
+                    RegexHelper.match(pattern:. password, input: acc)
         }
-        isNewPWValid.skip(1).bind(to: newPWInvalidLabel.rx.isHidden).disposed(by: dpg)
-        isConPWValid.skip(1).bind(to: confirmPWInvalidLabel.rx.isHidden).disposed(by: dpg)
+        isNewPWValid.skip(1).bind(to: newPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isConPWValid.skip(1).bind(to: confirmPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 
         Observable.combineLatest(isNewPWValid, isConPWValid)
             .map { return $0.0 && $0.1 } //reget match result
@@ -230,13 +138,4 @@ class ResetPasswordViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
-extension ResetPasswordViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField == newPWTextField {
-            confirmPWTextField.becomeFirstResponder()
-        } else {
-            textField.resignFirstResponder()
-        }
-        return true
-    }
-}
+

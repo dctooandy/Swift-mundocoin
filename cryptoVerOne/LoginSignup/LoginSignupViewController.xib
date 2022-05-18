@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Pd-dm-SH2" customClass="CustomImageView" customModule="cryptoVerOne" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="104" width="414" height="792"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Pd-dm-SH2">
+                        <rect key="frame" x="0.0" y="104" width="414" height="896"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlF-IQ-O48" userLabel="Create Your Account">
                         <rect key="frame" x="32" y="144" width="257" height="32"/>
@@ -29,64 +29,24 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OMf-6M-MMY" userLabel="bottomView">
-                        <rect key="frame" x="121" y="833" width="172.5" height="29"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还没有倍利帐号？" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rZe-bj-nYX">
-                                <rect key="frame" x="0.0" y="0.0" width="114.5" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.9221277833" green="0.93278634549999995" blue="0.9568681121" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="rZe-bj-nYX" firstAttribute="top" secondItem="OMf-6M-MMY" secondAttribute="top" id="94u-ko-dyg"/>
-                            <constraint firstItem="rZe-bj-nYX" firstAttribute="leading" secondItem="OMf-6M-MMY" secondAttribute="leading" id="9LM-hw-62f"/>
-                            <constraint firstAttribute="bottom" secondItem="rZe-bj-nYX" secondAttribute="bottom" id="kll-of-cWi"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="rZe-bj-nYX"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="jat-cB-SdP">
-                        <rect key="frame" x="146.5" y="794" width="121" height="48"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="121" id="2uw-v4-cf7"/>
-                            <constraint firstAttribute="height" constant="48" id="z5K-AL-N4W"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="6Tx-gK-Ysi"/>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="jat-cB-SdP" firstAttribute="bottom" secondItem="6Tx-gK-Ysi" secondAttribute="bottom" constant="-20" id="EIK-Pb-GeF"/>
-                    <constraint firstAttribute="bottom" secondItem="7Pd-dm-SH2" secondAttribute="bottom" id="KbG-dp-y5q"/>
+                    <constraint firstItem="7Pd-dm-SH2" firstAttribute="height" secondItem="GEJ-Sc-tbN" secondAttribute="height" id="9kA-Ek-ioW"/>
                     <constraint firstItem="MlF-IQ-O48" firstAttribute="top" secondItem="7Pd-dm-SH2" secondAttribute="top" constant="40" id="Rby-Pt-DV2"/>
                     <constraint firstItem="7Pd-dm-SH2" firstAttribute="top" secondItem="6Tx-gK-Ysi" secondAttribute="top" constant="60" id="SGJ-jw-YFu"/>
                     <constraint firstItem="6Tx-gK-Ysi" firstAttribute="trailing" secondItem="7Pd-dm-SH2" secondAttribute="trailing" id="Seu-CQ-lg5"/>
                     <constraint firstItem="MlF-IQ-O48" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="32" id="jXD-Af-bJ5"/>
-                    <constraint firstItem="jat-cB-SdP" firstAttribute="centerX" secondItem="GEJ-Sc-tbN" secondAttribute="centerX" id="liC-W8-cfQ"/>
                     <constraint firstItem="7Pd-dm-SH2" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" id="tuv-aM-a7J"/>
                 </constraints>
-                <variation key="default">
-                    <mask key="subviews">
-                        <exclude reference="OMf-6M-MMY"/>
-                    </mask>
-                </variation>
             </view>
             <nil key="simulatedTopBarMetrics"/>
             <connections>
                 <outlet property="backgroundImageView" destination="7Pd-dm-SH2" id="IT8-nl-tJe"/>
-                <outlet property="logoImv" destination="jat-cB-SdP" id="mpz-Zh-ckR"/>
                 <outlet property="topLabel" destination="MlF-IQ-O48" id="7B6-JK-Cmc"/>
             </connections>
             <point key="canvasLocation" x="-39.130434782608695" y="168.75"/>
         </viewController>
     </objects>
-    <resources>
-        <image name="launch-logo" width="260" height="251"/>
-    </resources>
 </document>

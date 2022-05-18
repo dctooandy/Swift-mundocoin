@@ -35,9 +35,9 @@ class LoginPageViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
-    var loginViewControllers:[LoginViewController] = [LoginViewController]()
-    var signupViewControllers:[SignupViewController] = [SignupViewController]()
-    var forgotViewControllers:[ForgotViewController] = [ForgotViewController]()
+    var loginViewControllers = [LoginViewController]()
+    var signupViewControllers = [SignupViewController]()
+    var forgotViewControllers = [ForgotViewController]()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {

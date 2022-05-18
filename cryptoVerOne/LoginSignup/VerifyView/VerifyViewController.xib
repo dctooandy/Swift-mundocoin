@@ -15,8 +15,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNn-0d-hiw" customClass="CustomImageView" customModule="cryptoVerOne" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="104" width="414" height="792"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LNn-0d-hiw">
+                        <rect key="frame" x="0.0" y="104" width="414" height="896"/>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-send" translatesAutoresizingMaskIntoConstraints="NO" id="xfc-vI-0u5">
                         <rect key="frame" x="157.5" y="94" width="99" height="80"/>
@@ -41,6 +41,7 @@
                 <viewLayoutGuide key="safeArea" id="6Tx-gK-Ysi"/>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
+                    <constraint firstItem="LNn-0d-hiw" firstAttribute="height" secondItem="GEJ-Sc-tbN" secondAttribute="height" id="AeB-ca-N1D"/>
                     <constraint firstItem="LNn-0d-hiw" firstAttribute="top" secondItem="6Tx-gK-Ysi" secondAttribute="top" constant="60" id="Cx0-73-aqz"/>
                     <constraint firstItem="xfc-vI-0u5" firstAttribute="centerX" secondItem="GEJ-Sc-tbN" secondAttribute="centerX" id="Im8-xd-Uz7"/>
                     <constraint firstItem="xfc-vI-0u5" firstAttribute="top" secondItem="6Tx-gK-Ysi" secondAttribute="top" constant="50" id="JgJ-hQ-z6z"/>
@@ -48,7 +49,6 @@
                     <constraint firstItem="SQV-BU-xq1" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="51" id="Rsa-sR-VDC"/>
                     <constraint firstItem="LNn-0d-hiw" firstAttribute="trailing" secondItem="6Tx-gK-Ysi" secondAttribute="trailing" id="akk-D9-xlH"/>
                     <constraint firstItem="6Tx-gK-Ysi" firstAttribute="trailing" secondItem="SQV-BU-xq1" secondAttribute="trailing" constant="51" id="cxw-1H-JRK"/>
-                    <constraint firstAttribute="bottom" secondItem="LNn-0d-hiw" secondAttribute="bottom" id="dgu-I4-Wl2"/>
                     <constraint firstItem="LNn-0d-hiw" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" id="jM7-qA-XO0"/>
                     <constraint firstItem="bHQ-eQ-b2R" firstAttribute="centerX" secondItem="GEJ-Sc-tbN" secondAttribute="centerX" id="kdg-QQ-lbm"/>
                     <constraint firstItem="bHQ-eQ-b2R" firstAttribute="top" secondItem="SQV-BU-xq1" secondAttribute="bottom" constant="10" id="tuT-Uf-ILQ"/>

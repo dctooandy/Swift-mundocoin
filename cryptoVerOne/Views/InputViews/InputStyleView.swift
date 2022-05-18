@@ -26,6 +26,8 @@ enum InputViewMode :Equatable {
     case withdrawTo(Bool)
     case txid
     case securityVerification
+    case newPassword
+    case confirmPassword
     
     func topString() -> String {
         switch self {
@@ -42,6 +44,8 @@ enum InputViewMode :Equatable {
         case .withdrawTo( _ ): return "Withdraw to".localized
         case .txid: return "Txid".localized
         case .securityVerification: return "Security Verification".localized
+        case .newPassword: return "New Password".localized
+        case .confirmPassword: return "Confirm New Password".localized
         }
     }
     
@@ -51,7 +55,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress: return "Long press to paste".localized
         case .email: return "...@mundo.com"
-        case .password: return "********".localized
+        case .password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundo.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
@@ -65,7 +69,7 @@ enum InputViewMode :Equatable {
         case .withdrawToAddress: return "Please check the withdrawal address.".localized
         case .email: return "...@mundo.com".localized
         case .phone: return "Invalid phone number.".localized
-        case .password: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
+        case .password ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
         case .forgotPW: return "...@mundo.com".localized
         case .registration: return "Enter the 6-digit code ".localized
         case .securityVerification: return "Enter the 6-digit code".localized
@@ -251,6 +255,9 @@ class InputStyleView: UIView {
     // MARK:業務方法
     func setup()
     {
+        let isPasswordType = (inputViewMode == .password ||
+                                inputViewMode == .newPassword ||
+                                inputViewMode == .confirmPassword)
         addSubview(topLabel)
         addSubview(textField)
         addSubview(invalidLabel)
@@ -258,7 +265,7 @@ class InputStyleView: UIView {
         textField.delegate = self
         displayRightButton.tintColor = Themes.grayA3AED0
         let topLabelH = 15
-        let invalidH = inputViewMode == .password ? 39.0 : 22.0
+        let invalidH = (isPasswordType ? 39.0 : 22.0)
         topLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(10)
@@ -291,11 +298,14 @@ class InputStyleView: UIView {
     {
         displayRightButton.tintColor = Themes.gray707EAE
         cancelRightButton.tintColor = Themes.gray707EAE
+        let isPasswordType = (inputViewMode == .password ||
+                                inputViewMode == .newPassword ||
+                                inputViewMode == .confirmPassword)
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
         var rightLabelWidth : CGFloat = 0.0
-        displayOffetWidth = (inputViewMode == .password ? 18.0:0.0)
+        displayOffetWidth = (isPasswordType ? 18.0:0.0)
         switch self.inputViewMode {
         case .copy ,.networkMethod(_), .withdrawTo(_) ,.txid:
             cancelOffetWidth = 0.0
@@ -304,7 +314,7 @@ class InputStyleView: UIView {
             cancelOffetWidth = 18.0
             textField.isUserInteractionEnabled = true
         }
-        textField.isSecureTextEntry = (inputViewMode == .password)
+        textField.isSecureTextEntry = isPasswordType
         topLabelString = inputViewMode.topString()
         placeHolderString = inputViewMode.textPlacehloder()
         invalidLabelString = inputViewMode.invalidString()

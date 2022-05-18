@@ -82,10 +82,10 @@ class LoginViewController: BaseViewController {
         }
         view.addSubview(forgetPasswordButton)
         view.addSubview(loginButton)
-        forgetPasswordButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        forgetPasswordButton.titleLabel?.font = Fonts.pingFangTCRegular(14)
         forgetPasswordButton.snp.makeConstraints { (make) in
-            make.left.equalTo(accountInputView!).offset(20)
-            make.top.equalTo(accountInputView!.snp.bottom).offset(20)
+            make.left.equalTo(accountInputView!).offset(32)
+            make.top.equalTo(accountInputView!.snp.bottom)
             make.height.equalTo(18)
         }
 
@@ -99,6 +99,7 @@ class LoginViewController: BaseViewController {
 //        loginModeDidChange()
         forgetPasswordButton.isHidden = loginMode == .phonepPage
         forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
+        forgetPasswordButton.setTitleColor(Themes.gray707EAE, for: .normal)
         loginButton.setTitle("Log In".localized, for: .normal)
     }
     
