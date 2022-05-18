@@ -56,8 +56,15 @@ class LoginSignupViewController: BaseViewController {
         rightBtn.addTarget(self, action: #selector(switchViewAction), for: .touchUpInside)
         return rightBtn
     }()
+    private lazy var coverButton:UIButton = {
+        let coverButton = UIButton()
+        coverButton.setTitle("".localized, for:.normal)
+        coverButton.addTarget(self, action: #selector(goToWalletVC), for: .touchUpInside)
+        return coverButton
+    }()
     private lazy var logoView:UIView = {
         let logoView = UIView()
+        logoView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 40)
         logoView.backgroundColor = .clear
         return logoView
     }()
@@ -74,7 +81,7 @@ class LoginSignupViewController: BaseViewController {
         super.viewDidLoad()
         setupLoginPageVC()
         bindLoginPageVC()
-//        updateBottomView()
+        setupLeftLogoView()
         setupUI()
         binding()
     }
@@ -172,11 +179,6 @@ class LoginSignupViewController: BaseViewController {
     }
     
     private func binding() {
-        logoView.rx.longPress
-            .subscribeSuccess { [weak self] in
-//                self?.bioVerifyCheck(isDev: true)
-                self?.goWalletViewController()
-            }.disposed(by: disposeBag)
         
 //        switchButton.rx.tap
 //            .subscribeSuccess { [weak self] in
@@ -682,27 +684,36 @@ extension LoginSignupViewController {
         }else
         {
             self.backToButton.isHidden = true
-            let letLogoView = UIView()
-            letLogoView.frame = CGRect(x: 0, y: 0, width: 200.0, height: 40)
-            self.logoView = letLogoView
             self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
-            let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
-            let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
-            textView.contentMode = .scaleAspectFit
-            logoView.addSubview(iconView)
-            logoView.addSubview(textView)
-            iconView.snp.makeConstraints { (make) in
-                make.leading.centerY.equalToSuperview()
-                make.width.equalTo(38)
-                make.height.equalTo(38)
-            }
-            textView.snp.makeConstraints { (make) in
-                make.centerY.equalToSuperview()
-                make.leading.equalTo(iconView.snp.trailing).offset(10)
-                make.width.equalTo(138)
-                make.height.equalTo(33)
-            }
         }
+    }
+    func setupLeftLogoView()
+    {
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
+        let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
+        let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
+        textView.contentMode = .scaleAspectFit
+        logoView.addSubview(iconView)
+        logoView.addSubview(textView)
+        logoView.addSubview(coverButton)
+        iconView.snp.makeConstraints { (make) in
+            make.leading.centerY.equalToSuperview()
+            make.width.equalTo(38)
+            make.height.equalTo(38)
+        }
+        textView.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconView.snp.trailing).offset(10)
+            make.width.equalTo(138)
+            make.height.equalTo(33)
+        }
+        coverButton.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    @objc func goToWalletVC()
+    {
+        self.goWalletViewController()
     }
     private func setupUI() {
         setNavigationLeftView(isForgotView: false)
@@ -711,9 +722,6 @@ extension LoginSignupViewController {
 //            make.top.equalToSuperview().offset(topOffset(56/812))
 //            make.left.equalToSuperview().offset(leftRightOffset(24/375))
 //        }
-        
-
-        
         resetUI()
         view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
         
