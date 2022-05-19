@@ -578,7 +578,7 @@ class LoginSignupViewController: BaseViewController {
                 print("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
-                Toast.show(msg: "Welcome")
+                Toast.show(msg: "Welcome to Mundocoin".localized)
             }
         }
     }

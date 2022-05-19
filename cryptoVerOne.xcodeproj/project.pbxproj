@@ -13,8 +13,9 @@
 		A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
 		A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E1BA52824FF5000827148 /* ForgotViewController.xib */; };
 		A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E1BA62824FF5000827148 /* ForgotViewController.swift */; };
-		A1559DE32833AB2200755783 /* TFBorderStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TFBorderStyle.swift */; };
+		A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TwoSideStyle.swift */; };
 		A1559DE6283499D300755783 /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
+		A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -184,8 +185,9 @@
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
 		A14E1BA52824FF5000827148 /* ForgotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotViewController.xib; sourceTree = "<group>"; };
 		A14E1BA62824FF5000827148 /* ForgotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
-		A1559DE22833AB2200755783 /* TFBorderStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBorderStyle.swift; sourceTree = "<group>"; };
+		A1559DE22833AB2200755783 /* TwoSideStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSideStyle.swift; sourceTree = "<group>"; };
 		A1559DE5283499D300755783 /* TopBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBackButton.swift; sourceTree = "<group>"; };
+		A1559DFB2835EFDE00755783 /* WalletCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCellDto.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -757,7 +759,7 @@
 			isa = PBXGroup;
 			children = (
 				A19C7088282239DC000AFC3F /* Themes.swift */,
-				A1559DE22833AB2200755783 /* TFBorderStyle.swift */,
+				A1559DE22833AB2200755783 /* TwoSideStyle.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -799,6 +801,7 @@
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
+				A1559DFB2835EFDE00755783 /* WalletCellDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1129,7 +1132,7 @@
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,
 				A16F61F8282E383300D9CCE5 /* TemplateView.swift in Sources */,
-				A1559DE32833AB2200755783 /* TFBorderStyle.swift in Sources */,
+				A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
 				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
@@ -1146,6 +1149,7 @@
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
+				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestServer.swift in Sources */,

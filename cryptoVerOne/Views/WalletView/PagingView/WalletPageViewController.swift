@@ -47,8 +47,8 @@ class WalletPageViewController: BaseViewController {
     }
     private func setupPageVC() {
         let spotPage = SubPageViewController.instance(mode: .spot)
-        let stakePage = SubPageViewController.instance(mode: .stake)
-        subPageViewControllers = [spotPage,stakePage]
+//        let stakePage = SubPageViewController.instance(mode: .stake)
+        subPageViewControllers = [spotPage]
         bindSubPageViewControllers()
         
     }
@@ -57,30 +57,37 @@ class WalletPageViewController: BaseViewController {
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSource = (.class(type: NewPagingTitleCell.self))
-        pageViewcontroller?.selectedBackgroundColor = .white
-        pageViewcontroller?.backgroundColor = UIColor(rgb: 0xEDEDED)
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 36)
-        pageViewcontroller?.menuHorizontalAlignment = .center
+//        pageViewcontroller?.menuItemSource = (.class(type: NewPagingTitleCell.self))
+        pageViewcontroller?.selectedBackgroundColor = .clear
+//        pageViewcontroller?.backgroundColor = UIColor(rgb: 0xEDEDED)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 23)
+        // menu 上下左右控制
+        pageViewcontroller?.menuInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        pageViewcontroller?.menuHorizontalAlignment = .left
         pageViewcontroller?.menuItemSpacing = 20
         pageViewcontroller?.menuBackgroundColor = .clear
-        pageViewcontroller?.borderColor = .clear
+        // menu底下的線
+        pageViewcontroller?.borderColor = UIColor(rgb: 0xE0E5F2)
         // menu text
         pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 15)
         pageViewcontroller?.font = UIFont.systemFont(ofSize: 15)
         pageViewcontroller?.textColor = .black
         pageViewcontroller?.selectedTextColor = .black
-        // menu indicator
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = .clear
-//        pageViewcontroller?.indicatorClass = IndicatorView.self
-//        pageViewcontroller?.indicatorOptions = .visible(height: 6,
-//                                                        zIndex: Int.max,
-//                                                        spacing: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20),
-//                                                        insets: .zero)
+        // menu indicator
+        pageViewcontroller?.indicatorColor = .black
+        // 下面浮標位置只能從menu 底下長出來
+        // 浮標寬度跟隨menu
+        // spacing 控制左右寬度
+        // insets 控制上下切多少
+        pageViewcontroller?.indicatorClass = IndicatorView.self
+        pageViewcontroller?.indicatorOptions = .visible(height: 9,
+                                                        zIndex: Int.max,
+                                                        spacing: UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 45),
+                                                        insets: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0))
         addChild(pageViewcontroller!)
         view.addSubview(pageViewcontroller!.view)
         pageViewcontroller?.view.snp.makeConstraints({ (make) in
@@ -112,8 +119,16 @@ extension WalletPageViewController: PagingViewControllerDataSource, PagingViewCo
 class IndicatorView: PagingIndicatorView {
     override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
         super.apply(layoutAttributes)
+//        backgroundColor = .clear
+//        let indicatorView = UIView()
+//        indicatorView.backgroundColor = .black
+//        indicatorView.frame = CGRect(x: 0, y: 10, width: 30, height: 8)
+//        indicatorView.layer.cornerRadius = 4
+//        indicatorView.layoutMargins = UIEdgeInsets(top: 4, left: 0, bottom: 0, right: 0)
+//        addSubview(indicatorView)
         layer.cornerRadius = layoutAttributes.frame.height / 2
     }
+
 }
 class NewPagingTitleCell: PagingTitleCell {
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {

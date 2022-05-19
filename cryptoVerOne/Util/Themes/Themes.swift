@@ -12,11 +12,17 @@ import RxCocoa
 
 class Themes {
     
-    static let plkMode = TFBorderStyle.share.interFaceStyle.asObservable()
-    
+    static let plkMode = TwoSideStyle.share.interFaceStyle.asObservable()
     static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
         return Themes.plkMode.map({ $0 == .light ? light : dark })
     }
+    
+    static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()
+    static func bindVisibleOrNotStyle<T>(visible: T, none: T) -> Observable<T> {
+        return Themes.moneySecureMode.map({ $0 == .visible ? visible : none })
+    }
+    static let moneyVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:false, none: true)
+    static let stringVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:true, none: false)
     
     static let chooseOrNotChoose: Observable<UIColor> = Themes.bindChooseOrNotStyle(
         light: Themes.grayA3AED0, dark: Themes.grayE0E5F2)
@@ -31,6 +37,7 @@ class Themes {
     static let grayCCD2E3 = UIColor(rgb: 0xCCD2E3)
     static let gray707EAE = UIColor(rgb: 0x707EAE)
     static let gray6149F6 = UIColor(rgb: 0x6149F6)
+    static let gray1CD0C5 = UIColor(rgb: 0x1CD0C5)
     
     
     static let primaryLight =  UIColor(rgb: 0xc2aaf2)

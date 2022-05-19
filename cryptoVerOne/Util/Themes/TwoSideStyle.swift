@@ -1,5 +1,5 @@
 //
-//  TFBorderStyle.swift
+//  TwoSideStyle.swift
 //  cryptoVerOne
 //
 //  Created by AndyChen on 2022/5/17.
@@ -9,15 +9,28 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-class TFBorderStyle {
+class TwoSideStyle {
     enum InterFaceStyle {
         case light, dark
     }
-    static var share = TFBorderStyle()
+    enum SecureStyle {
+        case visible, nonVisible
+    }
+    static var share = TwoSideStyle()
+    let moneySecureStyle: BehaviorRelay<SecureStyle> = {
+        return BehaviorRelay<SecureStyle>(value: .visible)
+    }()
+    func acceptiMoneySecureStyle(_ style: SecureStyle) {
+        if moneySecureStyle.value == .visible {
+            moneySecureStyle.accept(.nonVisible)
+        } else {
+            moneySecureStyle.accept(.visible)
+        }
+    }
     let interFaceStyle: BehaviorRelay<InterFaceStyle> = {
         return BehaviorRelay<InterFaceStyle>(value: checkTime())
     }()
-    func acceptStyle(_ style: InterFaceStyle) {
+    func acceptiInterFaceStyle(_ style: InterFaceStyle) {
 //        if interFaceStyle.value == .light {
 //            interFaceStyle.accept(.dark)
 //        } else {
@@ -26,7 +39,7 @@ class TFBorderStyle {
     }
     
     func updateStyle() {
-        let currentStyle = TFBorderStyle.checkTime()
+        let currentStyle = TwoSideStyle.checkTime()
         switch currentStyle {
         case .light:
             if interFaceStyle.value != .light {

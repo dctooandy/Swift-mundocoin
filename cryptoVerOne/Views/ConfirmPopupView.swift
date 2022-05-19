@@ -105,7 +105,7 @@ class ConfirmPopupView: PopupBottomSheet {
             make.height.equalTo(height(120.0/812.0))
         }
         titleView.addSubview(titleIcon)
-        let image = UIImage(named:iconMode.imageName)?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        let image = UIImage(named:iconMode.imageName)
         titleIcon.image = image
         titleIcon.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(height(40.0/812.0))

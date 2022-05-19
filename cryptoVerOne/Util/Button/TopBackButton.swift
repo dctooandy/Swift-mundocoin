@@ -24,7 +24,8 @@ class TopBackButton:UIButton {
     
     private func setupViews(){
         layoutIfNeeded()
-        let image = UIImage(named:"icon-arrow-lef2")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight()))
+        let image = UIImage(named:"icon-arrow-lef2")
+        frame = CGRect(x: 0, y: 0, width: Views.backImageHeight(), height: Views.backImageHeight())
         setImage(image, for: .normal)
         setTitle("", for:.normal)
     }

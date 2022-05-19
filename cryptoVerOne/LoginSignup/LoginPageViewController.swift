@@ -69,10 +69,7 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.contentInteraction = .none
         pageViewcontroller?.indicatorColor = .clear
         pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
-        pageViewcontroller?.indicatorOptions = .visible(height: 6,
-                                                        zIndex: Int.max,
-                                                        spacing: UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20),
-                                                        insets: .zero)
+        pageViewcontroller?.indicatorOptions = .hidden
         addChild(pageViewcontroller!)
         view.addSubview(pageViewcontroller!.view)
         pageViewcontroller?.view.snp.makeConstraints({ (make) in

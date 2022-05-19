@@ -27,7 +27,7 @@ enum LoginMode {
         case .phonepPage:
             return SignupSuccessTitle(title: "Complete Info", doneButtonTitle: "Start", showAccount: true)
         case .emailPage:
-            return SignupSuccessTitle(title: "Welcome to MundoCoin", doneButtonTitle: "Start", showAccount: false)
+            return SignupSuccessTitle(title: "Welcome to Mundocoin".localized, doneButtonTitle: "Start", showAccount: false)
         }
     }
     

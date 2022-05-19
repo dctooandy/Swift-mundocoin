@@ -2,25 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-896@3x.png",
-      "idiom" : "iphone",
-      "minimum-system-version" : "12.0",
-      "orientation" : "portrait",
-      "scale" : "3x",
-      "subtype" : "2688h"
-    },
-    {
-      "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-896@2x.png",
-      "idiom" : "iphone",
-      "minimum-system-version" : "12.0",
-      "orientation" : "portrait",
-      "scale" : "2x",
-      "subtype" : "1792h"
-    },
-    {
-      "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-812@3x.png",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhoneXPortraitiOS11_375x812pt@3x.png",
       "idiom" : "iphone",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
@@ -29,7 +11,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-736@3x.png",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS89_414x736pt@3x.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -38,7 +20,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-667@2x.png",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS89_375x667pt@2x.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -47,6 +29,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS789_320x480pt@2x.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -54,7 +37,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "LaunchImage-1-P-568@2x.png",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS789_320x568pt@2x.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -63,52 +46,25 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "768x1024.jpg",
-      "idiom" : "ipad",
-      "minimum-system-version" : "7.0",
-      "orientation" : "portrait",
-      "scale" : "1x"
-    },
-    {
-      "extent" : "full-screen",
-      "filename" : "1536x2048.jpg",
-      "idiom" : "ipad",
-      "minimum-system-version" : "7.0",
-      "orientation" : "portrait",
-      "scale" : "2x"
-    },
-    {
-      "extent" : "full-screen",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS56_320x480pt.png",
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "1x"
     },
     {
       "extent" : "full-screen",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS56_320x480pt@2x.png",
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "2x"
     },
     {
       "extent" : "full-screen",
+      "filename" : "截圖 2022-05-18 下午5.11.51iPhonePortraitiOS56_320x568pt@2x.png",
       "idiom" : "iphone",
       "orientation" : "portrait",
       "scale" : "2x",
       "subtype" : "retina4"
-    },
-    {
-      "extent" : "full-screen",
-      "filename" : "768x1024-1.jpg",
-      "idiom" : "ipad",
-      "orientation" : "portrait",
-      "scale" : "1x"
-    },
-    {
-      "extent" : "full-screen",
-      "filename" : "1536x2048-1.jpg",
-      "idiom" : "ipad",
-      "orientation" : "portrait",
-      "scale" : "2x"
     }
   ],
   "info" : {

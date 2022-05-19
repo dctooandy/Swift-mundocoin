@@ -26,30 +26,37 @@ class WalletViewController: BaseViewController {
 
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var eyeIconImageView: UIImageView!
+    @IBOutlet weak var totalBalanceLabel: UILabel!
+    @IBOutlet weak var hiddenTotalBalanceLabel: UILabel!
+    @IBOutlet weak var balanceGradiView: BalanceGradientView!
+    @IBOutlet weak var spotGradiView: BalanceGradientView!
+    @IBOutlet weak var balanceFrameView: UIView!
+    @IBOutlet weak var depositImg: UIImageView!
+    @IBOutlet weak var withdrawImg: UIImageView!
+    
     private lazy var profileButton:UIButton = {
-        let backToButton = UIButton()
-        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let image = UIImage(named:"icon-user")
         backToButton.setImage(image, for: .normal)
         backToButton.addTarget(self, action:#selector(pushToProfile), for:.touchUpInside)
         return backToButton
     }()
     private lazy var bellButton:UIButton = {
-        let backToButton = UIButton()
-        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let image = UIImage(named:"icon-bell")
         backToButton.setImage(image, for: .normal)
         backToButton.addTarget(self, action:#selector(pushToBell), for:.touchUpInside)
         return backToButton
     }()
     private lazy var boardButton:UIButton = {
-        let backToButton = UIButton()
-        let image = UIImage(named:"launch-logo")?.reSizeImage(reSize: CGSize(width: 30, height: 30))
+        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let image = UIImage(named:"icon-record")
         backToButton.setImage(image, for: .normal)
         backToButton.addTarget(self, action:#selector(pushToBoard), for:.touchUpInside)
         return backToButton
     }()
-    @IBOutlet weak var depositImg: UIImageView!
-    @IBOutlet weak var withdrawImg: UIImageView!
-    @IBOutlet weak var middleLineView: UIView!
+ 
     
     // MARK: -
     // MARK:Life cycle
@@ -59,6 +66,7 @@ class WalletViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavi()
+        setup()
         bindAction()
         bindingIMGview()
         setupPagingView()
@@ -84,12 +92,34 @@ class WalletViewController: BaseViewController {
         self.navigationItem.rightBarButtonItems = rightBarItems
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
     }
+    func setup()
+    {
+        totalBalanceLabel.text = "988775.05".numberFormatter(.decimal, 2)
+        Themes.moneyVisibleOrNotVisible.bind(to: totalBalanceLabel.rx.isHidden).disposed(by: dpg)
+        Themes.stringVisibleOrNotVisible.bind(to: hiddenTotalBalanceLabel.rx.isHidden).disposed(by: dpg)
+    }
     func bindAction()
     {
         twoFAVC.securityViewMode = .defaultMode
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
             Log.i("Submit成功")
         }.disposed(by: dpg)
+        eyeIconImageView.rx.click.subscribeSuccess { [self](_) in
+            changeEyeMode()
+        }.disposed(by: dpg)
+    }
+    func changeEyeMode()
+    {
+        if hiddenTotalBalanceLabel.isHidden == true
+        {
+            eyeIconImageView.image = UIImage(named: "icon-view")
+            TwoSideStyle.share.acceptiMoneySecureStyle(.nonVisible)
+        }else
+        {
+            eyeIconImageView.image = UIImage(named: "icon-view-hide")
+            TwoSideStyle.share.acceptiMoneySecureStyle(.visible)
+        }
+        
     }
     func bindingIMGview()
     {
@@ -106,7 +136,7 @@ class WalletViewController: BaseViewController {
         addChild(pageVC)
         view.addSubview(pageVC.view)
         pageVC.view.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.middleLineView.snp.bottom).offset(26)
+            make.top.equalTo(self.balanceFrameView.snp.bottom).offset(10)
             make.left.right.equalToSuperview()
             make.bottom.equalToSuperview().offset(-5)
         })
