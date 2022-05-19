@@ -16,6 +16,7 @@
 		A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TwoSideStyle.swift */; };
 		A1559DE6283499D300755783 /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
 		A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
+		A1559E0028360DBE00755783 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -188,6 +189,7 @@
 		A1559DE22833AB2200755783 /* TwoSideStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSideStyle.swift; sourceTree = "<group>"; };
 		A1559DE5283499D300755783 /* TopBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBackButton.swift; sourceTree = "<group>"; };
 		A1559DFB2835EFDE00755783 /* WalletCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCellDto.swift; sourceTree = "<group>"; };
+		A1559DFF28360DBE00755783 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -787,6 +789,7 @@
 				A19C719C28225D99000AFC3F /* BadgeBtn.swift */,
 				A19C71BA282263DE000AFC3F /* CornerradiusButton.swift */,
 				A1559DE5283499D300755783 /* TopBackButton.swift */,
+				A1559DFF28360DBE00755783 /* SaveButton.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 			files = (
 				A1973A2E2828F63B009932D8 /* WalletPageViewController.swift in Sources */,
 				A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */,
+				A1559E0028360DBE00755783 /* SaveButton.swift in Sources */,
 				A19C702C28222D97000AFC3F /* Extension.swift in Sources */,
 				A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */,
 				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,

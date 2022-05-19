@@ -19,5 +19,4 @@ class CornerradiusButton: UIButton {
         layer.cornerRadius = rect.height / 2
         clipsToBounds = true
     }
-
 }

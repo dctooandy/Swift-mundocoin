@@ -17,6 +17,8 @@ class DepositViewController: BaseViewController {
     var qrCodeString : String!
     // MARK: -
     // MARK:UI 設定
+    
+    @IBOutlet weak var topCurrencyView: UIView!
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var copyImageView: UIImageView!
@@ -25,7 +27,7 @@ class DepositViewController: BaseViewController {
     @IBOutlet weak var methodTitleLabel: UILabel!
     @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var discritpionLabel: UILabel!
-    @IBOutlet weak var saveButton: CornerradiusButton!
+    @IBOutlet weak var saveButton: SaveButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
     @IBOutlet weak var boardView: UIView!
 
@@ -52,9 +54,12 @@ class DepositViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
         let image = generateQRCode(from: qrCodeString)
         codeImageView.image = image
+        topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
+        topCurrencyView?.layer.borderWidth = 1
     }
     func bind()
     {
@@ -64,7 +69,8 @@ class DepositViewController: BaseViewController {
             Toast.show(msg: "Copied")
         }.disposed(by: dpg)
         saveButton.rx.tap.subscribeSuccess { [self](_) in
-            let image = codeImageView.asImage()
+//            let image = codeImageView.asImage()
+            let image = view.screenShot()!
             /// 将转换后的UIImage保存到相机胶卷中
             UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
             Toast.show(msg: "Saved")
@@ -73,6 +79,7 @@ class DepositViewController: BaseViewController {
             shareInfo()
         }.disposed(by: dpg)
     }
+    
     func generateQRCode(from string: String) -> UIImage? {
         let data = string.data(using: String.Encoding.ascii)
 
@@ -95,7 +102,7 @@ class DepositViewController: BaseViewController {
         // activityItems 陣列中放入我們想要使用的元件，這邊我們放入使用者圖片、使用者名稱及個人部落格。
         // 這邊因為我們確認裡面有值，所以使用驚嘆號強制解包。
         
-        let activityVC = UIActivityViewController(activityItems: [codeImageView.image!,"MundoCoin","Account Address"], applicationActivities: nil)
+        let activityVC = UIActivityViewController(activityItems: [view.screenShot()!,"MundoCoin","Account Address"], applicationActivities: nil)
         activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             // 如果錯誤存在，跳出錯誤視窗並顯示給使用者。
             if error != nil {

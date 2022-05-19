@@ -10,6 +10,23 @@ import Foundation
 import UIKit
 
 extension UIView {
+    func screenShot() -> UIImage? {
+        let scale = UIScreen.main.scale
+        let bounds = self.bounds
+        
+        UIGraphicsBeginImageContextWithOptions(bounds.size, false, scale)
+        
+        if let _ = UIGraphicsGetCurrentContext()
+        {
+            self.drawHierarchy(in: bounds, afterScreenUpdates: true)
+        }
+        
+        let screenshot = UIGraphicsGetImageFromCurrentImageContext()
+        
+        UIGraphicsEndImageContext()
+        
+        return screenshot
+    }
     func changeBorderWith( isChoose:Bool)
     {
         layer.borderColor = (isChoose ? Themes.grayA3AED0.cgColor : Themes.grayE0E5F2.cgColor)
