@@ -38,7 +38,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93828994040000002" green="0.95769757030000002" blue="0.98441940549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LuN-ja-xDF" firstAttribute="leading" secondItem="2mf-bQ-2ca" secondAttribute="leading" id="1Na-NZ-Hpw"/>
                             <constraint firstItem="2mf-bQ-2ca" firstAttribute="leading" secondItem="qLO-7j-2Dk" secondAttribute="leading" constant="24" id="5On-qb-jAX"/>

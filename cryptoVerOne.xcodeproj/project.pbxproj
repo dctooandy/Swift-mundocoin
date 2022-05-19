@@ -17,6 +17,7 @@
 		A1559DE6283499D300755783 /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
 		A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
 		A1559E0028360DBE00755783 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
+		A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -190,6 +191,7 @@
 		A1559DE5283499D300755783 /* TopBackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBackButton.swift; sourceTree = "<group>"; };
 		A1559DFB2835EFDE00755783 /* WalletCellDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletCellDto.swift; sourceTree = "<group>"; };
 		A1559DFF28360DBE00755783 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmWithdrawDto.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -805,6 +807,7 @@
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
 				A1559DFB2835EFDE00755783 /* WalletCellDto.swift */,
+				A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1190,6 +1193,7 @@
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,
 				A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */,
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
+				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
 				A16F61EA282E30F900D9CCE5 /* AddressBottomSheet.swift in Sources */,
 				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,

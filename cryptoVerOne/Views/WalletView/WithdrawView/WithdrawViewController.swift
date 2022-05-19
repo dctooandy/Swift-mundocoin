@@ -173,9 +173,20 @@ class WithdrawViewController: BaseViewController {
     }
     func continueAction()
     {
-        if let textString = withdrawToView.textField.text
+        if let _ = withdrawToView.textField.text
         {
-            confirmBottomSheet = ConfirmBottomSheet(address: textString)
+            let totleAmountText = amountView.amountTextView.text ?? ""
+            let tetherText = currencyLabel.text  ?? ""
+            let networkText = methodView.textField.text ?? ""
+            let feeText = feeAmountLabel.text ?? ""
+            let addressText = withdrawToView.textField.text ?? ""
+            let confirmData = ConfirmWithdrawDto(totalAmount: totleAmountText,
+                                                 tether: tetherText,
+                                                 network: networkText,
+                                                 fee: feeText,
+                                                 address: addressText)
+            
+            confirmBottomSheet = ConfirmBottomSheet(confirmData:confirmData)
             confirmBottomSheet.rxSecondConfirmAction().subscribeSuccess { [self](_) in
                 Log.i("開驗證")
                 showSecurityVC()

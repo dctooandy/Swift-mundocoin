@@ -41,7 +41,7 @@ enum InputViewMode :Equatable {
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
-        case .withdrawTo( _ ): return "Withdraw to".localized
+        case .withdrawTo( _ ): return "Withdraw to address".localized
         case .txid: return "Txid".localized
         case .securityVerification: return "Security Verification".localized
         case .newPassword: return "New Password".localized
@@ -314,6 +314,20 @@ class InputStyleView: UIView {
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
     }
+    func setWithdrawToMaskView() {
+        topLabel.snp.updateConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+        }
+        tfMaskView.snp.remakeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(topLabel).offset(-15)
+            make.bottom.equalTo(invalidLabel).offset(-15)
+            make.left.right.equalTo(self)
+//            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+        }
+        self.sendSubviewToBack(textField)
+    }
     func resetUI()
     {
         displayRightButton.tintColor = Themes.gray707EAE
@@ -412,6 +426,12 @@ class InputStyleView: UIView {
                 make.size.equalTo(18)
             }
             rightLabelWidth = 18 + 18 + 10
+        }else if inputViewMode == .withdrawTo(false)
+        {
+            textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+
+            tfMaskView.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+            setWithdrawToMaskView()
         }else if inputViewMode == .txid
         {
             addSubview(textLabel)

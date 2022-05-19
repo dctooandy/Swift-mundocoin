@@ -14,7 +14,7 @@ class ConfirmBottomSheet: BaseBottomSheet {
     // MARK:業務設定
     private let onSecondConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var addressString = ""
+    var confirmData : ConfirmWithdrawDto!
     // MARK: -
     // MARK:UI 設定
     var confirmView = ConfirmBottomView.loadNib()
@@ -24,9 +24,9 @@ class ConfirmBottomSheet: BaseBottomSheet {
         fatalError("init(coder:) has not been implemented")
     }
     
-    required init(address: String ) {
+    required init(confirmData: ConfirmWithdrawDto ) {
         super.init()
-        addressString = address
+        self.confirmData = confirmData
     }
     
     required init(_ parameters: Any? = nil) {
@@ -53,7 +53,7 @@ class ConfirmBottomSheet: BaseBottomSheet {
     // MARK:業務方法
     func setupUI()
     {
-        confirmView.addressString = addressString
+        confirmView.confirmData = self.confirmData
         defaultContainer.addSubview(confirmView)
         confirmView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
