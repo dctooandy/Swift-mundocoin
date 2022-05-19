@@ -97,7 +97,7 @@ extension String {
         let formatter = NumberFormatter()
         formatter.numberStyle = style
         formatter.locale = locale
-        formatter.minimumFractionDigits = minimumFractionDigits
+        formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = minimumFractionDigits
         let str = formatter.string(from: NSNumber(value: num)) ?? "0.00"
         return str
@@ -108,7 +108,7 @@ extension String {
         let formatter = NumberFormatter()
         formatter.numberStyle = style
 //        formatter.locale = nil
-        formatter.maximumFractionDigits = 0
+        formatter.maximumFractionDigits = 8
         let str = formatter.string(from: NSNumber(value: num)) ?? "0"
         return str
     }

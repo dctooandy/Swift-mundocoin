@@ -88,7 +88,6 @@ class LoginSignupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDateSelectedButton()
-        currentShowMode = .loginEmail
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:switchBtn)
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -109,9 +108,11 @@ class LoginSignupViewController: BaseViewController {
     // MARK: -
     // MARK:業務方法
     private func addDateSelectedButton() {
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchButton)
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
-        backToButton.isHidden = true
+        if currentShowMode !=  .forgotPW
+        {
+            self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchButton)
+            backToButton.isHidden = true
+        }
     }
     @objc func switchViewAction() {
         self.changeLoginState()

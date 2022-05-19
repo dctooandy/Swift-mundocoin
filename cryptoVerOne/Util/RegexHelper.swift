@@ -47,7 +47,7 @@ struct RegexHelper {
             case .coinAddress:
                 return "^[0-9a-zA-Z_\\.-]{1,50}+$"
             case .moneyAmount:
-                return "^[0-9\\.]{1,10}+$"
+                return "^[0-9\\.]{1,15}+$"
             }
         }
         var invalid:[String] {

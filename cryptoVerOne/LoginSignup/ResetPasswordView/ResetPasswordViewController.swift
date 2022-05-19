@@ -131,9 +131,9 @@ class ResetPasswordViewController: BaseViewController {
     {
         self.navigationController?.pushViewController(changedPWVC, animated: true)
     }
-    @objc func popVC(isAnimation : Bool = true)
+    @objc override func popVC()
     {
-        _ = self.navigationController?.popToRootViewController(animated: isAnimation)
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
 // MARK: -

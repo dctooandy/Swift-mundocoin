@@ -76,12 +76,12 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
         case 0:
             Log.i("twoFactorAuthentication")
             // 初次使用未綁定
-//            let twoFactorVC = TFBeginViewController.loadNib()
-//            self.navigationController?.pushViewController(twoFactorVC, animated: true )
-            // 已綁定 要重綁
-            let twoFactorVC = TFFinishReViewController.loadNib()
-            twoFactorVC.viewMode = .reverify
+            let twoFactorVC = TFBeginViewController.loadNib()
             self.navigationController?.pushViewController(twoFactorVC, animated: true )
+            // 已綁定 要重綁
+//            let twoFactorVC = TFFinishReViewController.loadNib()
+//            twoFactorVC.viewMode = .reverify
+//            self.navigationController?.pushViewController(twoFactorVC, animated: true )
             
         //twoFactorAuthentication
         case 1:

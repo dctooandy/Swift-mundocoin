@@ -103,6 +103,21 @@ enum InputViewMode :Equatable {
             return false
         }
     }
+    func isNetworkMethodEnable() -> Bool
+    {
+        switch self {
+        case .networkMethod( let array ):
+            if array.count > 1
+            {
+                return true
+            }else
+            {
+                return false
+            }
+        default:
+            return true
+        }
+    }
 }
 class InputStyleView: UIView {
     // MARK:業務設定
@@ -135,7 +150,7 @@ class InputStyleView: UIView {
     // MARK:UI 設定
     let tfMaskView: UIView = {
         let view = UIView()
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         view.layer.borderWidth = 1
         view.layer.borderColor = Themes.grayE0E5F2.cgColor
         view.isUserInteractionEnabled = false
@@ -192,12 +207,12 @@ class InputStyleView: UIView {
     }()
     let addressBookImageView : UIImageView = {
         let imgView = UIImageView()
-        imgView.image = UIImage(named: "launch-logo")
+        imgView.image = UIImage(named: "icon-addressbook")
         return imgView
     }()
     let scanImageView : UIImageView = {
         let imgView = UIImageView()
-        imgView.image = UIImage(named: "launch-logo")
+        imgView.image = UIImage(named: "icon-scan")
         return imgView
     }()
     let addAddressImageView : UIImageView = {
@@ -208,6 +223,11 @@ class InputStyleView: UIView {
     let copyAddressImageView : UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "arrow-circle-right")
+        return imgView
+    }()
+    let dropDownImageView : UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "icon-chevron-down")
         return imgView
     }()
     let displayRightButton = UIButton()
@@ -335,23 +355,29 @@ class InputStyleView: UIView {
             addSubview(scanImageView)
             addSubview(addressBookImageView)
             scanImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10)
+                make.right.equalToSuperview().offset(-20)
                 make.centerY.equalTo(textField)
-                make.size.equalTo(18)
+                make.size.equalTo(24)
             }
             addressBookImageView.snp.makeConstraints { (make) in
                 make.right.equalTo(scanImageView.snp.left).offset(-10)
                 make.centerY.equalTo(textField)
-                make.size.equalTo(18)
+                make.size.equalTo(24)
             }
-            rightLabelWidth = 18 + 18 + 10
+            rightLabelWidth = 24 + 24 + 20
         }else if inputViewMode.isNetworkMethod()
         {
             textField.text = "TRC20"
             let textFieldMulH = height(48/812)
             let tfWidth = width(361.0/414.0) - 40
+            addSubview(dropDownImageView)
             addSubview(chooseButton)
             addSubview(anchorView)
+            dropDownImageView.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-20)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(20)
+            }
             anchorView.snp.makeConstraints { (make) in
                 make.top.equalTo(textField.snp.bottom)
                 make.height.equalTo(textFieldMulH)
@@ -361,8 +387,16 @@ class InputStyleView: UIView {
             chooseButton.snp.makeConstraints { (make) in
                 make.edges.equalTo(textField)
             }
-            setupChooseDropdown()
-            bindChooseButton()
+            rightLabelWidth = 18 + 20
+            if inputViewMode.isNetworkMethodEnable()
+            {
+                setupChooseDropdown()
+                bindChooseButton()
+            }else
+            {
+                textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+                tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
+            }
         }else if inputViewMode == .withdrawTo(true)
         {
             addSubview(addAddressImageView)

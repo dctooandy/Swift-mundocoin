@@ -18,6 +18,8 @@ class WithdrawViewController: BaseViewController {
     var dropDataSource = ["TRC20"]
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var availableBalanceAmountLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var withdrawToInputView: UIView!
     @IBOutlet weak var methodInputView: UIView!
     @IBOutlet weak var feeTitle: UILabel!
@@ -59,12 +61,23 @@ class WithdrawViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        clearAllData()
     }
     // MARK: -
     // MARK:業務方法
     func setupUI()
     {
+        view.backgroundColor = Themes.grayF4F7FE
+        let minString = "10"
+        let maxString = "10000"
         amountView = AmountInputView.loadNib()
+        // 設定最高額度
+        let availableString = availableBalanceAmountLabel.text ?? "0"
+        
+        amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+        // 設定幣種
+        amountView.currency = currencyLabel.text ?? "USDT"
+
         amountView.amountTextView.text = "0"
         amountInputView.addSubview(amountView)
         amountView.snp.makeConstraints { (make) in
@@ -72,7 +85,7 @@ class WithdrawViewController: BaseViewController {
         }
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
-        rangeLabel.text = "Min: 10 USDT - Max: 10,000 USDT".localized
+        rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
         feeAmountLabel.text = "1.00"
         receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
@@ -125,10 +138,7 @@ class WithdrawViewController: BaseViewController {
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
-                    && acc != "0"
-                    && acc != "0."
-                    && acc != "0.0"
-                    && acc != "0.00"
+                    && acc.toDouble() > 0
             }
         
         let isAddressValid = withdrawToView.textField.rx.text
@@ -152,11 +162,12 @@ class WithdrawViewController: BaseViewController {
             .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
             .disposed(by: dpg)
         amountView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
-            if let amount = Float(amountView.amountTextView.text!)
+            if let amount = Double(amountView.amountTextView.text!)
             {
-                let result = (amount > 1.0 ?  amount - 1.0 :0)
-                
-                receiveAmountLabel.text = String(format: "%.2f", result)
+                let result = (amount > 1.0 ?  amount - 1.0 : 0.0)
+                // 小數點兩位的寫法
+//                receiveAmountLabel.text = String(format: "%.2f", result)
+                receiveAmountLabel.text = String(format: "%.8f", result).numberFormatter(.decimal, 8)
             }
         }.disposed(by: dpg)
     }
@@ -197,7 +208,12 @@ class WithdrawViewController: BaseViewController {
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
-
+    func clearAllData ()
+    {
+        amountView.amountTextView.text = "0"
+        withdrawToView.textField.text = ""
+        withdrawToView.textField.sendActions(for: .valueChanged)
+    }
     func rxConfirmClick() -> Observable<Any>
     {
         return onConfirmClick.asObserver()

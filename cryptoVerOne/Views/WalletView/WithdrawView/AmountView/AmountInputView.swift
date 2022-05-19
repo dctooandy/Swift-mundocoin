@@ -13,15 +13,24 @@ class AmountInputView: UIView {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var maxAmount : String = "0"
+    var currency : String = "TW" {
+        didSet{
+            resetUI()
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var amountTextView: UITextField!
+    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var maxBalanceLabel: UILabel!
     
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        bindUI()
     }
     
     override init(frame: CGRect) {
@@ -33,6 +42,17 @@ class AmountInputView: UIView {
     }
     // MARK: -
     // MARK:業務方法
+    func resetUI()
+    {
+        currencyLabel.text = currency
+    }
+    func bindUI()
+    {
+        maxBalanceLabel.rx.click.subscribeSuccess { [self](_) in
+            amountTextView.text = maxAmount
+            amountTextView.sendActions(for: .valueChanged)
+        }.disposed(by: dpg)
+    }
 }
 // MARK: -
 // MARK: 延伸
@@ -59,11 +79,11 @@ extension AmountInputView:UITextFieldDelegate
             return false
         }
         /// 3.检查总长度限制 (最多输入10位)
-        if text.count >= 10 {
+        if text.count >= 13 {
             return false
         }
         /// 4.检查小数点后位数限制 (小数点后最多输入2位)
-        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location > 2 {
+        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location > 8 {
             return false
         }
         /// 5.检查首位输入是否为0
@@ -72,9 +92,9 @@ extension AmountInputView:UITextFieldDelegate
             return false
         }
         /// 6.特殊情况检查
-        guard string == "." || string == "0" else {
-            return true
-        }
+//        guard string == "." || string == "0" else {
+//            return true
+//        }
         /// a.首位小数点替换为0.
         if text.count == 0, string == "." {
             textField.text = "0."
@@ -83,6 +103,16 @@ extension AmountInputView:UITextFieldDelegate
         /// b.禁止多次输入小数点
         if text.range(of: ".") != nil, string == "." {
             return false
+        }
+        if string != "."
+        {
+            let finalString = text.appending(string)
+            if finalString.toDouble() > maxAmount.toDouble()
+            {
+                amountTextView.text = maxAmount
+                amountTextView.sendActions(for: .valueChanged)
+                return false
+            }
         }
         return true
 //        var result = false
