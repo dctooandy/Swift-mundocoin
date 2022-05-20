@@ -113,11 +113,11 @@ class WalletViewController: BaseViewController {
         if hiddenTotalBalanceLabel.isHidden == true
         {
             eyeIconImageView.image = UIImage(named: "icon-view")
-            TwoSideStyle.share.acceptiMoneySecureStyle(.nonVisible)
+            TwoSideStyle.share.acceptMoneySecureStyle(.nonVisible)
         }else
         {
             eyeIconImageView.image = UIImage(named: "icon-view-hide")
-            TwoSideStyle.share.acceptiMoneySecureStyle(.visible)
+            TwoSideStyle.share.acceptMoneySecureStyle(.visible)
         }
         
     }

@@ -16,13 +16,34 @@ class Themes {
     static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
         return Themes.plkMode.map({ $0 == .light ? light : dark })
     }
+    // 綁定取款成功頁面 上方狀態View
+    static let topViewMode = TwoSideStyle.share.topViewStatusStyle.asObservable()
+    static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
+        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
+    }
+    static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
+        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
+    }
+    // 綁定取款成功頁面 下方隱藏物件
+    static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
+        return Themes.topViewMode.map({ ($0 == .pending || $0 == .failed ) ? true : false})
+    }
     
+    static let topImageIconType : Observable<UIImage> = Themes.bindDetailViewTopIcon(success: DetailType.done, failed: DetailType.failed)
+    static let topLabelStringType : Observable<String> = Themes.bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
+    static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
+    
+    
+    // 綁定 輸入框typing狀態的border
     static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()
     static func bindVisibleOrNotStyle<T>(visible: T, none: T) -> Observable<T> {
         return Themes.moneySecureMode.map({ $0 == .visible ? visible : none })
     }
     static let moneyVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:false, none: true)
     static let stringVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:true, none: false)
+    
+    
+    
     
     static let chooseOrNotChoose: Observable<UIColor> = Themes.bindChooseOrNotStyle(
         light: Themes.grayA3AED0, dark: Themes.grayE0E5F2)

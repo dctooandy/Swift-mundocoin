@@ -214,7 +214,7 @@ class WithdrawViewController: BaseViewController {
     {
         if let textString = withdrawToView.textField.text
         {
-            let detailData = DetailDto(defailType: .done, tether: "USDT", network: "Tron(TRC20)", date: "April18,2022 11:01", address: textString, txid: "--")
+            let detailData = DetailDto(defailType: .done, tether: "USDT", network: "Tron(TRC20)", date: "April18,2022 11:01", address: textString, txid: "37f5d6c3d1c4408a47e34601febd78 ad9be79473df71742805a8b2a339c25b9e")
             let detailVC = TDetailViewController.loadNib()
             detailVC.titleString = "Withdraw"
             detailVC.detailDataDto = detailData

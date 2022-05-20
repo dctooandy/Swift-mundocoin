@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TDetailViewController" customModule="cryptoVerOne" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <viewController id="4Tl-mq-MIt" customClass="TDetailViewController" customModule="cryptoVerOne" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="fFJ-JF-qCi">
@@ -22,48 +22,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgi-15-sLp" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="882"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5Y-6v-m4w">
-                                        <rect key="frame" x="32" y="0.0" width="350" height="171"/>
-                                        <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5Y-6v-m4w" customClass="TransTopView" customModule="cryptoVerOne" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="0.0" width="366" height="70"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="171" id="edD-qf-MZI"/>
+                                            <constraint firstAttribute="height" constant="70" id="edD-qf-MZI"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
+                                                <integer key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zNs-v8-FJi">
-                                        <rect key="frame" x="32" y="191" width="350" height="268"/>
-                                        <color key="backgroundColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="268" id="B2I-1C-fw0"/>
-                                        </constraints>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sgr-sV-VZP" customClass="TransDetailView" customModule="cryptoVerOne" customModuleProvider="target">
+                                        <rect key="frame" x="24" y="74" width="366" height="560"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
+                                                <integer key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-ZR-3cx">
-                                        <rect key="frame" x="20" y="475" width="374" height="100"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="100" id="TgS-wk-Kah"/>
-                                        </constraints>
-                                    </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERr-Ne-b5o">
-                                        <rect key="frame" x="20" y="575" width="374" height="120"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="ext-Dw-07c"/>
-                                        </constraints>
-                                    </view>
+                                    </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-AR-dpF" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
-                                        <rect key="frame" x="62" y="715" width="290" height="50"/>
+                                        <rect key="frame" x="62" y="704" width="290" height="50"/>
                                         <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LzH-GH-Krr"/>
@@ -71,26 +53,21 @@
                                         <state key="normal" title="Check History"/>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="ERr-Ne-b5o" secondAttribute="trailing" constant="20" id="3jl-9r-PXR"/>
-                                    <constraint firstItem="ERr-Ne-b5o" firstAttribute="top" secondItem="wFt-ZR-3cx" secondAttribute="bottom" id="5Zf-P4-WTi"/>
-                                    <constraint firstItem="wFt-ZR-3cx" firstAttribute="top" secondItem="zNs-v8-FJi" secondAttribute="bottom" constant="16" id="Iuy-UB-8BU"/>
-                                    <constraint firstItem="W5Y-6v-m4w" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="32" id="W2B-oY-oT1"/>
+                                    <constraint firstItem="Sgr-sV-VZP" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="24" id="0dH-lm-f8g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Sgr-sV-VZP" secondAttribute="trailing" constant="24" id="Avo-34-pZr"/>
+                                    <constraint firstItem="W5Y-6v-m4w" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="24" id="W2B-oY-oT1"/>
                                     <constraint firstItem="fWD-AR-dpF" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="62" id="WaS-VY-nXC"/>
-                                    <constraint firstAttribute="trailing" secondItem="zNs-v8-FJi" secondAttribute="trailing" constant="32" id="b9L-FP-o8R"/>
-                                    <constraint firstItem="zNs-v8-FJi" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="32" id="d79-dO-OfW"/>
-                                    <constraint firstItem="wFt-ZR-3cx" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="20" id="hJw-pP-OAg"/>
-                                    <constraint firstAttribute="trailing" secondItem="wFt-ZR-3cx" secondAttribute="trailing" constant="20" id="jT1-cw-H7m"/>
-                                    <constraint firstItem="zNs-v8-FJi" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="20" id="mUq-c0-CnW"/>
+                                    <constraint firstItem="Sgr-sV-VZP" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="4" id="c9h-I3-tT9"/>
+                                    <constraint firstAttribute="bottom" secondItem="fWD-AR-dpF" secondAttribute="bottom" constant="128" id="ixw-4g-WBO"/>
                                     <constraint firstAttribute="trailing" secondItem="fWD-AR-dpF" secondAttribute="trailing" constant="62" id="rxJ-gC-DLi"/>
-                                    <constraint firstItem="ERr-Ne-b5o" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="20" id="sZd-Q5-ckD"/>
                                     <constraint firstItem="W5Y-6v-m4w" firstAttribute="top" secondItem="rgi-15-sLp" secondAttribute="top" id="uRD-zq-pKA"/>
-                                    <constraint firstItem="fWD-AR-dpF" firstAttribute="top" secondItem="ERr-Ne-b5o" secondAttribute="bottom" constant="20" id="x3U-Lw-Af7"/>
-                                    <constraint firstAttribute="trailing" secondItem="W5Y-6v-m4w" secondAttribute="trailing" constant="32" id="yVl-FE-GyY"/>
+                                    <constraint firstAttribute="trailing" secondItem="W5Y-6v-m4w" secondAttribute="trailing" constant="24" id="yVl-FE-GyY"/>
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="rgi-15-sLp" firstAttribute="trailing" secondItem="gcz-CD-Kdh" secondAttribute="trailing" id="F9Q-41-y3U"/>
                             <constraint firstAttribute="top" secondItem="rgi-15-sLp" secondAttribute="top" id="Lwv-tC-9JV"/>
@@ -111,10 +88,9 @@
                 </constraints>
             </view>
             <connections>
-                <outlet property="checkButton" destination="fWD-AR-dpF" id="Bjj-BT-5A2"/>
-                <outlet property="txidInputViewHeight" destination="ext-Dw-07c" id="9Th-PV-Zuv"/>
-                <outlet property="txidView" destination="ERr-Ne-b5o" id="oac-AT-wdQ"/>
-                <outlet property="withdrawToView" destination="wFt-ZR-3cx" id="hFD-yG-4Xe"/>
+                <outlet property="checkButton" destination="fWD-AR-dpF" id="7jB-V4-1Jq"/>
+                <outlet property="dataListView" destination="Sgr-sV-VZP" id="PVm-Kq-Mgp"/>
+                <outlet property="topView" destination="W5Y-6v-m4w" id="ljc-m6-GaP"/>
             </connections>
             <point key="canvasLocation" x="113" y="81"/>
         </viewController>

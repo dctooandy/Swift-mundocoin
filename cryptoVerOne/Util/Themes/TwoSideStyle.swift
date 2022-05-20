@@ -16,11 +16,21 @@ class TwoSideStyle {
     enum SecureStyle {
         case visible, nonVisible
     }
+    
     static var share = TwoSideStyle()
+    
+    // 變換取款成功頁面上方狀態
+    let topViewStatusStyle: BehaviorRelay<DetailType> = {
+        return BehaviorRelay<DetailType>(value: .done)
+    }()
+    func acceptTopViewStatusStyle(_ style: DetailType) {
+        topViewStatusStyle.accept(style)
+    }
+    // 開啟關閉金額
     let moneySecureStyle: BehaviorRelay<SecureStyle> = {
         return BehaviorRelay<SecureStyle>(value: .visible)
     }()
-    func acceptiMoneySecureStyle(_ style: SecureStyle) {
+    func acceptMoneySecureStyle(_ style: SecureStyle) {
         if moneySecureStyle.value == .visible {
             moneySecureStyle.accept(.nonVisible)
         } else {
@@ -30,7 +40,7 @@ class TwoSideStyle {
     let interFaceStyle: BehaviorRelay<InterFaceStyle> = {
         return BehaviorRelay<InterFaceStyle>(value: checkTime())
     }()
-    func acceptiInterFaceStyle(_ style: InterFaceStyle) {
+    func acceptInterFaceStyle(_ style: InterFaceStyle) {
 //        if interFaceStyle.value == .light {
 //            interFaceStyle.accept(.dark)
 //        } else {

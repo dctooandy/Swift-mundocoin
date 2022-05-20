@@ -55,6 +55,7 @@ extension UIView
         let nib = UINib(nibName: String(describing: type(of: self)), bundle: bundle)
         return nib.instantiate(withOwner: self, options: nil)[0] as! UIView
     }
+    
 }
 protocol Nibloadable {
 

@@ -19,6 +19,11 @@
 		A1559E0028360DBE00755783 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
 		A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */; };
 		A1559E06283739D700755783 /* DetailDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E05283739D700755783 /* DetailDto.swift */; };
+		A1559E0B28375B9B00755783 /* TransTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E0A28375B9A00755783 /* TransTopView.swift */; };
+		A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E0E28375BAB00755783 /* TransTopView.xib */; };
+		A1559E1228376A2B00755783 /* TransDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1128376A2A00755783 /* TransDetailView.swift */; };
+		A1559E1528376A4600755783 /* TransDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E1428376A4600755783 /* TransDetailView.xib */; };
+		A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -194,6 +199,11 @@
 		A1559DFF28360DBE00755783 /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
 		A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmWithdrawDto.swift; sourceTree = "<group>"; };
 		A1559E05283739D700755783 /* DetailDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailDto.swift; sourceTree = "<group>"; };
+		A1559E0A28375B9A00755783 /* TransTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransTopView.swift; sourceTree = "<group>"; };
+		A1559E0E28375BAB00755783 /* TransTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransTopView.xib; sourceTree = "<group>"; };
+		A1559E1128376A2A00755783 /* TransDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDetailView.swift; sourceTree = "<group>"; };
+		A1559E1428376A4600755783 /* TransDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransDetailView.xib; sourceTree = "<group>"; };
+		A1559E1728378FB700755783 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -396,6 +406,24 @@
 			path = Template;
 			sourceTree = "<group>";
 		};
+		A1559E0828375B5500755783 /* TransTopView */ = {
+			isa = PBXGroup;
+			children = (
+				A1559E0A28375B9A00755783 /* TransTopView.swift */,
+				A1559E0E28375BAB00755783 /* TransTopView.xib */,
+			);
+			path = TransTopView;
+			sourceTree = "<group>";
+		};
+		A1559E0928375B5E00755783 /* TransDetailView */ = {
+			isa = PBXGroup;
+			children = (
+				A1559E1128376A2A00755783 /* TransDetailView.swift */,
+				A1559E1428376A4600755783 /* TransDetailView.xib */,
+			);
+			path = TransDetailView;
+			sourceTree = "<group>";
+		};
 		A16F61BE282CBAAC00D9CCE5 /* TwoFactorAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -442,6 +470,8 @@
 		A16F62112831F9F700D9CCE5 /* TransactionDetails */ = {
 			isa = PBXGroup;
 			children = (
+				A1559E0928375B5E00755783 /* TransDetailView */,
+				A1559E0828375B5500755783 /* TransTopView */,
 				A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */,
 				A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */,
 			);
@@ -686,6 +716,7 @@
 				A1B051F12823B13F00056183 /* String+util.swift */,
 				A1973A392829126D009932D8 /* UICollectionView+util.swift */,
 				A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */,
+				A1559E1728378FB700755783 /* NibOwnerLoadable.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1002,6 +1033,7 @@
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
+				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
@@ -1009,6 +1041,7 @@
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
+				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
@@ -1114,6 +1147,7 @@
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
 				A16F6201282E3F5700D9CCE5 /* TemplateCell.swift in Sources */,
 				A19C70C928224614000AFC3F /* ValueDto.swift in Sources */,
+				A1559E1228376A2B00755783 /* TransDetailView.swift in Sources */,
 				A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */,
 				A1973A052828EBEB009932D8 /* UserMenuViewController.swift in Sources */,
 				A19C70AE28223CB7000AFC3F /* FirstLaunchViewController.swift in Sources */,
@@ -1126,6 +1160,7 @@
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
+				A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,
 				A19C7089282239DC000AFC3F /* Themes.swift in Sources */,
@@ -1199,6 +1234,7 @@
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
 				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
+				A1559E0B28375B9B00755783 /* TransTopView.swift in Sources */,
 				A16F61EA282E30F900D9CCE5 /* AddressBottomSheet.swift in Sources */,
 				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,
 				A19C71C7282264A3000AFC3F /* Fonts.swift in Sources */,

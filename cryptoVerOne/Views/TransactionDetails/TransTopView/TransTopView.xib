@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TransTopView" customModule="cryptoVerOne" customModuleProvider="target">
+            <connections>
+                <outlet property="topIconImageView" destination="ohu-7H-PFX" id="rGS-ig-Aqw"/>
+                <outlet property="topLabel" destination="dbw-KX-b1l" id="CN7-RB-eKS"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-done" translatesAutoresizingMaskIntoConstraints="NO" id="ohu-7H-PFX">
+                    <rect key="frame" x="28" y="14" width="42" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="42" id="Bl5-bY-XSH"/>
+                        <constraint firstAttribute="height" constant="42" id="I9g-0p-sQd"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your withdrawal request is submitted Successfully." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbw-KX-b1l">
+                    <rect key="frame" x="90" y="19.5" width="254" height="31.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="ohu-7H-PFX" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="0SX-cg-ho7"/>
+                <constraint firstItem="dbw-KX-b1l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Thy-DF-W1Y"/>
+                <constraint firstItem="dbw-KX-b1l" firstAttribute="leading" secondItem="ohu-7H-PFX" secondAttribute="trailing" constant="20" id="WPV-4Y-SZ1"/>
+                <constraint firstAttribute="trailing" secondItem="dbw-KX-b1l" secondAttribute="trailing" constant="70" id="f4R-GZ-FX7"/>
+                <constraint firstItem="ohu-7H-PFX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="28" id="s5O-il-kUP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="3" y="27"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-done" width="42" height="42"/>
+    </resources>
+</document>
