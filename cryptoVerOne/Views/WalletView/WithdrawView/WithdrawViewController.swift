@@ -15,6 +15,7 @@ class WithdrawViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let onConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
     // MARK: -
     // MARK:UI 設定
@@ -53,6 +54,7 @@ class WithdrawViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        clearAllData()
 
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -61,7 +63,6 @@ class WithdrawViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        clearAllData()
     }
     // MARK: -
     // MARK:業務方法
@@ -138,7 +139,7 @@ class WithdrawViewController: BaseViewController {
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
-                    && acc.toDouble() > 0
+                    && acc.toDouble() >= 10.0
             }
         
         let isAddressValid = withdrawToView.textField.rx.text
@@ -213,9 +214,10 @@ class WithdrawViewController: BaseViewController {
     {
         if let textString = withdrawToView.textField.text
         {
+            let detailData = DetailDto(defailType: .done, tether: "USDT", network: "Tron(TRC20)", date: "April18,2022 11:01", address: textString, txid: "--")
             let detailVC = TDetailViewController.loadNib()
             detailVC.titleString = "Withdraw"
-            detailVC.addressModel = textString
+            detailVC.detailDataDto = detailData
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }

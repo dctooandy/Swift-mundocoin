@@ -19,5 +19,4 @@ class ConfirmWithdrawDto:Codable {
         self.fee = fee
         self.address = address
     }
-    
 }

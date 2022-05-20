@@ -49,21 +49,21 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wFt-ZR-3cx">
-                                        <rect key="frame" x="20" y="475" width="374" height="90"/>
+                                        <rect key="frame" x="20" y="475" width="374" height="100"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="TgS-wk-Kah"/>
+                                            <constraint firstAttribute="height" constant="100" id="TgS-wk-Kah"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ERr-Ne-b5o">
-                                        <rect key="frame" x="20" y="565" width="374" height="120"/>
+                                        <rect key="frame" x="20" y="575" width="374" height="120"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="120" id="ext-Dw-07c"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fWD-AR-dpF" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
-                                        <rect key="frame" x="62" y="705" width="290" height="50"/>
+                                        <rect key="frame" x="62" y="715" width="290" height="50"/>
                                         <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="LzH-GH-Krr"/>

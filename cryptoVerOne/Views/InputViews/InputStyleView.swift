@@ -23,8 +23,9 @@ enum InputViewMode :Equatable {
     case forgotPW
     case registration
     case networkMethod(Array<String>)
-    case withdrawTo(Bool)
-    case txid
+    case withdrawAddressToConfirm
+    case withdrawAddressToDetail(Bool)
+    case txid(String)
     case securityVerification
     case newPassword
     case confirmPassword
@@ -41,8 +42,9 @@ enum InputViewMode :Equatable {
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
-        case .withdrawTo( _ ): return "Withdraw to address".localized
-        case .txid: return "Txid".localized
+        case .withdrawAddressToConfirm: return "Withdraw to address".localized
+        case .withdrawAddressToDetail(_): return "Withdraw to address".localized
+        case .txid( _ ): return "Txid".localized
         case .securityVerification: return "Security Verification".localized
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
@@ -170,15 +172,22 @@ class InputStyleView: UIView {
         let tf = UITextField()
         tf.backgroundColor = .clear
         tf.textInputView.backgroundColor = .clear
-//        tf.borderStyle = .none
         tf.font = Fonts.sfProLight(16)
         tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
-//        tf.layer.borderWidth = 1
-//        tf.layer.borderColor = #colorLiteral(red: 0.878, green: 0.898, blue: 0.949, alpha: 1.0).cgColor
         return tf
     }()
     let textLabel: UnderlinedLabel = {
         let tfLabel = UnderlinedLabel()
+        tfLabel.backgroundColor = .clear
+        tfLabel.font = Fonts.sfProLight(16)
+        tfLabel.numberOfLines = 0
+        tfLabel.adjustsFontSizeToFitWidth = true
+        tfLabel.minimumScaleFactor = 0.5
+        tfLabel.isUserInteractionEnabled = true
+        return tfLabel
+    }()
+    let normalTextLabel: UILabel = {
+        let tfLabel = UILabel()
         tfLabel.backgroundColor = .clear
         tfLabel.font = Fonts.sfProLight(16)
         tfLabel.numberOfLines = 0
@@ -314,7 +323,7 @@ class InputStyleView: UIView {
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
     }
-    func setWithdrawToMaskView() {
+    func resetTopLabelAndMask() {
         topLabel.snp.updateConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
@@ -324,7 +333,6 @@ class InputStyleView: UIView {
             make.top.equalTo(topLabel).offset(-15)
             make.bottom.equalTo(invalidLabel).offset(-15)
             make.left.right.equalTo(self)
-//            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
         self.sendSubviewToBack(textField)
     }
@@ -341,7 +349,7 @@ class InputStyleView: UIView {
         var rightLabelWidth : CGFloat = 0.0
         displayOffetWidth = (isPasswordType ? 18.0:0.0)
         switch self.inputViewMode {
-        case .copy ,.networkMethod(_), .withdrawTo(_) ,.txid:
+        case .copy ,.networkMethod(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -411,8 +419,13 @@ class InputStyleView: UIView {
                 textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
                 tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
             }
-        }else if inputViewMode == .withdrawTo(true)
+        }else if inputViewMode == .withdrawAddressToDetail(true)
         {
+            addSubview(normalTextLabel)
+            normalTextLabel.snp.makeConstraints { (make) in
+                make.left.top.bottom.equalTo(textField)
+                make.right.equalToSuperview().offset(-35 - 46)
+            }
             addSubview(addAddressImageView)
             addSubview(copyAddressImageView)
             copyAddressImageView.snp.makeConstraints { (make) in
@@ -426,29 +439,75 @@ class InputStyleView: UIView {
                 make.size.equalTo(18)
             }
             rightLabelWidth = 18 + 18 + 10
-        }else if inputViewMode == .withdrawTo(false)
+            resetTopLabelAndMask()
+            tfMaskView.layer.borderColor = UIColor.clear.cgColor
+        }else if inputViewMode == .withdrawAddressToDetail(false)
         {
-            textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-
-            tfMaskView.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
-            setWithdrawToMaskView()
-        }else if inputViewMode == .txid
-        {
-            addSubview(textLabel)
-            textLabel.snp.makeConstraints { (make) in
+            addSubview(normalTextLabel)
+            normalTextLabel.snp.makeConstraints { (make) in
                 make.left.top.bottom.equalTo(textField)
                 make.right.equalToSuperview().offset(-35)
             }
-            addSubview(copyAddressImageView)
-            copyAddressImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(18)
+
+//            addSubview(addAddressImageView)
+//            addSubview(copyAddressImageView)
+//            copyAddressImageView.snp.makeConstraints { (make) in
+//                make.right.equalToSuperview().offset(-10)
+//                make.centerY.equalTo(textField)
+//                make.size.equalTo(18)
+//            }
+//            addAddressImageView.snp.makeConstraints { (make) in
+//                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+//                make.centerY.equalTo(textField)
+//                make.size.equalTo(18)
+//            }
+//            rightLabelWidth = 18 + 18 + 10
+            resetTopLabelAndMask()
+            tfMaskView.layer.borderColor = UIColor.clear.cgColor
+        }else if inputViewMode == .withdrawAddressToConfirm
+        {
+            addSubview(normalTextLabel)
+            normalTextLabel.snp.makeConstraints { (make) in
+                make.left.top.bottom.equalTo(textField)
+                make.right.equalToSuperview().offset(-20)
             }
+            normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+            tfMaskView.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+            resetTopLabelAndMask()
             rightLabelWidth = 18 + 10
         }else
         {
-            rightLabelWidth = 10
+            switch self.inputViewMode {
+            case .txid(let tString):
+      
+                if tString.count < 3
+                {
+                    addSubview(normalTextLabel)
+                    normalTextLabel.snp.makeConstraints { (make) in
+                        make.left.top.bottom.equalTo(textField)
+                        make.right.equalToSuperview().offset(-20)
+                    }
+                    normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+                }else
+                {
+                    addSubview(textLabel)
+                    textLabel.snp.makeConstraints { (make) in
+                        make.left.top.bottom.equalTo(textField)
+                        make.right.equalToSuperview().offset(-35)
+                    }
+                    addSubview(copyAddressImageView)
+                    copyAddressImageView.snp.makeConstraints { (make) in
+                        make.right.equalToSuperview().offset(-10)
+                        make.centerY.equalTo(textField)
+                        make.size.equalTo(18)
+                    }
+                    rightLabelWidth = 18 + 10
+                }
+                resetTopLabelAndMask()
+                tfMaskView.layer.borderColor = UIColor.clear.cgColor
+            default:
+                rightLabelWidth = 10
+            }
         }
         
         topLabel.text = topLabelString
@@ -642,6 +701,23 @@ class InputStyleView: UIView {
         timer = nil
         countTime = 60
         verifyResentLabel.isUserInteractionEnabled = true
+    }
+    func setVisibleString(string : String)
+    {
+        switch self.inputViewMode {
+        case .txid( let tString) :
+            if tString.count > 3
+            {
+                textLabel.text = tString
+            }else
+            {
+                normalTextLabel.text = tString
+            }
+        case .withdrawAddressToConfirm, .withdrawAddressToDetail(_):
+            normalTextLabel.text = string
+        default:
+            break
+        }
     }
     func sendRequestForVerify()
     {

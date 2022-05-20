@@ -12,6 +12,4 @@ class WalletCellDto:Codable {
     let amount:String
     let equel:String
     let persent:String
-    
-    
 }

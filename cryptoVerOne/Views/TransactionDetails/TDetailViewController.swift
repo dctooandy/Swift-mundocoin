@@ -9,17 +9,23 @@
 import Foundation
 import RxCocoa
 import RxSwift
-
+enum DetailType {
+    case pending
+    case processing
+    case done
+    case failed
+}
 class TDetailViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var titleString = ""
     // model
-    var addressModel = ""{
+    var detailType : DetailType = .pending
+    var detailDataDto : DetailDto? {
         didSet{
-            withdrawToInputView.textField.text = addressModel
-            txidInputView.textLabel.text = "37f5d6c3d1c4408a47e34601febd78ad9be79473df71742805a8b2a339c25b9e"
+            setupUI()
+            bindUI()
         }
     }
     // MARK: -
@@ -40,8 +46,6 @@ class TDetailViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        bindUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -59,20 +63,27 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        withdrawToInputView = InputStyleView(inputViewMode: .withdrawTo(true))
-        withdrawToView.addSubview(withdrawToInputView)
-        withdrawToInputView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        if let dto = detailDataDto
+        {
+
+            withdrawToInputView = InputStyleView(inputViewMode: .withdrawAddressToDetail(true))
+            withdrawToView.addSubview(withdrawToInputView)
+            withdrawToInputView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+            txidInputView = InputStyleView(inputViewMode: .txid(dto.txid))
+            txidView.addSubview(txidInputView)
+            txidInputView.snp.makeConstraints { (make) in
+                make.edges.equalToSuperview()
+            }
+            checkButton.setTitle("Check History".localized, for: .normal)
+            checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+            checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
+            checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+            
+            withdrawToInputView.setVisibleString(string: dto.address)
+            txidInputView.setVisibleString(string: dto.txid)
         }
-        txidInputView = InputStyleView(inputViewMode: .txid)
-        txidView.addSubview(txidInputView)
-        txidInputView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
-        checkButton.setTitle("Check History".localized, for: .normal)
-        checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
-        checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
     }
     func bindUI()
     {

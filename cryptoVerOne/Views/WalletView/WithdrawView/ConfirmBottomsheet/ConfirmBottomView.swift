@@ -13,11 +13,6 @@ class ConfirmBottomView: UIView {
     // MARK:業務設定
     private let onConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var addressString :String = "" {
-        didSet{
-            withdrawToInputView.textField.text = addressString
-        }
-    }
     var confirmData : ConfirmWithdrawDto = ConfirmWithdrawDto() {
         didSet{
             resetUI()
@@ -56,7 +51,7 @@ class ConfirmBottomView: UIView {
     // MARK:業務方法
     func setupUI()
     {
-        withdrawToInputView = InputStyleView(inputViewMode: .withdrawTo(false))
+        withdrawToInputView = InputStyleView(inputViewMode: .withdrawAddressToConfirm)
         withdrawToView.addSubview(withdrawToInputView)
         withdrawToInputView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -70,8 +65,7 @@ class ConfirmBottomView: UIView {
         feeValueLabel.text = confirmData.fee
         networkValueLabel.text = confirmData.network
         tetherValueLabel.text = confirmData.tether
-        withdrawToInputView.textField.text = confirmData.address
-        
+        withdrawToInputView.setVisibleString(string: confirmData.address)
         if let totalAmount = Double(confirmData.totalAmount)
         {
             let result = (totalAmount > 1.0 ?  totalAmount - 1.0 : 0.0)
