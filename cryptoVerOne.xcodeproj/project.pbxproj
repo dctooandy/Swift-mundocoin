@@ -186,6 +186,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
 		6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDVerificationViewController.swift; sourceTree = "<group>"; };
@@ -371,7 +372,6 @@
 		A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EC6F69B1172BE98FD8955C95 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,7 +391,7 @@
 			children = (
 				6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */,
 				6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */,
-				EC6F69B1172BE98FD8955C95 /* Pods-cryptoVerOne.release.xcconfig */,
+				204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";

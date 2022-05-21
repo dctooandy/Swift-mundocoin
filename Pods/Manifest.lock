@@ -10,12 +10,12 @@ PODS:
   - RxCocoa (4.5.0):
     - RxSwift (>= 4.4.2, ~> 4.4)
   - RxSwift (4.5.0)
-  - SDWebImage (5.6.0):
-    - SDWebImage/Core (= 5.6.0)
-  - SDWebImage/Core (5.6.0)
-  - SDWebImageSVGKitPlugin (1.2.0):
-    - SDWebImage/Core (~> 5.6)
-    - SVGKit (>= 2.1)
+  - SDWebImage (5.12.5):
+    - SDWebImage/Core (= 5.12.5)
+  - SDWebImage/Core (5.12.5)
+  - SDWebImageSVGKitPlugin (1.4.0):
+    - SDWebImage/Core (~> 5.10)
+    - SVGKit (~> 3.0)
   - SnapKit (4.0.1)
   - SVGKit (3.0.0):
     - CocoaLumberjack (~> 3.0)
@@ -34,8 +34,8 @@ DEPENDENCIES:
   - Parchment (~> 1.6.0)
   - RxCocoa (~> 4.0)
   - RxSwift (~> 4.0)
-  - SDWebImage (= 5.6.0)
-  - SDWebImageSVGKitPlugin (= 1.2.0)
+  - SDWebImage
+  - SDWebImageSVGKitPlugin
   - SnapKit (~> 4.0.0)
   - SwiftyBeaver
   - SwiftyJWT
@@ -80,8 +80,8 @@ SPEC CHECKSUMS:
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
   RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
-  SDWebImage: 21b19f56b4226cdfe3aefe4e6848dc43ed129a86
-  SDWebImageSVGKitPlugin: 06a811c05b9e839982baeb5251d15fe7a79abb82
+  SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
+  SDWebImageSVGKitPlugin: 7542dd07c344ec3415ded0461a1161a6f087e0c9
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   SVGKit: 1ad7513f8c74d9652f94ed64ddecda1a23864dea
   SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
@@ -90,6 +90,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 210f685e644a7ade0356c326fb3be375bd34e50a
+PODFILE CHECKSUM: ea310da8e6ae38cd75c28ce23cc41854624431b4
 
 COCOAPODS: 1.11.3
