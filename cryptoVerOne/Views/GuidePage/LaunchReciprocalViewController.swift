@@ -57,14 +57,14 @@ class LaunchReciprocalViewController: BaseViewController {
                 appUpdateAlert()
                 return
             }
-            if isLaunchBefore() {
+//            if isLaunchBefore() {
                 let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
                 mainWindow.rootViewController = loginNavVC
                 mainWindow.makeKeyAndVisible()
-            } else {
-                mainWindow.rootViewController = GuidePageViewController.loadNib()
-                mainWindow.makeKeyAndVisible()
-            }
+//            } else {
+//                mainWindow.rootViewController = GuidePageViewController.loadNib()
+//                mainWindow.makeKeyAndVisible()
+//            }
         }
     }
     

@@ -54,6 +54,9 @@ class SecurityVerificationViewController: BaseViewController {
         super.viewWillDisappear(animated)
         twoFAVerifyView.cleanTimer()
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     // MARK: -
     // MARK:業務方法
     func setupUI()

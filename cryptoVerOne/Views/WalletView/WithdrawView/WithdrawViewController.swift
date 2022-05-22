@@ -17,6 +17,7 @@ class WithdrawViewController: BaseViewController {
     private let dpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
+    var isScanPopAction = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var availableBalanceAmountLabel: UILabel!
@@ -31,6 +32,7 @@ class WithdrawViewController: BaseViewController {
     @IBOutlet weak var continueButton: CornerradiusButton!
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var amountInputView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     var amountView : AmountInputView!
     var withdrawToView : InputStyleView!
     var methodView : InputStyleView!
@@ -51,11 +53,14 @@ class WithdrawViewController: BaseViewController {
         setupUI()
         bindAction()
         bindTextField()
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touch))
+        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(recognizer)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clearAllData()
-
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -63,6 +68,14 @@ class WithdrawViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        clearAllData()
+    }
+    @objc func touch() {
+        self.view.endEditing(true)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     // MARK: -
     // MARK:業務方法
@@ -112,6 +125,12 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxScanImagePressed().subscribeSuccess { [self](_) in
             Log.i("開鏡頭")
             let scanVC = ScannerViewController()
+            scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
+                isScanPopAction = false
+                withdrawToView.textField.text = stringCode
+                withdrawToView.textField.sendActions(for: .valueChanged)
+            }.disposed(by: dpg)
+            isScanPopAction = true
             self.navigationController?.pushViewController(scanVC, animated: true)
         }.disposed(by: dpg)
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
@@ -223,9 +242,12 @@ class WithdrawViewController: BaseViewController {
     }
     func clearAllData ()
     {
-        amountView.amountTextView.text = "0"
-        withdrawToView.textField.text = ""
-        withdrawToView.textField.sendActions(for: .valueChanged)
+        if isScanPopAction == false
+        {
+            amountView.amountTextView.text = "0"
+            withdrawToView.textField.text = ""
+            withdrawToView.textField.sendActions(for: .valueChanged)
+        }
     }
     func rxConfirmClick() -> Observable<Any>
     {

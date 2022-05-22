@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -244,6 +244,7 @@ and on the same network.</string>
                 <outlet property="rangeLabel" destination="mFP-TF-i6P" id="bNm-8C-rbk"/>
                 <outlet property="receiveAmountLabel" destination="xQF-Gd-xrp" id="81o-sH-T6Q"/>
                 <outlet property="receiveTitle" destination="ex3-Nd-MgD" id="utN-tq-YYe"/>
+                <outlet property="scrollView" destination="UPd-p0-GBQ" id="sTi-s7-jc3"/>
                 <outlet property="withdrawToInputView" destination="KF5-Uw-8n7" id="W3n-yA-E0c"/>
             </connections>
             <point key="canvasLocation" x="91" y="-564"/>

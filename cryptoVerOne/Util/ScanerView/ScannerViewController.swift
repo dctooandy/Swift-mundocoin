@@ -9,12 +9,22 @@ import Foundation
 import AVFoundation
 import UIKit
 import Toaster
-class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
-    var captureSession: AVCaptureSession!
-    var previewLayer: AVCaptureVideoPreviewLayer!
+import SnapKit
+import RxCocoa
+import RxSwift
 
+class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+    // MARK:業務設定
+    private let onSacnSuccessAction = PublishSubject<String>()
+    private let dpg = DisposeBag()
+    var captureSession: AVCaptureSession!
+    // MARK: -
+    // MARK:UI 設定
+    var previewLayer: AVCaptureVideoPreviewLayer!
     var qrCodeFrameView:UIView?
     
+    // MARK: -
+    // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         seupUI()
@@ -68,6 +78,10 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
         qrCodeFrameView?.layer.borderColor = UIColor.green.cgColor
         qrCodeFrameView?.layer.borderWidth = 2
         view.addSubview(qrCodeFrameView!)
+        qrCodeFrameView?.snp.makeConstraints({ make in
+            make.center.equalToSuperview()
+            make.size.equalTo(300)
+        })
         view.bringSubviewToFront(qrCodeFrameView!)
     }
     func failed() {
@@ -109,12 +123,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
-
-        dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
+//        dismiss(animated: true)
     }
 
     func found(code: String) {
         print(code)
+        onSacnSuccessAction.onNext(code)
     }
 
     override var prefersStatusBarHidden: Bool {
@@ -123,5 +138,9 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
+    }
+    func rxSacnSuccessAction() -> Observable<String>
+    {
+        return onSacnSuccessAction.asObserver()
     }
 }
