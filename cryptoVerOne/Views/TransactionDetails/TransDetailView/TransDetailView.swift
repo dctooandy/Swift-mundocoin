@@ -28,6 +28,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topSwitchView: UIView!
+    @IBOutlet weak var switchModeView: UIView!
+    @IBOutlet weak var pendingImageView: UIImageView!
+    @IBOutlet weak var processingImageView: UIImageView!
+    @IBOutlet weak var processingLabel: UILabel!
+    
+    @IBOutlet weak var CompletedModeView: UIView!
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var dataListView: UIView!
     @IBOutlet weak var withdrawToView: UIView!
@@ -61,6 +67,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     func setupUI()
     {
+        pendingImageView.layer.borderWidth = 6
+        pendingImageView.layer.borderColor = UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1).cgColor
+        processingImageView.layer.borderWidth = 6
+        processingImageView.layer.borderColor = UIColor.clear.cgColor
+        processingLabel.textColor = Themes.grayE0E5F2
+
         withdrawToInputView = InputStyleView(inputViewMode: .withdrawAddressToDetail(true))
         withdrawToView.addSubview(withdrawToInputView)
         withdrawToInputView.snp.makeConstraints { (make) in
@@ -82,6 +94,9 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
         Themes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
+        Themes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
+        Themes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
+        Themes.completeViewType.bind(to: CompletedModeView.rx.isHidden).disposed(by: dpg)
     }
     func setupType()
     {
