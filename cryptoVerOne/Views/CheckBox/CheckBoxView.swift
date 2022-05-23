@@ -10,9 +10,24 @@ import Foundation
 import UIKit
 import RxCocoa
 import RxSwift
-
+enum CheckViewType
+{
+    case defaultType
+    case checkType
+    case invalidType
+}
 class CheckBoxView: UIControl {
+    // MARK:業務設定
     let disposeBag = DisposeBag()
+    var checkType :CheckViewType = .checkType {
+        didSet{
+            resetUIByType(type: checkType)
+        }
+    }
+    private let accountCheckPassed = BehaviorSubject(value: false)
+    // MARK: -
+    // MARK:UI 設定
+    private var iconImageView : UIImageView!
     private var title: String? = nil
     
     private var font: UIFont = UIFont.systemFont(ofSize: 20)
@@ -24,21 +39,22 @@ class CheckBoxView: UIControl {
     private var checkBox: CheckBox?
     
     private var checkBoxColor: UIColor = .black
-    private let accountCheckPassed = BehaviorSubject(value: false)
+    
     var isCheck: Bool {
         get {
             return self.checkBox?.isCheck ?? false
         }
     }
-    
+    // MARK: -
+    // MARK:Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupViews()
+//        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupViews()
+//        setupViews()
     }
     
     func rxCheckBoxPassed() -> Observable<Bool> {
@@ -57,7 +73,51 @@ class CheckBoxView: UIControl {
         self.checkBoxColor = checkBoxColor
         setupViews()
     }
-    
+    init(type:CheckViewType = .defaultType) {
+        super.init(frame: .zero)
+        setupUI()
+        resetUIByType(type: .checkType)
+        bindUI()
+    }
+    func setupUI()
+    {
+        iconImageView = UIImageView(image: UIImage(named: "icon-checkbox"))
+        addSubview(iconImageView)
+        iconImageView.snp.makeConstraints { make in
+            make.size.equalTo(24)
+            make.edges.equalToSuperview()
+        }
+        layer.cornerRadius = 4
+        layer.masksToBounds = true
+    }
+    func resetUIByType(type:CheckViewType)
+    {
+        switch type {
+        case .defaultType:
+            backgroundColor = .white
+            layer.borderWidth = 2
+            layer.borderColor = Themes.grayE0E5F2.cgColor
+        case .checkType:
+            backgroundColor = Themes.purple6149F6
+            layer.borderWidth = 2
+            layer.borderColor = Themes.purple6149F6.cgColor
+        case .invalidType:
+            backgroundColor = .white
+            layer.borderWidth = 2
+            layer.borderColor = Themes.redEE5D50.cgColor
+        }
+
+    }
+    func bindUI()
+    {
+        iconImageView.rx.click.subscribeSuccess { (_) in
+            self.isSelected = !self.isSelected
+            self.checkType = (self.isSelected ? .checkType: . defaultType)
+            self.accountCheckPassed.onNext(self.isSelected)
+            
+            print("check \(self.isSelected ? "選":"不選")")
+        }.disposed(by: disposeBag)
+    }
     
     
     func setupViews() {

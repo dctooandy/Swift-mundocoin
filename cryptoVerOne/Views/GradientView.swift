@@ -15,7 +15,7 @@ class GradientView: UIView {
 class BalanceGradientView: UIView {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        addGradientLayer(colors: [Themes.gray6149F6.cgColor, Themes.gray1CD0C5.cgColor], direction: .toRight)
+        addGradientLayer(colors: [Themes.purple6149F6.cgColor, Themes.gray1CD0C5.cgColor], direction: .toRight)
         layer.cornerRadius = rect.height / 2
         clipsToBounds = true
     }

@@ -367,6 +367,7 @@ class InputStyleView: UIView {
         {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
+            verifyResentLabel.textColor = Themes.purple6149F6
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
@@ -705,7 +706,7 @@ class InputStyleView: UIView {
     func resetTimerAndAll()
     {
         verifyResentLabel.text = "Send".localized
-        verifyResentLabel.textColor = .black
+        verifyResentLabel.textColor = Themes.purple6149F6
         resetDisplayBtnUI()
         timer?.invalidate()
         timer = nil

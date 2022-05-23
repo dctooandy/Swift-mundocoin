@@ -84,10 +84,11 @@ class SignupViewController: BaseViewController {
         }
         
 //        rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
-        checkboxView = CheckBoxView(title: " ",
-                                    titleColor: .black,
-                                    checkBoxSize: 24,
-                                    checkBoxColor: .black)
+//        checkboxView = CheckBoxView(title: " ",
+//                                    titleColor: .black,
+//                                    checkBoxSize: 24,
+//                                    checkBoxColor: .black)
+        checkboxView = CheckBoxView(type: .checkType)
         checkboxView.isSelected = true
         view.addSubview(accountInputView!)
         view.addSubview(checkboxView)

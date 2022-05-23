@@ -58,10 +58,10 @@ class CheckBox: UIView {
     }
     init(boxColor: UIColor = .white, borderColor: UIColor, alwaysShowTick: Bool = false , style:Style = .tick) {
         super.init(frame: .zero)
-        self.checkBackgroundColor = UIColor(rgb: 0x6149f6)
-        self.uncheckBackgroundColor = UIColor(rgb: 0x6149f6)
-        self.checkBorderColor = UIColor(rgb: 0x6149f6)
-        self.uncheckBorderColor = UIColor(rgb: 0x6149f6)
+        self.checkBackgroundColor = Themes.purple6149F6
+        self.uncheckBackgroundColor = .white
+        self.checkBorderColor = Themes.purple6149F6
+        self.uncheckBorderColor = Themes.grayE0E5F2
         self.alwaysShowTick = alwaysShowTick
         self.style = style
         setupViews()
@@ -91,23 +91,23 @@ class CheckBox: UIView {
     
     override func draw(_ rect: CGRect) {
         
-        let newRect = rect.insetBy(dx: borderWidth / 2, dy: borderWidth / 2)
-//
-//        let context = UIGraphicsGetCurrentContext()
-//        context?.setStrokeColor(self.isCheck ? checkBorderColor.cgColor : uncheckBorderColor.cgColor)
-//        context?.setFillColor(self.isCheck ? checkBorderColor.cgColor: uncheckBorderColor.cgColor)
-//        context?.setLineWidth(borderWidth)
-//
-//        var shapePath: UIBezierPath!
-//
-//        switch self.borderStyle {
-//        case .round:
-//            shapePath = UIBezierPath(ovalIn: newRect)
-//        }
-//
-//        context?.addPath(shapePath.cgPath)
-//        context?.strokePath()
-//        context?.fillPath()
+        let newRect = rect.insetBy(dx: borderWidth / 4, dy: borderWidth / 4)
+
+        let context = UIGraphicsGetCurrentContext()
+        context?.setStrokeColor(self.isCheck ? checkBorderColor.cgColor : uncheckBorderColor.cgColor)
+        context?.setFillColor(self.isCheck ? checkBorderColor.cgColor: uncheckBorderColor.cgColor)
+        context?.setLineWidth(borderWidth)
+
+        var shapePath: UIBezierPath!
+
+        switch self.borderStyle {
+        case .round:
+            shapePath = UIBezierPath(ovalIn: newRect)
+        }
+
+        context?.addPath(shapePath.cgPath)
+        context?.strokePath()
+        context?.fillPath()
         
         if isCheck {
             fillBackground(frame: newRect)
