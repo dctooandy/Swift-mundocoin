@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +17,7 @@
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="RRf-ix-Iw1">
                         <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="8dv-Fe-oBP" id="Alm-wK-2t7"/>
                             <outlet property="delegate" destination="8dv-Fe-oBP" id="feq-Ie-2Jz"/>
@@ -26,7 +25,7 @@
                     </tableView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="9VK-FU-8eE"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <color key="backgroundColor" red="0.95686274509803915" green="0.96862745098039216" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="RRf-ix-Iw1" firstAttribute="top" secondItem="9VK-FU-8eE" secondAttribute="top" id="3q9-JA-K6u"/>
                     <constraint firstItem="9VK-FU-8eE" firstAttribute="bottom" secondItem="RRf-ix-Iw1" secondAttribute="bottom" id="9IK-lf-yYp"/>
@@ -40,9 +39,4 @@
             <point key="canvasLocation" x="91" y="81"/>
         </viewController>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

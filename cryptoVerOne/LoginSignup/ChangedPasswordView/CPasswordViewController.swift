@@ -81,6 +81,10 @@ class CPasswordViewController: BaseViewController {
     {
         popVC()
     }
+    func backgroundImageViewHidden()
+    {
+        backgroundImageView.isHidden = true
+    }
     @objc override func popVC()
     {
         _ = self.navigationController?.popToRootViewController(animated: true)

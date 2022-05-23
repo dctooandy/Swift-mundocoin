@@ -49,6 +49,7 @@
 		A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
 		A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
 		A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
+		A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */; };
 		A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
 		A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
 		A19739CA28251BB0009932D8 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */; };
@@ -232,6 +233,7 @@
 		A16F621D2832279F00D9CCE5 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
 		A16F622028323EE900D9CCE5 /* UserAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressDto.swift; sourceTree = "<group>"; };
 		A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuLoginNavigationController.swift; sourceTree = "<group>"; };
+		A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C228251B33009932D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C628251B97009932D8 /* CPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -496,6 +498,14 @@
 				A16F621D2832279F00D9CCE5 /* AmountInputView.xib */,
 			);
 			path = AmountView;
+			sourceTree = "<group>";
+		};
+		A1913E3E283BD9BF00F9EBDB /* UCPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */,
+			);
+			path = UCPasswordViewController;
 			sourceTree = "<group>";
 		};
 		A19739C128251AFB009932D8 /* ResetPasswordView */ = {
@@ -941,6 +951,7 @@
 		A1DD13AA282BED5200AB2E0A /* SecurityView */ = {
 			isa = PBXGroup;
 			children = (
+				A1913E3E283BD9BF00F9EBDB /* UCPasswordViewController */,
 				A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */,
 				A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */,
 			);
@@ -1225,6 +1236,7 @@
 				A16F61FE282E3EBA00D9CCE5 /* AddressBottomCell.swift in Sources */,
 				A19C719D28225D99000AFC3F /* BadgeBtn.swift in Sources */,
 				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,
+				A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,

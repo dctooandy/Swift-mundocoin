@@ -27,6 +27,7 @@ enum InputViewMode :Equatable {
     case withdrawAddressToDetail(Bool)
     case txid(String)
     case securityVerification
+    case oldPassword
     case newPassword
     case confirmPassword
     
@@ -46,6 +47,7 @@ enum InputViewMode :Equatable {
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .txid( _ ): return "Txid".localized
         case .securityVerification: return "Security Verification".localized
+        case .oldPassword: return "Old Password".localized
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
         }
@@ -57,7 +59,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress: return "Long press to paste".localized
         case .email: return "...@mundo.com"
-        case .password ,.newPassword , .confirmPassword: return "********".localized
+        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundo.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
@@ -71,7 +73,7 @@ enum InputViewMode :Equatable {
         case .withdrawToAddress: return "Please check the withdrawal address.".localized
         case .email: return "...@mundo.com".localized
         case .phone: return "Invalid phone number.".localized
-        case .password ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
+        case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
         case .forgotPW: return "...@mundo.com".localized
         case .registration: return "Enter the 6-digit code ".localized
         case .securityVerification: return "Enter the 6-digit code".localized
@@ -286,7 +288,8 @@ class InputStyleView: UIView {
     {
         let isPasswordType = (inputViewMode == .password ||
                                 inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword)
+                                inputViewMode == .confirmPassword ||
+                                inputViewMode == .oldPassword)
         addSubview(topLabel)
         addSubview(textField)
         addSubview(invalidLabel)
@@ -342,7 +345,8 @@ class InputStyleView: UIView {
         cancelRightButton.tintColor = Themes.gray707EAE
         let isPasswordType = (inputViewMode == .password ||
                                 inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword)
+                                inputViewMode == .confirmPassword ||
+                                inputViewMode == .oldPassword)
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""

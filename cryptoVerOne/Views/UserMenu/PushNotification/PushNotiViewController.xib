@@ -5,7 +5,6 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,7 +17,7 @@
                 <subviews>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="xWJ-wr-Ksc">
                         <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <connections>
                             <outlet property="dataSource" destination="HSt-aZ-8dI" id="icm-Ka-8s8"/>
                             <outlet property="delegate" destination="HSt-aZ-8dI" id="9aR-hA-EGi"/>
@@ -26,7 +25,7 @@
                     </tableView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="mto-Bx-NMO"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <color key="backgroundColor" red="0.95686274509803915" green="0.96862745098039216" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="mto-Bx-NMO" firstAttribute="trailing" secondItem="xWJ-wr-Ksc" secondAttribute="trailing" id="4tr-Fp-hj2"/>
                     <constraint firstItem="xWJ-wr-Ksc" firstAttribute="leading" secondItem="mto-Bx-NMO" secondAttribute="leading" id="uYr-cC-1y8"/>
@@ -40,9 +39,4 @@
             <point key="canvasLocation" x="91" y="86"/>
         </viewController>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>
