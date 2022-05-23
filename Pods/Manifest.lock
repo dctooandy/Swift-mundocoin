@@ -7,9 +7,12 @@ PODS:
   - KeychainSwift (20.0.0)
   - lottie-ios (3.2.3)
   - Parchment (1.6.0)
-  - RxCocoa (4.5.0):
-    - RxSwift (>= 4.4.2, ~> 4.4)
-  - RxSwift (4.5.0)
+  - RxCocoa (5.1.3):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.3):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.3)
   - SDWebImage (5.12.5):
     - SDWebImage/Core (= 5.12.5)
   - SDWebImage/Core (5.12.5)
@@ -32,8 +35,8 @@ DEPENDENCIES:
   - KeychainSwift
   - lottie-ios
   - Parchment (~> 1.6.0)
-  - RxCocoa (~> 4.0)
-  - RxSwift (~> 4.0)
+  - RxCocoa (~> 5.1.0)
+  - RxSwift (~> 5.1.0)
   - SDWebImage
   - SDWebImageSVGKitPlugin
   - SnapKit (~> 4.0.0)
@@ -51,6 +54,7 @@ SPEC REPOS:
     - lottie-ios
     - Parchment
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SDWebImage
     - SDWebImageSVGKitPlugin
@@ -78,8 +82,9 @@ SPEC CHECKSUMS:
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   lottie-ios: c058aeafa76daa4cf64d773554bccc8385d0150e
   Parchment: d3a7b367c529fa6ef51aa43f5717a7ff36d4b1f5
-  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
-  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  RxCocoa: e2ed092d5432e4296aa818021d27de4090ac0354
+  RxRelay: 5a18c2eb2d68326ebaf0112f80d837ae41b92b97
+  RxSwift: 915abbdfb62214aa89ccd0b194d44fb478019b27
   SDWebImage: 0905f1b7760fc8ac4198cae0036600d67478751e
   SDWebImageSVGKitPlugin: 7542dd07c344ec3415ded0461a1161a6f087e0c9
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
@@ -90,6 +95,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: ea310da8e6ae38cd75c28ce23cc41854624431b4
+PODFILE CHECKSUM: 90d3db460fce6de0218a449d6b771b4c04bdb213
 
 COCOAPODS: 1.11.3

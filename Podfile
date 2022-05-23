@@ -6,8 +6,8 @@ target 'cryptoVerOne' do
   use_frameworks!
 
   # Pods for cryptoVerOne
-  pod 'RxSwift',    '~> 4.0'
-  pod 'RxCocoa',    '~> 4.0'
+  pod 'RxSwift',    '~> 5.1.0'
+  pod 'RxCocoa',    '~> 5.1.0'
   pod 'Toaster', :git => 'https://github.com/devxoul/Toaster.git', :branch => 'master'
   pod 'SDWebImage'
   pod 'SDWebImageSVGKitPlugin'
