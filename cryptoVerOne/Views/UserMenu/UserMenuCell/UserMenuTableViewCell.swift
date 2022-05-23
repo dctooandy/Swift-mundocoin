@@ -72,6 +72,8 @@ enum cellData {
             return "Registration info".localized
         case .memberSince:
             return "Member since".localized
+        default :
+            return ""
         }
     }
     var subTitleLabel:String? {
@@ -105,6 +107,8 @@ enum cellData {
              .registrationInfo,
              .memberSince:
             return ""
+        default :
+            return ""
         }
     }
     var arrorColor:UIColor? {
@@ -114,6 +118,8 @@ enum cellData {
         case .security,.pushNotifications,.addressBook,.helpSupport,.termPolicies,.twoFactorAuthentication,.changePassword:
             return .black
         case .logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
+            return .clear
+        default :
             return .clear
         }
     }
@@ -158,6 +164,33 @@ enum cellData {
             return true
         }
     }
+    var cellIconImageName:String
+    {
+        switch self {
+        case .currency:
+            return "icon-swap".localized
+        case .security:
+            return "icon-security".localized
+        case .pushNotifications:
+            return "icon-bell-usermenu".localized
+        case .addressBook:
+            return "icon-addressbook-line".localized
+        case .language:
+            return "icon-globe".localized
+        case .faceID:
+            return "icon-Faceid".localized
+        case .helpSupport:
+            return "icon-Info".localized
+        case .termPolicies:
+            return "icon-privacy".localized
+        case .about:
+            return "icon-logo".localized
+        case .logout:
+            return ""
+        default :
+            return ""
+        }
+    }
 }
 class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務設定
@@ -177,6 +210,8 @@ class UserMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var checkBoxImageView: UIImageView!
+    
+    @IBOutlet weak var logoutView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -198,10 +233,10 @@ class UserMenuTableViewCell: UITableViewCell {
     {
         if cellData == .logout
         {
-            logoutLabel.isHidden = false
+            logoutView.isHidden = false
         }else
         {
-            logoutLabel.isHidden = true
+            logoutView.isHidden = true
             cellTitleLabel.text = cellData.cellTitle
             subTitleLabel.text = cellData.subTitleLabel
             arrowImageView.tintColor = cellData.arrorColor
@@ -209,6 +244,7 @@ class UserMenuTableViewCell: UITableViewCell {
             arrowImageView.isHidden = !cellData.switchHidden
             cellImageView.isHidden = cellData.imageHidden
             checkBoxImageView.isHidden = cellData.checkBoxHidden
+            cellImageView.image = UIImage(named: cellData.cellIconImageName)
         }
     }
     func bindUI()
