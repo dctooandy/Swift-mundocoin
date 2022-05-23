@@ -81,17 +81,28 @@ class UserMenuViewController: BaseViewController {
     }
     func showLogotConfirmAlert()
     {
-        let popVC =  ConfirmPopupView(title: "Important".localized,
-                                      message: "For security purposes, no withdrawals are permitted for 24 hours after modification of security methods.".localized ,
-                                      iconMode: .important) { [weak self] isOK in
-                                        if isOK {
-                                            Log.i("登出")
-                                        }else
-                                        {
-                                            Log.i("不登出")
-                                        }
+//        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "The verification code is incorrect or has expired, you could try 5 more times a day.") { [self](_) in
+//
+//        }
+        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Logout".localized]), title: "", message: "Are you sure you want to logout?") { [self] isOK in
+
+            if isOK {
+                Log.i("登出")
+                directToViewController()
+            }else
+            {
+                Log.i("不登出")
+            }
         }
         popVC.start(viewController: self)
+    }
+}
+func directToViewController() {
+    if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
+
+        let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share)
+        mainWindow.rootViewController = loginNavVC
+        mainWindow.makeKeyAndVisible()
     }
 }
 // MARK: -

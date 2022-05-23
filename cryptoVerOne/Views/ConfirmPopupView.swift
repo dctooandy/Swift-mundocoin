@@ -8,20 +8,20 @@
 
 import Foundation
 enum ConfirmIconMode {
-    case important
-    case info
+    case showIcon(String = "")
+    case nonIcon(Array<String> = [])
     
     var imageName: String {
         switch self {
-        case .important:
-            return "launch-logo"
-        case .info:
-            return "arrow-circle-right"
+        case .showIcon(_):
+            return "icon-alert-triangle"
+        case .nonIcon(_):
+            return ""
         }
     }
 }
 class ConfirmPopupView: PopupBottomSheet {
-    var iconMode : ConfirmIconMode = .important
+    var iconMode : ConfirmIconMode!
     private lazy var titleIcon: UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage()
@@ -31,7 +31,7 @@ class ConfirmPopupView: PopupBottomSheet {
         let lb = UILabel()
         lb.textColor = .black
         lb.textAlignment = .center
-        lb.font = Fonts.pingFangTCRegular(18)
+        lb.font = Fonts.pingFangTCRegular(20)
         return lb
     }()
     
@@ -61,7 +61,7 @@ class ConfirmPopupView: PopupBottomSheet {
     typealias DoneHandler = (Bool) -> ()
     var doneHandler: DoneHandler?
     
-    init(title: String, message: String , iconMode:ConfirmIconMode = .important, _ done: DoneHandler?) {
+    init(iconMode:ConfirmIconMode = .nonIcon(["Cancel".localized,"Logout".localized]), title: String = "", message: String ,  _ done: DoneHandler?) {
         super.init()
         self.iconMode = iconMode
         titleLabel.text = title
@@ -86,10 +86,36 @@ class ConfirmPopupView: PopupBottomSheet {
     
     
     private func setupUI() {
+        var defaultContainerHeight = 155.0
+        var iconHeight = 40.0
+        var titleViewHeight = 96.0
+        var stackView :UIStackView!
+        var buttonViewMultiplied = 0.45
+        switch self.iconMode {
+        case .nonIcon(let array):
+            cancelButton.setTitle(array.first, for: .normal)
+            confirmButton.setTitle(array.last, for: .normal)
+            defaultContainerHeight = 155.0
+            iconHeight = 0.0
+            titleViewHeight = 40.0
+            stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
+            stackView.distribution = .fillEqually
+            stackView.spacing = 10
+            buttonViewMultiplied = 0.8
+        case .showIcon(let string):
+            confirmButton.setTitle(string, for: .normal)
+            defaultContainerHeight = 222.0
+            iconHeight = 40.0
+            titleViewHeight = 96.0
+            stackView = UIStackView(arrangedSubviews: [confirmButton])
+            buttonViewMultiplied = 0.45
+        case .none: break
+            
+        }
         defaultContainer.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.75)
-            make.height.equalToSuperview().multipliedBy(0.32)
+            make.height.equalTo(defaultContainerHeight)
         }
        // title 背景漸層
 //        let titleView = GradientView()
@@ -102,43 +128,35 @@ class ConfirmPopupView: PopupBottomSheet {
         defaultContainer.addSubview(titleView)
         titleView.snp.makeConstraints { (make) in
             make.top.left.right.equalToSuperview()
-            make.height.equalTo(height(120.0/812.0))
+            make.height.equalTo(titleViewHeight)
         }
+        // title
         titleView.addSubview(titleIcon)
         let image = UIImage(named:iconMode.imageName)
         titleIcon.image = image
         titleIcon.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(height(40.0/812.0))
+            make.top.equalToSuperview().offset(16.0)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(30)
+            make.width.height.equalTo(iconHeight)
         }
         titleView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalToSuperview().offset(height(-20.0/812.0))
+            make.top.equalTo(titleIcon.snp.bottom).offset(6)
         }
-        
-        let msgContentView = UIView()
-        defaultContainer.addSubview(msgContentView)
-        msgContentView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom)
-            make.left.right.equalToSuperview()
-        }
+        // message
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.9)
+            make.top.equalTo(titleView.snp.bottom)
+            make.left.equalToSuperview().offset(26)
+            make.right.equalToSuperview().offset(-26)
         }
         
-        let stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
-        stackView.distribution = .fillEqually
-        stackView.spacing = 10
         defaultContainer.addSubview(stackView)
         stackView.snp.makeConstraints { (make) in
-//            make.top.equalTo(msgContentView.snp.bottom).offset(20)
-            make.width.equalToSuperview().multipliedBy(0.8)
-            make.height.equalTo(50)
+            make.width.equalToSuperview().multipliedBy(buttonViewMultiplied)
+            make.height.equalTo(44)
             make.bottom.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }

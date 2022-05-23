@@ -11,8 +11,8 @@ import UIKit
 class CancelButton: UIButton {
 
     override func draw(_ rect: CGRect) {
-        setBackgroundImage(UIImage(color: Themes.grayA3AED0), for: .normal)
-        setTitleColor(.black, for: .normal)
+        setBackgroundImage(UIImage(color: Themes.grayA3AED020), for: .normal)
+        setTitleColor(Themes.gray707EAE, for: .normal)
         layer.cornerRadius = rect.height / 2
         clipsToBounds = true
     }
