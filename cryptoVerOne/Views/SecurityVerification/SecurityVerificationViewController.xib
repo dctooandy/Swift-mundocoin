@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <viewLayoutGuide key="safeArea" id="Pe5-ft-nPy"/>
-                <color key="backgroundColor" red="0.95531719920000002" green="0.96778684849999996" blue="0.99463337659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.95686274509803915" green="0.96862745098039216" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             </view>
             <point key="canvasLocation" x="-170" y="32"/>
         </viewController>

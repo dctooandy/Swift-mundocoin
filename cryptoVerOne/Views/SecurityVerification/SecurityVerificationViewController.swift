@@ -156,22 +156,28 @@ class SecurityVerificationViewController: BaseViewController {
     {
         setupPageVC()
         pageViewcontroller = PagingViewController<PagingIndexItem>()
+        
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSource = (.class(type: NewPagingTitleCell.self))
-        pageViewcontroller?.selectedBackgroundColor = .white
-        pageViewcontroller?.backgroundColor = UIColor(rgb: 0xEDEDED)
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 36)
-        pageViewcontroller?.menuHorizontalAlignment = .center
-        pageViewcontroller?.menuItemSpacing = 20
-        pageViewcontroller?.menuBackgroundColor = .clear
-        pageViewcontroller?.borderColor = .clear
+        pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
+
+        pageViewcontroller?.selectedBackgroundColor = Themes.blue2B3674
+        pageViewcontroller?.backgroundColor = .white
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
         // menu text
         pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 15)
         pageViewcontroller?.font = UIFont.systemFont(ofSize: 15)
-        pageViewcontroller?.textColor = .black
-        pageViewcontroller?.selectedTextColor = .black
+        pageViewcontroller?.textColor = Themes.grayA3AED0
+        pageViewcontroller?.selectedTextColor = .white
+        pageViewcontroller?.menuHorizontalAlignment = .center
+        pageViewcontroller?.menuItemSpacing = 0
+        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: 375, height: 38), colors: [Themes.grayF4F7FE.cgColor , Themes.whiteFFFFFF.cgColor , Themes.grayF4F7FE.cgColor], locations: nil)
+
+        let bgImage = UIColor(patternImage: image!)
+        pageViewcontroller?.menuBackgroundColor = bgImage
+        pageViewcontroller?.borderColor = .clear
+     
         // menu indicator
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
@@ -209,5 +215,33 @@ extension SecurityVerificationViewController: PagingViewControllerDataSource, Pa
     }
     func numberOfViewControllers<T>(in pagingViewController: PagingViewController<T>) -> Int where T : PagingItem, T : Comparable, T : Hashable {
         return twoFAViewControllers.count
+    }
+}
+class SecurityPagingTitleCell: PagingTitleCell {
+    open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+      super.apply(layoutAttributes)
+        titleLabel.layer.borderColor = UIColor.white.cgColor
+        titleLabel.layer.borderWidth = 3
+        titleLabel.layer.cornerRadius = layoutAttributes.frame.height / 2
+        layer.cornerRadius = layoutAttributes.frame.height / 2
+        self
+//        if self.isSelected == true
+//        {
+//            titleLabel.backgroundColor = Themes.blue2B3674
+////            clipsToBounds = true
+//            if #available(iOS 11.0, *) {
+//                layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }else
+//        {
+//            titleLabel.backgroundColor = .white
+//            if #available(iOS 11.0, *) {
+//                layer.maskedCorners = [.layerMaxXMinYCorner , .layerMaxXMaxYCorner]
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
     }
 }
