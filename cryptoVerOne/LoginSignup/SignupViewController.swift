@@ -13,7 +13,7 @@ class SignupViewController: BaseViewController {
     // MARK:業務設定
     private var timer: Timer? = nil
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
-    private var onClick = PublishSubject<SignupPostDto>()
+    private var onSignupAction = PublishSubject<SignupPostDto>()
     private var loginMode : LoginMode = .emailPage {
         didSet {
             //            loginModeDidChange()
@@ -154,19 +154,26 @@ class SignupViewController: BaseViewController {
     }
     
     func signup() {
+        resetInputView()
+        // 登入動作
         signupActions()
-        guard let acc = accountInputView?.accountInputView.textField.text?.lowercased() else { return }
-        guard let pwd = accountInputView?.passwordInputView.textField.text else { return }
-        let dto = SignupPostDto(account: acc, password: pwd, signupMode: loginMode)
-        self.view.endEditing(true)
-        onClick.onNext(dto)
+    }
+    func resetInputView()
+    {
+        // 重置輸入框的動作
+        accountInputView?.resetTFMaskView()
     }
     func signupActions()
     {
-        accountInputView?.resetTFMaskView()
+        guard let acc = accountInputView?.accountInputView.textField.text?.lowercased() else { return }
+        guard let pwd = accountInputView?.passwordInputView.textField.text else { return }
+        guard let regis = accountInputView?.registrationInputView.textField.text else { return }
+        let dto = SignupPostDto(account: acc, password: pwd,registration: regis, signupMode: loginMode)
+        self.view.endEditing(true)
+        onSignupAction.onNext(dto)
     }
     func rxSignupButtonPressed() -> Observable<SignupPostDto> {
-        return onClick.asObserver()
+        return onSignupAction.asObserver()
     }
   
 //    private func loginModeDidChange() {

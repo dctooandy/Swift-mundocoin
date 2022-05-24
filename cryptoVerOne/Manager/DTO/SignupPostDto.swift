@@ -12,13 +12,15 @@ struct SignupPostDto {
     
     let account: String
     let password: String
+    let registration:String
     let signupMode: LoginMode
     let timestamp = Date.timestamp()
     let finger = KeychainManager.share.getFingerID()
     
-    init(account: String, password: String, signupMode: LoginMode) {
+    init(account: String, password: String, registration : String,signupMode: LoginMode) {
         self.account = account
         self.password = password
+        self.registration = registration
         self.signupMode = signupMode
     }
 }

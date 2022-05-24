@@ -18,7 +18,7 @@ extension SessionManager
         _ type:T.Type,
         imgData:Data? = nil,
         parameters:[String:Any] = [:],
-        onData:((MundoResponseDto<T>) -> Void)? = nil,
+        onData:((T) -> Void)? = nil,
         onError:((ApiServiceError) -> Void)? = nil) -> Void
     {
         guard let url = path else {
@@ -36,7 +36,7 @@ extension SessionManager
             switch result {
               case .success(let upload, _, _):
                 _ = upload.responseCustomModel(T.self,
-                onData:{ (result:MundoResponseDto<T>) in
+                onData:{ (result:T) in
                     onData?(result) },
                 onError:{ (error:ApiServiceError) in
                    onError?(error)})

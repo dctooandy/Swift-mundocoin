@@ -12,6 +12,11 @@ import RxSwift
 import Toaster
 
 enum ApiServiceError:Error, Equatable {
+    static func == (lhs: ApiServiceError, rhs: ApiServiceError) -> Bool {
+        return true
+    }
+    
+
     case domainError(Int,String,String)
     case networkError(Int,String,String)
     case tokenError(Int,String,String)
@@ -30,6 +35,7 @@ enum ApiServiceError:Error, Equatable {
     case valueNotFound(String,String,String,String)
     case typeMismatch(String,String,String,String)
     case keyNotFound(String,String,String)
+    case errorDto(ErrorDefaultDto)
     
 }
 
@@ -40,6 +46,10 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     case login
     case forgot
     case reset
+    case registration
+    case verificationResend(String )
+    case verification(String , String)
+    
     case signup
     case jpush
     case appVersion
@@ -54,6 +64,12 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     
     var path:URL? {
         switch self {
+        case .registration:
+            return URL(string:ApiService.host + "/registration")
+        case .verificationResend(let idString):
+            return URL(string: ApiService.host + "/verification/resend/\(idString)")
+        case .verification(let idString , let codeString):
+            return URL(string: ApiService.host + "/verification/\(idString)/\(codeString)")
         case .login:
             return URL(string:ApiService.host + "/login") //暫時
         case .appVersion:

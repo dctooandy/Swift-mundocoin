@@ -14,7 +14,7 @@ import Toaster
 extension DataRequest
 {
     func responseCustomModel<T:Codable>(_ type:T.Type,
-                                        onData:((MundoResponseDto<T>) -> Void)? = nil,
+                                        onData:((T) -> Void)? = nil,
                                         onError:((ApiServiceError) -> Void)? = nil) -> Self {
         
 
@@ -63,106 +63,9 @@ extension DataRequest
                                     }
                                 }
                             }
+                            let results = try decoder.decode(T.self, from:data)
+                            onData?(results)
 
-                            if let msg = dict["msg"] as? String,
-                                let retValue = dict["ret"] as? Int
-//                                ,retValue != ApiCode.kDefaultSuccessCode
-                            {
-                                errorMsg = msg
-                            }
-                            let results = try decoder.decode(MundoResponseDto<T>.self, from:data)
-                            if results.ret == ApiCode.kDefaultSuccessCode
-                            {
-                                let theDic = (dict["data"] as AnyObject)
-                                if let codeString = (theDic["code"] as? Int)
-                                {
-                                    if codeString == 0
-                                    {
-                                        onData?(results)
-                                    }else if codeString == 700
-                                    {
-                                        errorMsg = results.errorMSG
-                                        apiError = ApiServiceError.tokenExpire(statusCode,requestURLString,errorMsg)
-                                        onError?(apiError)
-                                    }else
-                                    {
-                                        if let innerData = dict["data"] as? [String : Any],
-                                            let message = innerData["msg"] as? String
-                                        {
-                                           errorMsg = message
-                                        }else
-                                        {
-                                            errorMsg = results.errorMSG
-                                        }
-                                        apiError = ApiServiceError.unknownError(statusCode,requestURLString,errorMsg)
-                                        onError?(apiError)
-                                    }
-                                }else
-                                {
-                                    errorMsg = results.errorMSG
-                                    apiError = ApiServiceError.unknownError(statusCode,requestURLString,errorMsg)
-                                    onError?(apiError)
-                                }
-                            }else if results.code == 1014
-                            {
-                                errorMsg = results.errorMSG
-                                apiError = ApiServiceError.tokenExpire(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }else if results.code == 10017
-                            {
-                                errorMsg = results.errorMSG
-                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }
-                            else if results.code == 1041{
-                                onData?(results)// 先放過
-//                                onError?(ApiServiceError.showKnownError(statusCode,requestURLString,results.errorMSG))
-                            }
-                            else if results.code == 1042{
-                                errorMsg = results.errorMSG
-                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }
-                            else if results.code == 1048{
-                                errorMsg = results.errorMSG
-                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }
-                            else if results.code == 10010{
-//                                errorMsg = results.errorMSG
-                                errorMsg = (results.message == "修改对象失败") ? "余额可能不足" : results.errorMSG
-                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }
-                            else if results.code == 0
-                            {
-                                onData?(results)
-                            }
-                            else if results.data == nil , results.code == nil
-                            {
-//                                DeepLinkManager.share.handleDeeplink(navigation: .logoutAPP)
-//                                errorMsg = results.errorMSG
-//                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-//                                onError?(apiError)
-                            }else if results.data == nil , results.code != nil , results.message != nil
-                            {
-                                if let codeNum = results.code,
-                                    codeNum == 20001
-                                {
-                                    onData?(results)
-                                }else
-                                {
-                                    errorMsg = results.errorMSG
-                                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                    onError?(apiError)
-                                }
-                            }else
-                            {
-                                errorMsg = results.errorMSG
-                                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                                onError?(apiError)
-                            }
-                            
                         }else
                         {
                             errorMsg = "無法解析資料"
@@ -238,12 +141,36 @@ extension DataRequest
                         apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
                         onError?(apiError)
                     }
-                case 401:
-                    errorMsg = "Token 過期"
-                    apiError = ApiServiceError.tokenExpire(statusCode,requestURLString,errorMsg)
-                    onError?(apiError)
-                case 400,403,404,422,502,503:
+                case 403,422,502,503:
                     errorMsg = "參數錯誤"
+                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                    onError?(apiError)
+                case 400:
+                    do {
+                        if let responseString = String(data: data, encoding: .utf8),
+                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
+                        {
+                            let results = try decoder.decode(ErrorDefaultDto.self, from:data)
+                            let message = "Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
+                            Log.v("\(message)")
+                            apiError = ApiServiceError.errorDto(results)
+                            onError?(apiError)
+                        }
+                    }
+                    catch {
+                        errorMsg = "伺服器繁忙，请稍候再试"
+                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                        onError?(apiError)
+                    }
+                    
+                case 401:
+                    errorMsg = "Unauthorized"
+                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                    //                    apiError = ApiServiceError.tokenExpire(statusCode,requestURLString,errorMsg)
+                    
+                    onError?(apiError)
+                case 404:
+                    errorMsg = "Unable to find provided @id/@code"
                     apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
                     onError?(apiError)
                 case 405:
@@ -251,9 +178,28 @@ extension DataRequest
                     apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
                     onError?(apiError)
                 default:
-                    errorMsg = "網路發生錯誤，請稍後再試".localized
-                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                    onError?(apiError)
+                    do {
+                        if let responseString = String(data: data, encoding: .utf8),
+                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
+                        {
+                            let results = try decoder.decode(ErrorDefaultDto.self, from:data)
+                            let message = "Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
+                            Log.v("\(message)")
+                            apiError = ApiServiceError.errorDto(results)
+                            onError?(apiError)
+                        }else
+                        {
+                            errorMsg = "header參數錯誤"
+                            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                            onError?(apiError)
+                        }
+                    }
+                    catch {
+                        errorMsg = "伺服器繁忙，请稍候再试"
+                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                        onError?(apiError)
+                    }
+                   
                 }
 //                if errorMsg == ""
 //                {

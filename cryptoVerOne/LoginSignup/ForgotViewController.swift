@@ -112,16 +112,20 @@ class ForgotViewController: BaseViewController {
     
     private func sendReset()
     {
+        resetInputView()
         clickLoginActions()
+    }
+    func resetInputView()
+    {
+        accountInputView?.resetTFMaskView()
+    }
+    func clickLoginActions()
+    {
         if let account = accountInputView?.accountInputView.textField.text
         {
             let dto = LoginPostDto(account: account, password:"",loginMode: self.loginMode ,showMode: .forgotPW)
             self.onClickLogin.onNext(dto)
         }
-    }
-    func clickLoginActions()
-    {
-        accountInputView?.resetTFMaskView()
     }
 //    func startReciprocal() {
 //        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)

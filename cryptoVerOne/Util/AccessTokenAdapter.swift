@@ -29,7 +29,7 @@ class AccessTokenAdapter: RequestAdapter {
 //        urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
         //urlRequest.setValue("999", forHTTPHeaderField: "Finger")
 //        urlRequest.setValue(KeychainManager.share.getFingerID(), forHTTPHeaderField: "Finger")
-        urlRequest.setValue("application/json", forHTTPHeaderField:"Accept")
+        urlRequest.setValue("application/json", forHTTPHeaderField:"accept")
         urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
 //        urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         return urlRequest

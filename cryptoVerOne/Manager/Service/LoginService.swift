@@ -12,6 +12,56 @@ import RxSwift
 import Alamofire
 
 class LoginService {
+    func signUPRegistration(code:String ,
+                            email:String = "" ,
+                            password:String ,
+                            phone:String = "") -> Single<RegistrationDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        
+        parameters = ["code":code,
+                      "password":password]
+        if email.isEmpty
+        {
+            parameters["phone"] = phone
+
+        }else
+        {
+            parameters["email"] = email
+        }
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.registration.path,
+            parameters: parameters,
+            modify: false,
+            resultType: RegistrationDto.self).map({
+                return $0
+            })
+    }
+    func verificationResend(idString:String) -> Single<LoginDto?>
+    {
+        let parameters: Parameters = [String: Any]()
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.verificationResend(idString).path,
+            parameters: parameters,
+            modify: false,
+            resultType: LoginDto.self).map({
+                return $0
+            })
+    }
+    func verification(idString:String , codeString : String) -> Single<LoginDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters = ["id":idString,
+                      "code":codeString]
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.verification(idString, codeString).path,
+            parameters: parameters,
+            modify: false,
+            resultType: LoginDto.self).map({
+                return $0
+            })
+    }
+    
     func loginUserLogin(with account:String , password:String) -> Single<LoginDto?>
     {
         var parameters: Parameters = [String: Any]()
@@ -25,7 +75,7 @@ class LoginService {
             parameters: parameters,
             modify: false,
             resultType: LoginDto.self).map({
-                return $0.data
+                return $0
             })
     }
     func loginForgetPwdGetVerfiCode(mobile: String, sign: String) -> Single<DefaultDto?>{
@@ -40,7 +90,7 @@ class LoginService {
             path: ApiService.forgot.path,
             parameters: parameters,
             resultType: DefaultDto.self).map({
-                return $0.data
+                return $0
             })
     }
     func loginResetPwd(account: String, pwd: String, checkPwd: String, verfiCode: String)-> Single<DefaultDto?>{
@@ -57,7 +107,7 @@ class LoginService {
             path: ApiService.reset.path,
             parameters: parameters,
             resultType: DefaultDto.self).map({
-                return $0.data
+                return $0
             })
     }
     
@@ -73,7 +123,7 @@ class LoginService {
             path: ApiService.signup.path,
             parameters: parameters,
             resultType: DefaultDto.self).map({
-                return $0.data
+                return $0
             })
     }
     
@@ -91,7 +141,7 @@ class LoginService {
             path: ApiService.signup.path,
             parameters: parameters,
             resultType: DefaultDto.self).map({
-                return $0.data
+                return $0
             })
     }
 }

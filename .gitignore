@@ -58,6 +58,7 @@ xcuserdata/
 *.xcuserstate
 *.xcbkptlist
 *.xcworkspace
+UserInterfaceState.xcuserstate
 
 ## Obj-C/Swift specific
 *.hmap

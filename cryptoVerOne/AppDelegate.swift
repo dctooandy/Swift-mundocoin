@@ -12,6 +12,15 @@ import DropDown
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    var isLogin:Bool?
+    {
+        didSet{
+            //走正常流程時,判斷是否已登入過
+            let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share)
+            let walletNavVC = MDNavigationController(rootViewController: WalletViewController.loadNib())
+            window?.rootViewController = isLogin! ? walletNavVC : loginNavVC
+        }
+    }
     private let dpg = DisposeBag()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupAppearance()

@@ -172,68 +172,96 @@ class VerifyViewController: BaseViewController {
         isValid.bind(to: verifyButton.rx.isEnabled)
             .disposed(by: dpg)
     }
-
-    func verifyButtonPressed()
+    func directToNextPage()
     {
-    // 登入 驗證完畢直接登入
-    // 註冊 驗證完畢跳出國碼選擇
-    // 忘記密碼 驗證完畢 跳出密碼輸入頁
-        if let loginDto = self.loginDto
-        {
-            if loginDto.currentShowMode != .forgotPW
+        // 登入 驗證完畢直接登入
+        // 註冊 驗證完畢跳出國碼選擇
+        // 忘記密碼 驗證完畢 跳出密碼輸入頁
+            if let loginDto = self.loginDto
             {
-                Log.v("登入驗證完畢,直接登入")
-//                self.popVC(isAnimation: false)
-                if let dto = self.loginDto
+                if loginDto.currentShowMode != .forgotPW
                 {
-                    popVC()
-                    LoginSignupViewController.share.login(dto: dto,
-                                                          checkBioList: true ,
-                                                          route: .wallet,
-                                                          showLoadingView: true)
+                    Log.v("登入驗證完畢,直接登入")
+    //                self.popVC(isAnimation: false)
+                    if let dto = self.loginDto
+                    {
+                        popVC()
+                        LoginSignupViewController.share.login(dto: dto,
+                                                              checkBioList: true ,
+                                                              route: .wallet,
+                                                              showLoadingView: true)
+                    }
+                }else
+                {
+                    Log.v("忘記密碼驗證完畢,輸入密碼")
+                    self.navigationController?.pushViewController(resetPWVC, animated: true )
                 }
-            }else
+            }else if let _ = self.signupDto
             {
-                Log.v("忘記密碼驗證完畢,輸入密碼")
-                self.navigationController?.pushViewController(resetPWVC, animated: true )
-            }
-        }else if let _ = self.signupDto
-        {
-            Log.v("註冊驗證完畢,直接登入")
-            if let dto = self.signupDto
-            {
-                LoginSignupViewController.share.signup(dto: dto)
-            }
-            // 目前不用選擇國別
-//            Log.v("註冊驗證完畢,國碼選擇")
-//            idVerifiVC.isModalInPopover = true
-//            idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
-//                if let dto = self.signupDto
-//                {
-//                    LoginSignupViewController.share.signup(dto: dto)
-//                }
-//            }.disposed(by: dpg)
-//            idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
-//                if let dto = self.signupDto
-//                {
-//                    self.dismiss(animated: true) {
-//                        popVC()
+                Log.v("註冊驗證完畢,直接登入")
+                if let dto = self.signupDto
+                {
+                    LoginSignupViewController.share.signup(dto: dto)
+                }
+                // 目前不用選擇國別
+//                Log.v("註冊驗證完畢,國碼選擇")
+//                idVerifiVC.isModalInPopover = true
+//                idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
+//                    if let dto = self.signupDto
+//                    {
 //                        LoginSignupViewController.share.signup(dto: dto)
 //                    }
+//                }.disposed(by: dpg)
+//                idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
+//                    if let dto = self.signupDto
+//                    {
+//                        self.dismiss(animated: true) {
+//                            popVC()
+//                            LoginSignupViewController.share.signup(dto: dto)
+//                        }
+//                    }
+//                }.disposed(by: dpg)
+//                self.present(idVerifiVC, animated: true) {
 //                }
-//            }.disposed(by: dpg)
-//            self.present(idVerifiVC, animated: true) {
-//            }
+            }
+    }
+    func verifyButtonPressed()
+    {
+        var idString = ""
+        if let loginDto = self.loginDto
+        {
+            idString = loginDto.account
+        }else if let signupDto = self.signupDto
+        {
+            idString = signupDto.account
         }
+        let codeString = verifyInputView.textField.text ?? ""
+        Beans.loginServer.verification(idString: idString, codeString: codeString).subscribe { [self]dto in
+            directToNextPage()
+        } onError: { error in
+            ErrorHandler.show(error: error)
+        }.disposed(by: dpg)
     }
     func verifyResentPressed()
     {
         Log.v("重發驗證")
         if self.timer == nil
         {
-            verifyResentLabel.isUserInteractionEnabled = false
-            setupTimer()
-            underLineView.isHidden = true
+            var idString = ""
+            if let loginDto = self.loginDto
+            {
+                idString = loginDto.account
+            }else if let signupDto = self.signupDto
+            {
+                idString = signupDto.account
+            }
+            Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
+                verifyResentLabel.isUserInteractionEnabled = false
+                setupTimer()
+                underLineView.isHidden = true
+            } onError: { error in
+                ErrorHandler.show(error: error)
+            }.disposed(by: dpg)
         }
     }
     func setupTimer()

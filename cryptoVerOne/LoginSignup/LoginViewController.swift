@@ -122,17 +122,20 @@ class LoginViewController: BaseViewController {
     }
     
     private func login() {
-        
+        resetInputView()
         loginActions()
+    }
+    func resetInputView()
+    {
+        accountInputView?.resetTFMaskView()
+    }
+    func loginActions()
+    {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
         let dto = LoginPostDto(account: account, password: password,loginMode: self.loginMode ,showMode: .loginEmail)
         // 登入成功後
         self.onClickLogin.onNext(dto)
-    }
-    func loginActions()
-    {
-        accountInputView?.resetTFMaskView()
     }
     func startReciprocal() {
         self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)

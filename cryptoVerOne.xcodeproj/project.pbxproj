@@ -390,6 +390,18 @@
 		09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
 		09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
 		09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
+		09CAF5D5283CB09100D7B19B /* Single+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D4283CB09100D7B19B /* Single+util.swift */; };
+		09CAF5D6283CB09400D7B19B /* Single+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D4283CB09100D7B19B /* Single+util.swift */; };
+		09CAF5D7283CB09400D7B19B /* Single+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D4283CB09100D7B19B /* Single+util.swift */; };
+		09CAF5D9283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */; };
+		09CAF5DA283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */; };
+		09CAF5DB283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */; };
+		09CAF5DD283CE0C400D7B19B /* RegistrationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */; };
+		09CAF5DE283CE0C400D7B19B /* RegistrationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */; };
+		09CAF5DF283CE0C400D7B19B /* RegistrationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */; };
+		09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5E0283CE58E00D7B19B /* OtherValue.swift */; };
+		09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5E0283CE58E00D7B19B /* OtherValue.swift */; };
+		09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5E0283CE58E00D7B19B /* OtherValue.swift */; };
 		697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
@@ -583,6 +595,10 @@
 		09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionManager+util.swift"; sourceTree = "<group>"; };
 		09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDto.swift; sourceTree = "<group>"; };
 		09CAF5D0283C8CB700D7B19B /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		09CAF5D4283CB09100D7B19B /* Single+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Single+util.swift"; sourceTree = "<group>"; };
+		09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDefaultDto.swift; sourceTree = "<group>"; };
+		09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationDto.swift; sourceTree = "<group>"; };
+		09CAF5E0283CE58E00D7B19B /* OtherValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherValue.swift; sourceTree = "<group>"; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
 		6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -1165,6 +1181,7 @@
 				A1559E1728378FB700755783 /* NibOwnerLoadable.swift */,
 				09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */,
 				09CAF5D0283C8CB700D7B19B /* Connectivity.swift */,
+				09CAF5D4283CB09100D7B19B /* Single+util.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -1293,6 +1310,9 @@
 				09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */,
 				09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */,
 				09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */,
+				09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */,
+				09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */,
+				09CAF5E0283CE58E00D7B19B /* OtherValue.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1815,6 +1835,7 @@
 				09CAF447283C77ED00D7B19B /* UserMenuTableViewCell.swift in Sources */,
 				09CAF448283C77ED00D7B19B /* BottomSheet.swift in Sources */,
 				09CAF449283C77ED00D7B19B /* SubPageViewController.swift in Sources */,
+				09CAF5D6283CB09400D7B19B /* Single+util.swift in Sources */,
 				09CAF44A283C77ED00D7B19B /* LoginAlert.swift in Sources */,
 				09CAF44B283C77ED00D7B19B /* AccessTokenAdapter.swift in Sources */,
 				09CAF44C283C77ED00D7B19B /* MemberViewController.swift in Sources */,
@@ -1883,6 +1904,7 @@
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
+				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09CAF48B283C77ED00D7B19B /* OKButton.swift in Sources */,
 				09CAF48C283C77ED00D7B19B /* RequestService.swift in Sources */,
@@ -1913,7 +1935,9 @@
 				09CAF4A4283C77ED00D7B19B /* LoginViewController.swift in Sources */,
 				09CAF4A5283C77ED00D7B19B /* ResponseDto.swift in Sources */,
 				09CAF4A6283C77ED00D7B19B /* WalletViewController.swift in Sources */,
+				09CAF5DA283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				09CAF4A7283C77ED00D7B19B /* TwoFAVerifyView.swift in Sources */,
+				09CAF5DE283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
 				09CAF4A8283C77ED00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
@@ -1959,6 +1983,7 @@
 				09CAF508283C7BBE00D7B19B /* UserMenuTableViewCell.swift in Sources */,
 				09CAF509283C7BBE00D7B19B /* BottomSheet.swift in Sources */,
 				09CAF50A283C7BBE00D7B19B /* SubPageViewController.swift in Sources */,
+				09CAF5D7283CB09400D7B19B /* Single+util.swift in Sources */,
 				09CAF50B283C7BBE00D7B19B /* LoginAlert.swift in Sources */,
 				09CAF50C283C7BBE00D7B19B /* AccessTokenAdapter.swift in Sources */,
 				09CAF50D283C7BBE00D7B19B /* MemberViewController.swift in Sources */,
@@ -2027,6 +2052,7 @@
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
+				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09CAF54C283C7BBE00D7B19B /* OKButton.swift in Sources */,
 				09CAF54D283C7BBE00D7B19B /* RequestService.swift in Sources */,
@@ -2057,7 +2083,9 @@
 				09CAF565283C7BBE00D7B19B /* LoginViewController.swift in Sources */,
 				09CAF566283C7BBE00D7B19B /* ResponseDto.swift in Sources */,
 				09CAF567283C7BBE00D7B19B /* WalletViewController.swift in Sources */,
+				09CAF5DB283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				09CAF568283C7BBE00D7B19B /* TwoFAVerifyView.swift in Sources */,
+				09CAF5DF283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
 				09CAF569283C7BBE00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
@@ -2103,6 +2131,7 @@
 				A1973A7E282A95D2009932D8 /* UserMenuTableViewCell.swift in Sources */,
 				A19C70BB28223D70000AFC3F /* BottomSheet.swift in Sources */,
 				A1973A322828F75E009932D8 /* SubPageViewController.swift in Sources */,
+				09CAF5D5283CB09100D7B19B /* Single+util.swift in Sources */,
 				A19C70DA282248A0000AFC3F /* LoginAlert.swift in Sources */,
 				A19C717828225ACC000AFC3F /* AccessTokenAdapter.swift in Sources */,
 				A19C70762822366C000AFC3F /* MemberViewController.swift in Sources */,
@@ -2171,6 +2200,7 @@
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
+				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestService.swift in Sources */,
@@ -2201,7 +2231,9 @@
 				A19C71B32822636E000AFC3F /* LoginViewController.swift in Sources */,
 				A19C718B28225B25000AFC3F /* ResponseDto.swift in Sources */,
 				A19C70DE28224A62000AFC3F /* WalletViewController.swift in Sources */,
+				09CAF5D9283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				A1973A8F282AB572009932D8 /* TwoFAVerifyView.swift in Sources */,
+				09CAF5DD283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
 				A19C71DA28226817000AFC3F /* ConfirmPopupView.swift in Sources */,
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,

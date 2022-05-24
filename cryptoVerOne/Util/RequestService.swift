@@ -27,35 +27,35 @@ extension RequestService
                                        parameters:Parameters? = nil,
                                        modify:Bool = true,
                                        resultType:T.Type,
-                                       encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>> {
+                                       encoding: ParameterEncoding = URLEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters , modify: modify , resultType: resultType, method: .delete,encoding: encoding)
     }
     func singleRequestPatch<T:Codable>(path:URL?,
                                       parameters:Parameters? = nil,
                                       modify:Bool = true,
                                       resultType:T.Type,
-                                      encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>> {
+                                      encoding: ParameterEncoding = URLEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters , modify: modify , resultType: resultType, method: .patch,encoding: encoding)
     }
     func singleRequestPost<T:Codable>(path:URL?,
                                           parameters:Parameters? = nil,
                                           modify:Bool = true,
                                           resultType:T.Type,
-                                          encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>> {
+                                          encoding: ParameterEncoding = JSONEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters , modify: modify , resultType: resultType, method: .post,encoding: encoding)
     }
     func singleRequestGet<T:Codable>(path:URL?,
                                          parameters:Parameters? = nil,
                                          modify:Bool = true,
                                          resultType:T.Type,
-                                         encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>> {
+                                         encoding: ParameterEncoding = URLEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters , modify: modify , resultType: resultType, method: .get,encoding: encoding)
     }
     func singleRequestPut<T:Codable>(path:URL?,
                                           parameters:Parameters? = nil,
                                           modify:Bool = true,
                                           resultType:T.Type,
-                                          encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>> {
+                                          encoding: ParameterEncoding = URLEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters  , modify: modify , resultType: resultType, method: .put,encoding: encoding)
     }
     func singleRequest<T:Codable>(path:URL?,
@@ -63,21 +63,21 @@ extension RequestService
                                   modify:Bool = true,
                                   resultType:T.Type,
                                   method:HTTPMethod,
-                                  encoding: ParameterEncoding = URLEncoding.default) -> Single<MundoResponseDto<T>>
+                                  encoding: ParameterEncoding = JSONEncoding.default) -> Single<T>
     {
         guard let url = path else {
             Log.errorAndCrash(ApiServiceError.unknownError(0,"","url 解析錯誤"))
         }
         let para = self.transPara(parameters: parameters , modify: modify)
         Log.v("API URL: \(path!)\n=====================\nMethod: \(method)\n=====================\n參數: \(para)")
-        return Single<MundoResponseDto<T>>.create { observer in
+        return Single<T>.create { observer in
             let task = self.sessionManager
                 .request(url,
                          method: method,
                          parameters: para,
                          encoding: encoding)
                 .responseCustomModel(T.self,
-                                     onData:{ (result:MundoResponseDto<T>) in
+                                     onData:{ (result: T) in
                                         observer(.success(result)) },
                                      onError:{ (error:ApiServiceError) in
                                         observer(.error(error))})
@@ -92,7 +92,7 @@ extension RequestService
                                           imgData:Data? = nil,
                                           parameters:[String:Any] = [:],
                                           modify:Bool = true,
-                                          resultType:T.Type) -> Single<MundoResponseDto<T>> {
+                                          resultType:T.Type) -> Single<T> {
         let para = self.transPara(parameters: parameters , modify: modify)
         Log.v("Upload URL: \(path!)\n=====================\n參數: \(para)")
         return singleUpload(path: path,
@@ -105,16 +105,16 @@ extension RequestService
                                   imgData:Data? = nil,
                                   parameters:[String:Any] = [:],
                                   resultType:T.Type,
-                                  method:HTTPMethod) -> Single<MundoResponseDto<T>> {
+                                  method:HTTPMethod) -> Single<T> {
 
         
-        return Single<MundoResponseDto<T>>.create { observer in
+        return Single<T>.create { observer in
             _ = self.sessionManager
                 .uploadResponseCustomModel(
                     path:path,T.self,
                     imgData:imgData,
                     parameters: parameters ,
-                    onData: { (result:MundoResponseDto<T>) in observer(.success(result))
+                    onData: { (result:T) in observer(.success(result))
             }, onError: { (error:ApiServiceError) in
                 observer(.error(error))
             })

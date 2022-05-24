@@ -243,9 +243,33 @@ class LoginSignupViewController: BaseViewController {
         // 傳送驗證碼供Email登入
         Log.i("傳送驗證碼供Email登入使用")
     }
-    private func sendVerifyCodeForEmailSignup(_ loginDto: SignupPostDto) {
+    private func sendVerifyCodeForEmailSignup(_ dataDto: SignupPostDto) {
         // 傳送驗證碼供Email登入
-        Log.i("傳送驗證碼供Email註冊使用")
+        var emailString = ""
+        var phoneString = ""
+        if dataDto.signupMode.inputViewMode == .email
+        {
+            emailString = dataDto.account
+        }else
+        {
+            phoneString = dataDto.account
+        }
+        
+        Beans.loginServer.signUPRegistration(code: dataDto.registration, email: emailString, password: dataDto.password, phone: phoneString).subscribe { [self] dto in
+            
+            Log.i("傳送驗證碼供Email註冊使用")
+            // 推向传送验证码VC
+            let verifyVC = VerifyViewController.loadNib()
+            verifyVC.signupDto = dataDto
+            navigationController?.pushViewController(verifyVC, animated: true)
+        } onError: { [self]error in
+            // 暫時錯誤依然傳送
+            // 推向传送验证码VC
+            let verifyVC = VerifyViewController.loadNib()
+            verifyVC.signupDto = dataDto
+            navigationController?.pushViewController(verifyVC, animated: true)
+            ErrorHandler.show(error: error)
+        }.disposed(by: disposeBag)
     }
     // MARK: 驗證碼
     private func sendEmailVerifyCodeForForgot(_ dto: LoginPostDto) {
@@ -491,13 +515,13 @@ class LoginSignupViewController: BaseViewController {
     func changeLoginState() {// 登入註冊頁面
 //        isLogin = !isLogin
         for vc in loginPageVC.loginViewControllers {
-            vc.loginActions()
+            vc.resetInputView()
         }
         for vc in loginPageVC.signupViewControllers {
-            vc.signupActions()
+            vc.resetInputView()
         }
         for vc in loginPageVC.forgotViewControllers {
-            vc.clickLoginActions()
+            vc.resetInputView()
         }
         currentShowMode = ((currentShowMode == .loginEmail) ? .signupEmail : .loginEmail)
     }
@@ -662,12 +686,8 @@ class LoginSignupViewController: BaseViewController {
             .rxVerifySuccess()
             .subscribeSuccess { [weak self] (success) in
                 if let dto = postDto as? SignupPostDto {
-                    // 發送驗證碼
+                    // 發送註冊以及驗證碼
                     self?.sendVerifyCodeForEmailSignup(dto)
-                    // 推向传送验证码VC
-                    let verifyVC = VerifyViewController.loadNib()
-                    verifyVC.signupDto = dto
-                    self?.navigationController?.pushViewController(verifyVC, animated: true)
                 } else if let dto = postDto as? LoginPostDto {
                     self?.login(dto: dto, checkBioList: dto.loginMode == .emailPage ,route: .wallet)
                 }
