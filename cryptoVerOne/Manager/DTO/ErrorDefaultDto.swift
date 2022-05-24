@@ -10,12 +10,13 @@ struct ErrorDefaultDto :Codable,Equatable{
     static func == (lhs: ErrorDefaultDto, rhs: ErrorDefaultDto) -> Bool {
         return lhs.code == rhs.code
     }
-    let code: String?
-    let reason: String?
-    let timestamp:String?
-    let errors: ErrorsDetailDto?
+    var httpStatus:String? = ""
+    var code: String = ""
+    var reason: String = ""
+    var timestamp: Int = 0
+    var errors: [ErrorsDetailDto] = [ErrorsDetailDto()]
   
-    init(code: String = "", reason: String = "", timestamp : String = "",errors: ErrorsDetailDto = ErrorsDetailDto()) {
+    init(code: String = "", reason: String = "", timestamp : Int = 0,httpStatus : String = "",errors: [ErrorsDetailDto] = [ErrorsDetailDto()]) {
         self.code = code
         self.reason = reason
         self.timestamp = timestamp
@@ -23,9 +24,9 @@ struct ErrorDefaultDto :Codable,Equatable{
     }
 }
 struct ErrorsDetailDto :Codable{
-    let field: String
-    let rejectValue: String
-    let reason:String
+    var field: String = ""
+    var rejectValue: String = ""
+    var reason:String = ""
     
     init(field: String = "", rejectValue: String = "", reason : String = "") {
         self.field = field

@@ -257,17 +257,31 @@ class LoginSignupViewController: BaseViewController {
         
         Beans.loginServer.signUPRegistration(code: dataDto.registration, email: emailString, password: dataDto.password, phone: phoneString).subscribe { [self] dto in
             
-            Log.i("傳送驗證碼供Email註冊使用")
+            Log.i("傳送驗證碼供Email註冊使用 \(dto)")
             // 推向传送验证码VC
             let verifyVC = VerifyViewController.loadNib()
             verifyVC.signupDto = dataDto
             navigationController?.pushViewController(verifyVC, animated: true)
         } onError: { [self]error in
+            // 將invalid text 顏色改為紅色
+            if let error = error as? ApiServiceError
+            {
+                switch error {
+                case .errorDto(let dto):
+                    for vc in loginPageVC.signupViewControllers
+                    {
+                        vc.changeInvalidTextWith(dtos: dto.errors)
+                        vc.registerButton.isEnabled = false
+                    }
+                default:
+                    break
+                }
+            }
             // 暫時錯誤依然傳送
             // 推向传送验证码VC
-            let verifyVC = VerifyViewController.loadNib()
-            verifyVC.signupDto = dataDto
-            navigationController?.pushViewController(verifyVC, animated: true)
+//            let verifyVC = VerifyViewController.loadNib()
+//            verifyVC.signupDto = dataDto
+//            navigationController?.pushViewController(verifyVC, animated: true)
             ErrorHandler.show(error: error)
         }.disposed(by: disposeBag)
     }

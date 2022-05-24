@@ -104,10 +104,11 @@ class CheckBox: UIView {
         case .round:
             shapePath = UIBezierPath(ovalIn: newRect)
         }
-
+        UIGraphicsBeginImageContext(self.bounds.size)
         context?.addPath(shapePath.cgPath)
         context?.strokePath()
         context?.fillPath()
+        UIGraphicsEndImageContext()
         
         if isCheck {
             fillBackground(frame: newRect)

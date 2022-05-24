@@ -171,6 +171,10 @@ class LoginViewController: BaseViewController {
 //    private func loginModeDidChange() {
 //        accountInputView?.changeInputMode(mode: loginMode)
 //    }
+    func changeInvalidTextWith(dtos:[ErrorsDetailDto])
+    {
+        accountInputView?.changeInvalidTextColor(with: dtos)
+    }
 }
 
 

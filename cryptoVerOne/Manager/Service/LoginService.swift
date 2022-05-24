@@ -24,7 +24,6 @@ class LoginService {
         if email.isEmpty
         {
             parameters["phone"] = phone
-
         }else
         {
             parameters["email"] = email

@@ -7,23 +7,23 @@
 
 import Foundation
 struct RegistrationDto :Codable{
-    let createdDate : JSONValue?
-    let email : JSONValue?
-    let firstName : JSONValue?
-    let id : JSONValue?
-    let isEmailRegistry : JSONValue?
-    let isPhoneRegistry : JSONValue?
-    let lastLoginDate : JSONValue?
-    let lastLoginIP : JSONValue?
-    let lastName : JSONValue?
-    let middleName : JSONValue?
-    let phone : JSONValue?
-    let registrationCode : JSONValue?
-    let registrationIP : JSONValue?
-    let roles : JSONValue?
-    let status : JSONValue?
-    let updatedDate : JSONValue?
-    let wallet : JSONValue?
+    var createdDate : String = ""
+    var email : String = ""
+    var firstName : String?
+    var id : String = ""
+    var isEmailRegistry : JSONValue
+    var isPhoneRegistry : JSONValue
+    var lastLoginDate : String?
+    var lastLoginIP : String?
+    var lastName : String?
+    var middleName : String?
+    var phone : String?
+    var registrationCode : String = ""
+    var registrationIP : String = ""
+    var roles : String = ""
+    var status : String = ""
+    var updatedDate : String = ""
+    var wallet : String?
     
    
 //    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode) {

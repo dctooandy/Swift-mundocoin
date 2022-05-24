@@ -203,6 +203,10 @@ class SignupViewController: BaseViewController {
         seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: true)
     }
+    func changeInvalidTextWith(dtos:[ErrorsDetailDto])
+    {
+        accountInputView?.changeInvalidTextColor(with: dtos)
+    }
 }
 
 

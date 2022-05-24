@@ -734,6 +734,21 @@ class InputStyleView: UIView {
             break
         }
     }
+    func changeInvalidLabelAndMaskBorderColor(with invalidString:String)
+    {
+        if invalidString.isEmpty
+        {
+            invalidLabel.text = inputViewMode.invalidString()
+            invalidLabel.textColor = Themes.grayA3AED0
+            tfMaskView.layer.borderColor = Themes.grayE0E5F2.cgColor
+        }else
+        {
+            invalidLabel.text = invalidString
+            invalidLabel.textColor = .red
+            invalidLabel.isHidden = false
+            tfMaskView.layer.borderColor = UIColor.red.cgColor
+        }
+    }
     func sendRequestForVerify()
     {
         onSendClick.onNext(())

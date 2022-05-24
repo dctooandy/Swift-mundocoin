@@ -7,7 +7,17 @@
 		<key>cryptoVerOne.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>18</integer>
+		</dict>
+		<key>cryptoVerOne_dev.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>19</integer>
+		</dict>
+		<key>cryptoVerOne_stage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
 		</dict>
 	</dict>
 </dict>

@@ -137,6 +137,7 @@ class AccountInputView: UIView {
             accountInputView.tfMaskView.changeBorderWith(isChoose:false)
             passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
             registrationInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            registrationInputView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
     }
     func resetTFMaskView()
@@ -204,7 +205,24 @@ class AccountInputView: UIView {
 
         }
     }
-    
+    func changeInvalidTextColor(with invalidDto:[ErrorsDetailDto])
+    {
+        for subData in invalidDto
+        {
+            if accountInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+            {
+                accountInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+            }
+            if passwordInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+            {
+                passwordInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+            }
+            if registrationInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+            {
+                registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+            }
+        }
+    }
 //    func changeInputMode(mode: LoginMode) {
 //        inputMode = mode
 //        accountInputView.resetUI()
