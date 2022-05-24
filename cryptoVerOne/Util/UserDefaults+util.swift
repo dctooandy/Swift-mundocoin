@@ -35,9 +35,27 @@ extension UserDefaults
             case askedBioLogin
             case loginVideoUpdateDate
         }
-       
     }
-    
+    struct UserInfo: UserDefaultsSettable {
+        enum defaultKeys: String {
+            case kConfigInfo
+            case kUserInfo
+            case kLoginUserInfo
+            case kStayPayOrder
+            case isFirstOpen
+            case isNeedRemenberPwd
+            case jpushToken
+            case isOpenDanmaku
+            case DailyTaskLastOpenDate
+            case NeedFetchDailyTask
+            case DailyTaskLastOpenArray
+            case UserPosition
+            case UserShouldJumpPosition
+            case isWhenLoginToReloadScheduleBooking
+            case isNeedShowBasicTaskCompletedView
+            case isOpenedBasicTaskCompletedViewUserArr
+        }
+    }
     // 登录信息
     struct LoginInfo: UserDefaultsSettable {
         enum defaultKeys: String {

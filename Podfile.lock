@@ -30,6 +30,7 @@ PODS:
   - UPCarouselFlowLayout (1.1.2)
 
 DEPENDENCIES:
+  - Alamofire (<= 4.9.1)
   - Alamofire (~> 4.8.2)
   - DropDown
   - KeychainSwift
@@ -95,6 +96,6 @@ SPEC CHECKSUMS:
   Toaster: c3473963c78e8cabbf6ea6f11ad0fdaae6f54987
   UPCarouselFlowLayout: 4c7d2c43a10ebb1597bde502a53699d378341dad
 
-PODFILE CHECKSUM: 90d3db460fce6de0218a449d6b771b4c04bdb213
+PODFILE CHECKSUM: f295b434b26012f5cd975718f1fa113984bf9d59
 
 COCOAPODS: 1.11.3

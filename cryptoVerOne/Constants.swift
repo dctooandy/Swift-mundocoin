@@ -128,3 +128,7 @@ class NotifyConstant {
     static let betleadCleanBlur = Notification.Name("betleadCleanBlur")
     static let betleadShowGiveupBtn = Notification.Name("betleadShowGiveupBtn")
 }
+struct ApiCode {
+    
+    static let kDefaultSuccessCode = 200
+}

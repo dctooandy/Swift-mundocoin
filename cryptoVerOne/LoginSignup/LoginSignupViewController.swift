@@ -436,9 +436,13 @@ class LoginSignupViewController: BaseViewController {
     func handleApiServiceError(_ error: Error) {
         guard let err = error as? ApiServiceError else { return }
         ErrorHandler.show(error: err)
-        if err == .failThrice {
+        switch err {
+        case .failThrice(_ ,_ ,_):
             shouldVerify = true
+        default: break
         }
+//        if err == .failThrice(_ ,_ ,_) {
+//        }
     }
     // MARK: Login Video
     func fetchBackgroundVideo() {
@@ -479,7 +483,7 @@ class LoginSignupViewController: BaseViewController {
         if FileManager.default.fileExists(atPath: storeUrl.path) {
             backGroundVideoUrl = storeUrl
         } else {
-            backGroundVideoUrl = URL(string: BuildConfig.LOGIN_VIDEO_URL)
+//            backGroundVideoUrl = URL(string: BuildConfig.LOGIN_VIDEO_URL)
         }
     }
     

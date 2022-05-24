@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "09CAF43A283C77ED00D7B19B"
-               BuildableName = "cryptoVerOne copy.app"
+               BuildableName = "cryptoVerOne_dev.app"
                BlueprintName = "cryptoVerOne_dev"
                ReferencedContainer = "container:cryptoVerOne.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "09CAF43A283C77ED00D7B19B"
-            BuildableName = "cryptoVerOne copy.app"
+            BuildableName = "cryptoVerOne_dev.app"
             BlueprintName = "cryptoVerOne_dev"
             ReferencedContainer = "container:cryptoVerOne.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "09CAF43A283C77ED00D7B19B"
-            BuildableName = "cryptoVerOne copy.app"
+            BuildableName = "cryptoVerOne_dev.app"
             BlueprintName = "cryptoVerOne_dev"
             ReferencedContainer = "container:cryptoVerOne.xcodeproj">
          </BuildableReference>

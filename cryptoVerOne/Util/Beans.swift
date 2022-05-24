@@ -9,7 +9,7 @@ import Foundation
 import Toaster
 
 class Beans {
-    static let requestServer = RequestServer()
+    static let requestServer = RequestService()
 //    static let bannerServer = BannerService()
 //    static let newsServer = NewsService()
 //    static let memberServer = MemberService()

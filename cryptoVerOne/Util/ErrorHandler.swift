@@ -8,19 +8,21 @@
 
 import Foundation
 import Toaster
+import RxSwift
+import RxCocoa
 
 class ErrorHandler {
-    
+    static var disposteBag = DisposeBag()
     static func show(error:Error) {
         if let error = error as? ApiServiceError {
             switch error {
-            case .domainError(let (_,msg)):
+            case .domainError(let code ,let urlString ,let msg):
                 Log.e(msg)
                 showAlert(title: "错误讯息", message: msg)
-            case .networkError(let msg):
-                Log.e(msg ?? " no error message")
-                showAlert(title: "错误讯息", message: msg ?? "")
-            case .unknownError(let msg):
+            case .networkError(let code ,let urlString ,_):
+                Log.e("\(code)")
+                showAlert(title: "错误讯息", message: "\(code)")
+            case .unknownError(let code ,let urlString ,let msg):
                 Log.e(msg ?? " no error message")
                 showAlert(title: "错误讯息", message: msg ?? "")
             case .tokenError:
@@ -44,13 +46,14 @@ class ErrorHandler {
                 showRedictToLoginAlert()
             case .failThrice:
                 showAlert(title: "错误讯息", message: "錯誤超過三次")
-            case .systemMaintenance(let code , let message):
+            case .systemMaintenance(let code ,_, let message):
                 switch code {
                 case ErrorCode.MAINTAIN_B_PLATFORM_EXCEPTION: break
 //                    UIApplication.shared.keyWindow?.rootViewController = BetleadSystemMaintainViewController(message: message)
                 default:
                     break
                 }
+            default: break
             }
         } else {
             Toast.show(msg:"unDefine error type")

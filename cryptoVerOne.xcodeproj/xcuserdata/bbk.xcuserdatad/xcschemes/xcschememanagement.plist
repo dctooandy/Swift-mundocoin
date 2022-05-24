@@ -7,7 +7,25 @@
 		<key>cryptoVerOne.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>cryptoVerOne_dev.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>19</integer>
+		</dict>
+		<key>cryptoVerOne_stage.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>21</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>A19C6FCD282218D6000AFC3F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
