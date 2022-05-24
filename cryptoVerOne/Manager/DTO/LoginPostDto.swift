@@ -30,6 +30,29 @@ class LoginDto: Codable {
     let lastLoginAt: String?
     let lastLoginIn: LastLoginInDto?
     let phone: String?
+    let id:Int?
+    let token:String?
+    var toJsonString: String {
+        do {
+            let jsonData = try self.jsonData()
+            //            let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            //                  guard let dictionary = json as? [String : Any] else {
+            //                    return [:]
+            //                  }
+            //            return dictionary as Dictionary
+            // Use dictionary
+            
+            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                return ""
+            }
+            return jsonString
+            //                  // Print jsonString
+            //                  print(jsonString)
+        } catch  {
+            
+        }
+        return ""
+    }
 }
 
 class LastLoginInDto: Codable {

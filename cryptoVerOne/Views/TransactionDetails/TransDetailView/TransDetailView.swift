@@ -27,9 +27,27 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     // MARK: -
     // MARK:UI 設定
+    // Switch
     @IBOutlet weak var topSwitchView: UIView!
+    @IBOutlet weak var switchModeView: UIView!
+    @IBOutlet weak var pendingImageView: UIImageView!
+    @IBOutlet weak var processingImageView: UIImageView!
+    @IBOutlet weak var processingLabel: UILabel!
+    // Amount
+    @IBOutlet weak var currencyIcon: UIImageView!
+    @IBOutlet weak var topAmountLabel: UILabel!
+    // Data List
+    
+    @IBOutlet var dataListViewArray: [UIView]!
+    @IBOutlet weak var tetherLabel: UILabel!
+    @IBOutlet weak var networkLabel: UILabel!
+    @IBOutlet weak var confirmationsLabel: UILabel!
+    @IBOutlet weak var feeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
+    @IBOutlet weak var CompletedModeView: UIView!
     @IBOutlet weak var amountView: UIView!
-    @IBOutlet weak var dataListView: UIView!
+    @IBOutlet weak var dataListView: UIStackView!
     @IBOutlet weak var withdrawToView: UIView!
     @IBOutlet weak var txidView: UIView!
     var contentView: UIView!
@@ -61,16 +79,61 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     func setupUI()
     {
+        pendingImageView.layer.borderWidth = 6
+        pendingImageView.layer.borderColor = UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1).cgColor
+        processingImageView.layer.borderWidth = 6
+        processingImageView.layer.borderColor = UIColor.clear.cgColor
+        processingLabel.textColor = Themes.grayE0E5F2
+
         withdrawToInputView = InputStyleView(inputViewMode: .withdrawAddressToDetail(true))
         withdrawToView.addSubview(withdrawToInputView)
         withdrawToInputView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        txidInputView = InputStyleView(inputViewMode: .txid(""))
+        let lineViewOne = UILabel()
+        lineViewOne.textAlignment = .center
+        lineViewOne.backgroundColor = .clear
+        withdrawToInputView.tfMaskView.addSubview(lineViewOne)
+        lineViewOne.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(2)
+        }
+        lineViewOne.text = "----------------------------------------------------------"
+    
+        txidInputView = InputStyleView(inputViewMode: .txid("---------------------------------------------------------"))
         txidView.addSubview(txidInputView)
         txidInputView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        let lineViewTwo = UILabel()
+        lineViewTwo.textAlignment = .center
+        lineViewTwo.backgroundColor = .clear
+        txidInputView.tfMaskView.addSubview(lineViewTwo)
+        lineViewTwo.snp.makeConstraints { make in
+            make.top.left.right.equalToSuperview()
+            make.height.equalTo(2)
+        }
+        lineViewTwo.text = "----------------------------------------------------------"
+    }
+    func drawDashLine(lineView : UIView,lineLength : Int ,lineSpacing : Int,lineColor : UIColor){
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.bounds = lineView.bounds
+//        只要是CALayer這種類型,他的anchorPoint默認都是(0.5,0.5)
+        shapeLayer.anchorPoint = CGPoint(x: 0, y: 0)
+//        shapeLayer.fillColor = UIColor.blue.cgColor
+        shapeLayer.strokeColor = lineColor.cgColor
+
+        shapeLayer.lineWidth = lineView.frame.size.height
+        shapeLayer.lineJoin = CAShapeLayerLineJoin.round
+
+        shapeLayer.lineDashPattern = [NSNumber(value: lineLength),NSNumber(value: lineSpacing)]
+
+        let path = CGMutablePath()
+        path.move(to: CGPoint(x: 0, y: 0))
+        path.addLine(to: CGPoint(x: lineView.frame.size.width, y: 0))
+
+        shapeLayer.path = path
+        lineView.layer.addSublayer(shapeLayer)
     }
     func bindUI()
     {
@@ -82,6 +145,17 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
         Themes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
+        Themes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
+        Themes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
+        Themes.completeViewType.bind(to: CompletedModeView.rx.isHidden).disposed(by: dpg)
+        if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first,
+           let dateView = dataListViewArray.filter({ $0.tag == 5 }).first
+        {
+            Themes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
+            Themes.txidViewType.bind(to: dateView.rx.isHidden).disposed(by: dpg)            
+        }
+        
+        
     }
     func setupType()
     {
@@ -89,6 +163,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         {
             withdrawToInputView.setVisibleString(string: dto.address)
             txidInputView.setVisibleString(string: dto.txid)
+            topAmountLabel.text = dto.amount
+            tetherLabel.text = dto.tether
+            networkLabel.text = dto.network
+            confirmationsLabel.text = dto.confirmations
+            feeLabel.text = dto.fee
+            dateLabel.text = dto.date
         }
     }
 }

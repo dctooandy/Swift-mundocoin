@@ -33,7 +33,6 @@ class SubPageViewController: BaseViewController {
         cv.registerXibCell(type: SubPageCollectionCell.self)
         cv.backgroundColor = .clear
         cv.showsHorizontalScrollIndicator = false
-        cv.isPagingEnabled = true
         cv.delegate = self
         cv.dataSource = self
         return cv

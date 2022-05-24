@@ -17,11 +17,17 @@ class PushNotiViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Push notifications"
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {

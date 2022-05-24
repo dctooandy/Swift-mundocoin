@@ -7,6 +7,389 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
+		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
+		09CAF439283C74D600D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
+		09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
+		09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
+		09CAF43F283C77ED00D7B19B /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
+		09CAF440283C77ED00D7B19B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C702B28222D97000AFC3F /* Extension.swift */; };
+		09CAF441283C77ED00D7B19B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
+		09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A392829126D009932D8 /* UICollectionView+util.swift */; };
+		09CAF443283C77ED00D7B19B /* LoginPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A828226279000AFC3F /* LoginPostDto.swift */; };
+		09CAF444283C77ED00D7B19B /* PopupBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70BD28223D82000AFC3F /* PopupBottomSheet.swift */; };
+		09CAF445283C77ED00D7B19B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7116282255AD000AFC3F /* Log.swift */; };
+		09CAF446283C77ED00D7B19B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71B02822636E000AFC3F /* SignupViewController.swift */; };
+		09CAF447283C77ED00D7B19B /* UserMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */; };
+		09CAF448283C77ED00D7B19B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70BA28223D70000AFC3F /* BottomSheet.swift */; };
+		09CAF449283C77ED00D7B19B /* SubPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A312828F75E009932D8 /* SubPageViewController.swift */; };
+		09CAF44A283C77ED00D7B19B /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D9282248A0000AFC3F /* LoginAlert.swift */; };
+		09CAF44B283C77ED00D7B19B /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C717728225ACB000AFC3F /* AccessTokenAdapter.swift */; };
+		09CAF44C283C77ED00D7B19B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70752822366C000AFC3F /* MemberViewController.swift */; };
+		09CAF44D283C77ED00D7B19B /* AppUpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70B228223CEE000AFC3F /* AppUpdateAlert.swift */; };
+		09CAF44E283C77ED00D7B19B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703A28223299000AFC3F /* KeychainManager.swift */; };
+		09CAF44F283C77ED00D7B19B /* BannerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E62822699E000AFC3F /* BannerDto.swift */; };
+		09CAF450283C77ED00D7B19B /* UIImage+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D628224819000AFC3F /* UIImage+util.swift */; };
+		09CAF451283C77ED00D7B19B /* UILabel+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D62822662B000AFC3F /* UILabel+util.swift */; };
+		09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C712C2822570E000AFC3F /* LoadingViewController.swift */; };
+		09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A2282260F3000AFC3F /* BioVerifyManager.swift */; };
+		09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E0282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift */; };
+		09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E1BA62824FF5000827148 /* ForgotViewController.swift */; };
+		09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C228226469000AFC3F /* CheckBox.swift */; };
+		09CAF457283C77ED00D7B19B /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F6200282E3F5700D9CCE5 /* TemplateCell.swift */; };
+		09CAF458283C77ED00D7B19B /* ValueDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C828224614000AFC3F /* ValueDto.swift */; };
+		09CAF459283C77ED00D7B19B /* TransDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1128376A2A00755783 /* TransDetailView.swift */; };
+		09CAF45A283C77ED00D7B19B /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
+		09CAF45B283C77ED00D7B19B /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A042828EBEB009932D8 /* UserMenuViewController.swift */; };
+		09CAF45C283C77ED00D7B19B /* FirstLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70AA28223CB7000AFC3F /* FirstLaunchViewController.swift */; };
+		09CAF45D283C77ED00D7B19B /* CALayer+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719028225B8D000AFC3F /* CALayer+util.swift */; };
+		09CAF45E283C77ED00D7B19B /* WMZCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E2282268CC000AFC3F /* WMZCodeView.m */; };
+		09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FEB28221C69000AFC3F /* LoginSignupViewController.swift */; };
+		09CAF460283C77ED00D7B19B /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F621A2832277C00D9CCE5 /* AmountInputView.swift */; };
+		09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FD1282218D6000AFC3F /* AppDelegate.swift */; };
+		09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13B4282C08E100AB2E0A /* PushNotiViewController.swift */; };
+		09CAF463283C77ED00D7B19B /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
+		09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
+		09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
+		09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
+		09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
+		09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
+		09CAF469283C77ED00D7B19B /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7088282239DC000AFC3F /* Themes.swift */; };
+		09CAF46A283C77ED00D7B19B /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C702728222D46000AFC3F /* DeepLinkManager.swift */; };
+		09CAF46B283C77ED00D7B19B /* UIStackView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E9282269E4000AFC3F /* UIStackView+util.swift */; };
+		09CAF46C283C77ED00D7B19B /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */; };
+		09CAF46D283C77ED00D7B19B /* DataRequest+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C718D28225B5E000AFC3F /* DataRequest+util.swift */; };
+		09CAF46E283C77ED00D7B19B /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A212828F3D3009932D8 /* WithdrawViewController.swift */; };
+		09CAF46F283C77ED00D7B19B /* BetleadTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70CC282246DF000AFC3F /* BetleadTabbar.swift */; };
+		09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C707928223729000AFC3F /* LoginPageViewController.swift */; };
+		09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719F28225DCB000AFC3F /* StatusImageView.swift */; };
+		09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71CC2822651E000AFC3F /* UITextfield+util.swift */; };
+		09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D028226584000AFC3F /* ForgetPasswordViewController.swift */; };
+		09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71B7282263A1000AFC3F /* SignupPostDto.swift */; };
+		09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
+		09CAF476283C77ED00D7B19B /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61F7282E383300D9CCE5 /* TemplateView.swift */; };
+		09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TwoSideStyle.swift */; };
+		09CAF478283C77ED00D7B19B /* LoginMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71AB282262EB000AFC3F /* LoginMode.swift */; };
+		09CAF479283C77ED00D7B19B /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A192828F32E009932D8 /* DepositViewController.swift */; };
+		09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */; };
+		09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61C6282CBBD100D9CCE5 /* TFFinishReViewController.swift */; };
+		09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D3282265EA000AFC3F /* TfRightButton.swift */; };
+		09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708F28223A44000AFC3F /* ErrorHandler.swift */; };
+		09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70A228223B97000AFC3F /* LaunchReciprocalViewController.swift */; };
+		09CAF47F283C77ED00D7B19B /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C705F28223517000AFC3F /* TabbarViewController.swift */; };
+		09CAF480283C77ED00D7B19B /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
+		09CAF481283C77ED00D7B19B /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A122828EE13009932D8 /* BoardViewController.swift */; };
+		09CAF482283C77ED00D7B19B /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
+		09CAF483283C77ED00D7B19B /* ImagetTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C714728225827000AFC3F /* ImagetTextButton.swift */; };
+		09CAF484283C77ED00D7B19B /* UIView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D32822479B000AFC3F /* UIView+util.swift */; };
+		09CAF485283C77ED00D7B19B /* BasePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F628224D4F000AFC3F /* BasePresentAnimationController.swift */; };
+		09CAF486283C77ED00D7B19B /* AppVersionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C4282245DD000AFC3F /* AppVersionDto.swift */; };
+		09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
+		09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
+		09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
+		09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61F4282E37F400D9CCE5 /* AddressBottomView.swift */; };
+		09CAF48B283C77ED00D7B19B /* OKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70B628223D2C000AFC3F /* OKButton.swift */; };
+		09CAF48C283C77ED00D7B19B /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C709228223A95000AFC3F /* RequestService.swift */; };
+		09CAF48D283C77ED00D7B19B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7129282256CC000AFC3F /* Constants.swift */; };
+		09CAF48E283C77ED00D7B19B /* ConfirmBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F620B282E500000D9CCE5 /* ConfirmBottomView.swift */; };
+		09CAF48F283C77ED00D7B19B /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */; };
+		09CAF490283C77ED00D7B19B /* AccountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71BD28226414000AFC3F /* AccountInputView.swift */; };
+		09CAF491283C77ED00D7B19B /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051CC2823782E00056183 /* VerifyViewController.swift */; };
+		09CAF492283C77ED00D7B19B /* Beans.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F028224C87000AFC3F /* Beans.swift */; };
+		09CAF493283C77ED00D7B19B /* InputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739E3282808B5009932D8 /* InputStyleView.swift */; };
+		09CAF494283C77ED00D7B19B /* ConfirmBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F6208282E4E2000D9CCE5 /* ConfirmBottomSheet.swift */; };
+		09CAF495283C77ED00D7B19B /* AddressBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61FD282E3EBA00D9CCE5 /* AddressBottomCell.swift */; };
+		09CAF496283C77ED00D7B19B /* BadgeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719C28225D99000AFC3F /* BadgeBtn.swift */; };
+		09CAF497283C77ED00D7B19B /* NotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A0B2828ED59009932D8 /* NotiViewController.swift */; };
+		09CAF498283C77ED00D7B19B /* UCPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */; };
+		09CAF499283C77ED00D7B19B /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70FC28224D78000AFC3F /* BaseViewModel.swift */; };
+		09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F728224D4F000AFC3F /* BaseDismissAnimationController.swift */; };
+		09CAF49B283C77ED00D7B19B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D02822475B000AFC3F /* Views.swift */; };
+		09CAF49C283C77ED00D7B19B /* DetailDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E05283739D700755783 /* DetailDto.swift */; };
+		09CAF49D283C77ED00D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
+		09CAF49E283C77ED00D7B19B /* Date+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E928224C4B000AFC3F /* Date+util.swift */; };
+		09CAF49F283C77ED00D7B19B /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C711328225542000AFC3F /* BuildConfig.swift */; };
+		09CAF4A0283C77ED00D7B19B /* ImageVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71DC28226889000AFC3F /* ImageVerifyView.swift */; };
+		09CAF4A1283C77ED00D7B19B /* SecurityVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */; };
+		09CAF4A2283C77ED00D7B19B /* BaseBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70FB28224D78000AFC3F /* BaseBottomSheet.swift */; };
+		09CAF4A3283C77ED00D7B19B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C706528223584000AFC3F /* MainViewController.swift */; };
+		09CAF4A4283C77ED00D7B19B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71AF2822636E000AFC3F /* LoginViewController.swift */; };
+		09CAF4A5283C77ED00D7B19B /* ResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C718A28225B25000AFC3F /* ResponseDto.swift */; };
+		09CAF4A6283C77ED00D7B19B /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70DD28224A62000AFC3F /* WalletViewController.swift */; };
+		09CAF4A7283C77ED00D7B19B /* TwoFAVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */; };
+		09CAF4A8283C77ED00D7B19B /* ConfirmPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D928226817000AFC3F /* ConfirmPopupView.swift */; };
+		09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C714B2822589A000AFC3F /* BetleadNavigationController.swift */; };
+		09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71FC282286C1000AFC3F /* Reactive+util.swift */; };
+		09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C712628225625000AFC3F /* Toast+util.swift */; };
+		09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A002828E59A009932D8 /* MDNavigationController.swift */; };
+		09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E628224BF5000AFC3F /* UserDefaults+util.swift */; };
+		09CAF4AE283C77ED00D7B19B /* GuidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70AB28223CB7000AFC3F /* GuidePageViewController.swift */; };
+		09CAF4AF283C77ED00D7B19B /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
+		09CAF4B0283C77ED00D7B19B /* SignupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A528226229000AFC3F /* SignupSuccessView.swift */; };
+		09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */; };
+		09CAF4B2283C77ED00D7B19B /* CornerradiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71BA282263DE000AFC3F /* CornerradiusButton.swift */; };
+		09CAF4B3283C77ED00D7B19B /* TransTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E0A28375B9A00755783 /* TransTopView.swift */; };
+		09CAF4B4283C77ED00D7B19B /* AddressBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E9282E30F900D9CCE5 /* AddressBottomSheet.swift */; };
+		09CAF4B5283C77ED00D7B19B /* UITableViewCell+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */; };
+		09CAF4B6283C77ED00D7B19B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C6282264A3000AFC3F /* Fonts.swift */; };
+		09CAF4B7283C77ED00D7B19B /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
+		09CAF4B8283C77ED00D7B19B /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E228224AE8000AFC3F /* PromotionViewController.swift */; };
+		09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C128226469000AFC3F /* CheckBoxView.swift */; };
+		09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		09CAF4BB283C77ED00D7B19B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E4282E2A2200D9CCE5 /* ScannerViewController.swift */; };
+		09CAF4BC283C77ED00D7B19B /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C028223DC1000AFC3F /* CancelButton.swift */; };
+		09CAF4BD283C77ED00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710328224DCF000AFC3F /* BottomSheetDismissAnimationController.swift */; };
+		09CAF4BE283C77ED00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710028224DBD000AFC3F /* BottomSheetPresentAnimationController.swift */; };
+		09CAF4BF283C77ED00D7B19B /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
+		09CAF4C1283C77ED00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
+		09CAF4C3283C77ED00D7B19B /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
+		09CAF4C4283C77ED00D7B19B /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
+		09CAF4C5283C77ED00D7B19B /* mucoin_error.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7141282257AB000AFC3F /* mucoin_error.json */; };
+		09CAF4C6283C77ED00D7B19B /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A242828F3E7009932D8 /* WithdrawViewController.xib */; };
+		09CAF4C7283C77ED00D7B19B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719628225CD9000AFC3F /* MainViewController.xib */; };
+		09CAF4C8283C77ED00D7B19B /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */; };
+		09CAF4C9283C77ED00D7B19B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDC282218DF000AFC3F /* LaunchScreen.storyboard */; };
+		09CAF4CA283C77ED00D7B19B /* LaunchReciprocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A628223C46000AFC3F /* LaunchReciprocalViewController.xib */; };
+		09CAF4CB283C77ED00D7B19B /* UserMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A072828EC81009932D8 /* UserMenuViewController.xib */; };
+		09CAF4CC283C77ED00D7B19B /* GuidePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A928223CB7000AFC3F /* GuidePageViewController.xib */; };
+		09CAF4CD283C77ED00D7B19B /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A152828EE6A009932D8 /* BoardViewController.xib */; };
+		09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71AE2822636E000AFC3F /* LoginViewController.xib */; };
+		09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */; };
+		09CAF4D0283C77ED00D7B19B /* TransTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E0E28375BAB00755783 /* TransTopView.xib */; };
+		09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61FA282E389400D9CCE5 /* AddressBottomView.xib */; };
+		09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
+		09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
+		09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */; };
+		09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C9282CBC2E00D9CCE5 /* TFFinishReViewController.xib */; };
+		09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */; };
+		09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A0E2828ED81009932D8 /* NotiViewController.xib */; };
+		09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E1428376A4600755783 /* TransDetailView.xib */; };
+		09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDA282218DF000AFC3F /* Assets.xcassets */; };
+		09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719928225D15000AFC3F /* MemberViewController.xib */; };
+		09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70AC28223CB7000AFC3F /* FirstLaunchViewController.xib */; };
+		09CAF4DC283C77ED00D7B19B /* BetleadTabbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70CB282246DF000AFC3F /* BetleadTabbar.xib */; };
+		09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */; };
+		09CAF4DE283C77ED00D7B19B /* mucoin_question.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C713E282257AB000AFC3F /* mucoin_question.json */; };
+		09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719328225C56000AFC3F /* LoginSignupViewController.xib */; };
+		09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739CC28251BDD009932D8 /* CPasswordViewController.xib */; };
+		09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FD7282218D6000AFC3F /* Main.storyboard */; };
+		09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
+		09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
+		09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */; };
+		09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
+		09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E92828C5B5009932D8 /* WalletViewController.xib */; };
+		09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
+		09CAF4E8283C77ED00D7B19B /* SignupSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E62828BC3A009932D8 /* SignupSuccessView.xib */; };
+		09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */; };
+		09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
+		09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
+		09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C713F282257AB000AFC3F /* mucoin_sucess.json */; };
+		09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E1BA52824FF5000827148 /* ForgotViewController.xib */; };
+		09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
+		09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */; };
+		09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71B12822636E000AFC3F /* SignupViewController.xib */; };
+		09CAF4F1283C77ED00D7B19B /* mucoin_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7140282257AB000AFC3F /* mucoin_loading.json */; };
+		09CAF4F2283C77ED00D7B19B /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */; };
+		09CAF4FA283C78A700D7B19B /* Info_dev.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF4F9283C78A700D7B19B /* Info_dev.plist */; };
+		09CAF4FE283C7BBE00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
+		09CAF4FF283C7BBE00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
+		09CAF500283C7BBE00D7B19B /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
+		09CAF501283C7BBE00D7B19B /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C702B28222D97000AFC3F /* Extension.swift */; };
+		09CAF502283C7BBE00D7B19B /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
+		09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A392829126D009932D8 /* UICollectionView+util.swift */; };
+		09CAF504283C7BBE00D7B19B /* LoginPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A828226279000AFC3F /* LoginPostDto.swift */; };
+		09CAF505283C7BBE00D7B19B /* PopupBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70BD28223D82000AFC3F /* PopupBottomSheet.swift */; };
+		09CAF506283C7BBE00D7B19B /* Log.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7116282255AD000AFC3F /* Log.swift */; };
+		09CAF507283C7BBE00D7B19B /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71B02822636E000AFC3F /* SignupViewController.swift */; };
+		09CAF508283C7BBE00D7B19B /* UserMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */; };
+		09CAF509283C7BBE00D7B19B /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70BA28223D70000AFC3F /* BottomSheet.swift */; };
+		09CAF50A283C7BBE00D7B19B /* SubPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A312828F75E009932D8 /* SubPageViewController.swift */; };
+		09CAF50B283C7BBE00D7B19B /* LoginAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D9282248A0000AFC3F /* LoginAlert.swift */; };
+		09CAF50C283C7BBE00D7B19B /* AccessTokenAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C717728225ACB000AFC3F /* AccessTokenAdapter.swift */; };
+		09CAF50D283C7BBE00D7B19B /* MemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70752822366C000AFC3F /* MemberViewController.swift */; };
+		09CAF50E283C7BBE00D7B19B /* AppUpdateAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70B228223CEE000AFC3F /* AppUpdateAlert.swift */; };
+		09CAF50F283C7BBE00D7B19B /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703A28223299000AFC3F /* KeychainManager.swift */; };
+		09CAF510283C7BBE00D7B19B /* BannerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E62822699E000AFC3F /* BannerDto.swift */; };
+		09CAF511283C7BBE00D7B19B /* UIImage+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D628224819000AFC3F /* UIImage+util.swift */; };
+		09CAF512283C7BBE00D7B19B /* UILabel+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D62822662B000AFC3F /* UILabel+util.swift */; };
+		09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C712C2822570E000AFC3F /* LoadingViewController.swift */; };
+		09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A2282260F3000AFC3F /* BioVerifyManager.swift */; };
+		09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E0282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift */; };
+		09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E1BA62824FF5000827148 /* ForgotViewController.swift */; };
+		09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C228226469000AFC3F /* CheckBox.swift */; };
+		09CAF518283C7BBE00D7B19B /* TemplateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F6200282E3F5700D9CCE5 /* TemplateCell.swift */; };
+		09CAF519283C7BBE00D7B19B /* ValueDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C828224614000AFC3F /* ValueDto.swift */; };
+		09CAF51A283C7BBE00D7B19B /* TransDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1128376A2A00755783 /* TransDetailView.swift */; };
+		09CAF51B283C7BBE00D7B19B /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
+		09CAF51C283C7BBE00D7B19B /* UserMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A042828EBEB009932D8 /* UserMenuViewController.swift */; };
+		09CAF51D283C7BBE00D7B19B /* FirstLaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70AA28223CB7000AFC3F /* FirstLaunchViewController.swift */; };
+		09CAF51E283C7BBE00D7B19B /* CALayer+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719028225B8D000AFC3F /* CALayer+util.swift */; };
+		09CAF51F283C7BBE00D7B19B /* WMZCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E2282268CC000AFC3F /* WMZCodeView.m */; };
+		09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FEB28221C69000AFC3F /* LoginSignupViewController.swift */; };
+		09CAF521283C7BBE00D7B19B /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F621A2832277C00D9CCE5 /* AmountInputView.swift */; };
+		09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C6FD1282218D6000AFC3F /* AppDelegate.swift */; };
+		09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13B4282C08E100AB2E0A /* PushNotiViewController.swift */; };
+		09CAF524283C7BBE00D7B19B /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
+		09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
+		09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
+		09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
+		09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
+		09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
+		09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7088282239DC000AFC3F /* Themes.swift */; };
+		09CAF52B283C7BBE00D7B19B /* DeepLinkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C702728222D46000AFC3F /* DeepLinkManager.swift */; };
+		09CAF52C283C7BBE00D7B19B /* UIStackView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71E9282269E4000AFC3F /* UIStackView+util.swift */; };
+		09CAF52D283C7BBE00D7B19B /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */; };
+		09CAF52E283C7BBE00D7B19B /* DataRequest+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C718D28225B5E000AFC3F /* DataRequest+util.swift */; };
+		09CAF52F283C7BBE00D7B19B /* WithdrawViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A212828F3D3009932D8 /* WithdrawViewController.swift */; };
+		09CAF530283C7BBE00D7B19B /* BetleadTabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70CC282246DF000AFC3F /* BetleadTabbar.swift */; };
+		09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C707928223729000AFC3F /* LoginPageViewController.swift */; };
+		09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719F28225DCB000AFC3F /* StatusImageView.swift */; };
+		09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71CC2822651E000AFC3F /* UITextfield+util.swift */; };
+		09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D028226584000AFC3F /* ForgetPasswordViewController.swift */; };
+		09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71B7282263A1000AFC3F /* SignupPostDto.swift */; };
+		09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
+		09CAF537283C7BBE00D7B19B /* TemplateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61F7282E383300D9CCE5 /* TemplateView.swift */; };
+		09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TwoSideStyle.swift */; };
+		09CAF539283C7BBE00D7B19B /* LoginMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71AB282262EB000AFC3F /* LoginMode.swift */; };
+		09CAF53A283C7BBE00D7B19B /* DepositViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A192828F32E009932D8 /* DepositViewController.swift */; };
+		09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */; };
+		09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61C6282CBBD100D9CCE5 /* TFFinishReViewController.swift */; };
+		09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D3282265EA000AFC3F /* TfRightButton.swift */; };
+		09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708F28223A44000AFC3F /* ErrorHandler.swift */; };
+		09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70A228223B97000AFC3F /* LaunchReciprocalViewController.swift */; };
+		09CAF540283C7BBE00D7B19B /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C705F28223517000AFC3F /* TabbarViewController.swift */; };
+		09CAF541283C7BBE00D7B19B /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
+		09CAF542283C7BBE00D7B19B /* BoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A122828EE13009932D8 /* BoardViewController.swift */; };
+		09CAF543283C7BBE00D7B19B /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
+		09CAF544283C7BBE00D7B19B /* ImagetTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C714728225827000AFC3F /* ImagetTextButton.swift */; };
+		09CAF545283C7BBE00D7B19B /* UIView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D32822479B000AFC3F /* UIView+util.swift */; };
+		09CAF546283C7BBE00D7B19B /* BasePresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F628224D4F000AFC3F /* BasePresentAnimationController.swift */; };
+		09CAF547283C7BBE00D7B19B /* AppVersionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C4282245DD000AFC3F /* AppVersionDto.swift */; };
+		09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
+		09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
+		09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
+		09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61F4282E37F400D9CCE5 /* AddressBottomView.swift */; };
+		09CAF54C283C7BBE00D7B19B /* OKButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70B628223D2C000AFC3F /* OKButton.swift */; };
+		09CAF54D283C7BBE00D7B19B /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C709228223A95000AFC3F /* RequestService.swift */; };
+		09CAF54E283C7BBE00D7B19B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7129282256CC000AFC3F /* Constants.swift */; };
+		09CAF54F283C7BBE00D7B19B /* ConfirmBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F620B282E500000D9CCE5 /* ConfirmBottomView.swift */; };
+		09CAF550283C7BBE00D7B19B /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */; };
+		09CAF551283C7BBE00D7B19B /* AccountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71BD28226414000AFC3F /* AccountInputView.swift */; };
+		09CAF552283C7BBE00D7B19B /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051CC2823782E00056183 /* VerifyViewController.swift */; };
+		09CAF553283C7BBE00D7B19B /* Beans.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F028224C87000AFC3F /* Beans.swift */; };
+		09CAF554283C7BBE00D7B19B /* InputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739E3282808B5009932D8 /* InputStyleView.swift */; };
+		09CAF555283C7BBE00D7B19B /* ConfirmBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F6208282E4E2000D9CCE5 /* ConfirmBottomSheet.swift */; };
+		09CAF556283C7BBE00D7B19B /* AddressBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61FD282E3EBA00D9CCE5 /* AddressBottomCell.swift */; };
+		09CAF557283C7BBE00D7B19B /* BadgeBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C719C28225D99000AFC3F /* BadgeBtn.swift */; };
+		09CAF558283C7BBE00D7B19B /* NotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A0B2828ED59009932D8 /* NotiViewController.swift */; };
+		09CAF559283C7BBE00D7B19B /* UCPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */; };
+		09CAF55A283C7BBE00D7B19B /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70FC28224D78000AFC3F /* BaseViewModel.swift */; };
+		09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F728224D4F000AFC3F /* BaseDismissAnimationController.swift */; };
+		09CAF55C283C7BBE00D7B19B /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70D02822475B000AFC3F /* Views.swift */; };
+		09CAF55D283C7BBE00D7B19B /* DetailDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E05283739D700755783 /* DetailDto.swift */; };
+		09CAF55E283C7BBE00D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
+		09CAF55F283C7BBE00D7B19B /* Date+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E928224C4B000AFC3F /* Date+util.swift */; };
+		09CAF560283C7BBE00D7B19B /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C711328225542000AFC3F /* BuildConfig.swift */; };
+		09CAF561283C7BBE00D7B19B /* ImageVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71DC28226889000AFC3F /* ImageVerifyView.swift */; };
+		09CAF562283C7BBE00D7B19B /* SecurityVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */; };
+		09CAF563283C7BBE00D7B19B /* BaseBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70FB28224D78000AFC3F /* BaseBottomSheet.swift */; };
+		09CAF564283C7BBE00D7B19B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C706528223584000AFC3F /* MainViewController.swift */; };
+		09CAF565283C7BBE00D7B19B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71AF2822636E000AFC3F /* LoginViewController.swift */; };
+		09CAF566283C7BBE00D7B19B /* ResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C718A28225B25000AFC3F /* ResponseDto.swift */; };
+		09CAF567283C7BBE00D7B19B /* WalletViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70DD28224A62000AFC3F /* WalletViewController.swift */; };
+		09CAF568283C7BBE00D7B19B /* TwoFAVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */; };
+		09CAF569283C7BBE00D7B19B /* ConfirmPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71D928226817000AFC3F /* ConfirmPopupView.swift */; };
+		09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C714B2822589A000AFC3F /* BetleadNavigationController.swift */; };
+		09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71FC282286C1000AFC3F /* Reactive+util.swift */; };
+		09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C712628225625000AFC3F /* Toast+util.swift */; };
+		09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A002828E59A009932D8 /* MDNavigationController.swift */; };
+		09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E628224BF5000AFC3F /* UserDefaults+util.swift */; };
+		09CAF56F283C7BBE00D7B19B /* GuidePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70AB28223CB7000AFC3F /* GuidePageViewController.swift */; };
+		09CAF570283C7BBE00D7B19B /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
+		09CAF571283C7BBE00D7B19B /* SignupSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71A528226229000AFC3F /* SignupSuccessView.swift */; };
+		09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */; };
+		09CAF573283C7BBE00D7B19B /* CornerradiusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71BA282263DE000AFC3F /* CornerradiusButton.swift */; };
+		09CAF574283C7BBE00D7B19B /* TransTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E0A28375B9A00755783 /* TransTopView.swift */; };
+		09CAF575283C7BBE00D7B19B /* AddressBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E9282E30F900D9CCE5 /* AddressBottomSheet.swift */; };
+		09CAF576283C7BBE00D7B19B /* UITableViewCell+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */; };
+		09CAF577283C7BBE00D7B19B /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C6282264A3000AFC3F /* Fonts.swift */; };
+		09CAF578283C7BBE00D7B19B /* TopBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE5283499D300755783 /* TopBackButton.swift */; };
+		09CAF579283C7BBE00D7B19B /* PromotionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70E228224AE8000AFC3F /* PromotionViewController.swift */; };
+		09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C128226469000AFC3F /* CheckBoxView.swift */; };
+		09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		09CAF57C283C7BBE00D7B19B /* ScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61E4282E2A2200D9CCE5 /* ScannerViewController.swift */; };
+		09CAF57D283C7BBE00D7B19B /* CancelButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70C028223DC1000AFC3F /* CancelButton.swift */; };
+		09CAF57E283C7BBE00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710328224DCF000AFC3F /* BottomSheetDismissAnimationController.swift */; };
+		09CAF57F283C7BBE00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710028224DBD000AFC3F /* BottomSheetPresentAnimationController.swift */; };
+		09CAF580283C7BBE00D7B19B /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
+		09CAF582283C7BBE00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
+		09CAF584283C7BBE00D7B19B /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
+		09CAF585283C7BBE00D7B19B /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
+		09CAF586283C7BBE00D7B19B /* mucoin_error.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7141282257AB000AFC3F /* mucoin_error.json */; };
+		09CAF587283C7BBE00D7B19B /* WithdrawViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A242828F3E7009932D8 /* WithdrawViewController.xib */; };
+		09CAF588283C7BBE00D7B19B /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719628225CD9000AFC3F /* MainViewController.xib */; };
+		09CAF589283C7BBE00D7B19B /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */; };
+		09CAF58A283C7BBE00D7B19B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDC282218DF000AFC3F /* LaunchScreen.storyboard */; };
+		09CAF58B283C7BBE00D7B19B /* LaunchReciprocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A628223C46000AFC3F /* LaunchReciprocalViewController.xib */; };
+		09CAF58C283C7BBE00D7B19B /* UserMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A072828EC81009932D8 /* UserMenuViewController.xib */; };
+		09CAF58D283C7BBE00D7B19B /* GuidePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A928223CB7000AFC3F /* GuidePageViewController.xib */; };
+		09CAF58E283C7BBE00D7B19B /* BoardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A152828EE6A009932D8 /* BoardViewController.xib */; };
+		09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71AE2822636E000AFC3F /* LoginViewController.xib */; };
+		09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A91282AB57B009932D8 /* TwoFAVerifyView.xib */; };
+		09CAF591283C7BBE00D7B19B /* TransTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E0E28375BAB00755783 /* TransTopView.xib */; };
+		09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61FA282E389400D9CCE5 /* AddressBottomView.xib */; };
+		09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
+		09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
+		09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */; };
+		09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C9282CBC2E00D9CCE5 /* TFFinishReViewController.xib */; };
+		09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A3F2829177D009932D8 /* SubPageCollectionCell.xib */; };
+		09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A0E2828ED81009932D8 /* NotiViewController.xib */; };
+		09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E1428376A4600755783 /* TransDetailView.xib */; };
+		09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FDA282218DF000AFC3F /* Assets.xcassets */; };
+		09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719928225D15000AFC3F /* MemberViewController.xib */; };
+		09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70AC28223CB7000AFC3F /* FirstLaunchViewController.xib */; };
+		09CAF59D283C7BBE00D7B19B /* BetleadTabbar.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70CB282246DF000AFC3F /* BetleadTabbar.xib */; };
+		09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */; };
+		09CAF59F283C7BBE00D7B19B /* mucoin_question.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C713E282257AB000AFC3F /* mucoin_question.json */; };
+		09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C719328225C56000AFC3F /* LoginSignupViewController.xib */; };
+		09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739CC28251BDD009932D8 /* CPasswordViewController.xib */; };
+		09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19C6FD7282218D6000AFC3F /* Main.storyboard */; };
+		09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
+		09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
+		09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F620E282E500900D9CCE5 /* ConfirmBottomView.xib */; };
+		09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
+		09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E92828C5B5009932D8 /* WalletViewController.xib */; };
+		09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
+		09CAF5A9283C7BBE00D7B19B /* SignupSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739E62828BC3A009932D8 /* SignupSuccessView.xib */; };
+		09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */; };
+		09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
+		09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
+		09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C713F282257AB000AFC3F /* mucoin_sucess.json */; };
+		09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E1BA52824FF5000827148 /* ForgotViewController.xib */; };
+		09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
+		09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */; };
+		09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71B12822636E000AFC3F /* SignupViewController.xib */; };
+		09CAF5B2283C7BBE00D7B19B /* mucoin_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7140282257AB000AFC3F /* mucoin_loading.json */; };
+		09CAF5B3283C7BBE00D7B19B /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */; };
+		09CAF5BB283C7C2300D7B19B /* Info_stage.plist in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5BA283C7C2300D7B19B /* Info_stage.plist */; };
+		09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5BC283C823400D7B19B /* ApiService.swift */; };
+		09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5BC283C823400D7B19B /* ApiService.swift */; };
+		09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5BC283C823400D7B19B /* ApiService.swift */; };
+		09CAF5C1283C85AE00D7B19B /* DefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */; };
+		09CAF5C2283C85AE00D7B19B /* DefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */; };
+		09CAF5C3283C85AE00D7B19B /* DefaultDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */; };
+		09CAF5C5283C86BB00D7B19B /* MundoResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */; };
+		09CAF5C6283C86BB00D7B19B /* MundoResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */; };
+		09CAF5C7283C86BB00D7B19B /* MundoResponseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */; };
+		09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */; };
+		09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */; };
+		09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */; };
+		09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */; };
+		09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */; };
+		09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */; };
+		09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
+		09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
+		09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5D0283C8CB700D7B19B /* Connectivity.swift */; };
 		697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
@@ -47,6 +430,7 @@
 		A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
 		A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
 		A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
+		A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */; };
 		A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
 		A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C628251B97009932D8 /* CPasswordViewController.swift */; };
 		A19739CA28251BB0009932D8 /* ResetPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */; };
@@ -94,7 +478,7 @@
 		A19C7089282239DC000AFC3F /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7088282239DC000AFC3F /* Themes.swift */; };
 		A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708F28223A44000AFC3F /* ErrorHandler.swift */; };
-		A19C709328223A95000AFC3F /* RequestServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C709228223A95000AFC3F /* RequestServer.swift */; };
+		A19C709328223A95000AFC3F /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C709228223A95000AFC3F /* RequestService.swift */; };
 		A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70A228223B97000AFC3F /* LaunchReciprocalViewController.swift */; };
 		A19C70A728223C46000AFC3F /* LaunchReciprocalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A628223C46000AFC3F /* LaunchReciprocalViewController.xib */; };
 		A19C70AD28223CB7000AFC3F /* GuidePageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C70A928223CB7000AFC3F /* GuidePageViewController.xib */; };
@@ -186,6 +570,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
+		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
+		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
+		09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CAF4F9283C78A700D7B19B /* Info_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_dev.plist; sourceTree = "<group>"; };
+		09CAF5B8283C7BBE00D7B19B /* cryptoVerOne_stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_stage.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CAF5BA283C7C2300D7B19B /* Info_stage.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_stage.plist; sourceTree = "<group>"; };
+		09CAF5BC283C823400D7B19B /* ApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiService.swift; sourceTree = "<group>"; };
+		09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDto.swift; sourceTree = "<group>"; };
+		09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MundoResponseDto.swift; sourceTree = "<group>"; };
+		09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SessionManager+util.swift"; sourceTree = "<group>"; };
+		09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDto.swift; sourceTree = "<group>"; };
+		09CAF5D0283C8CB700D7B19B /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
 		6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -228,6 +625,7 @@
 		A16F621D2832279F00D9CCE5 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
 		A16F622028323EE900D9CCE5 /* UserAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressDto.swift; sourceTree = "<group>"; };
 		A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuLoginNavigationController.swift; sourceTree = "<group>"; };
+		A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C228251B33009932D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C628251B97009932D8 /* CPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C928251BB0009932D8 /* ResetPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResetPasswordViewController.xib; sourceTree = "<group>"; };
@@ -277,7 +675,7 @@
 		A19C7088282239DC000AFC3F /* Themes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Themes.swift; sourceTree = "<group>"; };
 		A19C708C28223A27000AFC3F /* ObservableType+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ObservableType+util.swift"; sourceTree = "<group>"; };
 		A19C708F28223A44000AFC3F /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
-		A19C709228223A95000AFC3F /* RequestServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestServer.swift; sourceTree = "<group>"; };
+		A19C709228223A95000AFC3F /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		A19C70A228223B97000AFC3F /* LaunchReciprocalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchReciprocalViewController.swift; sourceTree = "<group>"; };
 		A19C70A628223C46000AFC3F /* LaunchReciprocalViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchReciprocalViewController.xib; sourceTree = "<group>"; };
 		A19C70A928223CB7000AFC3F /* GuidePageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GuidePageViewController.xib; sourceTree = "<group>"; };
@@ -375,6 +773,22 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		09CAF4C0283C77ED00D7B19B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF4C1283C77ED00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CAF581283C7BBE00D7B19B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF582283C7BBE00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A19C6FCB282218D6000AFC3F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -386,6 +800,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		095A1223283A388A002DC11A /* ScrollView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ScrollView;
+			sourceTree = "<group>";
+		};
+		09CAF437283C74C300D7B19B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				09CAF438283C74D600D7B19B /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		4CF017450A8210E3DB9084F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,6 +916,14 @@
 			path = AmountView;
 			sourceTree = "<group>";
 		};
+		A1913E3E283BD9BF00F9EBDB /* UCPasswordViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */,
+			);
+			path = UCPasswordViewController;
+			sourceTree = "<group>";
+		};
 		A19739C128251AFB009932D8 /* ResetPasswordView */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,6 +1018,8 @@
 			children = (
 				A1973A7D282A95D1009932D8 /* UserMenuTableViewCell.swift */,
 				A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */,
+				099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */,
+				099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */,
 			);
 			path = UserMenuCell;
 			sourceTree = "<group>";
@@ -613,6 +1052,8 @@
 			isa = PBXGroup;
 			children = (
 				A19C6FCE282218D6000AFC3F /* cryptoVerOne.app */,
+				09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */,
+				09CAF5B8283C7BBE00D7B19B /* cryptoVerOne_stage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -637,6 +1078,8 @@
 				A19C6FDC282218DF000AFC3F /* LaunchScreen.storyboard */,
 				A19C71E0282268CB000AFC3F /* cryptoVerOne-Bridging-Header.h */,
 				A19C6FDF282218DF000AFC3F /* Info.plist */,
+				09CAF4F9283C78A700D7B19B /* Info_dev.plist */,
+				09CAF5BA283C7C2300D7B19B /* Info_stage.plist */,
 				A1B051EE2823B0FF00056183 /* Localizable.strings */,
 			);
 			path = cryptoVerOne;
@@ -666,6 +1109,7 @@
 		A19C702628222D30000AFC3F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
+				09CAF437283C74C300D7B19B /* Service */,
 				A19C70C3282245D0000AFC3F /* DTO */,
 				A19C702728222D46000AFC3F /* DeepLinkManager.swift */,
 				A19C702B28222D97000AFC3F /* Extension.swift */,
@@ -686,13 +1130,15 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				095A1223283A388A002DC11A /* ScrollView */,
 				A16F61E3282E2A1000D9CCE5 /* ScanerView */,
 				A19C70B528223D1E000AFC3F /* Button */,
 				A19C7087282239D1000AFC3F /* Themes */,
 				A19C7046282233FA000AFC3F /* Base */,
 				A19C708C28223A27000AFC3F /* ObservableType+util.swift */,
 				A19C708F28223A44000AFC3F /* ErrorHandler.swift */,
-				A19C709228223A95000AFC3F /* RequestServer.swift */,
+				A19C709228223A95000AFC3F /* RequestService.swift */,
+				09CAF5BC283C823400D7B19B /* ApiService.swift */,
 				A19C70B228223CEE000AFC3F /* AppUpdateAlert.swift */,
 				A19C70BA28223D70000AFC3F /* BottomSheet.swift */,
 				A19C710028224DBD000AFC3F /* BottomSheetPresentAnimationController.swift */,
@@ -717,6 +1163,8 @@
 				A1973A392829126D009932D8 /* UICollectionView+util.swift */,
 				A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */,
 				A1559E1728378FB700755783 /* NibOwnerLoadable.swift */,
+				09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */,
+				09CAF5D0283C8CB700D7B19B /* Connectivity.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -842,6 +1290,9 @@
 				A1559DFB2835EFDE00755783 /* WalletCellDto.swift */,
 				A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */,
 				A1559E05283739D700755783 /* DetailDto.swift */,
+				09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */,
+				09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */,
+				09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -927,6 +1378,7 @@
 		A1DD13AA282BED5200AB2E0A /* SecurityView */ = {
 			isa = PBXGroup;
 			children = (
+				A1913E3E283BD9BF00F9EBDB /* UCPasswordViewController */,
 				A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */,
 				A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */,
 			);
@@ -962,6 +1414,44 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		09CAF43A283C77ED00D7B19B /* cryptoVerOne_dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09CAF4F4283C77ED00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_dev" */;
+			buildPhases = (
+				09CAF43B283C77ED00D7B19B /* [CP] Check Pods Manifest.lock */,
+				09CAF43C283C77ED00D7B19B /* Sources */,
+				09CAF4C0283C77ED00D7B19B /* Frameworks */,
+				09CAF4C2283C77ED00D7B19B /* Resources */,
+				09CAF4F3283C77ED00D7B19B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cryptoVerOne_dev;
+			productName = cryptoVerOne;
+			productReference = 09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */;
+			productType = "com.apple.product-type.application";
+		};
+		09CAF4FB283C7BBE00D7B19B /* cryptoVerOne_stage */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09CAF5B5283C7BBE00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_stage" */;
+			buildPhases = (
+				09CAF4FC283C7BBE00D7B19B /* [CP] Check Pods Manifest.lock */,
+				09CAF4FD283C7BBE00D7B19B /* Sources */,
+				09CAF581283C7BBE00D7B19B /* Frameworks */,
+				09CAF583283C7BBE00D7B19B /* Resources */,
+				09CAF5B4283C7BBE00D7B19B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = cryptoVerOne_stage;
+			productName = cryptoVerOne;
+			productReference = 09CAF5B8283C7BBE00D7B19B /* cryptoVerOne_stage.app */;
+			productType = "com.apple.product-type.application";
+		};
 		A19C6FCD282218D6000AFC3F /* cryptoVerOne */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = A19C6FE2282218DF000AFC3F /* Build configuration list for PBXNativeTarget "cryptoVerOne" */;
@@ -1011,11 +1501,123 @@
 			projectRoot = "";
 			targets = (
 				A19C6FCD282218D6000AFC3F /* cryptoVerOne */,
+				09CAF43A283C77ED00D7B19B /* cryptoVerOne_dev */,
+				09CAF4FB283C7BBE00D7B19B /* cryptoVerOne_stage */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		09CAF4C2283C77ED00D7B19B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF4C3283C77ED00D7B19B /* TDetailViewController.xib in Resources */,
+				09CAF4C4283C77ED00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
+				09CAF4C5283C77ED00D7B19B /* mucoin_error.json in Resources */,
+				09CAF4C6283C77ED00D7B19B /* WithdrawViewController.xib in Resources */,
+				09CAF4C7283C77ED00D7B19B /* MainViewController.xib in Resources */,
+				09CAF4C8283C77ED00D7B19B /* ResetPasswordViewController.xib in Resources */,
+				09CAF4C9283C77ED00D7B19B /* LaunchScreen.storyboard in Resources */,
+				09CAF4CA283C77ED00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
+				09CAF4CB283C77ED00D7B19B /* UserMenuViewController.xib in Resources */,
+				09CAF4CC283C77ED00D7B19B /* GuidePageViewController.xib in Resources */,
+				09CAF4CD283C77ED00D7B19B /* BoardViewController.xib in Resources */,
+				09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */,
+				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
+				09CAF4D0283C77ED00D7B19B /* TransTopView.xib in Resources */,
+				09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */,
+				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
+				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
+				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
+				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
+				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
+				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
+				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
+				09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */,
+				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
+				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
+				09CAF4DC283C77ED00D7B19B /* BetleadTabbar.xib in Resources */,
+				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
+				09CAF4DE283C77ED00D7B19B /* mucoin_question.json in Resources */,
+				09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */,
+				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
+				09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */,
+				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
+				09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */,
+				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
+				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
+				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
+				09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */,
+				09CAF4E8283C77ED00D7B19B /* SignupSuccessView.xib in Resources */,
+				09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */,
+				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
+				09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
+				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
+				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
+				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */,
+				09CAF4F1283C77ED00D7B19B /* mucoin_loading.json in Resources */,
+				09CAF4F2283C77ED00D7B19B /* SecurityViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CAF583283C7BBE00D7B19B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF584283C7BBE00D7B19B /* TDetailViewController.xib in Resources */,
+				09CAF585283C7BBE00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
+				09CAF586283C7BBE00D7B19B /* mucoin_error.json in Resources */,
+				09CAF587283C7BBE00D7B19B /* WithdrawViewController.xib in Resources */,
+				09CAF588283C7BBE00D7B19B /* MainViewController.xib in Resources */,
+				09CAF589283C7BBE00D7B19B /* ResetPasswordViewController.xib in Resources */,
+				09CAF58A283C7BBE00D7B19B /* LaunchScreen.storyboard in Resources */,
+				09CAF58B283C7BBE00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
+				09CAF58C283C7BBE00D7B19B /* UserMenuViewController.xib in Resources */,
+				09CAF58D283C7BBE00D7B19B /* GuidePageViewController.xib in Resources */,
+				09CAF58E283C7BBE00D7B19B /* BoardViewController.xib in Resources */,
+				09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */,
+				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
+				09CAF591283C7BBE00D7B19B /* TransTopView.xib in Resources */,
+				09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */,
+				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
+				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
+				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
+				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
+				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
+				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
+				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
+				09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */,
+				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
+				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
+				09CAF59D283C7BBE00D7B19B /* BetleadTabbar.xib in Resources */,
+				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
+				09CAF59F283C7BBE00D7B19B /* mucoin_question.json in Resources */,
+				09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */,
+				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
+				09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */,
+				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
+				09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */,
+				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
+				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
+				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
+				09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */,
+				09CAF5A9283C7BBE00D7B19B /* SignupSuccessView.xib in Resources */,
+				09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */,
+				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
+				09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
+				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
+				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
+				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */,
+				09CAF5B2283C7BBE00D7B19B /* mucoin_loading.json in Resources */,
+				09CAF5B3283C7BBE00D7B19B /* SecurityViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A19C6FCC282218D6000AFC3F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1051,6 +1653,8 @@
 				A19C719428225C56000AFC3F /* LoginSignupViewController.xib in Resources */,
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
 				A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */,
+				09CAF5BB283C7C2300D7B19B /* Info_stage.plist in Resources */,
+				09CAF4FA283C78A700D7B19B /* Info_dev.plist in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
@@ -1060,6 +1664,7 @@
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
 				A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */,
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
+				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
@@ -1073,6 +1678,84 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		09CAF43B283C77ED00D7B19B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09CAF4F3283C77ED00D7B19B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09CAF4FC283C7BBE00D7B19B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		09CAF5B4283C7BBE00D7B19B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		CA9FC864477A527757ACCCFD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1115,6 +1798,294 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		09CAF43C283C77ED00D7B19B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */,
+				09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */,
+				09CAF43F283C77ED00D7B19B /* SaveButton.swift in Sources */,
+				09CAF440283C77ED00D7B19B /* Extension.swift in Sources */,
+				09CAF441283C77ED00D7B19B /* ResetPasswordViewController.swift in Sources */,
+				09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */,
+				09CAF443283C77ED00D7B19B /* LoginPostDto.swift in Sources */,
+				09CAF444283C77ED00D7B19B /* PopupBottomSheet.swift in Sources */,
+				09CAF445283C77ED00D7B19B /* Log.swift in Sources */,
+				09CAF446283C77ED00D7B19B /* SignupViewController.swift in Sources */,
+				09CAF447283C77ED00D7B19B /* UserMenuTableViewCell.swift in Sources */,
+				09CAF448283C77ED00D7B19B /* BottomSheet.swift in Sources */,
+				09CAF449283C77ED00D7B19B /* SubPageViewController.swift in Sources */,
+				09CAF44A283C77ED00D7B19B /* LoginAlert.swift in Sources */,
+				09CAF44B283C77ED00D7B19B /* AccessTokenAdapter.swift in Sources */,
+				09CAF44C283C77ED00D7B19B /* MemberViewController.swift in Sources */,
+				09CAF44D283C77ED00D7B19B /* AppUpdateAlert.swift in Sources */,
+				09CAF44E283C77ED00D7B19B /* KeychainManager.swift in Sources */,
+				09CAF44F283C77ED00D7B19B /* BannerDto.swift in Sources */,
+				09CAF450283C77ED00D7B19B /* UIImage+util.swift in Sources */,
+				09CAF451283C77ED00D7B19B /* UILabel+util.swift in Sources */,
+				09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */,
+				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
+				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
+				09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */,
+				09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */,
+				09CAF457283C77ED00D7B19B /* TemplateCell.swift in Sources */,
+				09CAF458283C77ED00D7B19B /* ValueDto.swift in Sources */,
+				09CAF459283C77ED00D7B19B /* TransDetailView.swift in Sources */,
+				09CAF45A283C77ED00D7B19B /* CPasswordViewController.swift in Sources */,
+				09CAF45B283C77ED00D7B19B /* UserMenuViewController.swift in Sources */,
+				09CAF45C283C77ED00D7B19B /* FirstLaunchViewController.swift in Sources */,
+				09CAF45D283C77ED00D7B19B /* CALayer+util.swift in Sources */,
+				09CAF45E283C77ED00D7B19B /* WMZCodeView.m in Sources */,
+				09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */,
+				09CAF460283C77ED00D7B19B /* AmountInputView.swift in Sources */,
+				09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */,
+				09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */,
+				09CAF5C6283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
+				09CAF463283C77ED00D7B19B /* ObservableType+util.swift in Sources */,
+				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
+				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
+				09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */,
+				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
+				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
+				09CAF469283C77ED00D7B19B /* Themes.swift in Sources */,
+				09CAF46A283C77ED00D7B19B /* DeepLinkManager.swift in Sources */,
+				09CAF46B283C77ED00D7B19B /* UIStackView+util.swift in Sources */,
+				09CAF46C283C77ED00D7B19B /* SecurityViewController.swift in Sources */,
+				09CAF46D283C77ED00D7B19B /* DataRequest+util.swift in Sources */,
+				09CAF46E283C77ED00D7B19B /* WithdrawViewController.swift in Sources */,
+				09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */,
+				09CAF46F283C77ED00D7B19B /* BetleadTabbar.swift in Sources */,
+				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
+				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
+				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
+				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
+				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
+				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
+				09CAF476283C77ED00D7B19B /* TemplateView.swift in Sources */,
+				09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */,
+				09CAF478283C77ED00D7B19B /* LoginMode.swift in Sources */,
+				09CAF479283C77ED00D7B19B /* DepositViewController.swift in Sources */,
+				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
+				09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */,
+				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
+				09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */,
+				09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
+				09CAF47F283C77ED00D7B19B /* TabbarViewController.swift in Sources */,
+				09CAF480283C77ED00D7B19B /* UserMenuGrayLineCell.swift in Sources */,
+				09CAF481283C77ED00D7B19B /* BoardViewController.swift in Sources */,
+				09CAF482283C77ED00D7B19B /* MuLoginNavigationController.swift in Sources */,
+				09CAF483283C77ED00D7B19B /* ImagetTextButton.swift in Sources */,
+				09CAF484283C77ED00D7B19B /* UIView+util.swift in Sources */,
+				09CAF485283C77ED00D7B19B /* BasePresentAnimationController.swift in Sources */,
+				09CAF486283C77ED00D7B19B /* AppVersionDto.swift in Sources */,
+				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
+				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
+				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
+				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
+				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
+				09CAF48B283C77ED00D7B19B /* OKButton.swift in Sources */,
+				09CAF48C283C77ED00D7B19B /* RequestService.swift in Sources */,
+				09CAF48D283C77ED00D7B19B /* Constants.swift in Sources */,
+				09CAF48E283C77ED00D7B19B /* ConfirmBottomView.swift in Sources */,
+				09CAF48F283C77ED00D7B19B /* PersonalInfoViewController.swift in Sources */,
+				09CAF490283C77ED00D7B19B /* AccountInputView.swift in Sources */,
+				09CAF491283C77ED00D7B19B /* VerifyViewController.swift in Sources */,
+				09CAF492283C77ED00D7B19B /* Beans.swift in Sources */,
+				09CAF493283C77ED00D7B19B /* InputStyleView.swift in Sources */,
+				09CAF494283C77ED00D7B19B /* ConfirmBottomSheet.swift in Sources */,
+				09CAF495283C77ED00D7B19B /* AddressBottomCell.swift in Sources */,
+				09CAF496283C77ED00D7B19B /* BadgeBtn.swift in Sources */,
+				09CAF497283C77ED00D7B19B /* NotiViewController.swift in Sources */,
+				09CAF498283C77ED00D7B19B /* UCPasswordViewController.swift in Sources */,
+				09CAF499283C77ED00D7B19B /* BaseViewModel.swift in Sources */,
+				09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */,
+				09CAF49B283C77ED00D7B19B /* Views.swift in Sources */,
+				09CAF49C283C77ED00D7B19B /* DetailDto.swift in Sources */,
+				09CAF49D283C77ED00D7B19B /* LoginService.swift in Sources */,
+				09CAF49E283C77ED00D7B19B /* Date+util.swift in Sources */,
+				09CAF49F283C77ED00D7B19B /* BuildConfig.swift in Sources */,
+				09CAF4A0283C77ED00D7B19B /* ImageVerifyView.swift in Sources */,
+				09CAF4A1283C77ED00D7B19B /* SecurityVerificationViewController.swift in Sources */,
+				09CAF4A2283C77ED00D7B19B /* BaseBottomSheet.swift in Sources */,
+				09CAF4A3283C77ED00D7B19B /* MainViewController.swift in Sources */,
+				09CAF5C2283C85AE00D7B19B /* DefaultDto.swift in Sources */,
+				09CAF4A4283C77ED00D7B19B /* LoginViewController.swift in Sources */,
+				09CAF4A5283C77ED00D7B19B /* ResponseDto.swift in Sources */,
+				09CAF4A6283C77ED00D7B19B /* WalletViewController.swift in Sources */,
+				09CAF4A7283C77ED00D7B19B /* TwoFAVerifyView.swift in Sources */,
+				09CAF4A8283C77ED00D7B19B /* ConfirmPopupView.swift in Sources */,
+				09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */,
+				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
+				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
+				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
+				09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */,
+				09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */,
+				09CAF4AE283C77ED00D7B19B /* GuidePageViewController.swift in Sources */,
+				09CAF4AF283C77ED00D7B19B /* TFBeginViewController.swift in Sources */,
+				09CAF4B0283C77ED00D7B19B /* SignupSuccessView.swift in Sources */,
+				09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
+				09CAF4B2283C77ED00D7B19B /* CornerradiusButton.swift in Sources */,
+				09CAF4B3283C77ED00D7B19B /* TransTopView.swift in Sources */,
+				09CAF4B4283C77ED00D7B19B /* AddressBottomSheet.swift in Sources */,
+				09CAF4B5283C77ED00D7B19B /* UITableViewCell+util.swift in Sources */,
+				09CAF4B6283C77ED00D7B19B /* Fonts.swift in Sources */,
+				09CAF4B7283C77ED00D7B19B /* TopBackButton.swift in Sources */,
+				09CAF4B8283C77ED00D7B19B /* PromotionViewController.swift in Sources */,
+				09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */,
+				09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */,
+				09CAF4BB283C77ED00D7B19B /* ScannerViewController.swift in Sources */,
+				09CAF4BC283C77ED00D7B19B /* CancelButton.swift in Sources */,
+				09CAF4BD283C77ED00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
+				09CAF4BE283C77ED00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */,
+				09CAF4BF283C77ED00D7B19B /* TwoFAVerifyViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		09CAF4FD283C7BBE00D7B19B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CAF4FE283C7BBE00D7B19B /* WalletPageViewController.swift in Sources */,
+				09CAF4FF283C7BBE00D7B19B /* TemplateVC.swift in Sources */,
+				09CAF500283C7BBE00D7B19B /* SaveButton.swift in Sources */,
+				09CAF501283C7BBE00D7B19B /* Extension.swift in Sources */,
+				09CAF502283C7BBE00D7B19B /* ResetPasswordViewController.swift in Sources */,
+				09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */,
+				09CAF504283C7BBE00D7B19B /* LoginPostDto.swift in Sources */,
+				09CAF505283C7BBE00D7B19B /* PopupBottomSheet.swift in Sources */,
+				09CAF506283C7BBE00D7B19B /* Log.swift in Sources */,
+				09CAF507283C7BBE00D7B19B /* SignupViewController.swift in Sources */,
+				09CAF508283C7BBE00D7B19B /* UserMenuTableViewCell.swift in Sources */,
+				09CAF509283C7BBE00D7B19B /* BottomSheet.swift in Sources */,
+				09CAF50A283C7BBE00D7B19B /* SubPageViewController.swift in Sources */,
+				09CAF50B283C7BBE00D7B19B /* LoginAlert.swift in Sources */,
+				09CAF50C283C7BBE00D7B19B /* AccessTokenAdapter.swift in Sources */,
+				09CAF50D283C7BBE00D7B19B /* MemberViewController.swift in Sources */,
+				09CAF50E283C7BBE00D7B19B /* AppUpdateAlert.swift in Sources */,
+				09CAF50F283C7BBE00D7B19B /* KeychainManager.swift in Sources */,
+				09CAF510283C7BBE00D7B19B /* BannerDto.swift in Sources */,
+				09CAF511283C7BBE00D7B19B /* UIImage+util.swift in Sources */,
+				09CAF512283C7BBE00D7B19B /* UILabel+util.swift in Sources */,
+				09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */,
+				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
+				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
+				09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */,
+				09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */,
+				09CAF518283C7BBE00D7B19B /* TemplateCell.swift in Sources */,
+				09CAF519283C7BBE00D7B19B /* ValueDto.swift in Sources */,
+				09CAF51A283C7BBE00D7B19B /* TransDetailView.swift in Sources */,
+				09CAF51B283C7BBE00D7B19B /* CPasswordViewController.swift in Sources */,
+				09CAF51C283C7BBE00D7B19B /* UserMenuViewController.swift in Sources */,
+				09CAF51D283C7BBE00D7B19B /* FirstLaunchViewController.swift in Sources */,
+				09CAF51E283C7BBE00D7B19B /* CALayer+util.swift in Sources */,
+				09CAF51F283C7BBE00D7B19B /* WMZCodeView.m in Sources */,
+				09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */,
+				09CAF521283C7BBE00D7B19B /* AmountInputView.swift in Sources */,
+				09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */,
+				09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */,
+				09CAF5C7283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
+				09CAF524283C7BBE00D7B19B /* ObservableType+util.swift in Sources */,
+				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
+				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
+				09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */,
+				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
+				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
+				09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */,
+				09CAF52B283C7BBE00D7B19B /* DeepLinkManager.swift in Sources */,
+				09CAF52C283C7BBE00D7B19B /* UIStackView+util.swift in Sources */,
+				09CAF52D283C7BBE00D7B19B /* SecurityViewController.swift in Sources */,
+				09CAF52E283C7BBE00D7B19B /* DataRequest+util.swift in Sources */,
+				09CAF52F283C7BBE00D7B19B /* WithdrawViewController.swift in Sources */,
+				09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */,
+				09CAF530283C7BBE00D7B19B /* BetleadTabbar.swift in Sources */,
+				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
+				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
+				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
+				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
+				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
+				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
+				09CAF537283C7BBE00D7B19B /* TemplateView.swift in Sources */,
+				09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */,
+				09CAF539283C7BBE00D7B19B /* LoginMode.swift in Sources */,
+				09CAF53A283C7BBE00D7B19B /* DepositViewController.swift in Sources */,
+				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
+				09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */,
+				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
+				09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */,
+				09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
+				09CAF540283C7BBE00D7B19B /* TabbarViewController.swift in Sources */,
+				09CAF541283C7BBE00D7B19B /* UserMenuGrayLineCell.swift in Sources */,
+				09CAF542283C7BBE00D7B19B /* BoardViewController.swift in Sources */,
+				09CAF543283C7BBE00D7B19B /* MuLoginNavigationController.swift in Sources */,
+				09CAF544283C7BBE00D7B19B /* ImagetTextButton.swift in Sources */,
+				09CAF545283C7BBE00D7B19B /* UIView+util.swift in Sources */,
+				09CAF546283C7BBE00D7B19B /* BasePresentAnimationController.swift in Sources */,
+				09CAF547283C7BBE00D7B19B /* AppVersionDto.swift in Sources */,
+				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
+				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
+				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
+				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
+				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
+				09CAF54C283C7BBE00D7B19B /* OKButton.swift in Sources */,
+				09CAF54D283C7BBE00D7B19B /* RequestService.swift in Sources */,
+				09CAF54E283C7BBE00D7B19B /* Constants.swift in Sources */,
+				09CAF54F283C7BBE00D7B19B /* ConfirmBottomView.swift in Sources */,
+				09CAF550283C7BBE00D7B19B /* PersonalInfoViewController.swift in Sources */,
+				09CAF551283C7BBE00D7B19B /* AccountInputView.swift in Sources */,
+				09CAF552283C7BBE00D7B19B /* VerifyViewController.swift in Sources */,
+				09CAF553283C7BBE00D7B19B /* Beans.swift in Sources */,
+				09CAF554283C7BBE00D7B19B /* InputStyleView.swift in Sources */,
+				09CAF555283C7BBE00D7B19B /* ConfirmBottomSheet.swift in Sources */,
+				09CAF556283C7BBE00D7B19B /* AddressBottomCell.swift in Sources */,
+				09CAF557283C7BBE00D7B19B /* BadgeBtn.swift in Sources */,
+				09CAF558283C7BBE00D7B19B /* NotiViewController.swift in Sources */,
+				09CAF559283C7BBE00D7B19B /* UCPasswordViewController.swift in Sources */,
+				09CAF55A283C7BBE00D7B19B /* BaseViewModel.swift in Sources */,
+				09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */,
+				09CAF55C283C7BBE00D7B19B /* Views.swift in Sources */,
+				09CAF55D283C7BBE00D7B19B /* DetailDto.swift in Sources */,
+				09CAF55E283C7BBE00D7B19B /* LoginService.swift in Sources */,
+				09CAF55F283C7BBE00D7B19B /* Date+util.swift in Sources */,
+				09CAF560283C7BBE00D7B19B /* BuildConfig.swift in Sources */,
+				09CAF561283C7BBE00D7B19B /* ImageVerifyView.swift in Sources */,
+				09CAF562283C7BBE00D7B19B /* SecurityVerificationViewController.swift in Sources */,
+				09CAF563283C7BBE00D7B19B /* BaseBottomSheet.swift in Sources */,
+				09CAF564283C7BBE00D7B19B /* MainViewController.swift in Sources */,
+				09CAF5C3283C85AE00D7B19B /* DefaultDto.swift in Sources */,
+				09CAF565283C7BBE00D7B19B /* LoginViewController.swift in Sources */,
+				09CAF566283C7BBE00D7B19B /* ResponseDto.swift in Sources */,
+				09CAF567283C7BBE00D7B19B /* WalletViewController.swift in Sources */,
+				09CAF568283C7BBE00D7B19B /* TwoFAVerifyView.swift in Sources */,
+				09CAF569283C7BBE00D7B19B /* ConfirmPopupView.swift in Sources */,
+				09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */,
+				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
+				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
+				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
+				09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */,
+				09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */,
+				09CAF56F283C7BBE00D7B19B /* GuidePageViewController.swift in Sources */,
+				09CAF570283C7BBE00D7B19B /* TFBeginViewController.swift in Sources */,
+				09CAF571283C7BBE00D7B19B /* SignupSuccessView.swift in Sources */,
+				09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
+				09CAF573283C7BBE00D7B19B /* CornerradiusButton.swift in Sources */,
+				09CAF574283C7BBE00D7B19B /* TransTopView.swift in Sources */,
+				09CAF575283C7BBE00D7B19B /* AddressBottomSheet.swift in Sources */,
+				09CAF576283C7BBE00D7B19B /* UITableViewCell+util.swift in Sources */,
+				09CAF577283C7BBE00D7B19B /* Fonts.swift in Sources */,
+				09CAF578283C7BBE00D7B19B /* TopBackButton.swift in Sources */,
+				09CAF579283C7BBE00D7B19B /* PromotionViewController.swift in Sources */,
+				09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */,
+				09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */,
+				09CAF57C283C7BBE00D7B19B /* ScannerViewController.swift in Sources */,
+				09CAF57D283C7BBE00D7B19B /* CancelButton.swift in Sources */,
+				09CAF57E283C7BBE00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
+				09CAF57F283C7BBE00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */,
+				09CAF580283C7BBE00D7B19B /* TwoFAVerifyViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		A19C6FCA282218D6000AFC3F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1157,6 +2128,7 @@
 				A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
+				09CAF5C5283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
@@ -1169,8 +2141,10 @@
 				A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */,
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
 				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
+				09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */,
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
+				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
@@ -1186,6 +2160,7 @@
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,
 				A19C706028223517000AFC3F /* TabbarViewController.swift in Sources */,
+				099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */,
 				A1973A132828EE13009932D8 /* BoardViewController.swift in Sources */,
 				A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */,
 				A19C714828225827000AFC3F /* ImagetTextButton.swift in Sources */,
@@ -1196,8 +2171,9 @@
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
+				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
-				A19C709328223A95000AFC3F /* RequestServer.swift in Sources */,
+				A19C709328223A95000AFC3F /* RequestService.swift in Sources */,
 				A19C712A282256CC000AFC3F /* Constants.swift in Sources */,
 				A16F620C282E500000D9CCE5 /* ConfirmBottomView.swift in Sources */,
 				A1DD13BD282C0B8300AB2E0A /* PersonalInfoViewController.swift in Sources */,
@@ -1209,22 +2185,26 @@
 				A16F61FE282E3EBA00D9CCE5 /* AddressBottomCell.swift in Sources */,
 				A19C719D28225D99000AFC3F /* BadgeBtn.swift in Sources */,
 				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,
+				A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,
 				A1559E06283739D700755783 /* DetailDto.swift in Sources */,
+				09CAF439283C74D600D7B19B /* LoginService.swift in Sources */,
 				A19C70EA28224C4B000AFC3F /* Date+util.swift in Sources */,
 				A19C711428225542000AFC3F /* BuildConfig.swift in Sources */,
 				A19C71DD28226889000AFC3F /* ImageVerifyView.swift in Sources */,
 				A1973A88282AB37D009932D8 /* SecurityVerificationViewController.swift in Sources */,
 				A19C70FD28224D78000AFC3F /* BaseBottomSheet.swift in Sources */,
 				A19C706628223584000AFC3F /* MainViewController.swift in Sources */,
+				09CAF5C1283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				A19C71B32822636E000AFC3F /* LoginViewController.swift in Sources */,
 				A19C718B28225B25000AFC3F /* ResponseDto.swift in Sources */,
 				A19C70DE28224A62000AFC3F /* WalletViewController.swift in Sources */,
 				A1973A8F282AB572009932D8 /* TwoFAVerifyView.swift in Sources */,
 				A19C71DA28226817000AFC3F /* ConfirmPopupView.swift in Sources */,
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
+				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
 				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
@@ -1283,6 +2263,116 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		09CAF4F5283C77ED00D7B19B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3225266GV6;
+				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_DEV";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09CAF4F6283C77ED00D7B19B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3225266GV6;
+				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_DEV";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		09CAF5B6283C7BBE00D7B19B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3225266GV6;
+				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_STAGE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		09CAF5B7283C7BBE00D7B19B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3225266GV6;
+				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_STAGE";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		A19C6FE0282218DF000AFC3F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1335,6 +2425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1391,6 +2482,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1409,15 +2501,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.crypto.ver.cryptoVerOne;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_PRO";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -1433,15 +2529,19 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.crypto.ver.cryptoVerOne;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_PRO";
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1451,6 +2551,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		09CAF4F4283C77ED00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09CAF4F5283C77ED00D7B19B /* Debug */,
+				09CAF4F6283C77ED00D7B19B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		09CAF5B5283C7BBE00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_stage" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09CAF5B6283C7BBE00D7B19B /* Debug */,
+				09CAF5B7283C7BBE00D7B19B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A19C6FC9282218D6000AFC3F /* Build configuration list for PBXProject "cryptoVerOne" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

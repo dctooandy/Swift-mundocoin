@@ -12,7 +12,7 @@ class CornerradiusButton: UIButton {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setBackgroundImage(UIImage(color: Themes.grayE0E5F2) , for: .disabled)
-        setBackgroundImage(UIImage(color: Themes.gray6149F6) , for: .normal)
+        setBackgroundImage(UIImage(color: Themes.purple6149F6) , for: .normal)
         setTitleColor(Themes.grayA3AED0, for: .disabled)
         setTitleColor(.white, for: .normal)
         titleLabel?.font = Fonts.interSemiBold(16)

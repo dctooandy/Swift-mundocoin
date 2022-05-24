@@ -15,6 +15,8 @@ class UserMenuViewController: BaseViewController {
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
+    
+    @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var rightArrowImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topButton: UIButton!
@@ -47,6 +49,13 @@ class UserMenuViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        titleView.layer.cornerRadius = 20
+        if #available(iOS 11.0, *) {
+            titleView.layer.maskedCorners = [.layerMinXMinYCorner , .layerMaxXMinYCorner]
+        } else {
+            // Fallback on earlier versions
+        }
+        
         let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
         rightArrowImage.image = image
         rightArrowImage.tintColor = .black
@@ -54,6 +63,7 @@ class UserMenuViewController: BaseViewController {
 
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: UserMenuTableViewCell.self)
+        tableView.registerXibCell(type: UserMenuGrayLineCell.self)
         tableView.separatorStyle = .none
         
     }
@@ -71,17 +81,28 @@ class UserMenuViewController: BaseViewController {
     }
     func showLogotConfirmAlert()
     {
-        let popVC =  ConfirmPopupView(title: "Important".localized,
-                                      message: "For security purposes, no withdrawals are permitted for 24 hours after modification of security methods.".localized ,
-                                      iconMode: .important) { [weak self] isOK in
-                                        if isOK {
-                                            Log.i("登出")
-                                        }else
-                                        {
-                                            Log.i("不登出")
-                                        }
+//        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "The verification code is incorrect or has expired, you could try 5 more times a day.") { [self](_) in
+//
+//        }
+        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Logout".localized]), title: "", message: "Are you sure you want to logout?") { [self] isOK in
+
+            if isOK {
+                Log.i("登出")
+                directToViewController()
+            }else
+            {
+                Log.i("不登出")
+            }
         }
         popVC.start(viewController: self)
+    }
+}
+func directToViewController() {
+    if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
+
+        let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share)
+        mainWindow.rootViewController = loginNavVC
+        mainWindow.makeKeyAndVisible()
     }
 }
 // MARK: -
@@ -92,46 +113,53 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0 ? 4 : 6)
+        return (section == 0 ? 4 : 8)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 6)
+        {
+            let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
+            return lineCell
+        }else
+        {
             let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
-        switch indexPath.section {
-        case 0:
-            switch indexPath.row {
+            switch indexPath.section {
             case 0:
-                cell.cellData = .currency
+                switch indexPath.row {
+                case 0:
+                    cell.cellData = .currency
+                case 1:
+                    cell.cellData = .security
+                case 2:
+                    cell.cellData = .pushNotifications
+                case 3:
+                    cell.cellData = .addressBook
+                default:
+                    break
+                }
             case 1:
-                cell.cellData = .security
-            case 2:
-                cell.cellData = .pushNotifications
-            case 3:
-                cell.cellData = .addressBook
+                switch indexPath.row {
+                case 0:
+                    cell.cellData = .language
+                case 1:
+                    cell.cellData = .faceID
+                case 3:
+                    cell.cellData = .helpSupport
+                case 4:
+                    cell.cellData = .termPolicies
+                case 5:
+                    cell.cellData = .about
+                case 7:
+                    cell.cellData = .logout
+                default:
+                    break
+                }
             default:
                 break
             }
-        case 1:
-            switch indexPath.row {
-            case 0:
-                cell.cellData = .language
-            case 1:
-                cell.cellData = .faceID
-            case 2:
-                cell.cellData = .helpSupport
-            case 3:
-                cell.cellData = .termPolicies
-            case 4:
-                cell.cellData = .about
-            case 5:
-                cell.cellData = .logout
-            default:
-                break
-            }
-        default:
-            break
-        }
             return cell
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
@@ -164,16 +192,16 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             case 1:
                 Log.i("faceID")
                 //faceID
-            case 2:
+            case 3:
                 Log.i("helpSupport")
                 //helpSupport
-            case 3:
+            case 4:
                 Log.i("termPolicies")
                 //termPolicies
-            case 4:
+            case 5:
                 Log.i("about")
                 //about
-            case 5:
+            case 7:
                 Log.i("logout")
                 showLogotConfirmAlert()
                 //logout
@@ -191,7 +219,16 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 56
+        if indexPath.section == 1 && indexPath.row == 7
+        {
+            return 80
+        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 6)
+        {
+            return 1
+        }else
+        {
+            return 56            
+        }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         

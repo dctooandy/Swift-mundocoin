@@ -27,6 +27,7 @@ enum InputViewMode :Equatable {
     case withdrawAddressToDetail(Bool)
     case txid(String)
     case securityVerification
+    case oldPassword
     case newPassword
     case confirmPassword
     
@@ -46,6 +47,7 @@ enum InputViewMode :Equatable {
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .txid( _ ): return "Txid".localized
         case .securityVerification: return "Security Verification".localized
+        case .oldPassword: return "Old Password".localized
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
         }
@@ -57,7 +59,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress: return "Long press to paste".localized
         case .email: return "...@mundo.com"
-        case .password ,.newPassword , .confirmPassword: return "********".localized
+        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundo.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
@@ -71,7 +73,7 @@ enum InputViewMode :Equatable {
         case .withdrawToAddress: return "Please check the withdrawal address.".localized
         case .email: return "...@mundo.com".localized
         case .phone: return "Invalid phone number.".localized
-        case .password ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
+        case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
         case .forgotPW: return "...@mundo.com".localized
         case .registration: return "Enter the 6-digit code ".localized
         case .securityVerification: return "Enter the 6-digit code".localized
@@ -127,14 +129,14 @@ class InputStyleView: UIView {
     private let displayPwdImg = UIImage(named: "icon-view")!.withRenderingMode(.alwaysTemplate)
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")!.withRenderingMode(.alwaysTemplate)
     private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
-    private let addressBookImgView : UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
-        return imgView
-    }()
-    private let cameraImgView : UIImageView = {
-        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
-        return imgView
-    }()
+//    private let addressBookImgView : UIImageView = {
+//        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
+//        return imgView
+//    }()
+//    private let cameraImgView : UIImageView = {
+//        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
+//        return imgView
+//    }()
     private let onClick = PublishSubject<String>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
@@ -189,7 +191,7 @@ class InputStyleView: UIView {
     let normalTextLabel: UILabel = {
         let tfLabel = UILabel()
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.sfProLight(16)
+        tfLabel.font = Fonts.pingFangTCLight(16)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.5
@@ -226,12 +228,12 @@ class InputStyleView: UIView {
     }()
     let addAddressImageView : UIImageView = {
         let imgView = UIImageView()
-        imgView.image = UIImage(named: "arrow-circle-right")
+        imgView.image = UIImage(named: "icon-add")
         return imgView
     }()
     let copyAddressImageView : UIImageView = {
         let imgView = UIImageView()
-        imgView.image = UIImage(named: "arrow-circle-right")
+        imgView.image = UIImage(named: "icon-copy")
         return imgView
     }()
     let dropDownImageView : UIImageView = {
@@ -286,7 +288,8 @@ class InputStyleView: UIView {
     {
         let isPasswordType = (inputViewMode == .password ||
                                 inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword)
+                                inputViewMode == .confirmPassword ||
+                                inputViewMode == .oldPassword)
         addSubview(topLabel)
         addSubview(textField)
         addSubview(invalidLabel)
@@ -342,7 +345,8 @@ class InputStyleView: UIView {
         cancelRightButton.tintColor = Themes.gray707EAE
         let isPasswordType = (inputViewMode == .password ||
                                 inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword)
+                                inputViewMode == .confirmPassword ||
+                                inputViewMode == .oldPassword)
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
@@ -367,6 +371,7 @@ class InputStyleView: UIView {
         {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
+            verifyResentLabel.textColor = Themes.purple6149F6
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
@@ -431,12 +436,12 @@ class InputStyleView: UIView {
             copyAddressImageView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
-                make.size.equalTo(18)
+                make.size.equalTo(24)
             }
             addAddressImageView.snp.makeConstraints { (make) in
                 make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
                 make.centerY.equalTo(textField)
-                make.size.equalTo(18)
+                make.size.equalTo(24)
             }
             rightLabelWidth = 18 + 18 + 10
             resetTopLabelAndMask()
@@ -499,7 +504,7 @@ class InputStyleView: UIView {
                     copyAddressImageView.snp.makeConstraints { (make) in
                         make.right.equalToSuperview().offset(-10)
                         make.centerY.equalTo(textField)
-                        make.size.equalTo(18)
+                        make.size.equalTo(24)
                     }
                     rightLabelWidth = 18 + 10
                 }
@@ -689,13 +694,23 @@ class InputStyleView: UIView {
     }
     func copyStringToTF()
     {
-        UIPasteboard.general.string = textField.text
-        Toast.show(msg: "Copied")
+        switch inputViewMode {
+        case .withdrawAddressToDetail( _ ):
+            UIPasteboard.general.string = normalTextLabel.text
+            Toast.show(msg: "Copied")
+        case .txid( _ ):
+            UIPasteboard.general.string = textLabel.text
+            Toast.show(msg: "Copied")
+        default:
+            UIPasteboard.general.string = textField.text
+            Toast.show(msg: "Copied")
+        }
+    
     }
     func resetTimerAndAll()
     {
         verifyResentLabel.text = "Send".localized
-        verifyResentLabel.textColor = .black
+        verifyResentLabel.textColor = Themes.purple6149F6
         resetDisplayBtnUI()
         timer?.invalidate()
         timer = nil
@@ -705,13 +720,13 @@ class InputStyleView: UIView {
     func setVisibleString(string : String)
     {
         switch self.inputViewMode {
-        case .txid( let tString) :
-            if tString.count > 3
+        case .txid( _ ) :
+            if string.count > 3
             {
-                textLabel.text = tString
+                textLabel.text = string
             }else
             {
-                normalTextLabel.text = tString
+                normalTextLabel.text = string
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_):
             normalTextLabel.text = string

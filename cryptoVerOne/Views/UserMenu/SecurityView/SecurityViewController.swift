@@ -17,11 +17,16 @@ class SecurityViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
-    
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         title = "Security"
         setupUI()
     }
@@ -35,7 +40,9 @@ class SecurityViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     // MARK: -
     // MARK:業務方法
@@ -89,6 +96,8 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
         //emailAuthemtication
         case 2:
             Log.i("changePassword")
+            let ucPasswordVC = UCPasswordViewController()
+            self.navigationController?.pushViewController(ucPasswordVC, animated: true )
         //changePassword
         default:
             break

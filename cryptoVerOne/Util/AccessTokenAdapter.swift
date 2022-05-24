@@ -26,11 +26,12 @@ class AccessTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
         
         //urlRequest.setValue("app", forHTTPHeaderField: "Betlead-Request-Device")
-        urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+//        urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
         //urlRequest.setValue("999", forHTTPHeaderField: "Finger")
-        urlRequest.setValue(KeychainManager.share.getFingerID(), forHTTPHeaderField: "Finger")
+//        urlRequest.setValue(KeychainManager.share.getFingerID(), forHTTPHeaderField: "Finger")
         urlRequest.setValue("application/json", forHTTPHeaderField:"Accept")
-        urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         return urlRequest
     }
 }

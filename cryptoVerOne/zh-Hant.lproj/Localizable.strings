@@ -34,6 +34,7 @@
 "Send reset link" = "@Send reset link";
 "Enter your email to change your password" = "@Enter your email to change your password";
 "Reset password" = "@Reset password";
+"Old Password" = "@Old Password";
 "New Password" = "@New Password";
 "Confirm new password" = "@Confirm new password";
 "Submit" = "@Submit";

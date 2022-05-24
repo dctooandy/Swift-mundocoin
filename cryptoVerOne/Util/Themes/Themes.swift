@@ -24,13 +24,27 @@ class Themes {
     static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
         return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
     }
+    // 綁定 pending跟processing 的顯示
+    static func bindDetailViewProcessingBorderColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
+        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
+    }
+    static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
+        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.blue2B3674 })
+    }
+    static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
+        return Themes.topViewMode.map({($0 == .processing || $0 == .pending || $0 == .failed) ? true:false })
+    }
+    static let processingImageType : Observable<UIColor> = Themes.bindDetailViewProcessingBorderColor(noProcessing: DetailType.done, processing: DetailType.processing)
+    static let processingLabelType : Observable<UIColor> = Themes.bindDetailViewProcessingTextColor(noProcessing: DetailType.done, processing: DetailType.processing)
+    static let completeViewType : Observable<Bool> = Themes.bindDetailViewCompleteViewHidden(hidden: DetailType.pending, show: DetailType.done)
+    
     // 綁定取款成功頁面 下方隱藏物件
     static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
         return Themes.topViewMode.map({ ($0 == .pending || $0 == .failed ) ? true : false})
     }
-    
     static let topImageIconType : Observable<UIImage> = Themes.bindDetailViewTopIcon(success: DetailType.done, failed: DetailType.failed)
     static let topLabelStringType : Observable<String> = Themes.bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
+    // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
     
     
@@ -54,13 +68,18 @@ class Themes {
     static let inputViewPasswordHeight = 85.0 + Themes.passwordInvalidLabelHeight
     
     static let grayA3AED0 = UIColor(rgb: 0xA3AED0)
+    static let grayA3AED020 = UIColor(rgb: 0xA3AED0 ,alpha: 0.2)
     static let grayE0E5F2 = UIColor(rgb: 0xE0E5F2)
     static let grayCCD2E3 = UIColor(rgb: 0xCCD2E3)
     static let gray707EAE = UIColor(rgb: 0x707EAE)
-    static let gray6149F6 = UIColor(rgb: 0x6149F6)
     static let gray1CD0C5 = UIColor(rgb: 0x1CD0C5)
     static let grayF4F7FE = UIColor(rgb: 0xF4F7FE)
-    
+    static let blue2B3674 = UIColor(rgb: 0x2B3674)
+    static let blue6149F6 = UIColor(rgb: 0x6149F6)
+    static let purple6149F6 = UIColor(rgb: 0x6149F6)
+    static let redEE5D50 = UIColor(rgb: 0xEE5D50)
+    static let grayE5E5E5 = UIColor(rgb: 0xE5E5E5)
+    static let whiteFFFFFF = UIColor(rgb: 0xFFFFFF)
     
     static let primaryLight =  UIColor(rgb: 0xc2aaf2)
     static let primaryBase = UIColor(rgb: 0x8e73da)

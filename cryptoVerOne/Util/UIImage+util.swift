@@ -39,10 +39,10 @@ extension UIImage {
         gradientLayer.frame = bounds
         gradientLayer.colors = colors
         // This makes it horizontal
-        gradientLayer.startPoint = CGPoint(x: 0.5,
-                                           y: 0.0)
-        gradientLayer.endPoint = CGPoint(x: 0.5,
-                                         y: 1.0)
+        gradientLayer.startPoint = CGPoint(x: 0.0,
+                                           y: 0.5)
+        gradientLayer.endPoint = CGPoint(x: 1.0,
+                                         y: 0.5)
         
         UIGraphicsBeginImageContext(gradientLayer.bounds.size)
         gradientLayer.render(in: UIGraphicsGetCurrentContext()!)

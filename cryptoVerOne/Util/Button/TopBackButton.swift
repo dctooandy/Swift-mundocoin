@@ -11,9 +11,10 @@ import UIKit
 import SnapKit
 
 class TopBackButton:UIButton {
-    
-    init() {
+    var imageName : String!
+    init(iconName :String = "icon-arrow-lef2") {
         super.init(frame: .zero)
+        self.imageName = iconName
         setupViews()
     }
     
@@ -24,7 +25,7 @@ class TopBackButton:UIButton {
     
     private func setupViews(){
         layoutIfNeeded()
-        let image = UIImage(named:"icon-arrow-lef2")
+        let image = UIImage(named:imageName)
         frame = CGRect(x: 0, y: 0, width: Views.backImageHeight(), height: Views.backImageHeight())
         setImage(image, for: .normal)
         setTitle("", for:.normal)

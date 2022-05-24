@@ -94,6 +94,7 @@ class TwoFAVerifyView: UIView {
             emailInputView.isHidden = true
         }
         lostTwoFALabel.text = "Lost google 2FA?".localized
+        lostTwoFALabel.textColor = Themes.gray707EAE
         lostTwoFALabel.snp.remakeConstraints { (make) in
             make.top.equalToSuperview().offset(bottomY)
             make.leading.equalToSuperview().offset(32)

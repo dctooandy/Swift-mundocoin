@@ -17,6 +17,7 @@ class WithdrawViewController: BaseViewController {
     private let dpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
+    var isScanPopAction = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var availableBalanceAmountLabel: UILabel!
@@ -31,6 +32,7 @@ class WithdrawViewController: BaseViewController {
     @IBOutlet weak var continueButton: CornerradiusButton!
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var amountInputView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     var amountView : AmountInputView!
     var withdrawToView : InputStyleView!
     var methodView : InputStyleView!
@@ -51,11 +53,14 @@ class WithdrawViewController: BaseViewController {
         setupUI()
         bindAction()
         bindTextField()
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touch))
+        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(recognizer)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        clearAllData()
-
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -63,6 +68,14 @@ class WithdrawViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+//        clearAllData()
+    }
+    @objc func touch() {
+        self.view.endEditing(true)
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     // MARK: -
     // MARK:業務方法
@@ -112,6 +125,12 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxScanImagePressed().subscribeSuccess { [self](_) in
             Log.i("開鏡頭")
             let scanVC = ScannerViewController()
+            scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
+                isScanPopAction = false
+                withdrawToView.textField.text = stringCode
+                withdrawToView.textField.sendActions(for: .valueChanged)
+            }.disposed(by: dpg)
+            isScanPopAction = true
             self.navigationController?.pushViewController(scanVC, animated: true)
         }.disposed(by: dpg)
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
@@ -163,9 +182,10 @@ class WithdrawViewController: BaseViewController {
             .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
             .disposed(by: dpg)
         amountView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
-            if let amount = Double(amountView.amountTextView.text!)
+            if let amount = Double(amountView.amountTextView.text!),
+               let fee = Double(feeAmountLabel.text!)
             {
-                let result = (amount > 1.0 ?  amount - 1.0 : 0.0)
+                let result = (amount > fee ?  amount - fee : 0.0)
                 // 小數點兩位的寫法
 //                receiveAmountLabel.text = String(format: "%.2f", result)
                 receiveAmountLabel.text = String(format: "%.8f", result).numberFormatter(.decimal, 8)
@@ -207,14 +227,25 @@ class WithdrawViewController: BaseViewController {
         securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](_) in
             Log.i("驗證成功,開Detail")
             showTransactionDetailView()
+            clearAllData()
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(securityVerifyVC, animated: true)
     }
     func showTransactionDetailView()
     {
-        if let textString = withdrawToView.textField.text
+        if let textString = withdrawToView.textField.text,
+            let amountText = amountView.amountTextView.text,
+           let fee = feeAmountLabel.text
         {
-            let detailData = DetailDto(defailType: .done, tether: "USDT", network: "Tron(TRC20)", date: "April18,2022 11:01", address: textString, txid: "37f5d6c3d1c4408a47e34601febd78 ad9be79473df71742805a8b2a339c25b9e")
+            let detailData = DetailDto(defailType: .done,
+                                       amount: amountText,
+                                       tether: "USDT",
+                                       network: "Tron(TRC20)",
+                                       confirmations: "50/1",
+                                       fee:fee,
+                                       date: "April18,2022 11:01",
+                                       address: textString,
+                                       txid: "37f5d6c3d1c4408a47e34601febd78 ad9be79473df71742805a8b2a339c25b9e")
             let detailVC = TDetailViewController.loadNib()
             detailVC.titleString = "Withdraw"
             detailVC.detailDataDto = detailData
@@ -223,9 +254,12 @@ class WithdrawViewController: BaseViewController {
     }
     func clearAllData ()
     {
-        amountView.amountTextView.text = "0"
-        withdrawToView.textField.text = ""
-        withdrawToView.textField.sendActions(for: .valueChanged)
+        if isScanPopAction == false
+        {
+            amountView.amountTextView.text = "0"
+            withdrawToView.textField.text = ""
+            withdrawToView.textField.sendActions(for: .valueChanged)
+        }
     }
     func rxConfirmClick() -> Observable<Any>
     {

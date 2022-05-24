@@ -48,3 +48,19 @@ Thumbs.db
 *.mov
 *.wmv
 
+#Xcode 
+xcuserdata/
+*.xcbkplist
+## Other
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+*.xcuserstate
+*.xcbkptlist
+*.xcworkspace
+
+## Obj-C/Swift specific
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM

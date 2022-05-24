@@ -25,6 +25,9 @@ class Fonts {
     static func pingFangTCMedium(_ size: CGFloat) -> UIFont {
         return UIFont(name: "PingFangTC-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    static func pingFangTCLight(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "PingFangTC-Light", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
     static func montserratLight(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Montserrat-Light", size: size) ?? UIFont.systemFont(ofSize: size)
     }

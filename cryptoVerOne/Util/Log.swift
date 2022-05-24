@@ -28,38 +28,38 @@ class Log {
 
   static func v(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.verbose("📜 [\(path).\(function), Line:\(line)]:\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.verbose("[\(path).\(function)]:\n📜==============➡️ Line:\(line)\n\(message())\n⬅️==============📜")
   }
 
   static func d(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.debug("🐛 [\(path).\(function), Line:\(line)]:\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.debug("[\(path).\(function)]:\n🐛==============➡️  Line:\(line)\n\(message())\n⬅️==============🐛")
   }
 
   static func i(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.info("ℹ️ [\(path).\(function), Line:\(line)]:\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.info("[\(path).\(function)]:\nℹ️==============➡️  Line:\(line)\n\(message())\n⬅️==============ℹ️")
   }
 
   static func w(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.warning("⚠️ [\(path).\(function), Line:\(line)]:\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.warning("[\(path).\(function)]:\n⚠️==============➡️  Line:\(line)\n\(message())\n⬅️==============⚠️")
   }
 
   static func e(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.error("🆘 [\(path).\(function), Line:\(line)]\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.error("[\(path).\(function)]:\n🆘==============➡️ Line:\(line)\n\(message())\n⬅️==============🆘")
   }
 
   static func errorAndCrash(_ message:@autoclosure () -> Any, _
   file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) -> Never {
-    let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-    Log.share.log.error("🆘 [\(path). \(function), Line:\(line)]:\n\t\(message())")
+      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+      Log.share.log.error("[\(path).\(function)]:\n🆘==============➡️ Line:\(line)\n\(message())\n⬅️==============🆘")
     fatalError()
   }
 }

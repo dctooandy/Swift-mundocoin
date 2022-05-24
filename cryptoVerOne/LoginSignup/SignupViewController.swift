@@ -37,6 +37,27 @@ class SignupViewController: BaseViewController {
         setupUI()
         bindRegisterBtn()
         bindAccountView()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+        {
+            var info = notification.userInfo!
+            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+            self.view.frame.origin.y = 0 - keyboardSize!.height
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -63,10 +84,11 @@ class SignupViewController: BaseViewController {
         }
         
 //        rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
-        checkboxView = CheckBoxView(title: " ",
-                                    titleColor: .black,
-                                    checkBoxSize: 24,
-                                    checkBoxColor: .black)
+//        checkboxView = CheckBoxView(title: " ",
+//                                    titleColor: .black,
+//                                    checkBoxSize: 24,
+//                                    checkBoxColor: .black)
+        checkboxView = CheckBoxView(type: .checkType)
         checkboxView.isSelected = true
         view.addSubview(accountInputView!)
         view.addSubview(checkboxView)
