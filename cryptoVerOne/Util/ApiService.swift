@@ -51,6 +51,7 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     case verification(String , String)
     case authentication
     case walletAddress
+    case refreshToken
     
     case signup
     case jpush

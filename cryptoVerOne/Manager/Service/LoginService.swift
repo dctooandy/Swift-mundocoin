@@ -12,29 +12,38 @@ import RxSwift
 import Alamofire
 
 class LoginService {
+    func chectTime(completion: (() -> Single<RegistrationDto?>)) -> Single<RegistrationDto?>
+    {
+        Log.e("測試測試測試測試測試測試測試測試測試")
+        return completion()
+    }
+    
     func signUPRegistration(code:String ,
                             email:String = "" ,
                             password:String ,
                             phone:String = "") -> Single<RegistrationDto?>
     {
-        var parameters: Parameters = [String: Any]()
-        
-        parameters = ["code":code,
-                      "password":password]
-        if email.isEmpty
-        {
-            parameters["phone"] = phone
-        }else
-        {
-            parameters["email"] = email
+        chectTime {
+            Log.e("完成完成完成完成完成完成完成完成完成完成")
+            var parameters: Parameters = [String: Any]()
+            parameters = ["code":code,
+                          "password":password]
+            if email.isEmpty
+            {
+                parameters["phone"] = phone
+            }else
+            {
+                parameters["email"] = email
+            }
+            return Beans.requestServer.singleRequestPost(
+                path: ApiService.registration.path,
+                parameters: parameters,
+                modify: false,
+                resultType: RegistrationDto.self).map({
+                    return $0
+                })
         }
-        return Beans.requestServer.singleRequestPost(
-            path: ApiService.registration.path,
-            parameters: parameters,
-            modify: false,
-            resultType: RegistrationDto.self).map({
-                return $0
-            })
+        
     }
     func verificationResend(idString:String) -> Single<LoginDto?>
     {
