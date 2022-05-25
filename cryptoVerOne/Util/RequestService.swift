@@ -69,6 +69,7 @@ extension RequestService
             Log.errorAndCrash(ApiServiceError.unknownError(0,"","url 解析錯誤"))
         }
         let para = self.transPara(parameters: parameters , modify: modify)
+        
         Log.v("API URL: \(path!)\n=====================\nMethod: \(method)\n=====================\n參數: \(para)")
         return Single<T>.create
         { observer in

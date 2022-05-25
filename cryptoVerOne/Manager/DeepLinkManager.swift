@@ -77,7 +77,8 @@ class DeepLinkManager {
                 if !UserStatus.share.isLogin {
                     DispatchQueue.main.async {
 //                        UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-                        UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
+                        let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
+                        UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                     }
                 } else {
                     DispatchQueue.main.async {
@@ -109,21 +110,27 @@ class DeepLinkManager {
             if vc.isKind(of: LaunchReciprocalViewController.self) { return }
             if vc.isKind(of: LoginSignupViewController.self) { return }
             if !vc.isKind(of: TabbarViewController.self) {
-                if vc.navigationController == nil {
-                    vc.dismiss(animated: false) {
-                        DispatchQueue.main.async {
-                            self.toTopVC()
-                        }
-                    }
-                } else {
-                    vc.navigationController?.popToRootViewController(animated: true)
-                    toTopVC()
-                }
+//                if vc.navigationController == nil {
+//                    vc.dismiss(animated: false) {
+//                        DispatchQueue.main.async {
+//                            self.toTopVC()
+//                        }
+//                    }
+//                } else {
+//                    vc.navigationController?.popToRootViewController(animated: true)
+//                    toTopVC()
+//                }
+                vc.navigationController?.popToRootViewController(animated: true)
+                completion?()
             } else {
                 print("current vc is Betlead tabbar vc finished.")
                 completion?()
             }
         }
+    }
+    func checkTimer()
+    {
+        
     }
 }
 fileprivate let dpg = DisposeBag()
@@ -273,12 +280,14 @@ extension DeepLinkManager {
             case .login:
                 print("login")
 //                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
+                let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
+                UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                 
             case .signup:
                 print("signup")
 //                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(false)
-                UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.signupEmail)
+                let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.signupEmail))
+                UIApplication.shared.keyWindow?.rootViewController = loginNavVC
             case .appNews:
                 print("app news")
                 guard let vc = getBetLeadTabbarVC() else { return }

@@ -40,7 +40,8 @@ class ErrorHandler {
                 Toast.show(msg: "连线逾时请重新登入")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
 //                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.isLogin(true)
-                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.showMode(.loginEmail)
+                    let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
+                    UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                 })
             case .notLogin:
                 showRedictToLoginAlert()
@@ -62,7 +63,10 @@ class ErrorHandler {
                 let errors = dto.errors
                 if status == "403" , dto.reason == "TOKEN_EXPIRED"
                 {
-                    
+                    DeepLinkManager.share.handleDeeplink(navigation: .login)
+                }else if status == "403" , dto.reason == "AUTH_REQUIRED"
+                {
+                    DeepLinkManager.share.handleDeeplink(navigation: .login)
                 }else
                 {
                     showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")

@@ -26,19 +26,24 @@ class AccessTokenAdapter: RequestAdapter {
         var urlRequest = urlRequest
         
         //urlRequest.setValue("app", forHTTPHeaderField: "Betlead-Request-Device")
-//        urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
         //urlRequest.setValue("999", forHTTPHeaderField: "Finger")
 //        urlRequest.setValue(KeychainManager.share.getFingerID(), forHTTPHeaderField: "Finger")
-        if let urlString = urlRequest.url ,
-           urlString.pathComponents.contains("resend")
+        if let urlString = urlRequest.url
         {
-            urlRequest.setValue("*.*", forHTTPHeaderField:"accept")
-        }else
-        {
-            urlRequest.setValue("application/json", forHTTPHeaderField:"accept")
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            if urlString.pathComponents.contains("resend")
+            {
+                urlRequest.setValue("*.*", forHTTPHeaderField:"accept")
+            }else if urlString.pathComponents.contains("wallet") && urlString.pathComponents.contains("address")
+            {
+                urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            }else
+            {
+                urlRequest.setValue("application/json", forHTTPHeaderField:"accept")
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
         }
 //        urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
+        Log.e("HttpHeaders: \(urlRequest.allHTTPHeaderFields)")
         return urlRequest
     }
     

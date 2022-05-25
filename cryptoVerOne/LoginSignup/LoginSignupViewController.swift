@@ -88,6 +88,9 @@ class LoginSignupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDateSelectedButton()
+        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+            appdelegate.stopRETimer()
+        }
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:switchBtn)
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
@@ -201,7 +204,7 @@ class LoginSignupViewController: BaseViewController {
 //                return
 //            }
             // 發送驗證碼
-            self?.sendVerifyCodeForEmailLogin(dto)
+//            self?.sendVerifyCodeForEmailLogin(dto)
             // 推向传送验证码VC
             let verifyVC = VerifyViewController.loadNib()
             verifyVC.loginDto = dto
@@ -640,6 +643,9 @@ class LoginSignupViewController: BaseViewController {
                 print("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
+                if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appdelegate.checkTime()
+                }
                 Toast.show(msg: "Welcome to Mundocoin".localized)
             }
         }
