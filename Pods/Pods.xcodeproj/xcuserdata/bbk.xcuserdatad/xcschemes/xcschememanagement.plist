@@ -4,95 +4,100 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>Alamofire.xcscheme_^#shared#^_</key>
+		<key>Alamofire.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>17</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>CocoaLumberjack.xcscheme_^#shared#^_</key>
+		<key>CocoaLumberjack.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>5</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>DropDown.xcscheme_^#shared#^_</key>
+		<key>DropDown.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>14</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>KeychainSwift.xcscheme_^#shared#^_</key>
+		<key>KeychainSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>9</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Parchment.xcscheme_^#shared#^_</key>
+		<key>Parchment.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>15</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Pods-cryptoVerOne.xcscheme_^#shared#^_</key>
+		<key>Pods-cryptoVerOne.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>RxCocoa.xcscheme_^#shared#^_</key>
+		<key>RxCocoa.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>13</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>RxSwift.xcscheme_^#shared#^_</key>
+		<key>RxRelay.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>2</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SDWebImage.xcscheme_^#shared#^_</key>
+		<key>RxSwift.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>6</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SDWebImageSVGKitPlugin.xcscheme_^#shared#^_</key>
+		<key>SDWebImage.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>16</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SVGKit.xcscheme_^#shared#^_</key>
+		<key>SDWebImageSVGKitPlugin.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>7</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SnapKit.xcscheme_^#shared#^_</key>
+		<key>SVGKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>3</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SwiftyBeaver.xcscheme_^#shared#^_</key>
+		<key>SnapKit.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>10</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SwiftyCrypto.xcscheme_^#shared#^_</key>
+		<key>SwiftyBeaver.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>4</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>SwiftyJWT.xcscheme_^#shared#^_</key>
+		<key>SwiftyCrypto.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>11</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>Toaster.xcscheme_^#shared#^_</key>
+		<key>SwiftyJWT.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>0</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>UPCarouselFlowLayout.xcscheme_^#shared#^_</key>
+		<key>Toaster.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>8</integer>
+			<key>isShown</key>
+			<false/>
 		</dict>
-		<key>lottie-ios.xcscheme_^#shared#^_</key>
+		<key>UPCarouselFlowLayout.xcscheme</key>
 		<dict>
-			<key>orderHint</key>
-			<integer>12</integer>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>lottie-ios.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
 		</dict>
 	</dict>
 </dict>

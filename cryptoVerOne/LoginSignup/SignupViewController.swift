@@ -14,7 +14,7 @@ class SignupViewController: BaseViewController {
     private var timer: Timer? = nil
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onSignupAction = PublishSubject<SignupPostDto>()
-    private var loginMode : LoginMode = .emailPage {
+    var loginMode : LoginMode = .emailPage {
         didSet {
             //            loginModeDidChange()
         }

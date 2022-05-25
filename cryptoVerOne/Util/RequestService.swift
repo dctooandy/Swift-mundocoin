@@ -70,7 +70,8 @@ extension RequestService
         }
         let para = self.transPara(parameters: parameters , modify: modify)
         Log.v("API URL: \(path!)\n=====================\nMethod: \(method)\n=====================\n參數: \(para)")
-        return Single<T>.create { observer in
+        return Single<T>.create
+        { observer in
             let task = self.sessionManager
                 .request(url,
                          method: method,
@@ -78,12 +79,15 @@ extension RequestService
                          encoding: encoding)
                 .responseCustomModel(T.self,
                                      onData:{ (result: T) in
-                                        observer(.success(result)) },
+                    observer(.success(result)) },
                                      onError:{ (error:ApiServiceError) in
-                                        observer(.error(error))})
+                    observer(.error(error))})
             
             task.resume()
-            return Disposables.create { task.cancel() }
+            return Disposables.create {
+                task.cancel()
+                
+            }
         }
     }
     

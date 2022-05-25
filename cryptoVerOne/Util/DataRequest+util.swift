@@ -16,18 +16,11 @@ extension DataRequest
     func responseCustomModel<T:Codable>(_ type:T.Type,
                                         onData:((T) -> Void)? = nil,
                                         onError:((ApiServiceError) -> Void)? = nil) -> Self {
-        
-
         return responseJSON { response in
-            // 測試用
-//            let url = response.request?.url?.absoluteString
-            // 驗證URL
-//            let requestScheme = response.request?.url?.scheme
-//            let requestHost = response.request?.url?.host
             let requestPath = response.request?.url?.path ?? ""
-//            let requestQuery = response.request?.url?.query
+            //            let requestQuery = response.request?.url?.query
             let requestURLString = requestPath
-//            let requestURLString = response.request?.url?.absoluteString.components(separatedBy: "/").last ?? "無網址"
+            //            let requestURLString = response.request?.url?.absoluteString.components(separatedBy: "/").last ?? "無網址"
             if !Connectivity.isConnectedToInternet {
                 // 網路無回應
                 onError?(ApiServiceError.networkError(000, requestURLString, ""))
@@ -45,14 +38,14 @@ extension DataRequest
                     do {
                         // 驗證是否 ret 200
                         if let responseString = String(data: data, encoding: .utf8),
-                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
+                           let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
                         {
                             Log.v("正常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)")
                             if self.isNeedSaveToken(url:response.request?.url) {
                                 if  let innerData = dict["data"] as? [String : Any]
                                 {
                                     if let infoDic = innerData["info"] as? [[String:Any]],
-                                        let jwtToken = infoDic.first!["token"] as? String
+                                       let jwtToken = infoDic.first!["token"] as? String
                                     {// Login 回來的
                                         Log.v("Login token : \(jwtToken)")
                                         KeychainManager.share.setToken(jwtToken)
@@ -65,137 +58,44 @@ extension DataRequest
                             }
                             let results = try decoder.decode(T.self, from:data)
                             onData?(results)
-
+                            
                         }else
                         {
                             errorMsg = "無法解析資料"
                             apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                            let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: \(errorMsg)"
+                            Log.e("\(message)")
                             onError?(apiError)
                         }
                     }
                     catch DecodingError.dataCorrupted(_) {
-                        errorMsg = "伺服器繁忙，请稍候再试"
-                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                        onError?(apiError)
+                        self.decodeForData(type:"dataCorrupted",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                     catch DecodingError.keyNotFound(let key, let context) {
-                        apiError = ApiServiceError.keyNotFound(context.debugDescription , requestURLString , "\(key)")
-                        onError?(apiError)
+                        self.decodeForData(type:"keyNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                     catch DecodingError.typeMismatch(let type, let context) {
-                        do {
-                            if let responseString = String(data: data, encoding: .utf8),
-                                let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
-                            {
-                                var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                                let message = "異常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
-                                Log.v("\(message)")
-                                results.httpStatus = "\(statusCode)"
-                                apiError = ApiServiceError.errorDto(results)
-                                onError?(apiError)
-                            }
-                        }
-                        catch {
-                            errorMsg = "伺服器繁忙，请稍候再试"
-                            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                            onError?(apiError)
-                        }
+                        self.decodeForData(type:"typeMismatch",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                     catch DecodingError.valueNotFound(let value, let context) {
-                        do {
-                            if let responseString = String(data: data, encoding: .utf8),
-                                let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
-                            {
-                                var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                                let message = "異常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
-                                Log.v("\(message)")
-                                results.httpStatus = "\(statusCode)"
-                                apiError = ApiServiceError.errorDto(results)
-                                onError?(apiError)
-                            }
-                        }
-                        catch {
-                            errorMsg = "伺服器繁忙，请稍候再试"
-                            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                            onError?(apiError)
-                        }
-//                        apiError = ApiServiceError.valueNotFound(context.debugDescription , requestURLString , "\(value)" ,"\(errorKeys)")
-//                        onError?(apiError)
+                        self.decodeForData(type:"valueNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                     catch {
-                        errorMsg = error.localizedDescription
-                        Log.e(errorMsg)
-                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                        onError?(apiError)
+                        self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
-                case 403,422,502,503:
-                    errorMsg = "參數錯誤"
-                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                    onError?(apiError)
+                case 422,502,503:
+                    self.decodeForData(type:"參數錯誤",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 400:
-                    do {
-                        if let responseString = String(data: data, encoding: .utf8),
-                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
-                        {
-                            var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                            let message = "異常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
-                            Log.v("\(message)")
-                            results.httpStatus = "\(statusCode)"
-                            apiError = ApiServiceError.errorDto(results)
-                            onError?(apiError)
-                        }
-                    }
-                    catch {
-                        errorMsg = "伺服器繁忙，请稍候再试"
-                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                        onError?(apiError)
-                    }
-                    
+                    self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 401:
-                    errorMsg = "Unauthorized"
-                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                    //                    apiError = ApiServiceError.tokenExpire(statusCode,requestURLString,errorMsg)
-                    
-                    onError?(apiError)
+                    self.decodeForData(type:"Unauthorized",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                case 403:
+                    self.decodeForData(type:"ACCESS_DENIED",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 404:
-                    errorMsg = "Unable to find provided @id/@code"
-                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                    onError?(apiError)
-                case 405:
-                    errorMsg = "Method 不對"
-                    apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                    onError?(apiError)
+                    self.decodeForData(type:"Unable to find provided @id/@code",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 default:
-                    do {
-                        if let responseString = String(data: data, encoding: .utf8),
-                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
-                        {
-                            var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                            let message = "異常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
-                            Log.v("\(message)")
-                            results.httpStatus = "\(statusCode)"
-                            apiError = ApiServiceError.errorDto(results)
-                            onError?(apiError)
-                        }else
-                        {
-                            errorMsg = "header參數錯誤"
-                            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                            onError?(apiError)
-                        }
-                    }
-                    catch {
-                        errorMsg = "伺服器繁忙，请稍候再试"
-                        apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-                        onError?(apiError)
-                    }
-                   
+                    self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 }
-//                if errorMsg == ""
-//                {
-//                    errorMsg = "Server異常,請稍後再試"
-//                }
-//                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-//                onError?(apiError)
             }
             else
             {
@@ -219,7 +119,29 @@ extension DataRequest
                     onError?(apiError)
                 }
             }
-            
+        }
+    }
+    func decodeForData(type:String = "",requestURLString : String ,data : Data , decoder :JSONDecoder , statusCode:Int,onError:((ApiServiceError) -> Void)? = nil)
+    {
+        var apiError : ApiServiceError!
+        do {
+            if let responseString = String(data: data, encoding: .utf8),
+                let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
+            {
+                var results = try decoder.decode(ErrorDefaultDto.self, from:data)
+                let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
+                Log.e("\(message)")
+                results.httpStatus = "\(statusCode)"
+                apiError = ApiServiceError.errorDto(results)
+                onError?(apiError)
+            }
+        }
+        catch {
+            let errorMsg = "伺服器繁忙，请稍候再试"
+            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+            let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: \(errorMsg)"
+            Log.e("\(message)")
+            onError?(apiError)
         }
     }
     func isNeedSaveToken(url:URL?) -> Bool {

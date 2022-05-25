@@ -11,8 +11,8 @@ struct RegistrationDto :Codable{
     var email : String = ""
     var firstName : String?
     var id : String = ""
-    var isEmailRegistry : JSONValue
-    var isPhoneRegistry : JSONValue
+    var isEmailRegistry : JSONValue = .int(1)
+    var isPhoneRegistry : JSONValue = .int(1)
     var lastLoginDate : String?
     var lastLoginIP : String?
     var lastName : String?
@@ -26,10 +26,24 @@ struct RegistrationDto :Codable{
     var wallet : String?
     
    
-//    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode) {
-//        self.account = account
-//        self.password = password
-//        self.loginMode = loginMode
-//        self.currentShowMode = showMode
-//    }
+    init(createdDate: String = "", email: String = "", firstName: String = "", id : String = "",
+         isEmailRegistry: JSONValue = .int(1), isPhoneRegistry: JSONValue = .int(1), lastLoginDate: String = "" ,lastLoginIP : String = "",lastName: String = "", middleName: String = "", phone: String = "" , registrationCode : String = "",registrationIP: String = "", roles: String = "", status: String = "" , updatedDate : String = "" , wallet : String = "") {
+        self.createdDate = createdDate
+        self.email = email
+        self.firstName = firstName
+        self.id = id
+        self.isEmailRegistry = isEmailRegistry
+        self.isPhoneRegistry = isPhoneRegistry
+        self.lastLoginDate = lastLoginDate
+        self.lastLoginIP = lastLoginIP
+        self.lastName = lastName
+        self.middleName = middleName
+        self.phone = phone
+        self.registrationCode = registrationCode
+        self.registrationIP = registrationIP
+        self.roles = roles
+        self.status = status
+        self.updatedDate = updatedDate
+        self.wallet = wallet
+    }
 }

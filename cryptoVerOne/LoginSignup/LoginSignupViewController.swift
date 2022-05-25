@@ -240,10 +240,13 @@ class LoginSignupViewController: BaseViewController {
     }
     // MARK: 驗證碼
     private func sendVerifyCodeForEmailLogin(_ loginDto: LoginPostDto) {
+        LoadingViewController.show()
         // 傳送驗證碼供Email登入
         Log.i("傳送驗證碼供Email登入使用")
+        _ = LoadingViewController.dismiss()
     }
     private func sendVerifyCodeForEmailSignup(_ dataDto: SignupPostDto) {
+        LoadingViewController.show()
         // 傳送驗證碼供Email登入
         var emailString = ""
         var phoneString = ""
@@ -256,13 +259,14 @@ class LoginSignupViewController: BaseViewController {
         }
         
         Beans.loginServer.signUPRegistration(code: dataDto.registration, email: emailString, password: dataDto.password, phone: phoneString).subscribe { [self] dto in
-            
-            Log.i("傳送驗證碼供Email註冊使用 \(dto)")
+            _ = LoadingViewController.dismiss()
+            Log.i("傳送驗證碼供Email註冊使用 \n\(dto ?? RegistrationDto())")
             // 推向传送验证码VC
             let verifyVC = VerifyViewController.loadNib()
             verifyVC.signupDto = dataDto
             navigationController?.pushViewController(verifyVC, animated: true)
         } onError: { [self]error in
+            _ = LoadingViewController.dismiss()
             // 將invalid text 顏色改為紅色
             if let error = error as? ApiServiceError
             {
@@ -270,8 +274,11 @@ class LoginSignupViewController: BaseViewController {
                 case .errorDto(let dto):
                     for vc in loginPageVC.signupViewControllers
                     {
-                        vc.changeInvalidTextWith(dtos: dto.errors)
-                        vc.registerButton.isEnabled = false
+                        if vc.loginMode == dataDto.signupMode
+                        {
+                            vc.changeInvalidTextWith(dtos: dto.errors)
+                            vc.registerButton.isEnabled = false
+                        }
                     }
                 default:
                     break
@@ -282,7 +289,7 @@ class LoginSignupViewController: BaseViewController {
 //            let verifyVC = VerifyViewController.loadNib()
 //            verifyVC.signupDto = dataDto
 //            navigationController?.pushViewController(verifyVC, animated: true)
-            ErrorHandler.show(error: error)
+//            ErrorHandler.show(error: error)
         }.disposed(by: disposeBag)
     }
     // MARK: 驗證碼
@@ -341,8 +348,20 @@ class LoginSignupViewController: BaseViewController {
         }
     }
     
-    func login(dto: LoginPostDto, checkBioList: Bool = true , route: SuccessViewAction.Route = .main, showLoadingView: Bool = true) {
+    func login(dto: LoginPostDto, checkBioList: Bool = true , route: SuccessViewAction.Route = .main, showLoadingView: Bool = false) {
         LoadingViewController.show()
+        Beans.loginServer.authentication(with: dto.account, password: dto.password).subscribe { [self]authDto in
+            
+            let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+            let showBioView = (dto.loginMode == .emailPage) && checkBioList && !didAskBioLogin
+
+            self.handleLoginSuccess(showLoadingView: showLoadingView,
+                                          showBioView: showBioView,
+                                          route: route)
+        } onError: { [self]error in
+            handleApiServiceError(error)
+        }.disposed(by: disposeBag)
+
 //        Beans.memberServer
 //            .login(dto: dto)
 //            .subscribe(onSuccess: { [weak self] (res) in
@@ -360,12 +379,12 @@ class LoginSignupViewController: BaseViewController {
 //                    KeychainManager.share.updateAccount(acc: dto.account,
 //                                                        pwd: dto.password)
 //                }
-                let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-                let showBioView = (dto.loginMode == .emailPage) && checkBioList && !didAskBioLogin
-//                strongSelf.setLoginPageToDefault()
-                self.handleLoginSuccess(showLoadingView: showLoadingView,
-                                              showBioView: showBioView,
-                                              route: route)
+//                let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+//                let showBioView = (dto.loginMode == .emailPage) && checkBioList && !didAskBioLogin
+//
+//                self.handleLoginSuccess(showLoadingView: showLoadingView,
+//                                              showBioView: showBioView,
+//                                              route: route)
 //                }, onError: { [weak self] (error) in
 //                    self?.handleApiServiceError(error)
 //            }).disposed(by: disposeBag)
@@ -446,9 +465,9 @@ class LoginSignupViewController: BaseViewController {
     }
     
     func signupSuccess(dto: SignupPostDto, res: (SignupDto?, Int)) {
-        LoadingViewController.action(mode: .success, title: "注册成功")
-            .subscribeSuccess({ [weak self]_ in
-                self?.shouldVerify = false
+//        LoadingViewController.action(mode: .success, title: "注册成功")
+//            .subscribeSuccess({ [self]_ in
+//                self.shouldVerify = false
                 DispatchQueue.main.async {
                     if dto.signupMode == .phonepPage {
                         guard let acc = res.0?.account, let pwd = res.0?.password else { return }
@@ -456,7 +475,7 @@ class LoginSignupViewController: BaseViewController {
                                                          pwd: pwd,
                                                          tel: dto.account)
                         
-                        self?.showSignupSuccessView(acc: acc,
+                        self.showSignupSuccessView(acc: acc,
                                                     pwd: pwd,
                                                     mode: dto.signupMode)
                         return
@@ -464,11 +483,11 @@ class LoginSignupViewController: BaseViewController {
                     KeychainManager.share.saveAccPwd(acc: dto.account,
                                                      pwd: dto.password,
                                                      tel: "")
-                    self?.showSignupSuccessView(acc: dto.account,
+                    self.showSignupSuccessView(acc: dto.account,
                                                 pwd: dto.password,
                                                 mode: dto.signupMode)
                 }
-            }).disposed(by: disposeBag)
+//            }).disposed(by: disposeBag)
     }
     
     func handleApiServiceError(_ error: Error) {

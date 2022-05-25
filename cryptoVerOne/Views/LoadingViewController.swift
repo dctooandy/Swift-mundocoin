@@ -23,7 +23,7 @@ class LoadingViewController:BaseViewController {
     private let loadingView: AnimationView = {
         let view = AnimationView(name:"mucoin_loading")
         view.loopMode = LottieLoopMode.loop
-        view.animationSpeed = 2
+        view.animationSpeed = 1
         return view
     }()
     private let errorView: AnimationView = {

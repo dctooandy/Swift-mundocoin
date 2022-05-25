@@ -21,7 +21,7 @@ class ErrorHandler {
                 showAlert(title: "错误讯息", message: msg)
             case .networkError(let code ,let urlString ,_):
                 Log.e("\(code)")
-                showAlert(title: "错误讯息", message: "\(code)")
+                showAlert(title: "Network failed", message: "\(code)")
             case .unknownError(let code ,let urlString ,let msg):
                 Log.e(msg ?? " no error message")
                 showAlert(title: "错误讯息", message: msg ?? "")
@@ -60,7 +60,13 @@ class ErrorHandler {
                 let code = dto.code
                 let reason = dto.reason
                 let errors = dto.errors
-                showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")
+                if status == "403" , dto.reason == "TOKEN_EXPIRED"
+                {
+                    
+                }else
+                {
+                    showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")
+                }
                 
             default: break
             }

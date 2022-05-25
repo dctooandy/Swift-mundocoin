@@ -13,10 +13,12 @@ import AVFoundation
 import AVKit
 class VerifyViewController: BaseViewController {
     // MARK:業務設定
+    @IBOutlet weak var topIconTopConstant: NSLayoutConstraint!
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private var inputMode: LoginMode = .emailPage
+    var isAlreadySetBackView = false
     private var timer: Timer?
     private var countTime = 60
     var loginDto : LoginPostDto?  {
@@ -34,6 +36,7 @@ class VerifyViewController: BaseViewController {
     @IBOutlet weak var sentToLabel: UILabel!
     @IBOutlet weak var userAccountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
+    @IBOutlet weak var topIconImageView: UIImageView!
     fileprivate let idVerifiVC = IDVerificationViewController.loadNib()
     fileprivate let resetPWVC = ResetPasswordViewController.loadNib()
     var verifyInputView : InputStyleView!
@@ -65,6 +68,14 @@ class VerifyViewController: BaseViewController {
         setupUI()
         bindPwdButton()
         bindTextfield()
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,12 +91,50 @@ class VerifyViewController: BaseViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        if isAlreadySetBackView != true
+        {
+            isAlreadySetBackView = true
+            setupBackgroundView()
+        }
+    }
+    func setupBackgroundView()
+    {
         backgroundImageView.snp.updateConstraints { (make) in
-            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+            make.top.equalTo(topIconImageView).offset(-38)
         }
         backgroundImageView.layer.cornerRadius = 20
         backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
         backgroundImageView.layer.addShadow()
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+
+        if ((verifyInputView?.textField.isFirstResponder) == true)
+        {
+//            var info = notification.userInfo!
+//            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+            topIconTopConstant.constant = -50
+//            verifyInputView.snp.updateConstraints { make in
+//                make.top.equalTo(userAccountLabel.snp.bottom).offset(0)
+//            }
+//            UIView.animate(withDuration: 0.25, animations: { [self] in
+//                verifyInputView.layoutIfNeeded()
+//            })
+        }
+        
+        
+
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        topIconTopConstant.constant = 50
+//        verifyInputView.snp.updateConstraints { make in
+//            make.top.equalTo(userAccountLabel.snp.bottom).offset(80)
+//        }
+//        UIView.animate(withDuration: 0.25, animations: { [self] in
+//            verifyInputView.layoutIfNeeded()
+//        })
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     // MARK: -
     // MARK:業務方法
@@ -145,6 +194,7 @@ class VerifyViewController: BaseViewController {
                 self.userAccountLabel.text = signupDto.account
             }
         }
+
     }
     func bindPwdButton()
     {
@@ -162,6 +212,8 @@ class VerifyViewController: BaseViewController {
     {
         verifyInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             verifyInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+            verifyInputView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
         let isValid = verifyInputView.textField.rx.text
             .map {  (str) -> Bool in
@@ -189,7 +241,7 @@ class VerifyViewController: BaseViewController {
                         LoginSignupViewController.share.login(dto: dto,
                                                               checkBioList: true ,
                                                               route: .wallet,
-                                                              showLoadingView: true)
+                                                              showLoadingView: false)
                     }
                 }else
                 {
@@ -227,6 +279,7 @@ class VerifyViewController: BaseViewController {
     }
     func verifyButtonPressed()
     {
+        LoadingViewController.show()
         var idString = ""
         if let loginDto = self.loginDto
         {
@@ -237,8 +290,19 @@ class VerifyViewController: BaseViewController {
         }
         let codeString = verifyInputView.textField.text ?? ""
         Beans.loginServer.verification(idString: idString, codeString: codeString).subscribe { [self]dto in
+            _ = LoadingViewController.dismiss()
             directToNextPage()
-        } onError: { error in
+        } onError: { [self]error in
+            _ = LoadingViewController.dismiss()
+            if let error = error as? ApiServiceError
+            {
+                switch error {
+                case .errorDto(let dto):
+                    verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                default:
+                    break
+                }
+            }
             ErrorHandler.show(error: error)
         }.disposed(by: dpg)
     }

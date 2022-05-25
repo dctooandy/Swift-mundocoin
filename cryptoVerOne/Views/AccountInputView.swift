@@ -83,7 +83,6 @@ class AccountInputView: UIView {
         
         if currentShowMode == .forgotPW
         {
-            accountInputView.tfMaskView.rx.backgroundColor
             isAccountValid.bind(to: accountCheckPassed).disposed(by: dpg)
         }else if currentShowMode == .signupEmail ||
                     currentShowMode == .signupPhone
@@ -127,18 +126,27 @@ class AccountInputView: UIView {
             accountInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
             registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
+            resetInvalidText()
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             accountInputView.tfMaskView.changeBorderWith(isChoose:false)
             passwordInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
+            resetInvalidText()
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             accountInputView.tfMaskView.changeBorderWith(isChoose:false)
             passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
             registrationInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            resetInvalidText()
             registrationInputView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
+    }
+    func resetInvalidText()
+    {
+        accountInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
     }
     func resetTFMaskView()
     {

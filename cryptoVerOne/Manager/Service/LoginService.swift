@@ -60,6 +60,20 @@ class LoginService {
                 return $0
             })
     }
+    func authentication(with idString:String , password:String)  -> Single<AuthenticationDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters = ["id":idString,
+                      "password":password]
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.authentication.path,
+            parameters: parameters,
+            modify: false,
+            resultType: AuthenticationDto.self).map({
+                return $0
+            })
+    }
+    
     
     func loginUserLogin(with account:String , password:String) -> Single<LoginDto?>
     {

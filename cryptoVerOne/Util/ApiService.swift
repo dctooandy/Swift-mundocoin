@@ -49,6 +49,8 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     case registration
     case verificationResend(String )
     case verification(String , String)
+    case authentication
+    case walletAddress
     
     case signup
     case jpush
@@ -70,6 +72,11 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string: ApiService.host + "/verification/resend/\(idString)")
         case .verification(let idString , let codeString):
             return URL(string: ApiService.host + "/verification/\(idString)/\(codeString)")
+        case .authentication:
+            return URL(string:ApiService.host + "/authentication")
+        case .walletAddress:
+            return URL(string:ApiService.host + "/wallet/address")
+            
         case .login:
             return URL(string:ApiService.host + "/login") //暫時
         case .appVersion:
