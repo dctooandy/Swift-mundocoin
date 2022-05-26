@@ -6,7 +6,37 @@
 //
 
 import Foundation
-struct RegistrationDto :Codable{
+import RxSwift
+
+class RegistrationDto :Codable{
+    static var share:RegistrationDto?
+    {
+        didSet {
+            guard let share = share else { return }
+            subject.onNext(share)
+        }
+    }
+    static var rxShare:Observable<RegistrationDto?> = subject
+        .do(onNext: { value in
+            if share == nil {
+                _ = update(done: {})
+            }
+        })
+    static let disposeBag = DisposeBag()
+    static private let subject = BehaviorSubject<RegistrationDto?>(value: nil)
+    static func update(done: @escaping () -> Void) -> Observable<()>{
+        let subject = PublishSubject<Void>()
+//        Beans.userServer.fetchUserInfo().subscribeSuccess({ (userInfoDto) in
+//            share = userInfoDto
+//            share?.isNeedHeadOffNaviPopEvent = false
+//            _ = LoadingViewController.dismiss()
+//            done()
+//            subject.onNext(())
+//        }).disposed(by: disposeBag)
+        return subject.asObservable()
+    }
+    
+    
     var createdDate : String = ""
     var email : String = ""
     var firstName : String?

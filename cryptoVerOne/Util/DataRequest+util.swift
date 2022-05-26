@@ -42,18 +42,11 @@ extension DataRequest
                         {
                             Log.v("正常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)")
                             if self.isNeedSaveToken(url:response.request?.url) {
-                                if  let innerData = dict["data"] as? [String : Any]
+                                if  let innerData = dict["token"] as? String
                                 {
-                                    if let infoDic = innerData["info"] as? [[String:Any]],
-                                       let jwtToken = infoDic.first!["token"] as? String
-                                    {// Login 回來的
-                                        Log.v("Login token : \(jwtToken)")
-                                        KeychainManager.share.setToken(jwtToken)
-                                    }else if let jwtToken = innerData["token"] as? String
-                                    {// UserInfo 回來的
-                                        Log.v("UserInfo token : \(jwtToken)")
-                                        KeychainManager.share.setToken(jwtToken)
-                                    }
+                                    // Login 回來的
+                                    Log.v("Login token : \(innerData)")
+                                    KeychainManager.share.setToken(innerData)
                                 }
                             }
                             let results = try decoder.decode(T.self, from:data)
@@ -61,8 +54,8 @@ extension DataRequest
                             
                         }else
                         {
-                            errorMsg = "無法解析資料"
-                            apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
+                            errorMsg = "資料無法編成"
+                            apiError = ApiServiceError.noData
                             let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: \(errorMsg)"
                             Log.e("\(message)")
                             onError?(apiError)
@@ -133,6 +126,12 @@ extension DataRequest
                 Log.e("\(message)")
                 results.httpStatus = "\(statusCode)"
                 apiError = ApiServiceError.errorDto(results)
+                onError?(apiError)
+            }else
+            {
+                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"無法解析")
+                let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: 無法解析"
+                Log.e("\(message)")
                 onError?(apiError)
             }
         }

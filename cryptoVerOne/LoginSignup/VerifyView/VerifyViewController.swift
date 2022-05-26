@@ -83,6 +83,7 @@ class VerifyViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        verifyResentPressed()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -230,53 +231,53 @@ class VerifyViewController: BaseViewController {
         // 登入 驗證完畢直接登入
         // 註冊 驗證完畢跳出國碼選擇
         // 忘記密碼 驗證完畢 跳出密碼輸入頁
-            if let loginDto = self.loginDto
+        if let loginDto = self.loginDto
+        {
+            if loginDto.currentShowMode != .forgotPW
             {
-                if loginDto.currentShowMode != .forgotPW
+                Log.v("登入驗證完畢,直接登入")
+                //                self.popVC(isAnimation: false)
+                if let dto = self.loginDto
                 {
-                    Log.v("登入驗證完畢,直接登入")
-    //                self.popVC(isAnimation: false)
-                    if let dto = self.loginDto
-                    {
-                        popVC()
-                        LoginSignupViewController.share.login(dto: dto,
-                                                              checkBioList: true ,
-                                                              route: .wallet,
-                                                              showLoadingView: false)
-                    }
-                }else
-                {
-                    Log.v("忘記密碼驗證完畢,輸入密碼")
-                    self.navigationController?.pushViewController(resetPWVC, animated: true )
+                    popVC()
+                    LoginSignupViewController.share.login(dto: dto,
+                                                          checkBioList: true ,
+                                                          route: .wallet,
+                                                          showLoadingView: false)
                 }
-            }else if let _ = self.signupDto
+            }else
             {
-                Log.v("註冊驗證完畢,直接登入")
-                if let dto = self.signupDto
-                {
-                    LoginSignupViewController.share.signup(dto: dto)
-                }
-                // 目前不用選擇國別
-//                Log.v("註冊驗證完畢,國碼選擇")
-//                idVerifiVC.isModalInPopover = true
-//                idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
-//                    if let dto = self.signupDto
-//                    {
-//                        LoginSignupViewController.share.signup(dto: dto)
-//                    }
-//                }.disposed(by: dpg)
-//                idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
-//                    if let dto = self.signupDto
-//                    {
-//                        self.dismiss(animated: true) {
-//                            popVC()
-//                            LoginSignupViewController.share.signup(dto: dto)
-//                        }
-//                    }
-//                }.disposed(by: dpg)
-//                self.present(idVerifiVC, animated: true) {
-//                }
+                Log.v("忘記密碼驗證完畢,輸入密碼")
+                self.navigationController?.pushViewController(resetPWVC, animated: true )
             }
+        }else if let _ = self.signupDto
+        {
+            Log.v("註冊驗證完畢,直接登入")
+            if let dto = self.signupDto
+            {
+                LoginSignupViewController.share.signup(dto: dto)
+            }
+            // 目前不用選擇國別
+            //                Log.v("註冊驗證完畢,國碼選擇")
+            //                idVerifiVC.isModalInPopover = true
+            //                idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
+            //                    if let dto = self.signupDto
+            //                    {
+            //                        LoginSignupViewController.share.signup(dto: dto)
+            //                    }
+            //                }.disposed(by: dpg)
+            //                idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
+            //                    if let dto = self.signupDto
+            //                    {
+            //                        self.dismiss(animated: true) {
+            //                            popVC()
+            //                            LoginSignupViewController.share.signup(dto: dto)
+            //                        }
+            //                    }
+            //                }.disposed(by: dpg)
+            //                self.present(idVerifiVC, animated: true) {
+            //                }
+        }
     }
     func verifyButtonPressed()
     {
@@ -300,11 +301,12 @@ class VerifyViewController: BaseViewController {
                 switch error {
                 case .errorDto(let dto):
                     verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                case .noData:
+                    directToNextPage()
                 default:
-                    break
+                    ErrorHandler.show(error: error)
                 }
             }
-            ErrorHandler.show(error: error)
         }.disposed(by: dpg)
     }
     func verifyResentPressed()
@@ -321,13 +323,25 @@ class VerifyViewController: BaseViewController {
                 idString = signupDto.account
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
-                verifyResentLabel.isUserInteractionEnabled = false
-                setupTimer()
-                underLineView.isHidden = true
-            } onError: { error in
-                ErrorHandler.show(error: error)
+                defaultSetup()
+            } onError: { [self]error in
+                if let errorData = error as? ApiServiceError
+                {
+                    switch errorData {
+                    case .noData:
+                        defaultSetup()
+                    default:
+                        ErrorHandler.show(error: error)
+                    }
+                }
             }.disposed(by: dpg)
         }
+    }
+    func defaultSetup()
+    {
+        verifyResentLabel.isUserInteractionEnabled = false
+        setupTimer()
+        underLineView.isHidden = true
     }
     func setupTimer()
     {

@@ -36,6 +36,10 @@ class AccessTokenAdapter: RequestAdapter {
             }else if urlString.pathComponents.contains("wallet") && urlString.pathComponents.contains("address")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            }else if urlString.pathComponents.contains("authentication")
+            {
+                urlRequest.setValue("application/json", forHTTPHeaderField:"accept")
+                urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
             }else
             {
                 urlRequest.setValue("application/json", forHTTPHeaderField:"accept")

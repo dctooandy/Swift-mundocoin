@@ -12,14 +12,14 @@ import RxSwift
 import Alamofire
 
 class WalletService {
-    func walletAddress() -> Single<LoginDto?>
+    func walletAddress() -> Single<WalletAddressDto?>
     {
         let parameters: Parameters = [String: Any]()
         return Beans.requestServer.singleRequestPost(
             path: ApiService.walletAddress.path,
             parameters: parameters,
             modify: false,
-            resultType: LoginDto.self).map({
+            resultType: WalletAddressDto.self).map({
                 return $0
             })
     }

@@ -412,6 +412,12 @@
 		09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
+		09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
+		09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
+		09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
+		09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
+		09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
+		09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		10B117A1F75DAE74B80D9407 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		4009C015445F86AEF0A90703 /* Pods_cryptoVerOne_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */; };
 		4D555D24E55969229FB42920 /* Pods_cryptoVerOne_stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */; };
@@ -617,6 +623,8 @@
 		09CAF5F0283E048B00D7B19B /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
 		09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecaptchaViewController.swift; sourceTree = "<group>"; };
 		09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecaptchaViewController.xib; sourceTree = "<group>"; };
+		09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
+		09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressDto.swift; sourceTree = "<group>"; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		46D2A3185B3D01BA7E919163 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
 		5EB5D8E84A039D466A6F3932 /* Pods-cryptoVerOne_dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_dev.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -1338,6 +1346,7 @@
 				A19C70C828224614000AFC3F /* ValueDto.swift */,
 				A19C718A28225B25000AFC3F /* ResponseDto.swift */,
 				A19C71A828226279000AFC3F /* LoginPostDto.swift */,
+				09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
@@ -1362,6 +1371,7 @@
 				A1973A202828F3B7009932D8 /* WithdrawView */,
 				A1973A182828F314009932D8 /* DepositView */,
 				A19C70DD28224A62000AFC3F /* WalletViewController.swift */,
+				09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */,
 				A19739E92828C5B5009932D8 /* WalletViewController.xib */,
 			);
 			path = WalletView;
@@ -1910,6 +1920,7 @@
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
 				09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */,
+				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
 				09CAF469283C77ED00D7B19B /* Themes.swift in Sources */,
@@ -1922,6 +1933,7 @@
 				09CAF46F283C77ED00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -2061,6 +2073,7 @@
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
 				09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */,
+				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
 				09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */,
@@ -2073,6 +2086,7 @@
 				09CAF530283C7BBE00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -2212,6 +2226,7 @@
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
 				A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */,
+				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,
 				A19C7089282239DC000AFC3F /* Themes.swift in Sources */,
@@ -2224,6 +2239,7 @@
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,

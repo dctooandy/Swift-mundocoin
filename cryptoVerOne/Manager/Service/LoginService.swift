@@ -64,7 +64,7 @@ class LoginService {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString,
                       "password":password]
-        return Beans.requestServer.singleRequestGet(
+        return Beans.requestServer.singleRequestPost(
             path: ApiService.authentication.path,
             parameters: parameters,
             modify: false,

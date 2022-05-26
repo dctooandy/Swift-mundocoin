@@ -16,6 +16,7 @@ import SafariServices
 import SDWebImage
 class WalletViewController: BaseViewController {
     // MARK:業務設定
+    fileprivate let viewModel = WalletViewModel()
     static let share: WalletViewController = WalletViewController.loadNib()
     let depositVC = DepositViewController.loadNib()
     let withdrawVC = WithdrawViewController.loadNib()
@@ -70,6 +71,7 @@ class WalletViewController: BaseViewController {
         bindAction()
         bindingIMGview()
         setupPagingView()
+        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -130,6 +132,12 @@ class WalletViewController: BaseViewController {
             // 測試
 //            self.navigationController?.pushViewController(twoFAVC, animated: true)
             self.navigationController?.pushViewController(withdrawVC, animated: true)
+        }.disposed(by: dpg)
+    }
+    func bindViewModel()
+    {
+        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { dto in
+            
         }.disposed(by: dpg)
     }
     private func setupPagingView() {

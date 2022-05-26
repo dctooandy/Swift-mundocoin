@@ -71,7 +71,8 @@ class ErrorHandler {
                 {
                     showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")
                 }
-                
+            case .noData:
+                break
             default: break
             }
         } else {

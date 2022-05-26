@@ -148,7 +148,7 @@ class ConfirmPopupView: PopupBottomSheet {
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
         }

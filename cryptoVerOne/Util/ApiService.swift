@@ -35,6 +35,7 @@ enum ApiServiceError:Error, Equatable {
     case valueNotFound(String,String,String,String)
     case typeMismatch(String,String,String,String)
     case keyNotFound(String,String,String)
+    case noData
     case errorDto(ErrorDefaultDto)
     
 }

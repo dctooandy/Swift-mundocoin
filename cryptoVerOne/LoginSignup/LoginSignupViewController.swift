@@ -264,7 +264,10 @@ class LoginSignupViewController: BaseViewController {
         
         Beans.loginServer.signUPRegistration(code: dataDto.registration, email: emailString, password: dataDto.password, phone: phoneString).subscribe { [self] dto in
             _ = LoadingViewController.dismiss()
-            Log.i("傳送驗證碼供Email註冊使用 \n\(dto ?? RegistrationDto())")
+            if let data = dto{
+                RegistrationDto.share = data
+                Log.i("傳送驗證碼供Email註冊使用 \n\(data)")
+            }
             // 推向传送验证码VC
             let verifyVC = VerifyViewController.loadNib()
             verifyVC.signupDto = dataDto
@@ -338,23 +341,37 @@ class LoginSignupViewController: BaseViewController {
     
     // Confirm Touch/Face ID
     private func showBioConfirmView() {
-        let popVC =  ConfirmPopupView(title: "登入确认",
+        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
+                                      title: "",
                                       message: "启用脸部辨识或指纹辨识进行登入？") { [weak self] isOK in
-                                        if isOK {
-                                            guard let acc = MemberAccount.share?.account else { return }
-                                            BioVerifyManager.share.applyMemberInBIOList(acc)
-                                        }
-                                        BioVerifyManager.share.setBioLoginSwitch(to: isOK)
-                                        self?.navigateToRouter(showBioView: false)
+            if isOK {
+                guard let acc = MemberAccount.share?.account else { return }
+                BioVerifyManager.share.applyMemberInBIOList(acc)
+            }
+            BioVerifyManager.share.setBioLoginSwitch(to: isOK)
+            self?.navigateToRouter(showBioView: false, route: .wallet)
         }
-        DispatchQueue.main.async {[weak self] in
-            self?.present(popVC, animated: true, completion: nil)
+        DispatchQueue.main.async {[self] in
+            popVC.start(viewController: self)
         }
     }
     
     func login(dto: LoginPostDto, checkBioList: Bool = true , route: SuccessViewAction.Route = .main, showLoadingView: Bool = false) {
         LoadingViewController.show()
         Beans.loginServer.authentication(with: dto.account, password: dto.password).subscribe { [self]authDto in
+            if let authData = authDto
+            {
+                KeychainManager.share.setToken(authData.token)
+            }
+            MemberAccount.share = MemberAccount(account: dto.account,
+                                                password: dto.password,
+                                                loginMode: dto.loginMode)
+            KeychainManager.share.setLastAccount(dto.account)
+            if dto.loginMode == .emailPage {
+                BioVerifyManager.share.applyMemberInBIOList(dto.account)
+                KeychainManager.share.updateAccount(acc: dto.account,
+                                                    pwd: dto.password)
+            }
             
             let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
             let showBioView = (dto.loginMode == .emailPage) && checkBioList && !didAskBioLogin

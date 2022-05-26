@@ -83,8 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //過期去登入頁面
 //            DeepLinkManager.share.handleDeeplink(navigation: .login)
         }.disposed(by: dpg)
-
-        
     }
     func freshToken()
     {
