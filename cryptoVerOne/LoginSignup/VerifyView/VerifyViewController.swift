@@ -68,6 +68,7 @@ class VerifyViewController: BaseViewController {
         setupUI()
         bindPwdButton()
         bindTextfield()
+        bindBorderColor()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -135,6 +136,7 @@ class VerifyViewController: BaseViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+        verifyInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
     // MARK:業務方法
@@ -223,6 +225,12 @@ class VerifyViewController: BaseViewController {
         isValid.skip(1).bind(to: verifyInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         isValid.bind(to: verifyButton.rx.isEnabled)
             .disposed(by: dpg)
+    }
+    func bindBorderColor()
+    {
+        verifyInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            verifyInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func directToNextPage()
     {

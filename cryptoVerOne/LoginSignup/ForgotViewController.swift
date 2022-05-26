@@ -42,6 +42,7 @@ class ForgotViewController: BaseViewController {
     // MARK:業務方法
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+        resetInputView()
     }
     
     func setDefault() {

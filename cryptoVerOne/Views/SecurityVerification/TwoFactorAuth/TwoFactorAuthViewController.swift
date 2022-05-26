@@ -44,7 +44,11 @@ class TwoFactorAuthViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        copyView.tfMaskView.changeBorderWith(isChoose:false)
+        twoFAView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
     // MARK:業務方法

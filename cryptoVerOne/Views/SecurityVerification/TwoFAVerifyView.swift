@@ -28,6 +28,7 @@ class TwoFAVerifyView: UIView {
         didSet{
             resetUI()
             bindTextfield()
+            bindBorderColor()
         }
     }
     
@@ -63,6 +64,11 @@ class TwoFAVerifyView: UIView {
         super.removeFromSuperview()
         emailInputView.resetTimerAndAll()
         twoFAInputView.resetTimerAndAll()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        endEditing(true)
+        emailInputView.tfMaskView.changeBorderWith(isChoose:false)
+        twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
     // MARK:業務方法
@@ -183,6 +189,17 @@ class TwoFAVerifyView: UIView {
             .map({$0.isEmpty})
             .bind(to: twoFAInputView.cancelRightButton.rx.isHidden)
             .disposed(by: dpg)
+    }
+    func bindBorderColor()
+    {
+        emailInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            emailInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
+        }.disposed(by: dpg)
+        twoFAInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            emailInputView.tfMaskView.changeBorderWith(isChoose:false)
+            twoFAInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func bindLostTwoFALabel()
     {

@@ -787,7 +787,6 @@ extension InputStyleView: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {

@@ -19,7 +19,7 @@ class CPasswordViewController: BaseViewController {
     @IBOutlet weak var backgroundImageView: UIImageView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton()
-        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        btn.addTarget(self, action:#selector(returnToLoginVC), for:.touchUpInside)
         return btn
     }()
     let returnButton = CornerradiusButton()
@@ -73,21 +73,21 @@ class CPasswordViewController: BaseViewController {
     func bindButton()
     {
         returnButton.rx.tap
-            .subscribeSuccess { [weak self] in
-                self?.returnButtonPressed()
+            .subscribeSuccess { [self] in
+                returnButtonPressed()
             }.disposed(by: dpg)
     }
     func returnButtonPressed()
     {
-        popVC()
+        returnToLoginVC()
     }
     func backgroundImageViewHidden()
     {
         backgroundImageView.isHidden = true
     }
-    @objc override func popVC()
+    @objc func returnToLoginVC()
     {
-        _ = self.navigationController?.popToRootViewController(animated: true)
+        DeepLinkManager.share.handleDeeplink(navigation: .login)
     }
 }
 // MARK: -

@@ -37,6 +37,7 @@ class UCPasswordViewController: BaseViewController {
         bindCancelButton()
         bindPwdButton()
         bindAction()
+        bindBorderColor()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -93,6 +94,9 @@ class UCPasswordViewController: BaseViewController {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+        oldInputView.tfMaskView.changeBorderWith(isChoose:false)
+        newInputView.tfMaskView.changeBorderWith(isChoose:false)
+        confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
     // MARK:業務方法
@@ -162,7 +166,24 @@ class UCPasswordViewController: BaseViewController {
             changedPWVC.backgroundImageViewHidden()
             self.navigationController?.pushViewController(changedPWVC, animated: true)
         }.disposed(by: dpg)
-
+    }
+    func bindBorderColor()
+    {
+        oldInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            oldInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            newInputView.tfMaskView.changeBorderWith(isChoose:false)
+            confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
+        }.disposed(by: dpg)
+        newInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            oldInputView.tfMaskView.changeBorderWith(isChoose:false)
+            newInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
+        }.disposed(by: dpg)
+        confirmInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            oldInputView.tfMaskView.changeBorderWith(isChoose:false)
+            newInputView.tfMaskView.changeBorderWith(isChoose:false)
+            confirmInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
     }
     func submitButtonPressed()
     {

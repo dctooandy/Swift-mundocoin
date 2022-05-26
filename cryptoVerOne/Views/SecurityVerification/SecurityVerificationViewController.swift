@@ -224,7 +224,6 @@ class SecurityPagingTitleCell: PagingTitleCell {
         titleLabel.layer.borderWidth = 3
         titleLabel.layer.cornerRadius = layoutAttributes.frame.height / 2
         layer.cornerRadius = layoutAttributes.frame.height / 2
-        self
 //        if self.isSelected == true
 //        {
 //            titleLabel.backgroundColor = Themes.blue2B3674

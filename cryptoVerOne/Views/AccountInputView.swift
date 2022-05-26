@@ -50,9 +50,9 @@ class AccountInputView: UIView {
     // MARK:業務方法
     func bindStyle()
     {
-        Themes.chooseOrNotChoose.bind(to: accountInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
-        Themes.chooseOrNotChoose.bind(to: passwordInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
-        Themes.chooseOrNotChoose.bind(to: registrationInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+//        Themes.chooseOrNotChoose.bind(to: accountInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+//        Themes.chooseOrNotChoose.bind(to: passwordInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+//        Themes.chooseOrNotChoose.bind(to: registrationInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
     }
     func bindTextfield() {
         let isAccountValid = accountInputView.textField.rx.text
@@ -123,22 +123,16 @@ class AccountInputView: UIView {
     func bindBorderColor()
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            accountInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
-            registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
             resetInvalidText()
+            resetTFMaskView(account:isChoose)
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            accountInputView.tfMaskView.changeBorderWith(isChoose:false)
-            passwordInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
             resetInvalidText()
+            resetTFMaskView(password:isChoose)
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            accountInputView.tfMaskView.changeBorderWith(isChoose:false)
-            passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
-            registrationInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             resetInvalidText()
+            resetTFMaskView(regis:isChoose)
             registrationInputView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
     }
@@ -148,11 +142,11 @@ class AccountInputView: UIView {
         passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
         registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
     }
-    func resetTFMaskView()
+    func resetTFMaskView(account:Bool = false ,password:Bool = false ,regis:Bool = false )
     {
-        accountInputView.tfMaskView.changeBorderWith(isChoose:false)
-        passwordInputView.tfMaskView.changeBorderWith(isChoose:false)
-        registrationInputView.tfMaskView.changeBorderWith(isChoose:false)
+        accountInputView.tfMaskView.changeBorderWith(isChoose:account)
+        passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
+        registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
     }
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()
