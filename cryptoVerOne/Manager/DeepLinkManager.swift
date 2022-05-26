@@ -283,8 +283,12 @@ extension DeepLinkManager {
             case .login:
                 print("login")
                 DeepLinkManager.share.cleanDataForLogout()
-                let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
-                UIApplication.shared.keyWindow?.rootViewController = loginNavVC
+                if let vc = UIApplication.topViewController()
+                {
+                    if vc.isKind(of: LoginSignupViewController.self) { return }
+                    let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
+                    UIApplication.shared.keyWindow?.rootViewController = loginNavVC
+                }
                 
             case .signup:
                 print("signup")

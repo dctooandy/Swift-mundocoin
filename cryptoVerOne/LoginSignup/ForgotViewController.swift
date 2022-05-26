@@ -23,7 +23,9 @@ class ForgotViewController: BaseViewController {
     }
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var sendResetLinkButton: CornerradiusButton!
+    @IBOutlet weak var topLabel: UILabel!
     private var accountInputView: AccountInputView?
     // MARK: -
     // MARK:Life cycle
@@ -37,6 +39,7 @@ class ForgotViewController: BaseViewController {
         setup()
         bindLinkBtn()
         bindAccountView()
+        setupBackgroundView()
     }
     // MARK: -
     // MARK:業務方法
@@ -69,12 +72,13 @@ class ForgotViewController: BaseViewController {
     }
     
     func setup() {
-        
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        topLabel.text = "Forgot password".localized
         accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .forgotPW, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(56)
+            make.top.equalTo(topLabel.snp.bottom).offset(36)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight)
@@ -92,7 +96,15 @@ class ForgotViewController: BaseViewController {
         sendResetLinkButton.setTitle("Send".localized, for: .normal)
         
     }
-    
+    func setupBackgroundView()
+    {
+//        backgroundImageView.snp.updateConstraints { (make) in
+//            make.top.equalTo(topIconImageView).offset(-38)
+//        }
+        backgroundImageView.layer.cornerRadius = 20
+        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
+        backgroundImageView.layer.addShadow()
+    }
     func showVerifyCode(_ code: String) {
         self.accountInputView?.passwordInputView.textField.text = code
         self.accountInputView?.passwordInputView.textField.sendActions(for: .valueChanged)

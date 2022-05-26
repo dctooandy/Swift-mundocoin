@@ -333,7 +333,13 @@ class LoginSignupViewController: BaseViewController {
     private func showForgetPasswordVC() {
         Log.e("忘記密碼")
 //        self.present(ForgetPasswordViewController(), animated: true, completion: nil)
-        currentShowMode = .forgotPW
+//        currentShowMode = .forgotPW
+        let accForgot = ForgotViewController.loadNib()
+        accForgot.rxResetButtonPressed().subscribeSuccess { [self](dto) in
+            view.endEditing(true)
+            sendResetLinkForEmail(dto)
+        }.disposed(by: disposeBag)
+        self.navigationController?.pushViewController(accForgot, animated: true)
     }
     
     // Confirm Touch/Face ID
