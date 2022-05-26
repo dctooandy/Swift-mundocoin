@@ -23,12 +23,30 @@ class VerifyViewController: BaseViewController {
     private var countTime = 60
     var loginDto : LoginPostDto?  {
         didSet {
-
+            if let loginDto = self.loginDto
+            {
+                switch loginDto.loginMode {
+                case .emailPage:
+                    self.sentToLabel.text = "We have sent an email to".localized
+                case .phonepPage:
+                    self.sentToLabel.text = "We have sent messages to".localized
+                }
+                self.userAccountLabel.text = loginDto.account
+            }
         }
     }
     var signupDto : SignupPostDto?  {
         didSet {
-
+            if let signupDto = self.signupDto
+            {
+                switch signupDto.signupMode {
+                case .emailPage:
+                    self.sentToLabel.text = "We have sent an email to".localized
+                case .phonepPage:
+                    self.sentToLabel.text = "We have sent messages to".localized
+                }
+                self.userAccountLabel.text = signupDto.account
+            }
         }
     }
     // MARK: -
@@ -108,31 +126,14 @@ class VerifyViewController: BaseViewController {
         backgroundImageView.layer.addShadow()
     }
     @objc func keyboardWillShow(notification: NSNotification) {
-
+        
         if ((verifyInputView?.textField.isFirstResponder) == true)
         {
-//            var info = notification.userInfo!
-//            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
             topIconTopConstant.constant = -50
-//            verifyInputView.snp.updateConstraints { make in
-//                make.top.equalTo(userAccountLabel.snp.bottom).offset(0)
-//            }
-//            UIView.animate(withDuration: 0.25, animations: { [self] in
-//                verifyInputView.layoutIfNeeded()
-//            })
         }
-        
-        
-
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         topIconTopConstant.constant = 50
-//        verifyInputView.snp.updateConstraints { make in
-//            make.top.equalTo(userAccountLabel.snp.bottom).offset(80)
-//        }
-//        UIView.animate(withDuration: 0.25, animations: { [self] in
-//            verifyInputView.layoutIfNeeded()
-//        })
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -175,28 +176,6 @@ class VerifyViewController: BaseViewController {
             make.width.centerX.equalTo(verifyResentLabel)
             make.height.equalTo(1)
         }
-        if let loginDto = self.loginDto
-        {
-            switch loginDto.loginMode {
-            case .emailPage:
-                self.sentToLabel.text = "We have sent an email to".localized
-                self.userAccountLabel.text = loginDto.account
-            case .phonepPage:
-                self.sentToLabel.text = "We have sent messages to".localized
-                self.userAccountLabel.text = loginDto.account
-            }
-        }else if let signupDto = self.signupDto
-        {
-            switch signupDto.signupMode {
-            case .emailPage:
-                self.sentToLabel.text = "We have sent an email to".localized
-                self.userAccountLabel.text = signupDto.account
-            case .phonepPage:
-                self.sentToLabel.text = "We have sent messages to".localized
-                self.userAccountLabel.text = signupDto.account
-            }
-        }
-
     }
     func bindPwdButton()
     {

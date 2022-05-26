@@ -29,20 +29,9 @@ class ErrorHandler {
                 Log.e("tokenExpireError")
                 Toast.show(msg:"tokenExpireError")
             case .tokenExpire:
-                KeychainManager.share.clearToken()
-                //KeychainManager.share.deleteValue(at: .account)
-//                WalletDto.share = nil
-//                MemberProfileDto.share = nil
-//                BankCardDto.share = nil
-//                MemberDto.share = nil
-//                AccountVerifyDto.share = nil
                 LoginSignupViewController.share.setMemberViewControllerDefault()
                 Toast.show(msg: "连线逾时请重新登入")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1 , execute: {
-//                    UIApplication.shared.keyWindow?.rootViewController =  LoginSignupViewController.share.isLogin(true)
-                    let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
-                    UIApplication.shared.keyWindow?.rootViewController = loginNavVC
-                })
+                DeepLinkManager.share.handleDeeplink(navigation: .login)
             case .notLogin:
                 showRedictToLoginAlert()
             case .failThrice:

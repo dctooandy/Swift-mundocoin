@@ -117,15 +117,11 @@ class LoginAlert:BaseViewController {
     private func bindBtns(){
         
         registerBtn.rx.tap.subscribeSuccess { (_) in
-//            UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(false)
-            let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.signupEmail))
-            UIApplication.shared.keyWindow?.rootViewController = loginNavVC
+            DeepLinkManager.share.handleDeeplink(navigation: .signup)
             }.disposed(by: disposeBag)
         
         loginBtn.rx.tap.subscribeSuccess { (_) in
-//            UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
-            let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
-            UIApplication.shared.keyWindow?.rootViewController = loginNavVC
+            DeepLinkManager.share.handleDeeplink(navigation: .login)
             }.disposed(by: disposeBag)
     }
     

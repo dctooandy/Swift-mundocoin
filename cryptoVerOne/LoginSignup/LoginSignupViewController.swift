@@ -89,9 +89,6 @@ class LoginSignupViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         addDateSelectedButton()
-        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-            appdelegate.stopRETimer()
-        }
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
 //        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView:switchBtn)
 //        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)

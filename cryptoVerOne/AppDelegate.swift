@@ -16,9 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         didSet{
             //走正常流程時,判斷是否已登入過
-            let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share)
-            let walletNavVC = MDNavigationController(rootViewController: WalletViewController.loadNib())
-            window?.rootViewController = isLogin! ? walletNavVC : loginNavVC
+            if isLogin == true
+            {
+                let walletNavVC = MDNavigationController(rootViewController: WalletViewController.loadNib())
+                window?.rootViewController = walletNavVC
+            }else
+            {
+                DeepLinkManager.share.handleDeeplink(navigation: .login)
+            }
         }
     }
     var timer: Timer?
@@ -74,12 +79,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 沒過期,打refresh API, 時間加30分鐘
             Log.e("沒過期")
             freshToken()
-            startToCountDown()
         } onError: { [self](error) in
             //先啟動
             Log.e("沒過期")
             freshToken()
-            startToCountDown()
             //過期去登入頁面
 //            DeepLinkManager.share.handleDeeplink(navigation: .login)
         }.disposed(by: dpg)

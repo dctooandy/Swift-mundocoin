@@ -18,19 +18,28 @@ struct WalletAddressDto :Codable {
     static var rxShare:Observable<WalletAddressDto?> = subject
         .do(onNext: { value in
             if share == nil {
-                _ = update(done: {})
+                if UserStatus.share.isLogin == true {
+                    _ = update(done: {
+                        Log.e("完成")
+                    })
+                }
             }
+        },onError: { error in
+            Log.e("有錯誤")
         })
     static let disposeBag = DisposeBag()
     static private let subject = BehaviorSubject<WalletAddressDto?>(value: nil)
     static func update(done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.walletServer.walletAddress().subscribeSuccess({ (walletDto) in
+        Beans.walletServer.walletAddress().subscribe { [self](walletDto) in
             share = walletDto
             _ = LoadingViewController.dismiss()
             done()
             subject.onNext(())
-        }).disposed(by: disposeBag)
+        } onError: { [self](error) in
+            subject.onError(error)
+        }.disposed(by: disposeBag)
+
         return subject.asObservable()
     }
     let id: String

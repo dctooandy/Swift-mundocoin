@@ -72,11 +72,8 @@ class DeepLinkManager {
             print("navigation to: \(navigation)")
             switch navigation {
             case .member,.walletDeposit, .walletWithdrawal:
-//                 .myPromotion,
-//                 .promotionDetail:
                 if !UserStatus.share.isLogin {
                     DispatchQueue.main.async {
-//                        UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
                         let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
                         UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                     }
@@ -128,9 +125,15 @@ class DeepLinkManager {
             }
         }
     }
-    func checkTimer()
+    func cleanDataForLogout()
     {
-        
+        KeychainManager.share.clearToken()
+        WalletAddressDto.share = nil
+        UserInfoDto.share = nil
+        RegistrationDto.share = nil
+        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+            appdelegate.stopRETimer()
+        }
     }
 }
 fileprivate let dpg = DisposeBag()
@@ -279,13 +282,13 @@ extension DeepLinkManager {
                 
             case .login:
                 print("login")
-//                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(true)
+                DeepLinkManager.share.cleanDataForLogout()
                 let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
                 UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                 
             case .signup:
                 print("signup")
-//                UIApplication.shared.keyWindow?.rootViewController = LoginSignupViewController.share.isLogin(false)
+                DeepLinkManager.share.cleanDataForLogout()
                 let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.signupEmail))
                 UIApplication.shared.keyWindow?.rootViewController = loginNavVC
             case .appNews:

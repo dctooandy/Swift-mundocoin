@@ -16,6 +16,8 @@ class UserMenuViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     
+    @IBOutlet weak var usetAccountLabel: UILabel!
+    @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var rightArrowImage: UIImageView!
     @IBOutlet weak var tableView: UITableView!
@@ -66,6 +68,10 @@ class UserMenuViewController: BaseViewController {
         tableView.registerXibCell(type: UserMenuGrayLineCell.self)
         tableView.separatorStyle = .none
         
+        if let userEmail = RegistrationDto.share?.email
+        {
+            usetAccountLabel.text = userEmail
+        }
     }
     func bind()
     {
@@ -98,14 +104,11 @@ class UserMenuViewController: BaseViewController {
         }
         popVC.start(viewController: self)
     }
-}
-func directToViewController() {
-    if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
-
-        let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share)
-        mainWindow.rootViewController = loginNavVC
-        mainWindow.makeKeyAndVisible()
+    
+    func directToViewController() {
+        DeepLinkManager.share.handleDeeplink(navigation: .login)
     }
+
 }
 // MARK: -
 // MARK: 延伸
