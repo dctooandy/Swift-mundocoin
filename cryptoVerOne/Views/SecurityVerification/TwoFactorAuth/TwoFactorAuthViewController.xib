@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -55,28 +55,28 @@ To reset 2FA will take at lease 7 days.</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Yp-Fh-2ar">
-                                        <rect key="frame" x="20" y="411" width="374" height="90"/>
+                                        <rect key="frame" x="20" y="411" width="374" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="5zT-sd-66T"/>
+                                            <constraint firstAttribute="height" constant="100" id="5zT-sd-66T"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ohg-1W-PdK">
-                                        <rect key="frame" x="20" y="511" width="374" height="90"/>
+                                        <rect key="frame" x="20" y="521" width="374" height="100"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="90" id="DBt-QV-NqT"/>
+                                            <constraint firstAttribute="height" constant="100" id="DBt-QV-NqT"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a6d-d0-cti" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
-                                        <rect key="frame" x="62" y="651" width="290" height="50"/>
+                                        <rect key="frame" x="62" y="626" width="290" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="7Bn-KI-MXt"/>
                                         </constraints>
                                         <state key="normal" title="Bind"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O0e-i8-eFC" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
-                                        <rect key="frame" x="62" y="721" width="290" height="50"/>
+                                        <rect key="frame" x="62" y="696" width="290" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="8HP-ub-7rl"/>
                                         </constraints>
@@ -88,7 +88,7 @@ To reset 2FA will take at lease 7 days.</string>
                                     <constraint firstAttribute="trailing" secondItem="KHE-3Q-xog" secondAttribute="trailing" constant="20" id="1Hu-KB-m7A"/>
                                     <constraint firstAttribute="trailing" secondItem="ohg-1W-PdK" secondAttribute="trailing" constant="20" id="3K3-tT-YwL"/>
                                     <constraint firstItem="ohg-1W-PdK" firstAttribute="top" secondItem="2Yp-Fh-2ar" secondAttribute="bottom" constant="10" id="577-7o-to3"/>
-                                    <constraint firstItem="a6d-d0-cti" firstAttribute="top" secondItem="ohg-1W-PdK" secondAttribute="bottom" constant="50" id="CK1-Hj-AJR"/>
+                                    <constraint firstItem="a6d-d0-cti" firstAttribute="top" secondItem="ohg-1W-PdK" secondAttribute="bottom" constant="5" id="CK1-Hj-AJR"/>
                                     <constraint firstItem="KHE-3Q-xog" firstAttribute="centerX" secondItem="Rhk-7J-T41" secondAttribute="centerX" id="DwC-CH-q9S"/>
                                     <constraint firstItem="P2N-ri-24o" firstAttribute="top" secondItem="KHE-3Q-xog" secondAttribute="bottom" constant="24" id="E3V-hO-neU"/>
                                     <constraint firstAttribute="trailing" secondItem="O0e-i8-eFC" secondAttribute="trailing" constant="62" id="Ixs-Hy-Oqj"/>
@@ -117,7 +117,7 @@ To reset 2FA will take at lease 7 days.</string>
                     </scrollView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="9vu-gI-znE"/>
-                <color key="backgroundColor" red="0.96460121870000004" green="0.96476620440000005" blue="0.96459084750000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
                     <constraint firstItem="dZS-je-wJn" firstAttribute="trailing" secondItem="9vu-gI-znE" secondAttribute="trailing" id="0wU-DB-e7R"/>
                     <constraint firstItem="dZS-je-wJn" firstAttribute="leading" secondItem="9vu-gI-znE" secondAttribute="leading" id="Aa2-h4-GWq"/>
@@ -131,7 +131,9 @@ To reset 2FA will take at lease 7 days.</string>
                 <outlet property="codeImageView" destination="1iY-BX-kr0" id="s0L-LQ-8uP"/>
                 <outlet property="copyInputView" destination="2Yp-Fh-2ar" id="TJp-Tf-Hnb"/>
                 <outlet property="downloadButton" destination="O0e-i8-eFC" id="e73-qm-uVA"/>
+                <outlet property="scrollView" destination="dZS-je-wJn" id="YOt-9s-hYz"/>
                 <outlet property="titleLabel" destination="KHE-3Q-xog" id="jnX-nf-gxw"/>
+                <outlet property="topIconTopConstant" destination="ljS-dd-n4d" id="NA9-Rk-NAa"/>
                 <outlet property="twoFAInputView" destination="ohg-1W-PdK" id="62d-Al-GZk"/>
             </connections>
             <point key="canvasLocation" x="91" y="86"/>

@@ -151,7 +151,6 @@ class SecurityVerificationViewController: BaseViewController {
         }.disposed(by: dpg)
     }
 
-
     func setupSelectedUI()
     {
         setupPageVC()

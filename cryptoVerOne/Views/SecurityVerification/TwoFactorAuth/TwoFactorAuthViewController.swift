@@ -15,8 +15,10 @@ class TwoFactorAuthViewController: BaseViewController {
     private let dpg = DisposeBag()
     static let share: TwoFactorAuthViewController = TwoFactorAuthViewController.loadNib()
     var qrCodeString : String = ""
+    @IBOutlet weak var topIconTopConstant: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet var twoFAInputView: UIView!
@@ -30,9 +32,13 @@ class TwoFactorAuthViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Google Authentication".localized
+        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
         setupUI()
         bindButtonAction()
         bindTextfield()
+        bindCancelButton()
+        setScrollView()
+        setNotification()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -44,6 +50,11 @@ class TwoFactorAuthViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    @objc func touch() {
+        self.view.endEditing(true)
+        copyView.tfMaskView.changeBorderWith(isChoose:false)
+        twoFAView.tfMaskView.changeBorderWith(isChoose:false)
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -124,6 +135,31 @@ class TwoFactorAuthViewController: BaseViewController {
             twoFAView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
     }
+    func bindCancelButton()
+    {
+        let _ =  twoFAView.textField.rx.text.map({$0 ?? ""})
+            .map({$0.isEmpty})
+            .bind(to: twoFAView.cancelRightButton.rx.isHidden)
+            .disposed(by: dpg)
+    }
+    func setScrollView()
+    {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touch))
+        recognizer.numberOfTapsRequired = 1
+        recognizer.numberOfTouchesRequired = 1
+        scrollView.addGestureRecognizer(recognizer)
+    }
+    func setNotification()
+    {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
     func requestForBindAuth()
     {
         //網路
@@ -146,7 +182,16 @@ class TwoFactorAuthViewController: BaseViewController {
 
         return nil
     }
+    @objc func keyboardWillShow(notification: NSNotification) {
 
+        if ((twoFAView?.textField.isFirstResponder) == true)
+        {
+            topIconTopConstant.constant = -200
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        topIconTopConstant.constant = 0
+    }
     @objc override func popVC() {
         let securityVC = SecurityViewController.share
         _ = self.navigationController?.popToViewController(securityVC, animated:true )
