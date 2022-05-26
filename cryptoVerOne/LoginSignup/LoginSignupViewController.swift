@@ -10,6 +10,7 @@ import RxSwift
 import Toaster
 import AVFoundation
 import AVKit
+import ReCaptcha
 
 enum ShowMode {
     case loginEmail
@@ -715,24 +716,34 @@ class LoginSignupViewController: BaseViewController {
     
     //MARK: - 顯示滑塊驗證
     private func showImageVerifyView(_ postDto: Any) {
-        let imageVerifyView = ImageVerifyView()
-        self.view.addSubview(imageVerifyView)
-        imageVerifyView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+//        let imageVerifyView = ImageVerifyView()
+//        self.view.addSubview(imageVerifyView)
+//        imageVerifyView.snp.makeConstraints { (make) in
+//            make.edges.equalToSuperview()
+//        }
+//
+//        imageVerifyView
+//            .rxVerifySuccess()
+//            .subscribeSuccess { [weak self] (success) in
+//                if let dto = postDto as? SignupPostDto {
+//                    // 發送註冊以及驗證碼
+//                    self?.sendVerifyCodeForEmailSignup(dto)
+//                } else if let dto = postDto as? LoginPostDto {
+//                    self?.login(dto: dto, checkBioList: dto.loginMode == .emailPage ,route: .wallet)
+//                }
+//                imageVerifyView.removeFromSuperview()
+//            }.disposed(by: disposeBag)
         
-        imageVerifyView
-            .rxVerifySuccess()
-            .subscribeSuccess { [weak self] (success) in
-                if let dto = postDto as? SignupPostDto {
-                    // 發送註冊以及驗證碼
-                    self?.sendVerifyCodeForEmailSignup(dto)
-                } else if let dto = postDto as? LoginPostDto {
-                    self?.login(dto: dto, checkBioList: dto.loginMode == .emailPage ,route: .wallet)
-                }
-                imageVerifyView.removeFromSuperview()
-            }.disposed(by: disposeBag)
-        
+        let recaptchaVC = RecaptchaViewController.loadNib()
+        recaptchaVC.rxSuccessClick().subscribeSuccess { [self]tokenString in
+            if let dto = postDto as? SignupPostDto {
+                // 發送註冊以及驗證碼
+                sendVerifyCodeForEmailSignup(dto)
+            } else if let dto = postDto as? LoginPostDto {
+                login(dto: dto, checkBioList: dto.loginMode == .emailPage ,route: .wallet)
+            }
+        }.disposed(by: disposeBag)
+        self.navigationController?.pushViewController(recaptchaVC, animated: true)
     }
 }
 

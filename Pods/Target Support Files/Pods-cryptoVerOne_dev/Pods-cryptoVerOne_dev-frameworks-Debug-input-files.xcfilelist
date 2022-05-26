@@ -1,4 +1,4 @@
-${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh
+${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework

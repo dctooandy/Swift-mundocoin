@@ -141,7 +141,6 @@
 		09CAF4BD283C77ED00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710328224DCF000AFC3F /* BottomSheetDismissAnimationController.swift */; };
 		09CAF4BE283C77ED00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710028224DBD000AFC3F /* BottomSheetPresentAnimationController.swift */; };
 		09CAF4BF283C77ED00D7B19B /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
-		09CAF4C1283C77ED00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		09CAF4C3283C77ED00D7B19B /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
 		09CAF4C4283C77ED00D7B19B /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		09CAF4C5283C77ED00D7B19B /* mucoin_error.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7141282257AB000AFC3F /* mucoin_error.json */; };
@@ -322,7 +321,6 @@
 		09CAF57E283C7BBE00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710328224DCF000AFC3F /* BottomSheetDismissAnimationController.swift */; };
 		09CAF57F283C7BBE00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C710028224DBD000AFC3F /* BottomSheetPresentAnimationController.swift */; };
 		09CAF580283C7BBE00D7B19B /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
-		09CAF582283C7BBE00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		09CAF584283C7BBE00D7B19B /* TDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */; };
 		09CAF585283C7BBE00D7B19B /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		09CAF586283C7BBE00D7B19B /* mucoin_error.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7141282257AB000AFC3F /* mucoin_error.json */; };
@@ -408,6 +406,15 @@
 		09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
 		09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
 		09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
+		09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
+		09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
+		09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
+		09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
+		09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
+		09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
+		10B117A1F75DAE74B80D9407 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
+		4009C015445F86AEF0A90703 /* Pods_cryptoVerOne_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */; };
+		4D555D24E55969229FB42920 /* Pods_cryptoVerOne_stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */; };
 		697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
@@ -588,6 +595,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
@@ -607,9 +615,13 @@
 		09CAF5E0283CE58E00D7B19B /* OtherValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherValue.swift; sourceTree = "<group>"; };
 		09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDto.swift; sourceTree = "<group>"; };
 		09CAF5F0283E048B00D7B19B /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
-		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Pods/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
-		6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
-		6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
+		09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecaptchaViewController.swift; sourceTree = "<group>"; };
+		09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecaptchaViewController.xib; sourceTree = "<group>"; };
+		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
+		46D2A3185B3D01BA7E919163 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
+		5EB5D8E84A039D466A6F3932 /* Pods-cryptoVerOne_dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_dev.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev.release.xcconfig"; sourceTree = "<group>"; };
+		703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BF76B14E5CE0469774DDA23 /* Pods-cryptoVerOne_stage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_stage.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage.debug.xcconfig"; sourceTree = "<group>"; };
 		A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDVerificationViewController.swift; sourceTree = "<group>"; };
 		A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDVerificationViewController.xib; sourceTree = "<group>"; };
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
@@ -794,6 +806,8 @@
 		A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD74FE76EBADF5EB742DFEB5 /* Pods-cryptoVerOne_stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_stage.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage.release.xcconfig"; sourceTree = "<group>"; };
+		F07DB6D0993AA4E47FDC6FE2 /* Pods-cryptoVerOne_dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_dev.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -801,7 +815,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09CAF4C1283C77ED00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */,
+				4009C015445F86AEF0A90703 /* Pods_cryptoVerOne_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -809,7 +823,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09CAF582283C7BBE00D7B19B /* Pods_cryptoVerOne.framework in Frameworks */,
+				4D555D24E55969229FB42920 /* Pods_cryptoVerOne_stage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -818,6 +832,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */,
+				10B117A1F75DAE74B80D9407 /* Pods_cryptoVerOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,12 +855,24 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		09CAF5F4283F542800D7B19B /* ReCaptchaView */ = {
+			isa = PBXGroup;
+			children = (
+				09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */,
+				09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */,
+			);
+			path = ReCaptchaView;
+			sourceTree = "<group>";
+		};
 		4CF017450A8210E3DB9084F3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */,
-				6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */,
 				204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */,
+				46D2A3185B3D01BA7E919163 /* Pods-cryptoVerOne.debug.xcconfig */,
+				F07DB6D0993AA4E47FDC6FE2 /* Pods-cryptoVerOne_dev.debug.xcconfig */,
+				5EB5D8E84A039D466A6F3932 /* Pods-cryptoVerOne_dev.release.xcconfig */,
+				9BF76B14E5CE0469774DDA23 /* Pods-cryptoVerOne_stage.debug.xcconfig */,
+				DD74FE76EBADF5EB742DFEB5 /* Pods-cryptoVerOne_stage.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1113,6 +1140,7 @@
 		A19C6FEA28221C2F000AFC3F /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
+				09CAF5F4283F542800D7B19B /* ReCaptchaView */,
 				A19739C528251B65009932D8 /* ChangedPasswordView */,
 				A19739C128251AFB009932D8 /* ResetPasswordView */,
 				A1B051C428236C5600056183 /* VerifyView */,
@@ -1437,6 +1465,8 @@
 			isa = PBXGroup;
 			children = (
 				AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */,
+				07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */,
+				703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1448,11 +1478,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09CAF4F4283C77ED00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_dev" */;
 			buildPhases = (
-				09CAF43B283C77ED00D7B19B /* [CP] Check Pods Manifest.lock */,
+				775367FF849261567310A211 /* [CP] Check Pods Manifest.lock */,
 				09CAF43C283C77ED00D7B19B /* Sources */,
 				09CAF4C0283C77ED00D7B19B /* Frameworks */,
 				09CAF4C2283C77ED00D7B19B /* Resources */,
-				09CAF4F3283C77ED00D7B19B /* [CP] Embed Pods Frameworks */,
+				F5A9DD95CE6F3264CB2E96E7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1467,11 +1497,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09CAF5B5283C7BBE00D7B19B /* Build configuration list for PBXNativeTarget "cryptoVerOne_stage" */;
 			buildPhases = (
-				09CAF4FC283C7BBE00D7B19B /* [CP] Check Pods Manifest.lock */,
+				232D19DB95ADE9350A040549 /* [CP] Check Pods Manifest.lock */,
 				09CAF4FD283C7BBE00D7B19B /* Sources */,
 				09CAF581283C7BBE00D7B19B /* Frameworks */,
 				09CAF583283C7BBE00D7B19B /* Resources */,
-				09CAF5B4283C7BBE00D7B19B /* [CP] Embed Pods Frameworks */,
+				CF88245BB0E03B214FCBB322 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1560,6 +1590,7 @@
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
+				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
@@ -1615,6 +1646,7 @@
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
+				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
@@ -1686,6 +1718,7 @@
 				09CAF5BB283C7C2300D7B19B /* Info_stage.plist in Resources */,
 				09CAF4FA283C78A700D7B19B /* Info_dev.plist in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
+				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
@@ -1708,7 +1741,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		09CAF43B283C77ED00D7B19B /* [CP] Check Pods Manifest.lock */ = {
+		232D19DB95ADE9350A040549 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1723,31 +1756,14 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne_stage-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		09CAF4F3283C77ED00D7B19B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		09CAF4FC283C7BBE00D7B19B /* [CP] Check Pods Manifest.lock */ = {
+		775367FF849261567310A211 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1762,28 +1778,11 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-cryptoVerOne_dev-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		09CAF5B4283C7BBE00D7B19B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CA9FC864477A527757ACCCFD /* [CP] Check Pods Manifest.lock */ = {
@@ -1808,6 +1807,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		CF88245BB0E03B214FCBB322 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		F326C1756587CB392ECC1DD4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1823,6 +1839,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5A9DD95CE6F3264CB2E96E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1914,6 +1947,7 @@
 				09CAF486283C77ED00D7B19B /* AppVersionDto.swift in Sources */,
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
+				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -2064,6 +2098,7 @@
 				09CAF547283C7BBE00D7B19B /* AppVersionDto.swift in Sources */,
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
+				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -2214,6 +2249,7 @@
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
+				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -2313,7 +2349,7 @@
 /* Begin XCBuildConfiguration section */
 		09CAF4F5283C77ED00D7B19B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */;
+			baseConfigurationReference = F07DB6D0993AA4E47FDC6FE2 /* Pods-cryptoVerOne_dev.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2342,7 +2378,7 @@
 		};
 		09CAF4F6283C77ED00D7B19B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */;
+			baseConfigurationReference = 5EB5D8E84A039D466A6F3932 /* Pods-cryptoVerOne_dev.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2370,7 +2406,7 @@
 		};
 		09CAF5B6283C7BBE00D7B19B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */;
+			baseConfigurationReference = 9BF76B14E5CE0469774DDA23 /* Pods-cryptoVerOne_stage.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2399,7 +2435,7 @@
 		};
 		09CAF5B7283C7BBE00D7B19B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */;
+			baseConfigurationReference = DD74FE76EBADF5EB742DFEB5 /* Pods-cryptoVerOne_stage.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2547,7 +2583,7 @@
 		};
 		A19C6FE3282218DF000AFC3F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6B14F1090E9B0B3AEAF18E71 /* Pods-cryptoVerOne.debug.xcconfig */;
+			baseConfigurationReference = 46D2A3185B3D01BA7E919163 /* Pods-cryptoVerOne.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -2575,7 +2611,7 @@
 		};
 		A19C6FE4282218DF000AFC3F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6F825B26FE04653DDAC5DFE3 /* Pods-cryptoVerOne.release.xcconfig */;
+			baseConfigurationReference = 204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
