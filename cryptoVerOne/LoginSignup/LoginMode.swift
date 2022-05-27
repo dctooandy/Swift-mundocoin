@@ -9,12 +9,12 @@
 import Foundation
 enum LoginMode {
     case emailPage
-    case phonepPage
+    case phonePage
     
     var inputViewMode : InputViewMode {
         switch self {
         case .emailPage: return .email
-        case .phonepPage: return .phone
+        case .phonePage: return .phone
         }
     }
    
@@ -24,7 +24,7 @@ enum LoginMode {
     
     func signupSuccessTitles() -> SignupSuccessTitle {
         switch self {
-        case .phonepPage:
+        case .phonePage:
             return SignupSuccessTitle(title: "Complete Info", doneButtonTitle: "Start", showAccount: true)
         case .emailPage:
             return SignupSuccessTitle(title: "Welcome to Mundocoin".localized, doneButtonTitle: "Start", showAccount: false)

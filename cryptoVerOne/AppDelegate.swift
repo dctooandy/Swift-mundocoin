@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var timer: Timer?
     private let dpg = DisposeBag()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        setupAppearance()
+//        setupAppearance()
         initSingleton()
         launchFromNotification(options: launchOptions)
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -90,9 +90,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func freshToken()
     {
         Log.e("刷新Token")
-        // 等API
-        // 刷新時間
-        startToCountDown()
+        Beans.loginServer.refreshToken().subscribeSuccess { [self]dto in
+            if let dataDto = dto
+            {
+                KeychainManager.share.setToken(dataDto.token)
+                // 刷新時間
+                startToCountDown()
+            }
+        }.disposed(by: dpg)
     }
     func startToCountDown() {
         Log.e("刷新時間")

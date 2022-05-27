@@ -80,7 +80,7 @@ class SignupViewController: BaseViewController {
         switch loginMode {
         case .emailPage:
             accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupEmail, lineColor: Themes.grayLight)
-        case .phonepPage:
+        case .phonePage:
             accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupPhone, lineColor: Themes.grayLight)
         }
         
@@ -130,7 +130,7 @@ class SignupViewController: BaseViewController {
     func modeTitle() -> String {
         switch  loginMode {
         case .emailPage: return "".localized
-        case .phonepPage: return "Mobile".localized
+        case .phonePage: return "Mobile".localized
         }
     }
     

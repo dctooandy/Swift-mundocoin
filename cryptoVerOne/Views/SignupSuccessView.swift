@@ -13,16 +13,12 @@ import RxCocoa
 enum SuccessViewAction {
     case toMainView(String, String)
     case toPersonal(String, String)
-    case toBet(String, String)
-    case clickAD(acc: String, pwd: String, url: String)
     case member
-    case wallet
+    case toWallet(String, String)
     
     enum Route {
         case main
         case personal
-        case bet
-        case clickAD(url: String)
         case member
         case wallet
     }
@@ -33,13 +29,9 @@ enum SuccessViewAction {
             return .main
         case .toPersonal(_, _):
             return .personal
-        case .toBet(_, _):
-            return .bet
-        case .clickAD(let acc, let pwd, let url):
-            return .clickAD(url: url)
         case .member:
             return .member
-        case .wallet:
+        case .toWallet(_, _):
             return .wallet
         }
     }
@@ -92,7 +84,7 @@ class SignupSuccessView: UIView {
         guard let dto = bannerDto else { return }
         let linkUrlStr = dto.bannerLinkMobile ?? "is empty"
         print("banner link url : \(linkUrlStr)")
-        onClick.onNext(.clickAD(acc: account, pwd: password, url: linkUrlStr))
+        onClick.onNext(.toWallet(account, password))
     }
     
     func binding(showAccount: Bool) {

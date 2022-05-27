@@ -69,15 +69,17 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     var path:URL? {
         switch self {
         case .registration:
-            return URL(string:ApiService.host + "/registration")
+            return URL(string:ApiService.host + "/v1/registration")
         case .verificationResend(let idString):
-            return URL(string: ApiService.host + "/verification/resend/\(idString)")
+            return URL(string: ApiService.host + "/v1/verification/resend/\(idString)")
         case .verification(let idString , let codeString):
-            return URL(string: ApiService.host + "/verification/\(idString)/\(codeString)")
+            return URL(string: ApiService.host + "/v1/verification/\(idString)/\(codeString)")
         case .authentication:
-            return URL(string:ApiService.host + "/authentication")
+            return URL(string:ApiService.host + "/v1/authentication")
         case .walletAddress:
-            return URL(string:ApiService.host + "/wallet/address")
+            return URL(string:ApiService.host + "/v1/wallet/address")
+        case .refreshToken:
+            return URL(string:ApiService.host + "/v1/refresh/token")
             
         case .login:
             return URL(string:ApiService.host + "/login") //暫時

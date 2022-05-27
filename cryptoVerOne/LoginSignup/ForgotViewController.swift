@@ -67,7 +67,7 @@ class ForgotViewController: BaseViewController {
     func modeTitle() -> String {
         switch loginMode {
         case .emailPage: return "".localized
-        case .phonepPage: return "Mobile".localized
+        case .phonePage: return "Mobile".localized
         }
     }
     

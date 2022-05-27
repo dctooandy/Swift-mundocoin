@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
+		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
+		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
+		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09CAF439283C74D600D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
 		09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
 		09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
@@ -418,6 +421,9 @@
 		09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
+		09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
+		09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
+		09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		10B117A1F75DAE74B80D9407 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		4009C015445F86AEF0A90703 /* Pods_cryptoVerOne_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */; };
 		4D555D24E55969229FB42920 /* Pods_cryptoVerOne_stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */; };
@@ -604,6 +610,7 @@
 		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
+		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CAF4F9283C78A700D7B19B /* Info_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_dev.plist; sourceTree = "<group>"; };
@@ -625,6 +632,7 @@
 		09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecaptchaViewController.xib; sourceTree = "<group>"; };
 		09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressDto.swift; sourceTree = "<group>"; };
+		09F7A7662840CC9E00E33C57 /* ResendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendDto.swift; sourceTree = "<group>"; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
 		46D2A3185B3D01BA7E919163 /* Pods-cryptoVerOne.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.debug.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.debug.xcconfig"; sourceTree = "<group>"; };
 		5EB5D8E84A039D466A6F3932 /* Pods-cryptoVerOne_dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_dev.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_dev/Pods-cryptoVerOne_dev.release.xcconfig"; sourceTree = "<group>"; };
@@ -1360,6 +1368,8 @@
 				09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */,
 				09CAF5E0283CE58E00D7B19B /* OtherValue.swift */,
 				09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */,
+				09A54F8128409A8A00164B27 /* MemberAccountDto.swift */,
+				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -1897,6 +1907,7 @@
 				09CAF44F283C77ED00D7B19B /* BannerDto.swift in Sources */,
 				09CAF450283C77ED00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF451283C77ED00D7B19B /* UILabel+util.swift in Sources */,
+				09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
@@ -1934,6 +1945,7 @@
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
+				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -2050,6 +2062,7 @@
 				09CAF510283C7BBE00D7B19B /* BannerDto.swift in Sources */,
 				09CAF511283C7BBE00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF512283C7BBE00D7B19B /* UILabel+util.swift in Sources */,
+				09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
@@ -2087,6 +2100,7 @@
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
+				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -2203,6 +2217,7 @@
 				A19C71E72822699E000AFC3F /* BannerDto.swift in Sources */,
 				A19C70D728224819000AFC3F /* UIImage+util.swift in Sources */,
 				A19C71D72822662B000AFC3F /* UILabel+util.swift in Sources */,
+				09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */,
 				A19C712D2822570E000AFC3F /* LoadingViewController.swift in Sources */,
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
@@ -2240,6 +2255,7 @@
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
+				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,

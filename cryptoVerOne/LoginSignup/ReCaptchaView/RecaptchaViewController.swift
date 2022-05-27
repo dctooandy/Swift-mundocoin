@@ -101,19 +101,19 @@ class RecaptchaViewController: BaseViewController {
             .disposed(by: disposeBag)
 
         validate
-            .map { [weak self] _ in
+            .map { [weak self] tokenString in
                 self?.view.viewWithTag(Constants.webViewTag)
+                self?.navigationController?.popViewController(animated: false)
+                self?.onSuccessClick.onNext(tokenString)
             }
-            .subscribe(onNext: { [self]subview in
-                subview?.removeFromSuperview()
-                if let valisToken = label.text
-                {
-                    onSuccessClick.onNext(valisToken)
-                }
-                navigationController?.popViewController(animated: false)
+            .subscribe(onNext: {  _ in
+//                subview.removeFromSuperview()
+//
+//                navigationController?.popViewController(animated: false)
             })
             .disposed(by: disposeBag)
 
+        
         validate
             .bind(to: label.rx.text)
             .disposed(by: disposeBag)

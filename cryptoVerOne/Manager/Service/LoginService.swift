@@ -15,11 +15,13 @@ class LoginService {
     func signUPRegistration(code:String ,
                             email:String = "" ,
                             password:String ,
-                            phone:String = "") -> Single<RegistrationDto?>
+                            phone:String = "",
+                            verificationCode : String) -> Single<RegistrationDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["code":code,
-                      "password":password]
+                      "password":password,
+                      "verificationCode":verificationCode]
         if email.isEmpty
         {
             parameters["phone"] = phone
@@ -35,14 +37,15 @@ class LoginService {
                 return $0
             })
     }
-    func verificationResend(idString:String) -> Single<LoginDto?>
+    func verificationResend(idString:String) -> Single<ResendDto?>
     {
-        let parameters: Parameters = [String: Any]()
+        var parameters: Parameters = [String: Any]()
+        parameters["id"] = idString
         return Beans.requestServer.singleRequestPost(
             path: ApiService.verificationResend(idString).path,
             parameters: parameters,
             modify: false,
-            resultType: LoginDto.self).map({
+            resultType: ResendDto.self).map({
                 return $0
             })
     }
@@ -59,11 +62,15 @@ class LoginService {
                 return $0
             })
     }
-    func authentication(with idString:String , password:String)  -> Single<AuthenticationDto?>
+    func authentication(with idString:String , password:String , verificationCode:String = "")  -> Single<AuthenticationDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString,
                       "password":password]
+        if !verificationCode.isEmpty
+        {
+            parameters["verificationCode"] = verificationCode
+        }
         return Beans.requestServer.singleRequestPost(
             path: ApiService.authentication.path,
             parameters: parameters,
@@ -73,6 +80,17 @@ class LoginService {
             })
     }
     
+    func refreshToken() -> Single<AuthenticationDto?>
+    {
+        let parameters: Parameters = [String: Any]()
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.refreshToken.path,
+            parameters: parameters,
+            modify: false,
+            resultType: AuthenticationDto.self).map({
+                return $0
+            })
+    }
     
     func loginUserLogin(with account:String , password:String) -> Single<LoginDto?>
     {

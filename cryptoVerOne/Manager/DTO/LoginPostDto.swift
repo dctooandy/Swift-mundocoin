@@ -63,18 +63,4 @@ class LastLoginInDto: Codable {
     let telecom: String?
 }
 
-class MemberAccount {
-    static var share: MemberAccount?
-    
-    init(account: String, password: String, loginMode: LoginMode, phone: String? = nil) {
-        self.account = account
-        self.password = password
-        self.loginMode = loginMode
-        self.phone = phone
-    }
-    
-    let account: String
-    var password: String
-    let loginMode: LoginMode
-    var phone: String?
-}
+

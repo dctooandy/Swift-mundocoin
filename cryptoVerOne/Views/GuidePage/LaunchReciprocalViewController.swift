@@ -31,7 +31,6 @@ class LaunchReciprocalViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         startToCountDown()
         startAnimation()
     }
@@ -58,9 +57,18 @@ class LaunchReciprocalViewController: BaseViewController {
                 return
             }
 //            if isLaunchBefore() {
+            
+            if UserStatus.share.isLogin == true {
+                let walletVC = WalletViewController.loadNib()
+                let walletNavVC = MDNavigationController(rootViewController: walletVC)
+                mainWindow.rootViewController = walletNavVC
+                mainWindow.makeKeyAndVisible()
+            }else
+            {
                 let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
                 mainWindow.rootViewController = loginNavVC
                 mainWindow.makeKeyAndVisible()
+            }
 //            } else {
 //                mainWindow.rootViewController = GuidePageViewController.loadNib()
 //                mainWindow.makeKeyAndVisible()

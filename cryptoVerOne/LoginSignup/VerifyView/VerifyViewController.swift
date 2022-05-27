@@ -11,12 +11,18 @@ import RxCocoa
 import Toaster
 import AVFoundation
 import AVKit
+enum VerifificationType
+{
+    case loginOrForgotPW
+    case signup
+}
 class VerifyViewController: BaseViewController {
     // MARK:業務設定
     @IBOutlet weak var topIconTopConstant: NSLayoutConstraint!
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
     private let dpg = DisposeBag()
+    var verifificationType : VerifificationType = .loginOrForgotPW
     private var inputMode: LoginMode = .emailPage
     var isAlreadySetBackView = false
     private var timer: Timer?
@@ -25,10 +31,11 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let loginDto = self.loginDto
             {
+                verifificationType = .loginOrForgotPW
                 switch loginDto.loginMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
-                case .phonepPage:
+                case .phonePage:
                     self.sentToLabel.text = "We have sent messages to".localized
                 }
                 self.userAccountLabel.text = loginDto.account
@@ -39,10 +46,11 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let signupDto = self.signupDto
             {
+                verifificationType = .signup
                 switch signupDto.signupMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
-                case .phonepPage:
+                case .phonePage:
                     self.sentToLabel.text = "We have sent messages to".localized
                 }
                 self.userAccountLabel.text = signupDto.account
@@ -205,88 +213,37 @@ class VerifyViewController: BaseViewController {
         isValid.bind(to: verifyButton.rx.isEnabled)
             .disposed(by: dpg)
     }
-    func directToNextPage()
-    {
-        // 登入 驗證完畢直接登入
-        // 註冊 驗證完畢跳出國碼選擇
-        // 忘記密碼 驗證完畢 跳出密碼輸入頁
-        if let loginDto = self.loginDto
-        {
-            if loginDto.currentShowMode != .forgotPW
-            {
-                Log.v("登入驗證完畢,直接登入")
-                //                self.popVC(isAnimation: false)
-                if let dto = self.loginDto
-                {
-                    popVC()
-                    LoginSignupViewController.share.login(dto: dto,
-                                                          checkBioList: true ,
-                                                          route: .wallet,
-                                                          showLoadingView: false)
-                }
-            }else
-            {
-                Log.v("忘記密碼驗證完畢,輸入密碼")
-                self.navigationController?.pushViewController(resetPWVC, animated: true )
-            }
-        }else if let _ = self.signupDto
-        {
-            Log.v("註冊驗證完畢,直接登入")
-            if let dto = self.signupDto
-            {
-                LoginSignupViewController.share.signup(dto: dto)
-            }
-            // 目前不用選擇國別
-            //                Log.v("註冊驗證完畢,國碼選擇")
-            //                idVerifiVC.isModalInPopover = true
-            //                idVerifiVC.rxSkipAction().subscribeSuccess { (_) in
-            //                    if let dto = self.signupDto
-            //                    {
-            //                        LoginSignupViewController.share.signup(dto: dto)
-            //                    }
-            //                }.disposed(by: dpg)
-            //                idVerifiVC.rxGoAction().subscribeSuccess { [self](countryString) in
-            //                    if let dto = self.signupDto
-            //                    {
-            //                        self.dismiss(animated: true) {
-            //                            popVC()
-            //                            LoginSignupViewController.share.signup(dto: dto)
-            //                        }
-            //                    }
-            //                }.disposed(by: dpg)
-            //                self.present(idVerifiVC, animated: true) {
-            //                }
-        }
-    }
+
     func verifyButtonPressed()
     {
         LoadingViewController.show()
         var idString = ""
+        var passwordString = ""
+        var registrationString = ""
         if let loginDto = self.loginDto
         {
             idString = loginDto.account
+            passwordString = loginDto.password
         }else if let signupDto = self.signupDto
         {
             idString = signupDto.account
+            passwordString = signupDto.password
+            registrationString = signupDto.registration
         }
         let codeString = verifyInputView.textField.text ?? ""
-        Beans.loginServer.verification(idString: idString, codeString: codeString).subscribe { [self]dto in
-            _ = LoadingViewController.dismiss()
-            directToNextPage()
-        } onError: { [self]error in
-            _ = LoadingViewController.dismiss()
-            if let error = error as? ApiServiceError
-            {
-                switch error {
-                case .errorDto(let dto):
-                    verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
-                case .noData:
-                    directToNextPage()
-                default:
-                    ErrorHandler.show(error: error)
-                }
-            }
-        }.disposed(by: dpg)
+        switch verifificationType {
+        case .loginOrForgotPW:
+            // 登入驗證
+            fetchAuthenticationData(with: idString,
+                                    password: passwordString,
+                                    verificationCode: codeString)
+        case .signup:
+            // 註冊驗證
+            fetchRegistrationData(code:registrationString,
+                                  email: idString,
+                                  password: passwordString,
+                                  verificationCode: codeString)
+        }
     }
     func verifyResentPressed()
     {
@@ -302,7 +259,11 @@ class VerifyViewController: BaseViewController {
                 idString = signupDto.account
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
-                defaultSetup()
+                if let dataDto = dto
+                {
+                    countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    defaultSetup()
+                }
             } onError: { [self]error in
                 if let errorData = error as? ApiServiceError
                 {
@@ -315,6 +276,41 @@ class VerifyViewController: BaseViewController {
                 }
             }.disposed(by: dpg)
         }
+    }
+    // 登入
+    func fetchAuthenticationData(with idString:String ,
+                                 password:String ,
+                                 verificationCode:String)
+    {
+        if let loginDto = self.loginDto
+        {
+            LoginSignupViewController.share.gotoLoginAction(with: idString,
+                                                            password: password,
+                                                            verificationCode: verificationCode,
+                                                            loginDto: loginDto)
+        }
+    }
+    // 註冊
+    func fetchRegistrationData(code:String ,
+                          email:String = "" ,
+                          password:String ,
+                          phone:String = "",
+                          verificationCode : String)
+    {
+        if let signupDto = self.signupDto
+        {
+            LoginSignupViewController.share.gotoSignupAction(code: code,
+                                                             email: email,
+                                                             password: password,
+                                                             phone: phone,
+                                                             verificationCode: verificationCode ,
+                                                             signupDto: signupDto)
+        }
+    }
+    func directToResetPWVC()
+    {
+        Log.v("忘記密碼驗證完畢,輸入密碼")
+        self.navigationController?.pushViewController(resetPWVC, animated: true )
     }
     func defaultSetup()
     {

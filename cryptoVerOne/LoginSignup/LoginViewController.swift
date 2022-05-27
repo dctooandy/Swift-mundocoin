@@ -66,7 +66,7 @@ class LoginViewController: BaseViewController {
     func modeTitle() -> String {
         switch  loginMode {
         case .emailPage: return "".localized
-        case .phonepPage: return "Mobile".localized
+        case .phonePage: return "Mobile".localized
         }
     }
     
@@ -98,7 +98,7 @@ class LoginViewController: BaseViewController {
         }
         // set default login mode
 //        loginModeDidChange()
-        forgetPasswordButton.isHidden = loginMode == .phonepPage
+        forgetPasswordButton.isHidden = loginMode == .phonePage
         forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
         forgetPasswordButton.setTitleColor(Themes.gray707EAE, for: .normal)
         loginButton.setTitle("Log In".localized, for: .normal)

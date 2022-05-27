@@ -234,6 +234,9 @@ extension UINavigationBar {
         let gradientLayer = CAGradientLayer(frame: updatedFrame, colors: colors, startPoint: startPoint, endPoint: endPoint)
         setBackgroundImage(gradientLayer.createGradientImage(), for: UIBarMetrics.default)
     }
+    open override func sizeThatFits(_ size: CGSize) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 51)
+    }
 }
 
 

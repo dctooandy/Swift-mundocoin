@@ -220,8 +220,6 @@ class LoginPageViewController: BaseViewController {
     func rxVerifyCodeBtnClick() -> Observable<String> {
         return verifyCodeBtnClick.asObserver()
     }
-    
-    
 }
 
 // MARK: -
