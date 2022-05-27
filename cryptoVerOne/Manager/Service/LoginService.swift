@@ -83,7 +83,7 @@ class LoginService {
     func refreshToken() -> Single<AuthenticationDto?>
     {
         let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestPost(
+        return Beans.requestServer.singleRequestGet(
             path: ApiService.refreshToken.path,
             parameters: parameters,
             modify: false,

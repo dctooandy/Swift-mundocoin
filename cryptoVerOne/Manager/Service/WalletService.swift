@@ -15,7 +15,7 @@ class WalletService {
     func walletAddress() -> Single<WalletAddressDto?>
     {
         let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestPost(
+        return Beans.requestServer.singleRequestGet(
             path: ApiService.walletAddress.path,
             parameters: parameters,
             modify: false,

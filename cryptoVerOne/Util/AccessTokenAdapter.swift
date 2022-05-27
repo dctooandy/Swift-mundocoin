@@ -30,7 +30,8 @@ class AccessTokenAdapter: RequestAdapter {
 //        urlRequest.setValue(KeychainManager.share.getFingerID(), forHTTPHeaderField: "Finger")
         if let urlString = urlRequest.url
         {
-            if urlString.pathComponents.contains("wallet")
+            if urlString.pathComponents.contains("wallet") ||
+                urlString.pathComponents.contains("refresh")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }

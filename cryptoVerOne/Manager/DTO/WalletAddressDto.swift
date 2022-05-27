@@ -49,7 +49,7 @@ struct WalletAddressDto :Codable {
     let address: String
     let currency: String
     let token: String
-    let customer : [WalletAddressCustomerDto]
+    let customer : [WalletAddressCustomerDto]?
 
     init(id: String = "", createdDate: String = "", updatedDate: String = "" , amount:Int = 0 ,address: String = "", currency: String = "", token: String = "",customer : [WalletAddressCustomerDto] = [WalletAddressCustomerDto()]) {
         self.id = id
