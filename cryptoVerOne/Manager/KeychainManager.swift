@@ -13,8 +13,8 @@ class KeychainManager {
     
     enum KeychainKey: String {
         case fingerID = "finger_id"
-        case account = "betlead_account"
-        case accList = "betlead_acc_list"
+        case account = "mundocoin_account"
+        case accList = "mundocoin_acc_list"
         case token = "bead_token"
     }
     
@@ -53,7 +53,7 @@ class KeychainManager {
         guard let accInKeychain = self.getString(from: .account) else { return nil }
         let accList = getAccList()
         guard let accPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
-        let accArr = accPwdString.components(separatedBy: ".")
+        let accArr = accPwdString.components(separatedBy: "/")
         let acc = accArr[0]
         let pwd = accArr[1]
         let tel = accArr[2]
@@ -75,21 +75,21 @@ class KeychainManager {
         var isNewAccount = true
 //        print("save acc list: \(arr)")
         var newArr = arr.map { (str) -> String in // update
-            let accArr = str.components(separatedBy: ".")
+            let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
                 isNewAccount = false
                 let finalAcc = acc.isEmpty ? accArr[0] : acc
                 let finalTel = tel.isEmpty ? accArr[2] : tel
                 let finalPwd = pwd.isEmpty ? accArr[1] : pwd
 //                print("old acc: \(acc).\(accArr[1]).\(tel)\nnew acc: \(finalAcc).\(finalPwd).\(finalTel)")
-                return "\(finalAcc).\(finalPwd).\(finalTel)"
+                return "\(finalAcc)/\(finalPwd)/\(finalTel)"
             
             } else {
                 return str
             }
         }
         
-        let accString = "\(acc).\(pwd).\(tel)"
+        let accString = "\(acc)/\(pwd)/\(tel)"
 //        print("save acc string: \(accString) , isnew: \(isNewAccount)")
         if isNewAccount { // if false == new account
             newArr.append(accString)
@@ -103,17 +103,17 @@ class KeychainManager {
         let arr = getAccList()
         let acc = acc.lowercased()
         var newArr = arr.map { (str) -> String in // update
-            let accArr = str.components(separatedBy: ".")
+            let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) {
                 isNewAccount = false
                 let phone = accArr[2]
-                return "\(acc).\(pwd).\(phone)"
+                return "\(acc)/\(pwd)/\(phone)"
             } else {
                 return str
             }
         }
         if isNewAccount {
-            newArr.append("\(acc).\(pwd).")
+            newArr.append("\(acc)/\(pwd)/")
         }
         saveAccList(newArr)
     }

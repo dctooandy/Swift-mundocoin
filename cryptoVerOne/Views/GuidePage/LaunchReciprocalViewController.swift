@@ -59,6 +59,11 @@ class LaunchReciprocalViewController: BaseViewController {
 //            if isLaunchBefore() {
             
             if UserStatus.share.isLogin == true {
+                // 自動登入
+                // 檢查token動作
+                if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                    appdelegate.checkTime()
+                }
                 let walletVC = WalletViewController.loadNib()
                 let walletNavVC = MDNavigationController(rootViewController: walletVC)
                 mainWindow.rootViewController = walletNavVC

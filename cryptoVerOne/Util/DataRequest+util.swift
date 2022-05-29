@@ -40,7 +40,7 @@ extension DataRequest
                         if let responseString = String(data: data, encoding: .utf8),
                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
                         {
-                            Log.v("正常Response API: \(requestURLString)\n回傳值\nresponse dict keys: \(dict as AnyObject)")
+                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n回傳值             :\n\(dict as AnyObject)")
                             if self.isNeedSaveToken(url:response.request?.url) {
                                 if  let innerData = dict["token"] as? String
                                 {
@@ -56,7 +56,7 @@ extension DataRequest
                         {
                             errorMsg = "資料無法編成"
                             apiError = ApiServiceError.noData
-                            let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: \(errorMsg)"
+                            let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(errorMsg)"
                             Log.e("\(message)")
                             onError?(apiError)
                         }
@@ -122,7 +122,7 @@ extension DataRequest
                 let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
             {
                 var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nresponse dict keys: \(dict as AnyObject)"
+                let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(dict as AnyObject)"
                 Log.e("\(message)")
                 results.httpStatus = "\(statusCode)"
                 apiError = ApiServiceError.errorDto(results)
@@ -130,7 +130,7 @@ extension DataRequest
             }else
             {
                 apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"無法解析")
-                let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: 無法解析"
+                let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :可能是空值,無法解析"
                 Log.e("\(message)")
                 onError?(apiError)
             }
@@ -138,7 +138,7 @@ extension DataRequest
         catch {
             let errorMsg = "伺服器繁忙，请稍候再试"
             apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-            let message = "異常Response API: \(requestURLString)\nStatus:\(statusCode)\(type)\n回傳值\nMsg: \(errorMsg)"
+            let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(errorMsg)"
             Log.e("\(message)")
             onError?(apiError)
         }

@@ -421,7 +421,12 @@ extension LoginSignupViewController {
                                   loginDto : LoginPostDto? = nil,
                                   signupDto : SignupPostDto? = nil)
     {
+        // 既存新鮮token
         KeychainManager.share.setToken(authDto.token)
+        // 開始倒數
+        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+            appdelegate.startToCountDown()
+        }
         if let dto = loginDto
         {
             MemberAccountDto.share = MemberAccountDto(account: dto.account,
@@ -597,9 +602,6 @@ extension LoginSignupViewController {
                 print("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
-                if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appdelegate.checkTime()
-                }
                 Toast.show(msg: "Welcome to Mundocoin".localized)
             }
         }

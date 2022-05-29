@@ -70,7 +70,7 @@ extension RequestService
         }
         let para = self.transPara(parameters: parameters , modify: modify)
         
-        Log.v("API URL: \(path!)\n=====================\nMethod: \(method)\n=====================\n參數: \(para)")
+        Log.v("要求資料URL:\n\(path!)\n=====================\n要求Method : \n\(method)\n=====================\n要求參數      :\n\(para)")
         return Single<T>.create
         { observer in
             let task = self.sessionManager

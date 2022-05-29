@@ -22,10 +22,10 @@ class BuildConfig {
    
 
 #if Mundo_PRO
-    static let MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com"   // 正式
+    static let MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com:443"   // 正式
 #elseif Mundo_DEV
     static let MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com:443"   // 開發
 #elseif Mundo_STAGE
-    static let MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com"   // 測試
+    static let MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com:443"   // 測試
 #endif
 }
