@@ -120,7 +120,9 @@ class RecaptchaViewController: BaseViewController {
 
         visibleChallengeSwitch.rx.value
             .subscribe(onNext: { [weak recaptcha] value in
+#if DEBUG
                 recaptcha?.forceVisibleChallenge = value
+#endif
             })
             .disposed(by: disposeBag)
     }

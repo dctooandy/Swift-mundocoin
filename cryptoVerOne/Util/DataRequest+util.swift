@@ -52,6 +52,13 @@ extension DataRequest
                             let results = try decoder.decode(T.self, from:data)
                             onData?(results)
                             
+                        }else if let responseString = String(data: data, encoding: .utf8),
+                                 let array = self.convertToArray(urlString:requestURLString , text: responseString)
+                        {
+                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n回傳值             :\n\(array as AnyObject)")
+                           
+                            let results = try decoder.decode(T.self, from:data)
+                            onData?(results)
                         }else
                         {
                             errorMsg = "資料無法編成"
@@ -160,6 +167,22 @@ extension DataRequest
         if let data = text.data(using: .utf8) {
             do {
                 return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                //                Log.e("API: \(urlString)\n=====================\n無法解析的字串: \(text.isEmpty == true ? "無" : text)\n=====================\n字串數 : \(text.count)\n=====================\nError : \(error.localizedDescription)")
+                //                if urlString.isEmpty != true
+                //                {
+                //                    let oneShotAlert = DefaultAlert(mode:.OneShot,message: "API : \(urlString)\n" + "資料解析錯誤，請稍候再試".LocalizedString + "\n" + error.localizedDescription)
+                //                    UIApplication.topViewController()?.present(oneShotAlert, animated: true, completion: nil)
+                //                }
+            }
+        }
+        return nil
+    }
+    func convertToArray(urlString : String = "" , text: String) -> [[String: Any]]?
+    {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
             } catch {
                 //                Log.e("API: \(urlString)\n=====================\n無法解析的字串: \(text.isEmpty == true ? "無" : text)\n=====================\n字串數 : \(text.count)\n=====================\nError : \(error.localizedDescription)")
                 //                if urlString.isEmpty != true

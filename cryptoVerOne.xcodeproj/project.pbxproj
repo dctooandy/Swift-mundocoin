@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
+		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
+		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -608,6 +611,7 @@
 
 /* Begin PBXFileReference section */
 		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -1355,6 +1359,7 @@
 				A19C718A28225B25000AFC3F /* ResponseDto.swift */,
 				A19C71A828226279000AFC3F /* LoginPostDto.swift */,
 				09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */,
+				099371B128445DDD00D55E55 /* WalletBalancesDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
@@ -1912,6 +1917,7 @@
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */,
+				099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */,
 				09CAF457283C77ED00D7B19B /* TemplateCell.swift in Sources */,
 				09CAF458283C77ED00D7B19B /* ValueDto.swift in Sources */,
@@ -2067,6 +2073,7 @@
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */,
+				099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */,
 				09CAF518283C7BBE00D7B19B /* TemplateCell.swift in Sources */,
 				09CAF519283C7BBE00D7B19B /* ValueDto.swift in Sources */,
@@ -2222,6 +2229,7 @@
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
 				A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */,
+				099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
 				A16F6201282E3F5700D9CCE5 /* TemplateCell.swift in Sources */,
 				A19C70C928224614000AFC3F /* ValueDto.swift in Sources */,

@@ -69,7 +69,7 @@ class UserMenuViewController: BaseViewController {
         tableView.separatorStyle = .none
         
         let loginDto = KeychainManager.share.getLastAccount()
-        if let userEmail = loginDto?.account
+        if let userEmail = loginDto?.account , UserStatus.share.isLogin
         {
             usetAccountLabel.text = userEmail
         }

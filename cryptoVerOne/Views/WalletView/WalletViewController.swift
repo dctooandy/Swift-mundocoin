@@ -95,8 +95,7 @@ class WalletViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
     }
     func setup()
-    {
-        totalBalanceLabel.text = "988775.05".numberFormatter(.decimal, 2)
+    {        
         Themes.moneyVisibleOrNotVisible.bind(to: totalBalanceLabel.rx.isHidden).disposed(by: dpg)
         Themes.stringVisibleOrNotVisible.bind(to: hiddenTotalBalanceLabel.rx.isHidden).disposed(by: dpg)
     }
@@ -136,8 +135,12 @@ class WalletViewController: BaseViewController {
     }
     func bindViewModel()
     {
-        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { dto in
-            
+        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
+            Log.e("取得Address\n\(dto)")
+            totalBalanceLabel.text = String(describing: WalletAddressDto.share?.amount).numberFormatter(.decimal, 2)
+        }.disposed(by: dpg)
+        viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
+            Log.e("取得Balances\n\(dto)")
         }.disposed(by: dpg)
     }
     private func setupPagingView() {

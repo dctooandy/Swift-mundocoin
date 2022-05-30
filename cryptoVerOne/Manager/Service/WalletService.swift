@@ -23,5 +23,15 @@ class WalletService {
                 return $0
             })
     }
-    
+    func walletBalances() -> Single<[WalletBalancesDto]?>
+    {
+        let parameters: Parameters = [String: Any]()
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.walletBalances.path,
+            parameters: parameters,
+            modify: false,
+            resultType: [WalletBalancesDto].self).map({
+                return $0
+            })
+    }
 }

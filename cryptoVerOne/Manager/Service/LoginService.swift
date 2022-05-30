@@ -49,16 +49,28 @@ class LoginService {
                 return $0
             })
     }
-    func verification(idString:String , codeString : String) -> Single<LoginDto?>
+    func verification(idString:String , codeString : String) -> Single<String?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString,
                       "code":codeString]
         return Beans.requestServer.singleRequestGet(
-            path: ApiService.verification(idString, codeString).path,
+            path: ApiService.verificationIDandCode(idString, codeString).path,
             parameters: parameters,
             modify: false,
-            resultType: LoginDto.self).map({
+            resultType: String.self).map({
+                return $0
+            })
+    }
+    func verificationID(idString:String ) -> Single<String?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters = ["id":idString]
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.verificationID(idString).path,
+            parameters: parameters,
+            modify: false,
+            resultType: String.self).map({
                 return $0
             })
     }

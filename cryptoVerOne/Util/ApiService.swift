@@ -49,9 +49,12 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
     case reset
     case registration
     case verificationResend(String )
-    case verification(String , String)
+    case verificationIDandCode(String , String)
+    case verificationID(String )
     case authentication
     case walletAddress
+    case walletBalances
+
     case refreshToken
     
     case signup
@@ -72,12 +75,16 @@ static let host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/registration")
         case .verificationResend(let idString):
             return URL(string: ApiService.host + "/v1/verification/resend/\(idString)")
-        case .verification(let idString , let codeString):
+        case .verificationIDandCode(let idString , let codeString):
             return URL(string: ApiService.host + "/v1/verification/\(idString)/\(codeString)")
+        case .verificationID(let idString ):
+            return URL(string: ApiService.host + "/v1/verification/\(idString)")
         case .authentication:
             return URL(string:ApiService.host + "/v1/authentication")
         case .walletAddress:
             return URL(string:ApiService.host + "/v1/wallet/address")
+        case .walletBalances:
+            return URL(string:ApiService.host + "/v1/wallet/balances")
         case .refreshToken:
             return URL(string:ApiService.host + "/v1/refresh/token")
             

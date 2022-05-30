@@ -64,7 +64,7 @@ class LaunchReciprocalViewController: BaseViewController {
                 if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
                     appdelegate.checkTime()
                 }
-                let walletVC = WalletViewController.loadNib()
+                let walletVC = WalletViewController.share
                 let walletNavVC = MDNavigationController(rootViewController: walletVC)
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()

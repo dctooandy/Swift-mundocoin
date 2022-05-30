@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //走正常流程時,判斷是否已登入過
             if isLogin == true
             {
-                let walletNavVC = MDNavigationController(rootViewController: WalletViewController.loadNib())
+                let walletNavVC = MDNavigationController(rootViewController: WalletViewController.share)
                 window?.rootViewController = walletNavVC
             }else
             {
@@ -45,6 +45,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
+        let domain = UserDefaults.DomainType.string(forKey: .Domain)
+        if domain.isEmpty
+        {
+            UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
+        }
     }
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
         guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
@@ -107,8 +112,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             guard let strongSelf = self else { return }
             countInt -= 1
             DispatchQueue.main.async {
-                Log.e("剩餘時間 : \(countInt) 秒")
-
+                // 先關起來
+//                Log.e("剩餘時間 : \(countInt) 秒")
                 if countInt == 0 {
                     timer.invalidate()
                     strongSelf.freshToken()

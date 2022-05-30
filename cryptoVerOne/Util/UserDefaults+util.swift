@@ -56,6 +56,12 @@ extension UserDefaults
             case isOpenedBasicTaskCompletedViewUserArr
         }
     }
+    // 目前Domain
+    struct DomainType :UserDefaultsSettable{
+        enum defaultKeys : String {
+            case Domain
+        }
+    }
     // 登录信息
     struct LoginInfo: UserDefaultsSettable {
         enum defaultKeys: String {

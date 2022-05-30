@@ -9,6 +9,7 @@
 import UIKit
 import RxCocoa
 import RxSwift
+import Toaster
 
 class LoginViewController: BaseViewController {
 
@@ -19,7 +20,6 @@ class LoginViewController: BaseViewController {
     private var timer: Timer?
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
-//    var rxVerifyCodeButtonClick: Observable<String>?
     private var loginMode : LoginMode = .emailPage {
         didSet {
 //            self.loginModeDidChange()
@@ -117,11 +117,32 @@ class LoginViewController: BaseViewController {
     }
     
     func bindLoginBtn() {
-        loginButton.rx.tap.subscribeSuccess { [weak self] _ in
-                self?.login()
+        loginButton.rx.tap.subscribeSuccess { [self] _ in
+            verificationID()
             }.disposed(by: disposeBag)
     }
-    
+    func verificationID()
+    {
+        guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
+        Beans.loginServer.verificationID(idString: account).subscribe { stringValue in
+            Log.v("帳號不存在")
+            Toast.show(msg: "Email or password error")
+        } onError: { [self]error in
+            if let errorData = error as? ApiServiceError
+            {
+                switch errorData {
+                case .errorDto(let dto):
+                    if dto.httpStatus == "400" ,dto.reason == "ID_DUPLICATED"
+                    {
+                        login()
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+
+    }
     private func login() {
         resetInputView()
         loginActions()
