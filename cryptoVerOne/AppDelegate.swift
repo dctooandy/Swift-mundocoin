@@ -50,12 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
-#if DEBUG
+#if Mundo_PRO
+        self.domainMode = .Pro
+#else
         self.domainMode = KeychainManager.share.getDomainMode()
         Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")
-#else
-        self.domainMode = .Pro
 #endif
+
     }
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
         guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }

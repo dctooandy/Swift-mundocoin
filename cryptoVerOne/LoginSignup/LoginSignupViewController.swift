@@ -207,6 +207,8 @@ extension LoginSignupViewController {
     }
     @objc func changeDomain()
     {
+        #if Mundo_PRO
+        #else
         if KeychainManager.share.getDomainMode() == .Dev
         {
             let _ = KeychainManager.share.setDomainMode(.Stage)
@@ -231,6 +233,7 @@ extension LoginSignupViewController {
         }
         BuildConfig().resetDomain()
         ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
+        #endif
     }
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev

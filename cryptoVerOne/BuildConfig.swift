@@ -28,7 +28,7 @@ class BuildConfig {
    
 
 #if Mundo_PRO
-    static var MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com:443"   // 正式
+    static var MUNDO_SITE_API_HOST = "https://pro.api.mundocoin.com:443"   // 正式
 #elseif Mundo_DEV
     static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
 #elseif Mundo_STAGE
@@ -37,7 +37,7 @@ class BuildConfig {
     func resetDomain()
     {
         #if Mundo_PRO
-        BuildConfig.MUNDO_SITE_API_HOST = "https://dev.api.mundocoin.com:443"   // 正式
+        BuildConfig.MUNDO_SITE_API_HOST = "https://pro.api.mundocoin.com:443"   // 正式
         #elseif Mundo_DEV
         BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
         #elseif Mundo_STAGE
