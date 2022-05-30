@@ -213,22 +213,24 @@ extension LoginSignupViewController {
             if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
                 appdelegate.domainMode = .Stage
             }
-            Toast.show(msg: "切換到 Stage")
+            Toast.show(msg: "切換到 Stage\n 域名:\(BuildConfig.Domain)")
         }else if KeychainManager.share.getDomainMode() == .Stage
         {
             let _ = KeychainManager.share.setDomainMode(.Pro)
             if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
                 appdelegate.domainMode = .Pro
             }
-            Toast.show(msg: "切換到 Pro")
+            Toast.show(msg: "切換到 Pro\n 域名:\(BuildConfig.Domain)")
         }else
         {
             let _ = KeychainManager.share.setDomainMode(.Dev)
             if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
                 appdelegate.domainMode = .Dev
             }
-            Toast.show(msg: "切換到 Dev")
+            Toast.show(msg: "切換到 Dev\n 域名:\(BuildConfig.Domain)")
         }
+        BuildConfig().resetDomain()
+        ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
     }
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev

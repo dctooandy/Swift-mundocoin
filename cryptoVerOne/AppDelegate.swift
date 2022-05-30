@@ -28,15 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     var domainMode : DomainMode = .Dev{
         didSet{
-            switch self.domainMode
-            {
-            case .Pro:
-                UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
-            case .Dev:
-                UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
-            case .Stage:
-                UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
-            }
+            BuildConfig().domainSet(mode: domainMode)
         }
     }
     var timer: Timer?
@@ -60,15 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ToastView.appearance().bottomOffsetPortrait = 200
 #if DEBUG
         self.domainMode = KeychainManager.share.getDomainMode()
-        switch self.domainMode
-        {
-        case .Pro:
-            Toast.show(msg: "切換到 Pro")
-        case .Dev:
-            Toast.show(msg: "切換到 Dev")
-        case .Stage:
-            Toast.show(msg: "切換到 Stage")
-        }
+        Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")
 #else
         self.domainMode = .Pro
 #endif

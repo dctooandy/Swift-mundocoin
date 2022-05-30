@@ -44,7 +44,7 @@ class ErrorHandler {
                     break
                 }
             case .showKnownError(let statusInt , let urlString , let errorMessage ):
-                showAlert(title: "httpStatus:\(statusInt)", message: "\(urlString)\n\(errorMessage)")
+                showAlert(title: "httpStatus:\(statusInt)", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
             case .errorDto(let dto):
                 let status = dto.httpStatus ?? ""
                 let code = dto.code

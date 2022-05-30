@@ -95,10 +95,10 @@ enum cellData {
         case .termPolicies:
             return ""
         case .about:
-            guard let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "version 1.2.3"}
-            
+            guard let versionString = Bundle.main.releaseVersionNumber else { return "version 1.2.3"}
+            guard let buildString = Bundle.main.buildVersionNumber else { return "1"}
 #if DEBUG
-            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString)"
+            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString) b-\(buildString)"
 #else
             return "version \(versionString)"
 #endif

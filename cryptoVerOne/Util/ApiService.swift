@@ -42,7 +42,7 @@ enum ApiServiceError:Error, Equatable {
 
 enum ApiService {
     
-static let host = BuildConfig.MUNDO_SITE_API_HOST
+static var host = BuildConfig.MUNDO_SITE_API_HOST
     
     case login
     case forgot
