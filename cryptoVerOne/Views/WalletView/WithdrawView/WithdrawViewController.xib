@@ -47,8 +47,8 @@
                                                         <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3764.67124746" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-Ic-PVd">
-                                                        <rect key="frame" x="248" y="26.5" width="108" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4eL-Ic-PVd">
+                                                        <rect key="frame" x="346.5" y="26.5" width="9.5" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -236,6 +236,7 @@ and on the same network.</string>
                 <outlet property="amountInputView" destination="AUF-Vl-Zbu" id="hUd-NI-adD"/>
                 <outlet property="availableBalanceAmountLabel" destination="4eL-Ic-PVd" id="a2w-ZT-wjB"/>
                 <outlet property="continueButton" destination="UOw-v5-Dcg" id="vDa-HH-X6N"/>
+                <outlet property="currencyIconImageView" destination="pDu-1A-U6W" id="tMq-vb-3Y0"/>
                 <outlet property="currencyLabel" destination="N8S-iw-fb0" id="oFy-ZY-2vA"/>
                 <outlet property="feeAmountLabel" destination="aY2-cG-lzp" id="v3U-Dq-rRJ"/>
                 <outlet property="feeTitle" destination="q1t-4h-05m" id="bp8-Ui-Cfe"/>
@@ -247,7 +248,7 @@ and on the same network.</string>
                 <outlet property="scrollView" destination="UPd-p0-GBQ" id="sTi-s7-jc3"/>
                 <outlet property="withdrawToInputView" destination="KF5-Uw-8n7" id="W3n-yA-E0c"/>
             </connections>
-            <point key="canvasLocation" x="91" y="-564"/>
+            <point key="canvasLocation" x="89.855072463768124" y="-564.50892857142856"/>
         </viewController>
     </objects>
     <resources>

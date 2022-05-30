@@ -26,6 +26,7 @@ class WalletViewController: BaseViewController {
     private let dpg = DisposeBag()
     private var walletsDto : [WalletBalancesDto] = [WalletBalancesDto()] {
         didSet {
+            setUPAmount()
             setUPDataForPageVC()
         }
     }
@@ -135,19 +136,23 @@ class WalletViewController: BaseViewController {
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
             // 測試
 //            self.navigationController?.pushViewController(twoFAVC, animated: true)
+            withdrawVC.setUPData(withdrawDatas: walletsDto)
             self.navigationController?.pushViewController(withdrawVC, animated: true)
         }.disposed(by: dpg)
     }
     func bindViewModel()
     {
-//        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
-//            Log.e("取得Address\n\(dto)")
-//            totalBalanceLabel.text = String(describing: WalletAddressDto.share?.amount).numberFormatter(.decimal, 2)
-//        }.disposed(by: dpg)
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
             Log.v("取得Balances\n\(dto)")
             walletsDto = dto
         }.disposed(by: dpg)
+    }
+    func setUPAmount()
+    {
+        let data =  walletsDto.filter{
+            $0.token == "USDT"
+        }.first
+        totalBalanceLabel.text = String(describing: data?.amount).numberFormatter(.decimal, 8)
     }
     func setUPDataForPageVC()
     {

@@ -22,6 +22,7 @@ class WithdrawViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var availableBalanceAmountLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var currencyIconImageView: UIImageView!
     @IBOutlet weak var withdrawToInputView: UIView!
     @IBOutlet weak var methodInputView: UIView!
     @IBOutlet weak var feeTitle: UILabel!
@@ -85,10 +86,9 @@ class WithdrawViewController: BaseViewController {
         let minString = "10"
         let maxString = "10000"
         amountView = AmountInputView.loadNib()
-        // 設定最高額度
-        let availableString = availableBalanceAmountLabel.text ?? "0"
-        
-        amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+//        // 設定最高額度
+//        let availableString = availableBalanceAmountLabel.text ?? "0"
+//        amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         // 設定幣種
         amountView.currency = currencyLabel.text ?? "USDT"
 
@@ -118,7 +118,17 @@ class WithdrawViewController: BaseViewController {
         continueButton.setTitle("Continue".localized, for: .normal)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
-     
+    }
+    func setUPData(withdrawDatas : [WalletBalancesDto])
+    {
+        let maxString = "10000"
+        if let data = withdrawDatas.filter({ $0.token == "USDT" }).first
+        {
+            availableBalanceAmountLabel.text = "\(String(describing: data.amount))"
+            // 設定最高額度
+            let availableString = availableBalanceAmountLabel.text ?? "0"
+            amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+        }
     }
     func bindAction()
     {
