@@ -20,7 +20,7 @@ struct WalletAddressDto :Codable {
             if share == nil {
                 if UserStatus.share.isLogin == true {
                     _ = update(done: {
-                        Log.e("完成")
+                        Log.v("完成")
                     })
                 }
             }

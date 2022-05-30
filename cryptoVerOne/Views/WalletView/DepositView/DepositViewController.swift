@@ -14,7 +14,13 @@ class DepositViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    fileprivate let viewModel = DepositViewModel()
     var qrCodeString : String!
+    var walletDto :WalletAddressDto = WalletAddressDto(){
+        didSet{
+            resetUI()
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     
@@ -38,10 +44,11 @@ class DepositViewController: BaseViewController {
         title = "Deposit USDT"
         setupUI()
         bind()
+        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        fetchDepositData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -52,14 +59,33 @@ class DepositViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func fetchDepositData()
+    {
+        viewModel.fetchWalletForDeposit()
+    }
+    func bindViewModel()
+    {
+        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
+            Log.v("取得Address\n\(dto)")
+            walletDto = dto
+        }.disposed(by: dpg)
+        
+    }
     func setupUI()
     {
         view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
-        qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
-        let image = generateQRCode(from: qrCodeString)
-        codeImageView.image = image
+//        qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
+//        let image = generateQRCode(from: qrCodeString)
+//        codeImageView.image = image
         topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         topCurrencyView?.layer.borderWidth = 1
+    }
+    func resetUI()
+    {
+        qrCodeString = walletDto.address
+        let image = generateQRCode(from: qrCodeString)
+        walletAddressLabel.text = qrCodeString
+        codeImageView.image = image
     }
     func bind()
     {

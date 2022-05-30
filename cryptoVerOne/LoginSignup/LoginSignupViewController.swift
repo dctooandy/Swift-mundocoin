@@ -61,7 +61,7 @@ class LoginSignupViewController: BaseViewController {
     private lazy var coverButton:UIButton = {
         let coverButton = UIButton()
         coverButton.setTitle("".localized, for:.normal)
-        coverButton.addTarget(self, action: #selector(goToWalletVC), for: .touchUpInside)
+        coverButton.addTarget(self, action: #selector(changeDomain), for: .touchUpInside)
         return coverButton
     }()
     private lazy var logoView:UIView = {
@@ -205,6 +205,31 @@ extension LoginSignupViewController {
     {
         self.goWalletViewController()
     }
+    @objc func changeDomain()
+    {
+        if KeychainManager.share.getDomainMode() == .Dev
+        {
+            let _ = KeychainManager.share.setDomainMode(.Stage)
+            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                appdelegate.domainMode = .Stage
+            }
+            Toast.show(msg: "切換到 Stage")
+        }else if KeychainManager.share.getDomainMode() == .Stage
+        {
+            let _ = KeychainManager.share.setDomainMode(.Pro)
+            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                appdelegate.domainMode = .Pro
+            }
+            Toast.show(msg: "切換到 Pro")
+        }else
+        {
+            let _ = KeychainManager.share.setDomainMode(.Dev)
+            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                appdelegate.domainMode = .Dev
+            }
+            Toast.show(msg: "切換到 Dev")
+        }
+    }
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev
         {
@@ -268,7 +293,7 @@ extension LoginSignupViewController {
  
     // MARK: 忘記密碼
     private func showForgetPasswordVC() {
-        Log.e("忘記密碼")
+        Log.v("忘記密碼")
 //        self.present(ForgetPasswordViewController(), animated: true, completion: nil)
         // 原本方式
 //        currentShowMode = .forgotPW

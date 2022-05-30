@@ -138,6 +138,7 @@ class SignupViewController: BaseViewController {
         self.accountInputView?.passwordInputView.textField.text = code
         self.accountInputView?.passwordInputView.textField.sendActions(for: .valueChanged)
     }
+   
     // MARK: - Actions
     func bindAccountView() {
         Observable.combineLatest(accountInputView!.rxCheckPassed(),
@@ -150,10 +151,18 @@ class SignupViewController: BaseViewController {
     
     func bindRegisterBtn() {
         registerButton.rx.tap.subscribeSuccess { [weak self] in
-            self?.signup()
+            self?.verificationID()
         }.disposed(by: disposeBag)
     }
-    
+    func verificationID()
+    {
+        guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
+
+        Beans.loginServer.verificationID(idString: account , asLoginUser: false).subscribeSuccess { [self] stringValue in
+            Log.v("帳號沒註冊過")
+            signup()
+        }.disposed(by: disposeBag)
+    }
     func signup() {
         resetInputView()
         // 登入動作

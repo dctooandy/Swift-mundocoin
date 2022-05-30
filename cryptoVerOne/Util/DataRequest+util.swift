@@ -40,7 +40,7 @@ extension DataRequest
                         if let responseString = String(data: data, encoding: .utf8),
                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
                         {
-                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n回傳值             :\n\(dict as AnyObject)")
+                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(dict as AnyObject)")
                             if self.isNeedSaveToken(url:response.request?.url) {
                                 if  let innerData = dict["token"] as? String
                                 {
@@ -55,9 +55,15 @@ extension DataRequest
                         }else if let responseString = String(data: data, encoding: .utf8),
                                  let array = self.convertToArray(urlString:requestURLString , text: responseString)
                         {
-                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n回傳值             :\n\(array as AnyObject)")
+                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(array as AnyObject)")
                            
                             let results = try decoder.decode(T.self, from:data)
+                            onData?(results)
+                        }else if let responseString = String(data: data, encoding: .utf8)
+                        {
+                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(responseString as AnyObject)")
+                            
+                            let results = try decoder.decode(T.self, from:"string".jsonData())
                             onData?(results)
                         }else
                         {

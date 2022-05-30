@@ -22,6 +22,11 @@ class WalletPageViewController: BaseViewController {
             pageViewcontroller?.reloadData()
         }
     }
+    var pageWalletsDto : [WalletBalancesDto] = [WalletBalancesDto()] {
+        didSet {
+            setUpDataForSubVC()
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
@@ -96,6 +101,17 @@ class WalletPageViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setUpDataForSubVC()
+    {
+        switch self.currentPageMode
+        {
+        case .spot:
+            for vc in subPageViewControllers {
+                vc.dataDto = pageWalletsDto
+            }
+        case .stake: break
+        }
+    }
     func bindSubPageViewControllers()
     {
         

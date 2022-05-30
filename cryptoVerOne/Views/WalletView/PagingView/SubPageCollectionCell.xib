@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -106,6 +106,7 @@
             </collectionViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="1ml-dQ-1Vg" id="Lwv-gR-gSj"/>
+                <outlet property="coinImageView" destination="F1Q-j8-X55" id="YYx-DV-zbN"/>
                 <outlet property="coinLabel" destination="XaP-xV-k7C" id="1zN-ww-2J6"/>
                 <outlet property="equelLabel" destination="gSK-jd-XIw" id="5O6-ox-8tI"/>
                 <outlet property="hiddenMoneyLabel" destination="RBQ-pD-xs1" id="hvA-aF-p29"/>

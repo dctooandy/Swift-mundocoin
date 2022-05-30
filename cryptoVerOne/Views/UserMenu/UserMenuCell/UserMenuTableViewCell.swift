@@ -96,7 +96,12 @@ enum cellData {
             return ""
         case .about:
             guard let versionString = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String else { return "version 1.2.3"}
+            
+#if DEBUG
+            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString)"
+#else
             return "version \(versionString)"
+#endif
         case .logout:
             return ""
         case .twoFactorAuthentication,

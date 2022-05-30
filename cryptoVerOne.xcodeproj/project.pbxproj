@@ -10,6 +10,9 @@
 		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
+		099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
+		099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
+		099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -612,6 +615,7 @@
 /* Begin PBXFileReference section */
 		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
+		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -1057,6 +1061,7 @@
 			isa = PBXGroup;
 			children = (
 				A1973A192828F32E009932D8 /* DepositViewController.swift */,
+				099371B52844B66500D55E55 /* DepositViewModel.swift */,
 				A1973A1D2828F35E009932D8 /* DepositViewController.xib */,
 			);
 			path = DepositView;
@@ -1979,6 +1984,7 @@
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
+				099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
@@ -2135,6 +2141,7 @@
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
+				099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
@@ -2291,6 +2298,7 @@
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
+				099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,

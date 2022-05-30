@@ -26,6 +26,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    var domainMode : DomainMode = .Dev{
+        didSet{
+            switch self.domainMode
+            {
+            case .Pro:
+                UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
+            case .Dev:
+                UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
+            case .Stage:
+                UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
+            }
+        }
+    }
     var timer: Timer?
     private let dpg = DisposeBag()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -45,11 +58,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
-        let domain = UserDefaults.DomainType.string(forKey: .Domain)
-        if domain.isEmpty
+#if DEBUG
+        self.domainMode = KeychainManager.share.getDomainMode()
+        switch self.domainMode
         {
-            UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
+        case .Pro:
+            Toast.show(msg: "切換到 Pro")
+        case .Dev:
+            Toast.show(msg: "切換到 Dev")
+        case .Stage:
+            Toast.show(msg: "切換到 Stage")
         }
+#else
+        self.domainMode = .Pro
+#endif
     }
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
         guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
@@ -80,13 +102,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAPIToken()
     {
         // ErrorHandler 已經有過期導去登入
-        Beans.walletServer.walletAddress().subscribe { [self](dto) in
+        Beans.walletServer.walletBalances().subscribe { [self](dto) in
             // 沒過期,打refresh API, 時間加30分鐘
-            Log.e("沒過期")
+            Log.v("沒過期")
             freshToken()
         } onError: { [self](error) in
             //先啟動
-            Log.e("沒過期")
+            Log.v("沒過期")
             freshToken()
             //過期去登入頁面
 //            DeepLinkManager.share.handleDeeplink(navigation: .login)
@@ -94,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func freshToken()
     {
-        Log.e("刷新Token")
+        Log.v("刷新Token")
         Beans.loginServer.refreshToken().subscribeSuccess { [self]dto in
             if let dataDto = dto
             {
@@ -105,7 +127,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }.disposed(by: dpg)
     }
     func startToCountDown() {
-        Log.e("刷新時間")
+        Log.v("刷新時間")
         stopRETimer()
         var countInt = 1500
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
@@ -124,7 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func stopRETimer()
     {
-        Log.e("消除倒數timer")
+        Log.v("消除倒數timer")
         timer?.invalidate()
         timer = nil
     }

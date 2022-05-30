@@ -53,7 +53,7 @@ class AccessTokenAdapter: RequestAdapter {
 //        urlRequest.setValue("application/x-www-form-urlencoded; charset=UTF-8", forHTTPHeaderField: "Content-Type")
         if let headerData = urlRequest.allHTTPHeaderFields
         {
-            Log.e("HttpHeaders:\n\(headerData)\nKeys     :\(headerData.keys)")
+            Log.v("HttpHeaders:\n\(headerData)\nKeys     :\(headerData.keys)")
         }
         return urlRequest
     }

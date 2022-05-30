@@ -16,6 +16,7 @@ class KeychainManager {
         case account = "mundocoin_account"
         case accList = "mundocoin_acc_list"
         case token = "bead_token"
+        case domain = "domain"
     }
     
     static let share = KeychainManager()
@@ -154,9 +155,21 @@ class KeychainManager {
             }
         }
     }
+    func setDomainMode(_ value: DomainMode) -> Bool {
+        let success = self.setString(value.rawValue, at: .domain)
+        return success
+    }
+    func getDomainMode() -> DomainMode {
+        if let domain = getString(from: .domain)
+        {
+            return DomainMode.init(rawValue: domain) ?? .Dev
+        }
+        return .Dev
+    }
+
     func getToken() -> String {
         return getString(from: .token) ?? ""
-       }
+    }
     func setToken(_ token:String){
         _ = setString(token, at: .token)
     }

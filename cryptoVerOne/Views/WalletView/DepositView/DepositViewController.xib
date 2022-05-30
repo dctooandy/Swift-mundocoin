@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -115,8 +115,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THFfxoxMtMJGnjar...cXUNbHzry3" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jiu-of-UhZ">
-                                <rect key="frame" x="18" y="369" width="243" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THFfxoxMtMJGnjar...cXUNbHzry3" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jiu-of-UhZ">
+                                <rect key="frame" x="18" y="369" width="286" height="20"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
                                 <color key="textColor" red="0.63979864119999996" green="0.68253517149999998" blue="0.81610256430000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -183,6 +183,7 @@
                             <constraint firstItem="IHI-9h-f1L" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" constant="18" id="U3Y-fR-wqR"/>
                             <constraint firstItem="UpV-ML-Ug6" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" id="UZL-d8-KtU"/>
                             <constraint firstItem="rjJ-bv-3E3" firstAttribute="top" secondItem="lDT-vi-FC8" secondAttribute="bottom" constant="6" id="Us2-Ma-uQp"/>
+                            <constraint firstItem="qJT-q8-GQs" firstAttribute="leading" secondItem="Jiu-of-UhZ" secondAttribute="trailing" constant="20" id="WKc-AA-MNX"/>
                             <constraint firstItem="rjJ-bv-3E3" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0862745" id="XBy-lE-D4y"/>
                             <constraint firstItem="cwQ-Rq-hPx" firstAttribute="top" secondItem="Jiu-of-UhZ" secondAttribute="bottom" id="XLH-Za-9cf"/>
                             <constraint firstItem="IHI-9h-f1L" firstAttribute="top" secondItem="UpV-ML-Ug6" secondAttribute="bottom" id="XlL-c1-vSb"/>

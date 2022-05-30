@@ -18,11 +18,12 @@ class SubPageViewController: BaseViewController {
 
         }
     }
-    var dataDto: [Any]? = nil {
+    var dataDto : [WalletBalancesDto]? = nil {
         didSet {
-    
+            collectionView.reloadData()
         }
     }
+
     // MARK: -
     // MARK:UI 設定
     private lazy var collectionView: UICollectionView = {
@@ -85,12 +86,21 @@ class SubPageViewController: BaseViewController {
 // MARK: 延伸
 extension SubPageViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        if let data = dataDto
+        {
+            return data.count
+        }else
+        {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: SubPageCollectionCell.self, indexPath: indexPath)
-        
+        if let data = dataDto?[indexPath.item]
+        {
+            cell.setData(data: data)
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

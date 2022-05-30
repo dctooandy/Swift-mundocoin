@@ -124,24 +124,10 @@ class LoginViewController: BaseViewController {
     func verificationID()
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
-        Beans.loginServer.verificationID(idString: account).subscribe { stringValue in
-            Log.v("帳號不存在")
-            Toast.show(msg: "Email or password error")
-        } onError: { [self]error in
-            if let errorData = error as? ApiServiceError
-            {
-                switch errorData {
-                case .errorDto(let dto):
-                    if dto.httpStatus == "400" ,dto.reason == "ID_DUPLICATED"
-                    {
-                        login()
-                    }
-                default:
-                    ErrorHandler.show(error: error)
-                }
-            }
+        Beans.loginServer.verificationID(idString: account , asLoginUser: true).subscribeSuccess { [self] stringValue in
+            Log.v("帳號有註冊過")
+            login()
         }.disposed(by: disposeBag)
-
     }
     private func login() {
         resetInputView()

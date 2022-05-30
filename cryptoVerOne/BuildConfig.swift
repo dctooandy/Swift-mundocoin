@@ -6,10 +6,10 @@
 //
 
 import Foundation
-enum DomainMode {
+enum DomainMode :String{
     case Dev
     case Stage
-    case Dis
+    case Pro
     
 }
 

@@ -62,10 +62,17 @@ class LoginService {
                 return $0
             })
     }
-    func verificationID(idString:String ) -> Single<String?>
+    func verificationID(idString:String ,asLoginUser:Bool) -> Single<String?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString]
+        if asLoginUser == true
+        {
+            parameters["asLoginUser"] = "true"
+        }else
+        {
+            parameters["asLoginUser"] = "false"
+        }
         return Beans.requestServer.singleRequestGet(
             path: ApiService.verificationID(idString).path,
             parameters: parameters,

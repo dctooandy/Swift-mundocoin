@@ -24,7 +24,12 @@ class WalletViewController: BaseViewController {
     fileprivate let pageVC = WalletPageViewController()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-
+    private var walletsDto : [WalletBalancesDto] = [WalletBalancesDto()] {
+        didSet {
+            setUPDataForPageVC()
+        }
+    }
+    
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var eyeIconImageView: UIImageView!
@@ -75,7 +80,7 @@ class WalletViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        viewModel.fetchBalances()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -135,13 +140,18 @@ class WalletViewController: BaseViewController {
     }
     func bindViewModel()
     {
-        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
-            Log.e("取得Address\n\(dto)")
-            totalBalanceLabel.text = String(describing: WalletAddressDto.share?.amount).numberFormatter(.decimal, 2)
-        }.disposed(by: dpg)
+//        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
+//            Log.e("取得Address\n\(dto)")
+//            totalBalanceLabel.text = String(describing: WalletAddressDto.share?.amount).numberFormatter(.decimal, 2)
+//        }.disposed(by: dpg)
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
-            Log.e("取得Balances\n\(dto)")
+            Log.v("取得Balances\n\(dto)")
+            walletsDto = dto
         }.disposed(by: dpg)
+    }
+    func setUPDataForPageVC()
+    {
+        pageVC.pageWalletsDto = walletsDto
     }
     private func setupPagingView() {
         addChild(pageVC)

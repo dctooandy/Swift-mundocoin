@@ -18,7 +18,7 @@ class SubPageCollectionCell: UICollectionViewCell {
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
     @IBOutlet weak var tetherLabel: UILabel!
-    
+    @IBOutlet weak var coinImageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var equelLabel: UILabel!
     @IBOutlet weak var persentLabel: UILabel!
@@ -35,8 +35,11 @@ class SubPageCollectionCell: UICollectionViewCell {
  
     // MARK: -
     // MARK:業務方法
-    func setData(data: BannerDto) {
-        
+    func setData(data: WalletBalancesDto) {
+        amountLabel.text = "\(data.amount)".numberFormatter(.decimal, 8)
+        equelLabel.text = "≈$"+"\(data.amount)".numberFormatter(.decimal, 2)
+        coinLabel.text = data.token
+        coinImageView.image = UIImage(named: "icon-usdt")
     }
     
     func setupUI()
