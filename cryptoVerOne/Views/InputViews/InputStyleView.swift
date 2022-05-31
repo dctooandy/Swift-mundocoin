@@ -647,11 +647,11 @@ class InputStyleView: UIView {
     func emailSendVerify()
     {
         Log.v("重發驗證")
-        if self.timer == nil
+        if self.timer == nil, let idString = textField.text
         {
             verifyResentLabel.isUserInteractionEnabled = false
             setupTimer()
-            sendRequestForVerify()
+            onSendClick.onNext(())
         }
     }
     func resetDisplayBtnUI()
@@ -749,9 +749,9 @@ class InputStyleView: UIView {
             tfMaskView.layer.borderColor = UIColor.red.cgColor
         }
     }
-    func sendRequestForVerify()
+    func setupCountTime(seconds:Int)
     {
-        onSendClick.onNext(())
+        countTime = seconds
     }
     func rxSendVerifyAction() -> Observable<(Any)>
     {

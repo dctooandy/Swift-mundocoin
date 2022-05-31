@@ -49,6 +49,6 @@ class MuLoginNavigationController:UINavigationController{
     }
     
     override var preferredStatusBarStyle:UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 }

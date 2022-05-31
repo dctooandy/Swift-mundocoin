@@ -54,7 +54,7 @@ class BetleadNavigationController:UINavigationController{
     }
     
     override var preferredStatusBarStyle:UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
     
 }

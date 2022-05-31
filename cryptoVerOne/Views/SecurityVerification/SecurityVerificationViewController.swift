@@ -17,7 +17,7 @@ enum SecurityViewMode {
 }
 class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
-    private let onVerifySuccessClick = PublishSubject<Any>()
+    private let onVerifySuccessClick = PublishSubject<(String,String)>()
     private let dpg = DisposeBag()
     static let share: SecurityVerificationViewController = SecurityVerificationViewController.loadNib()
     var securityViewMode : SecurityViewMode = .defaultMode {
@@ -48,6 +48,7 @@ class SecurityVerificationViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        verifyResentAutoPressed(byMode: securityViewMode)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -109,22 +110,24 @@ class SecurityVerificationViewController: BaseViewController {
     }
     func bindAction()
     {
-        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { (_) in
+        // 可選頁面時的驗證碼接收方法
+        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
             Log.i("發送驗證傳送請求")
+            verifyResentPressed()
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,Email:\(stringData.0) ,2FA:\(stringData.1)")
             self.navigationController?.popViewController(animated: false)
-            onVerifySuccessClick.onNext(())
+            onVerifySuccessClick.onNext((stringData.0,stringData.1))
             
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
-            onVerifySuccessClick.onNext(())
+            onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxSubmitOnlyTwiFAAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
-            onVerifySuccessClick.onNext(())
+            onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxLostGoogleAction().subscribeSuccess { (_) in
             Log.i("跳轉綁定Google Auth")
@@ -136,21 +139,59 @@ class SecurityVerificationViewController: BaseViewController {
     }
     func bindSubPageViewControllers()
     {
-        self.onlyTwoFAVerifyViewController.rxThirdSendVerifyAction().subscribeSuccess { (stringData) in
+        // 只有Email時的驗證碼發送接收方法
+        self.onlyEmailVerifyViewController.rxThirdSendVerifyAction().subscribeSuccess { [self](_) in
             Log.i("發送驗證傳送請求")
+            verifyResentPressed( byVC: true)
         }.disposed(by: dpg)
         
         self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
-            onVerifySuccessClick.onNext(())
+            onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
         
         self.onlyTwoFAVerifyViewController.rxSecondSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
-            onVerifySuccessClick.onNext(())
+            onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
     }
-
+    func verifyResentAutoPressed(byMode: SecurityViewMode)
+    {
+        if byMode == .selectedMode
+        {
+            onlyEmailVerifyViewController.verifyView.emailInputView.emailSendVerify()
+        }else
+        {
+            twoFAVerifyView.emailInputView.emailSendVerify()
+        }
+    }
+    func verifyResentPressed(byVC:Bool = false)
+    {
+        let loginDto = KeychainManager.share.getLastAccount()
+        if let userEmail = loginDto?.account , UserStatus.share.isLogin
+        {
+            Log.v("重發驗證")
+            Beans.loginServer.verificationResend(idString: userEmail).subscribe { [self]dto in
+                if let dataDto = dto
+                {
+                    let countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    resetCountDownNumber(number: countTime,byVC: byVC)
+                }
+            } onError: { error in
+                ErrorHandler.show(error: error)
+            }.disposed(by: dpg)
+        }
+    }
+    func resetCountDownNumber(number:Int ,byVC:Bool)
+    {
+        if byVC == true
+        {
+            onlyEmailVerifyViewController.verifyView.emailInputView.setupCountTime(seconds: number)
+        }else
+        {
+            twoFAVerifyView.emailInputView.setupCountTime(seconds: number)
+        }
+    }
     func setupSelectedUI()
     {
         setupPageVC()
@@ -197,7 +238,7 @@ class SecurityVerificationViewController: BaseViewController {
                                 self.onlyTwoFAVerifyViewController]
         bindSubPageViewControllers()
     }
-    func rxVerifySuccessClick() -> Observable<Any>
+    func rxVerifySuccessClick() -> Observable<(String,String)>
     {
         return onVerifySuccessClick.asObserver()
     }

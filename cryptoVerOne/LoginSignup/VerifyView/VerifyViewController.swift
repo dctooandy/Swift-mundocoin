@@ -245,9 +245,24 @@ class VerifyViewController: BaseViewController {
                                   verificationCode: codeString)
         }
     }
+    func verifyResentLabelVisable(With enable:Bool)
+    {
+        if enable == true
+        {
+            verifyResentLabel.text = "Resend Email".localized
+            verifyResentLabel.textColor = .black
+            underLineView.isHidden = false
+            verifyResentLabel.isUserInteractionEnabled = true
+        }else
+        {
+            verifyResentLabel.isUserInteractionEnabled = false
+            verifyResentLabel.textColor = UIColor(rgb: 0xB5B5B5)
+        }
+    }
     func verifyResentPressed()
     {
         Log.v("重發驗證")
+        verifyResentLabelVisable(With: false)
         if self.timer == nil
         {
             var idString = ""
@@ -314,7 +329,6 @@ class VerifyViewController: BaseViewController {
     }
     func defaultSetup()
     {
-        verifyResentLabel.isUserInteractionEnabled = false
         setupTimer()
         underLineView.isHidden = true
     }
@@ -329,17 +343,14 @@ class VerifyViewController: BaseViewController {
         if countTime == 0 {
 //            tfRightBtn.setImageTitle(image: nil, title: rightBtnTitle())
 //            tfRightBtn.isEnabled = true
-            verifyResentLabel.text = "Resend Email".localized
-            verifyResentLabel.textColor = .black
-            underLineView.isHidden = false
+            verifyResentLabelVisable(With: true)
             timer?.invalidate()
             timer = nil
-            verifyResentLabel.isUserInteractionEnabled = true
             countTime = 60
             return
         }
         verifyResentLabel.text = "Resend in ".localized + "\(countTime) s"
-        verifyResentLabel.textColor = UIColor(rgb: 0xB5B5B5)
+        verifyResentLabelVisable(With: false)
     }
     @objc func popVC(isAnimation : Bool = true)
     {

@@ -133,21 +133,10 @@ class TwoFAVerifyView: UIView {
     }
     func bind()
     {
-        bindUI()
+        bindBorderColor()
         bindCancelButton()
         bindLostTwoFALabel()
         bindAction()
-    }
-    func bindUI()
-    {
-        emailInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            emailInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
-        }.disposed(by: dpg)
-        twoFAInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            emailInputView.tfMaskView.changeBorderWith(isChoose:false)
-            twoFAInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-        }.disposed(by: dpg)
     }
  
     func bindTextfield()

@@ -71,8 +71,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(_ application: UIApplication) {
         // 檢查版本
         checkAppVersion()
-        // 檢查時間
-        checkTime()
+        
+        if let vc = UIApplication.topViewController() {
+            print("current top vc: \(vc)")
+            if vc.isKind(of: LaunchReciprocalViewController.self) { return }
+            if vc.isKind(of: LoginSignupViewController.self) { return }
+            if let vcArray = vc.navigationController?.viewControllers
+            {
+                for vc in vcArray {
+                    if vc is LoginSignupViewController
+                    {
+                        return
+                    }
+                }
+            }
+            if !vc.isKind(of: TabbarViewController.self) {
+                // 檢查時間
+                checkTime()
+            } else {
+                print("current vc is tabbar vc finished.")
+                
+            }
+        }
     }
     
     func checkAppVersion() {

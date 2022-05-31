@@ -83,7 +83,7 @@ class GuidePageViewController: UIPageViewController, Nibloadable {
         }
     }
     override var preferredStatusBarStyle:UIStatusBarStyle {
-        return .lightContent
+        return .default
     }
 }
 

@@ -111,86 +111,21 @@ class LoginService {
             })
     }
     
-    func loginUserLogin(with account:String , password:String) -> Single<LoginDto?>
+    func customerUpdatePassword(current:String , updated:String , verificationCode:String) -> Single<[String:JSONValue]>
     {
         var parameters: Parameters = [String: Any]()
-        parameters = ["user_login":account,
-                      "user_pass":password]
-        let jpushString = UserDefaults.UserInfo.string(forKey: .jpushToken)        
-        parameters["pushid"] = jpushString
+        parameters["current"] = current
+        parameters["updated"] = updated
+        parameters["verificationCode"] = verificationCode
         
         return Beans.requestServer.singleRequestPost(
-            path: ApiService.login.path,
+            path: ApiService.customerUpdatePassword.path,
             parameters: parameters,
             modify: false,
-            resultType: LoginDto.self).map({
-                return $0
-            })
-    }
-    func loginForgetPwdGetVerfiCode(mobile: String, sign: String) -> Single<DefaultDto?>{
-        var parameters: Parameters = [String: Any]()
-        parameters = [
-            "mobile": mobile,
-            "sign": sign,
-            "source": "ios",
-        ]
-        return Beans.requestServer.singleRequestPost(
-//            path: ApiService.loginForget("getForgetCode").path,
-            path: ApiService.forgot.path,
-            parameters: parameters,
-            resultType: DefaultDto.self).map({
-                return $0
-            })
-    }
-    func loginResetPwd(account: String, pwd: String, checkPwd: String, verfiCode: String)-> Single<DefaultDto?>{
-        var parameters: Parameters = [String: Any]()
-        parameters = [
-            "source": "ios",
-            "code": verfiCode,
-            "user_login": account,
-            "user_pass": pwd,
-            "user_pass2": checkPwd
-        ]
-        return Beans.requestServer.singleRequestPost(
-//            path: ApiService.loginForget("userFindPass").path,
-            path: ApiService.reset.path,
-            parameters: parameters,
-            resultType: DefaultDto.self).map({
+            resultType: [String:JSONValue].self).map({
                 return $0
             })
     }
     
-    func loginSignUpGetVerfiCode(mobile: String, sign: String) -> Single<DefaultDto?>{
-        var parameters: Parameters = [String: Any]()
-        parameters = [
-            "mobile": mobile,
-            "sign": sign,
-            "source": "ios",
-        ]
-        return Beans.requestServer.singleRequestPost(
-//            path: ApiService.loginForget("getCode").path,
-            path: ApiService.signup.path,
-            parameters: parameters,
-            resultType: DefaultDto.self).map({
-                return $0
-            })
-    }
-    
-    func loginSignUp(account: String, pwd: String, checkPwd: String, verfiCode: String)-> Single<DefaultDto?>{
-        var parameters: Parameters = [String: Any]()
-        parameters = [
-            "source": "ios",
-            "code": verfiCode,
-            "user_login": account,
-            "user_pass": pwd,
-            "user_pass2": checkPwd
-        ]
-        return Beans.requestServer.singleRequestPost(
-//            path: ApiService.loginForget("userReg").path,
-            path: ApiService.signup.path,
-            parameters: parameters,
-            resultType: DefaultDto.self).map({
-                return $0
-            })
-    }
+
 }

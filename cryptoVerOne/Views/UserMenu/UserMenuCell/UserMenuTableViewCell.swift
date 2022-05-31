@@ -97,10 +97,10 @@ enum cellData {
         case .about:
             guard let versionString = Bundle.main.releaseVersionNumber else { return "version 1.2.3"}
             guard let buildString = Bundle.main.buildVersionNumber else { return "1"}
-#if DEBUG
-            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString) b-\(buildString)"
-#else
+#if Mundo_PRO
             return "version \(versionString)"
+#else
+            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString) b-\(buildString)"
 #endif
         case .logout:
             return ""

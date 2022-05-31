@@ -39,6 +39,13 @@ class LoginViewController: BaseViewController {
         bindLoginBtn()
         bindAccountView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let acView = accountInputView
+        {
+            acView.cleanTextField()
+        }
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -118,6 +125,7 @@ class LoginViewController: BaseViewController {
     
     func bindLoginBtn() {
         loginButton.rx.tap.subscribeSuccess { [self] _ in
+            loginButton.isEnabled = false
             verificationID()
             }.disposed(by: disposeBag)
     }

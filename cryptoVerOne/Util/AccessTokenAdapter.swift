@@ -31,7 +31,8 @@ class AccessTokenAdapter: RequestAdapter {
         if let urlString = urlRequest.url
         {
             if urlString.pathComponents.contains("wallet") ||
-                urlString.pathComponents.contains("refresh")
+                urlString.pathComponents.contains("refresh") ||
+                urlString.pathComponents.contains("updatePassword") 
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }

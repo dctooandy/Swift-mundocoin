@@ -134,7 +134,7 @@ class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDele
             self?.view.endEditing(true)
         } ).disposed(by: disposeBag)
     }
-    var statusStyle: UIStatusBarStyle = .lightContent {
+    var statusStyle: UIStatusBarStyle = .default {
         didSet {
             setNeedsStatusBarAppearanceUpdate()
         }

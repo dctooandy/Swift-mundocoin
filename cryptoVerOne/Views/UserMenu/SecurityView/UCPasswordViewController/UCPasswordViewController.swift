@@ -158,13 +158,23 @@ class UCPasswordViewController: BaseViewController {
                 submitButtonPressed()
             }.disposed(by: dpg)
     }
+    func customerUpdatePassword(Withcode:String)
+    {
+        if let currentString = oldInputView.textField.text,
+        let newString = newInputView.textField.text
+        {
+            Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribeSuccess { [self]data in
+                Log.v("更改成功")
+                changedPWVC.backgroundImageViewHidden()
+                self.navigationController?.pushViewController(changedPWVC, animated: true)
+            }.disposed(by: dpg)
+        }
+    }
     func bindAction()
     {
         twoFAVC.securityViewMode = .selectedMode
-        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self](_) in
-            Log.i("Submit成功")
-            changedPWVC.backgroundImageViewHidden()
-            self.navigationController?.pushViewController(changedPWVC, animated: true)
+        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
+            customerUpdatePassword(Withcode: stringData.0)
         }.disposed(by: dpg)
     }
     func bindBorderColor()
