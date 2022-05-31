@@ -180,7 +180,7 @@ class WithdrawViewController: BaseViewController {
         let isProtocolValid = methodView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
-                return RegexHelper.match(pattern: .coinAddress, input: acc)
+                return !acc.isEmpty
         }
         Observable.combineLatest(isAmountValid,isAddressValid, isProtocolValid)
             .map { return $0.0 && $0.1 && $0.2 } //reget match result

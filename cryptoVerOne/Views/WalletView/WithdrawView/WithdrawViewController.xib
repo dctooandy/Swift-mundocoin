@@ -136,9 +136,8 @@
                                                 <color key="textColor" red="0.63979864119999996" green="0.68253517149999998" blue="0.81610256430000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Min: 10 USDT - Max: 10,000 USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFP-TF-i6P">
-                                                <rect key="frame" x="24" y="71" width="194" height="15"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min: 10 USDT - Max: 10,000 USDT" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFP-TF-i6P">
+                                                <rect key="frame" x="24" y="71" width="193.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" red="0.1651240289" green="0.80549085139999999" blue="0.64308291669999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -158,6 +157,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
+                                            <constraint firstItem="mFP-TF-i6P" firstAttribute="leading" secondItem="ex3-Nd-MgD" secondAttribute="leading" id="5Fz-OZ-NEK"/>
                                             <constraint firstAttribute="trailing" secondItem="xQF-Gd-xrp" secondAttribute="trailing" constant="24" id="69q-Mv-Q8Q"/>
                                             <constraint firstItem="ex3-Nd-MgD" firstAttribute="centerY" secondItem="SVR-yP-JOg" secondAttribute="centerY" id="6Np-Qy-cde"/>
                                             <constraint firstItem="q1t-4h-05m" firstAttribute="top" secondItem="SVR-yP-JOg" secondAttribute="top" constant="24" id="GB8-Ws-Q49"/>
@@ -167,6 +167,7 @@
                                             <constraint firstItem="q1t-4h-05m" firstAttribute="leading" secondItem="SVR-yP-JOg" secondAttribute="leading" constant="24" id="kQw-qg-BBt"/>
                                             <constraint firstItem="xQF-Gd-xrp" firstAttribute="centerY" secondItem="ex3-Nd-MgD" secondAttribute="centerY" id="oeU-FJ-sAo"/>
                                             <constraint firstItem="aY2-cG-lzp" firstAttribute="centerY" secondItem="q1t-4h-05m" secondAttribute="centerY" id="rJt-dn-u92"/>
+                                            <constraint firstItem="mFP-TF-i6P" firstAttribute="top" secondItem="ex3-Nd-MgD" secondAttribute="bottom" constant="7.5" id="uU9-gu-rCI"/>
                                         </constraints>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOw-v5-Dcg" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
