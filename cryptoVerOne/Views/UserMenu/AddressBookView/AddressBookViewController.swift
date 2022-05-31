@@ -53,9 +53,6 @@ class AddressBookViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Address book".localized
-        let rightBarItems = [UIBarButtonItem(customView: addAddressBookButton),UIBarButtonItem(customView: whiteListButton)]
-        self.navigationItem.rightBarButtonItems = rightBarItems
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
         bindUI()
         setupChooseDropdown()
@@ -78,6 +75,10 @@ class AddressBookViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        let rightBarItems = [UIBarButtonItem(customView: addAddressBookButton),UIBarButtonItem(customView: whiteListButton)]
+        self.navigationItem.rightBarButtonItems = rightBarItems
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBookViewCell.self)
         tableView.separatorStyle = .none
@@ -93,6 +94,9 @@ class AddressBookViewController: BaseViewController {
     }
     func bindUI()
     {
+        Themes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
+        let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
+        TwoSideStyle.share.acceptWhiteListTopImageStyle(style)
         topDrawDownIamge.rx.click.subscribeSuccess { (_) in
             self.chooseDropDown.show()
         }.disposed(by: dpg)
@@ -136,7 +140,7 @@ class AddressBookViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
-@available(iOS 11.0, *)
+//@available(iOS 11.0, *)
 extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
 {
     func numberOfSections(in tableView: UITableView) -> Int {

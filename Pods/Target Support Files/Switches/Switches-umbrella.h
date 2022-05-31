@@ -10,7 +10,8 @@
 #endif
 #endif
 
+#import "Switches.h"
 
-FOUNDATION_EXPORT double KNSwitcherVersionNumber;
-FOUNDATION_EXPORT const unsigned char KNSwitcherVersionString[];
+FOUNDATION_EXPORT double SwitchesVersionNumber;
+FOUNDATION_EXPORT const unsigned char SwitchesVersionString[];
 

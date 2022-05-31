@@ -10,12 +10,21 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+enum WhiteListStyle {
+    case whiteListOn, whiteListOff
+}
 class Themes {
     
     static let plkMode = TwoSideStyle.share.interFaceStyle.asObservable()
     static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
         return Themes.plkMode.map({ $0 == .light ? light : dark })
     }
+    // 綁定白名單上方圖片狀態
+    static let topWhiteListImageMode = TwoSideStyle.share.topViewWhiteListImageStyle.asObservable()
+    static func bindWhiteListTopIcon<T>(isON: T , isOff: T) -> Observable<UIImage>{
+        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? UIImage(named: "icon-Chield_check")!:UIImage(named: "icon-Chield")!})
+    }
+
     // 綁定取款成功頁面 上方狀態View
     static let topViewMode = TwoSideStyle.share.topViewStatusStyle.asObservable()
     static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
@@ -47,6 +56,7 @@ class Themes {
     // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
     
+    static let topWhiteListImageIconType : Observable<UIImage> = Themes.bindWhiteListTopIcon(isON: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
     
     // 綁定 輸入框typing狀態的border
     static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()

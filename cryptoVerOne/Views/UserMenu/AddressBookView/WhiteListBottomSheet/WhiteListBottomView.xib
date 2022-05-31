@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -28,30 +28,49 @@
                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="614-95-hCo" customClass="KNSwitcher" customModule="cryptoVerOne" customModuleProvider="target">
-                    <rect key="frame" x="50" y="231.5" width="314" height="50"/>
-                    <color key="backgroundColor" systemColor="systemRedColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bwy-XW-G4h" customClass="Switcher" customModule="Switches">
+                    <rect key="frame" x="50" y="752" width="314" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="A9V-GS-E2C"/>
+                        <constraint firstAttribute="height" constant="50" id="GeK-7v-hxB"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="onTintColor">
+                            <color key="value" red="0.87806028130000002" green="0.87224680190000003" blue="0.99239677189999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="offTintColor">
+                            <color key="value" red="0.38106214999999999" green="0.28515273330000002" blue="0.96450716260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyU-te-kqF">
+                    <rect key="frame" x="50" y="752" width="314" height="50"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="s7S-X3-G3G"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="614-95-hCo" firstAttribute="top" secondItem="F1X-5y-7Nj" secondAttribute="bottom" constant="30" id="BlL-Gb-cWq"/>
+                <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="bwy-XW-G4h" secondAttribute="trailing" constant="50" id="Fi9-Lg-rCI"/>
                 <constraint firstItem="5Ia-o1-WlF" firstAttribute="centerX" secondItem="Kej-UN-D1S" secondAttribute="centerX" id="OJ4-do-19P"/>
-                <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="614-95-hCo" secondAttribute="trailing" constant="50" id="S22-X0-CUi"/>
+                <constraint firstItem="bwy-XW-G4h" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="50" id="VPk-ug-xXR"/>
+                <constraint firstItem="IyU-te-kqF" firstAttribute="bottom" secondItem="bwy-XW-G4h" secondAttribute="bottom" id="ehg-ix-UCX"/>
                 <constraint firstItem="5Ia-o1-WlF" firstAttribute="top" secondItem="s7S-X3-G3G" secondAttribute="top" constant="30" id="ewJ-zs-mqA"/>
-                <constraint firstItem="614-95-hCo" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="50" id="npa-Oh-Eh4"/>
+                <constraint firstItem="IyU-te-kqF" firstAttribute="leading" secondItem="bwy-XW-G4h" secondAttribute="leading" id="kJp-UM-Lop"/>
+                <constraint firstItem="IyU-te-kqF" firstAttribute="top" secondItem="bwy-XW-G4h" secondAttribute="top" id="kQi-PH-Huk"/>
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="F1X-5y-7Nj" secondAttribute="trailing" constant="30" id="qkB-ZD-dts"/>
+                <constraint firstItem="IyU-te-kqF" firstAttribute="trailing" secondItem="bwy-XW-G4h" secondAttribute="trailing" id="r49-qd-Psq"/>
                 <constraint firstItem="F1X-5y-7Nj" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="30" id="uam-SV-NQz"/>
+                <constraint firstItem="s7S-X3-G3G" firstAttribute="bottom" secondItem="bwy-XW-G4h" secondAttribute="bottom" constant="60" id="xiD-nk-huU"/>
                 <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="5" id="xiR-fu-UqW"/>
             </constraints>
             <connections>
-                <outlet property="knzSwitcher" destination="614-95-hCo" id="QWy-Xo-hjV"/>
+                <outlet property="customSwitch" destination="bwy-XW-G4h" id="aad-7L-Oyg"/>
                 <outlet property="titleLabel" destination="5Ia-o1-WlF" id="abi-tc-29S"/>
                 <outlet property="topLabel" destination="F1X-5y-7Nj" id="VpE-bC-ZQ1"/>
+                <outlet property="turnLabel" destination="IyU-te-kqF" id="dje-P4-Pcf"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </view>
@@ -59,9 +78,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

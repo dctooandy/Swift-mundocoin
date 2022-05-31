@@ -15,6 +15,7 @@ class KeychainManager {
         case fingerID = "finger_id"
         case account = "mundocoin_account"
         case accList = "mundocoin_acc_list"
+        case whiteListOnoff = "mundocoin_whiteListOnoff_list"
         case token = "bead_token"
         case domain = "domain"
     }
@@ -175,5 +176,13 @@ class KeychainManager {
     }
     func clearToken() {
        _ = setString("", at: .token)
+    }
+    
+    func saveWhiteListOnOff(_ isOn :Bool ) {
+        
+        _ = setString(isOn == true ? "true":"false", at: .whiteListOnoff)
+    }
+    func getWhiteListOnOff() -> Bool {
+        return getString(from: .whiteListOnoff) == "true" ? true:false
     }
 }

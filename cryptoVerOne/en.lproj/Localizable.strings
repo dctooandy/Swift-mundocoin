@@ -103,3 +103,5 @@
 "Confirm" = "Confirm";
 "When this function is turned on, your account will only be able to withdraw to whitelisted withdrawal addresses. When this function is turned off, your account is able to withdraw to any withdrawal addresses." = "When this function is turned on, your account will only be able to withdraw to whitelisted withdrawal addresses. When this function is turned off, your account is able to withdraw to any withdrawal addresses.";
 "Whitelist" = "Whitelist";
+"Turn Off" = "Turn Off";
+"Turn On" = "Turn On";

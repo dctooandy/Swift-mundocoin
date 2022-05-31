@@ -16,9 +16,17 @@ class TwoSideStyle {
     enum SecureStyle {
         case visible, nonVisible
     }
+ 
     
     static var share = TwoSideStyle()
     
+    // 變換白名單圖片狀態
+    let topViewWhiteListImageStyle: BehaviorRelay<WhiteListStyle> = {
+        return BehaviorRelay<WhiteListStyle>(value: .whiteListOn)
+    }()
+    func acceptWhiteListTopImageStyle(_ style: WhiteListStyle) {
+        topViewWhiteListImageStyle.accept(style)
+    }
     // 變換取款成功頁面上方狀態
     let topViewStatusStyle: BehaviorRelay<DetailType> = {
         return BehaviorRelay<DetailType>(value: .done)
