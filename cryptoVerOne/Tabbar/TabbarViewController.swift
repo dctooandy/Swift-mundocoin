@@ -84,7 +84,7 @@ class TabbarViewController:BaseViewController {
                 weakSelf.present(LoginAlert(), animated: true, completion: nil)
                 return
             }
-            weakSelf.statusStyle = .lightContent
+            weakSelf.statusStyle = .default
             switch index {
             case 0:
                 weakSelf.statusStyle = .default

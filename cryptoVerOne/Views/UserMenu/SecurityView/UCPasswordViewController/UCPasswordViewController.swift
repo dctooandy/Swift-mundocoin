@@ -102,15 +102,6 @@ class UCPasswordViewController: BaseViewController {
     // MARK:業務方法
     func bindTextfield()
     {
-        oldInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            oldInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-        }.disposed(by: dpg)
-        newInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            newInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-        }.disposed(by: dpg)
-        confirmInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            confirmInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-        }.disposed(by: dpg)
         let isoldValid = oldInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }

@@ -73,6 +73,7 @@ class WithdrawViewController: BaseViewController {
     }
     @objc func touch() {
         self.view.endEditing(true)
+        withdrawToView.tfMaskView.changeBorderWith(isChoose:false)
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
