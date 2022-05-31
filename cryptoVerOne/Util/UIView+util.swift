@@ -232,4 +232,10 @@ extension UIView {
            shapeLayer.path = path
            layer.addSublayer(shapeLayer)
        }
+    
+    var allSubViews : [UIView] {
+        var array = [self.subviews].flatMap {$0}
+        array.forEach { array.append(contentsOf: $0.allSubViews) }
+        return array
+    }
 }

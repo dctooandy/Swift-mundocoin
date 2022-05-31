@@ -1,15 +1,15 @@
 //
-//  AddressBottomSheet.swift
+//  WhiteListBottomView.swift
 //  cryptoVerOne
 //
-//  Created by AndyChen on 2022/5/13.
-//
+//  Created by BBk on 5/31/22.
+
 
 import Foundation
 import RxCocoa
 import RxSwift
 
-class AddressBottomSheet: BaseBottomSheet {
+class WhiteListBottomView: BaseBottomSheet {
     // MARK:業務設定
     private let onCellSecondClick = PublishSubject<UserAddressDto>()
     private let dpg = DisposeBag()

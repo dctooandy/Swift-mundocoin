@@ -186,6 +186,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //pushNotifications
             case 3:
                 Log.i("addressBook")
+                let addressBookVC = AddressBookViewController.loadNib()
+                self.navigationController?.pushViewController(addressBookVC, animated: true)
                 //addressBook
             default:
                 break

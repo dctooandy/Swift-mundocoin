@@ -18,6 +18,21 @@
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
+		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
+		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
+		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
+		09C20F9F2845D87100E70654 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
+		09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
+		09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
+		09C20FA32845E19900E70654 /* AddressBookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FA22845E19900E70654 /* AddressBookViewCell.swift */; };
+		09C20FA42845E19900E70654 /* AddressBookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FA22845E19900E70654 /* AddressBookViewCell.swift */; };
+		09C20FA52845E19900E70654 /* AddressBookViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FA22845E19900E70654 /* AddressBookViewCell.swift */; };
+		09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */; };
+		09C20FA82845E1B800E70654 /* AddressBookViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */; };
+		09C20FA92845E1B800E70654 /* AddressBookViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */; };
+		09C20FAC2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
+		09C20FAD2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
+		09C20FAE2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
 		09CAF439283C74D600D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
 		09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
 		09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
@@ -619,6 +634,11 @@
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
+		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
+		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
+		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
+		09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewCell.xib; sourceTree = "<group>"; };
+		09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListBottomView.swift; sourceTree = "<group>"; };
 		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CAF4F9283C78A700D7B19B /* Info_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_dev.plist; sourceTree = "<group>"; };
@@ -870,6 +890,26 @@
 			path = ScrollView;
 			sourceTree = "<group>";
 		};
+		09C20F992845D83D00E70654 /* AddressBookView */ = {
+			isa = PBXGroup;
+			children = (
+				09C20FAA2845FD3300E70654 /* WhiteListBottomSheet */,
+				09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */,
+				09C20F9E2845D87100E70654 /* AddressBookViewController.xib */,
+				09C20FA22845E19900E70654 /* AddressBookViewCell.swift */,
+				09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */,
+			);
+			path = AddressBookView;
+			sourceTree = "<group>";
+		};
+		09C20FAA2845FD3300E70654 /* WhiteListBottomSheet */ = {
+			isa = PBXGroup;
+			children = (
+				09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */,
+			);
+			path = WhiteListBottomSheet;
+			sourceTree = "<group>";
+		};
 		09CAF437283C74C300D7B19B /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -1029,6 +1069,7 @@
 		A1973A032828EBC2009932D8 /* UserMenu */ = {
 			isa = PBXGroup;
 			children = (
+				09C20F992845D83D00E70654 /* AddressBookView */,
 				A1DD13BA282C0B3300AB2E0A /* PersonalInfoView */,
 				A1DD13AA282BED5200AB2E0A /* SecurityView */,
 				A1DD13B3282C08A200AB2E0A /* PushNotification */,
@@ -1622,6 +1663,7 @@
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
+				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
@@ -1630,6 +1672,7 @@
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF4DC283C77ED00D7B19B /* BetleadTabbar.xib in Resources */,
 				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
+				09C20FA82845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
 				09CAF4DE283C77ED00D7B19B /* mucoin_question.json in Resources */,
 				09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
@@ -1678,6 +1721,7 @@
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
+				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
@@ -1686,6 +1730,7 @@
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF59D283C7BBE00D7B19B /* BetleadTabbar.xib in Resources */,
 				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
+				09C20FA92845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
 				09CAF59F283C7BBE00D7B19B /* mucoin_question.json in Resources */,
 				09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
@@ -1733,6 +1778,7 @@
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
+				09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
@@ -1748,6 +1794,7 @@
 				09CAF5BB283C7C2300D7B19B /* Info_stage.plist in Resources */,
 				09CAF4FA283C78A700D7B19B /* Info_dev.plist in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
+				09C20F9F2845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
@@ -1967,6 +2014,7 @@
 				09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF478283C77ED00D7B19B /* LoginMode.swift in Sources */,
 				09CAF479283C77ED00D7B19B /* DepositViewController.swift in Sources */,
+				09C20FA42845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */,
 				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
@@ -1988,6 +2036,7 @@
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
+				09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				09CAF48B283C77ED00D7B19B /* OKButton.swift in Sources */,
 				09CAF48C283C77ED00D7B19B /* RequestService.swift in Sources */,
 				09CAF48D283C77ED00D7B19B /* Constants.swift in Sources */,
@@ -2040,6 +2089,7 @@
 				09CAF4B8283C77ED00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */,
+				09C20FAD2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF4BB283C77ED00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF4BC283C77ED00D7B19B /* CancelButton.swift in Sources */,
 				09CAF4BD283C77ED00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
@@ -2124,6 +2174,7 @@
 				09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF539283C7BBE00D7B19B /* LoginMode.swift in Sources */,
 				09CAF53A283C7BBE00D7B19B /* DepositViewController.swift in Sources */,
+				09C20FA52845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */,
 				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
@@ -2145,6 +2196,7 @@
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
+				09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				09CAF54C283C7BBE00D7B19B /* OKButton.swift in Sources */,
 				09CAF54D283C7BBE00D7B19B /* RequestService.swift in Sources */,
 				09CAF54E283C7BBE00D7B19B /* Constants.swift in Sources */,
@@ -2197,6 +2249,7 @@
 				09CAF579283C7BBE00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */,
+				09C20FAE2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF57C283C7BBE00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF57D283C7BBE00D7B19B /* CancelButton.swift in Sources */,
 				09CAF57E283C7BBE00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
@@ -2281,6 +2334,7 @@
 				A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
 				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
+				09C20FA32845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
 				A16F61C7282CBBD100D9CCE5 /* TFFinishReViewController.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
@@ -2302,6 +2356,7 @@
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
 				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,
+				09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestService.swift in Sources */,
 				A19C712A282256CC000AFC3F /* Constants.swift in Sources */,
@@ -2354,6 +2409,7 @@
 				A19C70E328224AE8000AFC3F /* PromotionViewController.swift in Sources */,
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
 				A1B051F22823B13F00056183 /* String+util.swift in Sources */,
+				09C20FAC2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				A16F61E5282E2A2300D9CCE5 /* ScannerViewController.swift in Sources */,
 				A19C70C128223DC1000AFC3F /* CancelButton.swift in Sources */,
 				A19C710428224DCF000AFC3F /* BottomSheetDismissAnimationController.swift in Sources */,

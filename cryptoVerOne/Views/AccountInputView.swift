@@ -77,7 +77,7 @@ class AccountInputView: UIView {
         let isRegistrationValid = registrationInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
-                return RegexHelper.match(pattern: .coinAddress, input: acc)
+                return RegexHelper.match(pattern: .otp, input: acc)
         }
         isAccountValid.skip(1).bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         
