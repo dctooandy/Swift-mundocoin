@@ -58,9 +58,9 @@ enum InputViewMode :Equatable {
         case .emailVerify: return "Email verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress: return "Long press to paste".localized
-        case .email: return "...@mundo.com"
+        case .email: return "...@mundocoin.com"
         case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
-        case .forgotPW: return "...@mundo.com"
+        case .forgotPW: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
         }
@@ -71,10 +71,10 @@ enum InputViewMode :Equatable {
         case .emailVerify: return "Enter the 6-digit code".localized
         case .twoFAVerify: return "Enter the 6-digit code".localized
         case .withdrawToAddress: return "Please check the withdrawal address.".localized
-        case .email: return "...@mundo.com".localized
+        case .email: return "...@mundocoin.com".localized
         case .phone: return "Invalid phone number.".localized
         case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
-        case .forgotPW: return "...@mundo.com".localized
+        case .forgotPW: return "...@mundocoin.com".localized
         case .registration: return "Enter the 6-digit code ".localized
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
@@ -296,10 +296,10 @@ class InputStyleView: UIView {
         
         textField.delegate = self
         displayRightButton.tintColor = Themes.grayA3AED0
-        let topLabelH = 15
+        let topLabelH = 17
         let invalidH = (isPasswordType ? 39.0 : 22.0)
         topLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(-2)
             make.leading.equalToSuperview().offset(10)
             make.height.equalTo(topLabelH)
         }
@@ -542,6 +542,8 @@ class InputStyleView: UIView {
         let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
+        
+        bringSubviewToFront(topLabel)
     }
     func bindPwdButton()
     {

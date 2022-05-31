@@ -21,6 +21,8 @@ def shared_pods
   pod 'SwiftyJWT'
   pod 'DropDown'
   pod "ReCaptcha/RxSwift"
+#  pod 'PMZSwitch'
+  pod 'KNSwitcher'
 end
 
 target 'cryptoVerOne_stage' do

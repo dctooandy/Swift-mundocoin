@@ -718,7 +718,7 @@ extension LoginSignupViewController {
         case .loginEmail,.loginPhone:
 //            fetchBackgroundVideo()
             switchButton.setTitle("Sign Up".localized, for: .normal)
-            topLabel.text = "Log In to Mundocoin".localized
+            topLabel.text = "Log in to Mundocoin".localized
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .signupEmail,.signupPhone:

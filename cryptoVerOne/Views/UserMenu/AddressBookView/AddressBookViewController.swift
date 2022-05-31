@@ -120,9 +120,12 @@ class AddressBookViewController: BaseViewController {
     }
     
     @objc func whiteListAction() {
-        Log.i("推到白名單")
-        let notiVC = NotiViewController.loadNib()
-        self.navigationController?.pushViewController(notiVC, animated: true)
+        Log.i("開啟白名單警告Sheet")
+        let whiteListBottomSheet = WhiteListBottomSheet()
+
+        DispatchQueue.main.async {
+            whiteListBottomSheet.start(viewController: self ,height: 317)
+        }
     }
     
     @objc func addAddressBookAction() {

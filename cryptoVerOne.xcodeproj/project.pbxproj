@@ -33,6 +33,12 @@
 		09C20FAC2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
 		09C20FAD2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
 		09C20FAE2845FD5200E70654 /* WhiteListBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */; };
+		09C20FB02846010900E70654 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
+		09C20FB12846010900E70654 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
+		09C20FB22846010900E70654 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
+		09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
+		09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
+		09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
 		09CAF439283C74D600D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
 		09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
 		09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
@@ -639,6 +645,8 @@
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
 		09C20FA62845E1B800E70654 /* AddressBookViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewCell.xib; sourceTree = "<group>"; };
 		09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListBottomView.swift; sourceTree = "<group>"; };
+		09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListBottomSheet.swift; sourceTree = "<group>"; };
+		09C20FB72846014B00E70654 /* WhiteListBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhiteListBottomView.xib; sourceTree = "<group>"; };
 		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CAF4F9283C78A700D7B19B /* Info_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_dev.plist; sourceTree = "<group>"; };
@@ -905,7 +913,9 @@
 		09C20FAA2845FD3300E70654 /* WhiteListBottomSheet */ = {
 			isa = PBXGroup;
 			children = (
+				09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */,
 				09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */,
+				09C20FB72846014B00E70654 /* WhiteListBottomView.xib */,
 			);
 			path = WhiteListBottomSheet;
 			sourceTree = "<group>";
@@ -1664,6 +1674,7 @@
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
+				09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
@@ -1722,6 +1733,7 @@
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
+				09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
@@ -1810,6 +1822,7 @@
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
+				09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
 				A1DD13B1282C027E00AB2E0A /* SecurityViewController.xib in Resources */,
 			);
@@ -2028,6 +2041,7 @@
 				09CAF484283C77ED00D7B19B /* UIView+util.swift in Sources */,
 				09CAF485283C77ED00D7B19B /* BasePresentAnimationController.swift in Sources */,
 				09CAF486283C77ED00D7B19B /* AppVersionDto.swift in Sources */,
+				09C20FB12846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
@@ -2188,6 +2202,7 @@
 				09CAF545283C7BBE00D7B19B /* UIView+util.swift in Sources */,
 				09CAF546283C7BBE00D7B19B /* BasePresentAnimationController.swift in Sources */,
 				09CAF547283C7BBE00D7B19B /* AppVersionDto.swift in Sources */,
+				09C20FB22846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
@@ -2348,6 +2363,7 @@
 				A19C70D42822479B000AFC3F /* UIView+util.swift in Sources */,
 				A19C70F828224D4F000AFC3F /* BasePresentAnimationController.swift in Sources */,
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
+				09C20FB02846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
