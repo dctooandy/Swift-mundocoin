@@ -19,12 +19,12 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>KNSwitcher.xcscheme</key>
+		<key>KeychainSwift.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>KeychainSwift.xcscheme</key>
+		<key>OOSwitch.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

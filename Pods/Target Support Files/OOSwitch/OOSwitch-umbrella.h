@@ -10,8 +10,7 @@
 #endif
 #endif
 
-#import "Switches.h"
 
-FOUNDATION_EXPORT double SwitchesVersionNumber;
-FOUNDATION_EXPORT const unsigned char SwitchesVersionString[];
+FOUNDATION_EXPORT double OOSwitchVersionNumber;
+FOUNDATION_EXPORT const unsigned char OOSwitchVersionString[];
 
