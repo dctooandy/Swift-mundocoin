@@ -27,6 +27,7 @@ class VerifyViewController: BaseViewController {
     var isAlreadySetBackView = false
     private var timer: Timer?
     private var countTime = 60
+    private var verifyCodeString = ""
     var loginDto : LoginPostDto?  {
         didSet {
             if let loginDto = self.loginDto
@@ -94,6 +95,7 @@ class VerifyViewController: BaseViewController {
         setupUI()
         bindPwdButton()
         bindTextfield()
+        bindResetPWVC()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -213,10 +215,20 @@ class VerifyViewController: BaseViewController {
         isValid.bind(to: verifyButton.rx.isEnabled)
             .disposed(by: dpg)
     }
-
+    func bindResetPWVC()
+    {
+        resetPWVC.rxSubmitClick().subscribeSuccess { [self] dataString in
+            // 發送驗證碼跟密碼
+            // dataString 新密碼
+            // verifyCodeString 驗證碼
+            // 先讓他去
+            Log.v("新密碼 : \(dataString)\n驗證碼 : \(verifyCodeString)")
+            resetPWVC.gotoFinalVC()
+        }.disposed(by: dpg)
+    }
     func verifyButtonPressed()
     {
-        LoadingViewController.show()
+//        LoadingViewController.show()
         var idString = ""
         var passwordString = ""
         var registrationString = ""
@@ -322,9 +334,9 @@ class VerifyViewController: BaseViewController {
                                                              signupDto: signupDto)
         }
     }
-    func directToResetPWVC()
+    func directToResetPWVC(_ verifyString : String)
     {
-        Log.v("忘記密碼驗證完畢,輸入密碼")
+        verifyCodeString = verifyString
         self.navigationController?.pushViewController(resetPWVC, animated: true )
     }
     func defaultSetup()

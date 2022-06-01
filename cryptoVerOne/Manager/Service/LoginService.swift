@@ -111,7 +111,7 @@ class LoginService {
             })
     }
     
-    func customerUpdatePassword(current:String , updated:String , verificationCode:String) -> Single<[String:JSONValue]>
+    func customerUpdatePassword(current:String , updated:String , verificationCode:String) -> Single<UpdatePasswordDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["current"] = current
@@ -122,7 +122,7 @@ class LoginService {
             path: ApiService.customerUpdatePassword.path,
             parameters: parameters,
             modify: false,
-            resultType: [String:JSONValue].self).map({
+            resultType: UpdatePasswordDto.self).map({
                 return $0
             })
     }

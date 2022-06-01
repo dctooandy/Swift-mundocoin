@@ -49,6 +49,7 @@ class LoginSignupViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
+//    var recaptchaVC = RecaptchaViewController.loadNib()
     var verifyVC : VerifyViewController!
     private lazy var switchButton:UIButton = {
         let rightBtn = UIButton()
@@ -132,6 +133,7 @@ class LoginSignupViewController: BaseViewController {
             strongSelf.showImageVerifyView(dto)
         }.disposed(by: disposeBag)
         
+ 
         // 發送驗證碼
 //        loginPageVC.rxVerifyCodeBtnClick().subscribeSuccess { [weak self] (phone) in
 //            self?.view.endEditing(true)
@@ -335,32 +337,39 @@ extension LoginSignupViewController {
                          loginDto : LoginPostDto? = nil,
                          signupDto : SignupPostDto? = nil)
     {
-        Beans.loginServer.authentication(with: idString, password: password, verificationCode: verificationCode).subscribe { [self]authDto in
-            _ = LoadingViewController.dismiss()
-            if let data = authDto
-            {
-                if let loginData = loginDto
+        if let loginData = loginDto ,loginData.currentShowMode == .forgotPW
+        {
+            Log.v("忘記密碼驗證完畢,輸入密碼")
+            verifyVC.directToResetPWVC(verificationCode)
+        }else
+        {
+            Beans.loginServer.authentication(with: idString, password: password, verificationCode: verificationCode).subscribe { [self]authDto in
+                _ = LoadingViewController.dismiss()
+                if let data = authDto
                 {
-                    directToNextPage(authDto: data ,loginDto: loginData)
-                }else if let signupData = signupDto
+                    if let loginData = loginDto
+                    {
+                        directToNextPage(authDto: data ,loginDto: loginData)
+                    }else if let signupData = signupDto
+                    {
+                        directToNextPage(authDto: data ,signupDto: signupData)
+                    }
+                }
+            } onError: { [self] error in
+                _ = LoadingViewController.dismiss()
+                if let error = error as? ApiServiceError
                 {
-                    directToNextPage(authDto: data ,signupDto: signupData)
+                    switch error {
+                    case .errorDto(let dto):
+                        verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                    case .noData:
+                        Log.v("登入返回沒有資料")
+                    default:
+                        ErrorHandler.show(error: error)
+                    }
                 }
-            }
-        } onError: { [self] error in
-            _ = LoadingViewController.dismiss()
-            if let error = error as? ApiServiceError
-            {
-                switch error {
-                case .errorDto(let dto):
-                    verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
-                case .noData:
-                    Log.v("登入返回沒有資料")
-                default:
-                    ErrorHandler.show(error: error)
-                }
-            }
-        }.disposed(by: disposeBag)
+            }.disposed(by: disposeBag)
+        }
     }
     func gotoSignupAction(code:String ,
                           email:String = "" ,
@@ -406,7 +415,6 @@ extension LoginSignupViewController {
     {
         // 登入 驗證完畢直接登入
         // 註冊 驗證完畢跳出國碼選擇
-        // 忘記密碼 驗證完畢 跳出密碼輸入頁
         if let loginData = loginDto
         {
             if loginData.currentShowMode != .forgotPW
@@ -415,11 +423,12 @@ extension LoginSignupViewController {
                 Log.v("得到 Token 轉去 Login ")
                 popVC()
                 directToSaveDataAndLogin(authDto:authDto,loginDto: loginData)
-            }else
-            {
-                Log.v("忘記密碼驗證完畢,輸入密碼")
-                verifyVC.directToResetPWVC()
             }
+//            else
+//            {
+//                Log.v("忘記密碼驗證完畢,輸入密碼")
+//                verifyVC.directToResetPWVC(<#T##verifyString: String##String#>)
+//            }
         }else if let signupData = signupDto
         {
             Log.v("註冊驗證完畢,直接登入")
@@ -685,11 +694,13 @@ extension LoginSignupViewController {
                 if let dto = postDto as? SignupPostDto {
                     // 開啟驗證頁面
                     showVerifyVCWithSignUpData(dto)
-                }                
+                }
             }
         }.disposed(by: disposeBag)
         self.navigationController?.pushViewController(recaptchaVC, animated: true)
     }
+    
+
     func setNavigationLeftView(isForgotView:Bool)
     {
         if isForgotView

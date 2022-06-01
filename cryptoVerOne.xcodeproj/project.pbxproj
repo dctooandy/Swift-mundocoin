@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
+		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
+		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
@@ -635,6 +638,7 @@
 
 /* Begin PBXFileReference section */
 		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
@@ -1431,6 +1435,7 @@
 				09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */,
 				09A54F8128409A8A00164B27 /* MemberAccountDto.swift */,
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
+				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -2088,6 +2093,7 @@
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
+				095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF4AE283C77ED00D7B19B /* GuidePageViewController.swift in Sources */,
@@ -2249,6 +2255,7 @@
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
+				095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF56F283C7BBE00D7B19B /* GuidePageViewController.swift in Sources */,
@@ -2410,6 +2417,7 @@
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
+				095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
 				A19C70E728224BF5000AFC3F /* UserDefaults+util.swift in Sources */,
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,

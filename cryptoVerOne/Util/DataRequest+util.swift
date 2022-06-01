@@ -78,13 +78,13 @@ extension DataRequest
                         self.decodeForData(type:"dataCorrupted",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                     catch DecodingError.keyNotFound(let key, let context) {
-                        self.decodeForData(type:"keyNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                        self.decodeForData(type:"keyNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode,keyContext:("\(key)","\(context)"), onError: onError)
                     }
                     catch DecodingError.typeMismatch(let type, let context) {
-                        self.decodeForData(type:"typeMismatch",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                        self.decodeForData(type:"typeMismatch",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode,keyContext:("\(type)","\(context)"), onError: onError)
                     }
                     catch DecodingError.valueNotFound(let value, let context) {
-                        self.decodeForData(type:"valueNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                        self.decodeForData(type:"valueNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode,keyContext:("\(value)","\(context)"), onError: onError)
                     }
                     catch {
                         self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
@@ -127,7 +127,7 @@ extension DataRequest
             }
         }
     }
-    func decodeForData(type:String = "",requestURLString : String ,data : Data , decoder :JSONDecoder , statusCode:Int,onError:((ApiServiceError) -> Void)? = nil)
+    func decodeForData(type:String = "",requestURLString : String ,data : Data , decoder :JSONDecoder , statusCode:Int,keyContext:(String,String) = ("","") ,onError:((ApiServiceError) -> Void)? = nil)
     {
         var apiError : ApiServiceError!
         do {
@@ -142,14 +142,14 @@ extension DataRequest
                 onError?(apiError)
             }else
             {
-                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"無法解析")
+                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"無法解析-\(keyContext.0)-:-\(keyContext.1)-")
                 let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :可能是空值,無法解析"
                 Log.e("\(message)")
                 onError?(apiError)
             }
         }
         catch {
-            let errorMsg = "伺服器繁忙，请稍候再试"
+            let errorMsg = "-\(keyContext.0)-:-\(keyContext.1)-"
             apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
             let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(errorMsg)"
             Log.e("\(message)")

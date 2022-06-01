@@ -11,7 +11,7 @@ import RxSwift
 
 class ResetPasswordViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onSubmitClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private let cancelImg = UIImage(named: "icon-close")!
     fileprivate let changedPWVC = CPasswordViewController.loadNib()
@@ -41,7 +41,7 @@ class ResetPasswordViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        _ = LoadingViewController.dismiss()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -129,7 +129,18 @@ class ResetPasswordViewController: BaseViewController {
     }
     func submitButtonPressed()
     {
+        if let passwordString = newPasswordInputView.textField.text
+        {
+            onSubmitClick.onNext(passwordString)
+        }
+    }
+    func gotoFinalVC()
+    {
         self.navigationController?.pushViewController(changedPWVC, animated: true)
+    }
+    func rxSubmitClick() -> Observable<String>
+    {
+        return onSubmitClick.asObserver()
     }
     @objc override func popVC()
     {

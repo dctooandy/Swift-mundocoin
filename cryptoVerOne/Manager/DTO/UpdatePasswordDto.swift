@@ -1,29 +1,30 @@
 //
-//  RegistrationDto.swift
+//  UpdatePasswordDto.swift
 //  cryptoVerOne
 //
-//  Created by BBk on 5/24/22.
+//  Created by BBk on 6/1/22.
 //
+
 
 import Foundation
 import RxSwift
 
-class RegistrationDto :Codable{
-    static var share:RegistrationDto?
+class UpdatePasswordDto :Codable{
+    static var share:UpdatePasswordDto?
     {
         didSet {
             guard let share = share else { return }
             subject.onNext(share)
         }
     }
-    static var rxShare:Observable<RegistrationDto?> = subject
+    static var rxShare:Observable<UpdatePasswordDto?> = subject
         .do(onNext: { value in
             if share == nil {
                 _ = update(done: {})
             }
         })
     static let disposeBag = DisposeBag()
-    static private let subject = BehaviorSubject<RegistrationDto?>(value: nil)
+    static private let subject = BehaviorSubject<UpdatePasswordDto?>(value: nil)
     static func update(done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
 //        Beans.userServer.fetchUserInfo().subscribeSuccess({ (userInfoDto) in

@@ -21,6 +21,7 @@ class RecaptchaViewController: BaseViewController {
     }
     private var locale: Locale?
     private var endpoint = ReCaptcha.Endpoint.default
+    var postDto: Any?
     // MARK: -
     // MARK:UI 設定
     private var recaptcha: ReCaptcha!
@@ -105,11 +106,18 @@ class RecaptchaViewController: BaseViewController {
                 self?.view.viewWithTag(Constants.webViewTag)
                 self?.navigationController?.popViewController(animated: false)
                 self?.onSuccessClick.onNext(tokenString)
+//                view.viewWithTag(Constants.webViewTag)
+////                self?.navigationController?.popViewController(animated: false)
+////                self?.onSuccessClick.onNext(tokenString)
+//                
+//                if (view.viewWithTag(Constants.webViewTag) != nil)
+//                {
+//                    view.viewWithTag(Constants.webViewTag)?.removeFromSuperview()
+//                    navigationController?.popViewController(animated: false)
+//                    onSuccessClick.onNext(tokenString)
+//                }
             }
             .subscribe(onNext: {  _ in
-//                subview.removeFromSuperview()
-//
-//                navigationController?.popViewController(animated: false)
             })
             .disposed(by: disposeBag)
 
