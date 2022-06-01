@@ -170,14 +170,14 @@ class TwoFAVerifyView: UIView {
     }
     func bindCancelButton()
     {
-        let _ =  emailInputView.textField.rx.text.map({$0 ?? ""})
-            .map({$0.isEmpty})
-            .bind(to: emailInputView.cancelRightButton.rx.isHidden)
-            .disposed(by: dpg)
-        let _ =  twoFAInputView.textField.rx.text.map({$0 ?? ""})
-            .map({$0.isEmpty})
-            .bind(to: twoFAInputView.cancelRightButton.rx.isHidden)
-            .disposed(by: dpg)
+//        let _ =  emailInputView.textField.rx.text.map({$0 ?? ""})
+//            .map({$0.isEmpty})
+//            .bind(to: emailInputView.cancelRightButton.rx.isHidden)
+//            .disposed(by: dpg)
+//        let _ =  twoFAInputView.textField.rx.text.map({$0 ?? ""})
+//            .map({$0.isEmpty})
+//            .bind(to: twoFAInputView.cancelRightButton.rx.isHidden)
+//            .disposed(by: dpg)
     }
     func bindBorderColor()
     {

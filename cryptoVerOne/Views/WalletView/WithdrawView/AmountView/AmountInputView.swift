@@ -58,7 +58,7 @@ class AmountInputView: UIView {
 // MARK: 延伸
 extension AmountInputView:UITextFieldDelegate
 {
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, qwe range: NSRange, replacementString string: String) -> Bool {
         let newPosition = textField.endOfDocument
         textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
         guard let text = textField.text else {

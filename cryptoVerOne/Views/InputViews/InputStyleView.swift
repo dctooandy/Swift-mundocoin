@@ -538,7 +538,7 @@ class InputStyleView: UIView {
             make.height.equalTo(18)
             make.width.equalTo(cancelOffetWidth)
         }
-
+        cancelRightButton.isHidden = true
         let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
@@ -789,10 +789,15 @@ extension InputStyleView: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        cancelRightButton.isHidden = false
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         onChooseClick.onNext(true)
+        cancelRightButton.isHidden = false
         return true
+    }
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        cancelRightButton.isHidden = true
     }
 }

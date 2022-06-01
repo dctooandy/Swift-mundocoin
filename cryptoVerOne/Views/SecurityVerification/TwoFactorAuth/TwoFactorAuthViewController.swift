@@ -137,10 +137,10 @@ class TwoFactorAuthViewController: BaseViewController {
     }
     func bindCancelButton()
     {
-        let _ =  twoFAView.textField.rx.text.map({$0 ?? ""})
-            .map({$0.isEmpty})
-            .bind(to: twoFAView.cancelRightButton.rx.isHidden)
-            .disposed(by: dpg)
+//        let _ =  twoFAView.textField.rx.text.map({$0 ?? ""})
+//            .map({$0.isEmpty})
+//            .bind(to: twoFAView.cancelRightButton.rx.isHidden)
+//            .disposed(by: dpg)
     }
     func setScrollView()
     {

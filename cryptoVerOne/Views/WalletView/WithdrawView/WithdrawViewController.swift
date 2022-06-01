@@ -188,10 +188,10 @@ class WithdrawViewController: BaseViewController {
             .bind(to: continueButton.rx.isEnabled)
             .disposed(by: dpg)
         
-        let _ =  withdrawToView.textField.rx.text.map({$0 ?? ""})
-            .map({$0.isEmpty})
-            .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
-            .disposed(by: dpg)
+//        let _ =  withdrawToView.textField.rx.text.map({$0 ?? ""})
+//            .map({$0.isEmpty})
+//            .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
+//            .disposed(by: dpg)
         amountView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
             if let amount = Double(amountView.amountTextView.text!),
                let fee = Double(feeAmountLabel.text!)
