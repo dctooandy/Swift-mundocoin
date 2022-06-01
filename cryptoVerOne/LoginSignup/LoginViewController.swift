@@ -133,7 +133,8 @@ class LoginViewController: BaseViewController {
     func verificationID()
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
-        Beans.loginServer.verificationID(idString: account , asLoginUser: true).subscribeSuccess { [self] stringValue in
+        guard let pwString = accountInputView?.passwordInputView.textField.text?.lowercased() else {return}
+        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribeSuccess { [self] stringValue in
             Log.v("帳號有註冊過")
             login()
         }.disposed(by: disposeBag)

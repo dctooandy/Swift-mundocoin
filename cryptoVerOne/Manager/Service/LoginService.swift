@@ -62,17 +62,23 @@ class LoginService {
                 return $0
             })
     }
-    func verificationID(idString:String ,asLoginUser:Bool) -> Single<String?>
+    func verificationIDPost(idString:String ,pwString:String) -> Single<String?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString]
-        if asLoginUser == true
-        {
-            parameters["asLoginUser"] = "true"
-        }else
-        {
-            parameters["asLoginUser"] = "false"
-        }
+        parameters = ["password":pwString]
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.verificationID(idString).path,
+            parameters: parameters,
+            modify: false,
+            resultType: String.self).map({
+                return $0
+            })
+    }
+    func verificationIDGet(idString:String ) -> Single<String?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters = ["id":idString]
         return Beans.requestServer.singleRequestGet(
             path: ApiService.verificationID(idString).path,
             parameters: parameters,

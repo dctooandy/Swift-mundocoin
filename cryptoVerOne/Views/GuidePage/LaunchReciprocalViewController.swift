@@ -11,16 +11,20 @@ import RxCocoa
 import RxSwift
 
 class LaunchReciprocalViewController: BaseViewController {
-    
+    // MARK:業務設定
+    private var count = 4
+    private var firstStart = false
+    private var waitForGotoWallet = false
+    // MARK: -
+    // MARK:UI 設定
     let loginVC =  LoginSignupViewController.share
-    
     @IBOutlet weak var reciprocalLabel: UILabel!
     @IBOutlet weak var beleadLeftIcon:UIImageView!
     @IBOutlet weak var beleadRightTopIcon:UIImageView!
     @IBOutlet weak var beleadRightBottomIcon:UIImageView!
     @IBOutlet weak var copyrightLabel:UILabel!
-    private var count = 4
-    
+    // MARK: -
+    // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         checkVersion()
@@ -34,8 +38,10 @@ class LaunchReciprocalViewController: BaseViewController {
         startToCountDown()
         startAnimation()
     }
-    
+    // MARK: -
+    // MARK:業務方法
     func startToCountDown() {
+        checkForDirectAndWait()
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
             guard let strongSelf = self else { return }
             strongSelf.count -= 1
@@ -44,43 +50,93 @@ class LaunchReciprocalViewController: BaseViewController {
                 strongSelf.reciprocalLabel.text = "\(strongSelf.count) 秒"
                 if strongSelf.count == 0 {
                     timer.invalidate()
-                    strongSelf.directToViewController()
+                    if strongSelf.firstStart == false
+                    {
+                        strongSelf.checkForDirectAndWait(immediately: true)
+                    }else
+                    {
+                        if strongSelf.waitForGotoWallet == true
+                        {
+                            strongSelf.goToWallet()
+                        }else
+                        {
+                            strongSelf.goToLogin()
+                        }
+                    }
                 }
             }
         }
     }
     
-    func directToViewController() {
+    func checkForDirectAndWait(immediately:Bool = false) {
         if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
             if showUpdateAlert {
                 appUpdateAlert()
                 return
             }
 //            if isLaunchBefore() {
-            
-            if UserStatus.share.isLogin == true {
-                // 自動登入
-                // 檢查token動作
-                if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-                    appdelegate.checkTime()
-                }
-                let walletVC = WalletViewController.share
-                let walletNavVC = MDNavigationController(rootViewController: walletVC)
-                mainWindow.rootViewController = walletNavVC
-                mainWindow.makeKeyAndVisible()
-            }else
+            if firstStart == false
             {
-                let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
-                mainWindow.rootViewController = loginNavVC
-                mainWindow.makeKeyAndVisible()
+                if UserStatus.share.isLogin == true {
+                    // 自動登入
+                    // 檢查token動作
+                    if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appdelegate.checkTime(complete: { [self] flag in
+                            firstStart = true
+                            waitForGotoWallet = flag
+                            if immediately == true
+                            {
+                                if waitForGotoWallet == true
+                                {
+                                    goToWallet()
+                                }else
+                                {
+                                    goToLogin()
+                                }
+                            }
+                        })
+                    }
+                    
+//                    let walletVC = WalletViewController.share
+//                    let walletNavVC = MDNavigationController(rootViewController: walletVC)
+//                    mainWindow.rootViewController = walletNavVC
+//                    mainWindow.makeKeyAndVisible()
+                }else
+                {
+                    firstStart = true
+                    if immediately == true
+                    {
+                        goToLogin()
+                    }
+//                    let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
+//                    mainWindow.rootViewController = loginNavVC
+//                    mainWindow.makeKeyAndVisible()
+                }
+                
             }
-//            } else {
-//                mainWindow.rootViewController = GuidePageViewController.loadNib()
-//                mainWindow.makeKeyAndVisible()
-//            }
+
         }
     }
-    
+    func goToWallet()
+    {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            let walletVC = WalletViewController.share
+            let walletNavVC = MDNavigationController(rootViewController: walletVC)
+            appDelegate.freshToken()
+            mainWindow.rootViewController = walletNavVC
+            mainWindow.makeKeyAndVisible()
+        }
+    }
+    func goToLogin()
+    {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
+            mainWindow.rootViewController = loginNavVC
+            mainWindow.makeKeyAndVisible()
+        }
+    }
     private func appUpdateAlert() {
         AppUpdateAlert(AppVersionDto.share) { [weak self](success) in
             
@@ -88,7 +144,7 @@ class LaunchReciprocalViewController: BaseViewController {
                 return
             }
             self?.showUpdateAlert = false
-            self?.directToViewController()
+            self?.checkForDirectAndWait(immediately: true)
             }.start(viewController: self)
     }
     

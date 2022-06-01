@@ -158,7 +158,7 @@ class SignupViewController: BaseViewController {
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
 
-        Beans.loginServer.verificationID(idString: account , asLoginUser: false).subscribeSuccess { [self] stringValue in
+        Beans.loginServer.verificationIDGet(idString: account).subscribeSuccess { [self] stringValue in
             Log.v("帳號沒註冊過")
             signup()
         }.disposed(by: disposeBag)

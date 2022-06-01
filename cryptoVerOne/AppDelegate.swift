@@ -9,6 +9,7 @@ import UIKit
 import Toaster
 import RxSwift
 import DropDown
+public typealias CheckCompletionBlock = (Bool) -> Void
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -87,7 +88,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             if !vc.isKind(of: TabbarViewController.self) {
                 // 檢查時間
-                checkTime()
+                checkTime { isLogin in
+                    
+                }
             } else {
                 print("current vc is tabbar vc finished.")
                 
@@ -99,24 +102,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       
     }
     
-    func checkTime()
+    func checkTime(complete:CheckCompletionBlock? = nil)
     {
         // 打API 檢查是否過期
-        checkAPIToken()
+        checkAPIToken(complete: complete)
     }
-    func checkAPIToken()
+    func checkAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
         Beans.walletServer.walletBalances().subscribe { [self](dto) in
             // 沒過期,打refresh API, 時間加30分鐘
             Log.v("沒過期")
-            freshToken()
-        } onError: { [self](error) in
-            //先啟動
-            Log.v("沒過期")
-            freshToken()
+            if let successBlock = complete
+            {
+                successBlock(true)
+            }else
+            {
+                freshToken()
+            }
+        } onError: { (error) in
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
+                DeepLinkManager.share.handleDeeplink(navigation: .login)                
+            }
             //過期去登入頁面
-//            DeepLinkManager.share.handleDeeplink(navigation: .login)
         }.disposed(by: dpg)
     }
     func freshToken()
