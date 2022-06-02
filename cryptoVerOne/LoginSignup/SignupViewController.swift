@@ -158,9 +158,26 @@ class SignupViewController: BaseViewController {
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
 
-        Beans.loginServer.verificationIDGet(idString: account).subscribeSuccess { [self] stringValue in
+        Beans.loginServer.verificationIDGet(idString: account).subscribe { [self] stringValue in
             Log.v("帳號沒註冊過")
             signup()
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    if status == "400"
+                    {
+                        accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
         }.disposed(by: disposeBag)
     }
     func signup() {

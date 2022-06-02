@@ -134,10 +134,32 @@ class LoginViewController: BaseViewController {
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let pwString = accountInputView?.passwordInputView.textField.text?.lowercased() else {return}
-        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribeSuccess { [self] stringValue in
+        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             login()
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    
+                    if status == "400"
+                    {
+                        accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else if status == "404"
+                    {
+                        accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
         }.disposed(by: disposeBag)
+
     }
     private func login() {
         resetInputView()

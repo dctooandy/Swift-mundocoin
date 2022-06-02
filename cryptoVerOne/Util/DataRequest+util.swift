@@ -98,7 +98,7 @@ extension DataRequest
                 case 403:
                     self.decodeForData(type:"ACCESS_DENIED",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 404:
-                    self.decodeForData(type:"Unable to find provided @id/@code",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                    self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 default:
                     self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 }
