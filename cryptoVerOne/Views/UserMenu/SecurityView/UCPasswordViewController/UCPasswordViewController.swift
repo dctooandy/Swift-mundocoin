@@ -216,8 +216,40 @@ class UCPasswordViewController: BaseViewController {
     }
     func submitButtonPressed()
     {
+        verificationID()
+    }
+    func verificationID()
+    {
+        guard let account = KeychainManager.share.getLastAccount()?.account else {return}
+        guard let pwString = oldInputView.textField.text else {return}
+        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
+            Log.v("帳號有註冊過")
+            gotoTwoFAVC()
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    
+                    if status == "400"
+                    {
+                        oldInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
+    func gotoTwoFAVC()
+    {
         self.navigationController?.pushViewController(twoFAVC, animated: true)
     }
+
 }
 // MARK: -
 // MARK: 延伸
