@@ -30,6 +30,8 @@ class AddressBookViewCell: UITableViewCell {
     // MARK:業務方法
     func setupUI()
     {
+        Themes.whiteListSwitchAlpha.bind(to: whiteListSwitch.rx.alpha).disposed(by: dpg)
+        Themes.whiteListSwitchEnable.bind(to: whiteListSwitch.rx.isUserInteractionEnabled).disposed(by: dpg)
         whiteListSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
     }
     func bindUI()

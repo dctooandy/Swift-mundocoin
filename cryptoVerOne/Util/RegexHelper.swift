@@ -39,7 +39,7 @@ struct RegexHelper {
             case .countryName:
                 return "^[\\u4E00-\\u9FA5]{1,31}+$"
             case .password:
-                return "^[A-Za-z0-9]{8,20}+$"
+                return "^[A-Za-z0-9_\\.-^%&',;=?$!+|-~#()*]{8,20}+$"
             case .phone:
                 return "^((13|14|15|16|18|19)\\d{9}){1}$"
             case .otp:
@@ -57,8 +57,9 @@ struct RegexHelper {
             case .account,.delegateName:
                 return ["^(\\..)+$","^(.\\..)+$"]
             case .password:
-                return ["^\\bPASSWORD\\b","^\\bPassword\\b","^\\bPASSW0RD\\b","^\\bpassw0rd\\b","^\\bpasswd\\b","^\\bPassword\\b","^(\\..)+$",
-                "^(.\\..)+$"]
+                return ["^(\\..)+$","^(.\\..)+$"]
+//                return ["^\\bPASSWORD\\b","^\\bPassword\\b","^\\bPASSW0RD\\b","^\\bpassw0rd\\b","^\\bpasswd\\b","^\\bPassword\\b","^(\\..)+$",
+//                "^(.\\..)+$"]
             default:
                 return [""]
             }

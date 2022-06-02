@@ -24,6 +24,12 @@ class Themes {
     static func bindWhiteListTopIcon<T>(isON: T , isOff: T) -> Observable<UIImage>{
         return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? UIImage(named: "icon-Chield_check")!:UIImage(named: "icon-Chield")!})
     }
+    static func bindWhiteListSwitchAlpha<T>(isOn:T , isOff:T) -> Observable<CGFloat>{
+        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? 1.0 : 0.5})
+    }
+    static func bindWhiteListSwitchEnable<T>(isOn:T , isOff:T) -> Observable<Bool>{
+        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? true : false})
+    }
 
     // 綁定取款成功頁面 上方狀態View
     static let topViewMode = TwoSideStyle.share.topViewStatusStyle.asObservable()
@@ -57,6 +63,10 @@ class Themes {
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
     
     static let topWhiteListImageIconType : Observable<UIImage> = Themes.bindWhiteListTopIcon(isON: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    
+    static let whiteListSwitchAlpha : Observable<CGFloat> = Themes.bindWhiteListSwitchAlpha(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    
+    static let whiteListSwitchEnable : Observable<Bool> = Themes.bindWhiteListSwitchEnable(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
     
     // 綁定 輸入框typing狀態的border
     static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()
