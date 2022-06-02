@@ -41,7 +41,7 @@ class UCPasswordViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        clearTextField()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -49,6 +49,15 @@ class UCPasswordViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+    }
+    // MARK: -
+    // MARK:業務方法
+    func clearTextField()
+    {
+        oldInputView.textField.text = ""
+        newInputView.textField.text = ""
+        confirmInputView.textField.text = ""
+        oldInputView.textField.sendActions(for: .valueChanged)
     }
     func setupUI()
     {
@@ -105,18 +114,25 @@ class UCPasswordViewController: BaseViewController {
         let isoldValid = oldInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return RegexHelper.match(pattern:. password, input: acc)
+                return RegexHelper.match(pattern: .password, input: acc)
         }
         let isnewValid = newInputView.textField.rx.text
-            .map {  (str) -> Bool in
+            .map { [self]  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return RegexHelper.match(pattern:. password, input: acc)
+                if confirmInputView.textField.text == ""
+                {
+                    return RegexHelper.match(pattern: .password, input: acc)
+                }else
+                {
+                    return (acc == confirmInputView.textField.text) &&
+                        RegexHelper.match(pattern: .password, input: acc)
+                }
         }
         let isconfirmValid = confirmInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return (acc == self.newInputView.textField.text) &&
-                    RegexHelper.match(pattern:. password, input: acc)
+                    RegexHelper.match(pattern: .password, input: acc)
         }
         
         isoldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
