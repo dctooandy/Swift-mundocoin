@@ -106,6 +106,9 @@ class UCPasswordViewController: BaseViewController {
         oldInputView.tfMaskView.changeBorderWith(isChoose:false)
         newInputView.tfMaskView.changeBorderWith(isChoose:false)
         confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
+        oldInputView.textField.sendActions(for: .valueChanged)
+        newInputView.textField.sendActions(for: .valueChanged)
+        confirmInputView.textField.sendActions(for: .valueChanged)
     }
     // MARK: -
     // MARK:業務方法
@@ -190,16 +193,25 @@ class UCPasswordViewController: BaseViewController {
             oldInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             newInputView.tfMaskView.changeBorderWith(isChoose:false)
             confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
+            oldInputView.textField.sendActions(for: .valueChanged)
+            newInputView.textField.sendActions(for: .valueChanged)
+            confirmInputView.textField.sendActions(for: .valueChanged)
         }.disposed(by: dpg)
         newInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             oldInputView.tfMaskView.changeBorderWith(isChoose:false)
             newInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
+            oldInputView.textField.sendActions(for: .valueChanged)
+            newInputView.textField.sendActions(for: .valueChanged)
+            confirmInputView.textField.sendActions(for: .valueChanged)
         }.disposed(by: dpg)
         confirmInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             oldInputView.tfMaskView.changeBorderWith(isChoose:false)
             newInputView.tfMaskView.changeBorderWith(isChoose:false)
             confirmInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            oldInputView.textField.sendActions(for: .valueChanged)
+            newInputView.textField.sendActions(for: .valueChanged)
+            confirmInputView.textField.sendActions(for: .valueChanged)
         }.disposed(by: dpg)
     }
     func submitButtonPressed()
