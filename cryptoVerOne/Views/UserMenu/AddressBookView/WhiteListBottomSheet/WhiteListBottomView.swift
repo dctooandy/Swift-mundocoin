@@ -9,26 +9,26 @@ import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
-import OOSwitch
 
 class WhiteListBottomView: UIView {
     // MARK:業務設定
-    private let onCellClick = PublishSubject<UserAddressDto>()
+    private let onSliderTrigger = PublishSubject<Any>()
     private let dpg = DisposeBag()
     
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var topLabel: UILabel!
-    
     @IBOutlet weak var turnLabel: UILabel!
-    @IBOutlet weak var customOOSwitch: OOSwitch!
-
+    @IBOutlet weak var sliderView: UIView!
+    @IBOutlet weak var frontSliderView: UISlider!
+    @IBOutlet weak var backProgressView: UIProgressView!
+    @IBOutlet weak var finalCircleView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupSwitch()
+//        setupSwitch()
         setupUI()
     }
     
@@ -48,53 +48,70 @@ class WhiteListBottomView: UIView {
 
         if KeychainManager.share.getWhiteListOnOff() == true
         {
-            let switchSender = OOSwitch()
-            switchSender.isOn = true
-            switchValueChange(switchSender)
+            switchValueChange(true)
+            turnLabel.text = "Turn Off".localized
         }else
         {
-            let switchSender = OOSwitch()
-            switchSender.isOn = false
-            switchValueChange(switchSender)
+            switchValueChange(false)
+            turnLabel.text = "Turn On".localized
         }
+        frontSliderView.setValue(0, animated: true)
+        backProgressView.setProgress(0, animated: true)
+        frontSliderView.setThumbImage(UIImage(named: "Rectangle14"), for: .normal)
+        frontSliderView.setThumbImage(UIImage(named: "Rectangle14"), for: .highlighted)
+        backProgressView.transform = backProgressView.transform.scaledBy(x: 1, y: 13)
     }
-    @IBAction func switchValueChange(_ sender: OOSwitch) {
-        if sender.isOn == true
+    
+    @IBAction func sliderValueChange(_ sender: UISlider ,forEvent event: UIEvent) {
+        if let touchEvent = event.allTouches?.first
         {
-            customOOSwitch.isOn = true
-            self.turnLabel.text = "Turn Off".localized
-            self.turnLabel.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+            switch touchEvent.phase {
+            case .began:
+                print("touches began")
+
+            case .ended:
+                print("touches ended")
+                if sender.value == 1.0
+                {
+                    finalCircleView.isHidden = false
+                    UIView.animate(withDuration: 0.3, delay: 0, options: []) { [self] in
+                        sliderView.transform = sliderView.transform.scaledBy(x: 0.1, y: 1)
+                        backProgressView.setProgress(0.5, animated: true)
+                        frontSliderView.setValue(0.5, animated: true)
+                        sliderView.alpha = 0.0
+                        finalCircleView.alpha = 1.0
+                    } completion: { [self]success in
+//                        switchValueChange(!KeychainManager.share.getWhiteListOnOff())
+                        onSliderTrigger.onNext(())
+                    }
+
+                }else
+                {
+                    frontSliderView.setValue(0, animated: true)
+                    backProgressView.setProgress(0, animated: true)
+                }
+            default:
+                break
+            }
+        }
+        backProgressView.setProgress(sender.value, animated: true)
+    }
+    func switchValueChange(_ sender: Bool) {
+        if sender == true
+        {
             TwoSideStyle.share.acceptWhiteListTopImageStyle(.whiteListOn)
             KeychainManager.share.saveWhiteListOnOff(true)
         }else
         {
-            customOOSwitch.isOn = false
-            self.turnLabel.text = "Turn On".localized
-            self.turnLabel.textColor = #colorLiteral(red: 0.3803921569, green: 0.2862745098, blue: 0.9647058824, alpha: 1)
             TwoSideStyle.share.acceptWhiteListTopImageStyle(.whiteListOff)
             KeychainManager.share.saveWhiteListOnOff(false)
         }
     }
-    func setupSwitch()
-    {
-        customOOSwitch.translatesAutoresizingMaskIntoConstraints = false
-        customOOSwitch.onTintColor = #colorLiteral(red: 0.3803921569, green: 0.2862745098, blue: 0.9647058824, alpha: 1)
-        customOOSwitch.offTintColor = #colorLiteral(red: 0.8795114756, green: 0.8701208234, blue: 0.9882549644, alpha: 1)
-        customOOSwitch.imageCornerRadius = 0.5
-        customOOSwitch.thumbCornerRadius = 0.5
-        customOOSwitch.thumbTintColor = #colorLiteral(red: 0.3803921569, green: 0.2862745098, blue: 0.9647058824, alpha: 1)
-        customOOSwitch.animationDuration = 0.5
-        customOOSwitch.onImage = #imageLiteral(resourceName: "Rectangle14")
-        customOOSwitch.offImage = #imageLiteral(resourceName: "Rectangle14")
-        customOOSwitch.labelOn.text = "Turn Off"
-        customOOSwitch.labelOff.text = "Turn On"
-        customOOSwitch.areLabelsShown = false
-        customOOSwitch.isOn = false
-    }
+  
 
-    func rxCellDidClick() -> Observable<UserAddressDto>
+    func rxSliderTrigger() -> Observable<Any>
     {
-        return onCellClick.asObserver()
+        return onSliderTrigger.asObserver()
     }
 }
 // MARK: -

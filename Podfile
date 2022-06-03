@@ -22,6 +22,7 @@ def shared_pods
   pod 'DropDown'
   pod "ReCaptcha/RxSwift"
   pod 'OOSwitch'
+
 end
 
 target 'cryptoVerOne_stage' do

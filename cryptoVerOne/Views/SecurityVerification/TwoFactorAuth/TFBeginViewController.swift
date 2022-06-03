@@ -62,7 +62,7 @@ class TFBeginViewController: BaseViewController {
         goAuthButton.rx.tap.subscribeSuccess { [self](_) in
             let twoFAVC = SecurityVerificationViewController.loadNib()
             twoFAVC.securityViewMode = .onlyEmail
-            twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
+            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
                 goRebindGoogleAuth()
             }.disposed(by: dpg)
             _ = self.navigationController?.pushViewController(twoFAVC, animated: true)

@@ -126,12 +126,24 @@ class AddressBookViewController: BaseViewController {
     @objc func whiteListAction() {
         Log.i("開啟白名單警告Sheet")
         let whiteListBottomSheet = WhiteListBottomSheet()
-
+        whiteListBottomSheet.rxChangeWhiteListMode().subscribeSuccess { [self] _ in
+            let twoFAVC = SecurityVerificationViewController.loadNib()
+            twoFAVC.securityViewMode = .defaultMode
+            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+                verifySuccessForChangeWhiteList()
+            }.disposed(by: dpg)
+            _ = self.navigationController?.pushViewController(twoFAVC, animated: true)
+        }.disposed(by: dpg)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 317)
         }
     }
-    
+    func verifySuccessForChangeWhiteList()
+    {
+        let isOn = KeychainManager.share.getWhiteListOnOff()
+        KeychainManager.share.saveWhiteListOnOff(!isOn)
+        TwoSideStyle.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
+    }
     @objc func addAddressBookAction() {
         Log.i("增加錢包地址")
         let boardVC = BoardViewController.loadNib()

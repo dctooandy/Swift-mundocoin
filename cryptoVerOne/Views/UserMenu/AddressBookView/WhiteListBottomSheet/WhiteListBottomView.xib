@@ -28,44 +28,103 @@
                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-GR-oPc" customClass="OOSwitch" customModule="OOSwitch">
-                    <rect key="frame" x="50" y="752" width="314" height="50"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hy-GR-oPc">
+                    <rect key="frame" x="50" y="750" width="314" height="52"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvE-hP-SeS">
+                            <rect key="frame" x="128" y="16" width="58" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.3803921569" green="0.28627450980000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="mjz-li-FWV">
+                            <rect key="frame" x="18" y="24" width="276" height="4"/>
+                            <color key="progressTintColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </progressView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fH0-gP-mmH">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="52"/>
+                            <color key="backgroundColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="G2s-Mg-PMW"/>
+                            </constraints>
+                        </view>
+                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="hHq-bC-xfK">
+                            <rect key="frame" x="-2" y="10" width="318" height="31"/>
+                            <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="thumbTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sliderValueChange:forEvent:" destination="Kej-UN-D1S" eventType="valueChanged" id="GtA-vK-Rz0"/>
+                            </connections>
+                        </slider>
+                    </subviews>
+                    <color key="backgroundColor" red="0.91435539720000003" green="0.90003204349999999" blue="0.99609059099999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="uFf-26-fgV"/>
+                        <constraint firstAttribute="trailing" secondItem="hHq-bC-xfK" secondAttribute="trailing" id="6mp-ch-sZF"/>
+                        <constraint firstItem="pvE-hP-SeS" firstAttribute="centerX" secondItem="4Hy-GR-oPc" secondAttribute="centerX" id="CB1-ti-x3s"/>
+                        <constraint firstItem="fH0-gP-mmH" firstAttribute="leading" secondItem="4Hy-GR-oPc" secondAttribute="leading" id="Gpb-OW-gnP"/>
+                        <constraint firstItem="pvE-hP-SeS" firstAttribute="centerY" secondItem="4Hy-GR-oPc" secondAttribute="centerY" id="J6l-e3-tL8"/>
+                        <constraint firstItem="fH0-gP-mmH" firstAttribute="top" secondItem="4Hy-GR-oPc" secondAttribute="top" id="NQr-LG-Uh2"/>
+                        <constraint firstAttribute="trailing" secondItem="mjz-li-FWV" secondAttribute="trailing" constant="20" id="RYM-Pi-7OK"/>
+                        <constraint firstItem="hHq-bC-xfK" firstAttribute="leading" secondItem="4Hy-GR-oPc" secondAttribute="leading" id="Tl6-qq-4bg"/>
+                        <constraint firstAttribute="bottom" secondItem="fH0-gP-mmH" secondAttribute="bottom" id="Uqg-xs-Ecc"/>
+                        <constraint firstItem="hHq-bC-xfK" firstAttribute="centerY" secondItem="4Hy-GR-oPc" secondAttribute="centerY" constant="-1" id="Xws-DE-h06"/>
+                        <constraint firstItem="mjz-li-FWV" firstAttribute="leading" secondItem="4Hy-GR-oPc" secondAttribute="leading" constant="18" id="c3H-tL-KvC"/>
+                        <constraint firstItem="mjz-li-FWV" firstAttribute="centerY" secondItem="4Hy-GR-oPc" secondAttribute="centerY" id="cIB-AJ-Kiv"/>
+                        <constraint firstAttribute="height" constant="52" id="uFf-26-fgV"/>
                     </constraints>
-                    <connections>
-                        <action selector="switchValueChange:" destination="Kej-UN-D1S" eventType="valueChanged" id="Pgu-p5-b8C"/>
-                    </connections>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="26"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IyU-te-kqF">
-                    <rect key="frame" x="50" y="752" width="314" height="50"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view hidden="YES" alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CBK-Hb-ynT">
+                    <rect key="frame" x="181" y="750" width="52" height="52"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="43m-y4-6sI">
+                            <rect key="frame" x="16" y="16" width="20" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </activityIndicatorView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.3803921569" green="0.28627450980000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="52" id="mIE-E5-b93"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="26"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="s7S-X3-G3G"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="4Hy-GR-oPc" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="50" id="7bj-je-fz1"/>
-                <constraint firstItem="IyU-te-kqF" firstAttribute="leading" secondItem="4Hy-GR-oPc" secondAttribute="leading" id="9tT-o5-DT4"/>
-                <constraint firstItem="IyU-te-kqF" firstAttribute="top" secondItem="4Hy-GR-oPc" secondAttribute="top" id="GGD-Sf-aXc"/>
-                <constraint firstItem="IyU-te-kqF" firstAttribute="trailing" secondItem="4Hy-GR-oPc" secondAttribute="trailing" id="Gia-2f-aae"/>
+                <constraint firstItem="CBK-Hb-ynT" firstAttribute="height" secondItem="4Hy-GR-oPc" secondAttribute="height" id="FdV-Sy-dAH"/>
                 <constraint firstItem="5Ia-o1-WlF" firstAttribute="centerX" secondItem="Kej-UN-D1S" secondAttribute="centerX" id="OJ4-do-19P"/>
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="4Hy-GR-oPc" secondAttribute="trailing" constant="50" id="UFQ-7K-TVM"/>
                 <constraint firstItem="5Ia-o1-WlF" firstAttribute="top" secondItem="s7S-X3-G3G" secondAttribute="top" constant="30" id="ewJ-zs-mqA"/>
-                <constraint firstItem="IyU-te-kqF" firstAttribute="bottom" secondItem="4Hy-GR-oPc" secondAttribute="bottom" id="jI4-Oj-1f8"/>
+                <constraint firstItem="CBK-Hb-ynT" firstAttribute="centerY" secondItem="4Hy-GR-oPc" secondAttribute="centerY" id="m05-WO-eXs"/>
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="F1X-5y-7Nj" secondAttribute="trailing" constant="30" id="qkB-ZD-dts"/>
+                <constraint firstItem="CBK-Hb-ynT" firstAttribute="centerX" secondItem="Kej-UN-D1S" secondAttribute="centerX" id="ttz-H8-3wt"/>
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="bottom" secondItem="4Hy-GR-oPc" secondAttribute="bottom" constant="60" id="uWB-3v-s7I"/>
                 <constraint firstItem="F1X-5y-7Nj" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="30" id="uam-SV-NQz"/>
                 <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="5" id="xiR-fu-UqW"/>
             </constraints>
             <connections>
-                <outlet property="customOOSwitch" destination="4Hy-GR-oPc" id="zVd-xN-Tea"/>
+                <outlet property="backProgressView" destination="mjz-li-FWV" id="G27-9n-bUX"/>
+                <outlet property="finalCircleView" destination="CBK-Hb-ynT" id="KZv-wm-g5s"/>
+                <outlet property="frontSliderView" destination="hHq-bC-xfK" id="xT8-de-cCm"/>
+                <outlet property="sliderView" destination="4Hy-GR-oPc" id="Bsi-hw-8nH"/>
                 <outlet property="titleLabel" destination="5Ia-o1-WlF" id="abi-tc-29S"/>
                 <outlet property="topLabel" destination="F1X-5y-7Nj" id="VpE-bC-ZQ1"/>
-                <outlet property="turnLabel" destination="IyU-te-kqF" id="dje-P4-Pcf"/>
+                <outlet property="turnLabel" destination="pvE-hP-SeS" id="WVc-Bu-7mL"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </view>

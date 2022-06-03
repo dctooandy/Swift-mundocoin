@@ -12,7 +12,7 @@ import RxSwift
 
 class WhiteListBottomSheet: BaseBottomSheet {
     // MARK:業務設定
-    private let onCellSecondClick = PublishSubject<UserAddressDto>()
+    private let onChangeWhiteListMode = PublishSubject<Any>()
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
@@ -41,6 +41,10 @@ class WhiteListBottomSheet: BaseBottomSheet {
     func setupUI()
     {
         defaultContainer.addSubview(whiteListView)
+        whiteListView.rxSliderTrigger().subscribeSuccess { [self] _ in
+            dismiss(animated: true)
+            onChangeWhiteListMode.onNext(())
+        }.disposed(by: dpg)
         whiteListView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -49,9 +53,9 @@ class WhiteListBottomSheet: BaseBottomSheet {
     {
         
     }
-    func rxCellSecondClick() -> Observable<UserAddressDto>
+    func rxChangeWhiteListMode() -> Observable<Any>
     {
-        return onCellSecondClick.asObserver()
+        return onChangeWhiteListMode.asObserver()
     }
 }
 // MARK: -
