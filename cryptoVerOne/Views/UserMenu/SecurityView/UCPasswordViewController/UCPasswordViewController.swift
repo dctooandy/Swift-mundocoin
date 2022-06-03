@@ -57,7 +57,7 @@ class UCPasswordViewController: BaseViewController {
         oldInputView.textField.text = ""
         newInputView.textField.text = ""
         confirmInputView.textField.text = ""
-        oldInputView.textField.sendActions(for: .valueChanged)
+        oldInputView.changeInvalidLabelAndMaskBorderColor(with:"")
     }
     func setupUI()
     {
@@ -222,11 +222,14 @@ class UCPasswordViewController: BaseViewController {
     {
         guard let account = KeychainManager.share.getLastAccount()?.account else {return}
         guard let pwString = oldInputView.textField.text else {return}
+        LoadingViewController.show()
         Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
+            _ = LoadingViewController.dismiss()
             Log.v("帳號有註冊過")
             gotoTwoFAVC()
         } onError: { [self] error in
             if let error = error as? ApiServiceError {
+                _ = LoadingViewController.dismiss()
                 switch error {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
