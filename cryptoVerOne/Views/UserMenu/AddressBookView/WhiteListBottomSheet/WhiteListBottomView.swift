@@ -24,6 +24,7 @@ class WhiteListBottomView: UIView {
     @IBOutlet weak var frontSliderView: UISlider!
     @IBOutlet weak var backProgressView: UIProgressView!
     @IBOutlet weak var finalCircleView: UIView!
+    @IBOutlet weak var coverView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -59,7 +60,10 @@ class WhiteListBottomView: UIView {
         backProgressView.setProgress(0, animated: true)
         frontSliderView.setThumbImage(UIImage(named: "Rectangle14"), for: .normal)
         frontSliderView.setThumbImage(UIImage(named: "Rectangle14"), for: .highlighted)
-        backProgressView.transform = backProgressView.transform.scaledBy(x: 1, y: 13)
+        backProgressView.transform = backProgressView.transform.scaledBy(x: 1, y: 12.5)
+        coverView.snp.updateConstraints { make in
+            make.top.bottom.equalTo(backProgressView)
+        }
     }
     
     @IBAction func sliderValueChange(_ sender: UISlider ,forEvent event: UIEvent) {
@@ -74,27 +78,25 @@ class WhiteListBottomView: UIView {
                 if sender.value == 1.0
                 {
                     finalCircleView.isHidden = false
-                    UIView.animate(withDuration: 0.3, delay: 0, options: []) { [self] in
+                    UIView.animate(withDuration: 0.4, delay: 0, options: []) { [self] in
                         sliderView.transform = sliderView.transform.scaledBy(x: 0.1, y: 1)
                         backProgressView.setProgress(0.5, animated: true)
                         frontSliderView.setValue(0.5, animated: true)
                         sliderView.alpha = 0.0
                         finalCircleView.alpha = 1.0
                     } completion: { [self]success in
-//                        switchValueChange(!KeychainManager.share.getWhiteListOnOff())
                         onSliderTrigger.onNext(())
                     }
-
                 }else
                 {
-                    frontSliderView.setValue(0, animated: true)
-                    backProgressView.setProgress(0, animated: true)
+                    frontSliderView.setValue(0, animated: false)
+                    backProgressView.setProgress(0, animated: false)
                 }
             default:
                 break
             }
         }
-        backProgressView.setProgress(sender.value, animated: true)
+        backProgressView.setProgress(sender.value, animated: false)
     }
     func switchValueChange(_ sender: Bool) {
         if sender == true
