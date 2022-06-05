@@ -234,7 +234,7 @@ import RxSwift
     @objc func dismissToTopVC() {
         //    NotificationCenter.default.post(name: Notification.Name(BottomSheet.bottomSheetDismissNotify), object: type(of: self))
         let topBottomSheet = getTopBottomSheet(self)
-        topBottomSheet?.presentingViewController?.dismiss(animated: false, completion: {
+        topBottomSheet?.presentingViewController?.dismiss(animated: true, completion: {
             self.defaultContainer.transform = CGAffineTransform.identity
         })
     }
