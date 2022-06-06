@@ -9,11 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterBottomView" customModule="cryptoVerOne" customModuleProvider="target">
-            <connections>
-                <outlet property="dateContainerView" destination="NU4-cy-NuN" id="H2P-Wa-KWo"/>
-            </connections>
-        </placeholder>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FilterBottomView" customModule="cryptoVerOne" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -47,8 +43,8 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                     <connections>
-                                        <outlet property="dataSource" destination="iN0-l3-epB" id="kIB-lG-vvm"/>
-                                        <outlet property="delegate" destination="iN0-l3-epB" id="8Yg-dp-3Aa"/>
+                                        <outlet property="dataSource" destination="iN0-l3-epB" id="uyb-fT-Z5W"/>
+                                        <outlet property="delegate" destination="iN0-l3-epB" id="OSB-qS-cy9"/>
                                     </connections>
                                 </collectionView>
                             </subviews>
@@ -82,8 +78,8 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                     <connections>
-                                        <outlet property="dataSource" destination="iN0-l3-epB" id="Hdc-0q-757"/>
-                                        <outlet property="delegate" destination="iN0-l3-epB" id="ezS-dl-RRG"/>
+                                        <outlet property="dataSource" destination="iN0-l3-epB" id="dhC-q1-xvS"/>
+                                        <outlet property="delegate" destination="iN0-l3-epB" id="59J-BP-4MM"/>
                                     </connections>
                                 </collectionView>
                             </subviews>
@@ -107,16 +103,49 @@
                     </constraints>
                 </stackView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cS1-du-sEE">
-                    <rect key="frame" x="24" y="236.5" width="30.5" height="17"/>
+                    <rect key="frame" x="24" y="252.5" width="30.5" height="17"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-cy-NuN">
-                    <rect key="frame" x="24" y="256.5" width="366" height="46"/>
+                    <rect key="frame" x="24" y="275.5" width="366" height="46"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="46" id="c5A-KT-ONH"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crypto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsH-Aq-2Te">
+                    <rect key="frame" x="24" y="337.5" width="44" height="17"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4s4-Xs-fPi">
+                    <rect key="frame" x="24" y="360.5" width="366" height="46"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ufI-p2-165">
+                            <rect key="frame" x="12" y="0.0" width="354" height="46"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="ufI-p2-165" firstAttribute="top" secondItem="4s4-Xs-fPi" secondAttribute="top" id="5v7-1G-hdW"/>
+                        <constraint firstAttribute="trailing" secondItem="ufI-p2-165" secondAttribute="trailing" id="FxS-WL-zzZ"/>
+                        <constraint firstItem="ufI-p2-165" firstAttribute="leading" secondItem="4s4-Xs-fPi" secondAttribute="leading" constant="12" id="f8B-vr-yEd"/>
+                        <constraint firstAttribute="bottom" secondItem="ufI-p2-165" secondAttribute="bottom" id="qWO-LU-DIJ"/>
+                        <constraint firstAttribute="height" constant="46" id="rM9-ca-xJ0"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GE-YN-ACi">
+                    <rect key="frame" x="202" y="443" width="10" height="10"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="10" id="SU0-IA-wHH"/>
+                        <constraint firstAttribute="height" constant="10" id="xOY-Rj-k1D"/>
                     </constraints>
                 </view>
             </subviews>
@@ -125,21 +154,33 @@
             <constraints>
                 <constraint firstItem="Ik1-Qt-DZr" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4yz-3y-OXJ"/>
                 <constraint firstItem="yJw-oF-xm7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="9fQ-N9-nLq"/>
-                <constraint firstItem="NU4-cy-NuN" firstAttribute="top" secondItem="cS1-du-sEE" secondAttribute="bottom" constant="3" id="Ad4-7n-d7g"/>
-                <constraint firstItem="cS1-du-sEE" firstAttribute="top" secondItem="Ik1-Qt-DZr" secondAttribute="bottom" id="ZwL-Dx-6ZX"/>
+                <constraint firstItem="NU4-cy-NuN" firstAttribute="top" secondItem="cS1-du-sEE" secondAttribute="bottom" constant="6" id="Ad4-7n-d7g"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4s4-Xs-fPi" secondAttribute="trailing" constant="24" id="Iwb-f9-IRW"/>
+                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Les-fK-eSf"/>
+                <constraint firstItem="CsH-Aq-2Te" firstAttribute="leading" secondItem="cS1-du-sEE" secondAttribute="leading" id="PQe-HX-8bV"/>
+                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ri7-Rs-XlO"/>
+                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SP4-I5-k1V"/>
+                <constraint firstItem="cS1-du-sEE" firstAttribute="top" secondItem="Ik1-Qt-DZr" secondAttribute="bottom" constant="16" id="ZwL-Dx-6ZX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ik1-Qt-DZr" secondAttribute="trailing" id="a0z-nL-fnu"/>
+                <constraint firstItem="4s4-Xs-fPi" firstAttribute="top" secondItem="CsH-Aq-2Te" secondAttribute="bottom" constant="6" id="aXc-Ht-HXP"/>
+                <constraint firstItem="4s4-Xs-fPi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="e0j-mw-Edt"/>
                 <constraint firstItem="Ik1-Qt-DZr" firstAttribute="top" secondItem="yJw-oF-xm7" secondAttribute="bottom" constant="5" id="gC5-I0-55S"/>
+                <constraint firstItem="CsH-Aq-2Te" firstAttribute="top" secondItem="NU4-cy-NuN" secondAttribute="bottom" constant="16" id="hFo-pH-sNG"/>
+                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="i78-u1-zsh"/>
                 <constraint firstItem="NU4-cy-NuN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="obp-c3-QXN"/>
                 <constraint firstItem="cS1-du-sEE" firstAttribute="leading" secondItem="DsV-J5-H4g" secondAttribute="leading" id="ssM-3k-fAv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NU4-cy-NuN" secondAttribute="trailing" constant="24" id="tMN-yN-xsL"/>
                 <constraint firstItem="yJw-oF-xm7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zbE-ir-iih"/>
             </constraints>
             <connections>
-                <outlet property="historyCollectionView" destination="Ntf-jD-KeJ" id="VJa-gM-bqp"/>
-                <outlet property="historyView" destination="tI0-wY-ez8" id="hj9-ok-ejL"/>
-                <outlet property="statusCollectionView" destination="BMh-sv-oNt" id="xxx-Jn-eCX"/>
-                <outlet property="statusView" destination="LLO-YU-APL" id="zPf-zf-9Om"/>
-                <outlet property="titleLabel" destination="yJw-oF-xm7" id="LdW-nE-nbH"/>
+                <outlet property="cryptoContainerView" destination="4s4-Xs-fPi" id="wy7-AB-ohK"/>
+                <outlet property="cryptoLabel" destination="ufI-p2-165" id="q21-ry-seN"/>
+                <outlet property="dateContainerView" destination="NU4-cy-NuN" id="JgP-om-cFl"/>
+                <outlet property="historyCollectionView" destination="Ntf-jD-KeJ" id="3tG-kr-60W"/>
+                <outlet property="historyView" destination="tI0-wY-ez8" id="DtV-oQ-67b"/>
+                <outlet property="statusCollectionView" destination="BMh-sv-oNt" id="36l-bp-YNJ"/>
+                <outlet property="statusView" destination="LLO-YU-APL" id="bM5-dm-NNK"/>
+                <outlet property="titleLabel" destination="yJw-oF-xm7" id="jkf-so-Yfs"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </view>

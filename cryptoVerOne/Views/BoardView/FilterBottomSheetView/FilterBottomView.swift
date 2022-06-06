@@ -58,13 +58,29 @@ class FilterBottomView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var statusCollectionView: UICollectionView!
-    
     @IBOutlet weak var dateContainerView: UIView!
+    @IBOutlet weak var cryptoContainerView: UIView!
+    @IBOutlet weak var cryptoLabel: UILabel!
+    private lazy var confirmButton: OKButton = {
+        let btn = OKButton()
+        btn.setTitle("Confirm".localized, for: .normal)
+        btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
+        return btn
+    }()
+    
+    private lazy var resetButton: CancelButton = {
+        let btn = CancelButton()
+        btn.setTitle("Reset".localized, for: .normal)
+        btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
+        return btn
+    }()
+    var myDatePicker: UIDatePicker!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+        setupDatePacker()
         bindUI()
     }
     
@@ -90,11 +106,87 @@ class FilterBottomView: UIView {
         statusCollectionView.backgroundColor = .clear
         statusCollectionView.showsHorizontalScrollIndicator = false
         statusCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+        
+        dateContainerView.layer.borderColor = Themes.grayE0E5F2.cgColor
+        dateContainerView.layer.borderWidth = 1
+        dateContainerView.layer.cornerRadius = 10
+        dateContainerView.layer.masksToBounds = true
+        cryptoContainerView.layer.cornerRadius = 10
+        cryptoContainerView.layer.masksToBounds = true
+        cryptoContainerView.backgroundColor = Themes.grayE0E5F2
+        cryptoLabel.textColor = Themes.grayA3AED0
+        cryptoLabel.backgroundColor = .clear
+        
+        addSubview(confirmButton)
+        addSubview(resetButton)
+        confirmButton.snp.makeConstraints { make in
+            make.top.equalTo(cryptoContainerView.snp.bottom).offset(32)
+            make.right.equalToSuperview().offset(-30)
+            make.height.equalTo(44)
+            make.width.equalToSuperview().multipliedBy(0.39)
+        }
+        resetButton.snp.makeConstraints { make in
+            make.top.equalTo(cryptoContainerView.snp.bottom).offset(32)
+            make.left.equalToSuperview().offset(30)
+            make.height.equalTo(44)
+            make.width.equalToSuperview().multipliedBy(0.39)
+        }
+    }
+    func setupDatePacker()
+    {
+        // 使用 UIDatePicker(frame:) 建立一個 UIDatePicker
+        myDatePicker = UIDatePicker()
 
+        // 設置 UIDatePicker 格式
+        myDatePicker.datePickerMode = .date
+
+        // 選取時間時的分鐘間隔 這邊以 15 分鐘為一個間隔
+//        myDatePicker.minuteInterval = 15
+
+        // 設置預設時間為現在時間
+        myDatePicker.date = Date()
+
+        // 設置 NSDate 的格式
+        let formatter = DateFormatter()
+
+        // 設置時間顯示的格式
+        formatter.dateFormat = "yyyy-MM-dd"
+        // 可以選擇的最早日期時間
+        let fromDateTime = formatter.date(from: "2022-01-01")
+        // 設置可以選擇的最早日期時間
+        myDatePicker.minimumDate = fromDateTime
+        // 可以選擇的最晚日期時間
+        let endDateTime = formatter.date(from: "2022-12-25")
+        // 設置可以選擇的最晚日期時間
+        myDatePicker.maximumDate = endDateTime
+        if #available(iOS 13.4, *) {
+            myDatePicker.preferredDatePickerStyle = .compact
+        } else {
+            // Fallback on earlier versions
+        }
+//        myDatePicker.locale = Locale(identifier: "zh_Hant_TW")
+        myDatePicker.calendar = Calendar(identifier: .japanese)
+        dateContainerView.addSubview(myDatePicker)
+        myDatePicker.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
     }
     func bindUI()
     {
         Themes.statusViewHiddenType.bind(to: statusView.rx.isHidden).disposed(by: dpg)
+        dateContainerView.rx.click.subscribeSuccess { [self] _ in
+            Log.v("選時間")
+            myDatePicker.sendActions(for: .touchUpInside)
+        }.disposed(by: dpg)
+    }
+    @objc private func confirmButtonPressed(_ sender: UIButton) {
+        
+        if sender == confirmButton {
+            Log.v("Confirm")
+        } else {
+            Log.v("Reset")
+        }
     }
     func rxConfirmTrigger() -> Observable<Any>
     {
