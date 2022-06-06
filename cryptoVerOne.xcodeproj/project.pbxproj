@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09056D81284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */; };
+		09056D82284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */; };
+		09056D83284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */; };
+		09056D85284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */; };
+		09056D86284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */; };
+		09056D87284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */; };
+		09056D89284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
+		09056D8A284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
+		09056D8B284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -28,6 +37,12 @@
 		09947BA6284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
 		09947BA7284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
 		09947BA8284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
+		09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BAF284DB433004F7FD7 /* FilterCell.swift */; };
+		09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BAF284DB433004F7FD7 /* FilterCell.swift */; };
+		09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BAF284DB433004F7FD7 /* FilterCell.swift */; };
+		09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
+		09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
+		09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -650,6 +665,9 @@
 
 /* Begin PBXFileReference section */
 		07C296D5798490C85701786F /* Pods_cryptoVerOne_dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne_dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionCell.swift; sourceTree = "<group>"; };
+		09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionCell.swift; sourceTree = "<group>"; };
+		09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionCell.xib; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -657,6 +675,8 @@
 		09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterBottomView.xib; sourceTree = "<group>"; };
 		09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomSheet.swift; sourceTree = "<group>"; };
 		09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
+		09947BAF284DB433004F7FD7 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
+		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -911,13 +931,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		095A1223283A388A002DC11A /* ScrollView */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ScrollView;
-			sourceTree = "<group>";
-		};
 		09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */ = {
 			isa = PBXGroup;
 			children = (
@@ -934,6 +947,17 @@
 				09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */,
 			);
 			path = TableView;
+			sourceTree = "<group>";
+		};
+		09947BAE284DB425004F7FD7 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				09947BAF284DB433004F7FD7 /* FilterCell.swift */,
+				09947BB3284DB751004F7FD7 /* FilterCell.xib */,
+				09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */,
+				09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
@@ -995,6 +1019,7 @@
 				A1019DDF2824D0F300E6929E /* TemplateVC.swift */,
 				A16F61F7282E383300D9CCE5 /* TemplateView.swift */,
 				A16F6200282E3F5700D9CCE5 /* TemplateCell.swift */,
+				09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -1299,7 +1324,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
-				095A1223283A388A002DC11A /* ScrollView */,
+				09947BAE284DB425004F7FD7 /* Cell */,
 				A16F61E3282E2A1000D9CCE5 /* ScanerView */,
 				A19C70B528223D1E000AFC3F /* Button */,
 				A19C7087282239D1000AFC3F /* Themes */,
@@ -1726,7 +1751,9 @@
 				09CAF4DC283C77ED00D7B19B /* BetleadTabbar.xib in Resources */,
 				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09C20FA82845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
+				09056D8A284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				09CAF4DE283C77ED00D7B19B /* mucoin_question.json in Resources */,
+				09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */,
@@ -1786,7 +1813,9 @@
 				09CAF59D283C7BBE00D7B19B /* BetleadTabbar.xib in Resources */,
 				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09C20FA92845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
+				09056D8B284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				09CAF59F283C7BBE00D7B19B /* mucoin_question.json in Resources */,
+				09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */,
@@ -1827,6 +1856,7 @@
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
+				09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
@@ -1843,6 +1873,7 @@
 				A19C70CD282246DF000AFC3F /* BetleadTabbar.xib in Resources */,
 				A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */,
 				A19C7142282257AB000AFC3F /* mucoin_question.json in Resources */,
+				09056D89284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				A19C719428225C56000AFC3F /* LoginSignupViewController.xib in Resources */,
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
 				A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */,
@@ -2030,6 +2061,7 @@
 				09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */,
 				09CAF457283C77ED00D7B19B /* TemplateCell.swift in Sources */,
 				09CAF458283C77ED00D7B19B /* ValueDto.swift in Sources */,
+				09056D82284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */,
 				09CAF459283C77ED00D7B19B /* TransDetailView.swift in Sources */,
 				09CAF45A283C77ED00D7B19B /* CPasswordViewController.swift in Sources */,
 				09CAF45B283C77ED00D7B19B /* UserMenuViewController.swift in Sources */,
@@ -2038,6 +2070,7 @@
 				09CAF45E283C77ED00D7B19B /* WMZCodeView.m in Sources */,
 				09CAF5EE283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */,
+				09056D86284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF460283C77ED00D7B19B /* AmountInputView.swift in Sources */,
 				09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */,
@@ -2135,6 +2168,7 @@
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
+				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */,
@@ -2195,6 +2229,7 @@
 				09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */,
 				09CAF518283C7BBE00D7B19B /* TemplateCell.swift in Sources */,
 				09CAF519283C7BBE00D7B19B /* ValueDto.swift in Sources */,
+				09056D83284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */,
 				09CAF51A283C7BBE00D7B19B /* TransDetailView.swift in Sources */,
 				09CAF51B283C7BBE00D7B19B /* CPasswordViewController.swift in Sources */,
 				09CAF51C283C7BBE00D7B19B /* UserMenuViewController.swift in Sources */,
@@ -2203,6 +2238,7 @@
 				09CAF51F283C7BBE00D7B19B /* WMZCodeView.m in Sources */,
 				09CAF5EF283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */,
+				09056D87284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF521283C7BBE00D7B19B /* AmountInputView.swift in Sources */,
 				09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */,
@@ -2300,6 +2336,7 @@
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
+				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */,
@@ -2360,6 +2397,7 @@
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
 				A16F6201282E3F5700D9CCE5 /* TemplateCell.swift in Sources */,
 				A19C70C928224614000AFC3F /* ValueDto.swift in Sources */,
+				09056D81284DBC2700038BF8 /* TemplateCollectionCell.swift in Sources */,
 				A1559E1228376A2B00755783 /* TransDetailView.swift in Sources */,
 				A19739C728251B97009932D8 /* CPasswordViewController.swift in Sources */,
 				A1973A052828EBEB009932D8 /* UserMenuViewController.swift in Sources */,
@@ -2368,6 +2406,7 @@
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
 				09CAF5ED283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
+				09056D85284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
@@ -2465,6 +2504,7 @@
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
+				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
 				A19C70E728224BF5000AFC3F /* UserDefaults+util.swift in Sources */,

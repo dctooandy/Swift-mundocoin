@@ -11,7 +11,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 class BaseBottomSheet:BottomSheet {
-    
+    var heightConstraint : NSLayoutConstraint!
     let titleLabel:UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
@@ -51,10 +51,12 @@ class BaseBottomSheet:BottomSheet {
         defaultContainer.addSubview(separator)
 //        defaultContainer.addSubview(submitBtn)
         
+        heightConstraint = NSLayoutConstraint(item: defaultContainer, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: defaultContainerHeight + Views.bottomOffset)
         defaultContainer.snp.makeConstraints { (maker) in
             maker.leading.trailing.bottom.equalToSuperview()
-            maker.height.equalTo(defaultContainerHeight + Views.bottomOffset)
+            maker.height.equalTo(heightConstraint.constant)
         }
+        defaultContainer.addConstraint(heightConstraint)
         titleLabel.snp.makeConstraints { (maker) in
             maker.centerX.equalToSuperview()
             maker.top.equalTo(25)

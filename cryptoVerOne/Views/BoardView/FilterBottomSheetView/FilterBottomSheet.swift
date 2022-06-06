@@ -50,10 +50,11 @@ class FilterBottomSheet: BaseBottomSheet {
         filterBottomView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        filterBottomView.showModeAtView = showModeAtSheet
     }
     func bindUI()
     {
-        
+        Themes.sheetHeightType.bind(to: heightConstraint.rx.constant).disposed(by: dpg)
     }
     func rxConfirmClick() -> Observable<Any>
     {

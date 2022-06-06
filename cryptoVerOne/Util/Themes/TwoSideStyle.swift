@@ -9,17 +9,27 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+
+enum WhiteListStyle {
+    case whiteListOn, whiteListOff
+}
+enum InterFaceStyle {
+    case light, dark
+}
+enum SecureStyle {
+    case visible, nonVisible
+}
+
 class TwoSideStyle {
-    enum InterFaceStyle {
-        case light, dark
-    }
-    enum SecureStyle {
-        case visible, nonVisible
-    }
- 
-    
+
     static var share = TwoSideStyle()
-    
+    // 變換sheet高度
+    let sheetHeightStyle: BehaviorRelay<TransactionShowMode> = {
+        return BehaviorRelay<TransactionShowMode>(value: .withdrawals)
+    }()
+    func acceptSheetHeightStyle(_ style: TransactionShowMode) {
+        sheetHeightStyle.accept(style)
+    }
     // 變換白名單圖片狀態
     let topViewWhiteListImageStyle: BehaviorRelay<WhiteListStyle> = {
         return BehaviorRelay<WhiteListStyle>(value: .whiteListOn)

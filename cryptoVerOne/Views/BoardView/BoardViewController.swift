@@ -139,7 +139,7 @@ class BoardViewController: BaseViewController {
            
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
-            filterBottomSheet.start(viewController: self ,height: showMode == .deposits ? 431 : 508)
+            filterBottomSheet.start(viewController: self ,height: 508)
         }
     }
 }

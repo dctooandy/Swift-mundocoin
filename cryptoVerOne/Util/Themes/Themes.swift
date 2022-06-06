@@ -10,14 +10,24 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-enum WhiteListStyle {
-    case whiteListOn, whiteListOff
-}
+
 class Themes {
     
     static let plkMode = TwoSideStyle.share.interFaceStyle.asObservable()
     static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
         return Themes.plkMode.map({ $0 == .light ? light : dark })
+    }
+    // 改變 sheet height
+    static let heightForFilterMode = TwoSideStyle.share.sheetHeightStyle.asObservable()
+    static func bindSheetHeight<T>(isDeposits: T , isWithdrawals: T) -> Observable<CGFloat>{
+        return Themes.heightForFilterMode.map({($0 == .deposits) ?
+            431 + Views.bottomOffset :
+            508 + Views.bottomOffset})
+    }
+    static func bindStatusHidden<T>(isDeposits: T , isWithdrawals: T) -> Observable<Bool>{
+        return Themes.heightForFilterMode.map({($0 == .deposits) ?
+            true :
+            false})
     }
     // 綁定白名單上方圖片狀態
     static let topWhiteListImageMode = TwoSideStyle.share.topViewWhiteListImageStyle.asObservable()
@@ -62,11 +72,20 @@ class Themes {
     // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
     
-    static let topWhiteListImageIconType : Observable<UIImage> = Themes.bindWhiteListTopIcon(isON: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    // Binder
+    static let sheetHeightType : Observable<CGFloat> =
+    Themes.bindSheetHeight(isDeposits: TransactionShowMode.deposits , isWithdrawals: TransactionShowMode.withdrawals)
+    static let statusViewHiddenType : Observable<Bool> =
+    Themes.bindStatusHidden(isDeposits: TransactionShowMode.deposits , isWithdrawals: TransactionShowMode.withdrawals)
     
-    static let whiteListSwitchAlpha : Observable<CGFloat> = Themes.bindWhiteListSwitchAlpha(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    static let topWhiteListImageIconType : Observable<UIImage> =
+    Themes.bindWhiteListTopIcon(isON: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
     
-    static let whiteListSwitchEnable : Observable<Bool> = Themes.bindWhiteListSwitchEnable(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    static let whiteListSwitchAlpha : Observable<CGFloat> =
+    Themes.bindWhiteListSwitchAlpha(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
+    
+    static let whiteListSwitchEnable : Observable<Bool> =
+    Themes.bindWhiteListSwitchEnable(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
     
     // 綁定 輸入框typing狀態的border
     static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()
