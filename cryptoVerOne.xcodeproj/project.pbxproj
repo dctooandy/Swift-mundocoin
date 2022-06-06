@@ -16,6 +16,18 @@
 		099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
 		099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
 		099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
+		09947B95284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */; };
+		09947B96284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */; };
+		09947B97284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */; };
+		09947B99284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */; };
+		09947B9A284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */; };
+		09947B9B284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */; };
+		09947B9D284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */; };
+		09947B9E284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */; };
+		09947B9F284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */; };
+		09947BA6284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
+		09947BA7284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
+		09947BA8284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -641,6 +653,10 @@
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
+		09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomView.swift; sourceTree = "<group>"; };
+		09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterBottomView.xib; sourceTree = "<group>"; };
+		09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomSheet.swift; sourceTree = "<group>"; };
+		09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -902,6 +918,24 @@
 			path = ScrollView;
 			sourceTree = "<group>";
 		};
+		09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */ = {
+			isa = PBXGroup;
+			children = (
+				09947B9C284D9DC8004F7FD7 /* FilterBottomSheet.swift */,
+				09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */,
+				09947B98284D9D2E004F7FD7 /* FilterBottomView.xib */,
+			);
+			path = FilterBottomSheetView;
+			sourceTree = "<group>";
+		};
+		09947BA4284DA0B3004F7FD7 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */,
+			);
+			path = TableView;
+			sourceTree = "<group>";
+		};
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1106,6 +1140,8 @@
 		A1973A112828EDFB009932D8 /* BoardView */ = {
 			isa = PBXGroup;
 			children = (
+				09947BA4284DA0B3004F7FD7 /* TableView */,
+				09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */,
 				A1973A122828EE13009932D8 /* BoardViewController.swift */,
 				A1973A152828EE6A009932D8 /* BoardViewController.xib */,
 			);
@@ -1668,6 +1704,7 @@
 				09CAF4CA283C77ED00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
 				09CAF4CB283C77ED00D7B19B /* UserMenuViewController.xib in Resources */,
 				09CAF4CC283C77ED00D7B19B /* GuidePageViewController.xib in Resources */,
+				09947B9A284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
 				09CAF4CD283C77ED00D7B19B /* BoardViewController.xib in Resources */,
 				09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
@@ -1727,6 +1764,7 @@
 				09CAF58B283C7BBE00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
 				09CAF58C283C7BBE00D7B19B /* UserMenuViewController.xib in Resources */,
 				09CAF58D283C7BBE00D7B19B /* GuidePageViewController.xib in Resources */,
+				09947B9B284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
 				09CAF58E283C7BBE00D7B19B /* BoardViewController.xib in Resources */,
 				09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
@@ -1808,6 +1846,7 @@
 				A19C719428225C56000AFC3F /* LoginSignupViewController.xib in Resources */,
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
 				A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */,
+				09947B99284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
 				09CAF5BB283C7C2300D7B19B /* Info_stage.plist in Resources */,
 				09CAF4FA283C78A700D7B19B /* Info_dev.plist in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
@@ -2003,6 +2042,7 @@
 				09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */,
 				09CAF5C6283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
+				09947B96284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09CAF463283C77ED00D7B19B /* ObservableType+util.swift in Sources */,
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
@@ -2038,6 +2078,7 @@
 				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
+				09947B9E284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
 				09CAF47F283C77ED00D7B19B /* TabbarViewController.swift in Sources */,
 				09CAF480283C77ED00D7B19B /* UserMenuGrayLineCell.swift in Sources */,
 				09CAF481283C77ED00D7B19B /* BoardViewController.swift in Sources */,
@@ -2080,6 +2121,7 @@
 				09CAF4A0283C77ED00D7B19B /* ImageVerifyView.swift in Sources */,
 				09CAF4A1283C77ED00D7B19B /* SecurityVerificationViewController.swift in Sources */,
 				09CAF4A2283C77ED00D7B19B /* BaseBottomSheet.swift in Sources */,
+				09947BA7284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF4A3283C77ED00D7B19B /* MainViewController.swift in Sources */,
 				09CAF5C2283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				09CAF4A4283C77ED00D7B19B /* LoginViewController.swift in Sources */,
@@ -2165,6 +2207,7 @@
 				09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */,
 				09CAF5C7283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
+				09947B97284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09CAF524283C7BBE00D7B19B /* ObservableType+util.swift in Sources */,
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
@@ -2200,6 +2243,7 @@
 				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
+				09947B9F284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
 				09CAF540283C7BBE00D7B19B /* TabbarViewController.swift in Sources */,
 				09CAF541283C7BBE00D7B19B /* UserMenuGrayLineCell.swift in Sources */,
 				09CAF542283C7BBE00D7B19B /* BoardViewController.swift in Sources */,
@@ -2242,6 +2286,7 @@
 				09CAF561283C7BBE00D7B19B /* ImageVerifyView.swift in Sources */,
 				09CAF562283C7BBE00D7B19B /* SecurityVerificationViewController.swift in Sources */,
 				09CAF563283C7BBE00D7B19B /* BaseBottomSheet.swift in Sources */,
+				09947BA8284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF564283C7BBE00D7B19B /* MainViewController.swift in Sources */,
 				09CAF5C3283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				09CAF565283C7BBE00D7B19B /* LoginViewController.swift in Sources */,
@@ -2327,6 +2372,7 @@
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
 				09CAF5C5283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
+				09947B95284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
@@ -2362,6 +2408,7 @@
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,
+				09947B9D284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
 				A19C706028223517000AFC3F /* TabbarViewController.swift in Sources */,
 				099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */,
 				A1973A132828EE13009932D8 /* BoardViewController.swift in Sources */,
@@ -2404,6 +2451,7 @@
 				A19C71DD28226889000AFC3F /* ImageVerifyView.swift in Sources */,
 				A1973A88282AB37D009932D8 /* SecurityVerificationViewController.swift in Sources */,
 				A19C70FD28224D78000AFC3F /* BaseBottomSheet.swift in Sources */,
+				09947BA6284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				A19C706628223584000AFC3F /* MainViewController.swift in Sources */,
 				09CAF5C1283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				A19C71B32822636E000AFC3F /* LoginViewController.swift in Sources */,
