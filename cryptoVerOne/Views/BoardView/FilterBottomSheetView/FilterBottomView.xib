@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -110,9 +110,70 @@
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-cy-NuN">
                     <rect key="frame" x="24" y="275.5" width="366" height="46"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-qn-Mro">
+                            <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <datePicker alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="QlW-Jy-VoY">
+                            <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="8ps-bi-hj6"/>
+                            </constraints>
+                            <locale key="locale" localeIdentifier="en_AS"/>
+                        </datePicker>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="to" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RAG-wg-AsS">
+                            <rect key="frame" x="130" y="13" width="20" height="20.5"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="AO8-yx-tNB"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="327-8R-Qtt">
+                            <rect key="frame" x="150" y="0.0" width="130" height="46"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <datePicker alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="1OI-pU-I43">
+                            <rect key="frame" x="150" y="0.0" width="130" height="46"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="130" id="7r7-Zf-mlt"/>
+                            </constraints>
+                        </datePicker>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-Daterange" translatesAutoresizingMaskIntoConstraints="NO" id="AHr-bK-tWt">
+                            <rect key="frame" x="324" y="11" width="24" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="24" id="OnA-kb-LVq"/>
+                                <constraint firstAttribute="height" constant="24" id="yi6-wR-og6"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
+                        <constraint firstItem="327-8R-Qtt" firstAttribute="bottom" secondItem="1OI-pU-I43" secondAttribute="bottom" id="2eA-Cg-1aB"/>
+                        <constraint firstItem="327-8R-Qtt" firstAttribute="leading" secondItem="1OI-pU-I43" secondAttribute="leading" id="86D-kI-dMS"/>
+                        <constraint firstItem="1OI-pU-I43" firstAttribute="top" secondItem="NU4-cy-NuN" secondAttribute="top" id="FpD-Ue-sb1"/>
+                        <constraint firstItem="7EM-qn-Mro" firstAttribute="trailing" secondItem="QlW-Jy-VoY" secondAttribute="trailing" id="GuN-8F-rdc"/>
+                        <constraint firstAttribute="bottom" secondItem="1OI-pU-I43" secondAttribute="bottom" id="Gvq-ve-gGH"/>
+                        <constraint firstAttribute="bottom" secondItem="QlW-Jy-VoY" secondAttribute="bottom" id="KQd-cJ-OXl"/>
+                        <constraint firstItem="QlW-Jy-VoY" firstAttribute="leading" secondItem="NU4-cy-NuN" secondAttribute="leading" id="Kd3-qg-ikM"/>
+                        <constraint firstItem="7EM-qn-Mro" firstAttribute="top" secondItem="QlW-Jy-VoY" secondAttribute="top" id="Nhm-g2-NCj"/>
+                        <constraint firstItem="7EM-qn-Mro" firstAttribute="leading" secondItem="QlW-Jy-VoY" secondAttribute="leading" id="R22-kx-oKJ"/>
+                        <constraint firstAttribute="trailing" secondItem="AHr-bK-tWt" secondAttribute="trailing" constant="18" id="ZFn-Cd-aiH"/>
                         <constraint firstAttribute="height" constant="46" id="c5A-KT-ONH"/>
+                        <constraint firstItem="RAG-wg-AsS" firstAttribute="trailing" secondItem="327-8R-Qtt" secondAttribute="leading" id="cEn-Ud-thm"/>
+                        <constraint firstItem="327-8R-Qtt" firstAttribute="top" secondItem="1OI-pU-I43" secondAttribute="top" id="eZO-RL-HzP"/>
+                        <constraint firstItem="RAG-wg-AsS" firstAttribute="centerY" secondItem="NU4-cy-NuN" secondAttribute="centerY" id="h3a-7e-Dj5"/>
+                        <constraint firstItem="AHr-bK-tWt" firstAttribute="centerY" secondItem="NU4-cy-NuN" secondAttribute="centerY" id="hpz-Ym-NbD"/>
+                        <constraint firstItem="RAG-wg-AsS" firstAttribute="leading" secondItem="7EM-qn-Mro" secondAttribute="trailing" id="ixr-Pu-AYx"/>
+                        <constraint firstItem="QlW-Jy-VoY" firstAttribute="top" secondItem="NU4-cy-NuN" secondAttribute="top" id="kdZ-YL-Mqh"/>
+                        <constraint firstItem="327-8R-Qtt" firstAttribute="trailing" secondItem="1OI-pU-I43" secondAttribute="trailing" id="mgw-n0-Czk"/>
+                        <constraint firstItem="7EM-qn-Mro" firstAttribute="bottom" secondItem="QlW-Jy-VoY" secondAttribute="bottom" id="wiu-LT-2dR"/>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Crypto" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsH-Aq-2Te">
@@ -176,16 +237,21 @@
                 <outlet property="cryptoContainerView" destination="4s4-Xs-fPi" id="wy7-AB-ohK"/>
                 <outlet property="cryptoLabel" destination="ufI-p2-165" id="q21-ry-seN"/>
                 <outlet property="dateContainerView" destination="NU4-cy-NuN" id="JgP-om-cFl"/>
+                <outlet property="endDatePicker" destination="1OI-pU-I43" id="3EW-1Z-tGM"/>
+                <outlet property="endLabel" destination="327-8R-Qtt" id="0ZF-FO-HTR"/>
                 <outlet property="historyCollectionView" destination="Ntf-jD-KeJ" id="3tG-kr-60W"/>
                 <outlet property="historyView" destination="tI0-wY-ez8" id="DtV-oQ-67b"/>
+                <outlet property="startDatePicker" destination="QlW-Jy-VoY" id="YfB-b9-I6S"/>
+                <outlet property="startLabel" destination="7EM-qn-Mro" id="cYK-md-HJU"/>
                 <outlet property="statusCollectionView" destination="BMh-sv-oNt" id="36l-bp-YNJ"/>
                 <outlet property="statusView" destination="LLO-YU-APL" id="bM5-dm-NNK"/>
                 <outlet property="titleLabel" destination="yJw-oF-xm7" id="jkf-so-Yfs"/>
             </connections>
-            <point key="canvasLocation" x="132" y="96"/>
+            <point key="canvasLocation" x="131.8840579710145" y="95.758928571428569"/>
         </view>
     </objects>
     <resources>
+        <image name="icon-Daterange" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

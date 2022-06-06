@@ -43,6 +43,11 @@ class FilterBottomView: UIView {
     // MARK:業務設定
     private let onConfirmTrigger = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    let dateFormatter: DateFormatter = {
+           let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+           return formatter
+       }()
     var showModeAtView : TransactionShowMode = .withdrawals
     {
         didSet{
@@ -61,6 +66,11 @@ class FilterBottomView: UIView {
     @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var cryptoContainerView: UIView!
     @IBOutlet weak var cryptoLabel: UILabel!
+    
+    @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var startDatePicker: UIDatePicker!
+    @IBOutlet weak var startLabel: UILabel!
+    @IBOutlet weak var endLabel: UILabel!
     private lazy var confirmButton: OKButton = {
         let btn = OKButton()
         btn.setTitle("Confirm".localized, for: .normal)
@@ -131,54 +141,101 @@ class FilterBottomView: UIView {
             make.height.equalTo(44)
             make.width.equalToSuperview().multipliedBy(0.39)
         }
+
     }
     func setupDatePacker()
     {
-        // 使用 UIDatePicker(frame:) 建立一個 UIDatePicker
-        myDatePicker = UIDatePicker()
-
-        // 設置 UIDatePicker 格式
-        myDatePicker.datePickerMode = .date
-
-        // 選取時間時的分鐘間隔 這邊以 15 分鐘為一個間隔
-//        myDatePicker.minuteInterval = 15
-
-        // 設置預設時間為現在時間
-        myDatePicker.date = Date()
-
-        // 設置 NSDate 的格式
-        let formatter = DateFormatter()
-
-        // 設置時間顯示的格式
-        formatter.dateFormat = "yyyy-MM-dd"
+        let startDate = dateFormatter.string(from: Date())
+        startLabel.text = startDate
+        let endDate = dateFormatter.string(from: Date())
+        endLabel.text = endDate
         // 可以選擇的最早日期時間
-        let fromDateTime = formatter.date(from: "2022-01-01")
-        // 設置可以選擇的最早日期時間
-        myDatePicker.minimumDate = fromDateTime
-        // 可以選擇的最晚日期時間
-        let endDateTime = formatter.date(from: "2022-12-25")
-        // 設置可以選擇的最晚日期時間
-        myDatePicker.maximumDate = endDateTime
-        if #available(iOS 13.4, *) {
-            myDatePicker.preferredDatePickerStyle = .compact
-        } else {
-            // Fallback on earlier versions
-        }
-//        myDatePicker.locale = Locale(identifier: "zh_Hant_TW")
-        myDatePicker.calendar = Calendar(identifier: .japanese)
-        dateContainerView.addSubview(myDatePicker)
-        myDatePicker.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        let fromDateTime = dateFormatter.date(from: startDate)
+        endDatePicker.minimumDate = fromDateTime
+        
+        // 使用 UIDatePicker(frame:) 建立一個 UIDatePicker
+//        myDatePicker = UIDatePicker()
+//        // 設置 UIDatePicker 格式
+//        myDatePicker.datePickerMode = .date
+//        // 選取時間時的分鐘間隔 這邊以 15 分鐘為一個間隔
+//        myDatePicker.minuteInterval = 15
+//        // 設置預設時間為現在時間
+//        myDatePicker.date = Date()
+//        // 設置 NSDate 的格式
+//        let formatter = DateFormatter()
+//        // 設置時間顯示的格式
+//        formatter.dateFormat = "yyyy-MM-dd"
+//        // 可以選擇的最早日期時間
+//        let fromDateTime = formatter.date(from: "2021-01-01")
+//        // 設置可以選擇的最早日期時間
+//        myDatePicker.minimumDate = fromDateTime
+//        // 可以選擇的最晚日期時間
+//        let endDateTime = formatter.date(from: "2022-12-25")
+//        // 設置可以選擇的最晚日期時間
+//        myDatePicker.maximumDate = endDateTime
+//        if #available(iOS 13.4, *) {
+//            myDatePicker.preferredDatePickerStyle = .compact
+//        } else {
+//            // Fallback on earlier versions
+//        }
+//        myDatePicker.locale = Locale(identifier: "en_US_POSIX")
+//        myDatePicker.calendar = Calendar(identifier: .gregorian)
+//        dateContainerView.addSubview(myDatePicker)
+//        myDatePicker.snp.makeConstraints { make in
+//            make.centerY.equalToSuperview()
+//            make.leading.equalToSuperview().offset(20)
+//        }
         
     }
     func bindUI()
     {
         Themes.statusViewHiddenType.bind(to: statusView.rx.isHidden).disposed(by: dpg)
-        dateContainerView.rx.click.subscribeSuccess { [self] _ in
-            Log.v("選時間")
-            myDatePicker.sendActions(for: .touchUpInside)
+//        dateContainerView.rx.click.subscribeSuccess { [self] _ in
+//            Log.v("選時間")
+//
+////            myDatePicker.sendActions(for: .touchUpInside)
+//        }.disposed(by: dpg)
+
+        startDatePicker.rx.click.subscribeSuccess { [weak self](_) in
+            Log.v("選Start時間")
+            self?.startDatePicker.alpha = 1.0
         }.disposed(by: dpg)
+        endDatePicker.rx.click.subscribeSuccess { [weak self](_) in
+            Log.v("選end時間")
+            self?.endDatePicker.alpha = 1.0
+        }.disposed(by: dpg)
+        startDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
+        endDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
+//        startLabel.rx.click.subscribeSuccess { [self](_) in
+//            Log.v("選Start時間")
+//            startDatePicker.sendActions(for: .allTouchEvents)
+//        }.disposed(by: dpg)
+    }
+    @objc func tap(_ sender: UIDatePicker) {
+        if sender == startDatePicker
+        {
+            startDatePicker.alpha = 0.05
+            let startDate = dateFormatter.string(from: startDatePicker.date)
+            let endDate = dateFormatter.string(from: endDatePicker.date)
+            startLabel.text = startDate
+
+            // 可以選擇的最早日期時間
+            let fromDateTime = dateFormatter.date(from: startDate)
+            endDatePicker.minimumDate = fromDateTime
+            // 如果 開始日期大於結束日期
+            if startDate > endDate
+            {
+                // 結束picker值 要等於 開始picker值
+                endDatePicker.date = startDatePicker.date
+                // 結束label 要等於 開始label
+                endLabel.text = startDate
+            }
+        }else
+        {
+            endDatePicker.alpha = 0.05
+            let endDate = dateFormatter.string(from: endDatePicker.date)
+            endLabel.text = endDate
+        }
     }
     @objc private func confirmButtonPressed(_ sender: UIButton) {
         
