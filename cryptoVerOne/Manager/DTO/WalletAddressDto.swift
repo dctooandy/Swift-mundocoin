@@ -31,12 +31,14 @@ struct WalletAddressDto :Codable {
     static private let subject = BehaviorSubject<WalletAddressDto?>(value: nil)
     static func update(done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
+        
         Beans.walletServer.walletAddress().subscribe { [self](walletDto) in
             share = walletDto
             _ = LoadingViewController.dismiss()
             done()
             subject.onNext(())
         } onError: { [self](error) in
+            _ = LoadingViewController.dismiss()
             subject.onError(error)
         }.disposed(by: disposeBag)
 

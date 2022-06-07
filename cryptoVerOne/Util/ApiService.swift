@@ -54,6 +54,7 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case authentication
     case walletAddress
     case walletBalances
+    case walletTransactions
     case refreshToken
     case customerUpdatePassword
     
@@ -85,11 +86,13 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/wallet/address")
         case .walletBalances:
             return URL(string:ApiService.host + "/v1/wallet/balances")
+        case .walletTransactions:
+            return URL(string:ApiService.host + "/v1/wallet/transactions")
         case .refreshToken:
             return URL(string:ApiService.host + "/v1/refresh/token")
         case .customerUpdatePassword:
             return URL(string:ApiService.host + "/v1/customer/updatePassword")
-            
+
         case .login:
             return URL(string:ApiService.host + "/login") //暫時
         case .appVersion:

@@ -110,7 +110,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
+        LoadingViewController.show()
         Beans.walletServer.walletBalances().subscribe { [self](dto) in
+            _ = LoadingViewController.dismiss()
             // 沒過期,打refresh API, 時間加30分鐘
             Log.v("沒過期")
             if let successBlock = complete
@@ -121,6 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 freshToken()
             }
         } onError: { (error) in
+            _ = LoadingViewController.dismiss()
             if let successBlock = complete
             {
                 successBlock(false)

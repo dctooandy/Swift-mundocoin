@@ -17,6 +17,7 @@ enum TransactionShowMode
 }
 class BoardViewController: BaseViewController {
     // MARK:業務設定
+    fileprivate var viewModel = BoardViewModel()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var showMode : TransactionShowMode = .deposits{
@@ -60,6 +61,7 @@ class BoardViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        viewModel.fetchWalletTransactions()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,7 +77,9 @@ class BoardViewController: BaseViewController {
     }
     func bind()
     {
-        
+        viewModel.rxWalletTransactionsSuccess().subscribeSuccess { dto in
+            Log.v("交易紀錄Dto : \(dto)")
+        }.disposed(by: dpg)
     }
     func setupPageContainerView()
     {
@@ -135,8 +139,8 @@ class BoardViewController: BaseViewController {
         Log.i("開啟過濾Sheet")
         let filterBottomSheet = FilterBottomSheet()
         filterBottomSheet.showModeAtSheet = showMode
-        filterBottomSheet.rxConfirmClick().subscribeSuccess { _ in
-           
+        filterBottomSheet.rxConfirmClick().subscribeSuccess { [weak self]dataDto in
+            self?.viewModel.fetchWalletTransactions(currency: dataDto.currency, stats: dataDto.stats, beginDate: dataDto.beginDate, endDate: dataDto.endDate, pageable: dataDto.pageable)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
             filterBottomSheet.start(viewController: self ,height: 508)

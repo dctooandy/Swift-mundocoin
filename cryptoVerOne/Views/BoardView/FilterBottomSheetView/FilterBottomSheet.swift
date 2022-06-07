@@ -13,7 +13,7 @@ import RxSwift
 
 class FilterBottomSheet: BaseBottomSheet {
     // MARK:業務設定
-    private let onConfirmClick = PublishSubject<Any>()
+    private let onConfirmClick = PublishSubject<WalletTransPostDto>()
     private let dpg = DisposeBag()
     var showModeAtSheet : TransactionShowMode = .deposits
     // MARK: -
@@ -43,9 +43,9 @@ class FilterBottomSheet: BaseBottomSheet {
     func setupUI()
     {
         defaultContainer.addSubview(filterBottomView)
-        filterBottomView.rxConfirmTrigger().subscribeSuccess { [self] _ in
+        filterBottomView.rxConfirmTrigger().subscribeSuccess { [self] dto in
             dismiss(animated: true)
-            onConfirmClick.onNext(())
+            onConfirmClick.onNext(dto)
         }.disposed(by: dpg)
         filterBottomView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -56,7 +56,7 @@ class FilterBottomSheet: BaseBottomSheet {
     {
         Themes.sheetHeightType.bind(to: heightConstraint.rx.constant).disposed(by: dpg)
     }
-    func rxConfirmClick() -> Observable<Any>
+    func rxConfirmClick() -> Observable<WalletTransPostDto>
     {
         return onConfirmClick.asObserver()
     }

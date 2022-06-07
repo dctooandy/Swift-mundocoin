@@ -16,6 +16,18 @@
 		09056D89284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
 		09056D8A284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
 		09056D8B284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */; };
+		09056D8D284EF15700038BF8 /* WalletTransactionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */; };
+		09056D8E284EF15700038BF8 /* WalletTransactionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */; };
+		09056D8F284EF15700038BF8 /* WalletTransactionDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */; };
+		09056D91284EF48C00038BF8 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D90284EF48C00038BF8 /* TemplateViewModel.swift */; };
+		09056D92284EF48C00038BF8 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D90284EF48C00038BF8 /* TemplateViewModel.swift */; };
+		09056D93284EF48C00038BF8 /* TemplateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D90284EF48C00038BF8 /* TemplateViewModel.swift */; };
+		09056D95284EF53100038BF8 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D94284EF53100038BF8 /* BoardViewModel.swift */; };
+		09056D96284EF53100038BF8 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D94284EF53100038BF8 /* BoardViewModel.swift */; };
+		09056D97284EF53100038BF8 /* BoardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D94284EF53100038BF8 /* BoardViewModel.swift */; };
+		09056D99284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
+		09056D9A284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
+		09056D9B284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -668,6 +680,10 @@
 		09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateCollectionCell.swift; sourceTree = "<group>"; };
 		09056D84284DBDC700038BF8 /* FilterCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCollectionCell.swift; sourceTree = "<group>"; };
 		09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCollectionCell.xib; sourceTree = "<group>"; };
+		09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransactionDto.swift; sourceTree = "<group>"; };
+		09056D90284EF48C00038BF8 /* TemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewModel.swift; sourceTree = "<group>"; };
+		09056D94284EF53100038BF8 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
+		09056D98284EF80300038BF8 /* WalletTransPostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransPostDto.swift; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -1020,6 +1036,7 @@
 				A16F61F7282E383300D9CCE5 /* TemplateView.swift */,
 				A16F6200282E3F5700D9CCE5 /* TemplateCell.swift */,
 				09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */,
+				09056D90284EF48C00038BF8 /* TemplateViewModel.swift */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -1167,6 +1184,7 @@
 			children = (
 				09947BA4284DA0B3004F7FD7 /* TableView */,
 				09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */,
+				09056D94284EF53100038BF8 /* BoardViewModel.swift */,
 				A1973A122828EE13009932D8 /* BoardViewController.swift */,
 				A1973A152828EE6A009932D8 /* BoardViewController.xib */,
 			);
@@ -1481,6 +1499,8 @@
 				A19C71A828226279000AFC3F /* LoginPostDto.swift */,
 				09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */,
 				099371B128445DDD00D55E55 /* WalletBalancesDto.swift */,
+				09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */,
+				09056D98284EF80300038BF8 /* WalletTransPostDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
 				A19C71E62822699E000AFC3F /* BannerDto.swift */,
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
@@ -2093,12 +2113,14 @@
 				09CAF46F283C77ED00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09056D96284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
+				09056D8E284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
 				09CAF476283C77ED00D7B19B /* TemplateView.swift in Sources */,
@@ -2108,6 +2130,7 @@
 				09C20FA42845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */,
+				09056D92284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
@@ -2124,6 +2147,7 @@
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				09056D9A284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
 				099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
@@ -2261,12 +2285,14 @@
 				09CAF530283C7BBE00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09056D97284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
+				09056D8F284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
 				09CAF537283C7BBE00D7B19B /* TemplateView.swift in Sources */,
@@ -2276,6 +2302,7 @@
 				09C20FA52845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */,
+				09056D93284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
@@ -2292,6 +2319,7 @@
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				09056D9B284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
 				099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
@@ -2429,12 +2457,14 @@
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09056D95284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,
+				09056D8D284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,
 				A16F61F8282E383300D9CCE5 /* TemplateView.swift in Sources */,
@@ -2444,6 +2474,7 @@
 				09C20FA32845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
 				A16F61C7282CBBD100D9CCE5 /* TFFinishReViewController.swift in Sources */,
+				09056D91284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,
@@ -2460,6 +2491,7 @@
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				09056D99284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
 				099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,

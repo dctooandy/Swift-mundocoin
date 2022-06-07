@@ -34,4 +34,22 @@ class WalletService {
                 return $0
             })
     }
+    func walletTransactions(currency:String = "" , stats : String = "", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :String = "") -> Single<WalletTransactionDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["currency"] = currency
+        parameters["stats"] = stats
+        parameters["beginDate"] = beginDate
+        parameters["endDate"] = endDate
+        parameters["pageable"] = pageable
+        
+        
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.walletTransactions.path,
+            parameters: parameters,
+            modify: false,
+            resultType: WalletTransactionDto.self).map({
+                return $0
+            })
+    }
 }

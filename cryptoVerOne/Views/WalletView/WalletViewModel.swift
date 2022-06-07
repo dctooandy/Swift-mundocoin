@@ -27,6 +27,7 @@ class WalletViewModel: BaseViewModel {
                     fetchWalletBalancesSuccess.onNext(dto)
                 }
             } onError: { (error) in
+                _ = LoadingViewController.dismiss()
                 ErrorHandler.show(error: error)
             }.disposed(by: disposeBag)
         }

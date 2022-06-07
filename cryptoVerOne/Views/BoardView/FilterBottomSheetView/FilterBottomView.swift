@@ -41,7 +41,7 @@ enum FilterLabelType {
 }
 class FilterBottomView: UIView {
     // MARK:業務設定
-    private let onConfirmTrigger = PublishSubject<Any>()
+    private let onConfirmTrigger = PublishSubject<WalletTransPostDto>()
     private let dpg = DisposeBag()
     let dateFormatter: DateFormatter = {
            let formatter = DateFormatter()
@@ -55,6 +55,7 @@ class FilterBottomView: UIView {
             historyCollectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
+    var transPostDto :WalletTransPostDto = WalletTransPostDto()
     // MARK: -
     // MARK:UI 設定
     
@@ -141,7 +142,6 @@ class FilterBottomView: UIView {
             make.height.equalTo(44)
             make.width.equalToSuperview().multipliedBy(0.39)
         }
-
     }
     func setupDatePackerLabel()
     {
@@ -185,16 +185,10 @@ class FilterBottomView: UIView {
 //            make.centerY.equalToSuperview()
 //            make.leading.equalToSuperview().offset(20)
 //        }
-        
     }
     func bindUI()
     {
         Themes.statusViewHiddenType.bind(to: statusView.rx.isHidden).disposed(by: dpg)
-//        dateContainerView.rx.click.subscribeSuccess { [self] _ in
-//            Log.v("選時間")
-//
-////            myDatePicker.sendActions(for: .touchUpInside)
-//        }.disposed(by: dpg)
 
         startDatePicker.rx.click.subscribeSuccess { [weak self](_) in
             Log.v("選Start時間")
@@ -208,10 +202,6 @@ class FilterBottomView: UIView {
         endDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
         startDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
-//        startLabel.rx.click.subscribeSuccess { [self](_) in
-//            Log.v("選Start時間")
-//            startDatePicker.sendActions(for: .allTouchEvents)
-//        }.disposed(by: dpg)
     }
     @objc func tap(_ sender: UIDatePicker) {
         if sender == startDatePicker
@@ -255,12 +245,34 @@ class FilterBottomView: UIView {
         
         if sender == confirmButton {
             Log.v("Confirm")
+            let startDate = dateFormatter.string(from: startDatePicker.date)
+            let endDate = dateFormatter.string(from: endDatePicker.date)
+            let beginTime = dateFormatter.date(from: startDate)?.timeIntervalSince1970
+            let endTime = dateFormatter.date(from: endDate)?.timeIntervalSince1970
+            transPostDto.beginDate = beginTime!
+            transPostDto.endDate = endTime!
+            onConfirmTrigger.onNext(transPostDto)
         } else {
             Log.v("Reset")
             setupDatePackerLabel()
         }
     }
-    func rxConfirmTrigger() -> Observable<Any>
+    func setupData()
+    {
+        cryptoLabel.text = "USDT"
+        // 暫時寫死
+        transPostDto.currency = "ALL"
+        transPostDto.stats = "ALL"
+        transPostDto.pageable = "{}"
+        let startDate = dateFormatter.string(from: startDatePicker.date)
+        let endDate = dateFormatter.string(from: endDatePicker.date)
+        let beginTime = dateFormatter.date(from: startDate)?.timeIntervalSince1970
+        let endTime = dateFormatter.date(from: endDate)?.timeIntervalSince1970
+        transPostDto.beginDate = beginTime!
+        transPostDto.endDate = endTime!
+    }
+    
+    func rxConfirmTrigger() -> Observable<WalletTransPostDto>
     {
         return onConfirmTrigger.asObserver()
     }
