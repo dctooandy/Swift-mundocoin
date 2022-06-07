@@ -262,6 +262,14 @@ class InputStyleView: UIView {
     
     // MARK: -
     // MARK:Life cycle
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+ 
     convenience init(inputViewMode: InputViewMode = .email) {
         self.init(frame: .zero)
         self.inputViewMode = inputViewMode
@@ -273,14 +281,18 @@ class InputStyleView: UIView {
         self.bindCancelButton()
         timer?.invalidate()
     }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    func setMode(mode:InputViewMode)
+    {
+        self.inputViewMode = mode
+        self.setup()
+        self.bindPwdButton()
+        self.bindImageView()
+        self.bindTextfield()
+        self.bindLabel()
+        self.bindCancelButton()
+        timer?.invalidate()
     }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+
     override func removeFromSuperview() {
         super.removeFromSuperview()
         timer?.invalidate()

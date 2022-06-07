@@ -109,11 +109,7 @@ class FilterBottomView: UIView {
     // MARK: -
     // MARK:UI 設定
     
-//    @IBOutlet weak var historyView: UIView!
-//    @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-//    @IBOutlet weak var historyCollectionView: UICollectionView!
-//    @IBOutlet weak var statusCollectionView: UICollectionView!
     @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var cryptoContainerView: UIView!
     @IBOutlet weak var cryptoLabel: UILabel!
@@ -262,7 +258,7 @@ class FilterBottomView: UIView {
             }
         }.disposed(by: dpg)
         statusView.rxCellClick().subscribeSuccess { data in
-            
+            Log.v("Status 點到 \(data.1)")
         }.disposed(by: dpg)
     }
     @objc func tap(_ sender: UIDatePicker) {
@@ -341,87 +337,3 @@ class FilterBottomView: UIView {
 }
 // MARK: -
 // MARK: 延伸
-//extension FilterBottomView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        if collectionView == historyCollectionView
-//        {
-//            return 2
-//        }else
-//        {
-//            return 4
-//        }
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        if collectionView == historyCollectionView
-//        {
-//            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
-//            if indexPath.item == 0
-//            {
-//                cell.setData(mode: .deposits)
-//            }else
-//            {
-//                cell.setData(mode: .withdrawals)
-//            }
-//            return cell
-//        }else
-//        {
-//            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
-//            if indexPath.item == 0
-//            {
-//                cell.setData(mode: .all)
-//            }else if indexPath.item == 1
-//            {
-//                cell.setData(mode: .pending)
-//            }else if indexPath.item == 2
-//            {
-//                cell.setData(mode: .processing)
-//            }else
-//            {
-//                cell.setData(mode: .completed)
-//            }
-//            return cell
-//        }
-//
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        if collectionView == historyCollectionView
-//        {
-//            if indexPath.item == 0
-//            {
-//                return CGSize(width: FilterLabelType.deposits.width, height: 33)
-//            }else
-//            {
-//                return CGSize(width: FilterLabelType.withdrawals.width, height: 33)
-//            }
-//        }else
-//        {
-//            if indexPath.item == 0
-//            {
-//                return CGSize(width: FilterLabelType.all.width, height: 33)
-//            }else if indexPath.item == 1
-//            {
-//                return CGSize(width: FilterLabelType.pending.width, height: 33)
-//            }else if indexPath.item == 2
-//            {
-//                return CGSize(width: FilterLabelType.processing.width, height: 33)
-//            }else
-//            {
-//                return CGSize(width: FilterLabelType.completed.width, height: 33)
-//            }
-//        }
-//    }
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionCell else { return }
-//        if cell.mode == .deposits
-//        {
-//            TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
-//        }else if cell.mode == .withdrawals
-//        {
-//            TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
-//        }else
-//        {
-//
-//        }
-//    }
-//}

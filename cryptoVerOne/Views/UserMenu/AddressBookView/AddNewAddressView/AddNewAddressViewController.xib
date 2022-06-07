@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,20 +29,42 @@
                             <constraint firstAttribute="height" constant="46" id="w1o-uO-ZEG"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LEC-84-Koy" customClass="InputStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="25" y="166" width="364" height="100"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="100" id="HNp-9P-asN"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9fP-pO-7gj" customClass="DynamicCollectionView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="8" y="266" width="398" height="70"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="noJ-uj-z78"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="M3K-DN-md0"/>
-                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <color key="backgroundColor" systemColor="systemGray4Color"/>
                 <constraints>
                     <constraint firstItem="spa-wo-CtU" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="15l-fE-ZBz"/>
+                    <constraint firstItem="LEC-84-Koy" firstAttribute="top" secondItem="ZMu-Wu-fvl" secondAttribute="bottom" constant="32" id="4lc-uK-gvp"/>
                     <constraint firstItem="ZMu-Wu-fvl" firstAttribute="top" secondItem="spa-wo-CtU" secondAttribute="bottom" constant="7" id="B3c-Sd-emN"/>
+                    <constraint firstItem="9fP-pO-7gj" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="8" id="BSg-w0-BAq"/>
                     <constraint firstItem="spa-wo-CtU" firstAttribute="top" secondItem="M3K-DN-md0" secondAttribute="top" constant="20" id="Cx7-rP-ZNs"/>
+                    <constraint firstItem="LEC-84-Koy" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="25" id="GhR-RM-9bW"/>
+                    <constraint firstItem="9fP-pO-7gj" firstAttribute="top" secondItem="LEC-84-Koy" secondAttribute="bottom" id="RV1-bG-q9r"/>
                     <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="ZMu-Wu-fvl" secondAttribute="trailing" constant="32" id="izx-Ut-nhR"/>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="LEC-84-Koy" secondAttribute="trailing" constant="25" id="k63-g3-AR6"/>
                     <constraint firstItem="ZMu-Wu-fvl" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="kaG-u9-yXv"/>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="9fP-pO-7gj" secondAttribute="trailing" constant="8" id="kwm-Gh-Crd"/>
                 </constraints>
             </view>
             <connections>
+                <outlet property="addressStyleView" destination="LEC-84-Koy" id="YkP-Xx-mQs"/>
                 <outlet property="coinLabel" destination="spa-wo-CtU" id="JsI-vA-FyU"/>
                 <outlet property="dropdownView" destination="ZMu-Wu-fvl" id="bxo-wO-7xH"/>
+                <outlet property="networkView" destination="9fP-pO-7gj" id="39Q-ey-rra"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </viewController>
@@ -50,6 +72,9 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
