@@ -40,6 +40,12 @@
 		09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
 		09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
 		09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
+		092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
+		092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
+		092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
+		092E75FE284F590900221997 /* DynamicCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092E75FD284F590900221997 /* DynamicCollectionView.xib */; };
+		092E75FF284F590900221997 /* DynamicCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092E75FD284F590900221997 /* DynamicCollectionView.xib */; };
+		092E7600284F590900221997 /* DynamicCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 092E75FD284F590900221997 /* DynamicCollectionView.xib */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -700,6 +706,8 @@
 		09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressViewController.xib; sourceTree = "<group>"; };
 		09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownStyleView.swift; sourceTree = "<group>"; };
 		09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownStyleView.xib; sourceTree = "<group>"; };
+		092E75F9284F589400221997 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
+		092E75FD284F590900221997 /* DynamicCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionView.xib; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -979,6 +987,15 @@
 				09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */,
 			);
 			path = DropDownView;
+			sourceTree = "<group>";
+		};
+		092E75F8284F586B00221997 /* DynamicCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				092E75F9284F589400221997 /* DynamicCollectionView.swift */,
+				092E75FD284F590900221997 /* DynamicCollectionView.xib */,
+			);
+			path = DynamicCollectionView;
 			sourceTree = "<group>";
 		};
 		09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */ = {
@@ -1377,6 +1394,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				092E75F8284F586B00221997 /* DynamicCollectionView */,
 				09056DA5284F1A9200038BF8 /* DropDownView */,
 				09947BAE284DB425004F7FD7 /* Cell */,
 				A16F61E3282E2A1000D9CCE5 /* ScanerView */,
@@ -1777,6 +1795,7 @@
 			files = (
 				09CAF4C3283C77ED00D7B19B /* TDetailViewController.xib in Resources */,
 				09CAF4C4283C77ED00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
+				092E75FF284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				09CAF4C5283C77ED00D7B19B /* mucoin_error.json in Resources */,
 				09CAF4C6283C77ED00D7B19B /* WithdrawViewController.xib in Resources */,
 				09CAF4C7283C77ED00D7B19B /* MainViewController.xib in Resources */,
@@ -1841,6 +1860,7 @@
 			files = (
 				09CAF584283C7BBE00D7B19B /* TDetailViewController.xib in Resources */,
 				09CAF585283C7BBE00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
+				092E7600284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				09CAF586283C7BBE00D7B19B /* mucoin_error.json in Resources */,
 				09CAF587283C7BBE00D7B19B /* WithdrawViewController.xib in Resources */,
 				09CAF588283C7BBE00D7B19B /* MainViewController.xib in Resources */,
@@ -1909,6 +1929,7 @@
 				A1973A252828F3E7009932D8 /* WithdrawViewController.xib in Resources */,
 				A19C719728225CDA000AFC3F /* MainViewController.xib in Resources */,
 				A19739CA28251BB0009932D8 /* ResetPasswordViewController.xib in Resources */,
+				092E75FE284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				A19C6FDE282218DF000AFC3F /* LaunchScreen.storyboard in Resources */,
 				A19C70A728223C46000AFC3F /* LaunchReciprocalViewController.xib in Resources */,
 				A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */,
@@ -2174,6 +2195,7 @@
 				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */,
 				09056D92284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
+				092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
@@ -2348,6 +2370,7 @@
 				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */,
 				09056D93284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
+				092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
 				09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
@@ -2522,6 +2545,7 @@
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
 				A16F61C7282CBBD100D9CCE5 /* TFFinishReViewController.swift in Sources */,
 				09056D91284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
+				092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,

@@ -12,31 +12,81 @@ import RxSwift
 import UIKit
 
 enum FilterLabelType {
-    case deposits
-    case withdrawals
-    case all
-    case pending
-    case processing
-    case completed
+//    case deposits
+//    case withdrawals
+//    case all
+//    case pending
+//    case processing
+//    case completed
+
+    case history
+    case status
+    case networkMethod
     
-    var title:String {
-        switch self {
-        case .deposits:
-            return "Deposits".localized
-        case .withdrawals:
-            return "Withdrawals".localized
-        case .all:
-            return "All".localized
-        case .pending:
-            return "Pending".localized
-        case .processing:
-            return "Processing".localized
-        case .completed:
-            return "Completed".localized
+    var numberOfRow : Int {
+        switch self
+        {
+        case .history:
+            return 2
+        case .status:
+            return 4
+        case .networkMethod:
+            return 1
         }
     }
-    var width:CGFloat {
-        return NSString(string: self.title).size(withAttributes: [NSAttributedString.Key.font:Fonts.pingFangSCRegular(14)]).width + 40
+    var topLabelString : String{
+        switch self {
+        case .history:
+            return "History".localized
+        case .status:
+            return "Status".localized
+        case .networkMethod:
+            return "NetWork Method".localized
+        }
+    }
+//    var title:String {
+//        switch self {
+//        case .deposits:
+//            return "Deposits".localized
+//        case .withdrawals:
+//            return "Withdrawals".localized
+//        case .all:
+//            return "All".localized
+//        case .pending:
+//            return "Pending".localized
+//        case .processing:
+//            return "Processing".localized
+//        case .completed:
+//            return "Completed".localized
+//        }
+//    }
+    var titles:[String] {
+        switch self {
+        case .history:
+            return ["Deposits".localized,
+                    "Withdrawals".localized]
+        case .status:
+            return ["All".localized,
+                    "Pending".localized,
+                    "Processing".localized,
+                    "Completed".localized]
+        case .networkMethod:
+            return ["TRC20".localized]
+        }
+    }
+    var widths:[CGFloat] {
+        switch self {
+        case .history:
+            return ["Deposits".localized.customWidth(),
+                    "Withdrawals".localized.customWidth()]
+        case .status:
+            return ["All".localized.customWidth(),
+                    "Pending".localized.customWidth(),
+                    "Processing".localized.customWidth(),
+                    "Completed".localized.customWidth()]
+        case .networkMethod:
+            return ["TRC20".localized.customWidth()]
+        }
     }
 }
 class FilterBottomView: UIView {
@@ -52,26 +102,27 @@ class FilterBottomView: UIView {
     {
         didSet{
             TwoSideStyle.share.acceptSheetHeightStyle(showModeAtView)
-            historyCollectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+            historyView.collectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
     var transPostDto :WalletTransPostDto = WalletTransPostDto()
     // MARK: -
     // MARK:UI 設定
     
-    @IBOutlet weak var historyView: UIView!
-    @IBOutlet weak var statusView: UIView!
+//    @IBOutlet weak var historyView: UIView!
+//    @IBOutlet weak var statusView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var historyCollectionView: UICollectionView!
-    @IBOutlet weak var statusCollectionView: UICollectionView!
+//    @IBOutlet weak var historyCollectionView: UICollectionView!
+//    @IBOutlet weak var statusCollectionView: UICollectionView!
     @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var cryptoContainerView: UIView!
     @IBOutlet weak var cryptoLabel: UILabel!
-    
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
+    @IBOutlet weak var historyView:DynamicCollectionView!
+    @IBOutlet weak var statusView:DynamicCollectionView!
     private lazy var confirmButton: OKButton = {
         let btn = OKButton()
         btn.setTitle("Confirm".localized, for: .normal)
@@ -106,17 +157,14 @@ class FilterBottomView: UIView {
     // MARK:業務方法
     func setupUI()
     {
-        let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.scrollDirection = .vertical
-        //        flowLayout.minimumInteritemSpacing = 5
-        historyCollectionView.registerXibCell(type: FilterCollectionCell.self)
-        historyCollectionView.backgroundColor = .clear
-        historyCollectionView.showsHorizontalScrollIndicator = false
-
-        statusCollectionView.registerXibCell(type: FilterCollectionCell.self)
-        statusCollectionView.backgroundColor = .clear
-        statusCollectionView.showsHorizontalScrollIndicator = false
-        statusCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+//        historyCollectionView.registerXibCell(type: FilterCollectionCell.self)
+//        historyCollectionView.backgroundColor = .clear
+//        historyCollectionView.showsHorizontalScrollIndicator = false
+//
+//        statusCollectionView.registerXibCell(type: FilterCollectionCell.self)
+//        statusCollectionView.backgroundColor = .clear
+//        statusCollectionView.showsHorizontalScrollIndicator = false
+//        statusCollectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         
         dateContainerView.layer.borderColor = Themes.grayE0E5F2.cgColor
         dateContainerView.layer.borderWidth = 1
@@ -142,6 +190,8 @@ class FilterBottomView: UIView {
             make.height.equalTo(44)
             make.width.equalToSuperview().multipliedBy(0.39)
         }
+        historyView.setData(type: .history)
+        statusView.setData(type: .status)
     }
     func setupDatePackerLabel()
     {
@@ -202,6 +252,18 @@ class FilterBottomView: UIView {
         endDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
         startDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
+        historyView.rxCellClick().subscribeSuccess { data in
+            if String(data.1) == "Deposits".localized
+            {
+                TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
+            }else
+            {
+                TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
+            }
+        }.disposed(by: dpg)
+        statusView.rxCellClick().subscribeSuccess { data in
+            
+        }.disposed(by: dpg)
     }
     @objc func tap(_ sender: UIDatePicker) {
         if sender == startDatePicker
@@ -279,87 +341,87 @@ class FilterBottomView: UIView {
 }
 // MARK: -
 // MARK: 延伸
-extension FilterBottomView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if collectionView == historyCollectionView
-        {
-            return 2
-        }else
-        {
-            return 4
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if collectionView == historyCollectionView
-        {
-            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
-            if indexPath.item == 0
-            {
-                cell.setData(mode: .deposits)
-            }else
-            {
-                cell.setData(mode: .withdrawals)
-            }
-            return cell
-        }else
-        {
-            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
-            if indexPath.item == 0
-            {
-                cell.setData(mode: .all)
-            }else if indexPath.item == 1
-            {
-                cell.setData(mode: .pending)
-            }else if indexPath.item == 2
-            {
-                cell.setData(mode: .processing)
-            }else
-            {
-                cell.setData(mode: .completed)
-            }
-            return cell
-        }
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if collectionView == historyCollectionView
-        {
-            if indexPath.item == 0
-            {
-                return CGSize(width: FilterLabelType.deposits.width, height: 33)
-            }else
-            {
-                return CGSize(width: FilterLabelType.withdrawals.width, height: 33)
-            }
-        }else
-        {
-            if indexPath.item == 0
-            {
-                return CGSize(width: FilterLabelType.all.width, height: 33)
-            }else if indexPath.item == 1
-            {
-                return CGSize(width: FilterLabelType.pending.width, height: 33)
-            }else if indexPath.item == 2
-            {
-                return CGSize(width: FilterLabelType.processing.width, height: 33)
-            }else
-            {
-                return CGSize(width: FilterLabelType.completed.width, height: 33)
-            }
-        }
-    }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionCell else { return }
-        if cell.mode == .deposits
-        {
-            TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
-        }else if cell.mode == .withdrawals
-        {
-            TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
-        }else
-        {
-            
-        }
-    }
-}
+//extension FilterBottomView: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        if collectionView == historyCollectionView
+//        {
+//            return 2
+//        }else
+//        {
+//            return 4
+//        }
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//        if collectionView == historyCollectionView
+//        {
+//            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
+//            if indexPath.item == 0
+//            {
+//                cell.setData(mode: .deposits)
+//            }else
+//            {
+//                cell.setData(mode: .withdrawals)
+//            }
+//            return cell
+//        }else
+//        {
+//            let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
+//            if indexPath.item == 0
+//            {
+//                cell.setData(mode: .all)
+//            }else if indexPath.item == 1
+//            {
+//                cell.setData(mode: .pending)
+//            }else if indexPath.item == 2
+//            {
+//                cell.setData(mode: .processing)
+//            }else
+//            {
+//                cell.setData(mode: .completed)
+//            }
+//            return cell
+//        }
+//
+//    }
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        if collectionView == historyCollectionView
+//        {
+//            if indexPath.item == 0
+//            {
+//                return CGSize(width: FilterLabelType.deposits.width, height: 33)
+//            }else
+//            {
+//                return CGSize(width: FilterLabelType.withdrawals.width, height: 33)
+//            }
+//        }else
+//        {
+//            if indexPath.item == 0
+//            {
+//                return CGSize(width: FilterLabelType.all.width, height: 33)
+//            }else if indexPath.item == 1
+//            {
+//                return CGSize(width: FilterLabelType.pending.width, height: 33)
+//            }else if indexPath.item == 2
+//            {
+//                return CGSize(width: FilterLabelType.processing.width, height: 33)
+//            }else
+//            {
+//                return CGSize(width: FilterLabelType.completed.width, height: 33)
+//            }
+//        }
+//    }
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let cell = collectionView.cellForItem(at: indexPath) as? FilterCollectionCell else { return }
+//        if cell.mode == .deposits
+//        {
+//            TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
+//        }else if cell.mode == .withdrawals
+//        {
+//            TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
+//        }else
+//        {
+//
+//        }
+//    }
+//}

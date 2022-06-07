@@ -5,61 +5,58 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+            <connections>
+                <outlet property="topDrawDownIamge" destination="huV-O2-6Xy" id="RRE-nD-5WB"/>
+                <outlet property="topIconImageView" destination="7Q2-4O-JMZ" id="189-Kk-ef5"/>
+                <outlet property="topLabel" destination="h9U-H2-KNm" id="K0O-uI-qta"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ex-icon-down" translatesAutoresizingMaskIntoConstraints="NO" id="huV-O2-6Xy">
-                    <rect key="frame" x="128.5" y="16" width="14" height="14"/>
+                    <rect key="frame" x="122" y="16" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="14" id="CMY-Ni-eF8"/>
                         <constraint firstAttribute="height" constant="14" id="Usy-3G-afP"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-H2-KNm">
-                    <rect key="frame" x="58" y="10" width="58.5" height="26.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <rect key="frame" x="56" y="11" width="54" height="24"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-usdt" translatesAutoresizingMaskIntoConstraints="NO" id="7Q2-4O-JMZ">
-                    <rect key="frame" x="20" y="10" width="26" height="26"/>
+                    <rect key="frame" x="20" y="11" width="24" height="24"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="26" id="Qxb-sh-vRq"/>
-                        <constraint firstAttribute="width" constant="26" id="RuQ-WQ-9mB"/>
+                        <constraint firstAttribute="width" secondItem="7Q2-4O-JMZ" secondAttribute="height" multiplier="1:1" id="gQb-0n-yQN"/>
                     </constraints>
                 </imageView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="7Q2-4O-JMZ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="4It-qj-gsf"/>
                 <constraint firstItem="huV-O2-6Xy" firstAttribute="leading" secondItem="h9U-H2-KNm" secondAttribute="trailing" constant="12" id="F9v-rM-IjG"/>
                 <constraint firstItem="h9U-H2-KNm" firstAttribute="leading" secondItem="7Q2-4O-JMZ" secondAttribute="trailing" constant="12" id="Hq9-qb-rDJ"/>
+                <constraint firstItem="7Q2-4O-JMZ" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.521739" id="Jm1-68-5U5"/>
                 <constraint firstItem="h9U-H2-KNm" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="TWD-4H-m8d"/>
                 <constraint firstItem="7Q2-4O-JMZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="WTd-Jr-pHd"/>
                 <constraint firstItem="huV-O2-6Xy" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="kpO-db-XYf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <connections>
-                <outlet property="topDrawDownIamge" destination="huV-O2-6Xy" id="LLm-yd-J8t"/>
-                <outlet property="topIconImageView" destination="7Q2-4O-JMZ" id="8k1-Xf-3dW"/>
-                <outlet property="topLabel" destination="h9U-H2-KNm" id="tf7-lJ-S5n"/>
-            </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </view>
     </objects>
     <resources>
         <image name="ex-icon-down" width="12" height="10"/>
         <image name="icon-usdt" width="24" height="24"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>

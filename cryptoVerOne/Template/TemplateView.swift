@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class TemplateView: UIView {
+class TemplateView: UIView ,NibOwnerLoadable{
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
@@ -20,14 +20,20 @@ class TemplateView: UIView {
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        customInit()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        customInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    func customInit()
+    {
+        loadNibContent()
     }
     // MARK: -
     // MARK:業務方法

@@ -8,13 +8,17 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddressBookViewController" customModule="cryptoVerOne" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <viewController id="QEn-m4-Jfz" customClass="AddressBookViewController" customModule="cryptoVerOne" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="rfp-Me-U4t">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QTt-MY-wsn" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HYa-62-0BD">
                         <rect key="frame" x="0.0" y="94" width="414" height="1"/>
                         <color key="backgroundColor" red="0.8784313725490196" green="0.89803921568627454" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
@@ -22,26 +26,6 @@
                             <constraint firstAttribute="height" constant="1" id="mti-gd-qRg"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-usdt" translatesAutoresizingMaskIntoConstraints="NO" id="6o5-6f-GUH">
-                        <rect key="frame" x="20" y="56" width="26" height="26"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="26" id="OJf-Qu-zGb"/>
-                            <constraint firstAttribute="height" constant="26" id="ffA-UL-49F"/>
-                        </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fk5-ZB-1qr">
-                        <rect key="frame" x="54" y="56" width="58.5" height="26.5"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ex-icon-down" translatesAutoresizingMaskIntoConstraints="NO" id="Fbd-g0-8iq">
-                        <rect key="frame" x="120.5" y="62" width="14" height="14"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="14" id="7N0-Gj-Czo"/>
-                            <constraint firstAttribute="height" constant="14" id="bFx-45-pK1"/>
-                        </constraints>
-                    </imageView>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" allowsSelection="NO" allowsSelectionDuringEditing="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RdB-t3-ilh">
                         <rect key="frame" x="0.0" y="109" width="414" height="753"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -54,32 +38,24 @@
                 <viewLayoutGuide key="safeArea" id="tBU-51-T1Q"/>
                 <color key="backgroundColor" red="0.95531719920000002" green="0.96778684849999996" blue="0.99463337659999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
+                    <constraint firstItem="tBU-51-T1Q" firstAttribute="trailing" secondItem="QTt-MY-wsn" secondAttribute="trailing" id="2Wo-LP-WWC"/>
                     <constraint firstItem="HYa-62-0BD" firstAttribute="top" secondItem="tBU-51-T1Q" secondAttribute="top" constant="50" id="56s-N0-52D"/>
                     <constraint firstItem="HYa-62-0BD" firstAttribute="leading" secondItem="tBU-51-T1Q" secondAttribute="leading" id="5ly-fr-e2E"/>
                     <constraint firstItem="tBU-51-T1Q" firstAttribute="trailing" secondItem="HYa-62-0BD" secondAttribute="trailing" id="6FL-TR-WiY"/>
-                    <constraint firstItem="Fbd-g0-8iq" firstAttribute="leading" secondItem="fk5-ZB-1qr" secondAttribute="trailing" constant="8" id="6tT-Hm-VH8"/>
-                    <constraint firstItem="6o5-6f-GUH" firstAttribute="leading" secondItem="tBU-51-T1Q" secondAttribute="leading" constant="20" id="91X-Cb-Mbn"/>
-                    <constraint firstItem="fk5-ZB-1qr" firstAttribute="centerY" secondItem="6o5-6f-GUH" secondAttribute="centerY" id="9qJ-Qr-IFS"/>
-                    <constraint firstItem="fk5-ZB-1qr" firstAttribute="leading" secondItem="6o5-6f-GUH" secondAttribute="trailing" constant="8" id="As0-MU-1CZ"/>
                     <constraint firstItem="tBU-51-T1Q" firstAttribute="bottom" secondItem="RdB-t3-ilh" secondAttribute="bottom" id="CVg-W2-nhZ"/>
+                    <constraint firstItem="QTt-MY-wsn" firstAttribute="top" secondItem="tBU-51-T1Q" secondAttribute="top" id="Tv8-xj-fnK"/>
                     <constraint firstItem="RdB-t3-ilh" firstAttribute="top" secondItem="HYa-62-0BD" secondAttribute="bottom" constant="14" id="WUQ-wA-IYv"/>
+                    <constraint firstItem="QTt-MY-wsn" firstAttribute="leading" secondItem="tBU-51-T1Q" secondAttribute="leading" id="YKh-Dq-bBV"/>
                     <constraint firstItem="tBU-51-T1Q" firstAttribute="trailing" secondItem="RdB-t3-ilh" secondAttribute="trailing" id="g1K-BX-TbR"/>
-                    <constraint firstItem="Fbd-g0-8iq" firstAttribute="centerY" secondItem="6o5-6f-GUH" secondAttribute="centerY" id="lZQ-pP-LdY"/>
                     <constraint firstItem="RdB-t3-ilh" firstAttribute="leading" secondItem="tBU-51-T1Q" secondAttribute="leading" id="qY0-cQ-Lyh"/>
-                    <constraint firstItem="HYa-62-0BD" firstAttribute="top" secondItem="6o5-6f-GUH" secondAttribute="bottom" constant="12" id="r6r-TA-c9x"/>
+                    <constraint firstItem="HYa-62-0BD" firstAttribute="top" secondItem="QTt-MY-wsn" secondAttribute="bottom" id="wlA-MM-smv"/>
                 </constraints>
             </view>
             <connections>
+                <outlet property="customDrowDownView" destination="QTt-MY-wsn" id="Oq1-9B-cic"/>
                 <outlet property="tableView" destination="RdB-t3-ilh" id="axX-l3-du1"/>
-                <outlet property="topDrawDownIamge" destination="Fbd-g0-8iq" id="KMG-jN-dh3"/>
-                <outlet property="topIconImageView" destination="6o5-6f-GUH" id="qfo-xp-pMp"/>
-                <outlet property="topLabel" destination="fk5-ZB-1qr" id="3yG-5k-p9P"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </viewController>
     </objects>
-    <resources>
-        <image name="ex-icon-down" width="12" height="10"/>
-        <image name="icon-usdt" width="24" height="24"/>
-    </resources>
 </document>

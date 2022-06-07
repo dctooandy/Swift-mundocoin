@@ -165,4 +165,7 @@ extension String {
         formatter.dateFormat = format
         return formatter.date(from: self)
     }
+    func customWidth() -> CGFloat {
+        return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.pingFangSCRegular(14)]).width + 40
+    }
 }

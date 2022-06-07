@@ -24,8 +24,8 @@ class DepositViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     
-    @IBOutlet weak var topCurrencyView: UIView!
-    @IBOutlet weak var currencyLabel: UILabel!
+    @IBOutlet weak var topCurrencyView: DropDownStyleView!
+
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var copyImageView: UIImageView!
     @IBOutlet weak var walletAddressTitle: UILabel!
@@ -79,6 +79,7 @@ class DepositViewController: BaseViewController {
 //        codeImageView.image = image
         topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         topCurrencyView?.layer.borderWidth = 1
+        topCurrencyView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
     }
     func resetUI()
     {

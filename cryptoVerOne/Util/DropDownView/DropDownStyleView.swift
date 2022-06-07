@@ -11,11 +11,11 @@ import RxCocoa
 import RxSwift
 import DropDown
 
-class DropDownStyleView: UIView {
+class DropDownStyleView: UIView  ,NibOwnerLoadable{
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var dropDataSource : [String] = [""] {
+    private var dropDataSource : [String] = [""] {
         didSet{
             chooseDropDown.dataSource = dropDataSource
         }
@@ -42,13 +42,24 @@ class DropDownStyleView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        customInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        customInit()
+    }
+    func customInit()
+    {
+        loadNibContent()
     }
     // MARK: -
     // MARK:業務方法
+    func config(showDropdown : Bool = false ,dropDataSource : [String] = [""] )
+    {
+        self.topDrawDownIamge.isHidden = !showDropdown
+        self.dropDataSource = dropDataSource
+    }
     func setupUI()
     {
         addSubview(anchorView)

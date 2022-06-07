@@ -45,7 +45,7 @@ struct RegexHelper {
             case .otp:
                 return "^\\d{6}$"
             case .coinAddress:
-                return "^((T)\\d{32}){1}$"
+                return "^((T)[0-9a-zA-Z_]{32}){1}$"
 //            case .coinAddress:
 //                return "^[0-9a-zA-Z_\\.-]{1,50}+$"
             case .moneyAmount:

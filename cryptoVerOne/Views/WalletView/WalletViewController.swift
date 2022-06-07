@@ -152,7 +152,11 @@ class WalletViewController: BaseViewController {
         let data =  walletsDto.filter{
             $0.token == "USDT"
         }.first
-        totalBalanceLabel.text = String(describing: data?.amount).numberFormatter(.decimal, 8)
+        if let dataDto = data
+        {
+            dataDto.amount = 500
+            totalBalanceLabel.text = String(describing: dataDto.amount).numberFormatter(.decimal, 8)
+        }
     }
     func setUPDataForPageVC()
     {

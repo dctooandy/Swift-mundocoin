@@ -18,17 +18,19 @@ class AddressBookViewController: BaseViewController {
     var dropDataSource = ["USDT","USD"]
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var topIconImageView: UIImageView!
-    @IBOutlet weak var topLabel: UILabel!
-    @IBOutlet weak var topDrawDownIamge: UIImageView!
+//    @IBOutlet weak var topIconImageView: UIImageView!
+//    @IBOutlet weak var topLabel: UILabel!
+//    @IBOutlet weak var topDrawDownIamge: UIImageView!
+//    let chooseDropDown = DropDown()
+//    let anchorView : UIView = {
+//       let view = UIView()
+//        view.backgroundColor = .clear
+//        return view
+//    }()
+
+    @IBOutlet weak var customDrowDownView: DropDownStyleView!
+    
     @IBOutlet weak var tableView: UITableView!
-    let chooseDropDown = DropDown()
-    let anchorView : UIView = {
-       let view = UIView()
-        view.backgroundColor = .clear
-        return view
-    }()
-    var customDrowDownView : DropDownStyleView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -56,7 +58,6 @@ class AddressBookViewController: BaseViewController {
         title = "Address book".localized
         setupUI()
         bindUI()
-        setupChooseDropdown()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -83,47 +84,17 @@ class AddressBookViewController: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBookViewCell.self)
         tableView.separatorStyle = .none
-        
-        let textFieldMulH = height(48.0/812.0)
-        view.addSubview(anchorView)
-        anchorView.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom)
-            make.height.equalTo(textFieldMulH)
-            make.centerX.equalTo(topLabel)
-            make.width.equalTo(topLabel)
-        }
+        // 暫時打開
+        customDrowDownView.config(showDropdown: true, dropDataSource: dropDataSource)
     }
     func bindUI()
     {
         Themes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
         let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
         TwoSideStyle.share.acceptWhiteListTopImageStyle(style)
-        topDrawDownIamge.rx.click.subscribeSuccess { (_) in
-            self.chooseDropDown.show()
-        }.disposed(by: dpg)
+
     }
-    func setupChooseDropdown()
-    {
-        DropDown.setupDefaultAppearance()
-        chooseDropDown.anchorView = anchorView
-        
-        // By default, the dropdown will have its origin on the top left corner of its anchor view
-        // So it will come over the anchor view and hide it completely
-        // If you want to have the dropdown underneath your anchor view, you can do this:
-//        chooseDropDown.bottomOffset = CGPoint(x: 0, y:(chooseDropDown.anchorView?.plainView.bounds.height)!)
-        chooseDropDown.topOffset = CGPoint(x: 0, y:-(chooseDropDown.anchorView?.plainView.bounds.height)!)
-        // You can also use localizationKeysDataSource instead. Check the docs.
-        chooseDropDown.direction = .bottom
-        chooseDropDown.dataSource = dropDataSource
-        
-        // Action triggered on selection
-        chooseDropDown.selectionAction = { [weak self] (index, item) in
-//            self?.chooseButton.setTitle(item, for: .normal)
-            self?.topLabel.text = item
-        }
-        chooseDropDown.dismissMode = .onTap
-    }
-    
+
     @objc func whiteListAction() {
         Log.i("開啟白名單警告Sheet")
         let whiteListBottomSheet = WhiteListBottomSheet()

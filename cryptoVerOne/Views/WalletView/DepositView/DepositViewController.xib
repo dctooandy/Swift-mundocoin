@@ -16,30 +16,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
                         <rect key="frame" x="24" y="54" width="366" height="56"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="unE-sc-OHy">
-                                <rect key="frame" x="48" y="18" width="44.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-usdt" translatesAutoresizingMaskIntoConstraints="NO" id="04y-0F-WEJ">
-                                <rect key="frame" x="16" y="16" width="24" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="ijL-Ce-fff"/>
-                                    <constraint firstAttribute="height" constant="24" id="vcd-Y9-Ne7"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="unE-sc-OHy" firstAttribute="leading" secondItem="04y-0F-WEJ" secondAttribute="trailing" constant="8" id="853-HL-1tV"/>
-                            <constraint firstItem="04y-0F-WEJ" firstAttribute="centerY" secondItem="j3C-Kw-xe7" secondAttribute="centerY" id="9lz-po-RUG"/>
-                            <constraint firstItem="unE-sc-OHy" firstAttribute="centerY" secondItem="j3C-Kw-xe7" secondAttribute="centerY" id="HFL-Vu-EcT"/>
-                            <constraint firstItem="04y-0F-WEJ" firstAttribute="leading" secondItem="j3C-Kw-xe7" secondAttribute="leading" constant="16" id="Jfl-tR-Ju0"/>
-                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
@@ -277,13 +256,12 @@ Please confirm the method must match the network.</string>
                 <outlet property="boardView" destination="cvz-5Q-Z0V" id="kun-H4-Wqo"/>
                 <outlet property="codeImageView" destination="nm0-vB-xPB" id="Vep-cG-2VA"/>
                 <outlet property="copyImageView" destination="qJT-q8-GQs" id="hV1-KW-5ue"/>
-                <outlet property="currencyLabel" destination="unE-sc-OHy" id="1Bp-hc-gQZ"/>
                 <outlet property="discritpionLabel" destination="Oli-XG-RwX" id="QFx-Yb-E9r"/>
                 <outlet property="methodTitleLabel" destination="lDT-vi-FC8" id="BBJ-zi-bHi"/>
                 <outlet property="protocolLabel" destination="7u5-ro-xv0" id="8ZJ-4W-fO3"/>
                 <outlet property="saveButton" destination="WSu-fQ-jnD" id="FJf-EQ-GF1"/>
                 <outlet property="shareButton" destination="3gv-v9-FsN" id="zta-px-Dgt"/>
-                <outlet property="topCurrencyView" destination="j3C-Kw-xe7" id="M7I-UX-Hcd"/>
+                <outlet property="topCurrencyView" destination="j3C-Kw-xe7" id="0au-cc-YqP"/>
                 <outlet property="walletAddressLabel" destination="Jiu-of-UhZ" id="W7p-Xz-NEm"/>
                 <outlet property="walletAddressTitle" destination="IHI-9h-f1L" id="2xe-iF-cf3"/>
             </connections>
@@ -293,7 +271,6 @@ Please confirm the method must match the network.</string>
     <resources>
         <image name="icon-Info_fill" width="18" height="18"/>
         <image name="icon-copy" width="24" height="24"/>
-        <image name="icon-usdt" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

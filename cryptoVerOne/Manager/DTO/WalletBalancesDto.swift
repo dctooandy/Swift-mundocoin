@@ -7,15 +7,15 @@
 
 import Foundation
 import RxSwift
-struct WalletBalancesDto :Codable {
+class WalletBalancesDto :Codable {
 
-    let id: String
-    let createdDate: String
-    let updatedDate: String
-    let amount : Int
-    let address: String
-    let currency: String
-    let token: String
+    var id: String
+    var createdDate: String
+    var updatedDate: String
+    var amount : Int
+    var address: String
+    var currency: String
+    var token: String
 
     init(id: String = "", createdDate: String = "", updatedDate: String = "" , amount:Int = 0 ,address: String = "", currency: String = "", token: String = "") {
         self.id = id

@@ -17,6 +17,7 @@ enum InputViewMode :Equatable {
     case twoFAVerify
     case copy
     case withdrawToAddress
+    case address
     case email
     case phone
     case password
@@ -31,7 +32,6 @@ enum InputViewMode :Equatable {
     case newPassword
     case confirmPassword
     
-    case coin(Array<String>)
     
     func topString() -> String {
         switch self {
@@ -39,6 +39,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
+        case .address: return "Address".localized
         case .email: return "E-mail".localized
         case .phone: return "Phone Number".localized
         case .password: return "Password".localized
@@ -53,7 +54,6 @@ enum InputViewMode :Equatable {
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
             
-        case .coin( _ ): return "Coin".localized
         }
     }
     
@@ -61,7 +61,7 @@ enum InputViewMode :Equatable {
         switch self {
         case .emailVerify: return "Email verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
-        case .withdrawToAddress: return "Long press to paste".localized
+        case .withdrawToAddress,.address: return "Long press to paste".localized
         case .email: return "...@mundocoin.com"
         case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundocoin.com"
@@ -74,7 +74,7 @@ enum InputViewMode :Equatable {
         switch self {
         case .emailVerify: return "Enter the 6-digit code".localized
         case .twoFAVerify: return "Enter the 6-digit code".localized
-        case .withdrawToAddress: return "Please check the withdrawal address.".localized
+        case .withdrawToAddress,.address: return "Please check the withdrawal address.".localized
         case .email: return "...@mundocoin.com".localized
         case .phone: return "Invalid phone number.".localized
         case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
@@ -98,25 +98,23 @@ enum InputViewMode :Equatable {
         switch self {
         case .networkMethod(let array):
             return array
-        case .coin(let array):
-            return array
         default:
             return []
         }
     }
-    func isNetworkMethodOrCoin() -> Bool
+    func isNetworkMethod() -> Bool
     {
         switch self {
-        case .networkMethod( _ ),.coin( _ ):
+        case .networkMethod( _ ):
             return true
         default:
             return false
         }
     }
-    func isNetworkMethodOrCoinEnable() -> Bool
+    func isNetworkMethodEnable() -> Bool
     {
         switch self {
-        case .networkMethod( let array ),.coin( let array ):
+        case .networkMethod( let array ):
             if array.count > 1
             {
                 return true
@@ -306,7 +304,7 @@ class InputStyleView: UIView {
         let invalidH = (isPasswordType ? 39.0 : 22.0)
         topLabel.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(-2)
-            make.leading.equalToSuperview().offset(10)
+            make.leading.equalToSuperview().offset(7)
             make.height.equalTo(topLabelH)
         }
         invalidLabel.snp.makeConstraints { (make) in
@@ -383,22 +381,26 @@ class InputStyleView: UIView {
                 make.centerY.equalTo(textField)
             }
             rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
-        }else if inputViewMode == .withdrawToAddress
+        }else if inputViewMode == .withdrawToAddress || inputViewMode == .address
         {
             addSubview(scanImageView)
-            addSubview(addressBookImageView)
             scanImageView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-20)
                 make.centerY.equalTo(textField)
                 make.size.equalTo(24)
             }
-            addressBookImageView.snp.makeConstraints { (make) in
-                make.right.equalTo(scanImageView.snp.left).offset(-10)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(24)
+            rightLabelWidth = 24 + 20
+            if inputViewMode == .withdrawToAddress
+            {
+                addSubview(addressBookImageView)
+                addressBookImageView.snp.makeConstraints { (make) in
+                    make.right.equalTo(scanImageView.snp.left).offset(-10)
+                    make.centerY.equalTo(textField)
+                    make.size.equalTo(24)
+                }
+                rightLabelWidth = 24 + 24 + 20
             }
-            rightLabelWidth = 24 + 24 + 20
-        }else if inputViewMode.isNetworkMethodOrCoin()
+        }else if inputViewMode.isNetworkMethod()
         {
             textField.text = "TRC20"
             let textFieldMulH = height(48/812)
@@ -421,7 +423,7 @@ class InputStyleView: UIView {
                 make.edges.equalTo(textField)
             }
             rightLabelWidth = 18 + 20
-            if inputViewMode.isNetworkMethodOrCoinEnable()
+            if inputViewMode.isNetworkMethodEnable()
             {
                 setupChooseDropdown()
                 bindChooseButton()

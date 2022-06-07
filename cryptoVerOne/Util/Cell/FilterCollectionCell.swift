@@ -15,7 +15,6 @@ class FilterCollectionCell: UICollectionViewCell {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var mode : FilterLabelType = .deposits
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var titleLabel: UILabel!
@@ -39,10 +38,9 @@ class FilterCollectionCell: UICollectionViewCell {
     {
         
     }
-    func setData(mode :FilterLabelType)
+    func setData(modeName :String)
     {
-        self.titleLabel.text = mode.title
-        self.mode = mode
+        self.titleLabel.text = modeName
     }
     
 }
@@ -51,18 +49,17 @@ class FilterCollectionCell: UICollectionViewCell {
 extension FilterCollectionCell
 {
     override var isSelected: Bool {
-            didSet {
-
-                if isSelected == true
-                {
-                    contentView.backgroundColor = Themes.gray707EAE
-                    self.titleLabel.textColor = .white
-                }else
-                {
-                    contentView.backgroundColor = Themes.grayE0E5F2
-                    self.titleLabel.textColor = Themes.gray707EAE
-                }
+        didSet {
+            
+            if isSelected == true
+            {
+                contentView.backgroundColor = Themes.gray707EAE
+                self.titleLabel.textColor = .white
+            }else
+            {
+                contentView.backgroundColor = Themes.grayE0E5F2
+                self.titleLabel.textColor = Themes.gray707EAE
             }
         }
-    
+    }
 }

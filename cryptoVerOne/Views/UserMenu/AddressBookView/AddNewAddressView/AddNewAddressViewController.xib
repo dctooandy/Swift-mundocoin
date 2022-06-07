@@ -15,9 +15,35 @@
             <view key="view" contentMode="scaleToFill" id="Qoq-1e-Qy0">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="spa-wo-CtU">
+                        <rect key="frame" x="32" y="64" width="29.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMu-Wu-fvl" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="32" y="88" width="350" height="46"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="46" id="w1o-uO-ZEG"/>
+                        </constraints>
+                    </view>
+                </subviews>
                 <viewLayoutGuide key="safeArea" id="M3K-DN-md0"/>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="spa-wo-CtU" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="15l-fE-ZBz"/>
+                    <constraint firstItem="ZMu-Wu-fvl" firstAttribute="top" secondItem="spa-wo-CtU" secondAttribute="bottom" constant="7" id="B3c-Sd-emN"/>
+                    <constraint firstItem="spa-wo-CtU" firstAttribute="top" secondItem="M3K-DN-md0" secondAttribute="top" constant="20" id="Cx7-rP-ZNs"/>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="ZMu-Wu-fvl" secondAttribute="trailing" constant="32" id="izx-Ut-nhR"/>
+                    <constraint firstItem="ZMu-Wu-fvl" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="kaG-u9-yXv"/>
+                </constraints>
             </view>
+            <connections>
+                <outlet property="coinLabel" destination="spa-wo-CtU" id="JsI-vA-FyU"/>
+                <outlet property="dropdownView" destination="ZMu-Wu-fvl" id="bxo-wO-7xH"/>
+            </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </viewController>
     </objects>
