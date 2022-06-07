@@ -43,28 +43,80 @@
                             <constraint firstAttribute="height" constant="70" id="noJ-uj-z78"/>
                         </constraints>
                     </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="niy-Ke-QTM" customClass="InputStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="25" y="352" width="364" height="70"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="dup-jX-34q"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XLS-VL-bOJ" customClass="InputStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="25" y="438" width="364" height="70"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="70" id="qRf-Wc-faN"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-NO-2Wa" customClass="CheckBoxView" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="32" y="524" width="20" height="20"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="5PF-JR-lUB"/>
+                            <constraint firstAttribute="width" constant="20" id="mjF-MX-RMu"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to whitelist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-dV-xEs">
+                        <rect key="frame" x="62" y="525.5" width="100" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkr-Jn-cpT" customClass="CornerradiusButton" customModule="cryptoVerOne" customModuleProvider="target">
+                        <rect key="frame" x="51" y="558.5" width="312" height="50"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="79g-Rb-Ek4"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="M3K-DN-md0"/>
                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                 <constraints>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="XLS-VL-bOJ" secondAttribute="trailing" constant="25" id="0aA-Mu-mjC"/>
+                    <constraint firstItem="EjD-NO-2Wa" firstAttribute="top" secondItem="XLS-VL-bOJ" secondAttribute="bottom" constant="16" id="110-Dh-cyQ"/>
                     <constraint firstItem="spa-wo-CtU" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="15l-fE-ZBz"/>
+                    <constraint firstItem="jvD-dV-xEs" firstAttribute="centerY" secondItem="EjD-NO-2Wa" secondAttribute="centerY" id="4Xy-tR-zFo"/>
                     <constraint firstItem="LEC-84-Koy" firstAttribute="top" secondItem="ZMu-Wu-fvl" secondAttribute="bottom" constant="32" id="4lc-uK-gvp"/>
+                    <constraint firstItem="niy-Ke-QTM" firstAttribute="top" secondItem="9fP-pO-7gj" secondAttribute="bottom" constant="16" id="6RD-YK-KGr"/>
+                    <constraint firstItem="XLS-VL-bOJ" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="25" id="ARA-tT-bdC"/>
                     <constraint firstItem="ZMu-Wu-fvl" firstAttribute="top" secondItem="spa-wo-CtU" secondAttribute="bottom" constant="7" id="B3c-Sd-emN"/>
                     <constraint firstItem="9fP-pO-7gj" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="8" id="BSg-w0-BAq"/>
                     <constraint firstItem="spa-wo-CtU" firstAttribute="top" secondItem="M3K-DN-md0" secondAttribute="top" constant="20" id="Cx7-rP-ZNs"/>
                     <constraint firstItem="LEC-84-Koy" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="25" id="GhR-RM-9bW"/>
+                    <constraint firstItem="XLS-VL-bOJ" firstAttribute="top" secondItem="niy-Ke-QTM" secondAttribute="bottom" constant="16" id="JYR-SH-nHH"/>
+                    <constraint firstItem="niy-Ke-QTM" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="25" id="L7T-fi-8nL"/>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="niy-Ke-QTM" secondAttribute="trailing" constant="25" id="RGd-mj-VAF"/>
                     <constraint firstItem="9fP-pO-7gj" firstAttribute="top" secondItem="LEC-84-Koy" secondAttribute="bottom" id="RV1-bG-q9r"/>
+                    <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="Rkr-Jn-cpT" secondAttribute="trailing" constant="51" id="VbS-2d-oyl"/>
                     <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="ZMu-Wu-fvl" secondAttribute="trailing" constant="32" id="izx-Ut-nhR"/>
+                    <constraint firstItem="jvD-dV-xEs" firstAttribute="leading" secondItem="EjD-NO-2Wa" secondAttribute="trailing" constant="10" id="jeq-F0-L0R"/>
                     <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="LEC-84-Koy" secondAttribute="trailing" constant="25" id="k63-g3-AR6"/>
                     <constraint firstItem="ZMu-Wu-fvl" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="kaG-u9-yXv"/>
                     <constraint firstItem="M3K-DN-md0" firstAttribute="trailing" secondItem="9fP-pO-7gj" secondAttribute="trailing" constant="8" id="kwm-Gh-Crd"/>
+                    <constraint firstItem="Rkr-Jn-cpT" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="51" id="p4X-nQ-ezV"/>
+                    <constraint firstItem="EjD-NO-2Wa" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" constant="32" id="xNe-ST-pM3"/>
+                    <constraint firstItem="Rkr-Jn-cpT" firstAttribute="top" secondItem="jvD-dV-xEs" secondAttribute="bottom" constant="16" id="xcL-Dt-CLx"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="addressStyleView" destination="LEC-84-Koy" id="YkP-Xx-mQs"/>
+                <outlet property="checkBox" destination="EjD-NO-2Wa" id="nFv-zC-sHN"/>
                 <outlet property="coinLabel" destination="spa-wo-CtU" id="JsI-vA-FyU"/>
                 <outlet property="dropdownView" destination="ZMu-Wu-fvl" id="bxo-wO-7xH"/>
+                <outlet property="nameStyleView" destination="niy-Ke-QTM" id="2GX-3a-B6B"/>
                 <outlet property="networkView" destination="9fP-pO-7gj" id="39Q-ey-rra"/>
+                <outlet property="saveButton" destination="Rkr-Jn-cpT" id="N9b-Nj-SIV"/>
+                <outlet property="walletLabelStyleView" destination="XLS-VL-bOJ" id="B3W-rw-qkw"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </viewController>

@@ -31,7 +31,7 @@ enum InputViewMode :Equatable {
     case oldPassword
     case newPassword
     case confirmPassword
-    
+    case customLabel(String)
     
     func topString() -> String {
         switch self {
@@ -53,7 +53,7 @@ enum InputViewMode :Equatable {
         case .oldPassword: return "Old Password".localized
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
-            
+        case .customLabel(let title): return "\(title)"
         }
     }
     
@@ -133,14 +133,6 @@ class InputStyleView: UIView {
     private let displayPwdImg = UIImage(named: "icon-view")!.withRenderingMode(.alwaysTemplate)
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")!.withRenderingMode(.alwaysTemplate)
     private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
-//    private let addressBookImgView : UIImageView = {
-//        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
-//        return imgView
-//    }()
-//    private let cameraImgView : UIImageView = {
-//        let imgView = UIImageView(image: UIImage(named: "arrow-circle-right"))
-//        return imgView
-//    }()
     private let onClick = PublishSubject<String>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
@@ -306,6 +298,13 @@ class InputStyleView: UIView {
                                 inputViewMode == .newPassword ||
                                 inputViewMode == .confirmPassword ||
                                 inputViewMode == .oldPassword)
+        var isCustomLabel = false
+        switch inputViewMode {
+        case .customLabel(_):
+            isCustomLabel = true
+        default:
+            break
+        }
         addSubview(topLabel)
         addSubview(textField)
         addSubview(invalidLabel)
@@ -313,23 +312,23 @@ class InputStyleView: UIView {
         textField.delegate = self
         displayRightButton.tintColor = Themes.grayA3AED0
         let topLabelH = 17
-        let invalidH = (isPasswordType ? 39.0 : 22.0)
+        let invalidH = (isPasswordType ? 39.0 : (isCustomLabel  ? 0.0 : 22.0))
         topLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(-2)
+            make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(7)
             make.height.equalTo(topLabelH)
         }
+        textField.snp.makeConstraints { (make) in
+            make.top.equalTo(topLabel.snp.bottom).offset(9)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(41)
+        }
         invalidLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(textField.snp.bottom).offset(2)
             make.left.equalTo(topLabel)
             make.trailing.equalTo(textField)
             make.height.equalTo(invalidH)
-            make.bottom.equalToSuperview().offset(-10)
-        }
-        textField.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(7)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.bottom.equalTo(invalidLabel.snp.top)
         }
         setMaskView()
         resetUI()
@@ -393,7 +392,8 @@ class InputStyleView: UIView {
                 make.centerY.equalTo(textField)
             }
             rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
-        }else if inputViewMode == .withdrawToAddress || inputViewMode == .address
+        }
+        else if inputViewMode == .withdrawToAddress || inputViewMode == .address
         {
             addSubview(scanImageView)
             scanImageView.snp.makeConstraints { (make) in
@@ -412,7 +412,8 @@ class InputStyleView: UIView {
                 }
                 rightLabelWidth = 24 + 24 + 20
             }
-        }else if inputViewMode.isNetworkMethod()
+        }
+        else if inputViewMode.isNetworkMethod()
         {
             textField.text = "TRC20"
             let textFieldMulH = height(48/812)
@@ -444,7 +445,8 @@ class InputStyleView: UIView {
                 textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
                 tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
             }
-        }else if inputViewMode == .withdrawAddressToDetail(true)
+        }
+        else if inputViewMode == .withdrawAddressToDetail(true)
         {
             addSubview(normalTextLabel)
             normalTextLabel.snp.makeConstraints { (make) in
@@ -466,7 +468,8 @@ class InputStyleView: UIView {
             rightLabelWidth = 18 + 18 + 10
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
-        }else if inputViewMode == .withdrawAddressToDetail(false)
+        }
+        else if inputViewMode == .withdrawAddressToDetail(false)
         {
             addSubview(normalTextLabel)
             normalTextLabel.snp.makeConstraints { (make) in
@@ -489,7 +492,8 @@ class InputStyleView: UIView {
 //            rightLabelWidth = 18 + 18 + 10
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
-        }else if inputViewMode == .withdrawAddressToConfirm
+        }
+        else if inputViewMode == .withdrawAddressToConfirm
         {
             addSubview(normalTextLabel)
             normalTextLabel.snp.makeConstraints { (make) in
@@ -500,11 +504,11 @@ class InputStyleView: UIView {
             tfMaskView.backgroundColor = Themes.grayF4F7FE
             resetTopLabelAndMask()
             rightLabelWidth = 18 + 10
-        }else
+        }
+        else
         {
             switch self.inputViewMode {
             case .txid(let tString):
-      
                 if tString.count < 3
                 {
                     addSubview(normalTextLabel)
@@ -562,7 +566,6 @@ class InputStyleView: UIView {
         let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
-        
         bringSubviewToFront(topLabel)
     }
     func bindPwdButton()

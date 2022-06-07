@@ -19,6 +19,10 @@ class AddNewAddressViewController: BaseViewController {
     @IBOutlet weak var dropdownView: DropDownStyleView!
     @IBOutlet weak var addressStyleView: InputStyleView!
     @IBOutlet weak var networkView: DynamicCollectionView!
+    @IBOutlet weak var nameStyleView: InputStyleView!
+    @IBOutlet weak var walletLabelStyleView: InputStyleView!
+    @IBOutlet weak var checkBox: CheckBoxView!
+    @IBOutlet weak var saveButton: CornerradiusButton!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -34,6 +38,8 @@ class AddNewAddressViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
         bindTextfield()
+        bindDynamicView()
+        bindSaveButton()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -50,6 +56,8 @@ class AddNewAddressViewController: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         addressStyleView.tfMaskView.changeBorderWith(isChoose:false)
+        nameStyleView.tfMaskView.changeBorderWith(isChoose:false)
+        walletLabelStyleView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
     // MARK:業務方法
@@ -63,6 +71,11 @@ class AddNewAddressViewController: BaseViewController {
         dropdownView.topLabel.font = Fonts.pingFangSCRegular(14)
         addressStyleView.setMode(mode: .address)
         networkView.setData(type: .networkMethod)
+        nameStyleView.setMode(mode: .customLabel("Name"))
+        walletLabelStyleView.setMode(mode: .customLabel("Wallet label (Optional)"))
+        checkBox.checkType = .checkType
+        checkBox.isSelected = true
+        saveButton.setTitle("Save".localized, for: .normal)
     }
     func bindTextfield()
     {
@@ -71,18 +84,43 @@ class AddNewAddressViewController: BaseViewController {
             addressStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
             addressStyleView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
-        let isValid = addressStyleView.textField.rx.text
+        nameStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            nameStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            nameStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
+            nameStyleView.invalidLabel.isHidden = true
+        }.disposed(by: dpg)
+        walletLabelStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            walletLabelStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            walletLabelStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
+            walletLabelStyleView.invalidLabel.isHidden = true
+        }.disposed(by: dpg)
+        let isAddressValid = addressStyleView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. coinAddress, input: acc)
         }
-        isValid.skip(1).bind(to: addressStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
-//        isValid.bind(to: verifyButton.rx.isEnabled).disposed(by: dpg)
+        isAddressValid.skip(1).bind(to: addressStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        let isNameValid = nameStyleView.textField.rx.text
+            .map {  (str) -> Bool in
+                guard  let acc = str else { return false  }
+                return RegexHelper.match(pattern:. delegateName, input: acc)
+        }
+        isNameValid.skip(1).bind(to: nameStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        Observable.combineLatest(isAddressValid,isNameValid, checkBox.rxCheckBoxPassed())
+            .map { return $0.0 && $0.1 && $0.2} //reget match result
+            .bind(to: saveButton.rx.isEnabled)
+            .disposed(by: dpg)
     }
     func bindDynamicView()
     {
         networkView.rxCellClick().subscribeSuccess { data in
             Log.v("NetworkMethod 點到 \(data.1)")
+        }.disposed(by: dpg)
+    }
+    func bindSaveButton()
+    {
+        saveButton.rx.tap.subscribeSuccess { (_) in
+            Log.v("點到Save")
         }.disposed(by: dpg)
     }
 }

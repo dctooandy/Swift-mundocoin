@@ -49,12 +49,16 @@ class CheckBoxView: UIControl {
     // MARK:Life cycle
     override init(frame: CGRect) {
         super.init(frame: frame)
-//        setupViews()
+        setupUI()
+        resetUIByType(type: .checkType)
+        bindUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-//        setupViews()
+        setupUI()
+        resetUIByType(type: .checkType)
+        bindUI()
     }
     
     func rxCheckBoxPassed() -> Observable<Bool> {
