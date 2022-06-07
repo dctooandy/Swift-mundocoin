@@ -90,7 +90,7 @@ class FilterBottomView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
-        setupDatePacker()
+        setupDatePackerLabel()
         bindUI()
     }
     
@@ -143,7 +143,7 @@ class FilterBottomView: UIView {
         }
 
     }
-    func setupDatePacker()
+    func setupDatePackerLabel()
     {
         let startDate = dateFormatter.string(from: Date())
         startLabel.text = startDate
@@ -206,6 +206,8 @@ class FilterBottomView: UIView {
         }.disposed(by: dpg)
         startDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
         endDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
+        startDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
+        endDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
 //        startLabel.rx.click.subscribeSuccess { [self](_) in
 //            Log.v("選Start時間")
 //            startDatePicker.sendActions(for: .allTouchEvents)
@@ -237,12 +239,25 @@ class FilterBottomView: UIView {
             endLabel.text = endDate
         }
     }
+    @objc func changeClick(_ sender: UIDatePicker)
+    {
+        if sender == startDatePicker
+        {
+            let startDate = dateFormatter.string(from: startDatePicker.date)
+            startLabel.text = startDate
+        }else
+        {
+            let endDate = dateFormatter.string(from: endDatePicker.date)
+            endLabel.text = endDate
+        }
+    }
     @objc private func confirmButtonPressed(_ sender: UIButton) {
         
         if sender == confirmButton {
             Log.v("Confirm")
         } else {
             Log.v("Reset")
+            setupDatePackerLabel()
         }
     }
     func rxConfirmTrigger() -> Observable<Any>
