@@ -28,6 +28,18 @@
 		09056D99284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		09056D9A284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		09056D9B284EF80300038BF8 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
+		09056D9E284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D9D284EFF3100038BF8 /* AddNewAddressViewController.swift */; };
+		09056D9F284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D9D284EFF3100038BF8 /* AddNewAddressViewController.swift */; };
+		09056DA0284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D9D284EFF3100038BF8 /* AddNewAddressViewController.swift */; };
+		09056DA2284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */; };
+		09056DA3284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */; };
+		09056DA4284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */; };
+		09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */; };
+		09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */; };
+		09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */; };
+		09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
+		09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
+		09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -684,6 +696,10 @@
 		09056D90284EF48C00038BF8 /* TemplateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateViewModel.swift; sourceTree = "<group>"; };
 		09056D94284EF53100038BF8 /* BoardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardViewModel.swift; sourceTree = "<group>"; };
 		09056D98284EF80300038BF8 /* WalletTransPostDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletTransPostDto.swift; sourceTree = "<group>"; };
+		09056D9D284EFF3100038BF8 /* AddNewAddressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressViewController.swift; sourceTree = "<group>"; };
+		09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressViewController.xib; sourceTree = "<group>"; };
+		09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownStyleView.swift; sourceTree = "<group>"; };
+		09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownStyleView.xib; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -947,6 +963,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09056D9C284EFF0400038BF8 /* AddNewAddressView */ = {
+			isa = PBXGroup;
+			children = (
+				09056D9D284EFF3100038BF8 /* AddNewAddressViewController.swift */,
+				09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */,
+			);
+			path = AddNewAddressView;
+			sourceTree = "<group>";
+		};
+		09056DA5284F1A9200038BF8 /* DropDownView */ = {
+			isa = PBXGroup;
+			children = (
+				09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */,
+				09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */,
+			);
+			path = DropDownView;
+			sourceTree = "<group>";
+		};
 		09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */ = {
 			isa = PBXGroup;
 			children = (
@@ -979,6 +1013,7 @@
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
 			isa = PBXGroup;
 			children = (
+				09056D9C284EFF0400038BF8 /* AddNewAddressView */,
 				09C20FAA2845FD3300E70654 /* WhiteListBottomSheet */,
 				09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */,
 				09C20F9E2845D87100E70654 /* AddressBookViewController.xib */,
@@ -1194,8 +1229,8 @@
 		A1973A182828F314009932D8 /* DepositView */ = {
 			isa = PBXGroup;
 			children = (
-				A1973A192828F32E009932D8 /* DepositViewController.swift */,
 				099371B52844B66500D55E55 /* DepositViewModel.swift */,
+				A1973A192828F32E009932D8 /* DepositViewController.swift */,
 				A1973A1D2828F35E009932D8 /* DepositViewController.xib */,
 			);
 			path = DepositView;
@@ -1342,6 +1377,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				09056DA5284F1A9200038BF8 /* DropDownView */,
 				09947BAE284DB425004F7FD7 /* Cell */,
 				A16F61E3282E2A1000D9CCE5 /* ScanerView */,
 				A19C70B528223D1E000AFC3F /* Button */,
@@ -1777,8 +1813,10 @@
 				09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */,
+				09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
 				09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */,
+				09056DA3284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
@@ -1839,8 +1877,10 @@
 				09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */,
+				09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
 				09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */,
+				09056DA4284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
@@ -1872,6 +1912,7 @@
 				A19C6FDE282218DF000AFC3F /* LaunchScreen.storyboard in Resources */,
 				A19C70A728223C46000AFC3F /* LaunchReciprocalViewController.xib in Resources */,
 				A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */,
+				09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				A19C70AD28223CB7000AFC3F /* GuidePageViewController.xib in Resources */,
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
@@ -1887,6 +1928,7 @@
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
+				09056DA2284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
@@ -2117,6 +2159,7 @@
 				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
+				09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -2172,6 +2215,7 @@
 				09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */,
 				09CAF49B283C77ED00D7B19B /* Views.swift in Sources */,
 				09CAF49C283C77ED00D7B19B /* DetailDto.swift in Sources */,
+				09056D9F284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF49D283C77ED00D7B19B /* LoginService.swift in Sources */,
 				09CAF49E283C77ED00D7B19B /* Date+util.swift in Sources */,
 				09CAF49F283C77ED00D7B19B /* BuildConfig.swift in Sources */,
@@ -2289,6 +2333,7 @@
 				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
+				09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -2344,6 +2389,7 @@
 				09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */,
 				09CAF55C283C7BBE00D7B19B /* Views.swift in Sources */,
 				09CAF55D283C7BBE00D7B19B /* DetailDto.swift in Sources */,
+				09056DA0284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF55E283C7BBE00D7B19B /* LoginService.swift in Sources */,
 				09CAF55F283C7BBE00D7B19B /* Date+util.swift in Sources */,
 				09CAF560283C7BBE00D7B19B /* BuildConfig.swift in Sources */,
@@ -2461,6 +2507,7 @@
 				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
+				09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -2516,6 +2563,7 @@
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,
 				A1559E06283739D700755783 /* DetailDto.swift in Sources */,
+				09056D9E284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF439283C74D600D7B19B /* LoginService.swift in Sources */,
 				A19C70EA28224C4B000AFC3F /* Date+util.swift in Sources */,
 				A19C711428225542000AFC3F /* BuildConfig.swift in Sources */,

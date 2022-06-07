@@ -64,8 +64,7 @@ class ResetPasswordViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
-        
+        view.backgroundColor = Themes.grayF4F7FE
         let newPasswordView = InputStyleView(inputViewMode: .newPassword)
         newPasswordInputView = newPasswordView
         let confirmPasswordView = InputStyleView(inputViewMode: .confirmPassword)

@@ -44,7 +44,7 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

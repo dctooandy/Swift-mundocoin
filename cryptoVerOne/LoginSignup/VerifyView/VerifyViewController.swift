@@ -153,7 +153,7 @@ class VerifyViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        view.backgroundColor = Themes.grayF4F7FE
         let verify = InputStyleView(inputViewMode: .securityVerification)
         verifyInputView = verify
         view.addSubview(verifyInputView)

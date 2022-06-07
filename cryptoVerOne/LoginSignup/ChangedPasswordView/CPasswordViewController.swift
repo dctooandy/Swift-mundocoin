@@ -55,8 +55,7 @@ class CPasswordViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
-        
+        view.backgroundColor = Themes.grayF4F7FE
         topLabel.text = "You’ve already change password".localized
         view.addSubview(returnButton)
         returnButton.titleLabel?.font = Fonts.pingFangTCRegular(16)

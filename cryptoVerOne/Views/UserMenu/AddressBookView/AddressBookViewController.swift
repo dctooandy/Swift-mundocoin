@@ -28,6 +28,7 @@ class AddressBookViewController: BaseViewController {
         view.backgroundColor = .clear
         return view
     }()
+    var customDrowDownView : DropDownStyleView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -146,8 +147,8 @@ class AddressBookViewController: BaseViewController {
     }
     @objc func addAddressBookAction() {
         Log.i("增加錢包地址")
-        let boardVC = BoardViewController.loadNib()
-        self.navigationController?.pushViewController(boardVC, animated: true)
+        let addVC = AddNewAddressViewController.loadNib()
+        self.navigationController?.pushViewController(addVC, animated: true)
     }
 }
 // MARK: -

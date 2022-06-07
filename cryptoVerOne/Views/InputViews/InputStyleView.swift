@@ -31,6 +31,8 @@ enum InputViewMode :Equatable {
     case newPassword
     case confirmPassword
     
+    case coin(Array<String>)
+    
     func topString() -> String {
         switch self {
         case .emailVerify: return "Enter the 6-digit code sent to ".localized
@@ -50,6 +52,8 @@ enum InputViewMode :Equatable {
         case .oldPassword: return "Old Password".localized
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
+            
+        case .coin( _ ): return "Coin".localized
         }
     }
     
@@ -94,23 +98,25 @@ enum InputViewMode :Equatable {
         switch self {
         case .networkMethod(let array):
             return array
+        case .coin(let array):
+            return array
         default:
             return []
         }
     }
-    func isNetworkMethod() -> Bool
+    func isNetworkMethodOrCoin() -> Bool
     {
         switch self {
-        case .networkMethod( _ ):
+        case .networkMethod( _ ),.coin( _ ):
             return true
         default:
             return false
         }
     }
-    func isNetworkMethodEnable() -> Bool
+    func isNetworkMethodOrCoinEnable() -> Bool
     {
         switch self {
-        case .networkMethod( let array ):
+        case .networkMethod( let array ),.coin( let array ):
             if array.count > 1
             {
                 return true
@@ -392,7 +398,7 @@ class InputStyleView: UIView {
                 make.size.equalTo(24)
             }
             rightLabelWidth = 24 + 24 + 20
-        }else if inputViewMode.isNetworkMethod()
+        }else if inputViewMode.isNetworkMethodOrCoin()
         {
             textField.text = "TRC20"
             let textFieldMulH = height(48/812)
@@ -415,7 +421,7 @@ class InputStyleView: UIView {
                 make.edges.equalTo(textField)
             }
             rightLabelWidth = 18 + 20
-            if inputViewMode.isNetworkMethodEnable()
+            if inputViewMode.isNetworkMethodOrCoinEnable()
             {
                 setupChooseDropdown()
                 bindChooseButton()
@@ -477,7 +483,7 @@ class InputStyleView: UIView {
                 make.right.equalToSuperview().offset(-20)
             }
             normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-            tfMaskView.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+            tfMaskView.backgroundColor = Themes.grayF4F7FE
             resetTopLabelAndMask()
             rightLabelWidth = 18 + 10
         }else

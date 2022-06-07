@@ -179,7 +179,7 @@ class LoginSignupViewController: BaseViewController {
     private func setupUI() {
         setNavigationLeftView(isForgotView: false)
         resetUI()
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        view.backgroundColor = Themes.grayF4F7FE
         topLabel.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
     }
 }

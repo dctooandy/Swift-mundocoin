@@ -83,7 +83,7 @@ class IDVerificationViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        view.backgroundColor = Themes.grayF4F7FE
         idTitleLabel.text = "Identity Verification".localized
         discriptionLabel.text = "Welcom to Mundocoin. Please verify your identify. Ensure the safety and security of Mundo. ".localized
         view.addSubview(countryTopLabel)

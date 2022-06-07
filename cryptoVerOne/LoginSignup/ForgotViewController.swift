@@ -72,7 +72,7 @@ class ForgotViewController: BaseViewController {
     }
     
     func setup() {
-        view.backgroundColor = #colorLiteral(red: 0.9552231431, green: 0.9678531289, blue: 0.994515121, alpha: 1)
+        view.backgroundColor = Themes.grayF4F7FE
         topLabel.text = "Forgot password".localized
         accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .forgotPW, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
