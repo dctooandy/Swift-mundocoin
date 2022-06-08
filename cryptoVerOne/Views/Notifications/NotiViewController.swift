@@ -13,7 +13,7 @@ class NotiViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var notiData:[NotificationDto]!
+    var notiData:[NotificationDto] = []
     
     @IBOutlet weak var deleteViewBottomConstraint: NSLayoutConstraint!
     // MARK: -
@@ -90,7 +90,9 @@ class NotiViewController: BaseViewController {
     }
     func setData(dtos:[NotificationDto])
     {
-        tableView.backgroundView?.isHidden = dtos.count > 0 ? false : true
+        self.notiData = dtos
+        tableView.backgroundView?.isHidden = dtos.count > 0 ? true : false
+        editBarBtn.isHidden = dtos.count > 0 ? false : true
     }
     @objc func editNotiAction()
     {
@@ -123,7 +125,7 @@ extension NotiViewController:UITableViewDelegate,UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return notiData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

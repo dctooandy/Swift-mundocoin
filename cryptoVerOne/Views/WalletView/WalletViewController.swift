@@ -180,6 +180,7 @@ class WalletViewController: BaseViewController {
     @objc func pushToBell() {
         Log.i("推到通知")
         let notiVC = NotiViewController.loadNib()
+        notiVC.setData(dtos: [NotificationDto()])
         self.navigationController?.pushViewController(notiVC, animated: true)
     }
     
