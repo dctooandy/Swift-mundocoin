@@ -48,13 +48,26 @@ class SignupViewController: BaseViewController {
     
     }
     @objc func keyboardWillShow(notification: NSNotification) {
-
-        if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {
-            var info = notification.userInfo!
-            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
-            self.view.frame.origin.y = 0 - keyboardSize!.height
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+            {
+                let diffHeight = view.frame.height - (accountInputView?.frame.maxY)!
+                if diffHeight < (keyboardHeight + 50)
+                {
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    view.frame.origin.y = Views.navigationBarHeight - upHeight
+                }
+            }
         }
+//        if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+//        {
+//            var info = notification.userInfo!
+//            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//            self.view.frame.origin.y = 0 - keyboardSize!.height
+//        }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0

@@ -24,6 +24,7 @@ class AddNewAddressViewController: BaseViewController {
     @IBOutlet weak var walletLabelStyleView: InputStyleView!
     @IBOutlet weak var checkBox: CheckBoxView!
     @IBOutlet weak var saveButton: CornerradiusButton!
+    @IBOutlet weak var backgroundView: UIView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -81,29 +82,30 @@ class AddNewAddressViewController: BaseViewController {
             if ((nameStyleView?.textField.isFirstResponder) == true)
             {
                 let diffHeight = Views.screenHeight - nameStyleView.frame.maxY
-                if diffHeight < keyboardHeight
+                if diffHeight < (keyboardHeight + 50)
                 {
-                    if view.frame.origin.y == 0 {
-                        self.view.frame.origin.y = 0 - (keyboardHeight - diffHeight)
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    if backgroundView.frame.origin.y == Views.navigationBarHeight {
+                        backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
                 }
             }
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
                 let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY
-                if diffHeight < keyboardHeight
+                if diffHeight < (keyboardHeight + 50)
                 {
-                    if view.frame.origin.y == 0 {
-                        self.view.frame.origin.y = 0 - (keyboardHeight - diffHeight)
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    if backgroundView.frame.origin.y == Views.navigationBarHeight {
+                        backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
-
                 }
             }
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-        if view.frame.origin.y != 0 {
-             self.view.frame.origin.y = 0
+        if backgroundView.frame.origin.y != Views.navigationBarHeight {
+            backgroundView.frame.origin.y = Views.navigationBarHeight
          }
     }
     func setupUI()

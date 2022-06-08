@@ -52,6 +52,9 @@
 		092E760628504A8600221997 /* AddressBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760528504A8600221997 /* AddressBookViewModel.swift */; };
 		092E760728504A8600221997 /* AddressBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760528504A8600221997 /* AddressBookViewModel.swift */; };
 		092E760828504A8600221997 /* AddressBookViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760528504A8600221997 /* AddressBookViewModel.swift */; };
+		092E760A2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
+		092E760B2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
+		092E760C2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -716,6 +719,7 @@
 		092E75FD284F590900221997 /* DynamicCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionView.xib; sourceTree = "<group>"; };
 		092E76012850488700221997 /* AddressBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookDto.swift; sourceTree = "<group>"; };
 		092E760528504A8600221997 /* AddressBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewModel.swift; sourceTree = "<group>"; };
+		092E76092850998300221997 /* NotificationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDto.swift; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -1581,6 +1585,7 @@
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 				092E76012850488700221997 /* AddressBookDto.swift */,
+				092E76092850998300221997 /* NotificationDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -2146,6 +2151,7 @@
 				092E760728504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				09CAF450283C77ED00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF451283C77ED00D7B19B /* UILabel+util.swift in Sources */,
+				092E760B2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
@@ -2323,6 +2329,7 @@
 				092E760828504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				09CAF511283C7BBE00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF512283C7BBE00D7B19B /* UILabel+util.swift in Sources */,
+				092E760C2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
@@ -2500,6 +2507,7 @@
 				092E760628504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				A19C70D728224819000AFC3F /* UIImage+util.swift in Sources */,
 				A19C71D72822662B000AFC3F /* UILabel+util.swift in Sources */,
+				092E760A2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */,
 				A19C712D2822570E000AFC3F /* LoadingViewController.swift in Sources */,
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,

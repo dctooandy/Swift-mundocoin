@@ -183,14 +183,34 @@ class TwoFactorAuthViewController: BaseViewController {
         return nil
     }
     @objc func keyboardWillShow(notification: NSNotification) {
-
-        if ((twoFAView?.textField.isFirstResponder) == true)
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {
-            topIconTopConstant.constant = -200
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+           
+            if ((twoFAView?.textField.isFirstResponder) == true)
+            {
+                let diffHeight = Views.screenHeight - twoFAInputView.frame.maxY
+                if diffHeight < (keyboardHeight + 50)
+                {
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    topIconTopConstant.constant -= upHeight
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+            }
         }
+//        if ((twoFAView?.textField.isFirstResponder) == true)
+//        {
+//            topIconTopConstant.constant = -200
+//        }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         topIconTopConstant.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     @objc override func popVC() {
         let securityVC = SecurityViewController.share

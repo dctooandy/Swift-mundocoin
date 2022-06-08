@@ -187,7 +187,7 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         return true
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [self ](action, indexPath) in
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete".localized) { [self ](action, indexPath) in
             Log.v("刪除\(action)")
             showAlert(indexpath: indexPath)
         }

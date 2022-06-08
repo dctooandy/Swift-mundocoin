@@ -13,8 +13,15 @@ class NotiViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var notiData:[NotificationDto]!
+    
+    @IBOutlet weak var deleteViewBottomConstraint: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
+    
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var deleteView: UIView!
+    @IBOutlet weak var deleteButton: CornerradiusButton!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
@@ -47,6 +54,8 @@ class NotiViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editBarBtn)
         view.backgroundColor = Themes.grayF4F7FE
+        setupUI()
+        bindButton()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,15 +71,39 @@ class NotiViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupUI()
+    {
+        tableView.tableFooterView = nil
+        tableView.registerXibCell(type: AddressBookViewCell.self)
+        tableView.separatorStyle = .none
+        deleteButton.setTitle("Delete".localized, for: .normal)
+        deleteButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+    
+    }
+    func bindButton()
+    {
+        deleteButton.rx.tap
+            .subscribeSuccess { [weak self] in
+                Log.v("點擊刪除")
+            }.disposed(by: dpg)
+    }
     @objc func editNotiAction()
     {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: selectBarBtn)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: cancelBarBtn)
+        deleteViewBottomConstraint.constant = 0
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     @objc func cancelEditAction()
     {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: editBarBtn)
+        deleteViewBottomConstraint.constant = -114
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     @objc func selectAllAction()
     {
@@ -79,3 +112,36 @@ class NotiViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
+extension NotiViewController:UITableViewDelegate,UITableViewDataSource
+{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(type: AddressBookViewCell.self, indexPath: indexPath)
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 98
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    
+}

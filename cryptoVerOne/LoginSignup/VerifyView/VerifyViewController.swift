@@ -136,14 +136,30 @@ class VerifyViewController: BaseViewController {
         backgroundImageView.layer.addShadow()
     }
     @objc func keyboardWillShow(notification: NSNotification) {
-        
-        if ((verifyInputView?.textField.isFirstResponder) == true)
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {
-            topIconTopConstant.constant = -50
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+           
+            if ((verifyInputView?.textField.isFirstResponder) == true)
+            {
+                let diffHeight = Views.screenHeight - verifyInputView.frame.maxY
+                if diffHeight < (keyboardHeight + 50)
+                {
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    topIconTopConstant.constant -= upHeight
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    }
+                }
+            }
         }
     }
     @objc func keyboardWillHide(notification: NSNotification) {
         topIconTopConstant.constant = 50
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
