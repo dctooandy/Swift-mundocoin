@@ -13,23 +13,14 @@ import UIKit
 
 class AddressBookViewController: BaseViewController {
     // MARK:業務設定
+    var viewModel = AddressBookViewModel()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var dropDataSource = ["USDT","USD"]
+    var addresBookDtos : [AddressBookDto] = []
     // MARK: -
     // MARK:UI 設定
-//    @IBOutlet weak var topIconImageView: UIImageView!
-//    @IBOutlet weak var topLabel: UILabel!
-//    @IBOutlet weak var topDrawDownIamge: UIImageView!
-//    let chooseDropDown = DropDown()
-//    let anchorView : UIView = {
-//       let view = UIView()
-//        view.backgroundColor = .clear
-//        return view
-//    }()
 
     @IBOutlet weak var customDrowDownView: DropDownStyleView!
-    
     @IBOutlet weak var tableView: UITableView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
@@ -58,10 +49,11 @@ class AddressBookViewController: BaseViewController {
         title = "Address book".localized
         setupUI()
         bindUI()
+        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        fetchDatas()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -69,6 +61,7 @@ class AddressBookViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        tableView.setEditing(false, animated: true)
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -85,16 +78,26 @@ class AddressBookViewController: BaseViewController {
         tableView.registerXibCell(type: AddressBookViewCell.self)
         tableView.separatorStyle = .none
         // 暫時打開
-        customDrowDownView.config(showDropdown: true, dropDataSource: dropDataSource)
+        customDrowDownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
     }
     func bindUI()
     {
         Themes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
         let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
         TwoSideStyle.share.acceptWhiteListTopImageStyle(style)
-
     }
-
+    func bindViewModel()
+    {
+        viewModel.rxFetchSuccess().subscribeSuccess { dtos in
+            Log.v("取得地址簿")
+            self.addresBookDtos = dtos
+            self.tableView.reloadData()
+        }.disposed(by: dpg)
+    }
+    func fetchDatas()
+    {
+        viewModel.fetchAddressBooks()
+    }
     @objc func whiteListAction() {
         Log.i("開啟白名單警告Sheet")
         let whiteListBottomSheet = WhiteListBottomSheet()
@@ -121,6 +124,26 @@ class AddressBookViewController: BaseViewController {
         let addVC = AddNewAddressViewController.loadNib()
         self.navigationController?.pushViewController(addVC, animated: true)
     }
+    func showAlert(indexpath:IndexPath)
+    {
+        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
+                                      title: "",
+                                      message: "Are you sure you want to delete this address?") { [self] isOK in
+
+            if isOK {
+                Log.i("刪除此行 \(indexpath)")
+                if KeychainManager.share.deleteAddressbook(addresBookDtos[indexpath.item]) == true
+                {
+                    addresBookDtos = KeychainManager.share.getAddressBookList()
+                    tableView.deleteRows(at: [indexpath], with: .fade)
+                }
+            }else
+            {
+                Log.i("不刪除")
+            }
+        }
+        popVC.start(viewController: self)
+    }
 }
 // MARK: -
 // MARK: 延伸
@@ -131,11 +154,13 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return addresBookDtos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: AddressBookViewCell.self, indexPath: indexPath)
+        cell.setData(data: addresBookDtos[indexPath.item])
+        cell.shouldIndentWhileEditing = false
 //        cell.setAccountData(data: dataArray[indexPath.item])
         return cell
     }
@@ -162,22 +187,29 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         return true
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { (action, indexPath) in
-            Log.v("刪除")
+        let delete = UITableViewRowAction(style: .destructive, title: "Delete") { [self ](action, indexPath) in
+            Log.v("刪除\(action)")
+            showAlert(indexpath: indexPath)
         }
-
         delete.backgroundColor = UIColor(rgb: 0x2B3674)
-
         return [delete]
     }
+ 
+    func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
+        return false
+    }
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return tableView.isEditing ? .none:.delete
+    }
+//    @available(iOS 11.0, *)
 //    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
 //
-//        let delete = UIContextualAction(style: .normal, title: "") { (action, view, completionHandler) in
+//        let delete = UIContextualAction(style: .normal, title: "Delete") { (action, view, completionHandler) in
 //            print("一點點動心")
 //            completionHandler(true)
 //        }
 //        delete.image = UIImage(named: "RightDeletaBG")
-//        delete.backgroundColor = .clear
+//        delete.backgroundColor = UIColor(rgb: 0x2B3674)
 //        return UISwipeActionsConfiguration(actions: [delete])
 //    }
 }

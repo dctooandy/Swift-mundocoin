@@ -12,7 +12,7 @@ class PopupBottomSheet:BottomSheet {
     
     lazy var dismissButton:UIButton = {
         let btn = UIButton()
-        btn.setImage(UIImage(named: "icon-close") , for: .normal)
+        btn.setImage(UIImage(named: "icon-close-round-fill") , for: .normal)
         btn.addTarget(self, action: #selector(dismissVC), for: .touchUpInside)
         return btn
     }()

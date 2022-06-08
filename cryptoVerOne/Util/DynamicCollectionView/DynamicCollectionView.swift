@@ -15,11 +15,11 @@ class DynamicCollectionView: UIView ,NibOwnerLoadable{
     private let onClick = PublishSubject<(FilterLabelType,String)>()
     private let dpg = DisposeBag()
     var labelType : FilterLabelType! = .history
-//    {
-//        didSet{
+    {
+        didSet{
 //            collectionView.reloadData()
-//        }
-//    }
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
@@ -53,6 +53,8 @@ class DynamicCollectionView: UIView ,NibOwnerLoadable{
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
         self.topLabel.text = labelType.topLabelString
+        collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+        onClick.onNext((labelType , labelType.titles[0]))
     }
     func setData(type:FilterLabelType)
     {

@@ -18,6 +18,7 @@ class KeychainManager {
         case whiteListOnoff = "mundocoin_whiteListOnoff_list"
         case token = "bead_token"
         case domain = "domain"
+        case addressBookList = "mundocoin_addressBook_list"
     }
     
     static let share = KeychainManager()
@@ -167,7 +168,7 @@ class KeychainManager {
         }
         return .Dev
     }
-
+    // 存取刪除token
     func getToken() -> String {
         return getString(from: .token) ?? ""
     }
@@ -177,12 +178,71 @@ class KeychainManager {
     func clearToken() {
        _ = setString("", at: .token)
     }
-    
+    // 存取白名單狀態
     func saveWhiteListOnOff(_ isOn :Bool ) {
-        
         _ = setString(isOn == true ? "true":"false", at: .whiteListOnoff)
     }
     func getWhiteListOnOff() -> Bool {
         return getString(from: .whiteListOnoff) == "true" ? true:false
+    }
+    // 存取AddressBooks
+    func deleteAddressbook(_ book: AddressBookDto )-> Bool{
+        var addressBooks = getAddressBookList()
+        let target = addressBooks.filter{ $0.name == book.name && $0.address == book.address && $0.network == book.network }.first! as AddressBookDto
+        let targetIndex = addressBooks.indexOfObject(object: target)
+        addressBooks.remove(at: targetIndex)
+        if KeychainManager.share.saveAddressBookList(addressBooks) == true
+        {
+            return true
+        }else
+        {
+            return false
+        }
+    }
+    func updateAddressbook(_ book: AddressBookDto )-> Bool{
+        var addressBooks = getAddressBookList()
+        let target = addressBooks.filter{ $0.name == book.name && $0.address == book.address && $0.network == book.network }.first! as AddressBookDto
+        let targetIndex = addressBooks.indexOfObject(object: target)
+        addressBooks.remove(at: targetIndex)
+        addressBooks.insert(book, at: targetIndex)
+        if KeychainManager.share.saveAddressBookList(addressBooks) == true
+        {
+            return true
+        }else
+        {
+            return false
+        }
+    }
+    func saveAddressbook(_ book: AddressBookDto )-> Bool{
+        var addressBooks = getAddressBookList()
+        addressBooks.append(book)
+        if KeychainManager.share.saveAddressBookList(addressBooks) == true
+        {
+            return true
+        }else
+        {
+            return false
+        }
+    }
+    func saveAddressBookList(_ list: [AddressBookDto] )-> Bool {
+        let encoder = JSONEncoder()
+        var success = false
+        if let encoded = try? encoder.encode(list) {
+            if let json = String(data: encoded, encoding: .utf8) {
+                print(json)
+                success = setString(json, at: .addressBookList)
+            }
+        }
+        return success
+    }
+    func getAddressBookList() -> [AddressBookDto] {
+        guard let data = getString(from: .addressBookList) else { return [] }
+        let decoder = JSONDecoder()
+        if let decoded = try? decoder.decode([AddressBookDto].self, from: data.data(using: .utf8)!) {
+            return decoded
+        }else
+        {
+            return []
+        }
     }
 }

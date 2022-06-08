@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SDz-9S-NSO" customClass="AddressBookViewCell" customModule="cryptoVerOne" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" shouldIndentWhileEditing="NO" id="SDz-9S-NSO" customClass="AddressBookViewCell" customModule="cryptoVerOne" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SDz-9S-NSO" id="Hr4-ov-U4b">
@@ -110,6 +110,10 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="addressLabel" destination="Roj-bF-eIe" id="HKT-lO-Ati"/>
+                <outlet property="nameLabel" destination="Qq5-qj-HvT" id="IeJ-Nc-dwJ"/>
+                <outlet property="networkMethodLabel" destination="6E1-oR-6AX" id="bFV-2l-RE6"/>
+                <outlet property="walletLabel" destination="FuP-2y-Avp" id="D6p-NP-u1o"/>
                 <outlet property="whiteListSwitch" destination="V0D-Dp-8cn" id="Mfl-yu-vxY"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>

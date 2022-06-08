@@ -13,6 +13,7 @@ class AddNewAddressViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    private var currentNetwotkMethod = ""
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -36,10 +37,10 @@ class AddNewAddressViewController: BaseViewController {
         title = "Add new address".localized
         view.backgroundColor = Themes.grayF4F7FE
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
-        setupUI()
         bindTextfield()
         bindDynamicView()
         bindSaveButton()
+        setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,7 +48,6 @@ class AddNewAddressViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        networkView.collectionView.selectItem(at: IndexPath(item: 0, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -106,8 +106,8 @@ class AddNewAddressViewController: BaseViewController {
                 return RegexHelper.match(pattern:. delegateName, input: acc)
         }
         isNameValid.skip(1).bind(to: nameStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        Observable.combineLatest(isAddressValid,isNameValid, checkBox.rxCheckBoxPassed())
-            .map { return $0.0 && $0.1 && $0.2} //reget match result
+        Observable.combineLatest(isAddressValid,isNameValid)
+            .map { return $0.0 && $0.1 } //reget match result
             .bind(to: saveButton.rx.isEnabled)
             .disposed(by: dpg)
     }
@@ -115,12 +115,26 @@ class AddNewAddressViewController: BaseViewController {
     {
         networkView.rxCellClick().subscribeSuccess { data in
             Log.v("NetworkMethod 點到 \(data.1)")
+            self.currentNetwotkMethod = data.1
         }.disposed(by: dpg)
     }
     func bindSaveButton()
     {
-        saveButton.rx.tap.subscribeSuccess { (_) in
+        saveButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("點到Save")
+            let coinString = dropdownView.topLabel.text ?? ""
+            let addressString = addressStyleView.textField.text ?? ""
+            let nameString = nameStyleView.textField.text ?? ""
+            let walletLabelString = walletLabelStyleView.textField.text ?? ""
+            let isAddToWhiteList = checkBox.isSelected
+            let address = AddressBookDto(coin: coinString, address: addressString, network: currentNetwotkMethod, name: nameString, walletLabel: walletLabelString, isWhiteList: isAddToWhiteList)
+            if KeychainManager.share.saveAddressbook(address) == true
+            {
+                self.navigationController?.popViewController(animated: true)
+            }else
+            {
+                Log.i("資料異常,無法存入")
+            }
         }.disposed(by: dpg)
     }
 }
