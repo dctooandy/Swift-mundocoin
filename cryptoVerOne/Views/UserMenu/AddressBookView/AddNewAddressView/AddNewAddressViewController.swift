@@ -41,6 +41,7 @@ class AddNewAddressViewController: BaseViewController {
         bindDynamicView()
         bindSaveButton()
         setupUI()
+        setupKeyboardNoti()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,6 +62,50 @@ class AddNewAddressViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupKeyboardNoti()
+    {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            if ((nameStyleView?.textField.isFirstResponder) == true)
+            {
+                let diffHeight = Views.screenHeight - nameStyleView.frame.maxY
+                if diffHeight < keyboardHeight
+                {
+                    if view.frame.origin.y == 0 {
+                        self.view.frame.origin.y = 0 - (keyboardHeight - diffHeight)
+                    }
+                }
+            }
+            if ((walletLabelStyleView?.textField.isFirstResponder) == true)
+            {
+                let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY
+                if diffHeight < keyboardHeight
+                {
+                    if view.frame.origin.y == 0 {
+                        self.view.frame.origin.y = 0 - (keyboardHeight - diffHeight)
+                    }
+
+                }
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        if view.frame.origin.y != 0 {
+             self.view.frame.origin.y = 0
+         }
+    }
     func setupUI()
     {
         dropdownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
