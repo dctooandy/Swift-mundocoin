@@ -55,6 +55,9 @@
 		092E760A2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
 		092E760B2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
 		092E760C2850998300221997 /* NotificationDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E76092850998300221997 /* NotificationDto.swift */; };
+		092E760F2850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
+		092E76102850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
+		092E76112850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -720,6 +723,7 @@
 		092E76012850488700221997 /* AddressBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookDto.swift; sourceTree = "<group>"; };
 		092E760528504A8600221997 /* AddressBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewModel.swift; sourceTree = "<group>"; };
 		092E76092850998300221997 /* NotificationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDto.swift; sourceTree = "<group>"; };
+		092E760E2850A9D100221997 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
@@ -1008,6 +1012,14 @@
 				092E75FD284F590900221997 /* DynamicCollectionView.xib */,
 			);
 			path = DynamicCollectionView;
+			sourceTree = "<group>";
+		};
+		092E760D2850A9C200221997 /* NoDataView */ = {
+			isa = PBXGroup;
+			children = (
+				092E760E2850A9D100221997 /* NoDataView.swift */,
+			);
+			path = NoDataView;
 			sourceTree = "<group>";
 		};
 		09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */ = {
@@ -1407,6 +1419,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				092E760D2850A9C200221997 /* NoDataView */,
 				092E75F8284F586B00221997 /* DynamicCollectionView */,
 				09056DA5284F1A9200038BF8 /* DropDownView */,
 				09947BAE284DB425004F7FD7 /* Cell */,
@@ -2257,6 +2270,7 @@
 				09CAF49C283C77ED00D7B19B /* DetailDto.swift in Sources */,
 				09056D9F284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF49D283C77ED00D7B19B /* LoginService.swift in Sources */,
+				092E76102850A9D100221997 /* NoDataView.swift in Sources */,
 				09CAF49E283C77ED00D7B19B /* Date+util.swift in Sources */,
 				09CAF49F283C77ED00D7B19B /* BuildConfig.swift in Sources */,
 				09CAF4A0283C77ED00D7B19B /* ImageVerifyView.swift in Sources */,
@@ -2435,6 +2449,7 @@
 				09CAF55D283C7BBE00D7B19B /* DetailDto.swift in Sources */,
 				09056DA0284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF55E283C7BBE00D7B19B /* LoginService.swift in Sources */,
+				092E76112850A9D100221997 /* NoDataView.swift in Sources */,
 				09CAF55F283C7BBE00D7B19B /* Date+util.swift in Sources */,
 				09CAF560283C7BBE00D7B19B /* BuildConfig.swift in Sources */,
 				09CAF561283C7BBE00D7B19B /* ImageVerifyView.swift in Sources */,
@@ -2613,6 +2628,7 @@
 				A1559E06283739D700755783 /* DetailDto.swift in Sources */,
 				09056D9E284EFF3100038BF8 /* AddNewAddressViewController.swift in Sources */,
 				09CAF439283C74D600D7B19B /* LoginService.swift in Sources */,
+				092E760F2850A9D100221997 /* NoDataView.swift in Sources */,
 				A19C70EA28224C4B000AFC3F /* Date+util.swift in Sources */,
 				A19C711428225542000AFC3F /* BuildConfig.swift in Sources */,
 				A19C71DD28226889000AFC3F /* ImageVerifyView.swift in Sources */,

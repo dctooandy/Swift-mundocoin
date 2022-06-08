@@ -67,7 +67,6 @@ class NotiViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
     }
     // MARK: -
     // MARK:業務方法
@@ -76,9 +75,11 @@ class NotiViewController: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBookViewCell.self)
         tableView.separatorStyle = .none
+        tableView.backgroundView = NoDataView(image: UIImage(named: "empty-notofications"), title: "No Notifications Yet" , subTitle: "You have no notifications right now. Come back later")
+        tableView.backgroundView?.isHidden = true
+        
         deleteButton.setTitle("Delete".localized, for: .normal)
         deleteButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
-    
     }
     func bindButton()
     {
@@ -86,6 +87,10 @@ class NotiViewController: BaseViewController {
             .subscribeSuccess { [weak self] in
                 Log.v("點擊刪除")
             }.disposed(by: dpg)
+    }
+    func setData(dtos:[NotificationDto])
+    {
+        tableView.backgroundView?.isHidden = dtos.count > 0 ? false : true
     }
     @objc func editNotiAction()
     {
@@ -118,7 +123,7 @@ extension NotiViewController:UITableViewDelegate,UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
