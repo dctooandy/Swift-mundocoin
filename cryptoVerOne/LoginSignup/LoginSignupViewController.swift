@@ -210,6 +210,7 @@ extension LoginSignupViewController {
     @objc func changeDomain()
     {
         #if Mundo_PRO
+        #elseif Approval_PRO
         #else
         let versionString = Bundle.main.releaseVersionNumber ?? ""
         let buildString = Bundle.main.buildVersionNumber ?? ""

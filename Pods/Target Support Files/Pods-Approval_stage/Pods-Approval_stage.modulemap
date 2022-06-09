@@ -1,0 +1,6 @@
+framework module Pods_Approval_stage {
+  umbrella header "Pods-Approval_stage-umbrella.h"
+
+  export *
+  module * { export * }
+}

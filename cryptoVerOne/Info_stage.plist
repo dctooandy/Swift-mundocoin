@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>ReCaptchaKey</key>
-	<string>6LeWqx0gAAAAAIyi9BRPtskC6Re9AT8bHEEKpsNy</string>
-	<key>ReCaptchaDomain</key>
-	<string>new.mundocoin.com</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
@@ -30,8 +26,19 @@
 	<string>Please allow access to save photo in your photo library</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>You can select photos to attach to reports.</string>
+	<key>ReCaptchaDomain</key>
+	<string>new.mundocoin.com</string>
+	<key>ReCaptchaKey</key>
+	<string>6LeWqx0gAAAAAIyi9BRPtskC6Re9AT8bHEEKpsNy</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+		<string>fetch</string>
+		<string>processing</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

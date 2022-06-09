@@ -10,8 +10,13 @@ enum DomainMode :String{
     case Dev
     case Stage
     case Pro
-    
 }
+enum ApprovalDomainMode :String{
+    case Dev
+    case Stage
+    case Pro
+}
+
 
 class BuildConfig {
     static var Domain = UserDefaults.DomainType.string(forKey: .Domain)
@@ -26,26 +31,40 @@ class BuildConfig {
     
 #endif
    
-
-#if Mundo_PRO
-    static var MUNDO_SITE_API_HOST = "https://pro.api.mundocoin.com:443"   // 正式
-#elseif Mundo_DEV
     static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
-#elseif Mundo_STAGE
-    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 測試
-#endif
+//#if Mundo_PRO
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"   // 正式
+//#elseif Mundo_DEV
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
+//#elseif Mundo_STAGE
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 測試
+//#elseif Approval_PRO
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
+//#elseif Approval_DEV
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
+//#elseif Approval_STAGE
+//    static var MUNDO_SITE_API_HOST = "https://\(Domain):443"    // 開發
+//#endif
     func resetDomain()
     {
-        #if Mundo_PRO
-        BuildConfig.MUNDO_SITE_API_HOST = "https://pro.api.mundocoin.com:443"   // 正式
-        #elseif Mundo_DEV
         BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
-        #elseif Mundo_STAGE
-        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 測試
-        #endif
+//#if Mundo_PRO
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"   // 正式
+//#elseif Mundo_DEV
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
+//#elseif Mundo_STAGE
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 測試
+//#elseif Approval_PRO
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
+//#elseif Approval_DEV
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
+//#elseif Approval_STAGE
+//        BuildConfig.MUNDO_SITE_API_HOST = "https://\(BuildConfig.Domain):443"    // 開發
+//#endif
     }
     func domainSet(mode:DomainMode)
     {
+#if Mundo_PRO || Mundo_DEV || Mundo_STAGE
         switch mode
         {
         case .Pro:
@@ -55,6 +74,17 @@ class BuildConfig {
         case .Stage:
             UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
         }
+#else
+        switch mode
+        {
+        case .Pro:
+            UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
+        case .Dev:
+            UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
+        case .Stage:
+            UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
+        }
+#endif
         BuildConfig.Domain = UserDefaults.DomainType.string(forKey: .Domain)
     }
 }

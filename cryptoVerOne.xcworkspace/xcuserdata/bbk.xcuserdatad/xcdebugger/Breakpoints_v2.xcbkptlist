@@ -206,8 +206,8 @@
             filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "346"
-            endingLineNumber = "346"
+            startingLineNumber = "347"
+            endingLineNumber = "347"
             landmarkName = "gotoLoginAction(with:password:verificationCode:loginDto:signupDto:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -241,6 +241,22 @@
             startingLineNumber = "118"
             endingLineNumber = "118"
             landmarkName = "setUPData(withdrawDatas:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1EFFD88-CBAC-408C-8B10-C84B51570D75"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
+            landmarkName = "changeDomain()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

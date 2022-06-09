@@ -51,7 +51,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
-#if Mundo_PRO
+#if Mundo_PRO || Approval_PRO
         self.domainMode = .Pro
 #else
         self.domainMode = KeychainManager.share.getDomainMode()
@@ -66,6 +66,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DropDown.startListeningToKeyboard()
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
+        application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
         stopRETimer()
     }
