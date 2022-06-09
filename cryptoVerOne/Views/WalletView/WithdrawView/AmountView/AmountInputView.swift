@@ -9,16 +9,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class AmountInputView: UIView {
+class AmountInputView: UIView ,NibOwnerLoadable{
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var maxAmount : String = "0"
-    var currency : String = "TW" {
-        didSet{
-            resetUI()
-        }
-    }
+    var currency : String = "TW"
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
@@ -30,21 +26,33 @@ class AmountInputView: UIView {
     // MARK:Life cycle
     override func awakeFromNib() {
         super.awakeFromNib()
+        customInit()
+        setupUI()
         bindUI()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        customInit()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
+    func customInit()
+    {
+        loadNibContent()
+    }
     // MARK: -
     // MARK:業務方法
-    func resetUI()
+    func setData(data:String)
+    {
+        currency = data
+    }
+    func setupUI()
     {
         currencyLabel.text = currency
+        amountTextView.text = "0"
     }
     func bindUI()
     {
@@ -58,7 +66,7 @@ class AmountInputView: UIView {
 // MARK: 延伸
 extension AmountInputView:UITextFieldDelegate
 {
-    func textField(_ textField: UITextField, qwe range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         let newPosition = textField.endOfDocument
         textField.selectedTextRange = textField.textRange(from: newPosition, to: newPosition)
         guard let text = textField.text else {

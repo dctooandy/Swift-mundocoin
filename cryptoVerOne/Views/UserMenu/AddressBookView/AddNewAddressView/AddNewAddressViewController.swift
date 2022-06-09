@@ -14,6 +14,7 @@ class AddNewAddressViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var currentNetwotkMethod = ""
+    var isScanPopAction = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -41,6 +42,7 @@ class AddNewAddressViewController: BaseViewController {
         bindTextfield()
         bindDynamicView()
         bindSaveButton()
+        bindSacnVC()
         setupUI()
         setupKeyboardNoti()
     }
@@ -184,6 +186,29 @@ class AddNewAddressViewController: BaseViewController {
             }
         }.disposed(by: dpg)
     }
+    func bindSacnVC()
+    {
+        addressStyleView.rxScanImagePressed().subscribeSuccess {[self] _ in
+            Log.i("開鏡頭")
+            let scanVC = ScannerViewController()
+            scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
+                isScanPopAction = false
+                addressStyleView.textField.text = stringCode
+                addressStyleView.textField.sendActions(for: .valueChanged)
+            }.disposed(by: dpg)
+            isScanPopAction = true
+            self.navigationController?.pushViewController(scanVC, animated: true)
+        }.disposed(by: dpg)
+    }
+//    func clearAllData ()
+//    {
+//        if isScanPopAction == false
+//        {
+//            
+//            addressStyleView.textField.text = ""
+//            addressStyleView.textField.sendActions(for: .valueChanged)
+//        }
+//    }
 }
 // MARK: -
 // MARK: 延伸

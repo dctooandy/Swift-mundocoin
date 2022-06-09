@@ -32,9 +32,8 @@ class WithdrawViewController: BaseViewController {
     @IBOutlet weak var receiveAmountLabel: UILabel!
     @IBOutlet weak var continueButton: CornerradiusButton!
     @IBOutlet weak var noticeLabel: UILabel!
-    @IBOutlet weak var amountInputView: UIView!
+    @IBOutlet weak var amountInputView: AmountInputView!
     @IBOutlet weak var scrollView: UIScrollView!
-    var amountView : AmountInputView!
     var withdrawToView : InputStyleView!
     var methodView : InputStyleView!
     var confirmBottomSheet : ConfirmBottomSheet!
@@ -53,7 +52,7 @@ class WithdrawViewController: BaseViewController {
         title = "Withdraw"
         setupUI()
         bindAction()
-        bindTextField()
+        
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(self.touch))
         recognizer.numberOfTapsRequired = 1
         recognizer.numberOfTouchesRequired = 1
@@ -65,6 +64,7 @@ class WithdrawViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        bindTextField()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -86,18 +86,8 @@ class WithdrawViewController: BaseViewController {
         view.backgroundColor = Themes.grayF4F7FE
         let minString = "10"
         let maxString = "10000"
-        amountView = AmountInputView.loadNib()
-//        // 設定最高額度
-//        let availableString = availableBalanceAmountLabel.text ?? "0"
-//        amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         // 設定幣種
-        amountView.currency = currencyLabel.text ?? "USDT"
-
-        amountView.amountTextView.text = "0"
-        amountInputView.addSubview(amountView)
-        amountView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        amountInputView.setData(data: currencyLabel.text ?? "USDT")
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
         rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
@@ -128,7 +118,7 @@ class WithdrawViewController: BaseViewController {
             availableBalanceAmountLabel.text = "\(String(describing: data.amount))"
             // 設定最高額度
             let availableString = availableBalanceAmountLabel.text ?? "0"
-            amountView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+            amountInputView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         }
     }
     func bindAction()
@@ -165,7 +155,7 @@ class WithdrawViewController: BaseViewController {
     }
     func bindTextField()
     {
-        let isAmountValid = amountView.amountTextView.rx.text
+        let isAmountValid = amountInputView.amountTextView.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
@@ -192,8 +182,8 @@ class WithdrawViewController: BaseViewController {
 //            .map({$0.isEmpty})
 //            .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
 //            .disposed(by: dpg)
-        amountView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
-            if let amount = Double(amountView.amountTextView.text!),
+        amountInputView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
+            if let amount = Double(amountInputView.amountTextView.text!),
                let fee = Double(feeAmountLabel.text!)
             {
                 let result = (amount > fee ?  amount - fee : 0.0)
@@ -207,7 +197,7 @@ class WithdrawViewController: BaseViewController {
     {
         if let _ = withdrawToView.textField.text
         {
-            let totleAmountText = amountView.amountTextView.text ?? ""
+            let totleAmountText = amountInputView.amountTextView.text ?? ""
             let tetherText = currencyLabel.text  ?? ""
             let networkText = methodView.textField.text ?? ""
             let feeText = feeAmountLabel.text ?? ""
@@ -245,7 +235,7 @@ class WithdrawViewController: BaseViewController {
     func showTransactionDetailView()
     {
         if let textString = withdrawToView.textField.text,
-            let amountText = amountView.amountTextView.text,
+            let amountText = amountInputView.amountTextView.text,
            let fee = feeAmountLabel.text
         {
             let detailData = DetailDto(defailType: .done,
@@ -267,7 +257,7 @@ class WithdrawViewController: BaseViewController {
     {
         if isScanPopAction == false
         {
-            amountView.amountTextView.text = "0"
+            amountInputView.amountTextView.text = "0"
             withdrawToView.textField.text = ""
             withdrawToView.textField.sendActions(for: .valueChanged)
         }

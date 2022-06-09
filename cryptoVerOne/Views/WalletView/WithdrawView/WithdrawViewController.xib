@@ -73,7 +73,7 @@
                                                     <constraint firstAttribute="height" constant="1" id="2bc-mB-NPJ"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUF-Vl-Zbu">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AUF-Vl-Zbu" customClass="AmountInputView" customModule="cryptoVerOne" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="58" width="366" height="135"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
