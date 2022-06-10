@@ -22,7 +22,8 @@ def shared_pods
   pod 'DropDown'
   pod "ReCaptcha/RxSwift"
   pod 'OOSwitch'
-
+  pod 'Socket.IO-Client-Swift', '~> 15.2.0'
+  pod 'JWTDecode', '~> 2.6'
 end
 
 target 'cryptoVerOne_stage' do

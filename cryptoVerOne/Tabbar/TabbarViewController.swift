@@ -17,7 +17,7 @@ class TabbarViewController:BaseViewController {
         return vc
     }()
     lazy var walletPageVC:MDNavigationController = {
-        let walletVC = WalletViewController.share
+        let walletVC = WalletViewController.loadNib()
         let walletNavVC = MDNavigationController(rootViewController: walletVC)
         let vc = walletNavVC
         return vc

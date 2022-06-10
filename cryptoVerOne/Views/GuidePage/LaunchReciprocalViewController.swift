@@ -121,9 +121,11 @@ class LaunchReciprocalViewController: BaseViewController {
     }
     func goToWallet()
     {
+        // socket
+        SocketIOManager.sharedInstance.establishConnection()
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
-            let walletVC = WalletViewController.share
+            let walletVC = WalletViewController.loadNib()
             let walletNavVC = MDNavigationController(rootViewController: walletVC)
             appDelegate.freshToken()
             mainWindow.rootViewController = walletNavVC

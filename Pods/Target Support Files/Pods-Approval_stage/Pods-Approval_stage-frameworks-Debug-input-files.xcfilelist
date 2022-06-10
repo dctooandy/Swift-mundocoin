@@ -2,6 +2,7 @@ ${PODS_ROOT}/Target Support Files/Pods-Approval_stage/Pods-Approval_stage-framew
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework
 ${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework
+${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework
 ${BUILT_PRODUCTS_DIR}/KeychainSwift/KeychainSwift.framework
 ${BUILT_PRODUCTS_DIR}/OOSwitch/OOSwitch.framework
 ${BUILT_PRODUCTS_DIR}/Parchment/Parchment.framework
@@ -13,6 +14,8 @@ ${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework
 ${BUILT_PRODUCTS_DIR}/SDWebImageSVGKitPlugin/SDWebImageSVGKitPlugin.framework
 ${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework
 ${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework
+${BUILT_PRODUCTS_DIR}/Socket.IO-Client-Swift/SocketIO.framework
+${BUILT_PRODUCTS_DIR}/Starscream/Starscream.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyBeaver/SwiftyBeaver.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyCrypto/SwiftyCrypto.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJWT/SwiftyJWT.framework

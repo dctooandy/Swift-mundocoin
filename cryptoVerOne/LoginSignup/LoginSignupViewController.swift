@@ -652,8 +652,9 @@ extension LoginSignupViewController {
     }
     
     func goWalletViewController() {
-        //        tabbarVC.selected(0)
-        let walletVC = WalletViewController.share
+        // socket
+        SocketIOManager.sharedInstance.establishConnection()
+        let walletVC = WalletViewController.loadNib()
         let walletNavVC = MDNavigationController(rootViewController: walletVC)
         
         //        let betleadMain = BetleadNavigationController(rootViewController: tabbarVC)

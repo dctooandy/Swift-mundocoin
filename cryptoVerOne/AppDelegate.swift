@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //走正常流程時,判斷是否已登入過
             if isLogin == true
             {
-                let walletNavVC = MDNavigationController(rootViewController: WalletViewController.share)
+                let walletNavVC = MDNavigationController(rootViewController: WalletViewController.loadNib())
                 window?.rootViewController = walletNavVC
             }else
             {
@@ -89,9 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             if !vc.isKind(of: TabbarViewController.self) {
                 // 檢查時間
-                checkTime { isLogin in
-                    
-                }
+                checkTime()
             } else {
                 print("current vc is tabbar vc finished.")
                 
@@ -115,6 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Beans.walletServer.walletBalances().subscribe { [self](dto) in
             _ = LoadingViewController.dismiss()
             // 沒過期,打refresh API, 時間加30分鐘
+            SocketIOManager.sharedInstance.establishConnection()
             Log.v("沒過期")
             if let successBlock = complete
             {
@@ -168,6 +167,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func stopRETimer()
     {
         Log.v("消除倒數timer")
+        SocketIOManager.sharedInstance.closeConnection()
         timer?.invalidate()
         timer = nil
     }
