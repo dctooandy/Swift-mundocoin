@@ -20,6 +20,7 @@ class LaunchReciprocalViewController: BaseViewController {
     
     @IBOutlet weak var backGroundImageView: UIImageView!
     let loginVC =  LoginSignupViewController.share
+    let auditVC =  AuditLoginViewController.share
     @IBOutlet weak var reciprocalLabel: UILabel!
     @IBOutlet weak var beleadLeftIcon:UIImageView!
     @IBOutlet weak var beleadRightTopIcon:UIImageView!
@@ -79,7 +80,8 @@ class LaunchReciprocalViewController: BaseViewController {
 //            if isLaunchBefore() {
             if firstStart == false
             {
-                if UserStatus.share.isLogin == true {
+                if UserStatus.share.isLogin == true
+                {
                     // 自動登入
                     // 檢查token動作
                     if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -98,12 +100,8 @@ class LaunchReciprocalViewController: BaseViewController {
                             }
                         })
                     }
-                    
-//                    let walletVC = WalletViewController.share
-//                    let walletNavVC = MDNavigationController(rootViewController: walletVC)
-//                    mainWindow.rootViewController = walletNavVC
-//                    mainWindow.makeKeyAndVisible()
-                }else
+                }
+                else
                 {
                     firstStart = true
                     if immediately == true
@@ -131,8 +129,13 @@ class LaunchReciprocalViewController: BaseViewController {
     {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            let auditNavVC = MuLoginNavigationController(rootViewController: auditVC)
+            mainWindow.rootViewController = auditNavVC
+#else
             let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
             mainWindow.rootViewController = loginNavVC
+#endif
             mainWindow.makeKeyAndVisible()
         }
     }

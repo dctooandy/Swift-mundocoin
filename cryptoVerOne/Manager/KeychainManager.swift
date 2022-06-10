@@ -16,7 +16,8 @@ class KeychainManager {
         case account = "mundocoin_account"
         case accList = "mundocoin_acc_list"
         case whiteListOnoff = "mundocoin_whiteListOnoff_list"
-        case token = "bead_token"
+        case token = "mundocoin_token"
+        case auditToken = "audit_token"
         case domain = "domain"
         case addressBookList = "mundocoin_addressBook_list"
     }
@@ -168,7 +169,7 @@ class KeychainManager {
         }
         return .Dev
     }
-    // 存取刪除token
+    // 存取刪除 mundocoin token
     func getToken() -> String {
         return getString(from: .token) ?? ""
     }
@@ -178,6 +179,17 @@ class KeychainManager {
     func clearToken() {
        _ = setString("", at: .token)
     }
+    // 存取刪除 audit token
+    func getAuditToken() -> String {
+        return getString(from: .auditToken) ?? ""
+    }
+    func setAuditToken(_ token:String){
+        _ = setString(token, at: .auditToken)
+    }
+    func clearAuditToken() {
+       _ = setString("", at: .auditToken)
+    }
+
     // 存取白名單狀態
     func saveWhiteListOnOff(_ isOn :Bool ) {
         _ = setString(isOn == true ? "true":"false", at: .whiteListOnoff)

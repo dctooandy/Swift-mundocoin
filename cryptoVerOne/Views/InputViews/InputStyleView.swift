@@ -33,6 +33,9 @@ enum InputViewMode :Equatable {
     case confirmPassword
     case customLabel(String)
     
+    case auditAccount
+    case auditPassword
+    
     func topString() -> String {
         switch self {
         case .emailVerify: return "Enter the 6-digit code sent to ".localized
@@ -54,6 +57,7 @@ enum InputViewMode :Equatable {
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
         case .customLabel(let title): return "\(title)"
+        case .auditAccount,.auditPassword : return ""
         }
     }
     
@@ -66,6 +70,8 @@ enum InputViewMode :Equatable {
         case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
+        case .auditAccount : return "Account"
+        case .auditPassword : return "Password"
         default: return ""
         }
     }
@@ -300,7 +306,7 @@ class InputStyleView: UIView {
                                 inputViewMode == .oldPassword)
         var isCustomLabel = false
         switch inputViewMode {
-        case .customLabel(_):
+        case .customLabel(_) ,.auditAccount,.auditPassword:
             isCustomLabel = true
         default:
             break

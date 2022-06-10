@@ -37,14 +37,16 @@ class SocketIOManager: NSObject {
             print("Failed to decode JWT: \(error)")
         }
         var idValue = ""
-        if let idString = jwtValue.body["Id"] as? String
+        if jwtValue != nil , let idString = jwtValue.body["Id"] as? String
         {
             idValue = idString
         }
 
         socket.on(clientEvent: .connect) {data, ack in
             print("socket connected")
-            self.socket.emit("join", idValue)
+            self.socket.emit("join", idValue) {
+                Log.v("Join call back")
+            }
         }
         
         socket.on(idValue) { data, ack in

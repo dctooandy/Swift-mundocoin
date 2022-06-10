@@ -76,6 +76,18 @@
 		0909C8D92852EA31003E2F58 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8D52852EA31003E2F58 /* SocketIOManager.swift */; };
 		0909C8DA2852EA31003E2F58 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8D52852EA31003E2F58 /* SocketIOManager.swift */; };
 		0909C8DB2852EA31003E2F58 /* SocketIOManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8D52852EA31003E2F58 /* SocketIOManager.swift */; };
+		0909C8DE28532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8DF28532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8E028532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8E128532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8E228532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8E328532E51003E2F58 /* AuditLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */; };
+		0909C8EC28533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		0909C8ED28533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		0909C8EE28533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
 		092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
@@ -1451,6 +1463,8 @@
 		0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalDetailViewController.swift; sourceTree = "<group>"; };
 		0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalDetailViewController.xib; sourceTree = "<group>"; };
 		0909C8D52852EA31003E2F58 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
+		0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditLoginViewController.swift; sourceTree = "<group>"; };
+		0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditLoginViewController.xib; sourceTree = "<group>"; };
 		092E75F9284F589400221997 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		092E75FD284F590900221997 /* DynamicCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionView.xib; sourceTree = "<group>"; };
 		092E76012850488700221997 /* AddressBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookDto.swift; sourceTree = "<group>"; };
@@ -1805,6 +1819,15 @@
 				0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */,
 			);
 			path = DetailView;
+			sourceTree = "<group>";
+		};
+		0909C8DC28532DFE003E2F58 /* AuditViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */,
+				0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */,
+			);
+			path = AuditViewController;
 			sourceTree = "<group>";
 		};
 		092E75F8284F586B00221997 /* DynamicCollectionView */ = {
@@ -2191,6 +2214,7 @@
 		A19C6FEA28221C2F000AFC3F /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
+				0909C8DC28532DFE003E2F58 /* AuditViewController */,
 				09CAF5F4283F542800D7B19B /* ReCaptchaView */,
 				A19739C528251B65009932D8 /* ChangedPasswordView */,
 				A19739C128251AFB009932D8 /* ResetPasswordView */,
@@ -2749,6 +2773,7 @@
 				09905B0E2851A02B00BAEE78 /* VerifyViewController.xib in Resources */,
 				09905B0F2851A02B00BAEE78 /* WalletViewController.xib in Resources */,
 				09905B102851A02B00BAEE78 /* AmountInputView.xib in Resources */,
+				0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09905B112851A02B00BAEE78 /* SignupSuccessView.xib in Resources */,
 				09905B122851A02B00BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905B132851A02B00BAEE78 /* IDVerificationViewController.xib in Resources */,
@@ -2816,6 +2841,7 @@
 				09905C002851A08500BAEE78 /* VerifyViewController.xib in Resources */,
 				09905C012851A08500BAEE78 /* WalletViewController.xib in Resources */,
 				09905C022851A08500BAEE78 /* AmountInputView.xib in Resources */,
+				0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09905C032851A08500BAEE78 /* SignupSuccessView.xib in Resources */,
 				09905C042851A08500BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905C052851A08500BAEE78 /* IDVerificationViewController.xib in Resources */,
@@ -2883,6 +2909,7 @@
 				09905CF22851A09600BAEE78 /* VerifyViewController.xib in Resources */,
 				09905CF32851A09600BAEE78 /* WalletViewController.xib in Resources */,
 				09905CF42851A09600BAEE78 /* AmountInputView.xib in Resources */,
+				0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09905CF52851A09600BAEE78 /* SignupSuccessView.xib in Resources */,
 				09905CF62851A09600BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905CF72851A09600BAEE78 /* IDVerificationViewController.xib in Resources */,
@@ -2950,6 +2977,7 @@
 				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
 				09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */,
+				0909C8ED28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09CAF4E8283C77ED00D7B19B /* SignupSuccessView.xib in Resources */,
 				09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
@@ -3017,6 +3045,7 @@
 				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
 				09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */,
+				0909C8EE28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09CAF5A9283C7BBE00D7B19B /* SignupSuccessView.xib in Resources */,
 				09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
@@ -3084,6 +3113,7 @@
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
 				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
+				0909C8EC28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */,
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
@@ -3403,6 +3433,7 @@
 				09905A6D2851A02B00BAEE78 /* UIStackView+util.swift in Sources */,
 				09905A6E2851A02B00BAEE78 /* SecurityViewController.swift in Sources */,
 				09905A6F2851A02B00BAEE78 /* DataRequest+util.swift in Sources */,
+				0909C8E228532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				09905A702851A02B00BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905A712851A02B00BAEE78 /* ApiService.swift in Sources */,
 				0909C8CC2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -3586,6 +3617,7 @@
 				09905B5F2851A08500BAEE78 /* UIStackView+util.swift in Sources */,
 				09905B602851A08500BAEE78 /* SecurityViewController.swift in Sources */,
 				09905B612851A08500BAEE78 /* DataRequest+util.swift in Sources */,
+				0909C8E328532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				09905B622851A08500BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905B632851A08500BAEE78 /* ApiService.swift in Sources */,
 				0909C8CD2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -3769,6 +3801,7 @@
 				09905C512851A09600BAEE78 /* UIStackView+util.swift in Sources */,
 				09905C522851A09600BAEE78 /* SecurityViewController.swift in Sources */,
 				09905C532851A09600BAEE78 /* DataRequest+util.swift in Sources */,
+				0909C8E128532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				09905C542851A09600BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905C552851A09600BAEE78 /* ApiService.swift in Sources */,
 				0909C8CB2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -3952,6 +3985,7 @@
 				09CAF46B283C77ED00D7B19B /* UIStackView+util.swift in Sources */,
 				09CAF46C283C77ED00D7B19B /* SecurityViewController.swift in Sources */,
 				09CAF46D283C77ED00D7B19B /* DataRequest+util.swift in Sources */,
+				0909C8DF28532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				09CAF46E283C77ED00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C92851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4135,6 +4169,7 @@
 				09CAF52C283C7BBE00D7B19B /* UIStackView+util.swift in Sources */,
 				09CAF52D283C7BBE00D7B19B /* SecurityViewController.swift in Sources */,
 				09CAF52E283C7BBE00D7B19B /* DataRequest+util.swift in Sources */,
+				0909C8E028532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				09CAF52F283C7BBE00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8CA2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4318,6 +4353,7 @@
 				A19C71EA282269E4000AFC3F /* UIStackView+util.swift in Sources */,
 				A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */,
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
+				0909C8DE28532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
 				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
 				09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C82851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
