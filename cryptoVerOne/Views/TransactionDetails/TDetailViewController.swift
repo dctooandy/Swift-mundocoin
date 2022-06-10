@@ -65,9 +65,7 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-
         topView.topViewType = .failed
-        
         checkButton.setTitle("Check History".localized, for: .normal)
         checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)

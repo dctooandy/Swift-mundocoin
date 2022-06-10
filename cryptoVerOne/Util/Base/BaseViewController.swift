@@ -22,7 +22,7 @@ class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDele
     private var isShowKeyboard = false
     // MARK: -
     // MARK:UI 設定
-    private lazy var backBtn:TopBackButton = {
+    lazy var naviBackBtn:TopBackButton = {
         let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
@@ -32,7 +32,7 @@ class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDele
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.setValue(true, forKey: "hidesShadow")
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: naviBackBtn)
     }
     
     init(isNavBarTransparent:Bool = false){

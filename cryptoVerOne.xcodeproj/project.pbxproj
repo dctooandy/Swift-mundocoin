@@ -40,6 +40,36 @@
 		09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
 		09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
 		09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */; };
+		0909C8B22851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8B32851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8B42851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8B92851EB1C003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8BA2851EB1C003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8BB2851EB1D003E2F58 /* ApprovalMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */; };
+		0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */; };
+		0909C8C02851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C12851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C22851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C32851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C42851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C52851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */; };
+		0909C8C82851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8C92851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8CA2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8CB2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8CC2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8CD2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */; };
+		0909C8CF2851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
+		0909C8D02851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
+		0909C8D12851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
+		0909C8D22851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
+		0909C8D32851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
+		0909C8D42851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */; };
 		092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
@@ -1409,6 +1439,11 @@
 		09056DA1284EFF7B00038BF8 /* AddNewAddressViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressViewController.xib; sourceTree = "<group>"; };
 		09056DA6284F1AD200038BF8 /* DropDownStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownStyleView.swift; sourceTree = "<group>"; };
 		09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownStyleView.xib; sourceTree = "<group>"; };
+		0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalMainViewController.swift; sourceTree = "<group>"; };
+		0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalMainViewController.xib; sourceTree = "<group>"; };
+		0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalMainViewModel.swift; sourceTree = "<group>"; };
+		0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalDetailViewController.swift; sourceTree = "<group>"; };
+		0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApprovalDetailViewController.xib; sourceTree = "<group>"; };
 		092E75F9284F589400221997 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		092E75FD284F590900221997 /* DynamicCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionView.xib; sourceTree = "<group>"; };
 		092E76012850488700221997 /* AddressBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookDto.swift; sourceTree = "<group>"; };
@@ -1735,6 +1770,34 @@
 				09056DAA284F1AF900038BF8 /* DropDownStyleView.xib */,
 			);
 			path = DropDownView;
+			sourceTree = "<group>";
+		};
+		0909C8AF2851EA50003E2F58 /* ApprovalViews */ = {
+			isa = PBXGroup;
+			children = (
+				0909C8C62851F368003E2F58 /* DetailView */,
+				0909C8B02851EA61003E2F58 /* MainView */,
+			);
+			path = ApprovalViews;
+			sourceTree = "<group>";
+		};
+		0909C8B02851EA61003E2F58 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				0909C8B12851EA8C003E2F58 /* ApprovalMainViewController.swift */,
+				0909C8B52851EABA003E2F58 /* ApprovalMainViewController.xib */,
+				0909C8BF2851F0E3003E2F58 /* ApprovalMainViewModel.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		0909C8C62851F368003E2F58 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				0909C8C72851F388003E2F58 /* ApprovalDetailViewController.swift */,
+				0909C8CE2851F3AC003E2F58 /* ApprovalDetailViewController.xib */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		092E75F8284F586B00221997 /* DynamicCollectionView */ = {
@@ -2097,6 +2160,7 @@
 				A19C702628222D30000AFC3F /* Manager */,
 				A19C6FEA28221C2F000AFC3F /* LoginSignup */,
 				A19C705E282234F5000AFC3F /* Tabbar */,
+				0909C8AF2851EA50003E2F58 /* ApprovalViews */,
 				A19C70632822356D000AFC3F /* Views */,
 				A19C6FD1282218D6000AFC3F /* AppDelegate.swift */,
 				A19C711328225542000AFC3F /* BuildConfig.swift */,
@@ -2640,6 +2704,7 @@
 				09905AEB2851A02B00BAEE78 /* UserMenuViewController.xib in Resources */,
 				09905AEC2851A02B00BAEE78 /* GuidePageViewController.xib in Resources */,
 				09905AED2851A02B00BAEE78 /* FilterBottomView.xib in Resources */,
+				0909C8D32851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				09905AEE2851A02B00BAEE78 /* BoardViewController.xib in Resources */,
 				09905AEF2851A02B00BAEE78 /* LoginViewController.xib in Resources */,
 				09905AF02851A02B00BAEE78 /* TwoFAVerifyView.xib in Resources */,
@@ -2649,6 +2714,7 @@
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
 				09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
+				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905AF82851A02B00BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905AF92851A02B00BAEE78 /* WhiteListBottomView.xib in Resources */,
@@ -2705,6 +2771,7 @@
 				09905BDD2851A08500BAEE78 /* UserMenuViewController.xib in Resources */,
 				09905BDE2851A08500BAEE78 /* GuidePageViewController.xib in Resources */,
 				09905BDF2851A08500BAEE78 /* FilterBottomView.xib in Resources */,
+				0909C8D42851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				09905BE02851A08500BAEE78 /* BoardViewController.xib in Resources */,
 				09905BE12851A08500BAEE78 /* LoginViewController.xib in Resources */,
 				09905BE22851A08500BAEE78 /* TwoFAVerifyView.xib in Resources */,
@@ -2714,6 +2781,7 @@
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
 				09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
+				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905BEA2851A08500BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905BEB2851A08500BAEE78 /* WhiteListBottomView.xib in Resources */,
@@ -2770,6 +2838,7 @@
 				09905CCF2851A09600BAEE78 /* UserMenuViewController.xib in Resources */,
 				09905CD02851A09600BAEE78 /* GuidePageViewController.xib in Resources */,
 				09905CD12851A09600BAEE78 /* FilterBottomView.xib in Resources */,
+				0909C8D22851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				09905CD22851A09600BAEE78 /* BoardViewController.xib in Resources */,
 				09905CD32851A09600BAEE78 /* LoginViewController.xib in Resources */,
 				09905CD42851A09600BAEE78 /* TwoFAVerifyView.xib in Resources */,
@@ -2779,6 +2848,7 @@
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
 				09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
+				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905CDC2851A09600BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905CDD2851A09600BAEE78 /* WhiteListBottomView.xib in Resources */,
@@ -2835,6 +2905,7 @@
 				09CAF4CB283C77ED00D7B19B /* UserMenuViewController.xib in Resources */,
 				09CAF4CC283C77ED00D7B19B /* GuidePageViewController.xib in Resources */,
 				09947B9A284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
+				0909C8D02851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				09CAF4CD283C77ED00D7B19B /* BoardViewController.xib in Resources */,
 				09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
@@ -2844,6 +2915,7 @@
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */,
@@ -2900,6 +2972,7 @@
 				09CAF58C283C7BBE00D7B19B /* UserMenuViewController.xib in Resources */,
 				09CAF58D283C7BBE00D7B19B /* GuidePageViewController.xib in Resources */,
 				09947B9B284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
+				0909C8D12851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				09CAF58E283C7BBE00D7B19B /* BoardViewController.xib in Resources */,
 				09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
@@ -2909,6 +2982,7 @@
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */,
@@ -2965,6 +3039,7 @@
 				A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */,
 				09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				A19C70AD28223CB7000AFC3F /* GuidePageViewController.xib in Resources */,
+				0909C8CF2851F3AC003E2F58 /* ApprovalDetailViewController.xib in Resources */,
 				A1973A162828EE6A009932D8 /* BoardViewController.xib in Resources */,
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
@@ -2974,6 +3049,7 @@
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
+				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
 				09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
@@ -3321,6 +3397,7 @@
 				09905A6F2851A02B00BAEE78 /* DataRequest+util.swift in Sources */,
 				09905A702851A02B00BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905A712851A02B00BAEE78 /* ApiService.swift in Sources */,
+				0909C8CC2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905A722851A02B00BAEE78 /* BetleadTabbar.swift in Sources */,
 				09905A732851A02B00BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905A742851A02B00BAEE78 /* UserInfoDto.swift in Sources */,
@@ -3345,6 +3422,7 @@
 				09905A872851A02B00BAEE78 /* TemplateViewModel.swift in Sources */,
 				09905A882851A02B00BAEE78 /* DynamicCollectionView.swift in Sources */,
 				09905A892851A02B00BAEE78 /* TfRightButton.swift in Sources */,
+				0909C8B32851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				09905A8A2851A02B00BAEE78 /* ErrorHandler.swift in Sources */,
 				09905A8B2851A02B00BAEE78 /* LaunchReciprocalViewController.swift in Sources */,
 				09905A8C2851A02B00BAEE78 /* FilterBottomSheet.swift in Sources */,
@@ -3421,6 +3499,7 @@
 				09905AD32851A02B00BAEE78 /* UITableViewCell+util.swift in Sources */,
 				09905AD42851A02B00BAEE78 /* Fonts.swift in Sources */,
 				09905AD52851A02B00BAEE78 /* TopBackButton.swift in Sources */,
+				0909C8C42851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905AD62851A02B00BAEE78 /* PromotionViewController.swift in Sources */,
 				09905AD72851A02B00BAEE78 /* CheckBoxView.swift in Sources */,
 				09905AD82851A02B00BAEE78 /* String+util.swift in Sources */,
@@ -3500,6 +3579,7 @@
 				09905B612851A08500BAEE78 /* DataRequest+util.swift in Sources */,
 				09905B622851A08500BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905B632851A08500BAEE78 /* ApiService.swift in Sources */,
+				0909C8CD2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905B642851A08500BAEE78 /* BetleadTabbar.swift in Sources */,
 				09905B652851A08500BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905B662851A08500BAEE78 /* UserInfoDto.swift in Sources */,
@@ -3524,6 +3604,7 @@
 				09905B792851A08500BAEE78 /* TemplateViewModel.swift in Sources */,
 				09905B7A2851A08500BAEE78 /* DynamicCollectionView.swift in Sources */,
 				09905B7B2851A08500BAEE78 /* TfRightButton.swift in Sources */,
+				0909C8B42851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				09905B7C2851A08500BAEE78 /* ErrorHandler.swift in Sources */,
 				09905B7D2851A08500BAEE78 /* LaunchReciprocalViewController.swift in Sources */,
 				09905B7E2851A08500BAEE78 /* FilterBottomSheet.swift in Sources */,
@@ -3600,6 +3681,7 @@
 				09905BC52851A08500BAEE78 /* UITableViewCell+util.swift in Sources */,
 				09905BC62851A08500BAEE78 /* Fonts.swift in Sources */,
 				09905BC72851A08500BAEE78 /* TopBackButton.swift in Sources */,
+				0909C8C52851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905BC82851A08500BAEE78 /* PromotionViewController.swift in Sources */,
 				09905BC92851A08500BAEE78 /* CheckBoxView.swift in Sources */,
 				09905BCA2851A08500BAEE78 /* String+util.swift in Sources */,
@@ -3679,6 +3761,7 @@
 				09905C532851A09600BAEE78 /* DataRequest+util.swift in Sources */,
 				09905C542851A09600BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905C552851A09600BAEE78 /* ApiService.swift in Sources */,
+				0909C8CB2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905C562851A09600BAEE78 /* BetleadTabbar.swift in Sources */,
 				09905C572851A09600BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905C582851A09600BAEE78 /* UserInfoDto.swift in Sources */,
@@ -3703,6 +3786,7 @@
 				09905C6B2851A09600BAEE78 /* TemplateViewModel.swift in Sources */,
 				09905C6C2851A09600BAEE78 /* DynamicCollectionView.swift in Sources */,
 				09905C6D2851A09600BAEE78 /* TfRightButton.swift in Sources */,
+				0909C8B22851EA8C003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				09905C6E2851A09600BAEE78 /* ErrorHandler.swift in Sources */,
 				09905C6F2851A09600BAEE78 /* LaunchReciprocalViewController.swift in Sources */,
 				09905C702851A09600BAEE78 /* FilterBottomSheet.swift in Sources */,
@@ -3779,6 +3863,7 @@
 				09905CB72851A09600BAEE78 /* UITableViewCell+util.swift in Sources */,
 				09905CB82851A09600BAEE78 /* Fonts.swift in Sources */,
 				09905CB92851A09600BAEE78 /* TopBackButton.swift in Sources */,
+				0909C8C32851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905CBA2851A09600BAEE78 /* PromotionViewController.swift in Sources */,
 				09905CBB2851A09600BAEE78 /* CheckBoxView.swift in Sources */,
 				09905CBC2851A09600BAEE78 /* String+util.swift in Sources */,
@@ -3858,6 +3943,7 @@
 				09CAF46D283C77ED00D7B19B /* DataRequest+util.swift in Sources */,
 				09CAF46E283C77ED00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */,
+				0909C8C92851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09CAF46F283C77ED00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
@@ -3882,6 +3968,7 @@
 				09056D92284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				09CAF47C283C77ED00D7B19B /* TfRightButton.swift in Sources */,
+				0909C8BA2851EB1C003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				09CAF47D283C77ED00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF47E283C77ED00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
 				09947B9E284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
@@ -3958,6 +4045,7 @@
 				09CAF4B5283C77ED00D7B19B /* UITableViewCell+util.swift in Sources */,
 				09CAF4B6283C77ED00D7B19B /* Fonts.swift in Sources */,
 				09CAF4B7283C77ED00D7B19B /* TopBackButton.swift in Sources */,
+				0909C8C12851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09CAF4B8283C77ED00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */,
@@ -4037,6 +4125,7 @@
 				09CAF52E283C7BBE00D7B19B /* DataRequest+util.swift in Sources */,
 				09CAF52F283C7BBE00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */,
+				0909C8CA2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09CAF530283C7BBE00D7B19B /* BetleadTabbar.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
@@ -4061,6 +4150,7 @@
 				09056D93284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				09CAF53D283C7BBE00D7B19B /* TfRightButton.swift in Sources */,
+				0909C8B92851EB1C003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				09CAF53E283C7BBE00D7B19B /* ErrorHandler.swift in Sources */,
 				09CAF53F283C7BBE00D7B19B /* LaunchReciprocalViewController.swift in Sources */,
 				09947B9F284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
@@ -4137,6 +4227,7 @@
 				09CAF576283C7BBE00D7B19B /* UITableViewCell+util.swift in Sources */,
 				09CAF577283C7BBE00D7B19B /* Fonts.swift in Sources */,
 				09CAF578283C7BBE00D7B19B /* TopBackButton.swift in Sources */,
+				0909C8C22851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09CAF579283C7BBE00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */,
@@ -4216,6 +4307,7 @@
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
 				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
 				09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */,
+				0909C8C82851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				A19C70CE282246DF000AFC3F /* BetleadTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
@@ -4240,6 +4332,7 @@
 				09056D91284EF48C00038BF8 /* TemplateViewModel.swift in Sources */,
 				092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */,
 				A19C71D4282265EA000AFC3F /* TfRightButton.swift in Sources */,
+				0909C8BB2851EB1D003E2F58 /* ApprovalMainViewController.swift in Sources */,
 				A19C709028223A44000AFC3F /* ErrorHandler.swift in Sources */,
 				A19C70A328223B97000AFC3F /* LaunchReciprocalViewController.swift in Sources */,
 				09947B9D284D9DC8004F7FD7 /* FilterBottomSheet.swift in Sources */,
@@ -4316,6 +4409,7 @@
 				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,
 				A19C71C7282264A3000AFC3F /* Fonts.swift in Sources */,
 				A1559DE6283499D300755783 /* TopBackButton.swift in Sources */,
+				0909C8C02851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				A19C70E328224AE8000AFC3F /* PromotionViewController.swift in Sources */,
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
 				A1B051F22823B13F00056183 /* String+util.swift in Sources */,
@@ -4365,9 +4459,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84FF2C1E2B4A292104A2C71E /* Pods-Approval_dev.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4380,7 +4474,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
@@ -4394,9 +4488,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F5748A4D8A7C5DF4E2824C77 /* Pods-Approval_dev.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4409,7 +4503,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
@@ -4422,9 +4516,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 328002DBE935D87B876F0626 /* Pods-Approval_stage.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4437,7 +4531,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
@@ -4451,9 +4545,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B928B8429867F4964B1660EA /* Pods-Approval_stage.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -4466,7 +4560,7 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
@@ -4479,12 +4573,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = FFABA8867665A5FB01B8E030 /* Pods-Approval.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
@@ -4494,9 +4588,9 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4508,12 +4602,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F890C06092154CD4FEC25604 /* Pods-Approval.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = ApprovalAppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
@@ -4523,9 +4617,9 @@
 					"@executable_path/Frameworks",
 				);
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
+				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4774,8 +4868,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -4786,7 +4880,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4802,8 +4896,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -4814,7 +4908,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_PRO";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

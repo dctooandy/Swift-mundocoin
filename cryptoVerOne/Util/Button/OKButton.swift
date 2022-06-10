@@ -13,6 +13,7 @@ class OKButton: UIButton {
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         setBackgroundImage(UIImage(color: Themes.blue6149F6), for: .normal)
+        setBackgroundImage(UIImage(color: Themes.blue6149F6), for: .normal)
         clipsToBounds = true
         layer.cornerRadius = rect.height / 2
         layer.borderColor = Themes.blue6149F6.cgColor

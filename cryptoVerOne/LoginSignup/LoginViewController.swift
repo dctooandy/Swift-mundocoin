@@ -104,11 +104,13 @@ class LoginViewController: BaseViewController {
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
         }
-        // set default login mode
-//        loginModeDidChange()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        forgetPasswordButton.isHidden = true
+#else
         forgetPasswordButton.isHidden = loginMode == .phonePage
         forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
         forgetPasswordButton.setTitleColor(Themes.gray707EAE, for: .normal)
+#endif
         loginButton.setTitle("Log In".localized, for: .normal)
     }
     
@@ -127,7 +129,13 @@ class LoginViewController: BaseViewController {
     func bindLoginBtn() {
         loginButton.rx.tap.subscribeSuccess { [self] _ in
             loginButton.isEnabled = false
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            Log.v("帳號不驗證")
+            login()
+#else
             verificationID()
+#endif
+            
             }.disposed(by: disposeBag)
     }
     func verificationID()

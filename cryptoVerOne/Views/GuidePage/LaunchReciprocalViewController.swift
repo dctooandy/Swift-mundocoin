@@ -17,11 +17,13 @@ class LaunchReciprocalViewController: BaseViewController {
     private var waitForGotoWallet = false
     // MARK: -
     // MARK:UI 設定
+    
+    @IBOutlet weak var backGroundImageView: UIImageView!
     let loginVC =  LoginSignupViewController.share
     @IBOutlet weak var reciprocalLabel: UILabel!
     @IBOutlet weak var beleadLeftIcon:UIImageView!
     @IBOutlet weak var beleadRightTopIcon:UIImageView!
-    @IBOutlet weak var beleadRightBottomIcon:UIImageView!
+    @IBOutlet weak var beleadRightBottomLabel:UILabel!
     @IBOutlet weak var copyrightLabel:UILabel!
     // MARK: -
     // MARK:Life cycle
@@ -30,7 +32,7 @@ class LaunchReciprocalViewController: BaseViewController {
         checkVersion()
         beleadLeftIcon.transform = CGAffineTransform(translationX: 0, y: 50)
         beleadRightTopIcon.transform = CGAffineTransform(translationX: -30, y: 0)
-        beleadRightBottomIcon.transform = CGAffineTransform(translationX: -30, y: 0)
+        beleadRightBottomLabel.transform = CGAffineTransform(translationX: -30, y: 0)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -156,8 +158,8 @@ class LaunchReciprocalViewController: BaseViewController {
             self.beleadRightTopIcon.transform = CGAffineTransform.identity
         }, completion: nil)
         UIView.animate(withDuration: 0.75, delay: 0.3, options: .curveEaseInOut, animations: {
-            self.beleadRightBottomIcon.alpha = 1
-            self.beleadRightBottomIcon.transform = CGAffineTransform.identity
+            self.beleadRightBottomLabel.alpha = 1
+            self.beleadRightBottomLabel.transform = CGAffineTransform.identity
         }, completion: nil)
         
     }
@@ -171,7 +173,13 @@ class LaunchReciprocalViewController: BaseViewController {
     }
     private var showUpdateAlert = false
     func checkVersion() {
-        
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        backGroundImageView.image = UIImage(named: "bg-login")
+        beleadRightBottomLabel.text = "Approval"
+#else
+        backGroundImageView.image = UIImage(named: "bg-launch")
+        beleadRightBottomLabel.text = "MundoCoin"
+#endif
         // TODO: API
 //        Beans.baseServer.appVersion()
 //            .subscribeSuccess { [weak self] (dto) in

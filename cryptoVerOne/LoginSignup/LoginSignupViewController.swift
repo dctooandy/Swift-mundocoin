@@ -117,11 +117,15 @@ class LoginSignupViewController: BaseViewController {
         loginPageVC.rxLoginBtnClick().subscribeSuccess { [weak self] (dto) in
             guard let strongSelf = self else { return }
             strongSelf.view.endEditing(true)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            strongSelf.goApprovalViewController()
+#else
             // 要先檢查帳號存在,API 還沒好
             // 推向传送验证码VC
             strongSelf.showVerifyVCWithLoginData(dto)
             // 圖形驗證 : 封印
-//            strongSelf.showImageVerifyView(dto)
+            //            strongSelf.showImageVerifyView(dto)
+#endif
         }.disposed(by: disposeBag)
         
         // 註冊
@@ -156,22 +160,34 @@ class LoginSignupViewController: BaseViewController {
     {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoView)
         let iconView = UIImageView(image: #imageLiteral(resourceName: "mundoLogo"))
-        let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
-        textView.contentMode = .scaleAspectFit
         logoView.addSubview(iconView)
-        logoView.addSubview(textView)
-        logoView.addSubview(coverButton)
         iconView.snp.makeConstraints { (make) in
             make.leading.centerY.equalToSuperview()
             make.width.equalTo(38)
             make.height.equalTo(38)
         }
+        #if Approval_PRO || Approval_DEV || Approval_STAGE
+        let label = UILabel(title: "Approval", textColor: .black)
+        label.font = Fonts.pingFangSCRegular(24)
+        logoView.addSubview(label)
+        label.snp.makeConstraints { (make) in
+            make.centerY.equalToSuperview()
+            make.leading.equalTo(iconView.snp.trailing).offset(10)
+            make.width.equalTo(138)
+            make.height.equalTo(33)
+        }
+        #else
+        let textView = UIImageView(image: #imageLiteral(resourceName: "textMundoCoin"))
+        textView.contentMode = .scaleAspectFit
+        logoView.addSubview(textView)
         textView.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()
             make.leading.equalTo(iconView.snp.trailing).offset(10)
             make.width.equalTo(138)
             make.height.equalTo(33)
         }
+        #endif
+        logoView.addSubview(coverButton)
         coverButton.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
@@ -643,10 +659,23 @@ extension LoginSignupViewController {
         //        let betleadMain = BetleadNavigationController(rootViewController: tabbarVC)
         DispatchQueue.main.async {
             if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
-                print("go wallet")
+                Log.v("go wallet")
                 mainWindow.rootViewController = walletNavVC
                 mainWindow.makeKeyAndVisible()
                 Toast.show(msg: "Welcome to Mundocoin".localized)
+            }
+        }
+    }
+    func goApprovalViewController() {
+        let approvalVC = ApprovalMainViewController.share
+        let approvalNavVC = MDNavigationController(rootViewController: approvalVC)
+
+        DispatchQueue.main.async {
+            if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
+                Log.v("Approval")
+                mainWindow.rootViewController = approvalNavVC
+                mainWindow.makeKeyAndVisible()
+                Toast.show(msg: "Welcome to Approval App".localized)
             }
         }
     }
@@ -729,10 +758,15 @@ extension LoginSignupViewController {
         backgroundImageView.layer.addShadow()
     }
     private func resetUI() {
-//        updateBottomView()
+
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        topLabel.text = "Log in to Approval".localized
+        switchButton.isHidden = true
+        backToButton.isHidden = true
+#else
         switch currentShowMode {
         case .loginEmail,.loginPhone:
-//            fetchBackgroundVideo()
+            //            fetchBackgroundVideo()
             switchButton.setTitle("Sign Up".localized, for: .normal)
             topLabel.text = "Log in to Mundocoin".localized
             switchButton.isHidden = false
@@ -748,6 +782,7 @@ extension LoginSignupViewController {
             switchButton.isHidden = true
             backToButton.isHidden = false
         }
+#endif
     }
     
 //    private func updateBottomView() {
