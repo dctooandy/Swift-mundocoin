@@ -57,13 +57,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.domainMode = KeychainManager.share.getDomainMode()
         Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")
 #endif
-
+        DropDown.startListeningToKeyboard()
     }
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
         guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
         DeepLinkManager.share.navigation = DeepLinkManager.Navigation(typeName: deeplinkName)
         DeepLinkManager.share.handleDeeplink(navigation: DeepLinkManager.share.navigation)
-        DropDown.startListeningToKeyboard()
+        
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
         application.beginBackgroundTask {} // allows to run background tasks

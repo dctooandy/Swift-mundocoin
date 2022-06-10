@@ -110,13 +110,8 @@ class LaunchReciprocalViewController: BaseViewController {
                     {
                         goToLogin()
                     }
-//                    let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)
-//                    mainWindow.rootViewController = loginNavVC
-//                    mainWindow.makeKeyAndVisible()
                 }
-                
             }
-
         }
     }
     func goToWallet()

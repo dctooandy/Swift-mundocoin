@@ -21,11 +21,11 @@ class SocketIOManager: NSObject {
     }
     func setup()
     {
-        socket = manager.socket(forNamespace: "/notification")
-        let token = KeychainManager.share.getToken()
-        
+        let token = KeychainManager.share.getToken()        
         self.manager.config = SocketIOClientConfiguration(arrayLiteral: .connectParams(["Authorization": "Bearer \(token)"]), .secure(true)
         )
+        socket = manager.socket(forNamespace: "/notification")
+        socket.joinNamespace()
     }
     func bind()
     {
@@ -33,11 +33,6 @@ class SocketIOManager: NSObject {
         do {
             let token = KeychainManager.share.getToken()
             jwtValue = try decode(jwt: token)
-           
-            // the token that will be decoded
-//            let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ"
-//            let payload = try JWT.decode(token, algorithm: .hs256("secret".data(using: .utf8)!))
-//            print(payload)
         } catch {
             print("Failed to decode JWT: \(error)")
         }
@@ -46,26 +41,48 @@ class SocketIOManager: NSObject {
         {
             idValue = idString
         }
-        Log.v("JWT : \(String(describing: jwtValue))")
+
         socket.on(clientEvent: .connect) {data, ack in
             print("socket connected")
+            self.socket.emit("join", idValue)
         }
-        socket.on(idValue) {  [self]data, ack in
+        
+        socket.on(idValue) { data, ack in
             Log.v("data \(data)")
         }
-        socket.on("currentAmount") { [self]data, ack in
-            guard let cur = data[0] as? Double else { return }
-            
-            socket.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
-                if data.first as? String ?? "passed" == SocketAckStatus.noAck.rawValue {
-                    // Handle ack timeout
-                }
 
-                socket.emit("update", ["amount": cur + 2.50])
-            }
-
-            ack.with("Got your currentAmount", "dude")
+        socket.on("message") { data, ark in
+            print("Message received")
+            Log.v("data \(data)")
+            print(data)
         }
+        
+//        socket.on("currentAmount") { [self]data, ack in
+//            guard let cur = data[0] as? Double else { return }
+//
+//            socket.emitWithAck("canUpdate", cur).timingOut(after: 0) {data in
+//                if data.first as? String ?? "passed" == SocketAckStatus.noAck.rawValue {
+//                    // Handle ack timeout
+//                }
+//                socket.emit("update", ["amount": cur + 2.50])
+//            }
+//            ack.with("Got your currentAmount", "dude")
+//        }
+    }
+    func connectStatus() -> SocketIOStatus
+    {
+        let socketConnectionStatus = SocketIOManager.sharedInstance.socket.status
+        switch socketConnectionStatus {
+        case .connected:
+           print("socket connected")
+        case .connecting:
+           print("socket connecting")
+        case .disconnected:
+           print("socket disconnected")
+        case .notConnected:
+           print("socket not connected")
+        }
+        return socketConnectionStatus
     }
     func establishConnection() {
         if KeychainManager.share.getToken().isEmpty != true

@@ -179,6 +179,7 @@ class WalletViewController: BaseViewController {
     
     @objc func pushToBell() {
         Log.i("推到通知")
+        checkSocket()
         let notiVC = NotiViewController.loadNib()
         notiVC.setData(dtos: [NotificationDto()])
         self.navigationController?.pushViewController(notiVC, animated: true)
@@ -188,6 +189,10 @@ class WalletViewController: BaseViewController {
         Log.i("推到業務清單")
         let boardVC = BoardViewController.loadNib()
         self.navigationController?.pushViewController(boardVC, animated: true)
+    }
+    func checkSocket()
+    {
+        _ = SocketIOManager.sharedInstance.connectStatus()
     }
 }
 // MARK: -
