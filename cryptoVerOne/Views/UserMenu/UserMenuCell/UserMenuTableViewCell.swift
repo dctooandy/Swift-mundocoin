@@ -223,7 +223,6 @@ class UserMenuTableViewCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         setupUI()
-        bindUI()
     }
     // MARK: -
     // MARK:業務方法
@@ -251,9 +250,35 @@ class UserMenuTableViewCell: UITableViewCell {
             checkBoxImageView.isHidden = cellData.checkBoxHidden
             cellImageView.image = UIImage(named: cellData.cellIconImageName)
         }
+        bindUI()
     }
+    func managerBioList(isOn: Bool, acc: String) {
+        BioVerifyManager.share.setBioLoginSwitch(to: isOn)
+        if !BioVerifyManager.share.didAskBioLogin() {
+            BioVerifyManager.share.setBioLoginAskStateToTrue()
+        }
+        if isOn {
+            BioVerifyManager.share.applyMemberInBIOList(acc)
+            KeychainManager.share.setLastAccount(acc)
+            return
+        }
+        BioVerifyManager.share.removeMemberFromBIOList(acc)
+        //KeychainManager.share.deleteValue(at: .account)
+        
+    }
+
     func bindUI()
     {
-        
+        switch cellData {
+        case .faceID:
+            switchButton.rx.isOn.subscribeSuccess { [self] switchFlag in
+                if let account = KeychainManager.share.getLastAccount()?.account
+                {
+                    managerBioList(isOn: switchFlag, acc: account)                    
+                }
+            }.disposed(by: dpg)
+        default:
+            break
+        }
     }
 }
