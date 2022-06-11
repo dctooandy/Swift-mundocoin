@@ -274,7 +274,7 @@ extension LoginSignupViewController {
             }
         }else
         {
-            if currentShowMode != .loginEmail ||
+            if currentShowMode != .loginEmail &&
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
             if let loginPostDto = KeychainManager.share.getLastAccount(),
@@ -290,6 +290,10 @@ extension LoginSignupViewController {
                         return
                     }
                     // 走生物驗證流程
+                    let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
+                    DispatchQueue.main.async {
+                        self?.showVerifyVCWithLoginData(dto)                        
+                    }
 //                    self?.login(dto: loginPostDto)
 //                    self?.loginPageVC.setAccount(acc: loginPostDto.account, pwd: loginPostDto.password)
                 }

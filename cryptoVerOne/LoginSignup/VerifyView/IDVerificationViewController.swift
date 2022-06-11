@@ -22,7 +22,7 @@ class IDVerificationViewController: BaseViewController {
     @IBOutlet weak var idTitleLabel: UILabel!
     @IBOutlet weak var discriptionLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
-    let countryTopLabel: UILabel = {
+    lazy var countryTopLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
         lb.textColor = .black
@@ -30,7 +30,7 @@ class IDVerificationViewController: BaseViewController {
         lb.font = Fonts.pingFangSCRegular(14)
         return lb
     }()
-    let countryTextField: UITextField = {
+    lazy var countryTextField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
         tf.font = Fonts.pingFangSCRegular(16)
@@ -43,13 +43,13 @@ class IDVerificationViewController: BaseViewController {
         btn.backgroundColor = .clear
         return btn
     }()
-    let chooseDropDown = DropDown()
-    let anchorView : UIView = {
+    lazy var chooseDropDown = DropDown()
+    lazy var anchorView : UIView = {
        let view = UIView()
         view.backgroundColor = .clear
         return view
     }()
-    let goButton = CornerradiusButton()
+    lazy var goButton = CornerradiusButton()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {

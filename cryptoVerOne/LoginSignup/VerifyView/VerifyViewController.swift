@@ -64,15 +64,15 @@ class VerifyViewController: BaseViewController {
     @IBOutlet weak var userAccountLabel: UILabel!
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topIconImageView: UIImageView!
-    fileprivate let idVerifiVC = IDVerificationViewController.loadNib()
-    fileprivate let resetPWVC = ResetPasswordViewController.loadNib()
+    lazy var idVerifiVC = IDVerificationViewController.loadNib()
+    lazy var resetPWVC = ResetPasswordViewController.loadNib()
     var verifyInputView : InputStyleView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
-    let verifyResentLabel: UILabel = {
+    lazy var verifyResentLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .center
         lb.textColor = .black
@@ -80,13 +80,13 @@ class VerifyViewController: BaseViewController {
         lb.font = Fonts.pingFangSCRegular(14)
         return lb
     }()
-    let underLineView : UIView = {
+    lazy var underLineView : UIView = {
         let view = UIView()
         view.backgroundColor = .black
         return view
     }()
 //    let verifyCancelRightButton = UIButton()
-    let verifyButton = CornerradiusButton()
+    lazy var verifyButton = CornerradiusButton()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {

@@ -26,6 +26,7 @@ class AuditLoginViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        naviBackBtn.isHidden = true
         setupKeyboardNoti()
         setupUI()
         bindTextfield()
