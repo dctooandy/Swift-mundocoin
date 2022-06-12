@@ -265,6 +265,12 @@ extension LoginSignupViewController {
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
                     Toast.show(msg: "验证失败，请输入帐号密码")
+                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+                        
+                    }
+                    DispatchQueue.main.async {[self] in
+                        popVC.start(viewController: self)
+                    }
                     return
                 }
                 if error != nil {
@@ -280,9 +286,15 @@ extension LoginSignupViewController {
             if let loginPostDto = KeychainManager.share.getLastAccount(),
                BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) {
                 // 進行臉部或指紋驗證
-                BioVerifyManager.share.bioVerify { [weak self] (success, error) in
+                BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
                         Toast.show(msg: "验证失败，请输入帐号密码")
+                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+                            
+                        }
+                        DispatchQueue.main.async {[self] in
+                            popVC.start(viewController: self)
+                        }
                         return
                     }
                     if error != nil {
@@ -292,7 +304,7 @@ extension LoginSignupViewController {
                     // 走生物驗證流程
                     let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
                     DispatchQueue.main.async {
-                        self?.showVerifyVCWithLoginData(dto)                        
+                        self.showVerifyVCWithLoginData(dto)
                     }
 //                    self?.login(dto: loginPostDto)
 //                    self?.loginPageVC.setAccount(acc: loginPostDto.account, pwd: loginPostDto.password)
