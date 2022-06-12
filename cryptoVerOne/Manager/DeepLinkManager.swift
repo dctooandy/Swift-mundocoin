@@ -214,20 +214,20 @@ extension DeepLinkManager {
             switch self {
             case .main:
                 print("main")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(0)
             case .wallet:
                 print("main")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(1)
             case .promotion:
                 print("promotion")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(2)
                 
             case .promotionContent(let id):
                 print("promotion Content")
-                guard let vc = getBetLeadTabbarVC(), let id = Int(id) else { return }
+                guard let vc = getBaseTabbarVC(), let id = Int(id) else { return }
                 vc.selected(2)
 //                Beans.promotionServer.getPromotion(id: id).subscribeSuccess { (dto) in
 //                    let promotionContentSheet = PromotionContentBottomSheet()
@@ -239,7 +239,7 @@ extension DeepLinkManager {
                 
 //            case .promotionDetail(let id):
 //                print("promotion Detail")
-//                guard let vc = getBetLeadTabbarVC(), let id = Int(id)  else { return }
+//                guard let vc = getBaseTabbarVC(), let id = Int(id)  else { return }
 //                vc.selected(3)
 //                vc.navigationController?.pushViewController(MyPromotionViewController(), animated: false)
 //                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.4) {
@@ -248,36 +248,36 @@ extension DeepLinkManager {
                 
 //            case .myPromotion:
 //                print("my Promotion")
-//                guard let vc = getBetLeadTabbarVC() else { return }
+//                guard let vc = getBaseTabbarVC() else { return }
 //                vc.selected(3)
 //                vc.navigationController?.pushViewController(MyPromotionViewController(), animated: true)
                 
             case .member:
                 print("member")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(3)
                 
             case .memberShowWallet: break
-//                guard let vc = getBetLeadTabbarVC() else { return }
+//                guard let vc = getBaseTabbarVC() else { return }
 //                vc.memberVC.setMoneyViewExpand()
 //                vc.selected(3)
                 
 //            case .txRecord(let type):
 //                print("tx record type:\(type)")
-//                guard let vc = getBetLeadTabbarVC() else { return }
+//                guard let vc = getBaseTabbarVC() else { return }
 //                vc.selected(3)
 //                let recordVC = showTxRecordVC(recordType: type)
 //                vc.navigationController?.pushViewController(recordVC, animated: true)
                 
             case .walletDeposit:
                 print("wallet Deposit")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(1)
 //                vc.navigationController?.pushViewController(MyPromotionViewController(), animated: true)
             
             case .walletWithdrawal:
                 print("wallet Withdrawal")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(1)
                 
             case .login:
@@ -297,11 +297,11 @@ extension DeepLinkManager {
                 UIApplication.shared.keyWindow?.rootViewController = loginNavVC
             case .appNews:
                 print("app news")
-                guard let vc = getBetLeadTabbarVC() else { return }
+                guard let vc = getBaseTabbarVC() else { return }
 //                NewsBottomSheet().start(viewController: vc)
                 
             case .news(let id):
-                guard let vc = getBetLeadTabbarVC(), let id = Int(id) else { return }
+                guard let vc = getBaseTabbarVC(), let id = Int(id) else { return }
 //                Beans.newsServer.frontendNews(id: id).subscribeSuccess { (dto) in
 //                    DispatchQueue.main.async {
 //                        NewsDetailBottomSheet(newsDto: dto).start(viewController: vc)
@@ -330,7 +330,7 @@ extension DeepLinkManager {
 //            return vc
 //        }
         
-        func getBetLeadTabbarVC() -> TabbarViewController? {
+        func getBaseTabbarVC() -> TabbarViewController? {
             return UIApplication.topViewController() as? TabbarViewController
         }
         

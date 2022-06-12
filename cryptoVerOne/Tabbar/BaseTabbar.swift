@@ -1,5 +1,5 @@
 //
-//  BetleadTabbar.swift
+//  BaseTabbar.swift
 //  betlead
 //
 //  Created by Andy Chen on 2019/5/23.
@@ -45,7 +45,8 @@ enum MenuType: Int {
     }
     
 }
-class BetleadTabbar:UIView {
+class BaseTabbar:UIView {
+    
     @IBOutlet weak var mainPageStackView:UIStackView!
     @IBOutlet weak var promoteStackView:UIStackView!
     @IBOutlet weak var moneyStackView:UIStackView!
@@ -75,7 +76,7 @@ class BetleadTabbar:UIView {
         backgroundColor = .clear
         bindStackView()
         bottomConstraints.constant =  Views.bottomOffset
-        backgroundView.image = Views.isIPhoneWithNotch() ? UIImage(named: "tabbar-bg") : UIImage(named: "tabbar-bg-short")
+        backgroundView.image = UIImage(color: .lightGray)
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 35
         layer.shadowOffset = .zero

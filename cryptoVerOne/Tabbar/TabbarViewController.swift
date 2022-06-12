@@ -31,7 +31,7 @@ class TabbarViewController:BaseViewController {
         return vc
     }()
     
-    private let tabbar = BetleadTabbar.loadNib()
+    private let tabbar = BaseTabbar.loadNib()
     
      init() {
         super.init()
@@ -59,7 +59,7 @@ class TabbarViewController:BaseViewController {
 //        tabbar.setupFanMenu()
         tabbar.snp.makeConstraints { (maker) in
             maker.leading.bottom.trailing.equalToSuperview()
-            maker.height.equalTo(Views.betleadTabbarHeight)
+            maker.height.equalTo(Views.baseTabbarHeight)
         }
     }
     private func settingViewControllers() {

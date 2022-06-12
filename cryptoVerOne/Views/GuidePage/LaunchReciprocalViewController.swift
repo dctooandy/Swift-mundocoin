@@ -20,7 +20,7 @@ class LaunchReciprocalViewController: BaseViewController {
     
     @IBOutlet weak var backGroundImageView: UIImageView!
     let loginVC =  LoginSignupViewController.share
-    let auditVC =  AuditLoginViewController.share
+    let auditVC =  AuditLoginViewController.loadNib()
     @IBOutlet weak var reciprocalLabel: UILabel!
     @IBOutlet weak var beleadLeftIcon:UIImageView!
     @IBOutlet weak var beleadRightTopIcon:UIImageView!
@@ -130,7 +130,7 @@ class LaunchReciprocalViewController: BaseViewController {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-            let auditNavVC = MuLoginNavigationController(rootViewController: auditVC)
+            let auditNavVC = MDNavigationController(rootViewController: auditVC)
             mainWindow.rootViewController = auditNavVC
 #else
             let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AuditTabbar" customModule="Approval" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qHW-Im-5ru">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="HMf-kc-3Y3">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="95"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8q-4D-9sJ">
+                            <rect key="frame" x="0.0" y="0.0" width="207" height="95"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-Rk-y94">
+                                    <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="jxe-Rk-y94" secondAttribute="height" multiplier="1:1" id="i4b-Ge-dVq"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYi-kO-hjY">
+                                    <rect key="frame" x="84.5" y="52.5" width="38" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerY" secondItem="f8q-4D-9sJ" secondAttribute="centerY" constant="-15" id="COC-FE-NKU"/>
+                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerX" secondItem="f8q-4D-9sJ" secondAttribute="centerX" id="Dcs-we-ci3"/>
+                                <constraint firstItem="pYi-kO-hjY" firstAttribute="top" secondItem="jxe-Rk-y94" secondAttribute="bottom" id="Dhj-U8-T0r"/>
+                                <constraint firstItem="pYi-kO-hjY" firstAttribute="centerX" secondItem="jxe-Rk-y94" secondAttribute="centerX" id="Vvk-4X-l2F"/>
+                            </constraints>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-9f-Mtf">
+                            <rect key="frame" x="207" y="0.0" width="207" height="95"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bin-DV-3Tv">
+                                    <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="Bin-DV-3Tv" secondAttribute="height" multiplier="1:1" id="nDy-sS-d25"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfp-Cw-rc5">
+                                    <rect key="frame" x="72" y="52.5" width="63.5" height="20.5"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerX" secondItem="gSe-9f-Mtf" secondAttribute="centerX" id="1FN-Ug-34A"/>
+                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerY" secondItem="gSe-9f-Mtf" secondAttribute="centerY" constant="-15" id="9X1-8I-Frk"/>
+                                <constraint firstItem="nfp-Cw-rc5" firstAttribute="centerX" secondItem="Bin-DV-3Tv" secondAttribute="centerX" id="JDp-lm-BSv"/>
+                                <constraint firstItem="nfp-Cw-rc5" firstAttribute="top" secondItem="Bin-DV-3Tv" secondAttribute="bottom" id="NQo-oV-4PJ"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="f8q-4D-9sJ" firstAttribute="top" secondItem="HMf-kc-3Y3" secondAttribute="top" id="Eqe-EA-l67"/>
+                        <constraint firstAttribute="bottom" secondItem="gSe-9f-Mtf" secondAttribute="bottom" id="MVI-RC-xLD"/>
+                        <constraint firstAttribute="bottom" secondItem="f8q-4D-9sJ" secondAttribute="bottom" id="QNu-d4-iQy"/>
+                        <constraint firstItem="gSe-9f-Mtf" firstAttribute="top" secondItem="HMf-kc-3Y3" secondAttribute="top" id="Yrv-8u-HSY"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qHW-Im-5ru" secondAttribute="trailing" id="GDR-tP-bcW"/>
+                <constraint firstItem="qHW-Im-5ru" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HNc-wU-Y4P"/>
+                <constraint firstItem="jxe-Rk-y94" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="I8u-bK-St1"/>
+                <constraint firstItem="Bin-DV-3Tv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="NbA-XG-ARb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HMf-kc-3Y3" secondAttribute="trailing" id="UdK-HS-roN"/>
+                <constraint firstItem="HMf-kc-3Y3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Vcv-lF-gf4"/>
+                <constraint firstItem="HMf-kc-3Y3" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="fe5-aZ-Nmm"/>
+                <constraint firstAttribute="bottom" secondItem="qHW-Im-5ru" secondAttribute="bottom" id="kw1-UO-1mL"/>
+                <constraint firstItem="qHW-Im-5ru" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="q8I-sn-fsR"/>
+                <constraint firstAttribute="bottom" secondItem="HMf-kc-3Y3" secondAttribute="bottom" id="uf9-sn-jJN"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="accountIconImageView" destination="Bin-DV-3Tv" id="fVh-Na-itp"/>
+                <outlet property="accountLabel" destination="nfp-Cw-rc5" id="MnO-YN-O6C"/>
+                <outlet property="accountView" destination="gSe-9f-Mtf" id="eOI-ES-u7K"/>
+                <outlet property="backgroundView" destination="qHW-Im-5ru" id="eMB-Pt-3pu"/>
+                <outlet property="todoIconImageView" destination="jxe-Rk-y94" id="GUO-8h-fmM"/>
+                <outlet property="todoLabel" destination="pYi-kO-hjY" id="xwg-sU-YaG"/>
+                <outlet property="todoView" destination="f8q-4D-9sJ" id="AJn-vc-PbS"/>
+            </connections>
+            <point key="canvasLocation" x="97" y="96"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AccountIcon" width="40" height="40"/>
+        <image name="TodoIcon" width="34" height="34"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

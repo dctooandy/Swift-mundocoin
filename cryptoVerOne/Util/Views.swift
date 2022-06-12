@@ -31,7 +31,7 @@ func width(_ mul: CGFloat) -> CGFloat {
 class Views {
     static let screenWidth:CGFloat = UIScreen.main.bounds.size.width
     static let screenHeight:CGFloat = UIScreen.main.bounds.size.height
-    static let betleadTabbarHeight:CGFloat = Views.isIPhoneWithNotch() ? 88 : 60
+    static let baseTabbarHeight:CGFloat = Views.isIPhoneWithNotch() ? 88 : 60
     static let navigationBarHeight:CGFloat = 44
     static let tabBarHeight:CGFloat = Views.isIPhoneWithNotch() ? 83 :49
     static let statusBarHeight:CGFloat = Views.isIPhoneWithNotch() ? 44 :20
@@ -69,7 +69,7 @@ class Views {
     }
     
     static func contentHeiht() -> CGFloat {
-        return screenHeight - betleadTabbarHeight - statusBarHeight + 30
+        return screenHeight - baseTabbarHeight - statusBarHeight + 30
     }
     
     static func tigerCellHeight(isFull:Bool) -> CGFloat {

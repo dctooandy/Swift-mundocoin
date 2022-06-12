@@ -13,7 +13,7 @@ class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    static let share: AuditLoginViewController = AuditLoginViewController.loadNib()
+//    static let share: AuditLoginViewController = AuditLoginViewController.loadNib()
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var accountInputView: InputStyleView!
@@ -21,6 +21,7 @@ class AuditLoginViewController: BaseViewController {
     @IBOutlet weak var checkBoxView: CheckBoxView!
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
+    private let tabbarVC = AuditTabbarViewController()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -30,6 +31,7 @@ class AuditLoginViewController: BaseViewController {
         setupKeyboardNoti()
         setupUI()
         bindTextfield()
+        bindLoginButton()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -119,6 +121,29 @@ class AuditLoginViewController: BaseViewController {
             .map { return $0.0 && $0.1 } //reget match result
             .bind(to: loginButton.rx.isEnabled)
             .disposed(by: dpg)
-    }}
+    }
+    func bindLoginButton()
+    {
+        loginButton.rx.tap.subscribeSuccess { [self](_) in
+            Log.v("Audit登入")
+            goTodoViewController()
+        }.disposed(by: dpg)
+    }
+    func getTabbarVC() -> AuditTabbarViewController? {
+        return UIApplication.topViewController() as? AuditTabbarViewController
+    }
+    func goTodoViewController() {
+//        tabbarVC.selected(0)
+        //        tabbarVC.mainPageVC.shouldFetchGameType = true
+        let auditTodoVC = MuLoginNavigationController(rootViewController: tabbarVC)
+        DispatchQueue.main.async {
+            if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
+                print("go ")
+                mainWindow.rootViewController = auditTodoVC
+                mainWindow.makeKeyAndVisible()
+            }
+        }
+    }
+}
 // MARK: -
 // MARK: 延伸

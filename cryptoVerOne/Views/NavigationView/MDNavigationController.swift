@@ -14,7 +14,7 @@ class MDNavigationController:UINavigationController{
     // MARK:業務設定
     // MARK: -
     // MARK:UI 設定
-    private lazy var backBtn:TopBackButton = {
+    lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
@@ -61,7 +61,7 @@ class MDNavigationController:UINavigationController{
     override func pushViewController(_ viewController:UIViewController, animated:Bool) {
         viewController.hidesBottomBarWhenPushed = true
         viewController.tabBarController?.tabBar.isHidden = true
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(customView:backBtn)
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
         super.pushViewController(viewController, animated:animated)
     }
     
