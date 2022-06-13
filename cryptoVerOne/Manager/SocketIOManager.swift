@@ -52,7 +52,9 @@ class SocketIOManager: NSObject {
         socket.on(idValue) { data, ack in
             Log.v("data \(data)")
         }
-
+        socket.on("joinResult") { data, ack in
+            Log.v("data \(data)")
+        }
         socket.on("message") { data, ark in
             print("Message received")
             Log.v("data \(data)")
