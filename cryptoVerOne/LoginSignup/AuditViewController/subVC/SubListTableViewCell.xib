@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="7lA-bo-tb3" customClass="SubListTableViewCell" customModule="Approval" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7lA-bo-tb3" id="mD4-Bl-xaY">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="3p7-Oq-s1Y">
+                        <rect key="frame" x="20" y="12" width="36" height="36"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="36" id="hkm-mt-UMc"/>
+                            <constraint firstAttribute="height" constant="36" id="lXV-jd-QR5"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw Request" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-Kn-HI5">
+                        <rect key="frame" x="76" y="12" width="135" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022/06/01 18:55:55" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyx-Cf-oGL">
+                        <rect key="frame" x="76" y="30" width="141.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkSuccess" translatesAutoresizingMaskIntoConstraints="NO" id="b2k-Lj-K6Z">
+                        <rect key="frame" x="354" y="10" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="agm-Hm-vpq"/>
+                            <constraint firstAttribute="width" constant="40" id="fId-4h-brF"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3p7-Oq-s1Y" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="5A2-U9-uCa"/>
+                    <constraint firstItem="3p7-Oq-s1Y" firstAttribute="leading" secondItem="mD4-Bl-xaY" secondAttribute="leading" constant="20" id="5nE-lh-b0o"/>
+                    <constraint firstAttribute="trailing" secondItem="b2k-Lj-K6Z" secondAttribute="trailing" constant="20" id="7Nq-CT-2xl"/>
+                    <constraint firstItem="b2k-Lj-K6Z" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="ArR-gl-Ju2"/>
+                    <constraint firstItem="IV4-Kn-HI5" firstAttribute="leading" secondItem="3p7-Oq-s1Y" secondAttribute="trailing" constant="20" id="HeH-H7-2YO"/>
+                    <constraint firstItem="vyx-Cf-oGL" firstAttribute="leading" secondItem="IV4-Kn-HI5" secondAttribute="leading" id="KoY-aZ-FMg"/>
+                    <constraint firstItem="IV4-Kn-HI5" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="-9" id="UUt-Eg-WQx"/>
+                    <constraint firstItem="vyx-Cf-oGL" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="9" id="Y7s-Io-T1r"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="finishedIcon" destination="b2k-Lj-K6Z" id="fUX-Yj-gVd"/>
+                <outlet property="iconImageView" destination="3p7-Oq-s1Y" id="JMe-LL-3dW"/>
+                <outlet property="timeLabel" destination="vyx-Cf-oGL" id="Pe3-hi-s7l"/>
+                <outlet property="topTitleLabel" destination="IV4-Kn-HI5" id="Glu-EW-dhD"/>
+            </connections>
+            <point key="canvasLocation" x="-183" y="76"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Arrow" width="36" height="28"/>
+        <image name="checkSuccess" width="40" height="40"/>
+    </resources>
+</document>

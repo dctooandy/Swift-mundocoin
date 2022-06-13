@@ -17,6 +17,7 @@ class AuditTabbarViewController: BaseViewController {
     // MARK:UI 設定
     lazy var todoPageVC:MDNavigationController = {
         let todoVC = TodoListViewController.loadNib()
+        todoVC.currentShowMode = .pending
         let todoNavVC = MDNavigationController(rootViewController: todoVC)
         let vc = todoNavVC
         return vc
@@ -27,7 +28,7 @@ class AuditTabbarViewController: BaseViewController {
         let vc = accountNavVC
         return vc
     }()
-    private let tabbar = AuditTabbar.loadNib()
+    let tabbar = AuditTabbar.share
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -64,9 +65,9 @@ class AuditTabbarViewController: BaseViewController {
    }
     private func setupTabbar(){
         view.addSubview(tabbar)
-        tabbar.snp.makeConstraints { (maker) in
-            maker.leading.bottom.trailing.equalToSuperview()
-            maker.height.equalTo(Views.baseTabbarHeight)
+        tabbar.snp.makeConstraints { (make) in
+            make.leading.bottom.trailing.equalToSuperview()
+            make.top.equalToSuperview().offset(Views.screenHeight - Views.baseTabbarHeight)
         }
     }
     private func settingViewControllers() {
@@ -105,6 +106,12 @@ class AuditTabbarViewController: BaseViewController {
             }
             weakSelf.tabbar.bringToFront()
         }.disposed(by: disposeBag)
+//        tabbar.rxLabelClick().subscribeSuccess { [self] accept in
+//            tabbar.detailTabbarView.isHidden = true
+//            Log.v("結果\(accept)")
+//            UIApplication.topViewController()?.navigationController?.popToRootViewController(animated: true)
+//
+//        }.disposed(by: dpg)
     }
     func selected(_ index:Int) {
         tabbar.selected(index)

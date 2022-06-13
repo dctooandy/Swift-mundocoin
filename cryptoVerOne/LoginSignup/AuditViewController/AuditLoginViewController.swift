@@ -135,11 +135,11 @@ class AuditLoginViewController: BaseViewController {
     func goTodoViewController() {
 //        tabbarVC.selected(0)
         //        tabbarVC.mainPageVC.shouldFetchGameType = true
-        let auditTodoVC = MuLoginNavigationController(rootViewController: tabbarVC)
+//        let auditTodoVC = MuLoginNavigationController(rootViewController: tabbarVC)
         DispatchQueue.main.async {
             if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
                 print("go ")
-                mainWindow.rootViewController = auditTodoVC
+                mainWindow.rootViewController = self.tabbarVC
                 mainWindow.makeKeyAndVisible()
             }
         }

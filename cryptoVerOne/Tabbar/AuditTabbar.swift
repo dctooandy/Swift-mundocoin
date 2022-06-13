@@ -11,11 +11,17 @@ import RxSwift
 
 class AuditTabbar: UIView {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onLabelClick = PublishSubject<Bool>()
+    
     let rxItemClick = PublishSubject<Int>()
     private let dpg = DisposeBag()
+    static var share = AuditTabbar.loadNib()
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var detailTabbarView: UIView!
+    @IBOutlet weak var acceptLabel: UILabel!
+    @IBOutlet weak var rejectLabel: UILabel!
+    
     @IBOutlet weak var todoView: UIView!
     @IBOutlet weak var accountView: UIView!
     
@@ -32,6 +38,7 @@ class AuditTabbar: UIView {
         super.awakeFromNib()
         customInit()
         setupUI()
+        bindLabels()
     }
     
     override init(frame: CGRect) {
@@ -81,7 +88,21 @@ class AuditTabbar: UIView {
         labels.forEach({$0?.textColor = .black})
         labels[index]?.textColor = Themes.blue6149F6
     }
-   
+   func bindLabels()
+    {
+        rejectLabel.rx.click.subscribeSuccess { [self] _ in
+            Log.v("不允許")
+            onLabelClick.onNext(false)
+        }.disposed(by: dpg)
+        acceptLabel.rx.click.subscribeSuccess { [self] _ in
+            Log.v("允許")
+            onLabelClick.onNext(true)
+        }.disposed(by: dpg)
+    }
+    func rxLabelClick() -> Observable<Bool>
+    {
+        return onLabelClick.asObserver()
+    }
 }
 // MARK: -
 // MARK: 延伸

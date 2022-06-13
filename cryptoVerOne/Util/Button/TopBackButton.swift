@@ -12,9 +12,11 @@ import SnapKit
 
 class TopBackButton:UIButton {
     var imageName : String!
-    init(iconName :String = "icon-arrow-lef2") {
+    var titleString : String!
+    init(iconName :String = "icon-arrow-lef2" , title:String = "") {
         super.init(frame: .zero)
         self.imageName = iconName
+        self.titleString = title
         setupViews()
     }
     
@@ -28,7 +30,7 @@ class TopBackButton:UIButton {
         let image = UIImage(named:imageName)
         frame = CGRect(x: 0, y: 0, width: Views.backImageHeight(), height: Views.backImageHeight())
         setImage(image, for: .normal)
-        setTitle("", for:.normal)
+        setTitle(titleString, for:.normal)
     }
     
  
