@@ -26,6 +26,10 @@ class TodoListViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backImageView: UIImageView!
+    let logoImage : UIImageView = {
+        let image = UIImageView(image: UIImage(named: "mundoLogo"))
+        return image
+    }()
     fileprivate let subPageVC = SubListPageViewController()
     // MARK: -
     // MARK:Life cycle
@@ -33,13 +37,13 @@ class TodoListViewController: BaseViewController {
         super.viewDidLoad()
 //        title = "ToDoList"
         naviBackBtn.isHidden = true
-        let logo = UIImage(named: "mundoLogo")
-        let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
+        self.navigationItem.titleView = logoImage
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupSubPageVC()
+        setupNavigation()
         currentShowMode = .pending
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -51,6 +55,12 @@ class TodoListViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupNavigation()
+    {
+        let bar = self.navigationController?.navigationBar
+        bar?.isTranslucent = true
+        bar?.backgroundColor = .lightGray
+    }
     private func setupSubPageVC() {
         addChild(subPageVC)
         view.insertSubview(subPageVC.view, aboveSubview: backImageView)

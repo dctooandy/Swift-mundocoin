@@ -215,7 +215,6 @@ class UserMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var arrowImageView: UIImageView!
     @IBOutlet weak var logoutLabel: UILabel!
     @IBOutlet weak var checkBoxImageView: UIImageView!
-    
     @IBOutlet weak var logoutView: UIView!
     // MARK: -
     // MARK:Life cycle
