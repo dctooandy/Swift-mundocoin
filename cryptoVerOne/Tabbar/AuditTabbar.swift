@@ -11,7 +11,7 @@ import RxSwift
 
 class AuditTabbar: UIView {
     // MARK:業務設定
-    private let onLabelClick = PublishSubject<Bool>()
+    private let onLabelClick = PublishSubject<AuditTriggerMode>()
     
     let rxItemClick = PublishSubject<Int>()
     private let dpg = DisposeBag()
@@ -92,14 +92,14 @@ class AuditTabbar: UIView {
     {
         rejectLabel.rx.click.subscribeSuccess { [self] _ in
             Log.v("不允許")
-            onLabelClick.onNext(false)
+            onLabelClick.onNext(.reject)
         }.disposed(by: dpg)
         acceptLabel.rx.click.subscribeSuccess { [self] _ in
             Log.v("允許")
-            onLabelClick.onNext(true)
+            onLabelClick.onNext(.accept)
         }.disposed(by: dpg)
     }
-    func rxLabelClick() -> Observable<Bool>
+    func rxLabelClick() -> Observable<AuditTriggerMode>
     {
         return onLabelClick.asObserver()
     }

@@ -1316,6 +1316,12 @@
 		09EED3322857229900CB4A64 /* SubListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */; };
 		09EED3332857229900CB4A64 /* SubListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */; };
 		09EED3342857229900CB4A64 /* SubListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */; };
+		09EED3372857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED3382857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED3392857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED33A2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED33B2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED33C2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
 		09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
@@ -1629,6 +1635,7 @@
 		09EED3192857197900CB4A64 /* AuditTransactionDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTransactionDto.swift; sourceTree = "<group>"; };
 		09EED3202857226600CB4A64 /* SubListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubListTableViewCell.swift; sourceTree = "<group>"; };
 		09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubListTableViewCell.xib; sourceTree = "<group>"; };
+		09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTriggerAlertView.swift; sourceTree = "<group>"; };
 		09F7A7662840CC9E00E33C57 /* ResendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendDto.swift; sourceTree = "<group>"; };
 		0ADFFC7B1C77BE0C33F18E27 /* Pods_Approval_stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Approval_stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -1943,6 +1950,7 @@
 		0909C8DC28532DFE003E2F58 /* AuditViewController */ = {
 			isa = PBXGroup;
 			children = (
+				09EED335285737D400CB4A64 /* AuditTriggerAlertView */,
 				09EED2FC2856EA3100CB4A64 /* DetailVC */,
 				09EED2C32856D24100CB4A64 /* subVC */,
 				0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */,
@@ -2064,6 +2072,14 @@
 				09EED3042856EA6400CB4A64 /* AuditDetailViewController.xib */,
 			);
 			path = DetailVC;
+			sourceTree = "<group>";
+		};
+		09EED335285737D400CB4A64 /* AuditTriggerAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */,
+			);
+			path = AuditTriggerAlertView;
 			sourceTree = "<group>";
 		};
 		4CF017450A8210E3DB9084F3 /* Pods */ = {
@@ -3669,6 +3685,7 @@
 				09905A922851A02B00BAEE78 /* UIView+util.swift in Sources */,
 				09905A932851A02B00BAEE78 /* BasePresentAnimationController.swift in Sources */,
 				09905A942851A02B00BAEE78 /* AppVersionDto.swift in Sources */,
+				09EED33B2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09905A952851A02B00BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905A962851A02B00BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905A972851A02B00BAEE78 /* UserAddressDto.swift in Sources */,
@@ -3864,6 +3881,7 @@
 				09905B842851A08500BAEE78 /* UIView+util.swift in Sources */,
 				09905B852851A08500BAEE78 /* BasePresentAnimationController.swift in Sources */,
 				09905B862851A08500BAEE78 /* AppVersionDto.swift in Sources */,
+				09EED33C2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09905B872851A08500BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905B882851A08500BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905B892851A08500BAEE78 /* UserAddressDto.swift in Sources */,
@@ -4059,6 +4077,7 @@
 				09905C762851A09600BAEE78 /* UIView+util.swift in Sources */,
 				09905C772851A09600BAEE78 /* BasePresentAnimationController.swift in Sources */,
 				09905C782851A09600BAEE78 /* AppVersionDto.swift in Sources */,
+				09EED33A2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09905C792851A09600BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905C7A2851A09600BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905C7B2851A09600BAEE78 /* UserAddressDto.swift in Sources */,
@@ -4254,6 +4273,7 @@
 				09CAF484283C77ED00D7B19B /* UIView+util.swift in Sources */,
 				09CAF485283C77ED00D7B19B /* BasePresentAnimationController.swift in Sources */,
 				09CAF486283C77ED00D7B19B /* AppVersionDto.swift in Sources */,
+				09EED3382857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09C20FB12846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
@@ -4449,6 +4469,7 @@
 				09CAF545283C7BBE00D7B19B /* UIView+util.swift in Sources */,
 				09CAF546283C7BBE00D7B19B /* BasePresentAnimationController.swift in Sources */,
 				09CAF547283C7BBE00D7B19B /* AppVersionDto.swift in Sources */,
+				09EED3392857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09C20FB22846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
@@ -4644,6 +4665,7 @@
 				A19C70D42822479B000AFC3F /* UIView+util.swift in Sources */,
 				A19C70F828224D4F000AFC3F /* BasePresentAnimationController.swift in Sources */,
 				A19C70C5282245DD000AFC3F /* AppVersionDto.swift in Sources */,
+				09EED3372857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */,
 				09C20FB02846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,

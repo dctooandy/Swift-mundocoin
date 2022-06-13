@@ -68,7 +68,19 @@ class AuditDetailViewController: BaseViewController {
         let tabbar = AuditTabbar.share
         tabbar.rxLabelClick().subscribeSuccess { [self] accept in
             Log.v("結果\(accept)")
-            navigationController?.popToRootViewController(animated: true)
+            let popVC =  AuditTriggerAlertView(alertMode: accept) { isOK in
+                
+                if isOK {
+                    Log.i("Confirm or Reject")
+                    
+                }else
+                {
+                    Log.i("Cancel")
+                }
+            }
+            popVC.start(viewController: self)
+            
+//            navigationController?.popToRootViewController(animated: true)
         }.disposed(by: dpg)
     }
     func setupDate(data:AuditTransactionDto ,showMode:AuditShowMode)
