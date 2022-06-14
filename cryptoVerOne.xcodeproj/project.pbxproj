@@ -1322,6 +1322,12 @@
 		09EED33A2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
 		09EED33B2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
 		09EED33C2857392A00CB4A64 /* AuditTriggerAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */; };
+		09EED34C28583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED34D28583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED34E28583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED34F28583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED35028583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED35128583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
 		09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
@@ -1636,6 +1642,7 @@
 		09EED3202857226600CB4A64 /* SubListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubListTableViewCell.swift; sourceTree = "<group>"; };
 		09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubListTableViewCell.xib; sourceTree = "<group>"; };
 		09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTriggerAlertView.swift; sourceTree = "<group>"; };
+		09EED34B28583AEB00CB4A64 /* empty-notofications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-notofications.png"; sourceTree = "<group>"; };
 		09F7A7662840CC9E00E33C57 /* ResendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendDto.swift; sourceTree = "<group>"; };
 		0ADFFC7B1C77BE0C33F18E27 /* Pods_Approval_stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Approval_stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -2635,6 +2642,7 @@
 		A19C713D28225767000AFC3F /* SupportFile */ = {
 			isa = PBXGroup;
 			children = (
+				09EED34B28583AEB00CB4A64 /* empty-notofications.png */,
 				A19C7141282257AB000AFC3F /* mucoin_error.json */,
 				A19C7140282257AB000AFC3F /* mucoin_loading.json */,
 				A19C713E282257AB000AFC3F /* mucoin_question.json */,
@@ -2902,6 +2910,7 @@
 				09905AE82851A02B00BAEE78 /* ResetPasswordViewController.xib in Resources */,
 				09905AE92851A02B00BAEE78 /* LaunchScreen.storyboard in Resources */,
 				09905AEA2851A02B00BAEE78 /* LaunchReciprocalViewController.xib in Resources */,
+				09EED35028583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				09905AEB2851A02B00BAEE78 /* UserMenuViewController.xib in Resources */,
 				A1ADADF328562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09905AEC2851A02B00BAEE78 /* GuidePageViewController.xib in Resources */,
@@ -2976,6 +2985,7 @@
 				09905BDA2851A08500BAEE78 /* ResetPasswordViewController.xib in Resources */,
 				09905BDB2851A08500BAEE78 /* LaunchScreen.storyboard in Resources */,
 				09905BDC2851A08500BAEE78 /* LaunchReciprocalViewController.xib in Resources */,
+				09EED35128583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				09905BDD2851A08500BAEE78 /* UserMenuViewController.xib in Resources */,
 				A1ADADF428562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09905BDE2851A08500BAEE78 /* GuidePageViewController.xib in Resources */,
@@ -3050,6 +3060,7 @@
 				09905CCC2851A09600BAEE78 /* ResetPasswordViewController.xib in Resources */,
 				09905CCD2851A09600BAEE78 /* LaunchScreen.storyboard in Resources */,
 				09905CCE2851A09600BAEE78 /* LaunchReciprocalViewController.xib in Resources */,
+				09EED34F28583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				09905CCF2851A09600BAEE78 /* UserMenuViewController.xib in Resources */,
 				A1ADADF228562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09905CD02851A09600BAEE78 /* GuidePageViewController.xib in Resources */,
@@ -3124,6 +3135,7 @@
 				09CAF4C8283C77ED00D7B19B /* ResetPasswordViewController.xib in Resources */,
 				09CAF4C9283C77ED00D7B19B /* LaunchScreen.storyboard in Resources */,
 				09CAF4CA283C77ED00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
+				09EED34D28583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				09CAF4CB283C77ED00D7B19B /* UserMenuViewController.xib in Resources */,
 				A1ADADF028562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09CAF4CC283C77ED00D7B19B /* GuidePageViewController.xib in Resources */,
@@ -3198,6 +3210,7 @@
 				09CAF589283C7BBE00D7B19B /* ResetPasswordViewController.xib in Resources */,
 				09CAF58A283C7BBE00D7B19B /* LaunchScreen.storyboard in Resources */,
 				09CAF58B283C7BBE00D7B19B /* LaunchReciprocalViewController.xib in Resources */,
+				09EED34E28583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				09CAF58C283C7BBE00D7B19B /* UserMenuViewController.xib in Resources */,
 				A1ADADF128562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09CAF58D283C7BBE00D7B19B /* GuidePageViewController.xib in Resources */,
@@ -3272,6 +3285,7 @@
 				092E75FE284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				A19C6FDE282218DF000AFC3F /* LaunchScreen.storyboard in Resources */,
 				A19C70A728223C46000AFC3F /* LaunchReciprocalViewController.xib in Resources */,
+				09EED34C28583AEB00CB4A64 /* empty-notofications.png in Resources */,
 				A1973A082828EC81009932D8 /* UserMenuViewController.xib in Resources */,
 				A1ADADEF28562D4C00B07B12 /* TodoListViewController.xib in Resources */,
 				09056DAB284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,

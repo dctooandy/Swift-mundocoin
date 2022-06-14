@@ -10,7 +10,11 @@ import JWTDecode
 
 class SocketIOManager: NSObject {
     static let sharedInstance = SocketIOManager()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
     let manager = SocketManager(socketURL: URL(string: "https://dev.api.mundocoin.com:443")!, config: [.log(true), .compress])
+#else
+    let manager = SocketManager(socketURL: URL(string: "https://dev.api.mundocoin.com:443")!, config: [.log(true), .compress])
+#endif
     var socket : SocketIOClient!
 //    var socket: SocketIOClient = SocketIOClient(socketURL:  ,nsp: "")
     
@@ -21,7 +25,11 @@ class SocketIOManager: NSObject {
     }
     func setup()
     {
-        let token = KeychainManager.share.getToken()        
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        let token = KeychainManager.share.getAuditToken()
+#else
+        let token = KeychainManager.share.getToken()
+#endif
         self.manager.config = SocketIOClientConfiguration(arrayLiteral: .connectParams(["Authorization": "Bearer \(token)"]), .secure(true)
         )
         socket = manager.socket(forNamespace: "/notification")
@@ -52,8 +60,16 @@ class SocketIOManager: NSObject {
         socket.on(idValue) { data, ack in
             Log.v("data \(data)")
         }
-        socket.on("joinResult") { data, ack in
-            Log.v("data \(data)")
+        socket.on("joinResult") { resultData, ack in
+            if let resultString = resultData.first as? String
+            {
+                Log.v("data \(resultString)")
+#if Mundo_PRO || Approval_PRO
+
+#else
+                self.onTriggerLocalNotification(suvtitle: "joinResult", body: resultString)
+#endif
+            }
         }
         socket.on("message") { data, ark in
             print("Message received")
@@ -89,13 +105,45 @@ class SocketIOManager: NSObject {
         return socketConnectionStatus
     }
     func establishConnection() {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        if KeychainManager.share.getAuditToken().isEmpty != true
+        {
+            socket.connect()
+        }
+#else
         if KeychainManager.share.getToken().isEmpty != true
         {
-            socket.connect()            
+            socket.connect()
         }
+#endif
     }
      
     func closeConnection() {
         socket.disconnect()
+    }
+    func onTriggerLocalNotification(suvtitle:String , body:String)
+    {
+        let content = UNMutableNotificationContent()
+        content.title = "Socket receive"
+        content.subtitle = "\(suvtitle)"
+        content.body = "\(body)"
+        content.badge = 1
+        content.sound = UNNotificationSound.default
+        
+        // 設置通知的圖片
+        
+        let imageURL: URL = Bundle.main.url(forResource: "empty-notofications", withExtension: "png")!
+        let attachment = try! UNNotificationAttachment(identifier: "image", url: imageURL, options: nil)
+        content.attachments = [attachment]
+        // 設置點擊通知後取得的資訊
+//        content.userInfo = ["link" : "https://www.facebook.com/franksIosApp/"]
+        content.userInfo = ["deeplink" : "wallet"]
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        
+        let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
+            print("成功建立通知...")
+        })
     }
 }

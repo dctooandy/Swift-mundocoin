@@ -106,6 +106,7 @@ class DeepLinkManager {
             print("current top vc: \(vc)")
             if vc.isKind(of: LaunchReciprocalViewController.self) { return }
             if vc.isKind(of: LoginSignupViewController.self) { return }
+            if vc.isKind(of: AuditLoginViewController.self) { return }
             if !vc.isKind(of: TabbarViewController.self) {
 //                if vc.navigationController == nil {
 //                    vc.dismiss(animated: false) {
@@ -119,8 +120,12 @@ class DeepLinkManager {
 //                }
                 vc.navigationController?.popToRootViewController(animated: true)
                 completion?()
-            } else {
-                print("current vc is Betlead tabbar vc finished.")
+            } else if !vc.isKind(of: AuditTabbarViewController.self){
+                vc.navigationController?.popToRootViewController(animated: true)
+                completion?()
+            }else
+            {
+                print("current vc is tabbar vc finished.")
                 completion?()
             }
         }
@@ -128,6 +133,7 @@ class DeepLinkManager {
     func cleanDataForLogout()
     {
         KeychainManager.share.clearToken()
+        KeychainManager.share.clearAuditToken()
         WalletAddressDto.share = nil
         UserInfoDto.share = nil
         RegistrationDto.share = nil
@@ -159,6 +165,8 @@ extension DeepLinkManager {
         
         case login
         case signup
+        
+        case auditLogin
         
         case none
         case appNews
@@ -289,12 +297,19 @@ extension DeepLinkManager {
                     let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
                     UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                 }
-                
             case .signup:
                 print("signup")
                 DeepLinkManager.share.cleanDataForLogout()
                 let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.signupEmail))
                 UIApplication.shared.keyWindow?.rootViewController = loginNavVC
+            case .auditLogin:
+                DeepLinkManager.share.cleanDataForLogout()
+                if let vc = UIApplication.topViewController()
+                {
+                    if vc.isKind(of: AuditLoginViewController.self) { return }
+                    let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
+                    UIApplication.shared.keyWindow?.rootViewController = auditNavVC
+                }
             case .appNews:
                 print("app news")
                 guard let vc = getBaseTabbarVC() else { return }

@@ -107,12 +107,12 @@ class AuditLoginViewController: BaseViewController {
         let isAccountValid = accountInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard let acc = str else { return false  }
-                return RegexHelper.match(pattern:. mail, input: acc)
+                return RegexHelper.match(pattern:.account , input: acc)
         }
         let isPWValid = passwordInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return RegexHelper.match(pattern:. password, input: acc)
+                return RegexHelper.match(pattern:.password, input: acc)
         }
         isAccountValid.skip(1).bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         isPWValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)

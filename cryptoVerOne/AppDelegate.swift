@@ -12,6 +12,7 @@ import DropDown
 public typealias CheckCompletionBlock = (Bool) -> Void
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    // MARK:業務設定
     var window: UIWindow?
     var isLogin:Bool?
     {
@@ -34,15 +35,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     var timer: Timer?
     private let dpg = DisposeBag()
+    // MARK: -
+    // MARK:Life cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        setupAppearance()
         initSingleton()
         launchFromNotification(options: launchOptions)
+        askForLocalNotification()
+        application.applicationIconBadgeNumber = 0
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         let vc = LaunchReciprocalViewController.loadNib()
         window?.rootViewController = vc
         return true
+    }
+   
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        application.beginBackgroundTask {} // allows to run background tasks
+        // 消除倒數
+        stopRETimer()
+    }
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // 檢查版本
+        checkAppVersion()
+        
+        if let vc = UIApplication.topViewController() {
+            print("current top vc: \(vc)")
+            if vc.isKind(of: LaunchReciprocalViewController.self) { return }
+            if vc.isKind(of: LoginSignupViewController.self) { return }
+            if vc.isKind(of: AuditLoginViewController.self) { return }
+            if let vcArray = vc.navigationController?.viewControllers
+            {
+                for vc in vcArray {
+                    if vc is LoginSignupViewController
+                    {
+                        return
+                    }
+                }
+            }
+            // 檢查時間
+            checkTime()
+//            if !vc.isKind(of: TabbarViewController.self) ,
+//               !vc.isKind(of: AuditTabbarViewController.self){
+//            } else {
+//                print("current vc is tabbar vc finished.")
+//            }
+        }
+    }
+    // MARK: -
+    // MARK:業務方法
+    func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
+        guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
+        DeepLinkManager.share.navigation = DeepLinkManager.Navigation(typeName: deeplinkName)
+        DeepLinkManager.share.handleDeeplink(navigation: DeepLinkManager.share.navigation)
+    }
+    func askForLocalNotification()
+    {
+        // 在程式一啟動即詢問使用者是否接受圖文(alert)、聲音(sound)、數字(badge)三種類型的通知
+           UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge, .carPlay], completionHandler: { (granted, error) in
+               if granted {
+                   Log.v("使用者 允許 接收通知")
+               } else {
+                   Log.e("使用者 不允許 接收通知")
+               }
+           })
+        // 代理 UNUserNotificationCenterDelegate，這麼做可讓 App 在前景狀態下收到通知
+        UNUserNotificationCenter.current().delegate = self
     }
     private func setupAppearance(){
         
@@ -59,44 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #endif
         DropDown.startListeningToKeyboard()
     }
-    func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
-        guard let deeplinkName = (options?[UIApplication.LaunchOptionsKey.remoteNotification] as? [String: Any])?["deeplink"] as? String else { return }
-        DeepLinkManager.share.navigation = DeepLinkManager.Navigation(typeName: deeplinkName)
-        DeepLinkManager.share.handleDeeplink(navigation: DeepLinkManager.share.navigation)
-        
-    }
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        application.beginBackgroundTask {} // allows to run background tasks
-        // 消除倒數
-        stopRETimer()
-    }
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // 檢查版本
-        checkAppVersion()
-        
-        if let vc = UIApplication.topViewController() {
-            print("current top vc: \(vc)")
-            if vc.isKind(of: LaunchReciprocalViewController.self) { return }
-            if vc.isKind(of: LoginSignupViewController.self) { return }
-            if let vcArray = vc.navigationController?.viewControllers
-            {
-                for vc in vcArray {
-                    if vc is LoginSignupViewController
-                    {
-                        return
-                    }
-                }
-            }
-            if !vc.isKind(of: TabbarViewController.self) {
-                // 檢查時間
-                checkTime()
-            } else {
-                print("current vc is tabbar vc finished.")
-                
-            }
-        }
-    }
-    
+
     func checkAppVersion() {
       
     }
@@ -104,9 +125,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkTime(complete:CheckCompletionBlock? = nil)
     {
         // 打API 檢查是否過期
-        checkAPIToken(complete: complete)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        checkAuditToken(complete: complete)
+#else
+        checkMundocoinAPIToken(complete: complete)
+#endif
     }
-    func checkAPIToken(complete:CheckCompletionBlock? = nil)
+    func checkAuditToken(complete:CheckCompletionBlock? = nil)
+    {
+//        Log.v("沒過期")
+// // 沒過期,打refresh API, 時間加30分鐘
+//        freshAuditToken()
+//        SocketIOManager.sharedInstance.establishConnection()
+        Log.v("audit過期")
+        DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+    }
+    func freshAuditToken()
+    {
+        Log.v("刷新AuditToken")
+    }
+    func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
         LoadingViewController.show()
@@ -172,4 +210,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         timer = nil
     }
 }
-
+// MARK: -
+// MARK: 延伸
+extension AppDelegate :UNUserNotificationCenterDelegate
+{
+    // 在前景收到通知時所觸發的 function
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        Log.v("在前景收到通知...")
+        completionHandler([.badge, .sound, .alert])
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let content: UNNotificationContent = response.notification.request.content
+        
+        completionHandler()
+        
+        // 取出userInfo的link並開啟Facebook
+        if let linkString = content.userInfo["link"] as? String , let requestUrl = URL(string: linkString)
+        {
+            UIApplication.shared.open(requestUrl, options: [:], completionHandler: nil)
+        }
+        if let requestUrl = content.userInfo["deeplink"] as? String
+        {
+            if requestUrl == "wallet"
+            {
+                DeepLinkManager.share.handleDeeplink(navigation: .wallet)
+            }else
+            {
+                Log.v("不知道去哪 \(requestUrl)")
+            }
+        }
+    }
+}

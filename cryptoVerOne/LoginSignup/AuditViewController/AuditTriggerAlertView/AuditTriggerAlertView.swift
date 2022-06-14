@@ -7,7 +7,10 @@
 
 
 import Foundation
+import RxCocoa
+import RxSwift
 import UIKit
+
 enum AuditTriggerMode {
     case accept
     case reject
@@ -30,8 +33,13 @@ enum AuditTriggerMode {
     }
 }
 class AuditTriggerAlertView: PopupBottomSheet {
+    // MARK:業務設定
     var alertMode : AuditTriggerMode!
-    
+    private let dpg = DisposeBag()
+    typealias DoneHandler = (Bool) -> ()
+    var doneHandler: DoneHandler?
+    // MARK: -
+    // MARK:UI 設定
     private lazy var titleLabel: UILabel = {
         let lb = UILabel()
         lb.textColor = .black
@@ -72,9 +80,9 @@ class AuditTriggerAlertView: PopupBottomSheet {
         return btn
     }()
     
-    typealias DoneHandler = (Bool) -> ()
-    var doneHandler: DoneHandler?
-    
+
+    // MARK: -
+    // MARK:Life cycle
     init(alertMode:AuditTriggerMode = .accept , _ done: DoneHandler?) {
         super.init()
         self.alertMode = alertMode
@@ -91,22 +99,22 @@ class AuditTriggerAlertView: PopupBottomSheet {
     required init(_ parameters: Any? = nil) {
          super.init()
     }
-    
+    // MARK: -
+    // MARK:業務方法
     override func setupViews() {
         super.setupViews()
         dismissButton.isHidden = true
         setupUI()
-        
+        bindTextView()
     }
     
-    
     private func setupUI() {
-        var defaultContainerHeight = 290.0
+        let defaultContainerHeight = 290.0
         var stackView :UIStackView!
         stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
         stackView.distribution = .fillEqually
         stackView.spacing = 20
-        var buttonViewMultiplied = 0.9
+        let buttonViewMultiplied = 0.9
         switch self.alertMode {
         case .accept:
             break
@@ -160,7 +168,17 @@ class AuditTriggerAlertView: PopupBottomSheet {
             make.centerX.equalToSuperview()
         }
     }
-    
+    func bindTextView()
+    {
+        if alertMode == .reject
+        {
+            let isValid = messageTextView.rx.text.map {  (str) -> Bool in
+                guard  let acc = str else { return false  }
+                return !acc.isEmpty
+            }
+            isValid.skip(0).bind(to: confirmButton.rx.isEnabled).disposed(by: dpg)
+        }
+    }
     override func dismissVC(nextSheet: BottomSheet? = nil) {
         super.dismissVC()
         print("vc dismiss")
