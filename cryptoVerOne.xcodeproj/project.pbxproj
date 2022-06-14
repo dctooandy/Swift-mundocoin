@@ -2337,11 +2337,6 @@
 		A19C6FC5282218D6000AFC3F = {
 			isa = PBXGroup;
 			children = (
-				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
-				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
-				09EED355285870ED00CB4A64 /* Approval.entitlements */,
-				09EED354285870E700CB4A64 /* cryptoVerOne_stage.entitlements */,
-				09EED35228586E5B00CB4A64 /* cryptoVerOne_dev.entitlements */,
 				A19C6FD0282218D6000AFC3F /* cryptoVerOne */,
 				A19C6FCF282218D6000AFC3F /* Products */,
 				4CF017450A8210E3DB9084F3 /* Pods */,
@@ -2365,6 +2360,11 @@
 		A19C6FD0282218D6000AFC3F /* cryptoVerOne */ = {
 			isa = PBXGroup;
 			children = (
+				09EED355285870ED00CB4A64 /* Approval.entitlements */,
+				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
+				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
+				09EED354285870E700CB4A64 /* cryptoVerOne_stage.entitlements */,
+				09EED35228586E5B00CB4A64 /* cryptoVerOne_dev.entitlements */,
 				09EED353285870E100CB4A64 /* cryptoVerOne.entitlements */,
 				A1019DDE2824D0D200E6929E /* Template */,
 				A19C713D28225767000AFC3F /* SupportFile */,
@@ -4815,9 +4815,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval_dev.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
@@ -4829,7 +4829,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4845,9 +4845,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval_dev.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
@@ -4859,7 +4859,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4874,9 +4874,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval_stage.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_stage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
@@ -4888,7 +4888,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -4904,9 +4904,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval_stage.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_stage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
@@ -4918,7 +4918,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.approval;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -4933,7 +4933,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4963,7 +4963,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Approval.entitlements;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4992,9 +4992,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_dev.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
@@ -5006,7 +5006,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5022,9 +5022,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_dev.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
@@ -5036,7 +5036,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_DEV";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -5051,9 +5051,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_stage.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_stage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
@@ -5065,7 +5065,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_STAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5081,9 +5081,9 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_stage.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_stage.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
@@ -5095,7 +5095,7 @@
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DMundo_STAGE";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mundocoin.cryptoVerOne;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
