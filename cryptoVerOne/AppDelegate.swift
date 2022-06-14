@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        setupAppearance()
         initSingleton()
         launchFromNotification(options: launchOptions)
-        askForLocalNotification()
+        askForLocalNotification(application: application)
         application.applicationIconBadgeNumber = 0
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
@@ -49,7 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = vc
         return true
     }
-   
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map{ String(format: "%02.2hhx", $0) }.joined()
+        Log.v("Token : \(token)")
+    }
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        Log.v("遠端推播註冊失敗 \(error)")
+    }
     func applicationDidEnterBackground(_ application: UIApplication) {
         application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
@@ -89,16 +95,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         DeepLinkManager.share.navigation = DeepLinkManager.Navigation(typeName: deeplinkName)
         DeepLinkManager.share.handleDeeplink(navigation: DeepLinkManager.share.navigation)
     }
-    func askForLocalNotification()
+    func askForLocalNotification(application: UIApplication)
     {
         // 在程式一啟動即詢問使用者是否接受圖文(alert)、聲音(sound)、數字(badge)三種類型的通知
-           UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge, .carPlay], completionHandler: { (granted, error) in
-               if granted {
-                   Log.v("使用者 允許 接收通知")
-               } else {
-                   Log.e("使用者 不允許 接收通知")
-               }
-           })
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge, .carPlay], completionHandler: { (granted, error) in
+            if granted {
+                Log.v("使用者 允許 接收通知")
+                application.registerForRemoteNotifications()
+                
+            } else {
+                Log.e("使用者 不允許 接收通知")
+            }
+        })
         // 代理 UNUserNotificationCenterDelegate，這麼做可讓 App 在前景狀態下收到通知
         UNUserNotificationCenter.current().delegate = self
     }
