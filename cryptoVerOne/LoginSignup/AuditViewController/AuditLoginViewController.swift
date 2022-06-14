@@ -8,7 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
-
+import Toaster
 class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
@@ -16,11 +16,13 @@ class AuditLoginViewController: BaseViewController {
 //    static let share: AuditLoginViewController = AuditLoginViewController.loadNib()
     // MARK: -
     // MARK:UI 設定
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var accountInputView: InputStyleView!
     @IBOutlet weak var passwordInputView: InputStyleView!
     @IBOutlet weak var checkBoxView: CheckBoxView!
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
+    @IBOutlet weak var logoButton : UIButton!
     private let tabbarVC = AuditTabbarViewController()
     // MARK: -
     // MARK:Life cycle
@@ -32,6 +34,7 @@ class AuditLoginViewController: BaseViewController {
         setupUI()
         bindTextfield()
         bindLoginButton()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -92,6 +95,7 @@ class AuditLoginViewController: BaseViewController {
         passwordInputView.setMode(mode: .auditPassword)
         checkBoxView.checkType = .checkType
         checkBoxView.isSelected = true
+
     }
     func bindTextfield()
     {
@@ -143,6 +147,43 @@ class AuditLoginViewController: BaseViewController {
                 mainWindow.makeKeyAndVisible()
             }
         }
+    }
+
+    @IBAction func changeDomain(_ sender: Any) {
+        #if Mundo_PRO
+        #elseif Approval_PRO
+        #else
+        let versionString = Bundle.main.releaseVersionNumber ?? ""
+        let buildString = Bundle.main.buildVersionNumber ?? ""
+        let version = "\(versionString) b-\(buildString)"
+        var envirment = ""
+        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+            switch KeychainManager.share.getDomainMode()
+            {
+            case .AuditStage:
+                _ = KeychainManager.share.setDomainMode(.AuditDev)
+                appdelegate.domainMode = .AuditDev
+                envirment = "AuditDev"
+            case .AuditDev:
+                _ = KeychainManager.share.setDomainMode(.AuditQa)
+                appdelegate.domainMode = .AuditQa
+                envirment = "AuditQa"
+            case .AuditQa:
+                _ = KeychainManager.share.setDomainMode(.AuditPro)
+                appdelegate.domainMode = .AuditPro
+                envirment = "AuditPro"
+            case .AuditPro:
+                _ = KeychainManager.share.setDomainMode(.AuditStage)
+                appdelegate.domainMode = .AuditStage
+                envirment = "AuditStage"
+            default : break
+            }
+     
+        }
+        Toast.show(msg: "版本號 : \(version)\n切換到 \(envirment)\n 域名:\(BuildConfig.Domain)")
+        BuildConfig().resetDomain()
+        ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
+        #endif
     }
 }
 // MARK: -

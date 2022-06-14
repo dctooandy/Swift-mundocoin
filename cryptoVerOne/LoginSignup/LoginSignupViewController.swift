@@ -63,7 +63,7 @@ class LoginSignupViewController: BaseViewController {
     private lazy var coverButton:UIButton = {
         let coverButton = UIButton()
         coverButton.setTitle("".localized, for:.normal)
-        coverButton.addTarget(self, action: #selector(changeDomain), for: .touchUpInside)
+        coverButton.addTarget(self, action: #selector(changeDomain), for: .touchUpOutside)
         return coverButton
     }()
     private lazy var logoView:UIView = {
