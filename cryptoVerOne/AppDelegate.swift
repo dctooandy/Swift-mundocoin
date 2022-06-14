@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-    var domainMode : DomainMode = .Dev{
+    var domainMode : DomainMode = .Stage{
         didSet{
             BuildConfig().domainSet(mode: domainMode)
         }
@@ -118,15 +118,34 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
-#if Mundo_PRO || Approval_PRO
+        if isLaunchBefore() == false {
+#if Mundo_PRO
+            _ = KeychainManager.share.setDomainMode(.Pro)
+#elseif Approval_PRO
+            _ = KeychainManager.share.setDomainMode(.AuditPro)
+#elseif Approval_DEV || Approval_STAGE
+            _ = KeychainManager.share.setDomainMode(.AuditStage)
+#else
+            _ = KeychainManager.share.setDomainMode(.Stage)
+#endif
+        }
+#if Mundo_PRO
         self.domainMode = .Pro
+#elseif Approval_PRO
+        self.domainMode = .AuditPro
 #else
         self.domainMode = KeychainManager.share.getDomainMode()
         Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")
 #endif
         DropDown.startListeningToKeyboard()
     }
-
+    func isLaunchBefore() -> Bool {
+        let isLaunchBefore = UserDefaults.Verification.bool(forKey: .launchBefore)
+        if !isLaunchBefore {
+            UserDefaults.Verification.set(value: true, forKey: .launchBefore)
+        }
+        return isLaunchBefore
+    }
     func checkAppVersion() {
       
     }

@@ -77,7 +77,6 @@ class LaunchReciprocalViewController: BaseViewController {
                 appUpdateAlert()
                 return
             }
-//            if isLaunchBefore() {
             if firstStart == false
             {
                 if UserStatus.share.isLogin == true

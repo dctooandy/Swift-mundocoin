@@ -165,9 +165,18 @@ class KeychainManager {
     func getDomainMode() -> DomainMode {
         if let domain = getString(from: .domain)
         {
-            return DomainMode.init(rawValue: domain) ?? .Dev
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return DomainMode.init(rawValue: domain) ?? .AuditStage
+#else
+            return DomainMode.init(rawValue: domain) ?? .Stage
+#endif
         }
-        return .Dev
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return .AuditStage
+#else
+        return .Stage
+#endif
+        
     }
     // 存取刪除 mundocoin token
     func getToken() -> String {

@@ -45,6 +45,7 @@ class LoginSignupViewController: BaseViewController {
     private var shouldVerify = true
     private var route: SuccessViewAction.Route? = nil
     private var backGroundVideoUrl: URL? = nil
+    private var willShowAgainFromVerifyVC = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -94,7 +95,12 @@ class LoginSignupViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        bioVerifyCheck()
+        let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+        if didAskBioLogin == true , willShowAgainFromVerifyVC == false
+        {
+            bioVerifyCheck()
+        }
+        willShowAgainFromVerifyVC = false
 //        VideoManager.share.play()
     }
     
@@ -230,30 +236,32 @@ extension LoginSignupViewController {
         #else
         let versionString = Bundle.main.releaseVersionNumber ?? ""
         let buildString = Bundle.main.buildVersionNumber ?? ""
-
-        var version = "\(versionString) b-\(buildString)"
-        if KeychainManager.share.getDomainMode() == .Dev
-        {
-            let _ = KeychainManager.share.setDomainMode(.Stage)
-            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-                appdelegate.domainMode = .Stage
-            }
-            Toast.show(msg: "版本號 : \(version)\n切換到 Stage\n 域名:\(BuildConfig.Domain)")
-        }else if KeychainManager.share.getDomainMode() == .Stage
-        {
-            let _ = KeychainManager.share.setDomainMode(.Pro)
-            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-                appdelegate.domainMode = .Pro
-            }
-            Toast.show(msg: "版本號 : \(version)\n切換到 Pro\n 域名:\(BuildConfig.Domain)")
-        }else
-        {
-            let _ = KeychainManager.share.setDomainMode(.Dev)
-            if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+        let version = "\(versionString) b-\(buildString)"
+        var envirment = ""
+        if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
+            if KeychainManager.share.getDomainMode() == .Stage
+            {
+                _ = KeychainManager.share.setDomainMode(.Dev)
                 appdelegate.domainMode = .Dev
+                envirment = "Dev"
+            }else if KeychainManager.share.getDomainMode() == .Dev
+            {
+                _ = KeychainManager.share.setDomainMode(.Qa)
+                appdelegate.domainMode = .Qa
+                envirment = "Qa"
+            }else if KeychainManager.share.getDomainMode() == .Qa
+            {
+                _ = KeychainManager.share.setDomainMode(.Pro)
+                appdelegate.domainMode = .Pro
+                envirment = "Pro"
+            }else
+            {
+                _ = KeychainManager.share.setDomainMode(.Stage)
+                appdelegate.domainMode = .Stage
+                envirment = "Stage"
             }
-            Toast.show(msg: "版本號 : \(version)\n切換到 Dev\n 域名:\(BuildConfig.Domain)")
         }
+        Toast.show(msg: "版本號 : \(version)\n切換到 \(envirment)\n 域名:\(BuildConfig.Domain)")
         BuildConfig().resetDomain()
         ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
         #endif
@@ -302,12 +310,9 @@ extension LoginSignupViewController {
                         return
                     }
                     DispatchQueue.main.async {
-                    // 走生物驗證流程
                     let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
                         self.showVerifyVCWithLoginData(dto)
                     }
-//                    self?.login(dto: loginPostDto)
-//                    self?.loginPageVC.setAccount(acc: loginPostDto.account, pwd: loginPostDto.password)
                 }
             } else {
                 print("manual login.")
@@ -322,6 +327,7 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
+        willShowAgainFromVerifyVC = true
         // 暫時改為直接推頁面
         verifyVC = VerifyViewController.loadNib()
         verifyVC.loginDto = dataDto
@@ -329,6 +335,7 @@ extension LoginSignupViewController {
     }
     func showVerifyVCWithSignUpData(_ dataDto: SignupPostDto)
     {
+        willShowAgainFromVerifyVC = true
         // 暫時改為直接推頁面
         verifyVC = VerifyViewController.loadNib()
         verifyVC.signupDto = dataDto

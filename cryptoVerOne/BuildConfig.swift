@@ -7,15 +7,16 @@
 
 import Foundation
 enum DomainMode :String{
-    case Dev
     case Stage
-    case Pro
-}
-enum ApprovalDomainMode :String{
     case Dev
-    case Stage
+    case Qa
     case Pro
+    case AuditStage
+    case AuditDev
+    case AuditQa
+    case AuditPro
 }
+
 
 
 class BuildConfig {
@@ -64,7 +65,6 @@ class BuildConfig {
     }
     func domainSet(mode:DomainMode)
     {
-#if Mundo_PRO || Mundo_DEV || Mundo_STAGE
         switch mode
         {
         case .Pro:
@@ -73,18 +73,29 @@ class BuildConfig {
             UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
         case .Stage:
             UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
-        }
-#else
-        switch mode
-        {
-        case .Pro:
+        case .Qa:
+            UserDefaults.DomainType.set(value: "qa.api.mundocoin.com", forKey: .Domain)
+        case .AuditPro:
             UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
-        case .Dev:
+        case .AuditDev:
             UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
-        case .Stage:
+        case .AuditStage:
             UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
+        case .AuditQa:
+            UserDefaults.DomainType.set(value: "qa.api.mundocoin.com", forKey: .Domain)
         }
-#endif
+//#if Mundo_PRO || Mundo_DEV || Mundo_STAGE
+//#else
+//        switch mode
+//        {
+//        case .Pro:
+//            UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
+//        case .Dev:
+//            UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
+//        case .Stage:
+//            UserDefaults.DomainType.set(value: "stage.api.mundocoin.com", forKey: .Domain)
+//        }
+//#endif
         BuildConfig.Domain = UserDefaults.DomainType.string(forKey: .Domain)
     }
 }
