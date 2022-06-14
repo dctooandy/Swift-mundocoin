@@ -264,11 +264,11 @@ extension LoginSignupViewController {
             // 進行臉部或指紋驗證
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
+                    DispatchQueue.main.async {[self] in
                     Toast.show(msg: "验证失败，请输入帐号密码")
                     let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
                         
                     }
-                    DispatchQueue.main.async {[self] in
                         popVC.start(viewController: self)
                     }
                     return
@@ -288,22 +288,22 @@ extension LoginSignupViewController {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
+                        DispatchQueue.main.async {[self] in
                         Toast.show(msg: "验证失败，请输入帐号密码")
                         let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
                             
                         }
-                        DispatchQueue.main.async {[self] in
                             popVC.start(viewController: self)
                         }
-                        return
+//                        return
                     }
                     if error != nil {
                         Toast.show(msg: "验证失败：\(error!.localizedDescription)")
                         return
                     }
+                    DispatchQueue.main.async {
                     // 走生物驗證流程
                     let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
-                    DispatchQueue.main.async {
                         self.showVerifyVCWithLoginData(dto)
                     }
 //                    self?.login(dto: loginPostDto)

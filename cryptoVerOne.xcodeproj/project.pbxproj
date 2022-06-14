@@ -1643,6 +1643,12 @@
 		09EED32E2857229900CB4A64 /* SubListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubListTableViewCell.xib; sourceTree = "<group>"; };
 		09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTriggerAlertView.swift; sourceTree = "<group>"; };
 		09EED34B28583AEB00CB4A64 /* empty-notofications.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-notofications.png"; sourceTree = "<group>"; };
+		09EED35228586E5B00CB4A64 /* cryptoVerOne_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cryptoVerOne_dev.entitlements; sourceTree = "<group>"; };
+		09EED353285870E100CB4A64 /* cryptoVerOne.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cryptoVerOne.entitlements; sourceTree = "<group>"; };
+		09EED354285870E700CB4A64 /* cryptoVerOne_stage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = cryptoVerOne_stage.entitlements; sourceTree = "<group>"; };
+		09EED355285870ED00CB4A64 /* Approval.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval.entitlements; sourceTree = "<group>"; };
+		09EED356285870F300CB4A64 /* Approval_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval_dev.entitlements; sourceTree = "<group>"; };
+		09EED357285870F800CB4A64 /* Approval_stage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval_stage.entitlements; sourceTree = "<group>"; };
 		09F7A7662840CC9E00E33C57 /* ResendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendDto.swift; sourceTree = "<group>"; };
 		0ADFFC7B1C77BE0C33F18E27 /* Pods_Approval_stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Approval_stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -2331,6 +2337,11 @@
 		A19C6FC5282218D6000AFC3F = {
 			isa = PBXGroup;
 			children = (
+				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
+				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
+				09EED355285870ED00CB4A64 /* Approval.entitlements */,
+				09EED354285870E700CB4A64 /* cryptoVerOne_stage.entitlements */,
+				09EED35228586E5B00CB4A64 /* cryptoVerOne_dev.entitlements */,
 				A19C6FD0282218D6000AFC3F /* cryptoVerOne */,
 				A19C6FCF282218D6000AFC3F /* Products */,
 				4CF017450A8210E3DB9084F3 /* Pods */,
@@ -2354,6 +2365,7 @@
 		A19C6FD0282218D6000AFC3F /* cryptoVerOne */ = {
 			isa = PBXGroup;
 			children = (
+				09EED353285870E100CB4A64 /* cryptoVerOne.entitlements */,
 				A1019DDE2824D0D200E6929E /* Template */,
 				A19C713D28225767000AFC3F /* SupportFile */,
 				A19C7045282233EF000AFC3F /* Util */,
@@ -4803,6 +4815,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4832,6 +4845,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4860,6 +4874,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4889,6 +4904,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4917,6 +4933,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4946,6 +4963,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "LaunchImage-1";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Approval.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 2;
@@ -4974,6 +4992,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -5003,6 +5022,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -5031,6 +5051,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -5060,6 +5081,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
@@ -5208,6 +5230,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3225266GV6;
@@ -5236,6 +5259,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = 3225266GV6;

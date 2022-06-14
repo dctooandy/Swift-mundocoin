@@ -127,7 +127,7 @@ class SocketIOManager: NSObject {
         content.title = "Socket receive"
         content.subtitle = "\(suvtitle)"
         content.body = "\(body)"
-        content.badge = 1
+//        content.badge = 1
         content.sound = UNNotificationSound.default
         
         // 設置通知的圖片

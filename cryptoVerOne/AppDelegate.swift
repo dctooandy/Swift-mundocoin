@@ -101,8 +101,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert,.sound,.badge, .carPlay], completionHandler: { (granted, error) in
             if granted {
                 Log.v("使用者 允許 接收通知")
-                application.registerForRemoteNotifications()
-                
+                DispatchQueue.main.async {
+                    application.registerForRemoteNotifications()
+                }
             } else {
                 Log.e("使用者 不允許 接收通知")
             }
