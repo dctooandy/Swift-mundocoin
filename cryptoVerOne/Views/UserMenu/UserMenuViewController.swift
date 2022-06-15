@@ -106,6 +106,10 @@ class UserMenuViewController: BaseViewController {
         popVC.start(viewController: self)
     }
     
+    func socketEmit()
+    {
+        SocketIOManager.sharedInstance.sendMessage(event: "echo", para: "123123123")
+    }
     func directToViewController() {
         DeepLinkManager.share.handleDeeplink(navigation: .login)
     }
@@ -208,6 +212,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //termPolicies
             case 5:
                 Log.i("about")
+                socketEmit()
                 //about
             case 7:
                 Log.i("logout")
