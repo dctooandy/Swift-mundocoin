@@ -15,7 +15,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-launch" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-qF-DWU">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="App_Launcher" translatesAutoresizingMaskIntoConstraints="NO" id="A9b-qF-DWU">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3 秒" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amd-PW-txc">
@@ -84,7 +84,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="bg-launch" width="375" height="812"/>
+        <image name="App_Launcher" width="1242" height="2688"/>
         <image name="icon-usdt" width="24" height="24"/>
         <image name="mundoLogo" width="37" height="37"/>
     </resources>
