@@ -8,6 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import UIKit
 
 class TransactionTableViewController: BaseViewController {
     // MARK:業務設定
@@ -19,14 +20,23 @@ class TransactionTableViewController: BaseViewController {
             bindView()
         }
     }
+    var data:[ContentDto] = [] {
+        didSet{
+            createData()
+        }
+    }
+    var sectionDic:[String:[ContentDto]] = [:]
+    
     // MARK: -
     // MARK:UI 設定
     var verifyView = TwoFAVerifyView()
+    var headerView: UILabel!
+    @IBOutlet weak var tableView: UITableView!
     // MARK: -
     // MARK:Life cycle
     // MARK: instance
     static func instance(mode: TransactionShowMode) -> TransactionTableViewController {
-        let vc = TransactionTableViewController()
+        let vc = TransactionTableViewController.loadNib()
         vc.showModeAtTableView = mode
         return vc
     }
@@ -51,15 +61,10 @@ class TransactionTableViewController: BaseViewController {
 
     func setup()
     {
-        
-//        let onlyView = TwoFAVerifyView.loadNib()
-//        onlyView.twoFAViewMode = twoFAViewMode
-//        self.verifyView = onlyView
-//        self.view.addSubview(self.verifyView)
-//        verifyView.snp.remakeConstraints { (make) in
-//            make.top.equalToSuperview().offset(42)
-//            make.leading.trailing.bottom.equalToSuperview()
-//        }
+        tableView.tableFooterView = nil
+        tableView.registerXibCell(type: TransHistoryCell.self)
+        tableView.separatorStyle = .none
+
     }
     func bindView()
     {
@@ -75,7 +80,30 @@ class TransactionTableViewController: BaseViewController {
 //            onSubmitOnlyTwoFAClick.onNext(stringData)
 //        }.disposed(by: dpg)
     }
-
+    func createData()
+    {
+        var daySactionArray:[String] = []
+        let oldFormatter = DateFormatter()
+        oldFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "MMMM dd,yyyy"
+        for dataDto in data {
+            let startDate = oldFormatter.date(from: dataDto.date)
+            let currentTimeString = newFormatter.string(from: startDate ?? Date())
+            if !daySactionArray.contains(currentTimeString)
+            {
+                daySactionArray.append(currentTimeString)
+            }
+            if sectionDic[currentTimeString] != nil
+            {
+                sectionDic[currentTimeString]?.append(dataDto)
+            }else
+            {
+                sectionDic[currentTimeString] = [dataDto]
+            }
+        }
+        tableView.reloadData()
+    }
     func modeTitle() -> String {
         switch showModeAtTableView
         {
@@ -88,3 +116,65 @@ class TransactionTableViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
+extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSource
+{
+    func numberOfSections(in tableView: UITableView) -> Int {
+        let sectionCount = sectionDic.keys.count
+        return sectionCount
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
+        if let rowNumber = sectionDic[keyArray[section]]?.count
+        {
+            return rowNumber
+        }else
+        {
+            return 0
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueCell(type: TransHistoryCell.self, indexPath: indexPath)
+        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
+        if let rowData = sectionDic[keyArray[indexPath.section]]
+        {
+            
+//            let currentData = showModeAtTableView.ascendType() ? rowData.sort(by: >) : rowData.sort(by: <)
+            cell.setData(data: rowData[indexPath.item] ,type: showModeAtTableView)
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let data = data[indexPath.item]
+//        onCellClick.onNext(data)
+        
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        self.headerView = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 24))
+        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
+        self.headerView.text = keyArray[section]
+        self.headerView.textAlignment = .center
+        self.headerView.backgroundColor = .clear
+        self.headerView.textColor = Themes.gray707EAE
+        self.headerView.font = Fonts.pingFangSCRegular(14)
+        return self.headerView
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 24
+    }
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return CGFloat.leastNormalMagnitude
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
+    }
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        if refreshControl.isRefreshing {
+//            refreshing()
+//        }
+    }
+}

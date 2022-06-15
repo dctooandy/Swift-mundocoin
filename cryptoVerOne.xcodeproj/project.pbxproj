@@ -1328,6 +1328,24 @@
 		09EED34F28583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
 		09EED35028583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
 		09EED35128583AEB00CB4A64 /* empty-notofications.png in Resources */ = {isa = PBXBuildFile; fileRef = 09EED34B28583AEB00CB4A64 /* empty-notofications.png */; };
+		09EED3592859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED35A2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED35B2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED35C2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED35D2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED35E2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */; };
+		09EED3602859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3612859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3622859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3632859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3642859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3652859CEC800CB4A64 /* TransHistoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */; };
+		09EED3672859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
+		09EED3682859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
+		09EED3692859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
+		09EED36A2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
+		09EED36B2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
+		09EED36C2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */; };
 		09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
 		09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F7A7662840CC9E00E33C57 /* ResendDto.swift */; };
@@ -1649,6 +1667,9 @@
 		09EED355285870ED00CB4A64 /* Approval.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval.entitlements; sourceTree = "<group>"; };
 		09EED356285870F300CB4A64 /* Approval_dev.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval_dev.entitlements; sourceTree = "<group>"; };
 		09EED357285870F800CB4A64 /* Approval_stage.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Approval_stage.entitlements; sourceTree = "<group>"; };
+		09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransactionTableViewController.xib; sourceTree = "<group>"; };
+		09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransHistoryCell.swift; sourceTree = "<group>"; };
+		09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransHistoryCell.xib; sourceTree = "<group>"; };
 		09F7A7662840CC9E00E33C57 /* ResendDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResendDto.swift; sourceTree = "<group>"; };
 		0ADFFC7B1C77BE0C33F18E27 /* Pods_Approval_stage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Approval_stage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		204AF00E8E21029CE74BA7EC /* Pods-cryptoVerOne.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne/Pods-cryptoVerOne.release.xcconfig"; sourceTree = "<group>"; };
@@ -2007,6 +2028,9 @@
 			isa = PBXGroup;
 			children = (
 				09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */,
+				09EED3582859CD6000CB4A64 /* TransactionTableViewController.xib */,
+				09EED35F2859CEC800CB4A64 /* TransHistoryCell.swift */,
+				09EED3662859CEEC00CB4A64 /* TransHistoryCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -2969,7 +2993,9 @@
 				09905B0F2851A02B00BAEE78 /* WalletViewController.xib in Resources */,
 				09905B102851A02B00BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED35D2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				09905B112851A02B00BAEE78 /* SignupSuccessView.xib in Resources */,
+				09EED36B2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				09905B122851A02B00BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905B132851A02B00BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905B142851A02B00BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
@@ -3044,7 +3070,9 @@
 				09905C012851A08500BAEE78 /* WalletViewController.xib in Resources */,
 				09905C022851A08500BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED35E2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				09905C032851A08500BAEE78 /* SignupSuccessView.xib in Resources */,
+				09EED36C2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				09905C042851A08500BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905C052851A08500BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905C062851A08500BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
@@ -3119,7 +3147,9 @@
 				09905CF32851A09600BAEE78 /* WalletViewController.xib in Resources */,
 				09905CF42851A09600BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED35C2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				09905CF52851A09600BAEE78 /* SignupSuccessView.xib in Resources */,
+				09EED36A2859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				09905CF62851A09600BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905CF72851A09600BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905CF82851A09600BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
@@ -3194,7 +3224,9 @@
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
 				09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8ED28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED35A2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				09CAF4E8283C77ED00D7B19B /* SignupSuccessView.xib in Resources */,
+				09EED3682859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
@@ -3269,7 +3301,9 @@
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
 				09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8EE28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED35B2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				09CAF5A9283C7BBE00D7B19B /* SignupSuccessView.xib in Resources */,
+				09EED3692859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
@@ -3344,7 +3378,9 @@
 				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
 				0909C8EC28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
+				09EED3592859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
 				A1973A81282A9600009932D8 /* UserMenuTableViewCell.xib in Resources */,
+				09EED3672859CEEC00CB4A64 /* TransHistoryCell.xib in Resources */,
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
@@ -3657,6 +3693,7 @@
 				09905A632851A02B00BAEE78 /* FilterBottomView.swift in Sources */,
 				09905A642851A02B00BAEE78 /* ObservableType+util.swift in Sources */,
 				A1ADAE2C285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3642859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905A652851A02B00BAEE78 /* BaseViewController.swift in Sources */,
 				09905A662851A02B00BAEE78 /* GradientView.swift in Sources */,
 				09905A672851A02B00BAEE78 /* NibOwnerLoadable.swift in Sources */,
@@ -3853,6 +3890,7 @@
 				09905B552851A08500BAEE78 /* FilterBottomView.swift in Sources */,
 				09905B562851A08500BAEE78 /* ObservableType+util.swift in Sources */,
 				A1ADAE2D285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3652859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905B572851A08500BAEE78 /* BaseViewController.swift in Sources */,
 				09905B582851A08500BAEE78 /* GradientView.swift in Sources */,
 				09905B592851A08500BAEE78 /* NibOwnerLoadable.swift in Sources */,
@@ -4049,6 +4087,7 @@
 				09905C472851A09600BAEE78 /* FilterBottomView.swift in Sources */,
 				09905C482851A09600BAEE78 /* ObservableType+util.swift in Sources */,
 				A1ADAE2B285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3632859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905C492851A09600BAEE78 /* BaseViewController.swift in Sources */,
 				09905C4A2851A09600BAEE78 /* GradientView.swift in Sources */,
 				09905C4B2851A09600BAEE78 /* NibOwnerLoadable.swift in Sources */,
@@ -4245,6 +4284,7 @@
 				09947B96284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09CAF463283C77ED00D7B19B /* ObservableType+util.swift in Sources */,
 				A1ADAE29285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3612859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
 				09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */,
@@ -4441,6 +4481,7 @@
 				09947B97284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09CAF524283C7BBE00D7B19B /* ObservableType+util.swift in Sources */,
 				A1ADAE2A285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3622859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
 				09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */,
@@ -4637,6 +4678,7 @@
 				09947B95284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				A19C708D28223A27000AFC3F /* ObservableType+util.swift in Sources */,
 				A1ADAE28285635C500B07B12 /* AuditTabbar.swift in Sources */,
+				09EED3602859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
 				A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */,

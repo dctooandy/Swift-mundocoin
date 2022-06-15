@@ -10,7 +10,7 @@ import RxSwift
 struct WalletTransactionDto :Codable {
 
     let size: Int
-    let content: [String]
+    let content: [ContentDto]
     let number: Int
     let sort : SortDto
     let pageable: PageableDto
@@ -19,7 +19,7 @@ struct WalletTransactionDto :Codable {
     let numberOfElements:Int
     let empty:Bool
 
-    init(size: Int = 0, content: [String] = [""], number: Int = 0 , sort:SortDto = SortDto() ,pageable: PageableDto = PageableDto(), first: Bool = false, last: Bool = false, numberOfElements: Int = 0, empty: Bool = false) {
+    init(size: Int = 0, content: [ContentDto] = [], number: Int = 0 , sort:SortDto = SortDto() ,pageable: PageableDto = PageableDto(), first: Bool = false, last: Bool = false, numberOfElements: Int = 0, empty: Bool = false) {
         self.size = size
         self.content = content
         self.number = number
@@ -47,3 +47,12 @@ struct PageableDto :Codable
     var paged:Bool = false
     var unpaged:Bool = false
 }
+
+struct ContentDto : Codable
+{
+    var date : String = ""
+    var currency : String = ""
+    var amount : String = ""
+    var status : String = ""
+}
+

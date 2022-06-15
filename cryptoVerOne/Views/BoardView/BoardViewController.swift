@@ -14,6 +14,16 @@ enum TransactionShowMode
 {
     case deposits
     case withdrawals
+    
+    func ascendType() -> Bool
+    {
+        switch self {
+        case .deposits:
+            return false
+        case .withdrawals:
+            return true
+        }
+    }
 }
 class BoardViewController: BaseViewController {
     // MARK:業務設定
@@ -22,9 +32,9 @@ class BoardViewController: BaseViewController {
     private let dpg = DisposeBag()
     var showMode : TransactionShowMode = .deposits{
         didSet{
-
         }
     }
+    var transContentDto : [ContentDto] = []
     // MARK: -
     // MARK:UI 設定
     var depositsViewController = TransactionTableViewController()
@@ -79,6 +89,16 @@ class BoardViewController: BaseViewController {
     {
         viewModel.rxWalletTransactionsSuccess().subscribeSuccess { dto in
             Log.v("交易紀錄Dto : \(dto)")
+            // 暫時假資料
+            for indexName in 0...10
+            {
+                let date = Date().addDay(day: -Int(indexName)%2)
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
+                let startDate = dateFormatter.string(from: date)
+                self.transContentDto.append(ContentDto(date: startDate, currency: "USDT", amount: "500" , status: "Pending"))
+            }
+            self.resetData()
         }.disposed(by: dpg)
     }
     func setupPageContainerView()
@@ -120,6 +140,14 @@ class BoardViewController: BaseViewController {
             make.left.right.bottom.equalToSuperview()
         })
         
+    }
+    func resetData()
+    {
+        let depositData = transContentDto
+        let withdrawData = transContentDto
+        depositsViewController.data = depositData
+        withdrawalsViewController.data = withdrawData
+        pageViewcontroller?.reloadData()
     }
     func setupPageVC()
     {
