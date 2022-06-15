@@ -248,6 +248,14 @@ class FilterBottomView: UIView {
         endDatePicker.addTarget(self, action: #selector(tap(_:)), for: .editingDidEnd)
         startDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
         endDatePicker.addTarget(self, action: #selector(changeClick(_:)), for: .valueChanged)
+        
+        // start 可以選擇的最早日期
+        let startDateValue = Date().addDay(day: -90)
+        let endDateValue = Date()
+        let startMinDate = dateFormatter.string(from: startDateValue)
+        let fromStartDateTime = dateFormatter.date(from: startMinDate)
+        startDatePicker.minimumDate = fromStartDateTime
+        endDatePicker.maximumDate = endDateValue
         historyView.rxCellClick().subscribeSuccess { data in
             if String(data.1) == "Deposits".localized
             {

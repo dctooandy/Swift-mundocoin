@@ -50,7 +50,7 @@ class LaunchReciprocalViewController: BaseViewController {
             strongSelf.count -= 1
             DispatchQueue.main.async {
                 print("倒數： \(strongSelf.count)")
-                strongSelf.reciprocalLabel.text = "\(strongSelf.count) 秒"
+//                strongSelf.reciprocalLabel.text = "\(strongSelf.count) 秒"
                 if strongSelf.count == 0 {
                     timer.invalidate()
                     if strongSelf.firstStart == false
