@@ -226,11 +226,27 @@ class WithdrawViewController: BaseViewController {
         securityVerifyVC = SecurityVerificationViewController.loadNib()
         securityVerifyVC.securityViewMode = .defaultMode
         securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](_) in
-            Log.i("驗證成功,開Detail")
-            showTransactionDetailView()
+            Log.i("驗證成功,開取款單")
+            toCreateWithdrawal()
+//            Log.i("驗證成功,開Detail")
+//            showTransactionDetailView()
             clearAllData()
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(securityVerifyVC, animated: true)
+    }
+    func toCreateWithdrawal()
+    {
+        if let textString = withdrawToView.textField.text,
+            let amountText = amountInputView.amountTextView.text,
+           let fee = feeAmountLabel.text
+        {
+            Beans.walletServer.walletWithdraw(amount: amountText, fArrdess: "Tasdasddadwadasdasdasdad", tAddress: textString).subscribeSuccess { [self] dto in
+                if let dataDto = dto
+                {
+                    
+                }
+            }.disposed(by: dpg)
+        }
     }
     func showTransactionDetailView()
     {

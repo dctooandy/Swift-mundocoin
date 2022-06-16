@@ -52,4 +52,23 @@ class WalletService {
                 return $0
             })
     }
+    
+    
+    func walletWithdraw(amount:String , fArrdess:String , tAddress:String) -> Single<WalletWithdrawDto?>
+    {
+        
+        var parameters: Parameters = [String: Any]()
+        parameters["amount"] = amount
+        parameters["fromAddress"] = fArrdess
+        parameters["toAddress"] = tAddress
+        
+        
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.walletWithdraw.path,
+            parameters: parameters,
+            modify: false,
+            resultType: WalletWithdrawDto.self).map({
+                return $0
+            })
+    }
 }

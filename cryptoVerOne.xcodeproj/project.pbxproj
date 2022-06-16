@@ -109,6 +109,12 @@
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
+		096BD769285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
+		096BD76A285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
+		096BD76B285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
+		096BD76C285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
+		096BD76D285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
+		096BD76E285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */; };
 		09905A332851A02B00BAEE78 /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
 		09905A342851A02B00BAEE78 /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
 		09905A352851A02B00BAEE78 /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFF28360DBE00755783 /* SaveButton.swift */; };
@@ -1604,6 +1610,7 @@
 		092E76092850998300221997 /* NotificationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDto.swift; sourceTree = "<group>"; };
 		092E760E2850A9D100221997 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
+		096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWithdrawDto.swift; sourceTree = "<group>"; };
 		09905B202851A02B00BAEE78 /* Approval_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Approval_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09905C122851A08500BAEE78 /* Approval_stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Approval_stage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09905D042851A09600BAEE78 /* Approval.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Approval.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2630,6 +2637,7 @@
 				09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */,
 				099371B128445DDD00D55E55 /* WalletBalancesDto.swift */,
 				09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */,
+				096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */,
 				09056D98284EF80300038BF8 /* WalletTransPostDto.swift */,
 				09EED3192857197900CB4A64 /* AuditTransactionDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
@@ -3762,6 +3770,7 @@
 				09905A9E2851A02B00BAEE78 /* Connectivity.swift in Sources */,
 				09905A9F2851A02B00BAEE78 /* AddressBookViewController.swift in Sources */,
 				09905AA02851A02B00BAEE78 /* OKButton.swift in Sources */,
+				096BD76D285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				09905AA12851A02B00BAEE78 /* RequestService.swift in Sources */,
 				09905AA22851A02B00BAEE78 /* Constants.swift in Sources */,
 				09905AA32851A02B00BAEE78 /* ConfirmBottomView.swift in Sources */,
@@ -3959,6 +3968,7 @@
 				09905B902851A08500BAEE78 /* Connectivity.swift in Sources */,
 				09905B912851A08500BAEE78 /* AddressBookViewController.swift in Sources */,
 				09905B922851A08500BAEE78 /* OKButton.swift in Sources */,
+				096BD76E285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				09905B932851A08500BAEE78 /* RequestService.swift in Sources */,
 				09905B942851A08500BAEE78 /* Constants.swift in Sources */,
 				09905B952851A08500BAEE78 /* ConfirmBottomView.swift in Sources */,
@@ -4156,6 +4166,7 @@
 				09905C822851A09600BAEE78 /* Connectivity.swift in Sources */,
 				09905C832851A09600BAEE78 /* AddressBookViewController.swift in Sources */,
 				09905C842851A09600BAEE78 /* OKButton.swift in Sources */,
+				096BD76C285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				09905C852851A09600BAEE78 /* RequestService.swift in Sources */,
 				09905C862851A09600BAEE78 /* Constants.swift in Sources */,
 				09905C872851A09600BAEE78 /* ConfirmBottomView.swift in Sources */,
@@ -4353,6 +4364,7 @@
 				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				09CAF48B283C77ED00D7B19B /* OKButton.swift in Sources */,
+				096BD76A285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				09CAF48C283C77ED00D7B19B /* RequestService.swift in Sources */,
 				09CAF48D283C77ED00D7B19B /* Constants.swift in Sources */,
 				09CAF48E283C77ED00D7B19B /* ConfirmBottomView.swift in Sources */,
@@ -4550,6 +4562,7 @@
 				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				09CAF54C283C7BBE00D7B19B /* OKButton.swift in Sources */,
+				096BD76B285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				09CAF54D283C7BBE00D7B19B /* RequestService.swift in Sources */,
 				09CAF54E283C7BBE00D7B19B /* Constants.swift in Sources */,
 				09CAF54F283C7BBE00D7B19B /* ConfirmBottomView.swift in Sources */,
@@ -4747,6 +4760,7 @@
 				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
 				A19C70B728223D2C000AFC3F /* OKButton.swift in Sources */,
+				096BD769285B38CA009D3191 /* WalletWithdrawDto.swift in Sources */,
 				A19C709328223A95000AFC3F /* RequestService.swift in Sources */,
 				A19C712A282256CC000AFC3F /* Constants.swift in Sources */,
 				A16F620C282E500000D9CCE5 /* ConfirmBottomView.swift in Sources */,
