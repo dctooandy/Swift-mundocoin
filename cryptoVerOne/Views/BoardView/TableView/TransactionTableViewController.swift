@@ -64,7 +64,8 @@ class TransactionTableViewController: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: TransHistoryCell.self)
         tableView.separatorStyle = .none
-
+        tableView.backgroundView = NoDataView(image: UIImage(named: "empty-list"), title: "No records found" , subTitle: "You have no transactions")
+        tableView.backgroundView?.isHidden = false
     }
     func bindView()
     {
@@ -118,6 +119,7 @@ class TransactionTableViewController: BaseViewController {
 //                sectionDic[currentTimeString] = [dataDto]
 //            }
         }
+        tableView.backgroundView?.isHidden = data.count > 0 ? true : false
         tableView.reloadData()
     }
     func modeTitle() -> String {

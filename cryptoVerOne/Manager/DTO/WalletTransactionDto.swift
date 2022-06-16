@@ -47,13 +47,54 @@ struct PageableDto :Codable
     var paged:Bool = false
     var unpaged:Bool = false
 }
-
 struct ContentDto : Codable
 {
-    var date : TimeInterval = 0.0
-    var currency : String = ""
-    var amount : String = ""
-    var status : String = ""
-    var transType : String = ""
-}
+    var date : TimeInterval
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let frontTime = createdDate.components(separatedBy: "T").first!
+        let subTime = createdDate.components(separatedBy: "T").last!
+        let subSubtime = subTime.components(separatedBy: "+").first!
+        let aftertime = subSubtime.components(separatedBy: ".").first!
+        let totalTime = "\(frontTime) \(aftertime)"
+        if let dateFromString = dateFormatter.date(from:totalTime ) {
+            return dateFromString.timeIntervalSince1970
+        }else
+        {
+            return 0.0
+        }
+    }
 
+    var amount : Int? = 0    
+    var id : String = ""
+    var createdDate : String = ""
+    var updatedDate : String = ""
+    var type : String = ""
+    var orderId : String = ""
+    var currency : String = ""
+    var txId : String? = ""
+    var blockHeight : String? = ""
+    var fees : Int? = 0
+    var broadcastTimestamp : TimeInterval? = 0
+    var chainTimestamp : TimeInterval? = 0
+    var fromAddress : String = ""
+    var toAddress : String = ""
+    var associatedWalletId : Int = 0
+    var state : String = ""
+    var confirmBlocks : Int = 0
+    var processingState : String = ""
+    var decimal : Int = 0
+    var currencyBip44 : Int = 0
+    var tokenAddress : String? = ""
+    var memo : String? = ""
+    var errorReason : String? = ""
+    var amlScreenPass : String? = ""
+    var feeDecimal : Int? = 0
+    var tindex : String? = ""
+    var voutIndex : String? = ""
+
+}

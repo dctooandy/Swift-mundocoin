@@ -89,21 +89,21 @@ class BoardViewController: BaseViewController {
     {
         viewModel.rxWalletTransactionsSuccess().subscribeSuccess { dto in
             Log.v("交易紀錄Dto : \(dto)")
+            self.transContentDto = dto.content
             // 暫時假資料
-            for indexName in 0...100
-            {
-                let date = Date().addDay(day: -Int(indexName))
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
-//                let startDate = dateFormatter.string(from: date)
-                let startDate = date.timeIntervalSince1970
-                self.transContentDto
-                    .append(ContentDto(date: startDate,
-                                       currency: "USDT",
-                                       amount: "500" ,
-                                       status: Int(indexName)%4 == 0 ? "Pending": (Int(indexName)%4 == 1 ? "Processing" : (Int(indexName)%4 == 2 ? "Completed" : "Cencel")) ,
-                                       transType: Int(indexName)%2 == 0 ? "Deposits":"Withdrawals"))
-            }
+//            for indexName in 0...100
+//            {
+//                let date = Date().addDay(day: -Int(indexName))
+//                let dateFormatter = DateFormatter()
+//                dateFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
+//                let startDate = date.timeIntervalSince1970
+//                self.transContentDto
+//                    .append(ContentDto(date: startDate,
+//                                       currency: "USDT",
+//                                       amount: "500" ,
+//                                       status: Int(indexName)%4 == 0 ? "Pending": (Int(indexName)%4 == 1 ? "Processing" : (Int(indexName)%4 == 2 ? "Completed" : "Cencel")) ,
+//                                       transType: Int(indexName)%2 == 0 ? "Deposits":"Withdrawals"))
+//            }
             self.resetData()
         }.disposed(by: dpg)
     }

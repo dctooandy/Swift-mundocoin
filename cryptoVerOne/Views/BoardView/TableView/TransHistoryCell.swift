@@ -46,7 +46,7 @@ class TransHistoryCell: UITableViewCell {
 //        let startDate = dateFormatter.date(from: data.date)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        amountLabel.text = data.amount
+        amountLabel.text = String(format: "%.0f", data.amount ?? 0)
         self.historyType = type
         if historyType == .deposits
         {
@@ -54,7 +54,7 @@ class TransHistoryCell: UITableViewCell {
         }else
         {
             statusLabel.isHidden = false
-            statusLabel.text = data.status
+            statusLabel.text = data.state
         }
     }
     func setupUI()
