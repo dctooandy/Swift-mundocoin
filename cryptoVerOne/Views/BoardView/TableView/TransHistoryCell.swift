@@ -38,8 +38,13 @@ class TransHistoryCell: UITableViewCell {
         currencyLabel.text = data.currency
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
-        let startDate = dateFormatter.date(from: data.date)
-        let currentTimeString = dateFormatter.string(from: startDate ?? Date())
+        // 將時間戳轉換成 TimeInterval
+        let timeInterval = TimeInterval(data.date)
+        // 初始化一個 Date
+        let date = Date(timeIntervalSince1970: timeInterval)
+
+//        let startDate = dateFormatter.date(from: data.date)
+        let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
         amountLabel.text = data.amount
         self.historyType = type

@@ -50,9 +50,10 @@ struct PageableDto :Codable
 
 struct ContentDto : Codable
 {
-    var date : String = ""
+    var date : TimeInterval = 0.0
     var currency : String = ""
     var amount : String = ""
     var status : String = ""
+    var transType : String = ""
 }
 

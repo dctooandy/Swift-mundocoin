@@ -255,6 +255,7 @@ class FilterBottomView: UIView {
         let startMinDate = dateFormatter.string(from: startDateValue)
         let fromStartDateTime = dateFormatter.date(from: startMinDate)
         startDatePicker.minimumDate = fromStartDateTime
+        startDatePicker.maximumDate = endDateValue
         endDatePicker.maximumDate = endDateValue
         historyView.rxCellClick().subscribeSuccess { data in
             if String(data.1) == "Deposits".localized

@@ -118,7 +118,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
-        _ = KeychainManager.share.setDomainMode(.Stage)
         if isLaunchBefore() == false {
 #if Mundo_PRO
             _ = KeychainManager.share.setDomainMode(.Pro)

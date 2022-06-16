@@ -82,25 +82,41 @@ class TransactionTableViewController: BaseViewController {
     }
     func createData()
     {
-        var daySactionArray:[String] = []
+        var daySactionStringArray:[String] = []
         let oldFormatter = DateFormatter()
         oldFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "MMMM dd,yyyy"
         for dataDto in data {
-            let startDate = oldFormatter.date(from: dataDto.date)
-            let currentTimeString = newFormatter.string(from: startDate ?? Date())
-            if !daySactionArray.contains(currentTimeString)
+            // 將時間戳轉換成 TimeInterval
+            let timeInterval = TimeInterval(dataDto.date)
+            // 初始化一個 Date
+            let date = Date(timeIntervalSince1970: timeInterval)
+            //            let startDate = oldFormatter.date(from: dataDto.date)
+            let currentTimeString = newFormatter.string(from: date )
+            let newTimeInt = newFormatter.date(from: currentTimeString)?.timeIntervalSince1970
+            
+            if !daySactionStringArray.contains(newTimeInt?.intervalToString() ?? "0")
             {
-                daySactionArray.append(currentTimeString)
+                daySactionStringArray.append(newTimeInt?.intervalToString() ?? "0")
             }
-            if sectionDic[currentTimeString] != nil
+            if let timeString = newTimeInt?.intervalToString()
             {
-                sectionDic[currentTimeString]?.append(dataDto)
-            }else
-            {
-                sectionDic[currentTimeString] = [dataDto]
+                if sectionDic[timeString] != nil
+                {
+                    sectionDic[timeString]?.append(dataDto)
+                }else
+                {
+                    sectionDic[timeString] = [dataDto]
+                }
             }
+//            if sectionDic[currentTimeString] != nil
+//            {
+//                sectionDic[currentTimeString]?.append(dataDto)
+//            }else
+//            {
+//                sectionDic[currentTimeString] = [dataDto]
+//            }
         }
         tableView.reloadData()
     }
@@ -124,7 +140,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
+        let keyArray = Array(sectionDic.keys).sorted(by: >)
         if let rowNumber = sectionDic[keyArray[section]]?.count
         {
             return rowNumber
@@ -136,12 +152,11 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell(type: TransHistoryCell.self, indexPath: indexPath)
-        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
+        let keyArray = Array(sectionDic.keys).sorted(by: >)
         if let rowData = sectionDic[keyArray[indexPath.section]]
         {
-            
-//            let currentData = showModeAtTableView.ascendType() ? rowData.sort(by: >) : rowData.sort(by: <)
-            cell.setData(data: rowData[indexPath.item] ,type: showModeAtTableView)
+            let currentData = rowData.sorted(by: { $0.date > $1.date })
+            cell.setData(data: currentData[indexPath.item] ,type: showModeAtTableView)
         }
         return cell
     }
@@ -155,8 +170,15 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         self.headerView = UILabel(frame: CGRect(x: 0, y: 0, width: self.tableView.bounds.width, height: 24))
-        let keyArray = showModeAtTableView.ascendType() ? Array(sectionDic.keys).sorted(by: <) : Array(sectionDic.keys).sorted(by: >)
-        self.headerView.text = keyArray[section]
+        let keyArray = Array(sectionDic.keys).sorted(by: >)
+        let newFormatter = DateFormatter()
+        newFormatter.dateFormat = "MMMM dd,yyyy"
+        let timeInterval = TimeInterval(keyArray[section])
+        // 初始化一個 Date
+        let date = Date(timeIntervalSince1970: timeInterval!)
+        //            let startDate = oldFormatter.date(from: dataDto.date)
+        let currentTimeString = newFormatter.string(from: date )
+        self.headerView.text = currentTimeString
         self.headerView.textAlignment = .center
         self.headerView.backgroundColor = .clear
         self.headerView.textColor = Themes.gray707EAE
