@@ -243,26 +243,25 @@ class WithdrawViewController: BaseViewController {
             Beans.walletServer.walletWithdraw(amount: amountText, fArrdess: "Tasdasddadwadasdasdasdad", tAddress: textString).subscribeSuccess { [self] dto in
                 if let dataDto = dto
                 {
-                    
+                    showTransactionDetailView(dataDto:dataDto)
                 }
             }.disposed(by: dpg)
         }
     }
-    func showTransactionDetailView()
+    func showTransactionDetailView(dataDto : WalletWithdrawDto)
     {
-        if let textString = withdrawToView.textField.text,
-            let amountText = amountInputView.amountTextView.text,
+        if let amountText = dataDto.transaction.amount,
            let fee = feeAmountLabel.text
         {
-            let detailData = DetailDto(defailType: .done,
-                                       amount: amountText,
-                                       tether: "USDT",
+            let detailData = DetailDto(defailType: dataDto.defailType,
+                                       amount: String(amountText),
+                                       tether: dataDto.transaction.currency,
                                        network: "Tron(TRC20)",
                                        confirmations: "50/1",
                                        fee:fee,
-                                       date: "April18,2022 11:01",
-                                       address: textString,
-                                       txid: "37f5d6c3d1c4408a47e34601febd78 ad9be79473df71742805a8b2a339c25b9e")
+                                       date: dataDto.createdDateString,
+                                       address: dataDto.transaction.toAddress,
+                                       txid: dataDto.transaction.txId ?? "")
             let detailVC = TDetailViewController.loadNib()
             detailVC.titleString = "Withdraw"
             detailVC.detailDataDto = detailData

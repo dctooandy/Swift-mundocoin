@@ -24,7 +24,7 @@ class TDetailViewController: BaseViewController {
     var detailType : DetailType = .pending
     var detailDataDto : DetailDto? {
         didSet{
-            
+            resetUI()
         }
     }
     // MARK: -
@@ -54,7 +54,6 @@ class TDetailViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupData()
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,7 +64,7 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        topView.topViewType = .failed
+        
         checkButton.setTitle("Check History".localized, for: .normal)
         checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
@@ -79,8 +78,16 @@ class TDetailViewController: BaseViewController {
     }
     func setupData()
     {
-        dataListView.detailDataDto = detailDataDto
-        dataListView.viewType = detailType
+        if let dataDto = detailDataDto
+        {
+            dataListView.detailDataDto = dataDto
+            dataListView.viewType = dataDto.defailType
+            topView.topViewType = dataDto.defailType
+        }
+    }
+    func resetUI()
+    {
+        
     }
 }
 // MARK: -
