@@ -34,14 +34,16 @@ class WalletService {
                 return $0
             })
     }
-    func walletTransactions(currency:String = "" , stats : String = "", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :String = "") -> Single<WalletTransactionDto?>
+    func walletTransactions(currency:String = "ALL" , stats : String = "ALL", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :PagePostDto = PagePostDto()) -> Single<WalletTransactionDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["currency"] = currency
         parameters["stats"] = stats
         parameters["beginDate"] = beginDate
         parameters["endDate"] = endDate
-        parameters["pageable"] = pageable
+        parameters["page"] = pageable.page
+        parameters["size"] = pageable.size
+//        parameters["pageable"] = pageable.toJsonString
         
         
         return Beans.requestServer.singleRequestGet(

@@ -71,7 +71,10 @@ extension Date {
         let d = Calendar.current.date(byAdding: .day, value: day, to: self)!
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: d)!
     }
-    
+    func addEndOfDay() -> Date {
+        let d = Calendar.current.date(byAdding: .day, value: 0, to: self)!
+        return Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: d)!
+    }
     func startOfWeek() -> Date {
         let gregorian = Calendar(identifier: .gregorian)
         return gregorian.date(from: gregorian.dateComponents([.yearForWeekOfYear, .weekOfYear], from: self))!

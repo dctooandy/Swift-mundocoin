@@ -29,7 +29,7 @@ enum FilterLabelType {
         case .history:
             return 2
         case .status:
-            return 4
+            return 5
         case .networkMethod:
             return 1
         }
@@ -44,22 +44,6 @@ enum FilterLabelType {
             return "NetWork Method".localized
         }
     }
-//    var title:String {
-//        switch self {
-//        case .deposits:
-//            return "Deposits".localized
-//        case .withdrawals:
-//            return "Withdrawals".localized
-//        case .all:
-//            return "All".localized
-//        case .pending:
-//            return "Pending".localized
-//        case .processing:
-//            return "Processing".localized
-//        case .completed:
-//            return "Completed".localized
-//        }
-//    }
     var titles:[String] {
         switch self {
         case .history:
@@ -69,7 +53,8 @@ enum FilterLabelType {
             return ["All".localized,
                     "Pending".localized,
                     "Processing".localized,
-                    "Completed".localized]
+                    "Completed".localized,
+                    "Failed".localized]
         case .networkMethod:
             return ["TRC20".localized]
         }
@@ -83,7 +68,8 @@ enum FilterLabelType {
             return ["All".localized.customWidth(),
                     "Pending".localized.customWidth(),
                     "Processing".localized.customWidth(),
-                    "Completed".localized.customWidth()]
+                    "Completed".localized.customWidth(),
+                    "Failed".localized.customWidth()]
         case .networkMethod:
             return ["TRC20".localized.customWidth()]
         }
@@ -101,14 +87,23 @@ class FilterBottomView: UIView {
     var showModeAtView : TransactionShowMode = .withdrawals
     {
         didSet{
+            if showModeAtView == .deposits
+            {
+                filterHistoryValue = "DEPOSIT"
+            }else
+            {
+                filterHistoryValue = "WITHDRAW"
+            }
             TwoSideStyle.share.acceptSheetHeightStyle(showModeAtView)
             historyView.collectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
     var transPostDto :WalletTransPostDto = WalletTransPostDto()
+    var filterHistoryValue:String = "DEPOSIT"
+    var filterStateValue:String = "ALL"
+    
     // MARK: -
     // MARK:UI 設定
-    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateContainerView: UIView!
     @IBOutlet weak var cryptoContainerView: UIView!
@@ -198,7 +193,8 @@ class FilterBottomView: UIView {
         // 可以選擇的最早日期時間
         let fromDateTime = dateFormatter.date(from: startDate)
         endDatePicker.minimumDate = fromDateTime
-        
+        startDatePicker.date = Date()
+        endDatePicker.date = Date()
         // 使用 UIDatePicker(frame:) 建立一個 UIDatePicker
 //        myDatePicker = UIDatePicker()
 //        // 設置 UIDatePicker 格式
@@ -257,18 +253,43 @@ class FilterBottomView: UIView {
         startDatePicker.minimumDate = fromStartDateTime
         startDatePicker.maximumDate = endDateValue
         endDatePicker.maximumDate = endDateValue
-        historyView.rxCellClick().subscribeSuccess { data in
+        historyView.rxCellClick().subscribeSuccess { [self] data in
             if String(data.1) == "Deposits".localized
             {
+                filterHistoryValue = "DEPOSIT"
                 TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
             }else
             {
+                filterHistoryValue = "WITHDRAW"
                 TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
             }
         }.disposed(by: dpg)
-        statusView.rxCellClick().subscribeSuccess { data in
+        statusView.rxCellClick().subscribeSuccess { [self] data in
             Log.v("Status 點到 \(data.1)")
+            filterStateValue = changeString(dataString: data.1)
         }.disposed(by: dpg)
+    }
+    func changeString(dataString:String) -> String
+    {
+        if dataString == "All"
+        {
+            return "ALL"
+        }else if dataString == "Pending"
+        {
+            return "PENDING"
+        }else if dataString == "Processing"
+        {
+            return "PROCESSING"
+        }else if dataString == "Completed"
+        {
+            return "DONE"
+        }else if dataString == "Failed"
+        {
+            return "FAILED"
+        }else
+        {
+            return "ALL"
+        }
     }
     @objc func tap(_ sender: UIDatePicker) {
         if sender == startDatePicker
@@ -313,11 +334,15 @@ class FilterBottomView: UIView {
         if sender == confirmButton {
             Log.v("Confirm")
             let startDate = dateFormatter.string(from: startDatePicker.date)
-            let endDate = dateFormatter.string(from: endDatePicker.date)
+//            let endDate = dateFormatter.string(from: endDatePicker.date)
             let beginTime = dateFormatter.date(from: startDate)?.timeIntervalSince1970
-            let endTime = dateFormatter.date(from: endDate)?.timeIntervalSince1970
-            transPostDto.beginDate = beginTime!
-            transPostDto.endDate = endTime!
+//            let endTime = dateFormatter.date(from: endDate)?.timeIntervalSince1970
+            let endTime = endDatePicker.date.addEndOfDay().timeIntervalSince1970
+            transPostDto.beginDate = beginTime! * 1000
+            transPostDto.endDate = endTime * 1000
+            transPostDto.currency = "ALL"
+            transPostDto.stats = filterStateValue
+            transPostDto.historyType = filterHistoryValue
             onConfirmTrigger.onNext(transPostDto)
         } else {
             Log.v("Reset")
@@ -330,7 +355,7 @@ class FilterBottomView: UIView {
         // 暫時寫死
         transPostDto.currency = "ALL"
         transPostDto.stats = "ALL"
-        transPostDto.pageable = "{}"
+        transPostDto.pageable = PagePostDto()
         let startDate = dateFormatter.string(from: startDatePicker.date)
         let endDate = dateFormatter.string(from: endDatePicker.date)
         let beginTime = dateFormatter.date(from: startDate)?.timeIntervalSince1970

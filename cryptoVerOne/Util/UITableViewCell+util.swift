@@ -33,5 +33,28 @@ extension UITableView {
     func registerXibHeader(type: AnyClass) {
         self.register(UINib(nibName: "\(type)", bundle: nil), forHeaderFooterViewReuseIdentifier: NSStringFromClass(type))
     }
-    
+    func refrashControl(tintColor: UIColor) -> UIRefreshControl{
+        let refrashControl = UIRefreshControl()
+        //let attributes = [NSAttributedString.Key.foregroundColor: UIColor.yellow]
+        //refrashController.attributedTitle = NSAttributedString(string: "正在更新", attributes: attributes)
+        refrashControl.tintColor = tintColor
+        refrashControl.backgroundColor = .clear
+        self.addSubview(refrashControl)
+        return refrashControl
+    }
+    func footerRefrashView() -> UIView{
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        view.backgroundColor = .clear
+        let activity = UIActivityIndicatorView()
+        activity.style = .gray
+        activity.backgroundColor = .clear
+        view.addSubview(activity)
+        activity.snp.makeConstraints { (maker) in
+            maker.width.equalTo(40)
+            maker.height.equalTo(40)
+            maker.center.equalToSuperview()
+        }
+        activity.startAnimating()
+        return view
+    }
 }

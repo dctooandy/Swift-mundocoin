@@ -12,7 +12,7 @@ import UIKit
 
 class TransactionTableViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onPullUpToRefrash = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var showModeAtTableView : TransactionShowMode = .deposits{
         didSet{
@@ -32,6 +32,7 @@ class TransactionTableViewController: BaseViewController {
     var verifyView = TwoFAVerifyView()
     var headerView: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    var bottomRefrash: UIView?
     // MARK: -
     // MARK:Life cycle
     // MARK: instance
@@ -66,6 +67,7 @@ class TransactionTableViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.backgroundView = NoDataView(image: UIImage(named: "empty-list"), title: "No records found" , subTitle: "You have no transactions")
         tableView.backgroundView?.isHidden = false
+        self.bottomRefrash = tableView.footerRefrashView()
     }
     func bindView()
     {
@@ -80,6 +82,12 @@ class TransactionTableViewController: BaseViewController {
 //            Log.i("發送submit請求 ,onlyTwoFA:\(stringData)")
 //            onSubmitOnlyTwoFAClick.onNext(stringData)
 //        }.disposed(by: dpg)
+    }
+    func clearData()
+    {
+        sectionDic.removeAll()
+        tableView.backgroundView?.isHidden = false
+        tableView.reloadData()
     }
     func createData()
     {
@@ -119,7 +127,8 @@ class TransactionTableViewController: BaseViewController {
 //                sectionDic[currentTimeString] = [dataDto]
 //            }
         }
-        tableView.backgroundView?.isHidden = data.count > 0 ? true : false
+        
+        tableView.backgroundView?.isHidden = sectionDic.keys.count > 0 ? true : false
         tableView.reloadData()
     }
     func modeTitle() -> String {
@@ -130,6 +139,10 @@ class TransactionTableViewController: BaseViewController {
         case .withdrawals:
             return  "Withdrawals".localized
         }
+    }
+    func rxPullUpToRefrash() -> Observable<Any>
+    {
+        return onPullUpToRefrash.asObserver()
     }
 }
 // MARK: -
@@ -163,7 +176,13 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let data = data[indexPath.item]
+        let keyArray = Array(sectionDic.keys).sorted(by: >)
+        if let rowData = sectionDic[keyArray[indexPath.section]]
+        {
+            let currentData = rowData.sorted(by: { $0.date > $1.date })
+            Log.v("currentData \(currentData[indexPath.item])")
+        }
+        
 //        onCellClick.onNext(data)
         
     }
@@ -200,5 +219,23 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
 //        if refreshControl.isRefreshing {
 //            refreshing()
 //        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+        if scrollView == self.tableView{
+            let offset = scrollView.contentOffset
+            let bouns = scrollView.bounds
+            let size = scrollView.contentSize
+            let inset = scrollView.contentInset
+            let y = offset.y + bouns.size.height - inset.bottom
+            let h = size.height
+            let reloadDistence = 50.0
+             if y > h + reloadDistence{
+                tableView.tableFooterView = self.bottomRefrash
+                print("底部刷新資料")
+                 self.onPullUpToRefrash.onNext(())
+            }
+            
+        }
     }
 }

@@ -38,14 +38,52 @@ struct SortDto :Codable
     var sorted:Bool = false
     var unsorted:Bool = false
 }
+struct PagePostDto : Codable
+{
+    var size:String = "10"
+    var page:String = "0"
+    var toJsonString: String {
+        do {
+            let jsonData = try self.jsonData()
+            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                return ""
+            }
+            return jsonString
+        } catch  {
+        }
+        return ""
+    }
+}
 struct PageableDto :Codable
 {
     var offset :Int = 0
     var sort :SortDto = SortDto()
     var pageNumber:Int = 0
-    var pageSize:Int = 0
+    var pageSize:Int = 20
     var paged:Bool = false
     var unpaged:Bool = false
+    
+    var toJsonString: String {
+        do {
+            let jsonData = try self.jsonData()
+            //            let json = try JSONSerialization.jsonObject(with: jsonData, options: [])
+            //                  guard let dictionary = json as? [String : Any] else {
+            //                    return [:]
+            //                  }
+            //            return dictionary as Dictionary
+            // Use dictionary
+            
+            guard let jsonString = String(data: jsonData, encoding: .utf8) else {
+                return ""
+            }
+            return jsonString
+            //                  // Print jsonString
+            //                  print(jsonString)
+        } catch  {
+            
+        }
+        return ""
+    }
 }
 struct ContentDto : Codable
 {
