@@ -12,7 +12,7 @@ import RxSwift
 
 class TransDetailView: UIStackView ,NibOwnerLoadable{
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onAddAddressClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     var detailDataDto : DetailDto? {
         didSet{
@@ -45,7 +45,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
-    @IBOutlet weak var CompletedModeView: UIView!
+    @IBOutlet weak var completedModeView: UIView!
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var dataListView: UIStackView!
     @IBOutlet weak var withdrawToView: UIView!
@@ -147,13 +147,19 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         Themes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
         Themes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
         Themes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
-        Themes.completeViewType.bind(to: CompletedModeView.rx.isHidden).disposed(by: dpg)
+        Themes.completeViewType.bind(to: completedModeView.rx.isHidden).disposed(by: dpg)
         if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first,
            let dateView = dataListViewArray.filter({ $0.tag == 5 }).first
         {
             Themes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
             Themes.txidViewType.bind(to: dateView.rx.isHidden).disposed(by: dpg)            
         }
+        withdrawToInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
+            if let addressText = withdrawToInputView.normalTextLabel.text
+            {
+                onAddAddressClick.onNext(addressText)
+            }
+        }.disposed(by: dpg)
         
         
     }
@@ -170,6 +176,10 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             feeLabel.text = dto.fee
             dateLabel.text = dto.date
         }
+    }
+    func rxAddAddressClick() -> Observable<String>
+    {
+        return onAddAddressClick.asObserver()
     }
 }
 // MARK: -

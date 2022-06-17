@@ -64,7 +64,6 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        
         checkButton.setTitle("Check History".localized, for: .normal)
         checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
@@ -77,6 +76,12 @@ class TDetailViewController: BaseViewController {
             let boardVC = BoardViewController.loadNib()
             self.navigationController?.viewControllers = [WalletViewController.share]
             WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
+        }.disposed(by: dpg)
+        dataListView.rxAddAddressClick().subscribeSuccess { [self] addressString in
+            Log.i("增加錢包地址")
+            let addVC = AddNewAddressViewController.loadNib()
+            addVC.newAddressString = addressString
+            navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
     }
     func setupData()

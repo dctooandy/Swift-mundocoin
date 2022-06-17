@@ -15,6 +15,7 @@ class AddNewAddressViewController: BaseViewController {
     private let dpg = DisposeBag()
     private var currentNetwotkMethod = ""
     var isScanPopAction = false
+    var newAddressString :String = "" 
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -45,10 +46,11 @@ class AddNewAddressViewController: BaseViewController {
         bindSacnVC()
         setupUI()
         setupKeyboardNoti()
+        setupAddressStyleView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        setupAddressStyleView()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -199,6 +201,11 @@ class AddNewAddressViewController: BaseViewController {
             isScanPopAction = true
             self.navigationController?.pushViewController(scanVC, animated: true)
         }.disposed(by: dpg)
+    }
+    func setupAddressStyleView()
+    {
+        addressStyleView.textField.text = newAddressString
+        addressStyleView.textField.sendActions(for: .valueChanged)
     }
 //    func clearAllData ()
 //    {
