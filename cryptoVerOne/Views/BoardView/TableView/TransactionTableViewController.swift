@@ -140,6 +140,26 @@ class TransactionTableViewController: BaseViewController {
             return  "Withdrawals".localized
         }
     }
+    func pushToDetailVC(contentDto:ContentDto)
+    {
+        if let amountValue = contentDto.amount
+        {
+            let detailData = DetailDto(defailType: .failed,
+                                       amount: String(amountValue),
+                                       tether: contentDto.currency,
+                                       network: "Tron(TRC20)",
+                                       confirmations: "50/1",
+                                       fee:"1",
+                                       date: contentDto.createdDateString,
+                                       address: contentDto.toAddress,
+                                       txid: contentDto.txId ?? "")
+            let detailVC = TDetailViewController.loadNib()
+            detailVC.titleString = "Withdraw"
+            detailVC.detailDataDto = detailData
+            detailVC.hiddenMode = .topViewHidden
+            self.navigationController?.pushViewController(detailVC, animated: true)
+        }
+    }
     func rxPullUpToRefrash() -> Observable<Any>
     {
         return onPullUpToRefrash.asObserver()
@@ -181,9 +201,8 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         {
             let currentData = rowData.sorted(by: { $0.date > $1.date })
             Log.v("currentData \(currentData[indexPath.item])")
+            pushToDetailVC(contentDto: currentData[indexPath.item])
         }
-        
-//        onCellClick.onNext(data)
         
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -21,10 +21,10 @@ struct WalletWithdrawDto :Codable {
         if self.state == "PENDING"
         {
             return .pending
-        }else if state == "failed"
+        }else if state == "FAILED"
         {
             return.failed
-        }else if state == "processing"
+        }else if state == "PROCESSING"
         {
             return .processing
         }else

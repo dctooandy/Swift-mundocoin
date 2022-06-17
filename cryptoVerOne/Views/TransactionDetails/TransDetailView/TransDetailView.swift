@@ -46,6 +46,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var completedModeView: UIView!
+    @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var dataListView: UIStackView!
     @IBOutlet weak var withdrawToView: UIView!
@@ -146,13 +148,19 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         }.disposed(by: dpg)
         Themes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
         Themes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
+        
         Themes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
         Themes.completeViewType.bind(to: completedModeView.rx.isHidden).disposed(by: dpg)
-        if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first,
-           let dateView = dataListViewArray.filter({ $0.tag == 5 }).first
+        Themes.topViewIconType.bind(to: iconImageView.rx.image).disposed(by: dpg)
+        Themes.topViewLabelText.bind(to: statusLabel.rx.text).disposed(by: dpg)
+        Themes.topViewLabelTextColor.bind(to: statusLabel.rx.textColor).disposed(by: dpg)
+        if let confirmationsView = dataListViewArray.filter({ $0.tag == 3 }).first
+        {
+            Themes.txidViewType.bind(to: confirmationsView.rx.isHidden).disposed(by: dpg)
+        }
+        if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
         {
             Themes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
-            Themes.txidViewType.bind(to: dateView.rx.isHidden).disposed(by: dpg)            
         }
         withdrawToInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
             if let addressText = withdrawToInputView.normalTextLabel.text

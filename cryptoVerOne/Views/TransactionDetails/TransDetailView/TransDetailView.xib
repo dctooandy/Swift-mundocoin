@@ -18,10 +18,12 @@
                 <outlet property="dataListView" destination="nJu-ah-Udp" id="1EU-8I-zEL"/>
                 <outlet property="dateLabel" destination="qG3-jX-h8R" id="url-Mk-KQP"/>
                 <outlet property="feeLabel" destination="dxb-zD-qgh" id="im6-45-vnD"/>
+                <outlet property="iconImageView" destination="IYQ-lI-Xzh" id="Xf5-Wn-FpW"/>
                 <outlet property="networkLabel" destination="PyO-VE-k4z" id="VqV-Zu-x01"/>
                 <outlet property="pendingImageView" destination="DPG-mz-SGa" id="vin-1P-to2"/>
                 <outlet property="processingImageView" destination="jTT-LC-CO7" id="NnE-fb-uNL"/>
                 <outlet property="processingLabel" destination="K4K-1h-WQV" id="1ZG-Is-QAW"/>
+                <outlet property="statusLabel" destination="tsR-yw-C2f" id="TwH-hJ-P09"/>
                 <outlet property="switchModeView" destination="Y0D-XE-CGA" id="n3c-c7-qYN"/>
                 <outlet property="tetherLabel" destination="Zjq-V3-anh" id="COu-Jy-nok"/>
                 <outlet property="topAmountLabel" destination="g9R-CL-WEb" id="rMJ-02-cGj"/>

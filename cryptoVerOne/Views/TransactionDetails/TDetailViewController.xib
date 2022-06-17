@@ -91,6 +91,7 @@
                 <outlet property="checkButton" destination="fWD-AR-dpF" id="7jB-V4-1Jq"/>
                 <outlet property="dataListView" destination="Sgr-sV-VZP" id="PVm-Kq-Mgp"/>
                 <outlet property="topView" destination="W5Y-6v-m4w" id="ljc-m6-GaP"/>
+                <outlet property="topViewHeight" destination="edD-qf-MZI" id="czS-kY-gWX"/>
             </connections>
             <point key="canvasLocation" x="113" y="81"/>
         </viewController>

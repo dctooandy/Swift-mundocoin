@@ -41,7 +41,6 @@ extension Reactive where Base: UILabel {
     }
 }
 
-
 extension Reactive where Base: UIView {
     
     var borderColor: Binder<UIColor> {

@@ -74,6 +74,8 @@ class BoardViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
         bind()
+        currentPage = 0
+        goFetchTableViewData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -81,8 +83,7 @@ class BoardViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        currentPage = 0
-        goFetchTableViewData()
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {

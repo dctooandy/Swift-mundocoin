@@ -46,6 +46,7 @@ class Themes {
     static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
         return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
     }
+    
     static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
         return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
     }
@@ -56,8 +57,12 @@ class Themes {
     static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
         return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.blue2B3674 })
     }
+    // 綁定TopView 文字顏色
+    static func bindTopViewTextColor<T>(done: T , failed: T) -> Observable<UIColor>{
+        return Themes.topViewMode.map({($0 == .done ) ? Themes.green0DC897:Themes.redEE5D50 })
+    }
     static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
-        return Themes.topViewMode.map({($0 == .processing || $0 == .pending || $0 == .failed) ? true:false })
+        return Themes.topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })
     }
     static let processingImageType : Observable<UIColor> = Themes.bindDetailViewProcessingBorderColor(noProcessing: DetailType.done, processing: DetailType.processing)
     static let processingLabelType : Observable<UIColor> = Themes.bindDetailViewProcessingTextColor(noProcessing: DetailType.done, processing: DetailType.processing)
@@ -65,13 +70,27 @@ class Themes {
     
     // 綁定取款成功頁面 下方隱藏物件
     static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
-        return Themes.topViewMode.map({ ($0 == .pending || $0 == .failed ) ? true : false})
+        return Themes.topViewMode.map({ ($0 == .pending ) ? true : false})
     }
+    static func bindDetailListTopViewIconName<T>(done: T , failed : T) -> Observable<UIImage>{
+        return Themes.topViewMode.map({ (($0 == .done ) ? UIImage(named: "icon-done") : UIImage(named: "icon-error"))!})
+    }
+    static func bindDetailListTopViewLabelText<T>(done: T , failed : T) -> Observable<String>{
+        return Themes.topViewMode.map({ (($0 == .done ) ? "Completed".localized : "Failed".localized)})
+    }
+    
     static let topImageIconType : Observable<UIImage> = Themes.bindDetailViewTopIcon(success: DetailType.done, failed: DetailType.failed)
+    //
+    
     static let topLabelStringType : Observable<String> = Themes.bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
     // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
-    
+    // 綁定TopViewIcon樣式
+    static let topViewIconType : Observable<UIImage> = Themes.bindDetailListTopViewIconName(done: true, failed: false)
+    // 綁定TopViewLabel文字
+    static let topViewLabelText : Observable<String> = Themes.bindDetailListTopViewLabelText(done: true, failed: false)
+    // 綁定TopViewLabel文字顏色
+    static let topViewLabelTextColor : Observable<UIColor> = Themes.bindTopViewTextColor(done: true, failed: false)
     // Binder
     static let sheetHeightType : Observable<CGFloat> =
     Themes.bindSheetHeight(isDeposits: TransactionShowMode.deposits , isWithdrawals: TransactionShowMode.withdrawals)
@@ -106,6 +125,8 @@ class Themes {
     static let inputViewDefaultHeight = 85.0 + Themes.defaultInvalidLabelHeight
     static let inputViewPasswordHeight = 85.0 + Themes.passwordInvalidLabelHeight
     
+    static let green0DC897 = UIColor(rgb: 0x0DC897)
+    static let redCC2A42 = UIColor(rgb: 0xCC2A42)
     static let grayA3AED0 = UIColor(rgb: 0xA3AED0)
     static let grayA3AED020 = UIColor(rgb: 0xA3AED0 ,alpha: 0.2)
     static let grayE0E5F2 = UIColor(rgb: 0xE0E5F2)

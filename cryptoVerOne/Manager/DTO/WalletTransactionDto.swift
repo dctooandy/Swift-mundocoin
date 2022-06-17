@@ -106,6 +106,42 @@ struct ContentDto : Codable
             return 0.0
         }
     }
+    var defailType:DetailType {
+        if self.state == "PENDING"
+        {
+            return .pending
+        }else if state == "FAILED"
+        {
+            return.failed
+        }else if state == "PROCESSING"
+        {
+            return .processing
+        }else
+        {
+            return .done
+        }
+    }
+    var createdDateString : String
+    {
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMMM dd, yyyy HH:mm"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let frontTime = createdDate.components(separatedBy: "T").first!
+        let subTime = createdDate.components(separatedBy: "T").last!
+        let subSubtime = subTime.components(separatedBy: "+").first!
+        let aftertime = subSubtime.components(separatedBy: ".").first!
+        let totalTime = "\(frontTime) \(aftertime)"
+        if let dateFromString = dateFormatter.date(from:totalTime ) {
+            return newDateFormatter.string(from: dateFromString)
+        }else
+        {
+            return createdDate
+        }
+    }
 
     var amount : Int? = 0    
     var id : String = ""
