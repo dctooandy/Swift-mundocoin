@@ -52,6 +52,14 @@
                                         </constraints>
                                         <state key="normal" title="Check History"/>
                                     </button>
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nyW-1J-snF" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
+                                        <rect key="frame" x="62" y="704" width="290" height="50"/>
+                                        <color key="backgroundColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="jI4-SZ-mnr"/>
+                                        </constraints>
+                                        <state key="normal" title="Try Again"/>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -61,8 +69,12 @@
                                     <constraint firstItem="fWD-AR-dpF" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="62" id="WaS-VY-nXC"/>
                                     <constraint firstItem="Sgr-sV-VZP" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="4" id="c9h-I3-tT9"/>
                                     <constraint firstAttribute="bottom" secondItem="fWD-AR-dpF" secondAttribute="bottom" constant="128" id="ixw-4g-WBO"/>
+                                    <constraint firstItem="nyW-1J-snF" firstAttribute="top" secondItem="fWD-AR-dpF" secondAttribute="top" id="lQU-6V-4Ew"/>
+                                    <constraint firstItem="nyW-1J-snF" firstAttribute="leading" secondItem="fWD-AR-dpF" secondAttribute="leading" id="naA-Qf-eWg"/>
                                     <constraint firstAttribute="trailing" secondItem="fWD-AR-dpF" secondAttribute="trailing" constant="62" id="rxJ-gC-DLi"/>
+                                    <constraint firstItem="nyW-1J-snF" firstAttribute="bottom" secondItem="fWD-AR-dpF" secondAttribute="bottom" id="tG7-Cd-2Ci"/>
                                     <constraint firstItem="W5Y-6v-m4w" firstAttribute="top" secondItem="rgi-15-sLp" secondAttribute="top" id="uRD-zq-pKA"/>
+                                    <constraint firstItem="nyW-1J-snF" firstAttribute="trailing" secondItem="fWD-AR-dpF" secondAttribute="trailing" id="xwd-5r-3Mk"/>
                                     <constraint firstAttribute="trailing" secondItem="W5Y-6v-m4w" secondAttribute="trailing" constant="24" id="yVl-FE-GyY"/>
                                 </constraints>
                             </view>
@@ -92,6 +104,7 @@
                 <outlet property="dataListView" destination="Sgr-sV-VZP" id="PVm-Kq-Mgp"/>
                 <outlet property="topView" destination="W5Y-6v-m4w" id="ljc-m6-GaP"/>
                 <outlet property="topViewHeight" destination="edD-qf-MZI" id="czS-kY-gWX"/>
+                <outlet property="tryButton" destination="nyW-1J-snF" id="Es4-od-I0J"/>
             </connections>
             <point key="canvasLocation" x="113" y="81"/>
         </viewController>

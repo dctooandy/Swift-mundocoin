@@ -64,6 +64,10 @@ class Themes {
     static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
         return Themes.topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })
     }
+    static func bindDetailViewTryBtnHidden<T>(hidden: T , show: T) -> Observable<Bool>{
+        return Themes.topViewMode.map({($0 != .failed ) ? true:false })
+    }
+    
     static let processingImageType : Observable<UIColor> = Themes.bindDetailViewProcessingBorderColor(noProcessing: DetailType.done, processing: DetailType.processing)
     static let processingLabelType : Observable<UIColor> = Themes.bindDetailViewProcessingTextColor(noProcessing: DetailType.done, processing: DetailType.processing)
     static let completeViewType : Observable<Bool> = Themes.bindDetailViewCompleteViewHidden(hidden: DetailType.pending, show: DetailType.done)
@@ -85,6 +89,8 @@ class Themes {
     static let topLabelStringType : Observable<String> = Themes.bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
     // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
+    // 綁定取款成功頁面 要不要顯示try again Btn
+    static let tryAgainBtnHiddenType : Observable<Bool> = Themes.bindDetailViewTryBtnHidden(hidden: true, show: false)
     // 綁定TopViewIcon樣式
     static let topViewIconType : Observable<UIImage> = Themes.bindDetailListTopViewIconName(done: true, failed: false)
     // 綁定TopViewLabel文字

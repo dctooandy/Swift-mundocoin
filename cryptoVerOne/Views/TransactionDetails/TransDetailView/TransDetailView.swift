@@ -37,7 +37,6 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var currencyIcon: UIImageView!
     @IBOutlet weak var topAmountLabel: UILabel!
     // Data List
-    
     @IBOutlet var dataListViewArray: [UIView]!
     @IBOutlet weak var tetherLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
@@ -52,6 +51,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var dataListView: UIStackView!
     @IBOutlet weak var withdrawToView: UIView!
     @IBOutlet weak var txidView: UIView!
+
     var contentView: UIView!
     var withdrawToInputView : InputStyleView!
     var txidInputView : InputStyleView!
@@ -169,7 +169,24 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             }
         }.disposed(by: dpg)
         
-        
+        currencyIcon.rx.click.subscribeSuccess { [self] _ in
+            var type : DetailType!
+            if viewType == .done
+            {
+                type = .failed
+            } else if viewType == .failed
+            {
+                type = .pending
+            }else if viewType == .pending
+            {
+                type = .processing
+            }else
+            {
+                type = .done
+            }
+            TwoSideStyle.share.acceptTopViewStatusStyle(type)
+            viewType = type
+        }.disposed(by: dpg)
     }
     func setupType()
     {

@@ -42,6 +42,7 @@ class TDetailViewController: BaseViewController {
     @IBOutlet weak var topView: TransTopView!
     @IBOutlet weak var dataListView: TransDetailView!
     @IBOutlet weak var checkButton: CornerradiusButton!
+    @IBOutlet weak var tryButton: CornerradiusButton!
     // MARK: -
     // MARK:Life cycle
     required init?(coder aDecoder: NSCoder) {
@@ -71,23 +72,26 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        checkButton.setTitle("Check History".localized, for: .normal)
         checkButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        tryButton.setTitle("Try Again".localized, for: .normal)
+        tryButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
+        tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
     }
     func bindUI()
     {
         checkButton.rx.tap.subscribeSuccess { (_) in
             Log.i("去看金流歷史紀錄")
-            if self.detailType == .failed
-            {
-                self.navigationController?.popToRootViewController(animated: true)
-            }else
-            {
-                let boardVC = BoardViewController.loadNib()
-                self.navigationController?.viewControllers = [WalletViewController.share]
-                WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
-            }
+            let boardVC = BoardViewController.loadNib()
+            self.navigationController?.viewControllers = [WalletViewController.share]
+            WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
+        }.disposed(by: dpg)
+        tryButton.rx.tap.subscribeSuccess { (_) in
+            Log.i("回到首頁")
+            self.navigationController?.popToRootViewController(animated: true)
         }.disposed(by: dpg)
         dataListView.rxAddAddressClick().subscribeSuccess { [self] addressString in
             Log.i("增加錢包地址")
@@ -95,7 +99,6 @@ class TDetailViewController: BaseViewController {
             addVC.newAddressString = addressString
             navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
-        
     }
     func setupData()
     {
@@ -109,21 +112,24 @@ class TDetailViewController: BaseViewController {
         {
             topViewHeight.constant = 70
             checkButton.isHidden = false
+            tryButton.isHidden = false
+            Themes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
         }else
         {
             topViewHeight.constant = 0
             checkButton.isHidden = true
+            tryButton.isHidden = true
         }
     }
     func resetUI()
     {
-        if self.detailType == .failed
-        {
-            checkButton.setTitle("Try Again".localized, for: .normal)
-        }else
-        {
-            checkButton.setTitle("Check History".localized, for: .normal)
-        }
+//        if self.detailType == .failed
+//        {
+//            checkButton.setTitle("Try Again".localized, for: .normal)
+//        }else
+//        {
+//            checkButton.setTitle("Check History".localized, for: .normal)
+//        }
     }
 }
 // MARK: -

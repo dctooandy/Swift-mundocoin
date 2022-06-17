@@ -131,14 +131,14 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-done" translatesAutoresizingMaskIntoConstraints="NO" id="IYQ-lI-Xzh">
-                                    <rect key="frame" x="131.5" y="31.5" width="27" height="27"/>
+                                    <rect key="frame" x="137.5" y="31.5" width="27" height="27"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="27" id="1hn-Fq-y6S"/>
                                         <constraint firstAttribute="height" constant="27" id="pfd-SF-ihG"/>
                                     </constraints>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tsR-yw-C2f">
-                                    <rect key="frame" x="170.5" y="34.5" width="95" height="21.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Completed" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tsR-yw-C2f">
+                                    <rect key="frame" x="174.5" y="34.5" width="95" height="21.5"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                     <color key="textColor" red="0.050980392156862744" green="0.78431372549019607" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
@@ -146,10 +146,10 @@
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="IYQ-lI-Xzh" firstAttribute="centerX" secondItem="x2I-X2-wmD" secondAttribute="centerX" multiplier="0.7" id="7mY-Y0-MiM"/>
-                                <constraint firstItem="tsR-yw-C2f" firstAttribute="leading" secondItem="IYQ-lI-Xzh" secondAttribute="trailing" constant="12" id="QV9-4K-iTt"/>
+                                <constraint firstItem="tsR-yw-C2f" firstAttribute="centerX" secondItem="x2I-X2-wmD" secondAttribute="centerX" constant="15" id="ZLB-oN-VVx"/>
                                 <constraint firstItem="IYQ-lI-Xzh" firstAttribute="centerY" secondItem="x2I-X2-wmD" secondAttribute="centerY" id="kEl-Sz-k9K"/>
                                 <constraint firstItem="tsR-yw-C2f" firstAttribute="centerY" secondItem="IYQ-lI-Xzh" secondAttribute="centerY" id="nxs-QN-lLS"/>
+                                <constraint firstItem="tsR-yw-C2f" firstAttribute="leading" secondItem="IYQ-lI-Xzh" secondAttribute="trailing" constant="10" id="yOx-fj-Rhh"/>
                             </constraints>
                         </view>
                     </subviews>

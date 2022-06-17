@@ -253,7 +253,7 @@ class WithdrawViewController: BaseViewController {
         if let amountText = dataDto.transaction.amount,
            let fee = feeAmountLabel.text
         {
-            let detailData = DetailDto(defailType: .failed,
+            let detailData = DetailDto(defailType: dataDto.defailType,
                                        amount: String(amountText),
                                        tether: dataDto.transaction.currency,
                                        network: "Tron(TRC20)",
