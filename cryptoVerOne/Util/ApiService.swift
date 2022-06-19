@@ -52,6 +52,8 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case verificationIDandCode(String , String)
     case verificationID(String )
     case authentication
+    case auditAuthentication
+    case approvals
     case walletAddress
     case walletBalances
     case walletWithdraw
@@ -102,6 +104,11 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
              return URL(string:ApiService.host + "/api/FrontendAppVersion")
         case .base(let endpoint):
             return URL(string:ApiService.host + "/api/\(endpoint)")
+            
+        case .auditAuthentication:
+            return URL(string:ApiService.host + "/v1/admin/authentication")
+        case .approvals:
+            return URL(string:ApiService.host + "/v1/admin/approvals")
         default :
             return URL(string:ApiService.host)
         }

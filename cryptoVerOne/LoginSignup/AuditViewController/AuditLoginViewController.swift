@@ -42,6 +42,11 @@ class AuditLoginViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
+        if didAskBioLogin == true 
+        {
+            bioVerifyCheck()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -111,7 +116,7 @@ class AuditLoginViewController: BaseViewController {
         let isAccountValid = accountInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard let acc = str else { return false  }
-                return RegexHelper.match(pattern:.account , input: acc)
+                return RegexHelper.match(pattern:.mail , input: acc)
         }
         let isPWValid = passwordInputView.textField.rx.text
             .map {  (str) -> Bool in
@@ -137,9 +142,51 @@ class AuditLoginViewController: BaseViewController {
         return UIApplication.topViewController() as? AuditTabbarViewController
     }
     func goTodoViewController() {
-//        tabbarVC.selected(0)
-        //        tabbarVC.mainPageVC.shouldFetchGameType = true
-//        let auditTodoVC = MuLoginNavigationController(rootViewController: tabbarVC)
+        let idString = accountInputView.textField.text!
+        let password = passwordInputView.textField.text!
+        Beans.auditServer.auditAuthentication(with: idString, password: password)
+            .subscribeSuccess { [self] (dto) in
+                _ = LoadingViewController.dismiss()
+                if let data = dto
+                {
+                    MemberAccountDto.share = MemberAccountDto(account: idString,
+                                                              password: password,
+                                                              loginMode: .emailPage)
+                    _ = KeychainManager.share.setLastAuditAccount(idString)
+                    KeychainManager.share.updateAuditAccount(acc: idString,
+                                                        pwd: password)
+                    BioVerifyManager.share.applyMemberInAuditBIOList(idString)
+                    KeychainManager.share.setAuditToken(data.token)
+                    let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
+                    showAuditBioConfirmView(didShow: didAskBioLogin)
+                }
+            }.disposed(by: dpg)
+    }
+    // Confirm Touch/Face ID
+    private func showAuditBioConfirmView(didShow:Bool) {
+        if didShow == false
+        {
+            let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
+                                          title: "",
+                                          message: "启用脸部辨识或指纹辨识进行登入？") { [weak self] isOK in
+                if isOK {
+                    let idString = self?.accountInputView.textField.text ?? ""
+                    BioVerifyManager.share.applyMemberInAuditBIOList(idString)
+                }
+                BioVerifyManager.share.setAuditBioLoginSwitch(to: isOK)
+                self?.goTOMainVC()
+            }
+            DispatchQueue.main.async {[self] in
+                popVC.start(viewController: self)
+            }
+            BioVerifyManager.share.setAuditBioLoginAskStateToTrue()
+        }else
+        {
+            goTOMainVC()
+        }
+    }
+    func goTOMainVC()
+    {
         DispatchQueue.main.async {
             if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
                 print("go ")
@@ -148,7 +195,58 @@ class AuditLoginViewController: BaseViewController {
             }
         }
     }
-
+    private func bioVerifyCheck(isDev : Bool = false) {
+        if isDev
+        {
+            // 進行臉部或指紋驗證
+            BioVerifyManager.share.bioVerify { [self] (success, error) in
+                if !success {
+                    DispatchQueue.main.async {[self] in
+                    Toast.show(msg: "验证失败，请输入帐号密码")
+                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+                        
+                    }
+                        popVC.start(viewController: self)
+                    }
+                    return
+                }
+                if error != nil {
+                    Toast.show(msg: "验证失败：\(error!.localizedDescription)")
+                    return
+                }
+            }
+        }else
+        {
+            if !BioVerifyManager.share.auditBioLoginSwitchState() { return }
+            if let loginPostDto = KeychainManager.share.getLastAuditAccount(),
+               BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account) {
+                // 進行臉部或指紋驗證
+                BioVerifyManager.share.bioVerify { [self] (success, error) in
+                    if !success {
+                        DispatchQueue.main.async {[self] in
+                        Toast.show(msg: "验证失败，请输入帐号密码")
+                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+                            
+                        }
+                            popVC.start(viewController: self)
+                        }
+//                        return
+                    }
+                    if error != nil {
+                        Toast.show(msg: "验证失败：\(error!.localizedDescription)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        accountInputView.textField.text = loginPostDto.account
+                        passwordInputView.textField.text = loginPostDto.password
+                        goTodoViewController()
+                    }
+                }
+            } else {
+                print("manual login.")
+            }
+        }
+    }
     @IBAction func changeDomain(_ sender: Any) {
         #if Mundo_PRO
         #elseif Approval_PRO

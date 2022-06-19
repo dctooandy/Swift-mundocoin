@@ -249,7 +249,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
             let y = offset.y + bouns.size.height - inset.bottom
             let h = size.height
             let reloadDistence = 50.0
-             if y > h + reloadDistence{
+            if y > h + CGFloat(reloadDistence){
                 tableView.tableFooterView = self.bottomRefrash
                 print("底部刷新資料")
                  self.onPullUpToRefrash.onNext(())

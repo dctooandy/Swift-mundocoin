@@ -32,7 +32,8 @@ class AccessTokenAdapter: RequestAdapter {
         {
             if urlString.pathComponents.contains("wallet") ||
                 urlString.pathComponents.contains("refresh") ||
-                urlString.pathComponents.contains("updatePassword") 
+                urlString.pathComponents.contains("updatePassword") ||
+                urlString.pathComponents.contains("approvals")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }

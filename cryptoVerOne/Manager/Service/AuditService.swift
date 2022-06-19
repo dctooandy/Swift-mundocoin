@@ -13,14 +13,34 @@ import RxSwift
 import Alamofire
 
 class AuditService {
-    func auditTransactions() -> Single<[AuditTransactionDto]?>
+    func auditAuthentication(with idString:String , password:String , verificationCode:String = "")  -> Single<AuthenticationDto?>
     {
-        let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestGet(
-            path: ApiService.walletAddress.path,
+        var parameters: Parameters = [String: Any]()
+        parameters = ["id":idString,
+                      "password":password]
+        if !verificationCode.isEmpty
+        {
+            parameters["verificationCode"] = verificationCode
+        }
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.auditAuthentication.path,
             parameters: parameters,
             modify: false,
-            resultType: [AuditTransactionDto].self).map({
+            resultType: AuthenticationDto.self).map({
+                return $0
+            })
+    }
+    func auditApprovals(pageable :PagePostDto = PagePostDto()) -> Single<AuditApprovalDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+
+        parameters["page"] = pageable.page
+        parameters["size"] = pageable.size
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.approvals.path,
+            parameters: parameters,
+            modify: false,
+            resultType: AuditApprovalDto.self).map({
                 return $0
             })
     }

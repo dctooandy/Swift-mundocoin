@@ -20,6 +20,8 @@ class KeychainManager {
         case auditToken = "audit_token"
         case domain = "domain"
         case addressBookList = "mundocoin_addressBook_list"
+        case auditAccount = "audit_account"
+        case auditAccList = "audit_acc_list"
     }
     
     static let share = KeychainManager()
@@ -52,6 +54,10 @@ class KeychainManager {
         let success = self.setString(value.lowercased(), at: .account)
         return success
     }
+    func setLastAuditAccount(_ value: String) -> Bool {
+        let success = self.setString(value.lowercased(), at: .auditAccount)
+        return success
+    }
     
     func getLastAccount() -> LoginPostDto? {
         guard let accInKeychain = self.getString(from: .account) else { return nil }
@@ -66,7 +72,19 @@ class KeychainManager {
                             loginMode: .emailPage ,
                             showMode: .loginEmail)
     }
-    
+    func getLastAuditAccount() -> LoginPostDto? {
+        guard let accInKeychain = self.getString(from: .auditAccount) else { return nil }
+        let accList = getAuditAccList()
+        guard let accPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
+        let accArr = accPwdString.components(separatedBy: "/")
+        let acc = accArr[0]
+        let pwd = accArr[1]
+        let tel = accArr[2]
+        return LoginPostDto(account: acc.isEmpty ? tel : acc,
+                            password: pwd,
+                            loginMode: .emailPage ,
+                            showMode: .loginEmail)
+    }
     /// 儲存帳號密碼電話 格式: acc.pwd.tel
     /// 遵循此格式： "acc.pwd.tel"
     /// - Parameters:
@@ -77,7 +95,6 @@ class KeychainManager {
         let acc = acc.lowercased()
         let arr = getAccList()
         var isNewAccount = true
-//        print("save acc list: \(arr)")
         var newArr = arr.map { (str) -> String in // update
             let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
@@ -85,7 +102,6 @@ class KeychainManager {
                 let finalAcc = acc.isEmpty ? accArr[0] : acc
                 let finalTel = tel.isEmpty ? accArr[2] : tel
                 let finalPwd = pwd.isEmpty ? accArr[1] : pwd
-//                print("old acc: \(acc).\(accArr[1]).\(tel)\nnew acc: \(finalAcc).\(finalPwd).\(finalTel)")
                 return "\(finalAcc)/\(finalPwd)/\(finalTel)"
             
             } else {
@@ -94,12 +110,34 @@ class KeychainManager {
         }
         
         let accString = "\(acc)/\(pwd)/\(tel)"
-//        print("save acc string: \(accString) , isnew: \(isNewAccount)")
         if isNewAccount { // if false == new account
             newArr.append(accString)
         }
-//        print("save acc new final array: \(newArr)")
         saveAccList(newArr)
+    }
+    func saveAuditAccPwd(acc: String, pwd: String, tel: String) {
+        let acc = acc.lowercased()
+        let arr = getAuditAccList()
+        var isNewAccount = true
+        var newArr = arr.map { (str) -> String in // update
+            let accArr = str.components(separatedBy: "/")
+            if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
+                isNewAccount = false
+                let finalAcc = acc.isEmpty ? accArr[0] : acc
+                let finalTel = tel.isEmpty ? accArr[2] : tel
+                let finalPwd = pwd.isEmpty ? accArr[1] : pwd
+                return "\(finalAcc)/\(finalPwd)/\(finalTel)"
+            
+            } else {
+                return str
+            }
+        }
+        
+        let accString = "\(acc)/\(pwd)/\(tel)"
+        if isNewAccount { // if false == new account
+            newArr.append(accString)
+        }
+        saveAuditAccList(newArr)
     }
     
     func updateAccount(acc: String, pwd: String) {
@@ -121,10 +159,33 @@ class KeychainManager {
         }
         saveAccList(newArr)
     }
+    func updateAuditAccount(acc: String, pwd: String) {
+        var isNewAccount = true
+        let arr = getAuditAccList()
+        let acc = acc.lowercased()
+        var newArr = arr.map { (str) -> String in // update
+            let accArr = str.components(separatedBy: "/")
+            if accArr.contains(acc) {
+                isNewAccount = false
+                let phone = accArr[2]
+                return "\(acc)/\(pwd)/\(phone)"
+            } else {
+                return str
+            }
+        }
+        if isNewAccount {
+            newArr.append("\(acc)/\(pwd)/")
+        }
+        saveAuditAccList(newArr)
+    }
     
     func saveAccList(_ list: [String]) {
         let data = NSKeyedArchiver.archivedData(withRootObject: list)
         setData(data, at: .accList)
+    }
+    func saveAuditAccList(_ list: [String]) {
+        let data = NSKeyedArchiver.archivedData(withRootObject: list)
+        setData(data, at: .auditAccList)
     }
     
     
@@ -134,9 +195,23 @@ class KeychainManager {
         return arr
     }
     
+    private func getAuditAccList() -> [String] {
+        guard let data = getData(from: .auditAccList) else { return [] }
+        guard let arr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String] else { return [] }
+        return arr
+    }
+    
     func accountExist(_ acc: String) -> Bool {
         var isExist = false
         for accInfo in getAccList() {
+           isExist = (accInfo.hasPrefix(acc) && !accInfo.components(separatedBy: ".")[1].isEmpty)
+            if isExist { return true }
+        }
+        return isExist
+    }
+    func auditAccountExist(_ acc: String) -> Bool {
+        var isExist = false
+        for accInfo in getAuditAccList() {
            isExist = (accInfo.hasPrefix(acc) && !accInfo.components(separatedBy: ".")[1].isEmpty)
             if isExist { return true }
         }

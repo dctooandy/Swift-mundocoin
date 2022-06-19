@@ -25,9 +25,15 @@ class BioVerifyManager {
             UserDefaults.Verification.set(value: bioList, forKey: .BIOList)
         }
     }
+    private var auditBioList = [String]() {
+        didSet {
+            UserDefaults.Verification.set(value: auditBioList, forKey: .AuditBIOList)
+        }
+    }
     
     init() {
         self.bioList = UserDefaults.Verification.stringArray(forKey: .BIOList)
+        self.auditBioList = UserDefaults.Verification.stringArray(forKey: .AuditBIOList)
         self.logedInList = UserDefaults.Verification.stringArray(forKey: .loged_in)
     }
    
@@ -55,15 +61,27 @@ class BioVerifyManager {
     func usedBIOVeritfy(_ acc: String) -> Bool {
         return self.bioList.contains(acc.lowercased())
     }
+    func usedAuditBIOVeritfy(_ acc: String) -> Bool {
+        return self.auditBioList.contains(acc.lowercased())
+    }
     
     func applyMemberInBIOList(_ account: String) {
         bioList.append(account.lowercased())
         UserDefaults.Verification.set(value: bioList, forKey: .BIOList)
     }
+    func applyMemberInAuditBIOList(_ account: String) {
+        auditBioList.append(account.lowercased())
+        UserDefaults.Verification.set(value: auditBioList, forKey: .AuditBIOList)
+    }
     
     func removeMemberFromBIOList(_ account: String) {
         if let index = self.bioList.firstIndex(of: account.lowercased()) {
             self.bioList.remove(at: index)
+        }
+    }
+    func removeMemberFromAuditBIOList(_ account: String) {
+        if let index = self.auditBioList.firstIndex(of: account.lowercased()) {
+            self.auditBioList.remove(at: index)
         }
     }
     
@@ -88,16 +106,28 @@ class BioVerifyManager {
     func bioLoginSwitchState() -> Bool {
         return UserDefaults.Verification.optionBool(forKey: .bioSwitchState) ?? true
     }
+    func auditBioLoginSwitchState() -> Bool {
+        return UserDefaults.Verification.optionBool(forKey: .auditBioSwitchState) ?? true
+    }
     
     func setBioLoginSwitch(to isOn: Bool) {
         UserDefaults.Verification.set(value: isOn, forKey: .bioSwitchState)
     }
+    
+    func setAuditBioLoginSwitch(to isOn: Bool) {
+        UserDefaults.Verification.set(value: isOn, forKey: .auditBioSwitchState)
+    }
     func didAskBioLogin() -> Bool {
         return UserDefaults.Verification.optionBool(forKey: .askedBioLogin) ?? false
     }
-    
+    func didAskAuditBioLogin() -> Bool {
+        return UserDefaults.Verification.optionBool(forKey: .askedAuditBioLogin) ?? false
+    }
     func setBioLoginAskStateToTrue() {
         UserDefaults.Verification.set(value: true, forKey: .askedBioLogin)
+    }
+    func setAuditBioLoginAskStateToTrue() {
+        UserDefaults.Verification.set(value: true, forKey: .askedAuditBioLogin)
     }
     
     /// 確認此帳號是否曾經登入

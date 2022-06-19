@@ -1366,6 +1366,12 @@
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
 		A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
+		A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
+		A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
+		A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
+		A1319260285F9411000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
+		A1319261285F9411000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
+		A1319262285F9412000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
 		A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E1BA52824FF5000827148 /* ForgotViewController.xib */; };
 		A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A14E1BA62824FF5000827148 /* ForgotViewController.swift */; };
 		A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DE22833AB2200755783 /* TwoSideStyle.swift */; };
@@ -1692,6 +1698,7 @@
 		A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDVerificationViewController.swift; sourceTree = "<group>"; };
 		A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDVerificationViewController.xib; sourceTree = "<group>"; };
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
+		A1319250285F938F000B2729 /* AuditApprovalDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditApprovalDto.swift; sourceTree = "<group>"; };
 		A14E1BA52824FF5000827148 /* ForgotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotViewController.xib; sourceTree = "<group>"; };
 		A14E1BA62824FF5000827148 /* ForgotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
 		A1559DE22833AB2200755783 /* TwoSideStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoSideStyle.swift; sourceTree = "<group>"; };
@@ -2638,6 +2645,7 @@
 				099371B128445DDD00D55E55 /* WalletBalancesDto.swift */,
 				09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */,
 				096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */,
+				A1319250285F938F000B2729 /* AuditApprovalDto.swift */,
 				09056D98284EF80300038BF8 /* WalletTransPostDto.swift */,
 				09EED3192857197900CB4A64 /* AuditTransactionDto.swift */,
 				A19C71B7282263A1000AFC3F /* SignupPostDto.swift */,
@@ -3730,6 +3738,7 @@
 				09905A7B2851A02B00BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905A7C2851A02B00BAEE78 /* WalletService.swift in Sources */,
 				09905A7D2851A02B00BAEE78 /* WalletTransactionDto.swift in Sources */,
+				A1319261285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8DA2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905A7E2851A02B00BAEE78 /* SignupPostDto.swift in Sources */,
 				09905A7F2851A02B00BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -3928,6 +3937,7 @@
 				09905B6D2851A08500BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905B6E2851A08500BAEE78 /* WalletService.swift in Sources */,
 				09905B6F2851A08500BAEE78 /* WalletTransactionDto.swift in Sources */,
+				A1319262285F9412000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8DB2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905B702851A08500BAEE78 /* SignupPostDto.swift in Sources */,
 				09905B712851A08500BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4126,6 +4136,7 @@
 				09905C5F2851A09600BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905C602851A09600BAEE78 /* WalletService.swift in Sources */,
 				09905C612851A09600BAEE78 /* WalletTransactionDto.swift in Sources */,
+				A1319260285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8D92852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905C622851A09600BAEE78 /* SignupPostDto.swift in Sources */,
 				09905C632851A09600BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4324,6 +4335,7 @@
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8E284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
+				A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8D72852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4522,6 +4534,7 @@
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8F284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
+				A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8D82852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4720,6 +4733,7 @@
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8D284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
+				A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */,
 				0909C8D62852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,

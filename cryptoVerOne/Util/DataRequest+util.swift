@@ -46,7 +46,13 @@ extension DataRequest
                                 {
                                     // Login 回來的
                                     Log.v("Login token : \(innerData)")
-                                    KeychainManager.share.setToken(innerData)
+                                    if self.isNeedSaveAuditToken(url:response.request?.url)
+                                    {
+                                        KeychainManager.share.setAuditToken(innerData)
+                                    }else
+                                    {
+                                        KeychainManager.share.setToken(innerData)
+                                    }
                                 }
                             }
                             let results = try decoder.decode(T.self, from:data)
@@ -161,6 +167,11 @@ extension DataRequest
         for url in Constants.saveJWTUrl {
             if path.contains(url) { return true }
         }
+        return false
+    }
+    func isNeedSaveAuditToken(url:URL?) -> Bool {
+        guard let path = url?.absoluteString.split(separator: "/").last?.description else {return false}
+        if path.contains("admin"), path.contains("authentication") { return true }
         return false
     }
     func printInfo(_ value: Any) -> Any.Type  {

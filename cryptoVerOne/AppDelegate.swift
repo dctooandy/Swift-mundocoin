@@ -174,7 +174,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        freshAuditToken()
 //        SocketIOManager.sharedInstance.establishConnection()
         Log.v("audit過期")
-        DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+        if let successBlock = complete
+        {
+            successBlock(false)
+        }else
+        {
+            DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+        }
     }
     func freshAuditToken()
     {

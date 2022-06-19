@@ -104,6 +104,7 @@ class LoginService {
                 return $0
             })
     }
+ 
     
     func refreshToken() -> Single<AuthenticationDto?>
     {

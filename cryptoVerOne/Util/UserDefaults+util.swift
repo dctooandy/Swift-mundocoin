@@ -29,10 +29,13 @@ extension UserDefaults
             case agency_stage_tag
             case launchBefore
             case BIOList
+            case AuditBIOList
             case loged_in
             case fullBanner
             case bioSwitchState
+            case auditBioSwitchState
             case askedBioLogin
+            case askedAuditBioLogin
             case loginVideoUpdateDate
         }
     }

@@ -8,14 +8,14 @@
 import Foundation
 import RxSwift
 struct WalletWithdrawDto :Codable {
-    var id : String = ""
-    var createdDate : String = ""
-    var updatedDate : String = ""
-    var type : String = ""
-    var state : String = ""
-    var chain : [ChainDto] = []
-    var transaction : ContentDto = ContentDto()
-    var issuer : IssuerDto = IssuerDto()
+    var id : String? = ""
+    var createdDate : String? = ""
+    var updatedDate : String? = ""
+    var type : String? = ""
+    var state : String? = ""
+    var chain : [ChainDto]? = []
+    var transaction : ContentDto? = ContentDto()
+    var issuer : IssuerDto? = IssuerDto()
     
     var defailType:DetailType {
         if self.state == "PENDING"
@@ -41,8 +41,8 @@ struct WalletWithdrawDto :Codable {
         dateFormatter.calendar = Calendar(identifier: .gregorian)
         dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.locale = Locale(identifier: "en_US_POSIX")
-        let frontTime = createdDate.components(separatedBy: "T").first!
-        let subTime = createdDate.components(separatedBy: "T").last!
+        let frontTime = createdDate!.components(separatedBy: "T").first!
+        let subTime = createdDate!.components(separatedBy: "T").last!
         let subSubtime = subTime.components(separatedBy: "+").first!
         let aftertime = subSubtime.components(separatedBy: ".").first!
         let totalTime = "\(frontTime) \(aftertime)"
@@ -50,7 +50,7 @@ struct WalletWithdrawDto :Codable {
             return newDateFormatter.string(from: dateFromString)
         }else
         {
-            return createdDate
+            return createdDate ?? ""
         }
     }
 

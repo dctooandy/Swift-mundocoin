@@ -250,18 +250,18 @@ class WithdrawViewController: BaseViewController {
     }
     func showTransactionDetailView(dataDto : WalletWithdrawDto)
     {
-        if let amountText = dataDto.transaction.amount,
+        if let transDto = dataDto.transaction , let amountText = transDto.amount,
            let fee = feeAmountLabel.text
         {
             let detailData = DetailDto(defailType: dataDto.defailType,
                                        amount: String(amountText),
-                                       tether: dataDto.transaction.currency,
+                                       tether: transDto.currency ,
                                        network: "Tron(TRC20)",
                                        confirmations: "50/1",
                                        fee:fee,
                                        date: dataDto.createdDateString,
-                                       address: dataDto.transaction.toAddress,
-                                       txid: dataDto.transaction.txId ?? "")
+                                       address: transDto.toAddress,
+                                       txid: transDto.txId ?? "")
             let detailVC = TDetailViewController.loadNib()
             detailVC.titleString = "Withdraw"
             detailVC.detailDataDto = detailData
