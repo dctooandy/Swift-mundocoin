@@ -21,10 +21,13 @@ class BoardViewModel: BaseViewModel {
     {
         LoadingViewController.show()
         Beans.walletServer.walletTransactions(currency: currency, stats: stats, beginDate: beginDate, endDate: endDate, pageable: pageable).subscribe { [self](walletDto) in
-            _ = LoadingViewController.dismiss()
-            if let data = walletDto
-            {
-                fetchWalletTransactionsSuccess.onNext(data)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+               
+                _ = LoadingViewController.dismiss()
+                if let data = walletDto
+                {
+                    fetchWalletTransactionsSuccess.onNext(data)
+                }
             }
         } onError: { (error) in
             _ = LoadingViewController.dismiss()

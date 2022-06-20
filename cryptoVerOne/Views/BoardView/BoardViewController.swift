@@ -45,6 +45,7 @@ class BoardViewController: BaseViewController {
     var currentPage: Int = 0
     var currentFilterDto:WalletTransPostDto?
     var isFilterAction : Bool = false
+    var isRefreshAction : Bool = false
     // MARK: -
     // MARK:UI 設定
     var depositsViewController = TransactionTableViewController()
@@ -75,7 +76,7 @@ class BoardViewController: BaseViewController {
         setupUI()
         bind()
         currentPage = 0
-        goFetchTableViewData()
+//        goFetchTableViewData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -153,20 +154,6 @@ class BoardViewController: BaseViewController {
     }
     func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto())
     {
-//        if let filterDto = self.currentFilterDto
-//        {
-//            if filterDto.historyType == "WITHDRAW" , self.showMode == .withdrawals
-//            {
-//
-//            }else if filterDto.historyType == "DEPOSIT" , self.showMode == .deposits
-//            {
-//
-//            }else
-//            {
-//                self.currentFilterDto = nil
-//                self.currentPage = 0
-//            }
-//        }
         if let data = self.currentFilterDto
         {
             viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "10", page: String(currentPage)))
@@ -189,11 +176,21 @@ class BoardViewController: BaseViewController {
             self.transContentDto = dto.content
             self.resetData()
         }.disposed(by: dpg)
-        depositsViewController.rxPullUpToRefrash().subscribeSuccess { [self] _ in
+        depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
+            showMode = .deposits
+            isRefreshAction = true
+        }.disposed(by: dpg)
+        withdrawalsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
+            showMode = .withdrawals
+            isRefreshAction = true
+        }.disposed(by: dpg)
+        
+        depositsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
             currentPage += 1
             goFetchTableViewData()
         }.disposed(by: dpg)
-        withdrawalsViewController.rxPullUpToRefrash().subscribeSuccess { [self] _ in
+        
+        withdrawalsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
             currentPage += 1
             goFetchTableViewData()
         }.disposed(by: dpg)
@@ -258,7 +255,11 @@ extension BoardViewController: PagingViewControllerDataSource, PagingViewControl
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, didScrollToItem pagingItem: T, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) where T : PagingItem, T : Comparable, T : Hashable {
         if let pageItem = pagingItem as? PagingIndexItem
         {
-            showMode = pageItem.index == 0 ? .deposits : .withdrawals
+            if isRefreshAction != true
+            {
+                showMode = pageItem.index == 0 ? .deposits : .withdrawals
+            }
+            isRefreshAction = false
             Log.v("pagingItem :\(pageItem.index)")
             isFilterAction = false
         }

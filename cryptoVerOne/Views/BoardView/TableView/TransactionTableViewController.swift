@@ -12,7 +12,8 @@ import UIKit
 
 class TransactionTableViewController: BaseViewController {
     // MARK:業務設定
-    private let onPullUpToRefrash = PublishSubject<Any>()
+    private let onPullUpToAddRow = PublishSubject<Any>()
+    private let onPullDownToRefrash = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var showModeAtTableView : TransactionShowMode = .deposits{
         didSet{
@@ -26,7 +27,7 @@ class TransactionTableViewController: BaseViewController {
         }
     }
     var sectionDic:[String:[ContentDto]] = [:]
-    
+    let refresher = UIRefreshControl()
     // MARK: -
     // MARK:UI 設定
     var verifyView = TwoFAVerifyView()
@@ -47,7 +48,7 @@ class TransactionTableViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        endRefresh()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -67,7 +68,15 @@ class TransactionTableViewController: BaseViewController {
         tableView.separatorStyle = .none
         tableView.backgroundView = NoDataView(image: UIImage(named: "empty-list"), title: "No records found" , subTitle: "You have no transactions")
         tableView.backgroundView?.isHidden = false
+        refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
+            self?.endRefresh()
+        }.disposed(by: disposeBag)
+        tableView?.addSubview(refresher)
         self.bottomRefrash = tableView.footerRefrashView()
+    }
+    private func endRefresh() {
+        clearData()
+        onPullDownToRefrash.onNext(())
     }
     func bindView()
     {
@@ -127,7 +136,7 @@ class TransactionTableViewController: BaseViewController {
 //                sectionDic[currentTimeString] = [dataDto]
 //            }
         }
-        
+        refresher.endRefreshing()
         tableView.backgroundView?.isHidden = sectionDic.keys.count > 0 ? true : false
         tableView.reloadData()
     }
@@ -160,9 +169,13 @@ class TransactionTableViewController: BaseViewController {
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
-    func rxPullUpToRefrash() -> Observable<Any>
+    func rxPullUpToAddRow() -> Observable<Any>
     {
-        return onPullUpToRefrash.asObserver()
+        return onPullUpToAddRow.asObserver()
+    }
+    func rxPullDownToRefrash() -> Observable<Any>
+    {
+        return onPullDownToRefrash.asObserver()
     }
 }
 // MARK: -
@@ -235,26 +248,43 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         return UIView()
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-//        if refreshControl.isRefreshing {
+        if refresher.isRefreshing {
 //            refreshing()
-//        }
+        }
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-        if scrollView == self.tableView{
+//        
+//        if scrollView == self.tableView{
+//            let offset = scrollView.contentOffset
+//            let bouns = scrollView.bounds
+//            let size = scrollView.contentSize
+//            let inset = scrollView.contentInset
+//            let y = offset.y + bouns.size.height - inset.bottom
+//            let h = size.height
+//            let reloadDistence = 50.0
+//            if y > h + CGFloat(reloadDistence){
+//                tableView.tableFooterView = self.bottomRefrash
+//                print("底部刷新資料")
+//                 self.onPullUpToAddRow.onNext(())
+//            }
+//        }
+        if scrollView == tableView {
             let offset = scrollView.contentOffset
-            let bouns = scrollView.bounds
-            let size = scrollView.contentSize
-            let inset = scrollView.contentInset
-            let y = offset.y + bouns.size.height - inset.bottom
-            let h = size.height
-            let reloadDistence = 50.0
-            if y > h + CGFloat(reloadDistence){
-                tableView.tableFooterView = self.bottomRefrash
-                print("底部刷新資料")
-                 self.onPullUpToRefrash.onNext(())
+            if offset.y > 0
+            {
+                let bouns = scrollView.bounds
+                let size = scrollView.contentSize
+                let inset = scrollView.contentInset
+                let y:CGFloat = offset.y + bouns.size.height - inset.bottom
+                let h:CGFloat = size.height
+                let reloadDistence = 50.0
+                let newH = size.height + reloadDistence + Views.tabBarHeight
+                if y > newH {
+                    tableView.tableFooterView = bottomRefrash
+                    print("底部刷新資料")
+                    self.onPullUpToAddRow.onNext(())
+                }
             }
-            
         }
     }
 }

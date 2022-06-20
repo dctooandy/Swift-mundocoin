@@ -85,6 +85,10 @@ class SocketIOManager: NSObject {
                 socket.on("message") { data, ark in
                     self.onTriggerLocalNotification(suvtitle: "message", body: data)
                 }
+                
+                socket.on("APPROVAL_DONE") { data, ark in
+                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_DONE", body: data)
+                }
             }
         }
         //        socket.on("currentAmount") { [self]data, ack in
