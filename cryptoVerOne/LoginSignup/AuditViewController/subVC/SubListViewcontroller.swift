@@ -91,8 +91,8 @@ class SubListViewcontroller: BaseViewController {
                 // 停止 refreshControl 動畫
                 refreshControl.endRefreshing()
                 dataArray.removeAll()
-                var finishedData = dto.content.filter{($0.state == "DONE")}
-                var pendingData = dto.content.filter{($0.state != "DONE")}
+                var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
+                var pendingData = dto.content.filter{($0.state != "APPROVED")}
                 finishedData = finishedData.sorted(by: { $0.transaction?.createdDateString ?? "" > $1.transaction?.createdDateString ?? "" })
                 pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
                 if showMode == .pending

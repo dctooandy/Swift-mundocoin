@@ -44,6 +44,19 @@ class AuditService {
                 return $0
             })
     }
+    func auditApproval(approvalId :String , approvalNodeId: String,approvalState:String , memo:String) -> Single<String?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["approvalState"] = approvalState
+        parameters["memo"] = memo
+        return Beans.requestServer.singleRequestPut(
+            path: ApiService.adminApproval(approvalId, approvalNodeId).path,
+            parameters: parameters,
+            modify: false,
+            resultType: String.self).map({
+                return $0
+            })
+    }
  
 //    func walletTransactions(currency:String = "" , stats : String = "", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :String = "") -> Single<WalletTransactionDto?>
 //    {

@@ -55,7 +55,7 @@ extension RequestService
                                           parameters:Parameters? = nil,
                                           modify:Bool = true,
                                           resultType:T.Type,
-                                          encoding: ParameterEncoding = URLEncoding.default) -> Single<T> {
+                                          encoding: ParameterEncoding = JSONEncoding.default) -> Single<T> {
         return singleRequest(path: path, parameters:parameters  , modify: modify , resultType: resultType, method: .put,encoding: encoding)
     }
     func singleRequest<T:Codable>(path:URL?,

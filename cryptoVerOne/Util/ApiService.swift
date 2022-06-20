@@ -54,6 +54,7 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case authentication
     case auditAuthentication
     case approvals
+    case adminApproval(String ,String)
     case walletAddress
     case walletBalances
     case walletWithdraw
@@ -109,6 +110,8 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/admin/authentication")
         case .approvals:
             return URL(string:ApiService.host + "/v1/admin/approvals")
+        case .adminApproval(let approvalId , let approvalNodeId):
+            return URL(string:ApiService.host + "/v1/admin/approval/\(approvalId)/node/\(approvalNodeId)")
         default :
             return URL(string:ApiService.host)
         }

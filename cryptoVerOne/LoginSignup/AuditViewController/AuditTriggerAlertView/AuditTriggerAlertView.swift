@@ -36,7 +36,7 @@ class AuditTriggerAlertView: PopupBottomSheet {
     // MARK:業務設定
     var alertMode : AuditTriggerMode!
     private let dpg = DisposeBag()
-    typealias DoneHandler = (Bool) -> ()
+    typealias DoneHandler = (Bool , String) -> ()
     var doneHandler: DoneHandler?
     // MARK: -
     // MARK:UI 設定
@@ -182,26 +182,26 @@ class AuditTriggerAlertView: PopupBottomSheet {
     override func dismissVC(nextSheet: BottomSheet? = nil) {
         super.dismissVC()
         print("vc dismiss")
-        usedBioVerify(false)
+        confirmButtonVerify(false)
     }
     
     override func dismissToTopVC() {
         super.dismissToTopVC()
         print("top vc dismiss")
-        usedBioVerify(false)
+        confirmButtonVerify(false)
     }
 
     @objc private func confirmButtonPressed(_ sender: UIButton) {
         
         if sender == confirmButton {
-            usedBioVerify(true)
+            confirmButtonVerify(true, memo:messageTextView.text)
         } else {
-            usedBioVerify(false)
+            confirmButtonVerify(false, memo:messageTextView.text)
         }
         self.dismiss(animated: true, completion: nil)
     }
     
-    func usedBioVerify(_ isCheck: Bool) {
-        doneHandler?(isCheck)
+    func confirmButtonVerify(_ accept: Bool , memo:String = "") {
+        doneHandler?(accept , memo)
     }
 }

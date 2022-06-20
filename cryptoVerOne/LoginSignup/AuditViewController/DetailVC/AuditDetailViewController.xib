@@ -227,6 +227,7 @@
                 <outlet property="actualAmountLabel" destination="44z-9b-i49" id="oTo-B4-iHJ"/>
                 <outlet property="addressLabel" destination="rPy-Ui-KUF" id="O0s-dG-HEw"/>
                 <outlet property="commentLabel" destination="j3r-KR-dMR" id="tTh-aI-5OV"/>
+                <outlet property="commentTitleLabel" destination="VOW-XO-2Ib" id="05b-0r-AFC"/>
                 <outlet property="cryptoLabel" destination="GaF-0U-Oc8" id="Jj6-e8-Kbc"/>
                 <outlet property="dateLabel" destination="gm9-OF-GVp" id="qJa-cf-zzs"/>
                 <outlet property="feeLabel" destination="mEP-Gq-RkV" id="B2O-u6-1PB"/>

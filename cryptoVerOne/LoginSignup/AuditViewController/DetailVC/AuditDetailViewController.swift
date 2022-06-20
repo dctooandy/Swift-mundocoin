@@ -13,6 +13,7 @@ class AuditDetailViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private var dpg = DisposeBag()
+    fileprivate var viewModel = AuditDetailViewModel()
     var data : WalletWithdrawDto!
     var showMode:AuditShowMode!
     // MARK: -
@@ -34,6 +35,8 @@ class AuditDetailViewController: BaseViewController {
     @IBOutlet weak var dateLabel: UILabel!
     
     @IBOutlet weak var statusLabel: UILabel!
+    
+    @IBOutlet weak var commentTitleLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
     @IBOutlet weak var txidLabel: UILabel!
     
@@ -45,6 +48,7 @@ class AuditDetailViewController: BaseViewController {
         super.viewDidLoad()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: auditBackBtn)
         bindTabbar()
+        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,13 +75,24 @@ class AuditDetailViewController: BaseViewController {
             showAlertView(accept: accept)
         }.disposed(by: dpg)
     }
+    func bindViewModel()
+    {
+        viewModel.rxFetchSuccess().subscribeSuccess { dto in
+            Log.v("完成提案 \(dto)")
+            self.navigationController?.popToRootViewController(animated: true)
+        }.disposed(by: dpg)
+    }
     func showAlertView(accept:AuditTriggerMode)
     {
-        let popVC =  AuditTriggerAlertView(alertMode: accept) {[self] isOK in
+        let popVC =  AuditTriggerAlertView(alertMode: accept) {[self](acceptValue , memoString) in
             
-            if isOK {
+            if acceptValue == true , let firstChainData = data.chain?.first {
                 Log.i("Confirm or Reject")
-                navigationController?.popToRootViewController(animated: true)
+                let approvalId = data.id ?? ""
+                let approvalNodeId = firstChainData.id
+                let approvalState = (accept == .accept ? "APPROVED" : "REJECT")
+                let memo = memoString
+                viewModel.goApproval(approvalId: approvalId, approvalNodeId: approvalNodeId, approvalState: approvalState, memo: memo)
             }else
             {
                 Log.i("Cancel")
@@ -87,8 +102,12 @@ class AuditDetailViewController: BaseViewController {
     }
     func setupDate(cellData:WalletWithdrawDto ,showMode:AuditShowMode)
     {
-        if let userDto = cellData.issuer , let transDto = cellData.transaction
+        if let userDto = cellData.issuer , let transDto = cellData.transaction , let chainDto = cellData.chain?.first
         {
+            self.data = cellData
+            Log.v("chain :\n\(String(describing: cellData.chain))")
+            Log.v("issur :\n\(userDto)")
+            Log.v("transDto :\n\(transDto)")
             userIDLabel.text = userDto.email
             cryptoLabel.text = transDto.currency
             networkLabel.text = "TRC20"
@@ -103,8 +122,9 @@ class AuditDetailViewController: BaseViewController {
             for item in labelArray {
                 item.isHidden = (showMode == .pending ? true : false)
             }
-            statusLabel.text = transDto.state
-            commentLabel.text = transDto.memo ?? ""
+            statusLabel.text = chainDto.state
+            commentTitleLabel.isHidden = chainDto.memo.isEmpty
+            commentLabel.text = chainDto.memo
             txidLabel.text = transDto.txId ?? ""
             resetTabbarHeight()
         }

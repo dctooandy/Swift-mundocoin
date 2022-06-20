@@ -829,6 +829,12 @@
 		09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
+		0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF092860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF0A2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF0B2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1631,6 +1637,7 @@
 		09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		09947BAF284DB433004F7FD7 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -2121,6 +2128,7 @@
 			children = (
 				09EED2FD2856EA4A00CB4A64 /* AuditDetailViewController.swift */,
 				09EED3042856EA6400CB4A64 /* AuditDetailViewController.xib */,
+				0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */,
 			);
 			path = DetailVC;
 			sourceTree = "<group>";
@@ -3686,6 +3694,7 @@
 				09905A4C2851A02B00BAEE78 /* LoadingViewController.swift in Sources */,
 				09905A4D2851A02B00BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905A4E2851A02B00BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF0A2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				09905A4F2851A02B00BAEE78 /* ForgotViewController.swift in Sources */,
 				09905A502851A02B00BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905A512851A02B00BAEE78 /* CheckBox.swift in Sources */,
@@ -3885,6 +3894,7 @@
 				09905B3E2851A08500BAEE78 /* LoadingViewController.swift in Sources */,
 				09905B3F2851A08500BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905B402851A08500BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF0B2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				09905B412851A08500BAEE78 /* ForgotViewController.swift in Sources */,
 				09905B422851A08500BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905B432851A08500BAEE78 /* CheckBox.swift in Sources */,
@@ -4084,6 +4094,7 @@
 				09905C302851A09600BAEE78 /* LoadingViewController.swift in Sources */,
 				09905C312851A09600BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905C322851A09600BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF092860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				09905C332851A09600BAEE78 /* ForgotViewController.swift in Sources */,
 				09905C342851A09600BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905C352851A09600BAEE78 /* CheckBox.swift in Sources */,
@@ -4283,6 +4294,7 @@
 				09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */,
@@ -4482,6 +4494,7 @@
 				09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */,
@@ -4681,6 +4694,7 @@
 				A19C712D2822570E000AFC3F /* LoadingViewController.swift in Sources */,
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
+				0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
 				A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */,
 				099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
