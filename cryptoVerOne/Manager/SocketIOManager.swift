@@ -39,6 +39,7 @@ class SocketIOManager: NSObject {
             jwtValue = try decode(jwt: token)
         } catch {
             Log.v("Socket.io - Failed to decode JWT: \(error)")
+            idValue = "123"
         }
         if jwtValue != nil , let idString = jwtValue.body["Id"] as? String
         {

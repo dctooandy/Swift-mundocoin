@@ -177,10 +177,12 @@ class BoardViewController: BaseViewController {
             self.resetData()
         }.disposed(by: dpg)
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
+            isFilterAction = false
             showMode = .deposits
             isRefreshAction = true
         }.disposed(by: dpg)
         withdrawalsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
+            isFilterAction = false
             showMode = .withdrawals
             isRefreshAction = true
         }.disposed(by: dpg)
