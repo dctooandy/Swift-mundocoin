@@ -38,7 +38,7 @@ class TodoListViewController: BaseViewController {
 //        title = "ToDoList"
         naviBackBtn.isHidden = true
         self.navigationItem.titleView = logoImage
-
+        bindLogoView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -69,6 +69,19 @@ class TodoListViewController: BaseViewController {
             make.top.equalToSuperview().offset(naviBarHeight)
             make.left.bottom.right.equalToSuperview()
         })
+    }
+    func bindLogoView()
+    {
+        logoImage.rx.click.subscribeSuccess { (_) in
+            self.socketEmit()
+        }.disposed(by: dpg)
+    }
+    func socketEmit()
+    {
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(WalletWithdrawDto())
+        let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        SocketIOManager.sharedInstance.sendEchoEvent(event: "message", para: json!)
     }
 }
 // MARK: -

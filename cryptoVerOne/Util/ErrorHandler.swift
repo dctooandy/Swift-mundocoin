@@ -50,12 +50,13 @@ class ErrorHandler {
                 let code = dto.code
                 let reason = dto.reason
                 let errors = dto.errors
-                if status == "403" , dto.reason == "TOKEN_EXPIRED"
+                if status == "403" , dto.reason == "AUTH_REQUIRED"
                 {
+                    #if Approval_PRO || Approval_DEV || Approval_STAGE
+                    DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+                    #else
                     DeepLinkManager.share.handleDeeplink(navigation: .login)
-                }else if status == "403" , dto.reason == "AUTH_REQUIRED"
-                {
-                    DeepLinkManager.share.handleDeeplink(navigation: .login)
+                    #endif
                 }else
                 {
                     showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")

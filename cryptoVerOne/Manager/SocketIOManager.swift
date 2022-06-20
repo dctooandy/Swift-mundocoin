@@ -50,54 +50,34 @@ class SocketIOManager: NSObject {
         )
         // 掛鉤 NameSpace
         socket = manager.socket(forNamespace: "/notification")
-
+//        socket.joinNamespace()
         if(socket != nil)
         {
             if(socket.status == .disconnected || socket.status == .notConnected)
             {
                 socket.on(clientEvent: .disconnect) {data, ack in
                     Log.v("Socket.io - 接收到了 disconnect:\(data.description) )")
-                    self.socket.joinNamespace()
-                    self.sendJoin()
+                    self.socketOffEvents()
                 }
                 socket.on(clientEvent: .connect) {data, ack in
                     Log.v("Socket.io - clientEvent connected")
-                    if self.alreadyJoin == true
+                    
+                    #if Approval_PRO || Approval_DEV || Approval_STAGE
+                    if !KeychainManager.share.getAuditToken().isEmpty
                     {
+//                        self.socket.joinNamespace()
                         self.alreadyJoin = false
                         self.sendJoin()
                     }
-                }
-                socket.on("notification") { resultData, ack in
-                    self.onTriggerLocalNotification(suvtitle: "notification", body: resultData)
-                }
-                socket.on("joinResult") { resultData, ack in
-                    Log.v("Socket.io - joinResult Success")
-                    self.onTriggerLocalNotification(suvtitle: "joinResult", body: resultData)
-                }
-                socket.on("echoResult") { resultData, ack in
-                    Log.v("Socket.io - echoResult Success")
-                    self.joinNameSpaceWithData(body: resultData)
-//                    self.onTriggerLocalNotification(suvtitle: "echoResult", body: resultData)
-                }
-                socket.on(self.idValue) { [self] data, ack in
-                    self.onTriggerLocalNotification(suvtitle: self.idValue, body: data)
-                }
-                socket.on("message") { data, ark in
-                    self.onTriggerLocalNotification(suvtitle: "message", body: data)
-                }
-                
-                socket.on("APPROVAL_DONE") { data, ark in
-                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_DONE", body: data)
-                }
-                socket.on("APPROVAL_PENDING") { data, ark in
-                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_PENDING", body: data)
-                }
-                socket.on("APPROVAL_PROCESSING") { data, ark in
-                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_PROCESSING", body: data)
-                }
-                socket.on("APPROVAL_FAILED") { data, ark in
-                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_FAILED", body: data)
+                    #else
+                    if KeychainManager.share.getToken().isEmpty != true
+                    {
+//                        self.socket.joinNamespace()
+                        self.alreadyJoin = false
+                        self.sendJoin()
+                    }
+                    #endif
+                    self.socketOnEvents()
                 }
             }
         }
@@ -112,6 +92,60 @@ class SocketIOManager: NSObject {
         //            }
         //            ack.with("Got your currentAmount", "dude")
         //        }
+        socket?.onAny { (data) in
+            if data.event == "reconnectAttempt" {
+                self.closeConnection()
+                self.establishConnection()
+            }
+        }
+    }
+    func socketOffEvents()
+    {
+        socket.off("notification")
+        socket.off("joinResult")
+        socket.off("echoResult")
+        socket.off(self.idValue)
+        socket.off("message")
+        socket.off("APPROVAL_DONE")
+        socket.off("APPROVAL_PENDING")
+        socket.off("APPROVAL_PROCESSING")
+        socket.off("APPROVAL_FAILED")
+    }
+    func socketOnEvents()
+    {
+        socket.on("notification") { resultData, ack in
+            self.onTriggerLocalNotification(suvtitle: "notification", body: resultData)
+        }
+        socket.on("joinResult") { resultData, ack in
+            Log.v("Socket.io - joinResult Success")
+            self.onTriggerLocalNotification(suvtitle: "joinResult", body: resultData)
+        }
+        socket.on("echoResult") { resultData, ack in
+            Log.v("Socket.io - echoResult Success")
+//            self.joinNameSpaceWithData(body: resultData)
+//                    self.onTriggerLocalNotification(suvtitle: "echoResult", body: resultData)
+        }
+        socket.on(self.idValue) { [self] data, ack in
+            Log.v("Socket.io - \(self.idValue) Success")
+            self.onTriggerLocalNotification(suvtitle: self.idValue, body: data)
+        }
+        socket.on("message") { data, ark in
+            Log.v("Socket.io - message Success")
+            self.onTriggerLocalNotification(suvtitle: "message", body: data)
+        }
+        
+        socket.on("APPROVAL_DONE") { data, ark in
+            self.onTriggerLocalNotification(suvtitle: "APPROVAL_DONE", body: data)
+        }
+        socket.on("APPROVAL_PENDING") { data, ark in
+            self.onTriggerLocalNotification(suvtitle: "APPROVAL_PENDING", body: data)
+        }
+        socket.on("APPROVAL_PROCESSING") { data, ark in
+            self.onTriggerLocalNotification(suvtitle: "APPROVAL_PROCESSING", body: data)
+        }
+        socket.on("APPROVAL_FAILED") { data, ark in
+            self.onTriggerLocalNotification(suvtitle: "APPROVAL_FAILED", body: data)
+        }
     }
     func connectStatus() -> SocketIOStatus
     {
@@ -143,7 +177,10 @@ class SocketIOManager: NSObject {
     }
      
     func closeConnection() {
-        socket.disconnect()
+        socket.leaveNamespace()
+    }
+    func reConnection() {
+        self.manager.reconnect()
     }
 }
 extension SocketIOManager
@@ -206,7 +243,7 @@ extension SocketIOManager
 #if Mundo_PRO || Approval_PRO
                 
 #else
-        joinNameSpaceWithData(body: body)
+//        joinNameSpaceWithData(body: body)
         let content = UNMutableNotificationContent()
         content.title = "Socket receive"
         content.subtitle = "\(suvtitle)"

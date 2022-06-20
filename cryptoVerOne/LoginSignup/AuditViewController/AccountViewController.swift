@@ -85,6 +85,7 @@ class AccountViewController: BaseViewController {
         logoutLabel.rx.click.subscribeSuccess { (_) in
             if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
             {
+                DeepLinkManager.share.cleanDataForLogout()
                 let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
                 mainWindow.rootViewController = auditNavVC
                 mainWindow.makeKeyAndVisible()

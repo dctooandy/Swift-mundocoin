@@ -20,7 +20,7 @@ class LaunchReciprocalViewController: BaseViewController {
     
     @IBOutlet weak var backGroundImageView: UIImageView!
     let loginVC =  LoginSignupViewController.share
-    let auditVC =  AuditLoginViewController.loadNib()
+    let auditLoginVC =  AuditLoginViewController.loadNib()
     @IBOutlet weak var reciprocalLabel: UILabel!
     @IBOutlet weak var beleadLeftIcon:UIImageView!
     @IBOutlet weak var beleadRightTopIcon:UIImageView!
@@ -60,7 +60,11 @@ class LaunchReciprocalViewController: BaseViewController {
                     {
                         if strongSelf.waitForGotoWallet == true
                         {
+                            #if Approval_PRO || Approval_DEV || Approval_STAGE
+                            strongSelf.goToAuditMainVC()
+                            #else
                             strongSelf.goToWallet()
+                            #endif
                         }else
                         {
                             strongSelf.goToLogin()
@@ -91,7 +95,11 @@ class LaunchReciprocalViewController: BaseViewController {
                             {
                                 if waitForGotoWallet == true
                                 {
+                                    #if Approval_PRO || Approval_DEV || Approval_STAGE
+                                    goToAuditMainVC()
+                                    #else
                                     goToWallet()
+                                    #endif
                                 }else
                                 {
                                     goToLogin()
@@ -124,12 +132,25 @@ class LaunchReciprocalViewController: BaseViewController {
             mainWindow.makeKeyAndVisible()
         }
     }
+    func goToAuditMainVC()
+    {
+        // socket
+        SocketIOManager.sharedInstance.establishConnection()
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            DispatchQueue.main.async {
+                appDelegate.freshToken()
+                mainWindow.rootViewController = AuditTabbarViewController()
+                mainWindow.makeKeyAndVisible()
+            }
+        }
+    }
     func goToLogin()
     {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-            let auditNavVC = MDNavigationController(rootViewController: auditVC)
+            let auditNavVC = MDNavigationController(rootViewController: auditLoginVC)
             mainWindow.rootViewController = auditNavVC
 #else
             let loginNavVC = MuLoginNavigationController(rootViewController: loginVC)

@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
         stopRETimer()
+        SocketIOManager.sharedInstance.closeConnection()
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
         // 檢查版本
@@ -68,15 +69,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let vc = UIApplication.topViewController() {
             print("current top vc: \(vc)")
             if vc.isKind(of: LaunchReciprocalViewController.self) { return }
-            if vc.isKind(of: LoginSignupViewController.self) { return }
+            #if Approval_PRO || Approval_DEV || Approval_STAGE
             if vc.isKind(of: AuditLoginViewController.self) { return }
+            #else
+            if vc.isKind(of: LoginSignupViewController.self) { return }
+            #endif
             if let vcArray = vc.navigationController?.viewControllers
             {
                 for vc in vcArray {
-                    if vc is LoginSignupViewController
-                    {
-                        return
-                    }
+                    #if Approval_PRO || Approval_DEV || Approval_STAGE
+                    if vc is AuditLoginViewController { return }
+                    #else
+                    if vc is LoginSignupViewController { return }
+                    #endif
                 }
             }
             // 檢查時間
@@ -169,18 +174,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     func checkAuditToken(complete:CheckCompletionBlock? = nil)
     {
-//        Log.v("沒過期")
-// // 沒過期,打refresh API, 時間加30分鐘
-//        freshAuditToken()
-//        SocketIOManager.sharedInstance.establishConnection()
-        Log.v("audit過期")
-        if let successBlock = complete
-        {
-            successBlock(false)
-        }else
-        {
-            DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
-        }
+        // ErrorHandler 已經有過期導去登入
+        LoadingViewController.show()
+        Beans.auditServer.auditApprovals().subscribe { [self] (dto) in
+            _ = LoadingViewController.dismiss()
+            // 沒過期,打refresh API, 時間加30分鐘
+//            SocketIOManager.sharedInstance.establishConnection()
+            SocketIOManager.sharedInstance.reConnection()
+            Log.v("audit 沒過期")
+            if let successBlock = complete
+            {
+                successBlock(true)
+            }else
+            {
+                freshToken()
+            }
+        }onError: { (error) in
+            Log.v("audit 過期")
+            _ = LoadingViewController.dismiss()
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
+                //過期去登入頁面
+                DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+            }
+        }.disposed(by: dpg)
     }
     func freshAuditToken()
     {
@@ -190,11 +210,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         // ErrorHandler 已經有過期導去登入
         LoadingViewController.show()
-        Beans.walletServer.walletBalances().subscribe { [self](dto) in
+        Beans.walletServer.walletBalances().subscribe { [self] (dto) in
             _ = LoadingViewController.dismiss()
             // 沒過期,打refresh API, 時間加30分鐘
-            SocketIOManager.sharedInstance.establishConnection()
-            Log.v("沒過期")
+//            SocketIOManager.sharedInstance.establishConnection()
+            SocketIOManager.sharedInstance.reConnection()
+            Log.v("mundocoin 沒過期")
             if let successBlock = complete
             {
                 successBlock(true)
@@ -203,6 +224,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 freshToken()
             }
         } onError: { (error) in
+            Log.v("mundocoin 過期")
             _ = LoadingViewController.dismiss()
             if let successBlock = complete
             {
@@ -217,6 +239,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func freshToken()
     {
         Log.v("刷新Token")
+        #if Approval_PRO || Approval_DEV || Approval_STAGE
+        #else
         Beans.loginServer.refreshToken().subscribeSuccess { [self]dto in
             if let dataDto = dto
             {
@@ -225,6 +249,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 startToCountDown()
             }
         }.disposed(by: dpg)
+        #endif
     }
     func startToCountDown() {
         Log.v("刷新時間")
@@ -247,7 +272,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func stopRETimer()
     {
         Log.v("消除倒數timer")
-        SocketIOManager.sharedInstance.closeConnection()
         timer?.invalidate()
         timer = nil
     }

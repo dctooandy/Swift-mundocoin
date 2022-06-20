@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import SocketIO
 struct WalletWithdrawDto :Codable {
     var id : String? = ""
     var createdDate : String? = ""
@@ -17,6 +18,16 @@ struct WalletWithdrawDto :Codable {
     var transaction : ContentDto? = ContentDto()
     var issuer : IssuerDto? = IssuerDto()
     
+    func socketRepresentation() -> SocketData {
+        return ["id": id
+                , "createdDate": createdDate
+                , "updatedDate": updatedDate
+                , "type": type
+                , "state": state
+                , "chain": chain
+                , "transaction": transaction
+                , "issuer": issuer]
+    }
     var defailType:DetailType {
         if self.state == "PENDING"
         {

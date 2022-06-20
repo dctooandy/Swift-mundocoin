@@ -23,7 +23,6 @@ class AuditLoginViewController: BaseViewController {
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var logoButton : UIButton!
-    private let tabbarVC = AuditTabbarViewController()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -202,7 +201,7 @@ class AuditLoginViewController: BaseViewController {
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)
                 }
                 BioVerifyManager.share.setAuditBioLoginSwitch(to: isOK)
-                self?.goTOMainVC()
+                self?.goToAuditMainVC()
             }
             DispatchQueue.main.async {[self] in
                 popVC.start(viewController: self)
@@ -210,19 +209,23 @@ class AuditLoginViewController: BaseViewController {
             BioVerifyManager.share.setAuditBioLoginAskStateToTrue()
         }else
         {
-            goTOMainVC()
+            goToAuditMainVC()
         }
     }
-    func goTOMainVC()
+    func goToAuditMainVC()
     {
-        DispatchQueue.main.async {
-            if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
-                print("go ")
-                mainWindow.rootViewController = self.tabbarVC
+//         socket
+        SocketIOManager.sharedInstance.establishConnection()
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            DispatchQueue.main.async {
+                appDelegate.freshToken()
+                mainWindow.rootViewController = AuditTabbarViewController()
                 mainWindow.makeKeyAndVisible()
             }
         }
     }
+    
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev
         {
