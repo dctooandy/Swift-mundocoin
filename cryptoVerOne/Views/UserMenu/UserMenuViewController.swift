@@ -108,7 +108,10 @@ class UserMenuViewController: BaseViewController {
     
     func socketEmit()
     {
-        SocketIOManager.sharedInstance.sendMessage(event: "echo", para: "123123123")
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try? jsonEncoder.encode(WalletWithdrawDto())
+        let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
+        SocketIOManager.sharedInstance.sendEchoEvent(event: "message", para: json!)
     }
     func directToViewController() {
         DeepLinkManager.share.handleDeeplink(navigation: .login)

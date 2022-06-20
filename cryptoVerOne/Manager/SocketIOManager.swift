@@ -90,6 +90,15 @@ class SocketIOManager: NSObject {
                 socket.on("APPROVAL_DONE") { data, ark in
                     self.onTriggerLocalNotification(suvtitle: "APPROVAL_DONE", body: data)
                 }
+                socket.on("APPROVAL_PENDING") { data, ark in
+                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_PENDING", body: data)
+                }
+                socket.on("APPROVAL_PROCESSING") { data, ark in
+                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_PROCESSING", body: data)
+                }
+                socket.on("APPROVAL_FAILED") { data, ark in
+                    self.onTriggerLocalNotification(suvtitle: "APPROVAL_FAILED", body: data)
+                }
             }
         }
         //        socket.on("currentAmount") { [self]data, ack in
@@ -148,6 +157,21 @@ extension SocketIOManager
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             socket.emit(event, jsonData) {
+                Log.v("Socket.io - [\(event)] call back")
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    func sendEchoEvent(event:String, para:String)
+    {
+        Log.v("Socket.io - 發送訊息 事件 \(event) ,參數 \(para)")
+        var parameters: Parameters = [String: Any]()
+        parameters["roomId"] = idValue
+        parameters[event] = para
+        do {
+            let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
+            socket.emit("echo", jsonData) {
                 Log.v("Socket.io - [\(event)] call back")
             }
         } catch {

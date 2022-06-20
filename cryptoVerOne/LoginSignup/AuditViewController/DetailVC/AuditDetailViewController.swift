@@ -123,7 +123,7 @@ class AuditDetailViewController: BaseViewController {
                 item.isHidden = (showMode == .pending ? true : false)
             }
             statusLabel.text = chainDto.state
-            commentTitleLabel.isHidden = chainDto.memo.isEmpty
+            commentTitleLabel.isHidden =  (showMode == .pending ? true : chainDto.memo.isEmpty)
             commentLabel.text = chainDto.memo
             txidLabel.text = transDto.txId ?? ""
             resetTabbarHeight()
