@@ -24,7 +24,7 @@ class CheckBoxView: UIControl {
             resetUIByType(type: checkType)
         }
     }
-    private let accountCheckPassed = BehaviorSubject(value: false)
+    private let accountCheckPassed = PublishSubject<Bool>()
     // MARK: -
     // MARK:UI 設定
     private var iconImageView : UIImageView!

@@ -34,11 +34,10 @@ class AuditLoginViewController: BaseViewController {
         setupUI()
         bindTextfield()
         bindLoginButton()
-        
+        bindCheckBox()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -46,6 +45,31 @@ class AuditLoginViewController: BaseViewController {
         if didAskBioLogin == true 
         {
             bioVerifyCheck()
+        }
+        if KeychainManager.share.getAuditRememberMeStatus() == true
+        {
+            if let loginPostDto = KeychainManager.share.getLastAuditAccount(),
+               BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account)
+            {
+                DispatchQueue.main.async { [self] in
+                    accountInputView.textField.text = loginPostDto.account
+                    passwordInputView.textField.text = loginPostDto.password
+                    checkBoxView.isSelected = true
+                    checkBoxView.checkType = .checkType
+                }
+            }else
+            {
+                //暫時強制寫上
+                accountInputView.textField.text = "admin@mundocoin.com"
+                passwordInputView.textField.text = "Admin!234"
+            }
+        }else
+        {
+            checkBoxView.isSelected = false
+            checkBoxView.checkType = .defaultType
+            //暫時強制寫上
+            accountInputView.textField.text = "admin@mundocoin.com"
+            passwordInputView.textField.text = "Admin!234"
         }
     }
     
@@ -98,9 +122,6 @@ class AuditLoginViewController: BaseViewController {
     {
         accountInputView.setMode(mode: .auditAccount)
         passwordInputView.setMode(mode: .auditPassword)
-        checkBoxView.checkType = .checkType
-        checkBoxView.isSelected = true
-
     }
     func bindTextfield()
     {
@@ -136,6 +157,13 @@ class AuditLoginViewController: BaseViewController {
         loginButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("Audit登入")
             goTodoViewController()
+        }.disposed(by: dpg)
+    }
+    func bindCheckBox()
+    {
+        checkBoxView.rxCheckBoxPassed().subscribeSuccess { isSelect in
+            Log.v("isselect \(isSelect)")
+            KeychainManager.share.saveAuditRememberMeStatus(isSelect)
         }.disposed(by: dpg)
     }
     func getTabbarVC() -> AuditTabbarViewController? {
@@ -236,7 +264,7 @@ class AuditLoginViewController: BaseViewController {
                         Toast.show(msg: "验证失败：\(error!.localizedDescription)")
                         return
                     }
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.async { [self] in
                         accountInputView.textField.text = loginPostDto.account
                         passwordInputView.textField.text = loginPostDto.password
                         goTodoViewController()

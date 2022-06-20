@@ -42,7 +42,7 @@ class BoardViewController: BaseViewController {
         }
     }
     var transContentDto : [ContentDto] = []
-    var currentPage: Int = 1
+    var currentPage: Int = 0
     var currentFilterDto:WalletTransPostDto?
     var isFilterAction : Bool = false
     // MARK: -

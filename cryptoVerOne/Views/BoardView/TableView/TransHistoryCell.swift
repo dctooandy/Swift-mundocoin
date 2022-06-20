@@ -55,7 +55,7 @@ class TransHistoryCell: UITableViewCell {
             statusLabel.isHidden = true
         }else
         {
-            statusLabel.isHidden = false
+            statusLabel.isHidden = data.state == "COMPLETE" ? true : false
             statusLabel.text = data.state
         }
     }

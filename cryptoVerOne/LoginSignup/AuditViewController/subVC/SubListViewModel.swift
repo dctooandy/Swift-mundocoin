@@ -11,15 +11,20 @@ import RxCocoa
 import RxSwift
 
 class SubListViewModel: BaseViewModel {
+    // MARK:業務設定
     private var fetchSuccess = PublishSubject<Any>()
     private var fetchListSuccess = PublishSubject<AuditApprovalDto>()
+    // MARK: -
+    // MARK:UI 設定
+    // MARK: -
+    // MARK:Life cycle
     override init() {
         super.init()
     }
     
-    func fetch()
+    func fetch(currentPage:Int = 0)
     {
-        Beans.auditServer.auditApprovals().subscribe { (dto) in
+        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String(currentPage))).subscribe { (dto) in
             _ = LoadingViewController.dismiss()
             if let data = dto
             {
@@ -58,4 +63,6 @@ class SubListViewModel: BaseViewModel {
     func rxFetchListSuccess() -> Observable<AuditApprovalDto> {
         return fetchListSuccess.asObserver()
     }
+    // MARK: -
+    // MARK:業務方法
 }

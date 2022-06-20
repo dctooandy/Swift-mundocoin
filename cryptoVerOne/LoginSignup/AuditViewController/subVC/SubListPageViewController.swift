@@ -17,6 +17,7 @@ class SubListPageViewController: BaseViewController {
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
     private var currentShowMode: AuditShowMode = .pending {
         didSet {
+            
             pageViewcontroller?.reloadData()
         }
     }
@@ -105,5 +106,13 @@ extension SubListPageViewController: PagingViewControllerDataSource, PagingViewC
     }
     func numberOfViewControllers<T>(in pagingViewController: PagingViewController<T>) -> Int where T : PagingItem, T : Comparable, T : Hashable {
         return subVCs.count
+    }
+    func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, didScrollToItem pagingItem: T, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) where T : PagingItem, T : Comparable, T : Hashable {
+//        if let pageItem = pagingItem as? PagingIndexItem
+//        {
+//            currentShowMode = pageItem.index == 0 ? .pending : .finished
+//            Log.v("pagingItem :\(pageItem.index)")
+////            isFilterAction = false
+//        }
     }
 }

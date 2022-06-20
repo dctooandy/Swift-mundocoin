@@ -14,14 +14,15 @@ class SubListViewcontroller: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
 //    var dataArray = [AuditTransactionDto]()
-    var dataArray = [WalletWithdrawDto]()
+    var dataArray : [WalletWithdrawDto] = []
     var showMode : AuditShowMode = .pending
     fileprivate let viewModel = SubListViewModel()
-    let refreshControl = UIRefreshControl()
+    let refresher = UIRefreshControl()
+    var currentPage: Int = 0
     // MARK: -
     // MARK:UI 設定    
     @IBOutlet weak var tableView: UITableView!
-    
+    var bottomRefrash: UIView?
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -31,6 +32,8 @@ class SubListViewcontroller: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        currentPage = 0
+        dataArray.removeAll()
         viewModel.fetch()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -52,10 +55,14 @@ class SubListViewcontroller: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: SubListTableViewCell.self)
         tableView.separatorStyle = .none
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull To Refresh",
+        refresher.attributedTitle = NSAttributedString(string: "Pull To Refresh",
                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
-        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
-        tableView?.addSubview(refreshControl)
+//        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
+        refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
+            self?.endRefresh()
+        }.disposed(by: disposeBag)
+        tableView?.addSubview(refresher)
+        self.bottomRefrash = tableView.footerRefrashView()
     }
     func modeTitle() -> String {
         switch  showMode {
@@ -63,10 +70,13 @@ class SubListViewcontroller: BaseViewController {
         case .finished: return "Finished".localized
         }
     }
-    func fetchData()
+    private func endRefresh() {
+        loadData()
+    }
+    func fetchData(currentPage:Int)
     {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-            self.viewModel.fetch()
+            self.viewModel.fetch(currentPage: currentPage)
         }
     }
     func bindViewModel()
@@ -89,18 +99,23 @@ class SubListViewcontroller: BaseViewController {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                 _ = LoadingViewController.dismiss()
                 // 停止 refreshControl 動畫
-                refreshControl.endRefreshing()
-                dataArray.removeAll()
+                refresher.endRefreshing()
+                tableView.tableFooterView = nil
+                if self.currentPage == 0
+                {
+                    self.dataArray.removeAll()
+                }
                 var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
                 var pendingData = dto.content.filter{($0.state != "APPROVED")}
                 finishedData = finishedData.sorted(by: { $0.transaction?.createdDateString ?? "" > $1.transaction?.createdDateString ?? "" })
                 pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
                 if showMode == .pending
                 {
-                    dataArray = pendingData
+                    self.dataArray.append(contentsOf: pendingData)
                 }else if showMode == .finished
                 {
-                    dataArray = finishedData
+                    self.dataArray.append(contentsOf: finishedData)
+//                    self.dataArray.append(finishedData)
                 }
                 // 暫時拿來用
                 //                    for indexName in 0...10 {
@@ -113,12 +128,13 @@ class SubListViewcontroller: BaseViewController {
      
         }.disposed(by: dpg)
     }
-    @objc func loadData()
+    @objc func loadData(currentPage:Int = 0)
     {
         // 這邊我們用一個延遲讀取的方法，來模擬網路延遲效果（延遲3秒）
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
             LoadingViewController.show()
-            self.fetchData()
+            self.currentPage = currentPage
+            self.fetchData(currentPage: currentPage)
         }
     }
     func refreshing(){
@@ -164,8 +180,44 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
         return UIView()
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if refreshControl.isRefreshing {
+        if refresher.isRefreshing {
             refreshing()
+        }
+    }
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
+    {
+//        if scrollView == self.tableView{
+//            let offset = scrollView.contentOffset
+//            let bouns = scrollView.bounds
+//            let size = scrollView.contentSize
+//            let inset = scrollView.contentInset
+//            let y = offset.y + bouns.size.height - inset.bottom
+//            let h = size.height
+//            let reloadDistence = 50.0
+//            if y > h + CGFloat(reloadDistence){
+//                tableView.tableFooterView = self.bottomRefrash
+//                print("底部刷新資料")
+//                currentPage += 1
+//                self.loadData(currentPage: currentPage)
+//            }
+//        }
+        if scrollView == tableView {
+            let offset = scrollView.contentOffset
+            if offset.y > 0
+            {
+                let bouns = scrollView.bounds
+                let size = scrollView.contentSize
+                let inset = scrollView.contentInset
+                let y:CGFloat = offset.y + bouns.size.height - inset.bottom
+                let h:CGFloat = size.height
+                let reloadDistence = 50.0
+                let newH = size.height + reloadDistence + Views.tabBarHeight
+                if y > newH {
+                    tableView.tableFooterView = bottomRefrash
+                    currentPage += 1
+                    self.loadData(currentPage: currentPage)
+                }
+            }
         }
     }
 }

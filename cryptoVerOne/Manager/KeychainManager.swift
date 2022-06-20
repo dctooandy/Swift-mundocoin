@@ -22,6 +22,7 @@ class KeychainManager {
         case addressBookList = "mundocoin_addressBook_list"
         case auditAccount = "audit_account"
         case auditAccList = "audit_acc_list"
+        case auditRememberMeStatus = "audit_remember_me_status"
     }
     
     static let share = KeychainManager()
@@ -251,7 +252,6 @@ class KeychainManager {
 #else
         return .Stage
 #endif
-        
     }
     // 存取刪除 mundocoin token
     func getToken() -> String {
@@ -340,5 +340,12 @@ class KeychainManager {
         {
             return []
         }
+    }
+    func saveAuditRememberMeStatus(_ isOn :Bool )
+    {
+        _ = setString(isOn == true ? "true":"false", at: .auditRememberMeStatus)
+    }
+    func getAuditRememberMeStatus() -> Bool {
+        return getString(from: .auditRememberMeStatus) == "true" ? true:false
     }
 }
