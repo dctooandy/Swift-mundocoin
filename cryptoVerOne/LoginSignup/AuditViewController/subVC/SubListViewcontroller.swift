@@ -13,7 +13,8 @@ class SubListViewcontroller: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var dataArray = [AuditTransactionDto]()
+//    var dataArray = [AuditTransactionDto]()
+    var dataArray = [WalletWithdrawDto]()
     var showMode : AuditShowMode = .pending
     fileprivate let viewModel = SubListViewModel()
     let refreshControl = UIRefreshControl()
@@ -70,23 +71,46 @@ class SubListViewcontroller: BaseViewController {
     }
     func bindViewModel()
     {
-        viewModel.rxFetchSuccess().subscribeSuccess { [self] _ in
-            
+//        viewModel.rxFetchSuccess().subscribeSuccess { [self] _ in
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+//                _ = LoadingViewController.dismiss()
+//                // 停止 refreshControl 動畫
+//                refreshControl.endRefreshing()
+//                dataArray.removeAll()
+//                // 暫時拿來用
+//                for indexName in 0...10 {
+//                    dataArray.append(AuditTransactionDto(userid: "00000\(indexName)", crypto: "USDT", network: "TRC20", withdrawAmount: "25556.213265", fee: "1", actualAmount: "25555.213265", address: "T123456789123456789123456789111321", date: "2022/06/01 18:55:55", beginDate: 0, status: "Confirm", comment: "Ok!!" , txid: "32145613113-\(indexName)"))
+//                }
+//                tableView.reloadData()
+//            }
+//        }.disposed(by: dpg)
+        
+        viewModel.rxFetchListSuccess().subscribeSuccess { dto in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                 _ = LoadingViewController.dismiss()
                 // 停止 refreshControl 動畫
                 refreshControl.endRefreshing()
                 dataArray.removeAll()
-                // 暫時拿來用
-                for indexName in 0...10 {
-                    dataArray.append(AuditTransactionDto(userid: "00000\(indexName)", crypto: "USDT", network: "TRC20", withdrawAmount: "25556.213265", fee: "1", actualAmount: "25555.213265", address: "T123456789123456789123456789111321", date: "2022/06/01 18:55:55", beginDate: 0, status: "Confirm", comment: "Ok!!" , txid: "32145613113-\(indexName)"))
+                var finishedData = dto.content.filter{($0.state == "DONE")}
+                var pendingData = dto.content.filter{($0.state != "DONE")}
+                finishedData = finishedData.sorted(by: { $0.transaction?.createdDateString ?? "" > $1.transaction?.createdDateString ?? "" })
+                pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+                if showMode == .pending
+                {
+                    dataArray = pendingData
+                }else if showMode == .finished
+                {
+                    dataArray = finishedData
                 }
+                // 暫時拿來用
+                //                    for indexName in 0...10 {
+                //                        dataArray.append(AuditTransactionDto(userid: "00000\(indexName)", crypto: "USDT", network: "TRC20", withdrawAmount: "25556.213265", fee: "1", actualAmount: "25555.213265", address: "T123456789123456789123456789111321", date: "2022/06/01 18:55:55", beginDate: 0, status: "Confirm", comment: "Ok!!" , txid: "32145613113-\(indexName)"))
+                //                    }
                 tableView.reloadData()
-                
-                
-//                // 滾動到最下方最新的 Data
-//                self.tableView.scrollToRow(at: [0,0], at: UITableView.ScrollPosition.bottom, animated: true)
+                //                // 滾動到最下方最新的 Data
+                //                self.tableView.scrollToRow(at: [0,0], at: UITableView.ScrollPosition.bottom, animated: true)
             }
+     
         }.disposed(by: dpg)
     }
     @objc func loadData()
@@ -121,7 +145,7 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
         let data = dataArray[indexPath.item]
 //        onCellClick.onNext(data)
         let detailVC = AuditDetailViewController.loadNib()
-        detailVC.setupDate(data: data, showMode: showMode)
+        detailVC.setupDate(cellData: data, showMode: showMode)
         navigationController?.pushViewController(detailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

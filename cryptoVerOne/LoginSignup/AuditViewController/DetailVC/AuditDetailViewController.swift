@@ -13,7 +13,7 @@ class AuditDetailViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private var dpg = DisposeBag()
-    var data : AuditTransactionDto!
+    var data : WalletWithdrawDto!
     var showMode:AuditShowMode!
     // MARK: -
     // MARK:UI 設定
@@ -85,25 +85,29 @@ class AuditDetailViewController: BaseViewController {
         }
         popVC.start(viewController: self)
     }
-    func setupDate(data:AuditTransactionDto ,showMode:AuditShowMode)
+    func setupDate(cellData:WalletWithdrawDto ,showMode:AuditShowMode)
     {
-        userIDLabel.text = data.userid
-        cryptoLabel.text = data.crypto
-        networkLabel.text = data.network
-        withdrawAmountLabel.text = data.withdrawAmount
-        feeLabel.text = data.fee
-        actualAmountLabel.text = data.actualAmount
-        addressLabel.text = data.address
-        dateLabel.text = data.date
-        self.showMode = showMode
-        
-        for item in labelArray {
-            item.isHidden = (showMode == .pending ? true : false)
+        if let userDto = cellData.issuer , let transDto = cellData.transaction
+        {
+            userIDLabel.text = userDto.email
+            cryptoLabel.text = transDto.currency
+            networkLabel.text = "TRC20"
+            withdrawAmountLabel.text = "\(transDto.amount ?? 0)"
+            feeLabel.text = "\(transDto.fees ?? 0)"
+            let actualAmountValue = (transDto.amount ?? 0) - (transDto.fees ?? 0)
+            actualAmountLabel.text = "\(actualAmountValue)"
+            addressLabel.text = transDto.toAddress
+            dateLabel.text = transDto.createdDateString
+            self.showMode = showMode
+            
+            for item in labelArray {
+                item.isHidden = (showMode == .pending ? true : false)
+            }
+            statusLabel.text = transDto.state
+            commentLabel.text = transDto.memo ?? ""
+            txidLabel.text = transDto.txId ?? ""
+            resetTabbarHeight()
         }
-        statusLabel.text = data.status
-        commentLabel.text = data.comment
-        txidLabel.text = data.txid
-        resetTabbarHeight()
     }
     func resetTabbarHeight(toLeave :Bool = false)
     {

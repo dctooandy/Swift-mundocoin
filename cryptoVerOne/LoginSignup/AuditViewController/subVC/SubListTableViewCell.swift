@@ -40,10 +40,14 @@ class SubListTableViewCell: UITableViewCell {
     {
         
     }
-    func setData(data : AuditTransactionDto ,showMode:AuditShowMode)
+    func setData(data : WalletWithdrawDto ,showMode:AuditShowMode)
     {
-        topTitleLabel.text = "Withdraw Request \(data.userid)"
-        timeLabel.text = data.date
+        if let  transDto = data.transaction , let userDto = data.issuer
+        {
+            topTitleLabel.text = "Withdraw Request \(userDto.email)"
+            timeLabel.text = transDto.createdDateString
+            
+        }
         self.showMode = showMode
         finishedIcon.isHidden = (showMode == .pending ? true : false)
     }

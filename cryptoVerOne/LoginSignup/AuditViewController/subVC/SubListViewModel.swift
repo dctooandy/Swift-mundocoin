@@ -12,7 +12,7 @@ import RxSwift
 
 class SubListViewModel: BaseViewModel {
     private var fetchSuccess = PublishSubject<Any>()
-    
+    private var fetchListSuccess = PublishSubject<AuditApprovalDto>()
     override init() {
         super.init()
     }
@@ -23,17 +23,17 @@ class SubListViewModel: BaseViewModel {
             _ = LoadingViewController.dismiss()
             if let data = dto
             {
-                //                fetchWalletAddressSuccess.onNext(data)
+                self.fetchListSuccess.onNext(data)
             }
-        }onError: { [self] (error) in
+        }onError: { (error) in
             if let errorData = error as? ApiServiceError
             {
                 switch errorData {
-                case .errorDto(let dto):
-                    let status = dto.httpStatus ?? ""
-                    let code = dto.code
-                    let reason = dto.reason
-                    let errors = dto.errors
+                case .errorDto(_):
+//                    let status = dto.httpStatus ?? ""
+//                    let code = dto.code
+//                    let reason = dto.reason
+//                    let errors = dto.errors
                     ErrorHandler.show(error: error)
                 default:
                     break
@@ -54,5 +54,8 @@ class SubListViewModel: BaseViewModel {
  
     func rxFetchSuccess() -> Observable<Any> {
         return fetchSuccess.asObserver()
+    }
+    func rxFetchListSuccess() -> Observable<AuditApprovalDto> {
+        return fetchListSuccess.asObserver()
     }
 }
