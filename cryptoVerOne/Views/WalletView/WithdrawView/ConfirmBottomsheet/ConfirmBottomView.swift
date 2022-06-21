@@ -61,7 +61,7 @@ class ConfirmBottomView: UIView {
     }
     func resetUI()
     {
-        totalAmountValueLabel.text = confirmData.totalAmount
+        totalAmountValueLabel.text = confirmData.totalAmount.numberFormatter(.decimal , 8)
         feeValueLabel.text = confirmData.fee
         networkValueLabel.text = confirmData.network
         tetherValueLabel.text = confirmData.tether

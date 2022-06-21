@@ -111,9 +111,9 @@ class AuditDetailViewController: BaseViewController {
             userIDLabel.text = userDto.email
             cryptoLabel.text = transDto.currency
             networkLabel.text = "TRC20"
-            withdrawAmountLabel.text = "\(transDto.amount ?? 0)"
+            withdrawAmountLabel.text = transDto.amount?.stringValue
             feeLabel.text = "\(transDto.fees ?? 0)"
-            let actualAmountValue = (transDto.amount ?? 0) - (transDto.fees ?? 0)
+            let actualAmountValue = (transDto.amount?.doubleValue)! - Double((transDto.fees ?? 0))
             actualAmountLabel.text = "\(actualAmountValue)"
             addressLabel.text = transDto.toAddress
             dateLabel.text = transDto.createdDateString

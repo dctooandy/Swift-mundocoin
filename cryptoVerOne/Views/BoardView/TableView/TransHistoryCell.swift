@@ -47,7 +47,7 @@ class TransHistoryCell: UITableViewCell {
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
         if let amountValue = data.amount {
-            amountLabel.text = "\(amountValue)"
+            amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
         }
         self.historyType = type
         if historyType == .deposits

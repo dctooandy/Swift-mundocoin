@@ -17,13 +17,13 @@ class SubPageCollectionCell: UICollectionViewCell {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
-    @IBOutlet weak var tetherLabel: UILabel!
     @IBOutlet weak var coinImageView: UIImageView!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var equelLabel: UILabel!
     @IBOutlet weak var persentLabel: UILabel!
     @IBOutlet weak var hiddenMoneyLabel: UILabel!
     @IBOutlet weak var hiddenequelLabel: UILabel!
+    @IBOutlet weak var currencyLabel: UILabel!
     
     // MARK: -
     // MARK:Life cycle
@@ -40,6 +40,7 @@ class SubPageCollectionCell: UICollectionViewCell {
         equelLabel.text = "≈$"+"\(data.amount)".numberFormatter(.decimal, 2)
         coinLabel.text = data.token
         coinImageView.image = UIImage(named: "icon-usdt")
+        currencyLabel.text = data.currency
     }
     
     func setupUI()

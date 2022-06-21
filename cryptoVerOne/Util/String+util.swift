@@ -92,12 +92,12 @@ extension String {
     ///   - style: 單位類型
     ///   - minimumFractionDigits: 最少到小數第幾位
     /// - Returns: String
-    func numberFormatter(_ style: NumberFormatter.Style , _ minimumFractionDigits: Int, locale: Locale = Locale(identifier: "zh_Hans_CN")) -> String {
+    func numberFormatter(_ style: NumberFormatter.Style , _ minimumFractionDigits: Int = 2, locale: Locale = Locale(identifier: "zh_Hans_CN")) -> String {
         let num: Double = Double(self) ?? 0
         let formatter = NumberFormatter()
         formatter.numberStyle = style
         formatter.locale = locale
-        formatter.minimumFractionDigits = 0
+        formatter.minimumFractionDigits = minimumFractionDigits > 1 ? 2 : minimumFractionDigits
         formatter.maximumFractionDigits = minimumFractionDigits
         let str = formatter.string(from: NSNumber(value: num)) ?? "0.00"
         return str

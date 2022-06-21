@@ -194,7 +194,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         {
             withdrawToInputView.setVisibleString(string: dto.address)
             txidInputView.setVisibleString(string: dto.txid)
-            topAmountLabel.text = dto.amount
+            topAmountLabel.text = dto.amount.numberFormatter(.decimal, 8)
             tetherLabel.text = dto.tether
             networkLabel.text = dto.network
             confirmationsLabel.text = dto.confirmations

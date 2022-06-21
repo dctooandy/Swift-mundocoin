@@ -143,7 +143,7 @@ struct ContentDto : Codable
         }
     }
 
-    var amount : Int? = 0    
+    var amount : JSONValue? = JSONValue.int(0)
     var id : String = ""
     var createdDate : String = ""
     var updatedDate : String = ""
