@@ -50,35 +50,49 @@ class SocketIOManager: NSObject {
         )
         // 掛鉤 NameSpace
         socket = manager.socket(forNamespace: "/notification")
-//        socket.joinNamespace()
         if(socket != nil)
         {
             if(socket.status == .disconnected || socket.status == .notConnected)
             {
-                socket.on(clientEvent: .disconnect) {data, ack in
-                    Log.v("Socket.io - 接收到了 disconnect:\(data.description) )")
-                    self.socketOffEvents()
-                }
                 socket.on(clientEvent: .connect) {data, ack in
                     Log.v("Socket.io - clientEvent connected")
                     
-                    #if Approval_PRO || Approval_DEV || Approval_STAGE
+#if Approval_PRO || Approval_DEV || Approval_STAGE
                     if !KeychainManager.share.getAuditToken().isEmpty
                     {
-//                        self.socket.joinNamespace()
                         self.alreadyJoin = false
                         self.sendJoin()
                     }
-                    #else
+#else
                     if KeychainManager.share.getToken().isEmpty != true
                     {
-//                        self.socket.joinNamespace()
                         self.alreadyJoin = false
                         self.sendJoin()
                     }
-                    #endif
+#endif
                     self.socketOnEvents()
                 }
+                socket.on(clientEvent: .disconnect) {data, ack in
+                    Log.v("Socket.io - 接收到了 disconnect:\(data.description)")
+                    self.socketOffEvents()
+                }
+                socket.on(clientEvent: .reconnectAttempt) {data, ack in
+                    self.closeConnection()
+                    self.establishConnection()
+                }
+                socket.on(clientEvent: .statusChange) {data, ack in
+                    Log.v("Socket.io - 接收到了 statusChange:\(data.description) ")
+                }
+                socket.on(clientEvent: .error) {data, ack in
+                    Log.v("Socket.io - 接收到了 error:\(data.description) ")
+                }
+                socket.on(clientEvent: .ping) {data, _ in
+                    Log.v("Socket.io - 接收到了 ping:\(data.description) ")
+                }
+                socket.on(clientEvent: .pong) {data, _ in
+                    Log.v("Socket.io - 接收到了 pong:\(data.description) ")
+                }
+
             }
         }
         //        socket.on("currentAmount") { [self]data, ack in
@@ -92,12 +106,6 @@ class SocketIOManager: NSObject {
         //            }
         //            ack.with("Got your currentAmount", "dude")
         //        }
-        socket?.onAny { (data) in
-            if data.event == "reconnectAttempt" {
-                self.closeConnection()
-                self.establishConnection()
-            }
-        }
     }
     func socketOffEvents()
     {

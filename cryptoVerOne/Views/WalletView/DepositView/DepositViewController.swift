@@ -79,7 +79,7 @@ class DepositViewController: BaseViewController {
 //        codeImageView.image = image
         topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         topCurrencyView?.layer.borderWidth = 1
-        topCurrencyView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
+        topCurrencyView.config(showDropdown: false, dropDataSource: ["USDT"])
     }
     func resetUI()
     {
