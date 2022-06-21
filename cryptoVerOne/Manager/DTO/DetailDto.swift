@@ -7,7 +7,7 @@
 
 import Foundation
 class DetailDto {
-    let defailType:DetailType
+    let detailType:DetailType
     let tether:String
     let network:String
     let confirmations:String
@@ -17,8 +17,8 @@ class DetailDto {
     let txid:String
     let amount:String
     
-    init(defailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "") {
-        self.defailType = defailType
+    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "") {
+        self.detailType = detailType
         self.amount = amount
         self.tether = tether
         self.network = network

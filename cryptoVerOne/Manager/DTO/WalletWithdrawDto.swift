@@ -28,7 +28,7 @@ struct WalletWithdrawDto :Codable {
                 , "transaction": transaction
                 , "issuer": issuer]
     }
-    var defailType:DetailType {
+    var detailType:DetailType {
         if self.state == "PENDING"
         {
             return .pending
@@ -74,6 +74,14 @@ struct ChainDto:Codable {
     var memo : String = ""
     var approver : ApproverDto = ApproverDto()
 }
+struct ChainSocketDto:Codable {
+    var id : String = ""
+    var createdDate : TimeInterval = 0
+    var updatedDate : TimeInterval = 0
+    var state : String = ""
+    var memo : String = ""
+    var approver : ApproverSocketDto = ApproverSocketDto()
+}
 struct ApproverDto:Codable {
     var id : String = ""
     var createdDate : String = ""
@@ -82,6 +90,15 @@ struct ApproverDto:Codable {
     var email : String = ""
     var role : String = ""
     var lastLoginDate : String = ""
+}
+struct ApproverSocketDto:Codable {
+    var id : String = ""
+    var createdDate : TimeInterval = 0
+    var updatedDate : TimeInterval = 0
+    var name : String = ""
+    var email : String = ""
+    var role : String = ""
+    var lastLoginDate : [Int] = []
 }
 struct IssuerDto : Codable {
     var id : String = ""
@@ -100,5 +117,22 @@ struct IssuerDto : Codable {
     var lastLoginDate : String? = ""
     var isPhoneRegistry : Bool = false
     var isEmailRegistry : Bool = false
-    
+}
+struct IssuerSocketDto : Codable {
+    var id : String = ""
+    var createdDate : TimeInterval = 0
+    var updatedDate : TimeInterval = 0
+    var email : String = ""
+    var phone : String? = ""
+    var registrationCode : String = ""
+    var firstName : String? = ""
+    var middleName : String? = ""
+    var lastName : String? = ""
+    var status : String = ""
+    var roles : String = ""
+    var registrationIP : String = ""
+    var lastLoginIP : String = ""
+    var lastLoginDate : [Int]? = []
+    var isPhoneRegistry : Bool = false
+    var isEmailRegistry : Bool = false
 }

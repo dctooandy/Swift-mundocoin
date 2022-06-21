@@ -835,6 +835,12 @@
 		0998BF092860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF0A2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF0B2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
+		0998BF0E2861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998BF0F2861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998BF102861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998BF112861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998BF122861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998BF132861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1638,6 +1644,7 @@
 		09947BAF284DB433004F7FD7 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
+		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -2065,6 +2072,14 @@
 				09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		0998BF0C28619567000A4B5B /* Socket */ = {
+			isa = PBXGroup;
+			children = (
+				0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */,
+			);
+			path = Socket;
 			sourceTree = "<group>";
 		};
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
@@ -2645,6 +2660,7 @@
 		A19C70C3282245D0000AFC3F /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				0998BF0C28619567000A4B5B /* Socket */,
 				A19C70C4282245DD000AFC3F /* AppVersionDto.swift */,
 				A19C70C828224614000AFC3F /* ValueDto.swift */,
 				A19C718A28225B25000AFC3F /* ResponseDto.swift */,
@@ -3748,6 +3764,7 @@
 				09905A7C2851A02B00BAEE78 /* WalletService.swift in Sources */,
 				09905A7D2851A02B00BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319261285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF122861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8DA2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905A7E2851A02B00BAEE78 /* SignupPostDto.swift in Sources */,
 				09905A7F2851A02B00BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -3948,6 +3965,7 @@
 				09905B6E2851A08500BAEE78 /* WalletService.swift in Sources */,
 				09905B6F2851A08500BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319262285F9412000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF132861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8DB2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905B702851A08500BAEE78 /* SignupPostDto.swift in Sources */,
 				09905B712851A08500BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4148,6 +4166,7 @@
 				09905C602851A09600BAEE78 /* WalletService.swift in Sources */,
 				09905C612851A09600BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319260285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF112861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8D92852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905C622851A09600BAEE78 /* SignupPostDto.swift in Sources */,
 				09905C632851A09600BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4348,6 +4367,7 @@
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8E284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF0F2861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8D72852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4548,6 +4568,7 @@
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8F284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF102861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8D82852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4748,6 +4769,7 @@
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,
 				09056D8D284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */,
+				0998BF0E2861959D000A4B5B /* SocketMessageDto.swift in Sources */,
 				0909C8D62852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,

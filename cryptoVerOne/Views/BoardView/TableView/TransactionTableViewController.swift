@@ -153,7 +153,7 @@ class TransactionTableViewController: BaseViewController {
     {
         if let amountValue = contentDto.amount
         {
-            let detailData = DetailDto(defailType: contentDto.defailType,
+            let detailData = DetailDto(detailType: contentDto.detailType,
                                        amount: amountValue.stringValue?.numberFormatter(.decimal , 8) ?? "",
                                        tether: contentDto.currency,
                                        network: "Tron(TRC20)",

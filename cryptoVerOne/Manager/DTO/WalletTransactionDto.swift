@@ -106,7 +106,7 @@ struct ContentDto : Codable
             return 0.0
         }
     }
-    var defailType:DetailType {
+    var detailType:DetailType {
         if self.state == "PENDING"
         {
             return .pending
@@ -171,4 +171,34 @@ struct ContentDto : Codable
     var tindex : String? = ""
     var voutIndex : String? = ""
 
+}
+struct ContentSocketDto : Codable
+{
+    var amount : JSONValue? = JSONValue.int(0)
+    var id : String = ""
+    var createdDate : TimeInterval = 0
+    var updatedDate : TimeInterval = 0
+    var type : String = ""
+    var orderId : String = ""
+    var currency : String = ""
+    var txId : String? = ""
+    var blockHeight : String? = ""
+    var fees : Int? = 0
+    var broadcastTimestamp : TimeInterval? = 0
+    var chainTimestamp : TimeInterval? = 0
+    var fromAddress : String = ""
+    var toAddress : String = ""
+    var associatedWalletId : Int = 0
+    var state : String = ""
+    var confirmBlocks : Int = 0
+    var processingState : String = ""
+    var decimal : Int = 0
+    var currencyBip44 : Int = 0
+    var tokenAddress : String? = ""
+    var memo : String? = ""
+    var errorReason : String? = ""
+    var amlScreenPass : String? = ""
+    var feeDecimal : Int? = 0
+    var tindex : String? = ""
+    var voutIndex : String? = ""
 }

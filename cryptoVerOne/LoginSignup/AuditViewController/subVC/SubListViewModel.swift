@@ -20,8 +20,28 @@ class SubListViewModel: BaseViewModel {
     // MARK:Life cycle
     override init() {
         super.init()
+        bindDto()
     }
-    
+    func bindDto()
+    {
+        AuditApprovalDto.rxShare.subscribe { (dto) in
+            _ = LoadingViewController.dismiss()
+            if let data = dto
+            {
+                self.fetchListSuccess.onNext(data)
+            }
+        }onError: { (error) in
+            if let errorData = error as? ApiServiceError
+            {
+                switch errorData {
+                case .errorDto(_):
+                    ErrorHandler.show(error: error)
+                default:
+                    break
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
     func fetch(currentPage:Int = 0)
     {
         Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String(currentPage))).subscribe { (dto) in

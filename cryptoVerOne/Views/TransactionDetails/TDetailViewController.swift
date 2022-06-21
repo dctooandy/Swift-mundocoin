@@ -32,7 +32,7 @@ class TDetailViewController: BaseViewController {
     }
     var detailDataDto : DetailDto? {
         didSet{
-            detailType = detailDataDto!.defailType
+            detailType = detailDataDto!.detailType
         }
     }
     var hiddenMode:DetailHiddenMode = .topViewShow
@@ -105,8 +105,8 @@ class TDetailViewController: BaseViewController {
         if let dataDto = detailDataDto
         {
             dataListView.detailDataDto = dataDto
-            dataListView.viewType = dataDto.defailType
-            topView.topViewType = dataDto.defailType
+            dataListView.viewType = dataDto.detailType
+            topView.topViewType = dataDto.detailType
         }
         if hiddenMode == .topViewShow
         {

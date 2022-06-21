@@ -9,7 +9,30 @@
 import Foundation
 import RxSwift
 struct AuditApprovalDto :Codable {
-
+    static var share:AuditApprovalDto?
+    {
+        didSet {
+            guard let share = share else { return }
+            subject.onNext(share)
+        }
+    }
+    static var rxShare:Observable<AuditApprovalDto?> = subject
+        .do(onNext: { value in
+            if share == nil {
+                _ = update()
+            }
+    })
+    static let disposeBag = DisposeBag()
+    static private let subject = BehaviorSubject<AuditApprovalDto?>(value: nil)
+    static func update() -> Observable<()>{
+        let subject = PublishSubject<Void>()
+        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String("0"))).subscribeSuccess({ (configDto) in
+            share = configDto
+            subject.onNext(())
+        }).disposed(by: disposeBag)
+        return subject.asObservable()
+    }
+            
     let size: Int
     let content: [WalletWithdrawDto]
     let number: Int

@@ -122,11 +122,11 @@ class SocketIOManager: NSObject {
     func socketOnEvents()
     {
         socket.on("notification") { resultData, ack in
-            self.onTriggerLocalNotification(suvtitle: "notification", body: resultData)
+            self.onTriggerLocalNotification(subtitle: "notification", body: resultData)
         }
         socket.on("joinResult") { resultData, ack in
             Log.v("Socket.io - joinResult Success")
-            self.onTriggerLocalNotification(suvtitle: "joinResult", body: resultData)
+            self.onTriggerLocalNotification(subtitle: "joinResult", body: resultData)
         }
         socket.on("echoResult") { resultData, ack in
             Log.v("Socket.io - echoResult Success")
@@ -135,24 +135,26 @@ class SocketIOManager: NSObject {
         }
         socket.on(self.idValue) { [self] data, ack in
             Log.v("Socket.io - \(self.idValue) Success")
-            self.onTriggerLocalNotification(suvtitle: self.idValue, body: data)
+            self.onTriggerLocalNotification(subtitle: self.idValue, body: data)
         }
-        socket.on("message") { data, ark in
-            Log.v("Socket.io - message Success")
-            self.onTriggerLocalNotification(suvtitle: "message", body: data)
+        socket.on("message") { [self] data, ack in
+            Log.v("Socket.io - message Success\n\(data)")
+            Log.v("接收到了: json Object")
+            self.receiveMessage(data: data)
+//            self.onTriggerLocalNotification(subtitle: "message", body: data!)
         }
         
         socket.on("APPROVAL_DONE") { data, ark in
-            self.onTriggerLocalNotification(suvtitle: "APPROVAL_DONE", body: data)
+            self.onTriggerLocalNotification(subtitle: "APPROVAL_DONE", body: data)
         }
         socket.on("APPROVAL_PENDING") { data, ark in
-            self.onTriggerLocalNotification(suvtitle: "APPROVAL_PENDING", body: data)
+            self.onTriggerLocalNotification(subtitle: "APPROVAL_PENDING", body: data)
         }
         socket.on("APPROVAL_PROCESSING") { data, ark in
-            self.onTriggerLocalNotification(suvtitle: "APPROVAL_PROCESSING", body: data)
+            self.onTriggerLocalNotification(subtitle: "APPROVAL_PROCESSING", body: data)
         }
         socket.on("APPROVAL_FAILED") { data, ark in
-            self.onTriggerLocalNotification(suvtitle: "APPROVAL_FAILED", body: data)
+            self.onTriggerLocalNotification(subtitle: "APPROVAL_FAILED", body: data)
         }
     }
     func connectStatus() -> SocketIOStatus
@@ -246,7 +248,7 @@ extension SocketIOManager
         }
     }
     
-    func onTriggerLocalNotification(suvtitle:String , body:[Any])
+    func onTriggerLocalNotification(subtitle:String , body:[Any])
     {
 #if Mundo_PRO || Approval_PRO
                 
@@ -254,7 +256,7 @@ extension SocketIOManager
 //        joinNameSpaceWithData(body: body)
         let content = UNMutableNotificationContent()
         content.title = "Socket receive"
-        content.subtitle = "\(suvtitle)"
+        content.subtitle = "\(subtitle)"
         content.body = "\(body)"
         //        content.badge = 1
         content.sound = UNNotificationSound.default
@@ -271,5 +273,69 @@ extension SocketIOManager
             Log.v("Socket.io - 成功建立通知...")
         })
 #endif
+    }
+
+    private func receiveMessage(data: Any?) {
+        
+        guard let innerData = data else {return }
+        Log.v("InnerData : \(innerData)")
+        let jsonData = try? JSONSerialization.data(withJSONObject:innerData)
+        let responseJSON = try? JSONSerialization.jsonObject(with: jsonData!, options: [])
+        let firstArray = (responseJSON as? Array<Any>)?.first
+        
+        if let resultString = (firstArray as? String),
+        let resultData = resultString.data(using: .utf8)
+        {
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            decoder.dateDecodingStrategy = .millisecondsSince1970
+            do {
+                let results = try decoder.decode(SocketMessageDto.self, from:resultData)
+                Log.v("result: \(results)")
+                if results.type == "APPROVAL_DONE"
+                {
+                    self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
+                }
+            } catch DecodingError.dataCorrupted( _) {
+                Log.e("dataCorrupted")
+            } catch DecodingError.keyNotFound( _,  _) {
+                Log.e("keyNotFound")
+            } catch DecodingError.typeMismatch( _, let context) {
+                Log.e("typeMismatch : \(context)")
+            } catch DecodingError.valueNotFound( _,  _) {
+                Log.e("valueNotFound")
+            } catch {
+                Log.e(error.localizedDescription)
+            }
+        }else
+        {
+            Log.e("Socket 回傳Null ,innerData: \(innerData)")
+        }
+    }
+    func createTypeDto<T : Codable>(valueToFind: T.Type, resultData: Data)
+    {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.dateDecodingStrategy = .millisecondsSince1970
+        do {
+            let resultsPayloadDto = try decoder.decode(T.self , from:resultData)
+            if let resultsPayload = resultsPayloadDto as? SocketApprovalDoneDto
+            {
+                if let chainData = resultsPayload.payload.chain,
+                   let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
+                   let userData = resultsPayload.payload.issuer
+                {
+                    let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
+                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                    _ = AuditApprovalDto.update() // 更新清單列表
+#else
+                    
+#endif
+                }
+            }
+        }catch{
+            
+        }
     }
 }
