@@ -250,11 +250,16 @@ extension UIApplication {
                 return topViewController(base: selected)
             }
         }
-//        if let tab = base as? AuditTabbarViewController {
-//            if let selected = tab.presentedViewController {
-//                return base
-//            }
-//        }
+        if let tab = base as? AuditTabbarViewController {
+            if let selected = tab.children.first {
+                return topViewController(base: selected)
+            }
+        }
+        if let tab = base as? MDNavigationController {
+            if let selected = tab.children.first {
+                return topViewController(base: selected)
+            }
+        }
         if let alert = base as? UIAlertController {
             return alert
         }

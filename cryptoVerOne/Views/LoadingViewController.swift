@@ -80,13 +80,19 @@ class LoadingViewController:BaseViewController {
     }
     static func show() {
 //        share.initState()
+        share.dismiss(animated: false) {
+            
+        }
         DispatchQueue.main.async {
             if share.loadingView.isAnimationPlaying { return }
             share.loadingView.isHidden = false
             share.loadingView.play()
             share.modalPresentationStyle = .overCurrentContext
             share.modalTransitionStyle = .crossDissolve
-            UIApplication.topViewController()?.present(share, animated: false, completion: nil)
+            if share.isBeingPresented == false
+            {
+                UIApplication.topViewController()?.present(share, animated: true, completion: nil)                
+            }
         }
     }
     static func dismiss() -> Observable<Void>{

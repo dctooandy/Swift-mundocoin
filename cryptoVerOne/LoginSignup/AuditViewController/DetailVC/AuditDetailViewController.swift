@@ -57,6 +57,9 @@ class AuditDetailViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            self.resetTabbarHeight()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -129,20 +132,24 @@ class AuditDetailViewController: BaseViewController {
             commentTitleLabel.isHidden =  (showMode == .pending ? true : chainDto.memo.isEmpty)
             commentLabel.text = chainDto.memo
             txidLabel.text = transDto.txId ?? ""
-            resetTabbarHeight()
+            
         }
     }
     func resetTabbarHeight(toLeave :Bool = false)
     {
-        let tabbar = AuditTabbar.share
         if toLeave == false
         {
-            tabbar.snp.updateConstraints { make in
+//            AuditTabbar.share.snp.updateConstraints { make in
+//                make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
+//            }
+            AuditTabbar.share.snp.remakeConstraints { (make) in
+                make.leading.bottom.trailing.equalToSuperview()
                 make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
             }
         }else
         {
-            tabbar.snp.updateConstraints { make in
+            AuditTabbar.share.snp.remakeConstraints { make in
+                make.leading.bottom.trailing.equalToSuperview()
                 make.top.equalToSuperview().offset(Views.screenHeight - Views.baseTabbarHeight)
             }
         }

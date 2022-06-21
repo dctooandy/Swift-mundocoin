@@ -34,10 +34,11 @@ class SubListViewcontroller: BaseViewController {
         super.viewWillAppear(animated)
         currentPage = 0
         dataArray.removeAll()
-        viewModel.fetch()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        LoadingViewController.show()
+        viewModel.fetch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
