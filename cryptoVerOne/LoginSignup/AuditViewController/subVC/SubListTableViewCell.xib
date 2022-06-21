@@ -24,13 +24,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw Request" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-Kn-HI5">
-                        <rect key="frame" x="76" y="12" width="135" height="18"/>
+                        <rect key="frame" x="76" y="12" width="268" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022/06/01 18:55:55" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyx-Cf-oGL">
-                        <rect key="frame" x="76" y="30" width="141.5" height="18"/>
+                        <rect key="frame" x="76" y="30" width="268" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -45,11 +45,13 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="3p7-Oq-s1Y" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="5A2-U9-uCa"/>
+                    <constraint firstItem="b2k-Lj-K6Z" firstAttribute="leading" secondItem="vyx-Cf-oGL" secondAttribute="trailing" constant="10" id="5QG-b5-w4T"/>
                     <constraint firstItem="3p7-Oq-s1Y" firstAttribute="leading" secondItem="mD4-Bl-xaY" secondAttribute="leading" constant="20" id="5nE-lh-b0o"/>
                     <constraint firstAttribute="trailing" secondItem="b2k-Lj-K6Z" secondAttribute="trailing" constant="20" id="7Nq-CT-2xl"/>
                     <constraint firstItem="b2k-Lj-K6Z" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="ArR-gl-Ju2"/>
                     <constraint firstItem="IV4-Kn-HI5" firstAttribute="leading" secondItem="3p7-Oq-s1Y" secondAttribute="trailing" constant="20" id="HeH-H7-2YO"/>
                     <constraint firstItem="vyx-Cf-oGL" firstAttribute="leading" secondItem="IV4-Kn-HI5" secondAttribute="leading" id="KoY-aZ-FMg"/>
+                    <constraint firstItem="b2k-Lj-K6Z" firstAttribute="leading" secondItem="IV4-Kn-HI5" secondAttribute="trailing" constant="10" id="Owr-lf-HK9"/>
                     <constraint firstItem="IV4-Kn-HI5" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="-9" id="UUt-Eg-WQx"/>
                     <constraint firstItem="vyx-Cf-oGL" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="9" id="Y7s-Io-T1r"/>
                 </constraints>
@@ -57,6 +59,7 @@
             <connections>
                 <outlet property="finishedIcon" destination="b2k-Lj-K6Z" id="fUX-Yj-gVd"/>
                 <outlet property="iconImageView" destination="3p7-Oq-s1Y" id="JMe-LL-3dW"/>
+                <outlet property="iconWidth" destination="fId-4h-brF" id="Q0q-jI-CBM"/>
                 <outlet property="timeLabel" destination="vyx-Cf-oGL" id="Pe3-hi-s7l"/>
                 <outlet property="topTitleLabel" destination="IV4-Kn-HI5" id="Glu-EW-dhD"/>
             </connections>

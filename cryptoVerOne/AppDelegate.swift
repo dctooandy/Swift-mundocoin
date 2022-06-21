@@ -60,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
         stopRETimer()
-        SocketIOManager.sharedInstance.closeConnection()
+//        SocketIOManager.sharedInstance.closeConnection()
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
         // 檢查版本

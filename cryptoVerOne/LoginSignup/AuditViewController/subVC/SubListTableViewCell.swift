@@ -15,6 +15,8 @@ class SubListTableViewCell: UITableViewCell {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var showMode:AuditShowMode!
+    
+    @IBOutlet weak var iconWidth: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var iconImageView: UIImageView!
@@ -50,6 +52,7 @@ class SubListTableViewCell: UITableViewCell {
         }
         self.showMode = showMode
         finishedIcon.isHidden = (showMode == .pending ? true : false)
+        iconWidth.constant = (showMode == .pending ? 0 : 40)
     }
 }
 // MARK: -
