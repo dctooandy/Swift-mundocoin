@@ -123,7 +123,13 @@ class ScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDel
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
             found(code: stringValue)
         }
-        self.navigationController?.popViewController(animated: true)
+        if ((self.presentingViewController?.isKind(of: AddNewAddressViewController.self)) != nil)
+        {
+            dismiss(animated: true)
+        }else
+        {
+            self.navigationController?.popViewController(animated: true)
+        }
 //        dismiss(animated: true)
     }
 

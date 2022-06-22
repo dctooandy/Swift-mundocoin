@@ -388,28 +388,32 @@ extension LoginSignupViewController {
         }else
         {
             Beans.loginServer.authentication(with: idString, password: password, verificationCode: verificationCode).subscribe { [self]authDto in
-                _ = LoadingViewController.dismiss()
-                if let data = authDto
-                {
-                    if let loginData = loginDto
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    if let data = authDto
                     {
-                        directToNextPage(authDto: data ,loginDto: loginData)
-                    }else if let signupData = signupDto
-                    {
-                        directToNextPage(authDto: data ,signupDto: signupData)
+                        if let loginData = loginDto
+                        {
+                            directToNextPage(authDto: data ,loginDto: loginData)
+                        }else if let signupData = signupDto
+                        {
+                            directToNextPage(authDto: data ,signupDto: signupData)
+                        }
                     }
                 }
             } onError: { [self] error in
-                _ = LoadingViewController.dismiss()
-                if let error = error as? ApiServiceError
-                {
-                    switch error {
-                    case .errorDto(let dto):
-                        verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
-                    case .noData:
-                        Log.v("登入返回沒有資料")
-                    default:
-                        ErrorHandler.show(error: error)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    if let error = error as? ApiServiceError
+                    {
+                        switch error {
+                        case .errorDto(let dto):
+                            verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                        case .noData:
+                            Log.v("登入返回沒有資料")
+                        default:
+                            ErrorHandler.show(error: error)
+                        }
                     }
                 }
             }.disposed(by: disposeBag)

@@ -21,10 +21,12 @@ class DepositViewModel: BaseViewModel {
     {
         LoadingViewController.show()
         Beans.walletServer.walletAddress().subscribe { [self](walletDto) in
-            _ = LoadingViewController.dismiss()
-            if let data = walletDto
-            {
-                fetchWalletAddressSuccess.onNext(data)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                _ = LoadingViewController.dismiss()
+                if let data = walletDto
+                {
+                    fetchWalletAddressSuccess.onNext(data)
+                }
             }
         } onError: { (error) in
             _ = LoadingViewController.dismiss()

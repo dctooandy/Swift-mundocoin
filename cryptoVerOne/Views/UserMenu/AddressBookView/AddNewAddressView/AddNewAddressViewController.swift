@@ -204,11 +204,18 @@ class AddNewAddressViewController: BaseViewController {
             let scanVC = ScannerViewController()
             scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
                 isScanPopAction = false
+                newAddressString = stringCode
                 addressStyleView.textField.text = stringCode
                 addressStyleView.textField.sendActions(for: .valueChanged)
             }.disposed(by: dpg)
             isScanPopAction = true
-            self.navigationController?.pushViewController(scanVC, animated: true)
+            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+            {
+                self.present(scanVC, animated: true)
+            }else
+            {
+                self.navigationController?.pushViewController(scanVC, animated: true)
+            }
         }.disposed(by: dpg)
     }
     func setupAddressStyleView()

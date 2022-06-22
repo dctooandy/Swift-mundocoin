@@ -52,6 +52,7 @@ class AuditTriggerAlertView: PopupBottomSheet {
         let tView = UITextView()
         tView.isEditable = true
         tView.isSelectable = true
+        tView.delegate = self
         tView.font = Fonts.pingFangTCRegular(14)
         return tView
     }()
@@ -203,5 +204,24 @@ class AuditTriggerAlertView: PopupBottomSheet {
     
     func confirmButtonVerify(_ accept: Bool , memo:String = "") {
         doneHandler?(accept , memo)
+    }
+}
+extension AuditTriggerAlertView : UITextViewDelegate{
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText string: String) -> Bool
+    {
+        let newPosition = textView.endOfDocument
+        textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
+        guard let text = textView.text else {
+            return true
+        }
+        if string == ""
+        {
+            return true
+        }
+        /// 3.检查总长度限制 (最多输入10位)
+        if text.count >= 100 {
+            return false
+        }
+        return true
     }
 }

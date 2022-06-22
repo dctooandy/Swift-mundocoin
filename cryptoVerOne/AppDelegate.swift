@@ -177,28 +177,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ErrorHandler 已經有過期導去登入
         LoadingViewController.show()
         Beans.auditServer.auditApprovals().subscribe { [self] (dto) in
-            _ = LoadingViewController.dismiss()
-            // 沒過期,打refresh API, 時間加30分鐘
-//            SocketIOManager.sharedInstance.establishConnection()
-            SocketIOManager.sharedInstance.reConnection()
-            Log.v("audit 沒過期")
-            if let successBlock = complete
-            {
-                successBlock(true)
-            }else
-            {
-                freshToken()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                _ = LoadingViewController.dismiss()
+                // 沒過期,打refresh API, 時間加30分鐘
+                //            SocketIOManager.sharedInstance.establishConnection()
+                SocketIOManager.sharedInstance.reConnection()
+                Log.v("audit 沒過期")
+                if let successBlock = complete
+                {
+                    successBlock(true)
+                }else
+                {
+                    freshToken()
+                }
             }
         }onError: { (error) in
-            Log.v("audit 過期")
-            _ = LoadingViewController.dismiss()
-            if let successBlock = complete
-            {
-                successBlock(false)
-            }else
-            {
-                //過期去登入頁面
-                DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                Log.v("audit 過期")
+                _ = LoadingViewController.dismiss()
+                if let successBlock = complete
+                {
+                    successBlock(false)
+                }else
+                {
+                    //過期去登入頁面
+                    DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+                }
             }
         }.disposed(by: dpg)
     }
@@ -211,29 +215,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // ErrorHandler 已經有過期導去登入
         LoadingViewController.show()
         Beans.walletServer.walletBalances().subscribe { [self] (dto) in
-            _ = LoadingViewController.dismiss()
-            // 沒過期,打refresh API, 時間加30分鐘
-//            SocketIOManager.sharedInstance.establishConnection()
-            SocketIOManager.sharedInstance.reConnection()
-            Log.v("mundocoin 沒過期")
-            if let successBlock = complete
-            {
-                successBlock(true)
-            }else
-            {
-                freshToken()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                _ = LoadingViewController.dismiss()
+                // 沒過期,打refresh API, 時間加30分鐘
+                //            SocketIOManager.sharedInstance.establishConnection()
+                SocketIOManager.sharedInstance.reConnection()
+                Log.v("mundocoin 沒過期")
+                if let successBlock = complete
+                {
+                    successBlock(true)
+                }else
+                {
+                    freshToken()
+                }
             }
         } onError: { (error) in
-            Log.v("mundocoin 過期")
-            _ = LoadingViewController.dismiss()
-            if let successBlock = complete
-            {
-                successBlock(false)
-            }else
-            {
-                DeepLinkManager.share.handleDeeplink(navigation: .login)                
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                Log.v("mundocoin 過期")
+                _ = LoadingViewController.dismiss()
+                if let successBlock = complete
+                {
+                    successBlock(false)
+                }else
+                {
+                    DeepLinkManager.share.handleDeeplink(navigation: .login)                
+                }
+                //過期去登入頁面
             }
-            //過期去登入頁面
         }.disposed(by: dpg)
     }
     func freshToken()

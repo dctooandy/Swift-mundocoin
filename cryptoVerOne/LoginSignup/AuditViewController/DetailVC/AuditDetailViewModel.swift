@@ -39,6 +39,7 @@ class AuditDetailViewModel: BaseViewModel {
             }
         } onError: { error in
             Log.v("資料異常 \(error)")
+            ErrorHandler.show(error: error)
         }.disposed(by: disposeBag)
     }
     func rxFetchSuccess() -> Observable<Any> {

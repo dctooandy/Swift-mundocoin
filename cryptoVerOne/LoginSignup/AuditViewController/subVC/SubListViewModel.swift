@@ -25,10 +25,12 @@ class SubListViewModel: BaseViewModel {
     func bindDto()
     {
         AuditApprovalDto.rxShare.subscribe { (dto) in
-            _ = LoadingViewController.dismiss()
-            if let data = dto
-            {
-                self.fetchListSuccess.onNext(data)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                _ = LoadingViewController.dismiss()
+                if let data = dto
+                {
+                    self.fetchListSuccess.onNext(data)
+                }
             }
         }onError: { (error) in
             if let errorData = error as? ApiServiceError
@@ -45,10 +47,12 @@ class SubListViewModel: BaseViewModel {
     func fetch(currentPage:Int = 0)
     {
         Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String(currentPage))).subscribe { (dto) in
-            _ = LoadingViewController.dismiss()
-            if let data = dto
-            {
-                self.fetchListSuccess.onNext(data)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                _ = LoadingViewController.dismiss()
+                if let data = dto
+                {
+                    self.fetchListSuccess.onNext(data)
+                }
             }
         }onError: { (error) in
             if let errorData = error as? ApiServiceError
