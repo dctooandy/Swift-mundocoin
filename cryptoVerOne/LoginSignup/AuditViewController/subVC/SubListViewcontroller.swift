@@ -19,8 +19,8 @@ class SubListViewcontroller: BaseViewController {
     fileprivate let viewModel = SubListViewModel()
     let refresher = UIRefreshControl()
     var currentPage: Int = 0
-    // MARK: -
-    // MARK:UI 設定    
+// MARK: -
+// MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
     var bottomRefrash: UIView?
     // MARK: -
@@ -104,7 +104,7 @@ class SubListViewcontroller: BaseViewController {
                 }
                 var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
                 var pendingData = dto.content.filter{($0.state != "APPROVED")}
-                finishedData = finishedData.sorted(by: { $0.transaction?.createdDateString ?? "" > $1.transaction?.createdDateString ?? "" })
+                finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
                 pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
                 if showMode == .pending
                 {
