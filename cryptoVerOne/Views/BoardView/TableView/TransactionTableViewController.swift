@@ -15,6 +15,7 @@ class TransactionTableViewController: BaseViewController {
     private let onPullUpToAddRow = PublishSubject<Any>()
     private let onPullDownToRefrash = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    private var didSeleCell : Bool = false
     var showModeAtTableView : TransactionShowMode = .deposits{
         didSet{
             setup()
@@ -48,7 +49,11 @@ class TransactionTableViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        endRefresh()
+        if didSeleCell == false
+        {
+            startRefresh()
+        }
+        didSeleCell = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -69,12 +74,12 @@ class TransactionTableViewController: BaseViewController {
         tableView.backgroundView = NoDataView(image: UIImage(named: "empty-list"), title: "No records found" , subTitle: "You have no transactions")
         tableView.backgroundView?.isHidden = false
         refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
-            self?.endRefresh()
+            self?.startRefresh()
         }.disposed(by: disposeBag)
         tableView?.addSubview(refresher)
         self.bottomRefrash = tableView.footerRefrashView()
     }
-    private func endRefresh() {
+    private func startRefresh() {
         clearData()
         onPullDownToRefrash.onNext(())
     }
@@ -212,6 +217,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         let keyArray = Array(sectionDic.keys).sorted(by: >)
         if let rowData = sectionDic[keyArray[indexPath.section]]
         {
+            didSeleCell = true
             let currentData = rowData.sorted(by: { $0.date > $1.date })
             Log.v("currentData \(currentData[indexPath.item])")
             pushToDetailVC(contentDto: currentData[indexPath.item])
