@@ -14,7 +14,7 @@ class ApprovalDetailViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     static let share: ApprovalDetailViewController = ApprovalDetailViewController.loadNib()
-    var dataDto : UserAddressDto!
+    var dataDto : AddressBookDto!
     // MARK: -
     // MARK:UI 設定
     
@@ -65,10 +65,10 @@ class ApprovalDetailViewController: BaseViewController {
             make.edges.equalToSuperview()
         }
     }
-    func configData(data:UserAddressDto)
+    func configData(data:AddressBookDto)
     {
         self.dataDto = data
-        topLabal.text = data.accountName
+        topLabal.text = data.name
         textView.text = data.address
     }
     

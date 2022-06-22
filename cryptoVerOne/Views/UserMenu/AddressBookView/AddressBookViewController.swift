@@ -78,7 +78,8 @@ class AddressBookViewController: BaseViewController {
         tableView.registerXibCell(type: AddressBookViewCell.self)
         tableView.separatorStyle = .none
         // 暫時打開
-        customDrowDownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
+//        customDrowDownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
+        customDrowDownView.config(showDropdown: false, dropDataSource: ["USDT"])
     }
     func bindUI()
     {

@@ -11,7 +11,7 @@ import RxSwift
 
 class AddNewAddressViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onDismissClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var currentNetwotkMethod = ""
     var isScanPopAction = false
@@ -114,7 +114,8 @@ class AddNewAddressViewController: BaseViewController {
     }
     func setupUI()
     {
-        dropdownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
+//        dropdownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
+        dropdownView.config(showDropdown: false, dropDataSource: ["USDT"])
         dropdownView.layer.cornerRadius = 10
         dropdownView.layer.masksToBounds = true
         dropdownView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
@@ -181,7 +182,15 @@ class AddNewAddressViewController: BaseViewController {
             let address = AddressBookDto(coin: coinString, address: addressString, network: currentNetwotkMethod, name: nameString, walletLabel: walletLabelString, isWhiteList: isAddToWhiteList)
             if KeychainManager.share.saveAddressbook(address) == true
             {
-                self.navigationController?.popViewController(animated: true)
+                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+                {
+                    self.dismiss(animated: true) {
+                        self.onDismissClick.onNext(())
+                    }
+                }else
+                {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }else
             {
                 Log.i("資料異常,無法存入")
@@ -206,6 +215,10 @@ class AddNewAddressViewController: BaseViewController {
     {
         addressStyleView.textField.text = newAddressString
         addressStyleView.textField.sendActions(for: .valueChanged)
+    }
+    func rxDismissClick() -> Observable<Any>
+    {
+        return onDismissClick.asObserver()
     }
 //    func clearAllData ()
 //    {

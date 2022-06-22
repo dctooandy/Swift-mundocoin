@@ -16,7 +16,7 @@ class ApprovalMainViewController: BaseViewController {
     private let dpg = DisposeBag()
     static let share: ApprovalMainViewController = ApprovalMainViewController.loadNib()
     fileprivate let viewModel = ApprovalMainViewModel()
-    var dataArray = [UserAddressDto]()
+    var dataArray = [AddressBookDto]()
     // MARK: -
     // MARK:UI 設定
    
@@ -59,13 +59,11 @@ class ApprovalMainViewController: BaseViewController {
     {
         viewModel.rxFetchSuccess().subscribeSuccess { [self] _ in
             // 暫時拿來用
-            for indexName in 0...10 {
-                dataArray.append(UserAddressDto(accountName: "\(indexName)", address: " ;efhsl;nf;hF;snf;aFNsa;na;kdㄙㄤhoc\nadha;dnas;ㄑㄤ\ndh;iadbadblㄎㄠblBslhbdlbdlbdjㄇㄜBｄｂdlabdㄘㄨㄠ", protocolType: "USDT"))
-            }
+            dataArray = KeychainManager.share.getAddressBookList()
             tableView.reloadData()
         }.disposed(by: dpg)
     }
-    func pushToDetailView(data:UserAddressDto)
+    func pushToDetailView(data:AddressBookDto)
     {
         let detailVC = ApprovalDetailViewController.loadNib()
         detailVC.configData(data: data)

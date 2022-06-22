@@ -295,6 +295,9 @@ extension SocketIOManager
                 if results.type == "APPROVAL_DONE"
                 {
                     self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
+                }else
+                {
+                    self.onTriggerLocalNotification(subtitle: "Message", body: [resultData])
                 }
             } catch DecodingError.dataCorrupted( _) {
                 Log.e("dataCorrupted")

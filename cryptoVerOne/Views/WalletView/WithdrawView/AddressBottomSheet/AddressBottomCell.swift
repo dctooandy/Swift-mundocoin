@@ -43,10 +43,10 @@ class AddressBottomCell: UITableViewCell {
     {
         
     }
-    func setAccountData(data:UserAddressDto)
+    func setAccountData(data:AddressBookDto)
     {
-        nameLabel.text = data.accountName
-        protocolLabel.text = data.protocolType
+        nameLabel.text = data.name
+        protocolLabel.text = data.network
         addressLabel.text = data.address
     }
     func bindUI()

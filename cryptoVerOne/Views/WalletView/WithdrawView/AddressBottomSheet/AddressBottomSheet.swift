@@ -11,7 +11,7 @@ import RxSwift
 
 class AddressBottomSheet: BaseBottomSheet {
     // MARK:業務設定
-    private let onCellSecondClick = PublishSubject<UserAddressDto>()
+    private let onCellSecondClick = PublishSubject<AddressBookDto>()
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
@@ -33,7 +33,12 @@ class AddressBottomSheet: BaseBottomSheet {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+    }
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+    }
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     // MARK: -
     // MARK:業務方法
@@ -51,8 +56,17 @@ class AddressBottomSheet: BaseBottomSheet {
                 onCellSecondClick.onNext(dto)
             }
         }.disposed(by: dpg)
+        addressView.rxAddNewAddressClick().subscribeSuccess { [self] _ in
+            Log.i("增加錢包地址")
+            let addVC = AddNewAddressViewController.loadNib()
+            addVC.rxDismissClick().subscribeSuccess { _ in
+                self.addressView.setupData()
+            }.disposed(by: dpg)
+            self.present(addVC, animated: true)
+//            self.navigationController?.pushViewController(addVC, animated: true)
+        }.disposed(by: dpg)
     }
-    func rxCellSecondClick() -> Observable<UserAddressDto>
+    func rxCellSecondClick() -> Observable<AddressBookDto>
     {
         return onCellSecondClick.asObserver()
     }

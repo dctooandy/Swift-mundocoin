@@ -12,9 +12,11 @@ import RxSwift
 
 class AddressBottomView: UIView {
     // MARK:業務設定
-    private let onCellClick = PublishSubject<UserAddressDto>()
+    private let onCellClick = PublishSubject<AddressBookDto>()
+    private let onAddNewAddressClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var dataArray = [UserAddressDto]()
+//    var dataArray = [UserAddressDto]()
+    var dataArray = [AddressBookDto]()
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
@@ -27,6 +29,7 @@ class AddressBottomView: UIView {
         super.awakeFromNib()
         setupUI()
         setupData()
+        bindLabel()
     }
     
     override init(frame: CGRect) {
@@ -50,14 +53,32 @@ class AddressBottomView: UIView {
     }
     func setupData()
     {
-        for index in 0...9 {
-            let data = UserAddressDto(accountName: "Kraken wallet", address: "THFfxoxMtMJGnjarKUpt7qjfcXUNbHzry3", protocolType: "TRC\(index)")
-            dataArray.append(data)
+        let isOn = KeychainManager.share.getWhiteListOnOff()
+        var allAddressList:[AddressBookDto] = []
+        if isOn == true
+        {
+            allAddressList = KeychainManager.share.getAddressBookList()
+            allAddressList = allAddressList.filter({ $0.isWhiteList == true })
+        }else
+        {
+            allAddressList = KeychainManager.share.getAddressBookList()
         }
+        dataArray = allAddressList
+        tableView.reloadData()
     }
-    func rxCellDidClick() -> Observable<UserAddressDto>
+    func bindLabel()
+    {
+        addNewAddressLabel.rx.click.subscribeSuccess { [self] _ in
+            onAddNewAddressClick.onNext(())
+        }.disposed(by: dpg)
+    }
+    func rxCellDidClick() -> Observable<AddressBookDto>
     {
         return onCellClick.asObserver()
+    }
+    func rxAddNewAddressClick() -> Observable<Any>
+    {
+        return onAddNewAddressClick.asObserver()
     }
 }
 // MARK: -
