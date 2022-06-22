@@ -11,12 +11,12 @@ import RxSwift
 
 class SubListViewcontroller: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onFetchDataAction = PublishSubject<Int>()
     private let dpg = DisposeBag()
 //    var dataArray = [AuditTransactionDto]()
     var dataArray : [WalletWithdrawDto] = []
     var showMode : AuditShowMode = .pending
-    fileprivate let viewModel = SubListViewModel()
+//    fileprivate let viewModel = SubListViewModel()
     let refresher = UIRefreshControl()
     var currentPage: Int = 0
 // MARK: -
@@ -28,17 +28,17 @@ class SubListViewcontroller: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
-        bindViewModel()
+//        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        currentPage = 0
-        dataArray.removeAll()
+//        currentPage = 0
+//        dataArray.removeAll()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        LoadingViewController.show()
-        viewModel.fetch()
+//        LoadingViewController.show()
+//        viewModel.fetch()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -58,9 +58,8 @@ class SubListViewcontroller: BaseViewController {
         tableView.separatorStyle = .none
         refresher.attributedTitle = NSAttributedString(string: "Pull To Refresh",
                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
-//        refreshControl.addTarget(self, action: #selector(loadData), for: UIControl.Event.valueChanged)
         refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
-            self?.endRefresh()
+            self?.startRefresh()
         }.disposed(by: disposeBag)
         tableView?.addSubview(refresher)
         self.bottomRefrash = tableView.footerRefrashView()
@@ -71,62 +70,48 @@ class SubListViewcontroller: BaseViewController {
         case .finished: return "Finished".localized
         }
     }
-    private func endRefresh() {
-        loadData()
-    }
-    func fetchData(currentPage:Int)
-    {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-            self.viewModel.fetch(currentPage: currentPage)
-        }
-    }
-    func bindViewModel()
-    {
-//        viewModel.rxFetchSuccess().subscribeSuccess { [self] _ in
+//    func bindViewModel()
+//    {
+//        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dto in
+//            DispatchQueue.main.async { [self] in
+//                if self.currentPage == 0
+//                {
+//                    self.dataArray.removeAll()
+//                }
+//                var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
+//                var pendingData = dto.content.filter{($0.state != "APPROVED")}
+//                finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
+//                pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+//                if showMode == .pending
+//                {
+//                    self.dataArray.append(contentsOf: pendingData)
+//                }else if showMode == .finished
+//                {
+//                    self.dataArray.append(contentsOf: finishedData)
+//                }
+//            }
 //            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
 //                _ = LoadingViewController.dismiss()
 //                // 停止 refreshControl 動畫
-//                refreshControl.endRefreshing()
-//                dataArray.removeAll()
-//                // 暫時拿來用
-//                for indexName in 0...10 {
-//                    dataArray.append(AuditTransactionDto(userid: "00000\(indexName)", crypto: "USDT", network: "TRC20", withdrawAmount: "25556.213265", fee: "1", actualAmount: "25555.213265", address: "T123456789123456789123456789111321", date: "2022/06/01 18:55:55", beginDate: 0, status: "Confirm", comment: "Ok!!" , txid: "32145613113-\(indexName)"))
-//                }
-//                tableView.reloadData()
+//                refresher.endRefreshing()
+//                tableView.tableFooterView = nil
+//                reloadTableView()
 //            }
+//     
 //        }.disposed(by: dpg)
-        
-        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dto in
-            DispatchQueue.main.async { [self] in
-                if self.currentPage == 0
-                {
-                    self.dataArray.removeAll()
-                }
-                var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
-                var pendingData = dto.content.filter{($0.state != "APPROVED")}
-                finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
-                pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
-                if showMode == .pending
-                {
-                    self.dataArray.append(contentsOf: pendingData)
-                }else if showMode == .finished
-                {
-                    self.dataArray.append(contentsOf: finishedData)
-                }
-            }
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                _ = LoadingViewController.dismiss()
-                // 停止 refreshControl 動畫
-                refresher.endRefreshing()
-                tableView.tableFooterView = nil
-                reloadTableView()
-            }
-     
-        }.disposed(by: dpg)
+//    }
+    func endFetchData()
+    {
+        refresher.endRefreshing()
+        tableView.tableFooterView = nil
+        reloadTableView()
     }
     func reloadTableView()
     {
         tableView.reloadData()
+    }
+    private func startRefresh() {
+        loadData()
     }
     @objc func loadData(currentPage:Int = 0)
     {
@@ -135,8 +120,17 @@ class SubListViewcontroller: BaseViewController {
         self.currentPage = currentPage
         self.fetchData(currentPage: currentPage)
     }
-    func refreshing(){
-        
+    func fetchData(currentPage:Int)
+    {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
+//            self.viewModel.fetch(currentPage: currentPage)
+            self.onFetchDataAction.onNext(currentPage)
+        }
+    }
+
+    func rxFetchDataAction() -> Observable<Int>
+    {
+        return onFetchDataAction.asObserver()
     }
 }
 // MARK: -
@@ -184,7 +178,7 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
     }
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if refresher.isRefreshing {
-            refreshing()
+//            refreshing()
         }
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)

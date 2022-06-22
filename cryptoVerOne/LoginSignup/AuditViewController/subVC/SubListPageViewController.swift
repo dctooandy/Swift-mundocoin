@@ -13,16 +13,19 @@ class SubListPageViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    fileprivate let viewModel = SubListViewModel()
+    var pendingDataArray : [WalletWithdrawDto] = []
+    var finishedDataArray : [WalletWithdrawDto] = []
+    var currentPage: Int = 0
     var subVCs : [SubListViewcontroller]! = []
-    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
     private var currentShowMode: AuditShowMode = .pending {
-        didSet {
-            
+        didSet {            
             pageViewcontroller?.reloadData()
         }
     }
     // MARK: -
     // MARK:UI 設定
+    private var pageViewcontroller: PagingViewController<PagingIndexItem>?
    
     // MARK: -
     // MARK:Life cycle
@@ -30,6 +33,7 @@ class SubListPageViewController: BaseViewController {
         super.viewDidLoad()
         setupMenu()
         setupVC()
+        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,10 +86,43 @@ class SubListPageViewController: BaseViewController {
         let pendingVC = SubListViewcontroller.instance(mode: .pending)
         let finishedVC = SubListViewcontroller.instance(mode: .finished)
         subVCs = [pendingVC,finishedVC]
+        for vc in subVCs {
+            vc.rxFetchDataAction().subscribeSuccess { [self] index in
+                currentPage = index
+                viewModel.fetch(currentPage: currentPage)
+            }.disposed(by: dpg)
+        }
         pageViewcontroller?.reloadData()
 //        bindLoginViewControllers()
 //        bindSingupViewControllers()
 //        bindForgotViewControllers()
+    }
+    func bindViewModel()
+    {
+        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dtoData in
+            let dto = dtoData.0
+            let isUpdate = dtoData.1
+            if self.currentPage == 0 || isUpdate == true
+            {
+                self.pendingDataArray.removeAll()
+                self.finishedDataArray.removeAll()
+            }
+            var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
+            var pendingData = dto.content.filter{($0.state != "APPROVED")}
+            finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
+            pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+            self.pendingDataArray.append(contentsOf: pendingData)
+            self.finishedDataArray.append(contentsOf: finishedData)
+            subVCs.first?.dataArray = self.pendingDataArray
+            subVCs.last?.dataArray = self.finishedDataArray
+            subVCs.first?.endFetchData()
+            subVCs.last?.endFetchData()
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
+                _ = LoadingViewController.dismiss()
+                // 停止 refreshControl 動畫
+            }
+     
+        }.disposed(by: dpg)
     }
     func reloadPageMenu(currentMode: AuditShowMode) {
         self.currentShowMode = currentMode

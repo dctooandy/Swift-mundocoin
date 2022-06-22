@@ -13,7 +13,7 @@ import RxSwift
 class SubListViewModel: BaseViewModel {
     // MARK:業務設定
     private var fetchSuccess = PublishSubject<Any>()
-    private var fetchListSuccess = PublishSubject<AuditApprovalDto>()
+    private var fetchListSuccess = PublishSubject<(AuditApprovalDto, isUpdate:Bool)>()
     // MARK: -
     // MARK:UI 設定
     // MARK: -
@@ -29,7 +29,7 @@ class SubListViewModel: BaseViewModel {
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
-                    self.fetchListSuccess.onNext(data)
+                    self.fetchListSuccess.onNext((data , true))
                 }
             }
         }onError: { (error) in
@@ -51,7 +51,7 @@ class SubListViewModel: BaseViewModel {
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
-                    self.fetchListSuccess.onNext(data)
+                    self.fetchListSuccess.onNext((data , false))
                 }
             }
         }onError: { (error) in
@@ -84,7 +84,7 @@ class SubListViewModel: BaseViewModel {
     func rxFetchSuccess() -> Observable<Any> {
         return fetchSuccess.asObserver()
     }
-    func rxFetchListSuccess() -> Observable<AuditApprovalDto> {
+    func rxFetchListSuccess() -> Observable<(AuditApprovalDto , isUpdate:Bool)> {
         return fetchListSuccess.asObserver()
     }
     // MARK: -
