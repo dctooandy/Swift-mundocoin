@@ -48,31 +48,13 @@ class TransTopView: UIView,NibOwnerLoadable {
     }
     func bindUI()
     {
+//        StyleThemes.topImageIconType.bind(to: topIconImageView.rx.image).disposed(by: dpg)
         Themes.topImageIconType.bind(to: topIconImageView.rx.image).disposed(by: dpg)
         Themes.topLabelStringType.bind(to: topLabel.rx.text).disposed(by: dpg)
-        
-        // 測試 狀態
-        topIconImageView.rx.click.subscribeSuccess { [self](_) in
-            var type : DetailType!
-            if topViewType == .done
-            {
-                type = .failed
-            } else if topViewType == .failed
-            {
-                type = .pending
-            }else if topViewType == .pending
-            {
-                type = .processing
-            }else
-            {
-                type = .done
-            }
-            TwoSideStyle.share.acceptTopViewStatusStyle(type)
-            topViewType = type
-        }.disposed(by: dpg)
     }
     func setupType()
     {
+//        StyleThemes.share.acceptTopViewStatusStyle(topViewType)
         TwoSideStyle.share.acceptTopViewStatusStyle(topViewType)
     }
 }

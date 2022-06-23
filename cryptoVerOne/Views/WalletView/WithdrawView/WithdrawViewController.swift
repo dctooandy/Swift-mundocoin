@@ -250,11 +250,12 @@ class WithdrawViewController: BaseViewController {
     }
     func showTransactionDetailView(dataDto : WalletWithdrawDto)
     {
-        if let transDto = dataDto.transaction , let amountText = transDto.amount,
+        if let transDto = dataDto.transaction ,
+           let amountText = transDto.amount?.stringValue?.numberFormatter(.decimal , 8),
            let fee = feeAmountLabel.text
         {
             let detailData = DetailDto(detailType: dataDto.detailType,
-                                       amount: amountText.stringValue ?? "",
+                                       amount: amountText,
                                        tether: transDto.currency ,
                                        network: "Tron(TRC20)",
                                        confirmations: "50/1",
@@ -262,9 +263,9 @@ class WithdrawViewController: BaseViewController {
                                        date: dataDto.createdDateString,
                                        address: transDto.toAddress,
                                        txid: transDto.txId ?? "")
-            let detailVC = TDetailViewController.loadNib()
-            detailVC.titleString = "Withdraw"
-            detailVC.detailDataDto = detailData
+            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
+                                                          mode: .topViewShow ,
+                                                          dataDto:detailData)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }

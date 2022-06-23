@@ -25,11 +25,7 @@ class TDetailViewController: BaseViewController {
     private let dpg = DisposeBag()
     var titleString = ""
     // model
-    var detailType : DetailType = .pending {
-        didSet{
-            resetUI()
-        }
-    }
+    var detailType : DetailType = .pending
     var detailDataDto : DetailDto? {
         didSet{
             detailType = detailDataDto!.detailType
@@ -45,6 +41,14 @@ class TDetailViewController: BaseViewController {
     @IBOutlet weak var tryButton: CornerradiusButton!
     // MARK: -
     // MARK:Life cycle
+    static func instance(titleString : String ,mode: DetailHiddenMode , dataDto: DetailDto) -> TDetailViewController {
+        let vc = TDetailViewController.loadNib()
+        vc.titleString = titleString
+        vc.detailDataDto = dataDto
+        vc.hiddenMode = mode
+        return vc
+    }
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
@@ -120,16 +124,6 @@ class TDetailViewController: BaseViewController {
             checkButton.isHidden = true
             tryButton.isHidden = true
         }
-    }
-    func resetUI()
-    {
-//        if self.detailType == .failed
-//        {
-//            checkButton.setTitle("Try Again".localized, for: .normal)
-//        }else
-//        {
-//            checkButton.setTitle("Check History".localized, for: .normal)
-//        }
     }
 }
 // MARK: -

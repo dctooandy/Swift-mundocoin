@@ -805,6 +805,12 @@
 		09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71B12822636E000AFC3F /* SignupViewController.xib */; };
 		09905CFE2851A09600BAEE78 /* mucoin_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7140282257AB000AFC3F /* mucoin_loading.json */; };
 		09905CFF2851A09600BAEE78 /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */; };
+		09919A96286448FF00035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A972864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A982864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A992864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A9A2864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A9B2864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
 		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
@@ -1635,6 +1641,7 @@
 		09905D092851A53900BAEE78 /* Info_Approval.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval.plist; sourceTree = "<group>"; };
 		09905D0A2851A53A00BAEE78 /* Info_Approval_stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval_stage.plist; sourceTree = "<group>"; };
 		09905D0B2851A53A00BAEE78 /* Info_Approval_dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval_dev.plist; sourceTree = "<group>"; };
+		09919A95286448FF00035835 /* StyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleThemes.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomView.swift; sourceTree = "<group>"; };
@@ -2625,6 +2632,7 @@
 			children = (
 				A19C7088282239DC000AFC3F /* Themes.swift */,
 				A1559DE22833AB2200755783 /* TwoSideStyle.swift */,
+				09919A95286448FF00035835 /* StyleThemes.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -3759,6 +3767,7 @@
 				09905A772851A02B00BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905A782851A02B00BAEE78 /* StatusImageView.swift in Sources */,
 				09905A792851A02B00BAEE78 /* DropDownStyleView.swift in Sources */,
+				09919A9A2864490000035835 /* StyleThemes.swift in Sources */,
 				09905A7A2851A02B00BAEE78 /* UITextfield+util.swift in Sources */,
 				09905A7B2851A02B00BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905A7C2851A02B00BAEE78 /* WalletService.swift in Sources */,
@@ -3960,6 +3969,7 @@
 				09905B692851A08500BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905B6A2851A08500BAEE78 /* StatusImageView.swift in Sources */,
 				09905B6B2851A08500BAEE78 /* DropDownStyleView.swift in Sources */,
+				09919A9B2864490000035835 /* StyleThemes.swift in Sources */,
 				09905B6C2851A08500BAEE78 /* UITextfield+util.swift in Sources */,
 				09905B6D2851A08500BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905B6E2851A08500BAEE78 /* WalletService.swift in Sources */,
@@ -4161,6 +4171,7 @@
 				09905C5B2851A09600BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905C5C2851A09600BAEE78 /* StatusImageView.swift in Sources */,
 				09905C5D2851A09600BAEE78 /* DropDownStyleView.swift in Sources */,
+				09919A992864490000035835 /* StyleThemes.swift in Sources */,
 				09905C5E2851A09600BAEE78 /* UITextfield+util.swift in Sources */,
 				09905C5F2851A09600BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905C602851A09600BAEE78 /* WalletService.swift in Sources */,
@@ -4362,6 +4373,7 @@
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
 				09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
+				09919A972864490000035835 /* StyleThemes.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -4563,6 +4575,7 @@
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
 				09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
+				09919A982864490000035835 /* StyleThemes.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -4764,6 +4777,7 @@
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
+				09919A96286448FF00035835 /* StyleThemes.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,

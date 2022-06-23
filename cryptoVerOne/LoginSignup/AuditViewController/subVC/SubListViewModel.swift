@@ -46,7 +46,7 @@ class SubListViewModel: BaseViewModel {
     }
     func fetch(currentPage:Int = 0)
     {
-        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String(currentPage))).subscribe { (dto) in
+        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "20", page: String(currentPage))).subscribe { (dto) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                 _ = LoadingViewController.dismiss()
                 if let data = dto

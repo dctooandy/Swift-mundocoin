@@ -26,7 +26,7 @@ struct AuditApprovalDto :Codable {
     static private let subject = BehaviorSubject<AuditApprovalDto?>(value: nil)
     static func update() -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "10", page: String("0"))).subscribeSuccess({ (configDto) in
+        Beans.auditServer.auditApprovals(pageable: PagePostDto()).subscribeSuccess({ (configDto) in
             share = configDto
             subject.onNext(())
         }).disposed(by: disposeBag)

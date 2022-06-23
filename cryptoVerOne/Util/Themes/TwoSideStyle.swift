@@ -37,7 +37,7 @@ class TwoSideStyle {
     func acceptWhiteListTopImageStyle(_ style: WhiteListStyle) {
         topViewWhiteListImageStyle.accept(style)
     }
-    // 變換取款成功頁面上方狀態
+//    // 變換取款成功頁面上方狀態
     let topViewStatusStyle: BehaviorRelay<DetailType> = {
         return BehaviorRelay<DetailType>(value: .done)
     }()

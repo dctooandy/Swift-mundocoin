@@ -168,7 +168,14 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 onAddAddressClick.onNext(addressText)
             }
         }.disposed(by: dpg)
-        
+#if Mundo_PRO || Approval_PRO
+                
+#else
+        bindCurrencyIcon()
+#endif
+    }
+    func bindCurrencyIcon()
+    {
         currencyIcon.rx.click.subscribeSuccess { [self] _ in
             var type : DetailType!
             if viewType == .done
@@ -185,6 +192,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 type = .done
             }
             TwoSideStyle.share.acceptTopViewStatusStyle(type)
+//            StyleThemes.share.acceptTopViewStatusStyle(type)
             viewType = type
         }.disposed(by: dpg)
     }

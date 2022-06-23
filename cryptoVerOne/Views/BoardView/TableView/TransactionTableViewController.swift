@@ -15,16 +15,16 @@ class TransactionTableViewController: BaseViewController {
     private let onPullUpToAddRow = PublishSubject<Any>()
     private let onPullDownToRefrash = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    private var didSeleCell : Bool = false
+    private var didSelectCell : Bool = false
     var showModeAtTableView : TransactionShowMode = .deposits{
         didSet{
             setup()
-            bindView()
         }
     }
     var data:[ContentDto] = [] {
         didSet{
             createData()
+            tableViewEndRefreshAction()
         }
     }
     var sectionDic:[String:[ContentDto]] = [:]
@@ -49,11 +49,11 @@ class TransactionTableViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if didSeleCell == false
+        if didSelectCell == false
         {
             startRefresh()
         }
-        didSeleCell = false
+        didSelectCell = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -83,20 +83,6 @@ class TransactionTableViewController: BaseViewController {
         clearData()
         onPullDownToRefrash.onNext(())
     }
-    func bindView()
-    {
-//        self.verifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
-//            onThirdSendVerifyClick.onNext(())
-//        }.disposed(by: dpg)
-//        self.verifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
-//            Log.i("發送submit請求 ,onlyEmail:\(stringData)")
-//            onSubmitOnlyEmailClick.onNext(stringData)
-//        }.disposed(by: dpg)
-//        self.verifyView.rxSubmitOnlyTwiFAAction().subscribeSuccess {[self](stringData) in
-//            Log.i("發送submit請求 ,onlyTwoFA:\(stringData)")
-//            onSubmitOnlyTwoFAClick.onNext(stringData)
-//        }.disposed(by: dpg)
-    }
     func clearData()
     {
         sectionDic.removeAll()
@@ -106,25 +92,21 @@ class TransactionTableViewController: BaseViewController {
     func createData()
     {
         var daySactionStringArray:[String] = []
-        let oldFormatter = DateFormatter()
-        oldFormatter.dateFormat = "MM dd,yyyy HH:mm:ss"
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "MMMM dd,yyyy"
         for dataDto in data {
             // 將時間戳轉換成 TimeInterval
-            let timeInterval = TimeInterval(dataDto.date)
+            let timeInterval = TimeInterval(dataDto.createdDateTimeInterval)
             // 初始化一個 Date
             let date = Date(timeIntervalSince1970: timeInterval)
-            //            let startDate = oldFormatter.date(from: dataDto.date)
             let currentTimeString = newFormatter.string(from: date )
             let newTimeInt = newFormatter.date(from: currentTimeString)?.timeIntervalSince1970
-            
-            if !daySactionStringArray.contains(newTimeInt?.intervalToString() ?? "0")
-            {
-                daySactionStringArray.append(newTimeInt?.intervalToString() ?? "0")
-            }
             if let timeString = newTimeInt?.intervalToString()
             {
+            if !daySactionStringArray.contains(timeString)
+            {
+                daySactionStringArray.append(timeString)
+            }
                 if sectionDic[timeString] != nil
                 {
                     sectionDic[timeString]?.append(dataDto)
@@ -133,15 +115,12 @@ class TransactionTableViewController: BaseViewController {
                     sectionDic[timeString] = [dataDto]
                 }
             }
-//            if sectionDic[currentTimeString] != nil
-//            {
-//                sectionDic[currentTimeString]?.append(dataDto)
-//            }else
-//            {
-//                sectionDic[currentTimeString] = [dataDto]
-//            }
         }
+    }
+    func tableViewEndRefreshAction()
+    {
         refresher.endRefreshing()
+        tableView.tableFooterView = nil
         tableView.backgroundView?.isHidden = sectionDic.keys.count > 0 ? true : false
         tableView.reloadData()
     }
@@ -156,10 +135,10 @@ class TransactionTableViewController: BaseViewController {
     }
     func pushToDetailVC(contentDto:ContentDto)
     {
-        if let amountValue = contentDto.amount
+        if let amountValue = contentDto.amount?.stringValue?.numberFormatter(.decimal , 8)
         {
             let detailData = DetailDto(detailType: contentDto.detailType,
-                                       amount: amountValue.stringValue?.numberFormatter(.decimal , 8) ?? "",
+                                       amount:amountValue,
                                        tether: contentDto.currency,
                                        network: "Tron(TRC20)",
                                        confirmations: "50/1",
@@ -167,10 +146,9 @@ class TransactionTableViewController: BaseViewController {
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,
                                        txid: contentDto.txId ?? "")
-            let detailVC = TDetailViewController.loadNib()
-            detailVC.titleString = "Withdraw"
-            detailVC.detailDataDto = detailData
-            detailVC.hiddenMode = .topViewHidden
+            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
+                                                          mode: .topViewHidden ,
+                                                          dataDto:detailData)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
     }
@@ -208,7 +186,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         let keyArray = Array(sectionDic.keys).sorted(by: >)
         if let rowData = sectionDic[keyArray[indexPath.section]]
         {
-            let currentData = rowData.sorted(by: { $0.date > $1.date })
+            let currentData = rowData.sorted(by: { $0.createdDateTimeInterval > $1.createdDateTimeInterval })
             cell.setData(data: currentData[indexPath.item] ,type: showModeAtTableView)
         }
         return cell
@@ -217,8 +195,8 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         let keyArray = Array(sectionDic.keys).sorted(by: >)
         if let rowData = sectionDic[keyArray[indexPath.section]]
         {
-            didSeleCell = true
-            let currentData = rowData.sorted(by: { $0.date > $1.date })
+            didSelectCell = true
+            let currentData = rowData.sorted(by: { $0.createdDateTimeInterval > $1.createdDateTimeInterval })
             Log.v("currentData \(currentData[indexPath.item])")
             pushToDetailVC(contentDto: currentData[indexPath.item])
         }
@@ -282,7 +260,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
                 let size = scrollView.contentSize
                 let inset = scrollView.contentInset
                 let y:CGFloat = offset.y + bouns.size.height - inset.bottom
-                let h:CGFloat = size.height
+//                let h:CGFloat = size.height
                 let reloadDistence = 50.0
                 let newH = size.height + CGFloat(reloadDistence) + Views.tabBarHeight
                 if y > newH {

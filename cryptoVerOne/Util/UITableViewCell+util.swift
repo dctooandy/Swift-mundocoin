@@ -43,15 +43,15 @@ extension UITableView {
         return refrashControl
     }
     func footerRefrashView() -> UIView{
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 40))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 20))
         view.backgroundColor = .clear
         let activity = UIActivityIndicatorView()
         activity.style = .gray
         activity.backgroundColor = .clear
         view.addSubview(activity)
         activity.snp.makeConstraints { (maker) in
-            maker.width.equalTo(40)
-            maker.height.equalTo(40)
+            maker.width.equalTo(20)
+            maker.height.equalTo(20)
             maker.center.equalToSuperview()
         }
         activity.startAnimating()

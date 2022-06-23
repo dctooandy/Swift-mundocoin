@@ -48,8 +48,8 @@ class BoardViewController: BaseViewController {
     var isRefreshAction : Bool = false
     // MARK: -
     // MARK:UI 設定
-    var depositsViewController = TransactionTableViewController()
-    var withdrawalsViewController = TransactionTableViewController()
+    var depositsViewController : TransactionTableViewController!
+    var withdrawalsViewController : TransactionTableViewController!
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
     private var transTableViewControllers = [TransactionTableViewController]()
     private lazy var filterButton:UIButton = {
@@ -140,10 +140,8 @@ class BoardViewController: BaseViewController {
     }
     func setupPageVC()
     {
-        let depositsVC = TransactionTableViewController.instance(mode: .deposits)
-        let withdrawalsVC = TransactionTableViewController.instance(mode: .withdrawals)
-        self.depositsViewController = depositsVC
-        self.withdrawalsViewController = withdrawalsVC
+        self.depositsViewController = TransactionTableViewController.instance(mode: .deposits)
+        self.withdrawalsViewController = TransactionTableViewController.instance(mode: .withdrawals)
         transTableViewControllers = [self.depositsViewController,
                                      self.withdrawalsViewController]
         bindViewControllers()
@@ -156,7 +154,7 @@ class BoardViewController: BaseViewController {
     {
         if let data = self.currentFilterDto
         {
-            viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "10", page: String(currentPage)))
+            viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
         }
         else
         {
@@ -199,13 +197,11 @@ class BoardViewController: BaseViewController {
     }
     func resetData()
     {
-        let depositData = transContentDto.filter{$0.type != "WITHDRAW"}
+        let depositData = transContentDto.filter{$0.type == "DEPOSIT"}
         let withdrawData = transContentDto.filter{$0.type == "WITHDRAW"}
         depositsViewController.data = depositData
         withdrawalsViewController.data = withdrawData
         pageViewcontroller?.reloadMenu()
-        depositsViewController.tableView.tableFooterView = nil
-        withdrawalsViewController.tableView.tableFooterView = nil
     }
     @objc func filterActionSheet() {
         Log.i("開啟過濾Sheet")

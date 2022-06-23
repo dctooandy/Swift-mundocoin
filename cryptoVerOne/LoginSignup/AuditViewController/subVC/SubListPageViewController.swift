@@ -107,12 +107,12 @@ class SubListPageViewController: BaseViewController {
                 self.pendingDataArray.removeAll()
                 self.finishedDataArray.removeAll()
             }
-            var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
-            var pendingData = dto.content.filter{($0.state != "APPROVED")}
-            finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
-            pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+            let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
+            let pendingData = dto.content.filter{($0.state != "APPROVED")}
             self.pendingDataArray.append(contentsOf: pendingData)
             self.finishedDataArray.append(contentsOf: finishedData)
+            self.pendingDataArray = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+            self.finishedDataArray = self.finishedDataArray.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
             subVCs.first?.dataArray = self.pendingDataArray
             subVCs.last?.dataArray = self.finishedDataArray
             subVCs.first?.endFetchData()

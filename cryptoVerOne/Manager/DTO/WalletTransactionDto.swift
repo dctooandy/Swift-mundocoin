@@ -40,7 +40,7 @@ struct SortDto :Codable
 }
 struct PagePostDto : Codable
 {
-    var size:String = "10"
+    var size:String = "20"
     var page:String = "0"
     var toJsonString: String {
         do {
@@ -87,7 +87,7 @@ struct PageableDto :Codable
 }
 struct ContentDto : Codable
 {
-    var date : TimeInterval
+    var createdDateTimeInterval : TimeInterval
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"

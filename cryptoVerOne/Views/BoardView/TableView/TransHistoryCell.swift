@@ -39,11 +39,9 @@ class TransHistoryCell: UITableViewCell {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH:mm:ss"
         // 將時間戳轉換成 TimeInterval
-        let timeInterval = TimeInterval(data.date)
+        let timeInterval = TimeInterval(data.createdDateTimeInterval)
         // 初始化一個 Date
         let date = Date(timeIntervalSince1970: timeInterval)
-
-//        let startDate = dateFormatter.date(from: data.date)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
         if let amountValue = data.amount {
