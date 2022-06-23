@@ -83,9 +83,9 @@ class AddressBookViewController: BaseViewController {
     }
     func bindUI()
     {
-        Themes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
+        WhiteListThemes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
         let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
-        TwoSideStyle.share.acceptWhiteListTopImageStyle(style)
+        WhiteListThemes.share.acceptWhiteListTopImageStyle(style)
     }
     func bindViewModel()
     {
@@ -118,7 +118,7 @@ class AddressBookViewController: BaseViewController {
     {
         let isOn = KeychainManager.share.getWhiteListOnOff()
         KeychainManager.share.saveWhiteListOnOff(!isOn)
-        TwoSideStyle.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
+        WhiteListThemes.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
     }
     @objc func addAddressBookAction() {
         Log.i("增加錢包地址")

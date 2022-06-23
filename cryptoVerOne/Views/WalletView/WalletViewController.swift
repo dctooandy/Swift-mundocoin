@@ -102,8 +102,8 @@ class WalletViewController: BaseViewController {
     }
     func setup()
     {        
-        Themes.moneyVisibleOrNotVisible.bind(to: totalBalanceLabel.rx.isHidden).disposed(by: dpg)
-        Themes.stringVisibleOrNotVisible.bind(to: hiddenTotalBalanceLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.moneyVisibleOrNotVisible.bind(to: totalBalanceLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenTotalBalanceLabel.rx.isHidden).disposed(by: dpg)
     }
     func bindAction()
     {
@@ -120,11 +120,11 @@ class WalletViewController: BaseViewController {
         if hiddenTotalBalanceLabel.isHidden == true
         {
             eyeIconImageView.image = UIImage(named: "icon-view")
-            TwoSideStyle.share.acceptMoneySecureStyle(.nonVisible)
+            WalletSecurityThemes.share.acceptMoneySecureStyle(.nonVisible)
         }else
         {
             eyeIconImageView.image = UIImage(named: "icon-view-hide")
-            TwoSideStyle.share.acceptMoneySecureStyle(.visible)
+            WalletSecurityThemes.share.acceptMoneySecureStyle(.visible)
         }
         
     }

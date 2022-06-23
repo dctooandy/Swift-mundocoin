@@ -805,12 +805,36 @@
 		09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A19C71B12822636E000AFC3F /* SignupViewController.xib */; };
 		09905CFE2851A09600BAEE78 /* mucoin_loading.json in Resources */ = {isa = PBXBuildFile; fileRef = A19C7140282257AB000AFC3F /* mucoin_loading.json */; };
 		09905CFF2851A09600BAEE78 /* SecurityViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B0282C027E00AB2E0A /* SecurityViewController.xib */; };
-		09919A96286448FF00035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
-		09919A972864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
-		09919A982864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
-		09919A992864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
-		09919A9A2864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
-		09919A9B2864490000035835 /* StyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A95286448FF00035835 /* StyleThemes.swift */; };
+		09919A9D2864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919A9E2864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919A9F2864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919AA02864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919AA12864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919AA22864570700035835 /* TemplateThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919A9C2864570700035835 /* TemplateThemes.swift */; };
+		09919AA428645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AA528645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AA628645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AA728645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AA828645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AA928645AFE00035835 /* TransStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AA328645AFE00035835 /* TransStyleThemes.swift */; };
+		09919AAB28645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AAC28645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AAD28645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AAE28645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AAF28645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AB028645D0D00035835 /* FilterStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AAA28645D0D00035835 /* FilterStyleThemes.swift */; };
+		09919AB228645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB328645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB428645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB528645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB628645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB728645E3A00035835 /* WhiteListThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB128645E3A00035835 /* WhiteListThemes.swift */; };
+		09919AB92864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919ABA2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919ABB2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919ABC2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919ABD2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919ABE2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
 		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
@@ -1641,7 +1665,11 @@
 		09905D092851A53900BAEE78 /* Info_Approval.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval.plist; sourceTree = "<group>"; };
 		09905D0A2851A53A00BAEE78 /* Info_Approval_stage.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval_stage.plist; sourceTree = "<group>"; };
 		09905D0B2851A53A00BAEE78 /* Info_Approval_dev.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_Approval_dev.plist; sourceTree = "<group>"; };
-		09919A95286448FF00035835 /* StyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleThemes.swift; sourceTree = "<group>"; };
+		09919A9C2864570700035835 /* TemplateThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateThemes.swift; sourceTree = "<group>"; };
+		09919AA328645AFE00035835 /* TransStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransStyleThemes.swift; sourceTree = "<group>"; };
+		09919AAA28645D0D00035835 /* FilterStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStyleThemes.swift; sourceTree = "<group>"; };
+		09919AB128645E3A00035835 /* WhiteListThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListThemes.swift; sourceTree = "<group>"; };
+		09919AB82864605300035835 /* WalletSecurityThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSecurityThemes.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomView.swift; sourceTree = "<group>"; };
@@ -2190,6 +2218,7 @@
 				A16F6200282E3F5700D9CCE5 /* TemplateCell.swift */,
 				09056D80284DBC2700038BF8 /* TemplateCollectionCell.swift */,
 				09056D90284EF48C00038BF8 /* TemplateViewModel.swift */,
+				09919A9C2864570700035835 /* TemplateThemes.swift */,
 			);
 			path = Template;
 			sourceTree = "<group>";
@@ -2632,7 +2661,10 @@
 			children = (
 				A19C7088282239DC000AFC3F /* Themes.swift */,
 				A1559DE22833AB2200755783 /* TwoSideStyle.swift */,
-				09919A95286448FF00035835 /* StyleThemes.swift */,
+				09919AA328645AFE00035835 /* TransStyleThemes.swift */,
+				09919AAA28645D0D00035835 /* FilterStyleThemes.swift */,
+				09919AB128645E3A00035835 /* WhiteListThemes.swift */,
+				09919AB82864605300035835 /* WalletSecurityThemes.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -3692,6 +3724,7 @@
 				09905A362851A02B00BAEE78 /* Extension.swift in Sources */,
 				09905A372851A02B00BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905A382851A02B00BAEE78 /* UICollectionView+util.swift in Sources */,
+				09919ABD2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905A392851A02B00BAEE78 /* LoginPostDto.swift in Sources */,
 				09905A3A2851A02B00BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905A3B2851A02B00BAEE78 /* Log.swift in Sources */,
@@ -3719,6 +3752,7 @@
 				09905A4D2851A02B00BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905A4E2851A02B00BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF0A2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919AA12864570700035835 /* TemplateThemes.swift in Sources */,
 				09905A4F2851A02B00BAEE78 /* ForgotViewController.swift in Sources */,
 				09905A502851A02B00BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905A512851A02B00BAEE78 /* CheckBox.swift in Sources */,
@@ -3761,13 +3795,13 @@
 				09905A722851A02B00BAEE78 /* BaseTabbar.swift in Sources */,
 				09905A732851A02B00BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905A742851A02B00BAEE78 /* UserInfoDto.swift in Sources */,
+				09919AAF28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905A752851A02B00BAEE78 /* BoardViewModel.swift in Sources */,
 				09905A762851A02B00BAEE78 /* WalletViewModel.swift in Sources */,
 				09EED317285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905A772851A02B00BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905A782851A02B00BAEE78 /* StatusImageView.swift in Sources */,
 				09905A792851A02B00BAEE78 /* DropDownStyleView.swift in Sources */,
-				09919A9A2864490000035835 /* StyleThemes.swift in Sources */,
 				09905A7A2851A02B00BAEE78 /* UITextfield+util.swift in Sources */,
 				09905A7B2851A02B00BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905A7C2851A02B00BAEE78 /* WalletService.swift in Sources */,
@@ -3878,8 +3912,10 @@
 				09905AD92851A02B00BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905ADA2851A02B00BAEE78 /* ScannerViewController.swift in Sources */,
 				09905ADB2851A02B00BAEE78 /* CancelButton.swift in Sources */,
+				09919AB628645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				09905ADC2851A02B00BAEE78 /* BottomSheetDismissAnimationController.swift in Sources */,
 				09905ADD2851A02B00BAEE78 /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA828645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				09905ADE2851A02B00BAEE78 /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -3894,6 +3930,7 @@
 				09905B282851A08500BAEE78 /* Extension.swift in Sources */,
 				09905B292851A08500BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905B2A2851A08500BAEE78 /* UICollectionView+util.swift in Sources */,
+				09919ABE2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905B2B2851A08500BAEE78 /* LoginPostDto.swift in Sources */,
 				09905B2C2851A08500BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905B2D2851A08500BAEE78 /* Log.swift in Sources */,
@@ -3921,6 +3958,7 @@
 				09905B3F2851A08500BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905B402851A08500BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF0B2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919AA22864570700035835 /* TemplateThemes.swift in Sources */,
 				09905B412851A08500BAEE78 /* ForgotViewController.swift in Sources */,
 				09905B422851A08500BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905B432851A08500BAEE78 /* CheckBox.swift in Sources */,
@@ -3963,13 +4001,13 @@
 				09905B642851A08500BAEE78 /* BaseTabbar.swift in Sources */,
 				09905B652851A08500BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905B662851A08500BAEE78 /* UserInfoDto.swift in Sources */,
+				09919AB028645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905B672851A08500BAEE78 /* BoardViewModel.swift in Sources */,
 				09905B682851A08500BAEE78 /* WalletViewModel.swift in Sources */,
 				09EED318285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905B692851A08500BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905B6A2851A08500BAEE78 /* StatusImageView.swift in Sources */,
 				09905B6B2851A08500BAEE78 /* DropDownStyleView.swift in Sources */,
-				09919A9B2864490000035835 /* StyleThemes.swift in Sources */,
 				09905B6C2851A08500BAEE78 /* UITextfield+util.swift in Sources */,
 				09905B6D2851A08500BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905B6E2851A08500BAEE78 /* WalletService.swift in Sources */,
@@ -4080,8 +4118,10 @@
 				09905BCB2851A08500BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905BCC2851A08500BAEE78 /* ScannerViewController.swift in Sources */,
 				09905BCD2851A08500BAEE78 /* CancelButton.swift in Sources */,
+				09919AB728645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				09905BCE2851A08500BAEE78 /* BottomSheetDismissAnimationController.swift in Sources */,
 				09905BCF2851A08500BAEE78 /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA928645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				09905BD02851A08500BAEE78 /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4096,6 +4136,7 @@
 				09905C1A2851A09600BAEE78 /* Extension.swift in Sources */,
 				09905C1B2851A09600BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905C1C2851A09600BAEE78 /* UICollectionView+util.swift in Sources */,
+				09919ABC2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905C1D2851A09600BAEE78 /* LoginPostDto.swift in Sources */,
 				09905C1E2851A09600BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905C1F2851A09600BAEE78 /* Log.swift in Sources */,
@@ -4123,6 +4164,7 @@
 				09905C312851A09600BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905C322851A09600BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF092860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919AA02864570700035835 /* TemplateThemes.swift in Sources */,
 				09905C332851A09600BAEE78 /* ForgotViewController.swift in Sources */,
 				09905C342851A09600BAEE78 /* WalletBalancesDto.swift in Sources */,
 				09905C352851A09600BAEE78 /* CheckBox.swift in Sources */,
@@ -4165,13 +4207,13 @@
 				09905C562851A09600BAEE78 /* BaseTabbar.swift in Sources */,
 				09905C572851A09600BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905C582851A09600BAEE78 /* UserInfoDto.swift in Sources */,
+				09919AAE28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905C592851A09600BAEE78 /* BoardViewModel.swift in Sources */,
 				09905C5A2851A09600BAEE78 /* WalletViewModel.swift in Sources */,
 				09EED316285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905C5B2851A09600BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905C5C2851A09600BAEE78 /* StatusImageView.swift in Sources */,
 				09905C5D2851A09600BAEE78 /* DropDownStyleView.swift in Sources */,
-				09919A992864490000035835 /* StyleThemes.swift in Sources */,
 				09905C5E2851A09600BAEE78 /* UITextfield+util.swift in Sources */,
 				09905C5F2851A09600BAEE78 /* ForgetPasswordViewController.swift in Sources */,
 				09905C602851A09600BAEE78 /* WalletService.swift in Sources */,
@@ -4282,8 +4324,10 @@
 				09905CBD2851A09600BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905CBE2851A09600BAEE78 /* ScannerViewController.swift in Sources */,
 				09905CBF2851A09600BAEE78 /* CancelButton.swift in Sources */,
+				09919AB528645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				09905CC02851A09600BAEE78 /* BottomSheetDismissAnimationController.swift in Sources */,
 				09905CC12851A09600BAEE78 /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA728645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				09905CC22851A09600BAEE78 /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4298,6 +4342,7 @@
 				09CAF440283C77ED00D7B19B /* Extension.swift in Sources */,
 				09CAF441283C77ED00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */,
+				09919ABA2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09CAF443283C77ED00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF444283C77ED00D7B19B /* PopupBottomSheet.swift in Sources */,
 				09CAF445283C77ED00D7B19B /* Log.swift in Sources */,
@@ -4325,6 +4370,7 @@
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919A9E2864570700035835 /* TemplateThemes.swift in Sources */,
 				09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF456283C77ED00D7B19B /* CheckBox.swift in Sources */,
@@ -4367,13 +4413,13 @@
 				09CAF46F283C77ED00D7B19B /* BaseTabbar.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09919AAC28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D96284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09EED314285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
 				09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
-				09919A972864490000035835 /* StyleThemes.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -4484,8 +4530,10 @@
 				09C20FAD2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF4BB283C77ED00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF4BC283C77ED00D7B19B /* CancelButton.swift in Sources */,
+				09919AB328645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				09CAF4BD283C77ED00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
 				09CAF4BE283C77ED00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA528645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				09CAF4BF283C77ED00D7B19B /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4500,6 +4548,7 @@
 				09CAF501283C7BBE00D7B19B /* Extension.swift in Sources */,
 				09CAF502283C7BBE00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */,
+				09919ABB2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09CAF504283C7BBE00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF505283C7BBE00D7B19B /* PopupBottomSheet.swift in Sources */,
 				09CAF506283C7BBE00D7B19B /* Log.swift in Sources */,
@@ -4527,6 +4576,7 @@
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919A9F2864570700035835 /* TemplateThemes.swift in Sources */,
 				09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				09CAF517283C7BBE00D7B19B /* CheckBox.swift in Sources */,
@@ -4569,13 +4619,13 @@
 				09CAF530283C7BBE00D7B19B /* BaseTabbar.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09919AAD28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D97284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09EED315285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
 				09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
-				09919A982864490000035835 /* StyleThemes.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -4686,8 +4736,10 @@
 				09C20FAE2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF57C283C7BBE00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF57D283C7BBE00D7B19B /* CancelButton.swift in Sources */,
+				09919AB428645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				09CAF57E283C7BBE00D7B19B /* BottomSheetDismissAnimationController.swift in Sources */,
 				09CAF57F283C7BBE00D7B19B /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA628645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				09CAF580283C7BBE00D7B19B /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -4702,6 +4754,7 @@
 				A19C702C28222D97000AFC3F /* Extension.swift in Sources */,
 				A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */,
 				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,
+				09919AB92864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				A19C71A928226279000AFC3F /* LoginPostDto.swift in Sources */,
 				A19C70BE28223D82000AFC3F /* PopupBottomSheet.swift in Sources */,
 				A19C7117282255AD000AFC3F /* Log.swift in Sources */,
@@ -4729,6 +4782,7 @@
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				09919A9D2864570700035835 /* TemplateThemes.swift in Sources */,
 				A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */,
 				099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
 				A19C71C428226469000AFC3F /* CheckBox.swift in Sources */,
@@ -4771,13 +4825,13 @@
 				A19C70CE282246DF000AFC3F /* BaseTabbar.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				09919AAB28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D95284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
 				09EED313285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
 				09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
-				09919A96286448FF00035835 /* StyleThemes.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
 				09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */,
@@ -4888,8 +4942,10 @@
 				09C20FAC2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				A16F61E5282E2A2300D9CCE5 /* ScannerViewController.swift in Sources */,
 				A19C70C128223DC1000AFC3F /* CancelButton.swift in Sources */,
+				09919AB228645E3A00035835 /* WhiteListThemes.swift in Sources */,
 				A19C710428224DCF000AFC3F /* BottomSheetDismissAnimationController.swift in Sources */,
 				A19C710128224DBD000AFC3F /* BottomSheetPresentAnimationController.swift in Sources */,
+				09919AA428645AFE00035835 /* TransStyleThemes.swift in Sources */,
 				A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

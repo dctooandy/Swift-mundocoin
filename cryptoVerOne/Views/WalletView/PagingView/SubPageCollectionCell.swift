@@ -45,10 +45,10 @@ class SubPageCollectionCell: UICollectionViewCell {
     
     func setupUI()
     {
-        Themes.moneyVisibleOrNotVisible.bind(to: amountLabel.rx.isHidden).disposed(by: dpg)
-        Themes.stringVisibleOrNotVisible.bind(to: hiddenMoneyLabel.rx.isHidden).disposed(by: dpg)
-        Themes.moneyVisibleOrNotVisible.bind(to: equelLabel.rx.isHidden).disposed(by: dpg)
-        Themes.stringVisibleOrNotVisible.bind(to: hiddenequelLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.moneyVisibleOrNotVisible.bind(to: amountLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenMoneyLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.moneyVisibleOrNotVisible.bind(to: equelLabel.rx.isHidden).disposed(by: dpg)
+        WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenequelLabel.rx.isHidden).disposed(by: dpg)
     }
 
 }

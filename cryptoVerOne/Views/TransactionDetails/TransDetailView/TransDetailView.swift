@@ -146,21 +146,21 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         withdrawToInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
-        Themes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
-        Themes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
+        TransStyleThemes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
+        TransStyleThemes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
         
-        Themes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
-        Themes.completeViewType.bind(to: completedModeView.rx.isHidden).disposed(by: dpg)
-        Themes.topViewIconType.bind(to: iconImageView.rx.image).disposed(by: dpg)
-        Themes.topViewLabelText.bind(to: statusLabel.rx.text).disposed(by: dpg)
-        Themes.topViewLabelTextColor.bind(to: statusLabel.rx.textColor).disposed(by: dpg)
+        TransStyleThemes.processingLabelType.bind(to: processingLabel.rx.textColor).disposed(by: dpg)
+        TransStyleThemes.completeViewType.bind(to: completedModeView.rx.isHidden).disposed(by: dpg)
+        TransStyleThemes.topViewIconType.bind(to: iconImageView.rx.image).disposed(by: dpg)
+        TransStyleThemes.topViewLabelText.bind(to: statusLabel.rx.text).disposed(by: dpg)
+        TransStyleThemes.topViewLabelTextColor.bind(to: statusLabel.rx.textColor).disposed(by: dpg)
         if let confirmationsView = dataListViewArray.filter({ $0.tag == 3 }).first
         {
-            Themes.txidViewType.bind(to: confirmationsView.rx.isHidden).disposed(by: dpg)
+            TransStyleThemes.txidViewType.bind(to: confirmationsView.rx.isHidden).disposed(by: dpg)
         }
         if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
         {
-            Themes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
+            TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
         }
         withdrawToInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
             if let addressText = withdrawToInputView.normalTextLabel.text
@@ -191,8 +191,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             {
                 type = .done
             }
-            TwoSideStyle.share.acceptTopViewStatusStyle(type)
-//            StyleThemes.share.acceptTopViewStatusStyle(type)
+            TransStyleThemes.share.acceptTopViewStatusStyle(type)
             viewType = type
         }.disposed(by: dpg)
     }

@@ -54,7 +54,7 @@ class FilterBottomSheet: BaseBottomSheet {
     }
     func bindUI()
     {
-        Themes.sheetHeightType.bind(to: heightConstraint.rx.constant).disposed(by: dpg)
+        FilterStyleThemes.sheetHeightType.bind(to: heightConstraint.rx.constant).disposed(by: dpg)
     }
     func rxConfirmClick() -> Observable<WalletTransPostDto>
     {

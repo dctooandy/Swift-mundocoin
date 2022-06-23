@@ -48,14 +48,12 @@ class TransTopView: UIView,NibOwnerLoadable {
     }
     func bindUI()
     {
-//        StyleThemes.topImageIconType.bind(to: topIconImageView.rx.image).disposed(by: dpg)
-        Themes.topImageIconType.bind(to: topIconImageView.rx.image).disposed(by: dpg)
-        Themes.topLabelStringType.bind(to: topLabel.rx.text).disposed(by: dpg)
+        TransStyleThemes.topImageIconType.bind(to: topIconImageView.rx.image).disposed(by: dpg)
+        TransStyleThemes.topLabelStringType.bind(to: topLabel.rx.text).disposed(by: dpg)
     }
     func setupType()
     {
-//        StyleThemes.share.acceptTopViewStatusStyle(topViewType)
-        TwoSideStyle.share.acceptTopViewStatusStyle(topViewType)
+        TransStyleThemes.share.acceptTopViewStatusStyle(topViewType)
     }
 }
 // MARK: -

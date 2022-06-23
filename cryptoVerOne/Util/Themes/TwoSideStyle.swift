@@ -23,38 +23,7 @@ enum SecureStyle {
 class TwoSideStyle {
 
     static var share = TwoSideStyle()
-    // 變換sheet高度
-    let sheetHeightStyle: BehaviorRelay<TransactionShowMode> = {
-        return BehaviorRelay<TransactionShowMode>(value: .withdrawals)
-    }()
-    func acceptSheetHeightStyle(_ style: TransactionShowMode) {
-        sheetHeightStyle.accept(style)
-    }
-    // 變換白名單圖片狀態
-    let topViewWhiteListImageStyle: BehaviorRelay<WhiteListStyle> = {
-        return BehaviorRelay<WhiteListStyle>(value: .whiteListOn)
-    }()
-    func acceptWhiteListTopImageStyle(_ style: WhiteListStyle) {
-        topViewWhiteListImageStyle.accept(style)
-    }
-//    // 變換取款成功頁面上方狀態
-    let topViewStatusStyle: BehaviorRelay<DetailType> = {
-        return BehaviorRelay<DetailType>(value: .done)
-    }()
-    func acceptTopViewStatusStyle(_ style: DetailType) {
-        topViewStatusStyle.accept(style)
-    }
-    // 開啟關閉金額
-    let moneySecureStyle: BehaviorRelay<SecureStyle> = {
-        return BehaviorRelay<SecureStyle>(value: .visible)
-    }()
-    func acceptMoneySecureStyle(_ style: SecureStyle) {
-        if moneySecureStyle.value == .visible {
-            moneySecureStyle.accept(.nonVisible)
-        } else {
-            moneySecureStyle.accept(.visible)
-        }
-    }
+
     let interFaceStyle: BehaviorRelay<InterFaceStyle> = {
         return BehaviorRelay<InterFaceStyle>(value: checkTime())
     }()

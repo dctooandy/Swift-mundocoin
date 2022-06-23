@@ -117,7 +117,7 @@ class TDetailViewController: BaseViewController {
             topViewHeight.constant = 70
             checkButton.isHidden = false
             tryButton.isHidden = false
-            Themes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
+            TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
         }else
         {
             topViewHeight.constant = 0

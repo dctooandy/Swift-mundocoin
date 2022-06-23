@@ -16,112 +16,7 @@ class Themes {
     static let plkMode = TwoSideStyle.share.interFaceStyle.asObservable()
     static func bindChooseOrNotStyle<T>(light: T, dark: T) -> Observable<T> {
         return Themes.plkMode.map({ $0 == .light ? light : dark })
-    }
-    // 改變 sheet height
-    static let heightForFilterMode = TwoSideStyle.share.sheetHeightStyle.asObservable()
-    static func bindSheetHeight<T>(isDeposits: T , isWithdrawals: T) -> Observable<CGFloat>{
-        return Themes.heightForFilterMode.map({($0 == .deposits) ?
-            431 + Views.bottomOffset :
-            508 + Views.bottomOffset})
-    }
-    static func bindStatusHidden<T>(isDeposits: T , isWithdrawals: T) -> Observable<Bool>{
-        return Themes.heightForFilterMode.map({($0 == .deposits) ?
-            true :
-            false})
-    }
-    // 綁定白名單上方圖片狀態
-    static let topWhiteListImageMode = TwoSideStyle.share.topViewWhiteListImageStyle.asObservable()
-    static func bindWhiteListTopIcon<T>(isON: T , isOff: T) -> Observable<UIImage>{
-        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? UIImage(named: "icon-Chield_check")!:UIImage(named: "icon-Chield")!})
-    }
-    static func bindWhiteListSwitchAlpha<T>(isOn:T , isOff:T) -> Observable<CGFloat>{
-        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? 1.0 : 0.5})
-    }
-    static func bindWhiteListSwitchEnable<T>(isOn:T , isOff:T) -> Observable<Bool>{
-        return Themes.topWhiteListImageMode.map({($0 == .whiteListOn) ? true : false})
-    }
-
-    // 綁定取款成功頁面 上方狀態View
-    static let topViewMode = TwoSideStyle.share.topViewStatusStyle.asObservable()
-    static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
-        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
-    }
-    
-    static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
-        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
-    }
-    // 綁定 pending跟processing 的顯示
-    static func bindDetailViewProcessingBorderColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
-    }
-    static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return Themes.topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.blue2B3674 })
-    }
-    // 綁定TopView 文字顏色
-    static func bindTopViewTextColor<T>(done: T , failed: T) -> Observable<UIColor>{
-        return Themes.topViewMode.map({($0 == .done ) ? Themes.green0DC897:Themes.redEE5D50 })
-    }
-    static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
-        return Themes.topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })
-    }
-    static func bindDetailViewTryBtnHidden<T>(hidden: T , show: T) -> Observable<Bool>{
-        return Themes.topViewMode.map({($0 != .failed ) ? true:false })
-    }
-    
-    static let processingImageType : Observable<UIColor> = Themes.bindDetailViewProcessingBorderColor(noProcessing: DetailType.done, processing: DetailType.processing)
-    static let processingLabelType : Observable<UIColor> = Themes.bindDetailViewProcessingTextColor(noProcessing: DetailType.done, processing: DetailType.processing)
-    static let completeViewType : Observable<Bool> = Themes.bindDetailViewCompleteViewHidden(hidden: DetailType.pending, show: DetailType.done)
-    
-    // 綁定取款成功頁面 下方隱藏物件
-    static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
-        return Themes.topViewMode.map({ ($0 == .pending ) ? true : false})
-    }
-    static func bindDetailListTopViewIconName<T>(done: T , failed : T) -> Observable<UIImage>{
-        return Themes.topViewMode.map({ (($0 == .done ) ? UIImage(named: "icon-done") : UIImage(named: "icon-error"))!})
-    }
-    static func bindDetailListTopViewLabelText<T>(done: T , failed : T) -> Observable<String>{
-        return Themes.topViewMode.map({ (($0 == .done ) ? "Completed".localized : "Failed".localized)})
-    }
-    
-    static let topImageIconType : Observable<UIImage> = Themes.bindDetailViewTopIcon(success: DetailType.done, failed: DetailType.failed)
-    //
-    
-    static let topLabelStringType : Observable<String> = Themes.bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
-    // 綁定取款成功頁面要不要顯示TXID欄位
-    static let txidViewType : Observable<Bool> = Themes.bindDetailListViewHidden(hidden: true, visible: false)
-    // 綁定取款成功頁面 要不要顯示try again Btn
-    static let tryAgainBtnHiddenType : Observable<Bool> = Themes.bindDetailViewTryBtnHidden(hidden: true, show: false)
-    // 綁定TopViewIcon樣式
-    static let topViewIconType : Observable<UIImage> = Themes.bindDetailListTopViewIconName(done: true, failed: false)
-    // 綁定TopViewLabel文字
-    static let topViewLabelText : Observable<String> = Themes.bindDetailListTopViewLabelText(done: true, failed: false)
-    // 綁定TopViewLabel文字顏色
-    static let topViewLabelTextColor : Observable<UIColor> = Themes.bindTopViewTextColor(done: true, failed: false)
-    // Binder
-    static let sheetHeightType : Observable<CGFloat> =
-    Themes.bindSheetHeight(isDeposits: TransactionShowMode.deposits , isWithdrawals: TransactionShowMode.withdrawals)
-    static let statusViewHiddenType : Observable<Bool> =
-    Themes.bindStatusHidden(isDeposits: TransactionShowMode.deposits , isWithdrawals: TransactionShowMode.withdrawals)
-    
-    static let topWhiteListImageIconType : Observable<UIImage> =
-    Themes.bindWhiteListTopIcon(isON: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
-    
-    static let whiteListSwitchAlpha : Observable<CGFloat> =
-    Themes.bindWhiteListSwitchAlpha(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
-    
-    static let whiteListSwitchEnable : Observable<Bool> =
-    Themes.bindWhiteListSwitchEnable(isOn: WhiteListStyle.whiteListOn, isOff: WhiteListStyle.whiteListOff)
-    
-    // 綁定 輸入框typing狀態的border
-    static let moneySecureMode = TwoSideStyle.share.moneySecureStyle.asObservable()
-    static func bindVisibleOrNotStyle<T>(visible: T, none: T) -> Observable<T> {
-        return Themes.moneySecureMode.map({ $0 == .visible ? visible : none })
-    }
-    static let moneyVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:false, none: true)
-    static let stringVisibleOrNotVisible: Observable<Bool> = Themes.bindVisibleOrNotStyle(visible:true, none: false)
-    
-    
-    
+    }  
     
     static let chooseOrNotChoose: Observable<UIColor> = Themes.bindChooseOrNotStyle(
         light: Themes.grayA3AED0, dark: Themes.grayE0E5F2)
@@ -256,10 +151,6 @@ class Themes {
         return UIImageView(image: UIImage(named: "navigation-bg") )
     }
 }
-
-
-
-
 
 extension UIColor {
     

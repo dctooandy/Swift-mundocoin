@@ -94,7 +94,7 @@ class FilterBottomView: UIView {
             {
                 filterHistoryValue = "WITHDRAW"
             }
-            TwoSideStyle.share.acceptSheetHeightStyle(showModeAtView)
+            FilterStyleThemes.share.acceptSheetHeightStyle(showModeAtView)
             historyView.collectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
@@ -230,7 +230,7 @@ class FilterBottomView: UIView {
     }
     func bindUI()
     {
-        Themes.statusViewHiddenType.bind(to: statusView.rx.isHidden).disposed(by: dpg)
+        FilterStyleThemes.statusViewHiddenType.bind(to: statusView.rx.isHidden).disposed(by: dpg)
 
         startDatePicker.rx.click.subscribeSuccess { [weak self](_) in
             Log.v("選Start時間")
@@ -257,11 +257,11 @@ class FilterBottomView: UIView {
             if String(data.1) == "Deposits".localized
             {
                 filterHistoryValue = "DEPOSIT"
-                TwoSideStyle.share.acceptSheetHeightStyle(.deposits)
+                FilterStyleThemes.share.acceptSheetHeightStyle(.deposits)
             }else
             {
                 filterHistoryValue = "WITHDRAW"
-                TwoSideStyle.share.acceptSheetHeightStyle(.withdrawals)
+                FilterStyleThemes.share.acceptSheetHeightStyle(.withdrawals)
             }
         }.disposed(by: dpg)
         statusView.rxCellClick().subscribeSuccess { [self] data in

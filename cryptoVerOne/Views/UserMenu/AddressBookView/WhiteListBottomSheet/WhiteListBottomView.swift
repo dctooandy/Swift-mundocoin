@@ -151,11 +151,11 @@ class WhiteListBottomView: UIView {
     func switchValueChange(_ sender: Bool) {
         if sender == true
         {
-            TwoSideStyle.share.acceptWhiteListTopImageStyle(.whiteListOn)
+            WhiteListThemes.share.acceptWhiteListTopImageStyle(.whiteListOn)
             KeychainManager.share.saveWhiteListOnOff(true)
         }else
         {
-            TwoSideStyle.share.acceptWhiteListTopImageStyle(.whiteListOff)
+            WhiteListThemes.share.acceptWhiteListTopImageStyle(.whiteListOff)
             KeychainManager.share.saveWhiteListOnOff(false)
         }
     }
