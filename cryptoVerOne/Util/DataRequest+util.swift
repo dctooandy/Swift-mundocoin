@@ -23,7 +23,7 @@ extension DataRequest
             //            let requestURLString = response.request?.url?.absoluteString.components(separatedBy: "/").last ?? "無網址"
             if !Connectivity.isConnectedToInternet {
                 // 網路無回應
-                onError?(ApiServiceError.networkError(000, requestURLString, ""))
+                onError?(ApiServiceError.networkError(000, requestURLString))
             }
             // 驗證是否有回傳資料
             guard let data = response.data else { Log.errorAndCrash("response no data") }
@@ -37,10 +37,12 @@ extension DataRequest
                 case 200..<400:
                     do {
                         // 驗證是否 ret 200
+                        let domainString = "\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)"
                         if let responseString = String(data: data, encoding: .utf8),
                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
                         {
-                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(dict as AnyObject)")
+                            // 是 Dict
+                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (dict as AnyObject))
                             if self.isNeedSaveToken(url:response.request?.url) {
                                 if  let innerData = dict["token"] as? String
                                 {
@@ -57,26 +59,25 @@ extension DataRequest
                             }
                             let results = try decoder.decode(T.self, from:data)
                             onData?(results)
-                            
                         }else if let responseString = String(data: data, encoding: .utf8),
                                  let array = self.convertToArray(urlString:requestURLString , text: responseString)
                         {
-                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(array as AnyObject)")
-                           
+                            // 是 Array
+                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (array as AnyObject))
                             let results = try decoder.decode(T.self, from:data)
                             onData?(results)
                         }else if let responseString = String(data: data, encoding: .utf8)
                         {
-                            Log.v("正常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值             :\n\(responseString as AnyObject)")
-                            
-                            let results = try decoder.decode(T.self, from:"string".jsonData())
+                            // 是 空值或者String
+                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (responseString as AnyObject))
+                            let results = try decoder.decode(T.self, from:data.jsonData())
                             onData?(results)
                         }else
                         {
+                            // 無法編成資料
                             errorMsg = "資料無法編成"
                             apiError = ApiServiceError.noData
-                            let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(errorMsg)"
-                            Log.e("\(message)")
+                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (errorMsg as AnyObject))
                             onError?(apiError)
                         }
                     }
@@ -132,6 +133,10 @@ extension DataRequest
                 }
             }
         }
+    }
+    func logByAPI(apiString:String,statusCode:String,status:String,dataValue:AnyObject)
+    {
+        Log.v("正常Response API:\n\(apiString)\n編號:\(statusCode) \nStatus:\(status)\n回傳值             :\n\(dataValue)")
     }
     func decodeForData(type:String = "",requestURLString : String ,data : Data , decoder :JSONDecoder , statusCode:Int,keyContext:(String,String) = ("","") ,onError:((ApiServiceError) -> Void)? = nil)
     {

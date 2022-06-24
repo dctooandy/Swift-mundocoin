@@ -290,7 +290,7 @@ extension AppDelegate :UNUserNotificationCenterDelegate
 {
     // 在前景收到通知時所觸發的 function
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        Log.v("Socket.io - 在前景收到通知...")
+        Log.i("Socket.io - 在前景收到通知...")
         completionHandler([.badge, .sound, .alert])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

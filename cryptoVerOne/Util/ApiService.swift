@@ -15,10 +15,8 @@ enum ApiServiceError:Error, Equatable {
     static func == (lhs: ApiServiceError, rhs: ApiServiceError) -> Bool {
         return true
     }
-    
-
     case domainError(Int,String,String)
-    case networkError(Int,String,String)
+    case networkError(Int,String)
     case tokenError(Int,String,String)
     case tokenExpire(Int,String,String)
     case failThrice(Int,String,String)

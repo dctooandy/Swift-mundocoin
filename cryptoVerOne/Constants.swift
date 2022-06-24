@@ -26,7 +26,7 @@ class Constants {
     // Https JWT Key
     static let Tiger_SecretKey = "84j5dcduprz7"
     // bypass save jwt url
-    static let saveJWTUrl = ["authentication","refresh"]
+    static let saveJWTUrl = ["authentication","token"]
     
     // Slider Text
     static let Tiger_Text_SliderPlaceHolder = "拖动滑块完成验证"

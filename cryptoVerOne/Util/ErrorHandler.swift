@@ -17,14 +17,14 @@ class ErrorHandler {
         if let error = error as? ApiServiceError {
             switch error {
             case .domainError(let code ,let urlString ,let msg):
-                Log.e(msg)
-                showAlert(title: "错误讯息", message: msg)
-            case .networkError(let code ,let urlString ,_):
+                Log.e("\(code)"+msg)
+                showAlert(title: "错误讯息", message: "\(msg)\n\(urlString)")
+            case .networkError(let code ,let urlString):
                 Log.e("\(code)")
-                showAlert(title: "Network failed", message: "\(code)")
-            case .unknownError(let code ,let urlString ,let msg):
-                Log.e(msg ?? " no error message")
-                showAlert(title: "错误讯息", message: msg ?? "")
+                showAlert(title: "Network failed", message: "\(code)\n\(urlString)")
+            case .unknownError(_ ,_ ,let msg):
+                Log.e(msg )
+                showAlert(title: "错误讯息", message: msg )
             case .tokenError:
                 Log.e("tokenExpireError")
                 Toast.show(msg:"tokenExpireError")
@@ -36,7 +36,7 @@ class ErrorHandler {
                 showRedictToLoginAlert()
             case .failThrice:
                 showAlert(title: "错误讯息", message: "錯誤超過三次")
-            case .systemMaintenance(let code ,_, let message):
+            case .systemMaintenance(let code ,_, _):
                 switch code {
                 case ErrorCode.MAINTAIN_B_PLATFORM_EXCEPTION: break
 //                    UIApplication.shared.keyWindow?.rootViewController = BetleadSystemMaintainViewController(message: message)
