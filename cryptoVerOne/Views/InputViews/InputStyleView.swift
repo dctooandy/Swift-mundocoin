@@ -482,20 +482,6 @@ class InputStyleView: UIView {
                 make.left.top.bottom.equalTo(textField)
                 make.right.equalToSuperview().offset(-35)
             }
-
-//            addSubview(addAddressImageView)
-//            addSubview(copyAddressImageView)
-//            copyAddressImageView.snp.makeConstraints { (make) in
-//                make.right.equalToSuperview().offset(-10)
-//                make.centerY.equalTo(textField)
-//                make.size.equalTo(18)
-//            }
-//            addAddressImageView.snp.makeConstraints { (make) in
-//                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
-//                make.centerY.equalTo(textField)
-//                make.size.equalTo(18)
-//            }
-//            rightLabelWidth = 18 + 18 + 10
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
         }
@@ -760,6 +746,11 @@ class InputStyleView: UIView {
                 normalTextLabel.text = string
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_):
+            let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
+            if theSame.count > 0
+            {
+                addAddressImageView.isHidden = true
+            }
             normalTextLabel.text = string
         default:
             break

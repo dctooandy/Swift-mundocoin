@@ -13,6 +13,7 @@ class UserMenuViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    private let viewModel = UserMenuViewModel()
     // MARK: -
     // MARK:UI 設定
     
@@ -33,6 +34,8 @@ class UserMenuViewController: BaseViewController {
         super.viewDidLoad()
         title = "User Menu"
         setupUI()
+        fetchData()
+        bindViewModel()
         bind()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -74,6 +77,10 @@ class UserMenuViewController: BaseViewController {
             usetAccountLabel.text = userEmail
         }
     }
+    func fetchData()
+    {
+        viewModel.fetch()
+    }
     func bind()
     {
 //        currencyLabel.rx.click.subscribeSuccess { (_) in
@@ -85,6 +92,10 @@ class UserMenuViewController: BaseViewController {
             let personalVC = PersonalInfoViewController.loadNib()
             self.navigationController?.pushViewController(personalVC, animated: true)
         }.disposed(by: dpg)
+    }
+    func bindViewModel()
+    {
+        
     }
     func showLogotConfirmAlert()
     {

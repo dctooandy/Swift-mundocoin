@@ -78,6 +78,9 @@ enum cellData {
     }
     var subTitleLabel:String? {
         switch self {
+        case .registrationInfo:
+            let name = KeychainManager.share.getLastAccount()?.account
+            return name
         case .currency:
             return "USDT"
         case .security:
@@ -109,7 +112,6 @@ enum cellData {
              .changePassword,
              .systemNotifications,
              .transactionNotifications,
-             .registrationInfo,
              .memberSince:
             return ""
         default :

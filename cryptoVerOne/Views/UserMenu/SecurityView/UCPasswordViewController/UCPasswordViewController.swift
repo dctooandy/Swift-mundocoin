@@ -175,6 +175,16 @@ class UCPasswordViewController: BaseViewController {
         {
             Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribeSuccess { [self]data in
                 Log.v("更改成功")
+                if let currentAcc = KeychainManager.share.getLastAccount()
+                {
+                    MemberAccountDto.share = MemberAccountDto(account: currentAcc.account,
+                                                              password: newString,
+                                                              loginMode: currentAcc.loginMode)
+                    KeychainManager.share.setLastAccount(currentAcc.account)
+                    KeychainManager.share.updateAccount(acc: currentAcc.account,
+                                                        pwd: newString)
+                    BioVerifyManager.share.applyMemberInBIOList(currentAcc.account)
+                }
                 changedPWVC.backgroundImageViewHidden()
                 self.navigationController?.pushViewController(changedPWVC, animated: true)
             }.disposed(by: dpg)

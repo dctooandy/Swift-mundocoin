@@ -133,6 +133,18 @@ class LoginService {
                 return $0
             })
     }
-    
-
+    func customerLoginHistory(pageable:PagePostDto = PagePostDto(size: "5", page: "0")) -> Single<EmptyDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["page"] = pageable.page
+        parameters["size"] = pageable.size
+        
+        return Beans.requestServer.singleRequestGet(
+            path: ApiService.customerLoginHistory.path,
+            parameters: parameters,
+            modify: false,
+            resultType: EmptyDto.self).map({
+                return $0
+            })
+    }
 }

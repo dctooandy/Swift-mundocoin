@@ -835,6 +835,18 @@
 		09919ABC2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
 		09919ABD2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
 		09919ABE2864605300035835 /* WalletSecurityThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AB82864605300035835 /* WalletSecurityThemes.swift */; };
+		09919AC02865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC12865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC22865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC32865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC42865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC52865567B00035835 /* EmptyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919ABF2865567B00035835 /* EmptyDto.swift */; };
+		09919AC7286556F600035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
+		09919AC8286556F700035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
+		09919AC9286556F700035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
+		09919ACA286556F700035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
+		09919ACB286556F700035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
+		09919ACC286556F700035835 /* UserMenuViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09919AC6286556F600035835 /* UserMenuViewModel.swift */; };
 		099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
 		099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B128445DDD00D55E55 /* WalletBalancesDto.swift */; };
@@ -1670,6 +1682,8 @@
 		09919AAA28645D0D00035835 /* FilterStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterStyleThemes.swift; sourceTree = "<group>"; };
 		09919AB128645E3A00035835 /* WhiteListThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListThemes.swift; sourceTree = "<group>"; };
 		09919AB82864605300035835 /* WalletSecurityThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletSecurityThemes.swift; sourceTree = "<group>"; };
+		09919ABF2865567B00035835 /* EmptyDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyDto.swift; sourceTree = "<group>"; };
+		09919AC6286556F600035835 /* UserMenuViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuViewModel.swift; sourceTree = "<group>"; };
 		099371B128445DDD00D55E55 /* WalletBalancesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletBalancesDto.swift; sourceTree = "<group>"; };
 		099371B52844B66500D55E55 /* DepositViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepositViewModel.swift; sourceTree = "<group>"; };
 		09947B94284D9CF0004F7FD7 /* FilterBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterBottomView.swift; sourceTree = "<group>"; };
@@ -2346,6 +2360,7 @@
 				A1DD13AA282BED5200AB2E0A /* SecurityView */,
 				A1DD13B3282C08A200AB2E0A /* PushNotification */,
 				A1973A7B282A95AF009932D8 /* UserMenuCell */,
+				09919AC6286556F600035835 /* UserMenuViewModel.swift */,
 				A1973A042828EBEB009932D8 /* UserMenuViewController.swift */,
 				A1973A072828EC81009932D8 /* UserMenuViewController.xib */,
 			);
@@ -2719,6 +2734,7 @@
 				A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */,
 				A1559E05283739D700755783 /* DetailDto.swift */,
 				09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */,
+				09919ABF2865567B00035835 /* EmptyDto.swift */,
 				09CAF5C4283C86BB00D7B19B /* MundoResponseDto.swift */,
 				09CAF5CC283C8B8600D7B19B /* UserInfoDto.swift */,
 				09CAF5D8283CCE2100D7B19B /* ErrorDefaultDto.swift */,
@@ -3733,6 +3749,7 @@
 				A1ADADE628562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				09905A3D2851A02B00BAEE78 /* UserMenuTableViewCell.swift in Sources */,
 				09905A3E2851A02B00BAEE78 /* BottomSheet.swift in Sources */,
+				09919AC42865567B00035835 /* EmptyDto.swift in Sources */,
 				09905A3F2851A02B00BAEE78 /* SubPageViewController.swift in Sources */,
 				09905A402851A02B00BAEE78 /* Single+util.swift in Sources */,
 				09905A412851A02B00BAEE78 /* LoginAlert.swift in Sources */,
@@ -3764,6 +3781,7 @@
 				09905A572851A02B00BAEE78 /* UserMenuViewController.swift in Sources */,
 				09905A582851A02B00BAEE78 /* FirstLaunchViewController.swift in Sources */,
 				09905A592851A02B00BAEE78 /* CALayer+util.swift in Sources */,
+				09919ACB286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905A5A2851A02B00BAEE78 /* WMZCodeView.m in Sources */,
 				09905A5B2851A02B00BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905A5C2851A02B00BAEE78 /* LoginSignupViewController.swift in Sources */,
@@ -3939,6 +3957,7 @@
 				A1ADADE728562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				09905B2F2851A08500BAEE78 /* UserMenuTableViewCell.swift in Sources */,
 				09905B302851A08500BAEE78 /* BottomSheet.swift in Sources */,
+				09919AC52865567B00035835 /* EmptyDto.swift in Sources */,
 				09905B312851A08500BAEE78 /* SubPageViewController.swift in Sources */,
 				09905B322851A08500BAEE78 /* Single+util.swift in Sources */,
 				09905B332851A08500BAEE78 /* LoginAlert.swift in Sources */,
@@ -3970,6 +3989,7 @@
 				09905B492851A08500BAEE78 /* UserMenuViewController.swift in Sources */,
 				09905B4A2851A08500BAEE78 /* FirstLaunchViewController.swift in Sources */,
 				09905B4B2851A08500BAEE78 /* CALayer+util.swift in Sources */,
+				09919ACC286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905B4C2851A08500BAEE78 /* WMZCodeView.m in Sources */,
 				09905B4D2851A08500BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905B4E2851A08500BAEE78 /* LoginSignupViewController.swift in Sources */,
@@ -4145,6 +4165,7 @@
 				A1ADADE528562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				09905C212851A09600BAEE78 /* UserMenuTableViewCell.swift in Sources */,
 				09905C222851A09600BAEE78 /* BottomSheet.swift in Sources */,
+				09919AC32865567B00035835 /* EmptyDto.swift in Sources */,
 				09905C232851A09600BAEE78 /* SubPageViewController.swift in Sources */,
 				09905C242851A09600BAEE78 /* Single+util.swift in Sources */,
 				09905C252851A09600BAEE78 /* LoginAlert.swift in Sources */,
@@ -4176,6 +4197,7 @@
 				09905C3B2851A09600BAEE78 /* UserMenuViewController.swift in Sources */,
 				09905C3C2851A09600BAEE78 /* FirstLaunchViewController.swift in Sources */,
 				09905C3D2851A09600BAEE78 /* CALayer+util.swift in Sources */,
+				09919ACA286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905C3E2851A09600BAEE78 /* WMZCodeView.m in Sources */,
 				09905C3F2851A09600BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905C402851A09600BAEE78 /* LoginSignupViewController.swift in Sources */,
@@ -4351,6 +4373,7 @@
 				A1ADADE328562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				09CAF447283C77ED00D7B19B /* UserMenuTableViewCell.swift in Sources */,
 				09CAF448283C77ED00D7B19B /* BottomSheet.swift in Sources */,
+				09919AC12865567B00035835 /* EmptyDto.swift in Sources */,
 				09CAF449283C77ED00D7B19B /* SubPageViewController.swift in Sources */,
 				09CAF5D6283CB09400D7B19B /* Single+util.swift in Sources */,
 				09CAF44A283C77ED00D7B19B /* LoginAlert.swift in Sources */,
@@ -4382,6 +4405,7 @@
 				09CAF45B283C77ED00D7B19B /* UserMenuViewController.swift in Sources */,
 				09CAF45C283C77ED00D7B19B /* FirstLaunchViewController.swift in Sources */,
 				09CAF45D283C77ED00D7B19B /* CALayer+util.swift in Sources */,
+				09919AC8286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09CAF45E283C77ED00D7B19B /* WMZCodeView.m in Sources */,
 				09CAF5EE283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */,
@@ -4557,6 +4581,7 @@
 				A1ADADE428562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				09CAF508283C7BBE00D7B19B /* UserMenuTableViewCell.swift in Sources */,
 				09CAF509283C7BBE00D7B19B /* BottomSheet.swift in Sources */,
+				09919AC22865567B00035835 /* EmptyDto.swift in Sources */,
 				09CAF50A283C7BBE00D7B19B /* SubPageViewController.swift in Sources */,
 				09CAF5D7283CB09400D7B19B /* Single+util.swift in Sources */,
 				09CAF50B283C7BBE00D7B19B /* LoginAlert.swift in Sources */,
@@ -4588,6 +4613,7 @@
 				09CAF51C283C7BBE00D7B19B /* UserMenuViewController.swift in Sources */,
 				09CAF51D283C7BBE00D7B19B /* FirstLaunchViewController.swift in Sources */,
 				09CAF51E283C7BBE00D7B19B /* CALayer+util.swift in Sources */,
+				09919AC9286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09CAF51F283C7BBE00D7B19B /* WMZCodeView.m in Sources */,
 				09CAF5EF283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */,
@@ -4763,6 +4789,7 @@
 				A1ADADE228562D4000B07B12 /* TodoListViewController.swift in Sources */,
 				A1973A7E282A95D2009932D8 /* UserMenuTableViewCell.swift in Sources */,
 				A19C70BB28223D70000AFC3F /* BottomSheet.swift in Sources */,
+				09919AC02865567B00035835 /* EmptyDto.swift in Sources */,
 				A1973A322828F75E009932D8 /* SubPageViewController.swift in Sources */,
 				09CAF5D5283CB09100D7B19B /* Single+util.swift in Sources */,
 				A19C70DA282248A0000AFC3F /* LoginAlert.swift in Sources */,
@@ -4794,6 +4821,7 @@
 				A1973A052828EBEB009932D8 /* UserMenuViewController.swift in Sources */,
 				A19C70AE28223CB7000AFC3F /* FirstLaunchViewController.swift in Sources */,
 				A19C719128225B8D000AFC3F /* CALayer+util.swift in Sources */,
+				09919AC7286556F600035835 /* UserMenuViewModel.swift in Sources */,
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
 				09CAF5ED283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
