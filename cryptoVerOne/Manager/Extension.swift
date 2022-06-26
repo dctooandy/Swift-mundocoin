@@ -57,43 +57,6 @@ extension UIView
     }
     
 }
-protocol Nibloadable {
-
-}
-
-extension UIView: Nibloadable {
-    
-}
-
-extension Nibloadable where Self : UIView
-{
-    /*
-     static func loadNib(_ nibNmae :String = "") -> Self{
-     let nib = nibNmae == "" ? "\(self)" : nibNmae
-     return Bundle.main.loadNibNamed(nib, owner: nil, options: nil)?.first as! Self
-     }
-     */
-    static func loadNib(_ nibNmae :String? = nil) -> Self{
-        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as! Self
-    }
-    
-    func loadNibView(_ nibNmae :String? = nil) -> UIView {
-        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as! UIView
-    }
-}
-
-extension Nibloadable where Self : UIViewController
-{
-    /*
-     static func loadNib(_ nibNmae :String = "") -> Self{
-     let nib = nibNmae == "" ? "\(self)" : nibNmae
-     return Bundle.main.loadNibNamed(nib, owner: nil, options: nil)?.first as! Self
-     }
-     */
-    static func loadNib(_ nibNmae :String? = nil) -> Self{
-        return UINib(nibName: nibNmae ?? "\(self)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
-    }
-}
 
 extension Array {
     func indexOfObject(object : AnyObject) -> NSInteger {
@@ -317,5 +280,72 @@ extension TimeInterval{
     func intervalToString() -> String {
         let time = NSInteger(self)
         return NSString(format: "%0.2d",time) as String
+    }
+}
+// MARK: -
+// MARK: UIView 圖形化介面 要指定在XIB裏面
+protocol NibOwnerLoadable: AnyObject {
+    static var nib: UINib { get }
+}
+
+extension NibOwnerLoadable {
+    
+    static var nib: UINib {
+        UINib(nibName: String(describing: self), bundle: Bundle(for: self))
+    }
+}
+
+extension NibOwnerLoadable where Self: UIView {
+    
+    func loadNibContent() {
+        guard let views = Self.nib.instantiate(withOwner: self, options: nil) as? [UIView],
+            let contentView = views.first else {
+                fatalError("Fail to load \(self) nib content")
+        }
+        self.addSubview(contentView)
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        contentView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        contentView.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        contentView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+    }
+}
+// MARK: -
+// MARK: 使用圖形化介面,但不在XIB裏面
+protocol Nibloadable {
+
+}
+
+extension UIView: Nibloadable {
+    
+}
+
+extension Nibloadable where Self : UIView
+{
+    /*
+     static func loadNib(_ nibNmae :String = "") -> Self{
+     let nib = nibNmae == "" ? "\(self)" : nibNmae
+     return Bundle.main.loadNibNamed(nib, owner: nil, options: nil)?.first as! Self
+     }
+     */
+    static func loadNib(_ nibNmae :String? = nil) -> Self{
+        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as! Self
+    }
+    
+    func loadNibView(_ nibNmae :String? = nil) -> UIView {
+        return Bundle.main.loadNibNamed(nibNmae ?? "\(self)", owner: nil, options: nil)?.first as! UIView
+    }
+}
+
+extension Nibloadable where Self : UIViewController
+{
+    /*
+     static func loadNib(_ nibNmae :String = "") -> Self{
+     let nib = nibNmae == "" ? "\(self)" : nibNmae
+     return Bundle.main.loadNibNamed(nib, owner: nil, options: nil)?.first as! Self
+     }
+     */
+    static func loadNib(_ nibNmae :String? = nil) -> Self{
+        return UINib(nibName: nibNmae ?? "\(self)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
     }
 }

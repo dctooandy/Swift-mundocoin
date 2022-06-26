@@ -45,12 +45,15 @@ class SubListTableViewCell: UITableViewCell {
     func setData(data : WalletWithdrawDto ,showMode:AuditShowMode)
     {
         self.showMode = showMode
-        if let  transDto = data.transaction , let userDto = data.issuer
+        if let transDto = data.transaction , let userDto = data.issuer ,let chainDto = data.chain?.first
         {
             topTitleLabel.text = "Withdraw Request \(userDto.email)"
             timeLabel.text = self.showMode == .pending ? transDto.createdDateString : transDto.updatedDateString
+            let iconImage = UIImage(named: chainDto.state == "REJECT" ? "icon-error":"icon-done")
+            finishedIcon.image = iconImage
         }
         finishedIcon.isHidden = (showMode == .pending ? true : false)
+        
         iconWidth.constant = (showMode == .pending ? 0 : 40)
     }
 }

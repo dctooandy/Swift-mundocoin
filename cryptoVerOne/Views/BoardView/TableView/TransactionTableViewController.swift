@@ -103,10 +103,10 @@ class TransactionTableViewController: BaseViewController {
             let newTimeInt = newFormatter.date(from: currentTimeString)?.timeIntervalSince1970
             if let timeString = newTimeInt?.intervalToString()
             {
-            if !daySactionStringArray.contains(timeString)
-            {
-                daySactionStringArray.append(timeString)
-            }
+                if !daySactionStringArray.contains(timeString)
+                {
+                    daySactionStringArray.append(timeString)
+                }
                 if sectionDic[timeString] != nil
                 {
                     sectionDic[timeString]?.append(dataDto)
