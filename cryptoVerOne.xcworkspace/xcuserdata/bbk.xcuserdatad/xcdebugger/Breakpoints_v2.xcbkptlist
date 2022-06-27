@@ -238,8 +238,8 @@
             filePath = "cryptoVerOne/Views/SecurityVerification/TwoFactorAuth/TwoFactorAuthViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "TwoFactorAuthViewController"
             landmarkType = "3">
          </BreakpointContent>

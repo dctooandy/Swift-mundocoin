@@ -66,8 +66,7 @@ class TwoFactorAuthViewController: BaseViewController {
     func setupUI()
     {
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
-//        let image = generateQRCode(from: qrCodeString,imageView: codeImageView, logo: UIImage(named: "mundoLogo"))
-        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    UIImage(named: "icon-usdt"))
+        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    nil)
         codeImageView.image = image
         copyView = InputStyleView(inputViewMode: .copy)
         copyView.textField.text = qrCodeString

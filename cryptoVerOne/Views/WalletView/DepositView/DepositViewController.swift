@@ -84,8 +84,7 @@ class DepositViewController: BaseViewController {
     func resetUI()
     {
         qrCodeString = walletDto.address
-        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    UIImage(named: "icon-usdt"))
-//        let image = generateQRCode(from: qrCodeString)
+        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    nil)
         walletAddressLabel.text = qrCodeString
         codeImageView.image = image
     }
@@ -106,21 +105,6 @@ class DepositViewController: BaseViewController {
         shareButton.rx.tap.subscribeSuccess { [self](_) in
             shareInfo()
         }.disposed(by: dpg)
-    }
-    
-    func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
-
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
-
-            if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
-            }
-        }
-
-        return nil
     }
     @objc func saveImageToAlbum()
     {
