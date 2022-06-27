@@ -84,7 +84,8 @@ class DepositViewController: BaseViewController {
     func resetUI()
     {
         qrCodeString = walletDto.address
-        let image = generateQRCode(from: qrCodeString)
+        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    UIImage(named: "icon-usdt"))
+//        let image = generateQRCode(from: qrCodeString)
         walletAddressLabel.text = qrCodeString
         codeImageView.image = image
     }

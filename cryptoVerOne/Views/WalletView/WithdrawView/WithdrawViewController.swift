@@ -224,7 +224,8 @@ class WithdrawViewController: BaseViewController {
     func showSecurityVC()
     {
         securityVerifyVC = SecurityVerificationViewController.loadNib()
-        securityVerifyVC.securityViewMode = .defaultMode
+//        securityVerifyVC.securityViewMode = .defaultMode
+        securityVerifyVC.securityViewMode = .onlyEmail
         securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
             // 開啟驗證流程
             Log.i("驗證成功,開取款單")

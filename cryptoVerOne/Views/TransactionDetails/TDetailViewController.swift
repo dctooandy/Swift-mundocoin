@@ -39,6 +39,11 @@ class TDetailViewController: BaseViewController {
     @IBOutlet weak var dataListView: TransDetailView!
     @IBOutlet weak var checkButton: CornerradiusButton!
     @IBOutlet weak var tryButton: CornerradiusButton!
+    lazy var mdBackBtn:TopBackButton = {
+        let btn = TopBackButton()
+        btn.addTarget(self, action:#selector(popToRootVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     static func instance(titleString : String ,mode: DetailHiddenMode , dataDto: DetailDto) -> TDetailViewController {
@@ -57,6 +62,7 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -124,6 +130,9 @@ class TDetailViewController: BaseViewController {
             checkButton.isHidden = true
             tryButton.isHidden = true
         }
+    }
+    @objc func popToRootVC() {
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
 }
 // MARK: -

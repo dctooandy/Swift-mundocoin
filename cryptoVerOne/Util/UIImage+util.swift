@@ -77,7 +77,43 @@ extension UIImage {
         //Initialize with CGImage
         self.init(cgImage: cgImage)
     }
-    
+    func generateQRCode(from string: String, imageView: UIImageView, logo:UIImage?) -> UIImage? {
+        let data = string.data(using: String.Encoding.ascii)
+        if let filter = CIFilter(name: "CIQRCodeGenerator") {
+            filter.setValue(data, forKey: "inputMessage")
+            // L: 7%, M: 15%, Q: 25%, H: 30%
+            filter.setValue("M", forKey: "inputCorrectionLevel")
+            
+            if let qrImage = filter.outputImage {
+                let scaleX = imageView.frame.size.width / qrImage.extent.size.width
+                let scaleY = imageView.frame.size.height / qrImage.extent.size.height
+                let transform = CGAffineTransform(scaleX: scaleX, y: scaleY)
+                var output = qrImage.transformed(by: transform)
+                /// add logo
+                if let logo = logo, let newImage =  addLogo(image: output, logo: logo) {
+                    output = newImage
+                }
+                return UIImage(ciImage: output)
+            }
+        }
+        return nil
+    }
+    private func addLogo(image: CIImage, logo: UIImage) -> CIImage? {
+        
+        guard let combinedFilter = CIFilter(name: "CISourceOverCompositing") else { return nil }
+        guard let logo = logo.cgImage else {
+            return image
+        }
+        
+        let ciLogo = CIImage(cgImage: logo)
+        
+        
+        let centerTransform = CGAffineTransform(translationX: image.extent.midX - (ciLogo.extent.size.width / 2), y: image.extent.midY - (ciLogo.extent.size.height / 2))
+        
+        combinedFilter.setValue(ciLogo.transformed(by: centerTransform), forKey: "inputImage")
+        combinedFilter.setValue(image, forKey: "inputBackgroundImage")
+        return combinedFilter.outputImage
+    }
     
     func blendedByColor(_ color: UIColor) -> UIImage {
         let scale = UIScreen.main.scale

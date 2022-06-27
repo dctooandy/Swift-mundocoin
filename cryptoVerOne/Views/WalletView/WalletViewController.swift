@@ -155,7 +155,7 @@ class WalletViewController: BaseViewController {
         if let dataDto = data
         {
             // 暫時給500
-//            dataDto.amount = 500
+            dataDto.amount = 500
             totalBalanceLabel.text = String(describing: dataDto.amount).numberFormatter(.decimal, 8)
         }
     }

@@ -66,7 +66,8 @@ class TwoFactorAuthViewController: BaseViewController {
     func setupUI()
     {
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
-        let image = generateQRCode(from: qrCodeString)
+//        let image = generateQRCode(from: qrCodeString,imageView: codeImageView, logo: UIImage(named: "mundoLogo"))
+        let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:    UIImage(named: "icon-usdt"))
         codeImageView.image = image
         copyView = InputStyleView(inputViewMode: .copy)
         copyView.textField.text = qrCodeString
@@ -168,20 +169,7 @@ class TwoFactorAuthViewController: BaseViewController {
         finishVC.viewMode = .back
         self.navigationController?.pushViewController(finishVC, animated: true)
     }
-    func generateQRCode(from string: String) -> UIImage? {
-        let data = string.data(using: String.Encoding.ascii)
 
-        if let filter = CIFilter(name: "CIQRCodeGenerator") {
-            filter.setValue(data, forKey: "inputMessage")
-            let transform = CGAffineTransform(scaleX: 3, y: 3)
-
-            if let output = filter.outputImage?.transformed(by: transform) {
-                return UIImage(ciImage: output)
-            }
-        }
-
-        return nil
-    }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {

@@ -62,7 +62,7 @@ class ConfirmBottomSheet: BaseBottomSheet {
     func bindUI()
     {
         confirmView.rxConfirmAction().subscribeSuccess { [self](_) in
-            dismiss(animated: true) {
+            dismiss(animated: true) { [self] in
                 onSecondConfirmClick.onNext(())
             }
         }.disposed(by: dpg)
