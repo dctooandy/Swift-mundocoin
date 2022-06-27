@@ -31,7 +31,14 @@ class TDetailViewController: BaseViewController {
             detailType = detailDataDto!.detailType
         }
     }
-    var hiddenMode:DetailHiddenMode = .topViewShow
+    var hiddenMode:DetailHiddenMode = .topViewShow{
+        didSet{
+            if self.hiddenMode == .topViewShow
+            {
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
+            }
+        }
+    }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
@@ -62,7 +69,7 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
+        
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {
