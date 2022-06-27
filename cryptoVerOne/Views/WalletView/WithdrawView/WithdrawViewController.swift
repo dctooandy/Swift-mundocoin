@@ -225,17 +225,17 @@ class WithdrawViewController: BaseViewController {
     {
         securityVerifyVC = SecurityVerificationViewController.loadNib()
         securityVerifyVC.securityViewMode = .defaultMode
-        securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](_) in
+        securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
+            // 開啟驗證流程
             Log.i("驗證成功,開取款單")
-            toCreateWithdrawal()
-//            Log.i("驗證成功,開Detail")
-//            showTransactionDetailView()
+            toCreateWithdrawal(emailVerifyValue: emailVerifyString)
             clearAllData()
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(securityVerifyVC, animated: true)
     }
-    func toCreateWithdrawal()
+    func toCreateWithdrawal(emailVerifyValue : String , twoFAValue:String = "")
     {
+        // 目前API並沒有驗證 驗證碼,等API更新
         if let textString = withdrawToView.textField.text,
             let amountText = amountInputView.amountTextView.text,
            let fee = feeAmountLabel.text

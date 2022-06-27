@@ -167,7 +167,6 @@
 		09905A642851A02B00BAEE78 /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		09905A652851A02B00BAEE78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
 		09905A662851A02B00BAEE78 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
-		09905A672851A02B00BAEE78 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
 		09905A6A2851A02B00BAEE78 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
@@ -397,7 +396,6 @@
 		09905B562851A08500BAEE78 /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		09905B572851A08500BAEE78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
 		09905B582851A08500BAEE78 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
-		09905B592851A08500BAEE78 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
 		09905B5C2851A08500BAEE78 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
@@ -627,7 +625,6 @@
 		09905C482851A09600BAEE78 /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		09905C492851A09600BAEE78 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
 		09905C4A2851A09600BAEE78 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
-		09905C4B2851A09600BAEE78 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
 		09905C4E2851A09600BAEE78 /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
@@ -951,7 +948,6 @@
 		09CAF463283C77ED00D7B19B /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
 		09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
-		09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
 		09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
 		09CAF469283C77ED00D7B19B /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7088282239DC000AFC3F /* Themes.swift */; };
@@ -1130,7 +1126,6 @@
 		09CAF524283C7BBE00D7B19B /* ObservableType+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C708C28223A27000AFC3F /* ObservableType+util.swift */; };
 		09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C704728223409000AFC3F /* BaseViewController.swift */; };
 		09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C70F328224CF9000AFC3F /* GradientView.swift */; };
-		09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C71C9282264E0000AFC3F /* RegexHelper.swift */; };
 		09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C703628223275000AFC3F /* UserStatus.swift */; };
 		09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19C7088282239DC000AFC3F /* Themes.swift */; };
@@ -1438,7 +1433,6 @@
 		A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E0E28375BAB00755783 /* TransTopView.xib */; };
 		A1559E1228376A2B00755783 /* TransDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1128376A2A00755783 /* TransDetailView.swift */; };
 		A1559E1528376A4600755783 /* TransDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1559E1428376A4600755783 /* TransDetailView.xib */; };
-		A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559E1728378FB700755783 /* NibOwnerLoadable.swift */; };
 		A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */; };
 		A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */; };
 		A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */; };
@@ -1774,7 +1768,6 @@
 		A1559E0E28375BAB00755783 /* TransTopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransTopView.xib; sourceTree = "<group>"; };
 		A1559E1128376A2A00755783 /* TransDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransDetailView.swift; sourceTree = "<group>"; };
 		A1559E1428376A4600755783 /* TransDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TransDetailView.xib; sourceTree = "<group>"; };
-		A1559E1728378FB700755783 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
 		A16F61BB282CB83300D9CCE5 /* TwoFactorAuthViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFactorAuthViewController.xib; sourceTree = "<group>"; };
 		A16F61BF282CBB7400D9CCE5 /* TFBeginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFBeginViewController.swift; sourceTree = "<group>"; };
 		A16F61C3282CBB9900D9CCE5 /* TFBeginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TFBeginViewController.xib; sourceTree = "<group>"; };
@@ -2589,7 +2582,6 @@
 				A1B051F12823B13F00056183 /* String+util.swift */,
 				A1973A392829126D009932D8 /* UICollectionView+util.swift */,
 				A1973A83282AA3B6009932D8 /* UITableViewCell+util.swift */,
-				A1559E1728378FB700755783 /* NibOwnerLoadable.swift */,
 				09CAF5C8283C88C700D7B19B /* SessionManager+util.swift */,
 				09CAF5D0283C8CB700D7B19B /* Connectivity.swift */,
 				09CAF5D4283CB09100D7B19B /* Single+util.swift */,
@@ -3797,7 +3789,6 @@
 				09EED3642859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905A652851A02B00BAEE78 /* BaseViewController.swift in Sources */,
 				09905A662851A02B00BAEE78 /* GradientView.swift in Sources */,
-				09905A672851A02B00BAEE78 /* NibOwnerLoadable.swift in Sources */,
 				09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */,
 				09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */,
 				09905A6A2851A02B00BAEE78 /* UserStatus.swift in Sources */,
@@ -4005,7 +3996,6 @@
 				09EED3652859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905B572851A08500BAEE78 /* BaseViewController.swift in Sources */,
 				09905B582851A08500BAEE78 /* GradientView.swift in Sources */,
-				09905B592851A08500BAEE78 /* NibOwnerLoadable.swift in Sources */,
 				09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */,
 				09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */,
 				09905B5C2851A08500BAEE78 /* UserStatus.swift in Sources */,
@@ -4213,7 +4203,6 @@
 				09EED3632859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905C492851A09600BAEE78 /* BaseViewController.swift in Sources */,
 				09905C4A2851A09600BAEE78 /* GradientView.swift in Sources */,
-				09905C4B2851A09600BAEE78 /* NibOwnerLoadable.swift in Sources */,
 				09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */,
 				09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */,
 				09905C4E2851A09600BAEE78 /* UserStatus.swift in Sources */,
@@ -4421,7 +4410,6 @@
 				09EED3612859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
-				09CAF466283C77ED00D7B19B /* NibOwnerLoadable.swift in Sources */,
 				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
@@ -4629,7 +4617,6 @@
 				09EED3622859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
-				09CAF527283C7BBE00D7B19B /* NibOwnerLoadable.swift in Sources */,
 				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
@@ -4837,7 +4824,6 @@
 				09EED3602859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
-				A1559E1828378FB700755783 /* NibOwnerLoadable.swift in Sources */,
 				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,

@@ -137,11 +137,12 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0 ? 4 : 8)
+        return (section == 0 ? 4 : 6)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 6)
+//        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 6)
+        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
         {
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
@@ -168,13 +169,17 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                     cell.cellData = .language
                 case 1:
                     cell.cellData = .faceID
+//                case 3:
+//                    cell.cellData = .helpSupport
+//                case 4:
+//                    cell.cellData = .termPolicies
+//                case 5:
+//                    cell.cellData = .about
+//                case 7:
+//                    cell.cellData = .logout
                 case 3:
-                    cell.cellData = .helpSupport
-                case 4:
-                    cell.cellData = .termPolicies
-                case 5:
                     cell.cellData = .about
-                case 7:
+                case 5:
                     cell.cellData = .logout
                 default:
                     break
@@ -218,17 +223,25 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             case 1:
                 Log.i("faceID")
                 //faceID
+//            case 3:
+//                Log.i("helpSupport")
+//                //helpSupport
+//            case 4:
+//                Log.i("termPolicies")
+//                //termPolicies
+//            case 5:
+//                Log.i("about")
+//                socketEmit()
+//                //about
+//            case 7:
+//                Log.i("logout")
+//                showLogotConfirmAlert()
+//                //logout
             case 3:
-                Log.i("helpSupport")
-                //helpSupport
-            case 4:
-                Log.i("termPolicies")
-                //termPolicies
-            case 5:
                 Log.i("about")
                 socketEmit()
                 //about
-            case 7:
+            case 5:
                 Log.i("logout")
                 showLogotConfirmAlert()
                 //logout
@@ -246,10 +259,12 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == 1 && indexPath.row == 7
+//        if indexPath.section == 1 && indexPath.row == 7
+        if indexPath.section == 1 && indexPath.row == 5
         {
             return 80
-        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 6)
+//        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 6)
+        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
         {
             return 1
         }else

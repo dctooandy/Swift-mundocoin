@@ -118,31 +118,30 @@ enum cellData {
             return ""
         }
     }
-    var arrorColor:UIColor? {
+    var arrowAlpha:CGFloat {
         switch self {
-        case .currency,.language,.faceID,.about,.emailAuthemtication:
-            return UIColor(rgb: 0xe3e3e3)
-        case .security,.pushNotifications,.addressBook,.helpSupport,.termPolicies,.twoFactorAuthentication,.changePassword:
-            return .black
-        case .logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
-            return .clear
+        case .currency,.language,.faceID,.about,.logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
+            return 0.0
+        case .emailAuthemtication:
+            return 0.3
         default :
-            return .clear
+            return 1.0
         }
     }
-//    var subTitleHidden:Bool {
-//        switch self {
-//        case .currency,.language,.faceID,.about:
-//            return false
-//        case .security,.pushNotifications,.addressBook,.helpSupport,.termPolicies:
-//            return true
-//        case .logout:
-//            return false
-//        }
-//    }
+    var arrowHidden:Bool {
+        switch self {
+        case .currency,.language,.faceID,.about,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
+            return true
+        default :
+            return false
+        }
+    }
+
     var switchHidden:Bool {
         switch self {
-        case .faceID,.systemNotifications,.transactionNotifications:
+        case .faceID,
+                .systemNotifications,
+                .transactionNotifications:
             return false
         default :
             return true
@@ -229,9 +228,9 @@ class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務方法
     func setupUI()
     {
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-        arrowImageView.image = image
-        arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
+//        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
+//        arrowImageView.image = image
+//        arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
    
     }
     func setupByData()
@@ -244,12 +243,22 @@ class UserMenuTableViewCell: UITableViewCell {
             logoutView.isHidden = true
             cellTitleLabel.text = cellData.cellTitle
             subTitleLabel.text = cellData.subTitleLabel
-            arrowImageView.tintColor = cellData.arrorColor
-            switchButton.isHidden = cellData.switchHidden
-            arrowImageView.isHidden = !cellData.switchHidden
             cellImageView.isHidden = cellData.imageHidden
             checkBoxImageView.isHidden = cellData.checkBoxHidden
             cellImageView.image = UIImage(named: cellData.cellIconImageName)
+
+            arrowImageView.alpha = cellData.arrowAlpha
+            arrowImageView.isHidden = cellData.arrowHidden
+            
+            if BioVerifyManager.share.bioLoginSwitchState() == true
+            {
+                switchButton.isOn = true
+            }else
+            {
+                switchButton.isOn = false
+            }
+            switchButton.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            switchButton.isHidden = cellData.switchHidden
         }
         bindUI()
     }
