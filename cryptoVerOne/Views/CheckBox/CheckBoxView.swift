@@ -24,7 +24,7 @@ class CheckBoxView: UIControl {
             resetUIByType(type: checkType)
         }
     }
-    private let accountCheckPassed = PublishSubject<Bool>()
+    private let checkPassed = PublishSubject<Bool>()
     // MARK: -
     // MARK:UI 設定
     private var iconImageView : UIImageView!
@@ -62,7 +62,7 @@ class CheckBoxView: UIControl {
     }
     
     func rxCheckBoxPassed() -> Observable<Bool> {
-        return accountCheckPassed.asObserver()
+        return checkPassed.asObserver()
     }
     init(title: String? = nil,
          font: UIFont = UIFont.systemFont(ofSize: 15),
@@ -117,7 +117,7 @@ class CheckBoxView: UIControl {
         iconImageView.rx.click.subscribeSuccess { (_) in
             self.isSelected = !self.isSelected
             self.checkType = (self.isSelected ? .checkType: . defaultType)
-            self.accountCheckPassed.onNext(self.isSelected)
+//            self.checkPassed.onNext(self.isSelected)
             
             print("check \(self.isSelected ? "選":"不選")")
         }.disposed(by: disposeBag)
@@ -138,7 +138,7 @@ class CheckBoxView: UIControl {
         checkBox?.rx.click
             .subscribeSuccess { (_) in
                 self.isSelected = !self.isSelected
-                self.accountCheckPassed.onNext(self.isSelected)
+                self.checkPassed.onNext(self.isSelected)
                 print("check \(self.isSelected ? "選":"不選")")
             }.disposed(by: disposeBag)
         
@@ -159,7 +159,7 @@ class CheckBoxView: UIControl {
     override var isSelected: Bool {
         didSet {
             checkBox?.isCheck = self.isSelected
-            self.accountCheckPassed.onNext(self.isSelected)
+            self.checkPassed.onNext(self.isSelected)
         }
     }
     

@@ -47,6 +47,10 @@ class SignupViewController: BaseViewController {
                                                object: nil)
     
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkboxView.isSelected = true
+    }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {
@@ -103,7 +107,7 @@ class SignupViewController: BaseViewController {
 //                                    checkBoxSize: 24,
 //                                    checkBoxColor: .black)
         checkboxView = CheckBoxView(type: .checkType)
-        checkboxView.isSelected = true
+        
         view.addSubview(accountInputView)
         view.addSubview(checkboxView)
 //        accountInputView?.snp.makeConstraints { (make) in
