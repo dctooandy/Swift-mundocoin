@@ -19,15 +19,6 @@ class ApprovalMainViewModel: BaseViewModel {
     
     func fetch()
     {
-//        Beans.walletServer.walletAddress().subscribe { [self](walletDto) in
-//            _ = LoadingViewController.dismiss()
-//            if let data = walletDto
-//            {
-//                fetchWalletAddressSuccess.onNext(data)
-//            }
-//        } onError: { (error) in
-//            ErrorHandler.show(error: error)
-//        }.disposed(by: disposeBag)
         fetchSuccess.onNext(())
     }
   

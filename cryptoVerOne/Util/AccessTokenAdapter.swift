@@ -35,7 +35,8 @@ class AccessTokenAdapter: RequestAdapter {
                 urlString.pathComponents.contains("updatePassword") ||
                 urlString.pathComponents.contains("approvals") ||
                 urlString.pathComponents.contains("approval") ||
-                urlString.pathComponents.contains("loginHistory")
+                urlString.pathComponents.contains("loginHistory") ||
+                urlString.pathComponents.contains("address")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }

@@ -40,7 +40,9 @@ class ForgotViewController: BaseViewController {
         bindLinkBtn()
         bindAccountView()
         setupBackgroundView()
+        accountInputView?.bindTextfield()
     }
+
     // MARK: -
     // MARK:業務方法
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

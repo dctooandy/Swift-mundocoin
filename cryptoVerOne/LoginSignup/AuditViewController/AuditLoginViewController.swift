@@ -34,6 +34,7 @@ class AuditLoginViewController: BaseViewController {
         bindTextfield()
         bindLoginButton()
         bindCheckBox()
+        accountInputView?.bindTextfield()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

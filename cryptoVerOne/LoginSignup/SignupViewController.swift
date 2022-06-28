@@ -37,6 +37,7 @@ class SignupViewController: BaseViewController {
         setupUI()
         bindRegisterBtn()
         bindAccountView()
+        accountInputView?.bindTextfield()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,

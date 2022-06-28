@@ -38,6 +38,7 @@ class LoginViewController: BaseViewController {
         setup()
         bindLoginBtn()
         bindAccountView()
+        accountInputView?.bindTextfield()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

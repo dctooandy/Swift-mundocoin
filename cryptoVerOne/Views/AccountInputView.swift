@@ -42,7 +42,7 @@ class AccountInputView: UIView {
         self.setup()
         self.bindStyle()
         self.bindBorderColor()
-        self.bindTextfield()
+//        self.bindTextfield()
         self.bindCancelButton()
     }
     
