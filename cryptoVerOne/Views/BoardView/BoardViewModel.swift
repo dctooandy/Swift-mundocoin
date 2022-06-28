@@ -19,11 +19,8 @@ class BoardViewModel: BaseViewModel {
     
     func fetchWalletTransactions(currency:String = "" , stats : String = "", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :PagePostDto = PagePostDto())
     {
-        LoadingViewController.show()
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
             Beans.walletServer.walletTransactions(currency: currency, stats: stats, beginDate: beginDate, endDate: endDate, pageable: pageable).subscribe { [self](walletDto) in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    
                     _ = LoadingViewController.dismiss()
                     if let data = walletDto
                     {
@@ -31,11 +28,12 @@ class BoardViewModel: BaseViewModel {
                     }
                 }
             } onError: { (error) in
-                _ = LoadingViewController.dismiss().subscribeSuccess { _ in
-                    ErrorHandler.show(error: error)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss().subscribeSuccess { _ in
+                        ErrorHandler.show(error: error)
+                    }
                 }
             }.disposed(by: disposeBag)
-        }
     }
   
     func rxWalletTransactionsSuccess() -> Observable<WalletTransactionDto> {

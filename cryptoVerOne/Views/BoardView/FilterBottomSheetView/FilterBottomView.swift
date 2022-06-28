@@ -282,7 +282,7 @@ class FilterBottomView: UIView {
             return "PROCESSING"
         }else if dataString == "Completed"
         {
-            return "DONE"
+            return "COMPLETE"
         }else if dataString == "Failed"
         {
             return "FAILED"

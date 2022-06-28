@@ -114,7 +114,7 @@ extension DataRequest
             {
                 if let error : NSError = response.error as NSError? {
                     Log.v("Error enternal\ncode : \(error.code)\ndomain : \(error.domain)")
-                    _ = LoadingViewController.dismiss()
+//                    _ = LoadingViewController.dismiss()
                     switch error.code {
                     case -1001:
                         errorMsg = "網路發生錯誤，請稍後再試".localized

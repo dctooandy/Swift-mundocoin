@@ -45,6 +45,7 @@ class BoardViewController: BaseViewController {
     var currentPage: Int = 0
     var currentFilterDto:WalletTransPostDto?
     var isFilterAction : Bool = false
+    var isFilterAndChangeVCAction : Bool = false
     var isRefreshAction : Bool = false
     // MARK: -
     // MARK:UI 設定
@@ -154,11 +155,17 @@ class BoardViewController: BaseViewController {
     {
         if let data = self.currentFilterDto
         {
+            LoadingViewController.show()
             viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
         }
         else
         {
-            viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "10", page: String(currentPage)))
+            if isFilterAndChangeVCAction == false
+            {
+                LoadingViewController.show()
+                viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+            }
+            isFilterAndChangeVCAction = false
         }
     }
     func clearAllVCDataSource()
@@ -209,6 +216,7 @@ class BoardViewController: BaseViewController {
         filterBottomSheet.showModeAtSheet = showMode
         filterBottomSheet.rxConfirmClick().subscribeSuccess { [weak self]dataDto in
             self?.isFilterAction = true
+            self?.isFilterAndChangeVCAction = true
             self?.currentPage = 0
             self?.clearAllVCDataSource()
             if dataDto.historyType == "WITHDRAW"
