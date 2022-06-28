@@ -241,12 +241,62 @@ class WithdrawViewController: BaseViewController {
             let amountText = amountInputView.amountTextView.text,
            let fee = feeAmountLabel.text
         {
-            Beans.walletServer.walletWithdraw(amount: amountText, fArrdess: "Tasdasddadwadasdasdasdad", tAddress: textString).subscribeSuccess { [self] dto in
-                if let dataDto = dto
-                {
-                    showTransactionDetailView(dataDto:dataDto)
+            LoadingViewController.show()
+            var fAddressString = ""
+            if let fAddress = WalletAllBalancesDto.share?.allBalances?.filter({$0.currency == "USDT"}).first?.address
+            {
+                fAddressString = fAddress
+            }
+            Beans.walletServer.walletWithdraw(amount: amountText,
+                                              fAddress: fAddressString,
+                                              tAddress: textString ,
+                                              verificationCode: emailVerifyValue)
+            .subscribe { [self] dto in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in
+                        if let dataDto = dto
+                        {
+                            securityVerifyVC.navigationController?.popViewController(animated: false)
+                            showTransactionDetailView(dataDto:dataDto)
+                        }
+                    }).disposed(by: dpg)
+                }
+            } onError: { error in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in
+                        securityVerifyVC.navigationController?.popViewController(animated: true)
+                        if let error = error as? ApiServiceError {
+                            switch error {
+                            case .errorDto(let dto):
+                                let status = dto.httpStatus ?? ""
+                                let reason = dto.reason
+                                if status == "400"
+                                {
+                                    if reason == "CODE_MISMATCH"
+                                    {
+                                        Log.i("驗證碼錯誤 :\(reason)")
+                                    }
+                                    if reason == "INSUFFICIENT_FUND"
+                                    {
+                                        Log.i("資金不足 :\(reason)")
+                                    }
+                                    ErrorHandler.show(error: error)
+                                }else
+                                {
+                                    ErrorHandler.show(error: error)
+                                }
+                            default:
+                                ErrorHandler.show(error: error)
+                            }
+                        }
+                    }).disposed(by: dpg)
                 }
             }.disposed(by: dpg)
+        }
+        else
+        {
+            securityVerifyVC.navigationController?.popViewController(animated: true)
+            Log.i("輸入資訊有誤")
         }
     }
     func showTransactionDetailView(dataDto : WalletWithdrawDto)

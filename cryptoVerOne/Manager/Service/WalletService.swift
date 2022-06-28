@@ -56,12 +56,13 @@ class WalletService {
     }
     
     
-    func walletWithdraw(amount:String , fArrdess:String , tAddress:String) -> Single<WalletWithdrawDto?>
+    func walletWithdraw(amount:String , fAddress:String , tAddress:String , verificationCode:String ) -> Single<WalletWithdrawDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["amount"] = amount
-        parameters["fromAddress"] = fArrdess
+        parameters["fromAddress"] = fAddress
         parameters["toAddress"] = tAddress
+        parameters["verificationCode"] = verificationCode
         
         return Beans.requestServer.singleRequestPost(
             path: ApiService.walletWithdraw.path,

@@ -7,6 +7,37 @@
 
 import Foundation
 import RxSwift
+struct WalletAllBalancesDto :Codable {
+    static var share:WalletAllBalancesDto?
+    {
+        didSet {
+            guard let share = share else { return }
+            subject.onNext(share)
+        }
+    }
+    static var rxShare:Observable<WalletAllBalancesDto?> = subject
+        .do(onNext: { value in
+            if share == nil {
+                _ = update()
+            }
+    })
+            static let disposeBag = DisposeBag()
+            static private let subject = BehaviorSubject<WalletAllBalancesDto?>(value: nil)
+            static func update() -> Observable<()>{
+                let subject = PublishSubject<Void>()
+                Beans.walletServer.walletBalances().subscribe { [self](balancesDto) in
+                    share = WalletAllBalancesDto()
+                    share?.allBalances = balancesDto
+                    
+                    subject.onNext(())
+                } onError: { (error) in
+                    subject.onError(error)
+                }.disposed(by: disposeBag)
+                return subject.asObservable()
+            }
+
+    var allBalances : [WalletBalancesDto]? 
+}
 class WalletBalancesDto :Codable {
 
     var id: String
