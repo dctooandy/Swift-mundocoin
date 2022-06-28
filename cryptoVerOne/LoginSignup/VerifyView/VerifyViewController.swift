@@ -244,7 +244,6 @@ class VerifyViewController: BaseViewController {
     }
     func verifyButtonPressed()
     {
-//        LoadingViewController.show()
         var idString = ""
         var passwordString = ""
         var registrationString = ""

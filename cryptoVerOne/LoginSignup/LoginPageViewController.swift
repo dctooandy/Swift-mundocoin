@@ -82,12 +82,12 @@ class LoginPageViewController: BaseViewController {
 //        let phoneLogin = LoginViewController.instance(mode: .phone)
         let accSignup = SignupViewController.instance(mode: .emailPage)
 //        let phoneSignup = SignupViewController.instance(mode: .phone)
-        let accForgot = ForgotViewController.instance(mode: .emailPage)
+//        let accForgot = ForgotViewController.instance(mode: .emailPage)
         loginViewControllers = [accLogin]
         //            bindVerifyCodeBtn(obs: phoneLogin.rxVerifyCodeButtonClick)
         signupViewControllers = [accSignup]
         //            bindVerifyCodeBtn(obs: phoneSignup.rxVerifyCodeButtonClick)
-        forgotViewControllers = [accForgot]
+//        forgotViewControllers = [accForgot]
         bindLoginViewControllers()
         bindSingupViewControllers()
         bindForgotViewControllers()
@@ -95,7 +95,7 @@ class LoginPageViewController: BaseViewController {
     private func cleanTextField() {
         loginViewControllers.forEach({$0.cleanTextField()})
         signupViewControllers.forEach({$0.cleanTextField()})
-        forgotViewControllers.forEach({$0.cleanTextField()})
+//        forgotViewControllers.forEach({$0.cleanTextField()})
     }
     
 //    func reloadPageMenu(isLogin: Bool) {
@@ -143,7 +143,8 @@ class LoginPageViewController: BaseViewController {
         case .signupPhone:
             signupViewControllers[1].showVerifyCode(code)
         case .forgotPW:
-            forgotViewControllers[1].showVerifyCode(code)
+            break
+//            forgotViewControllers[1].showVerifyCode(code)
         }
 //        if isLogin {
 //            loginViewControllers[1].showVerifyCode(code)
@@ -155,7 +156,7 @@ class LoginPageViewController: BaseViewController {
     func setVerifyCodeBtnToDefault() {
         loginViewControllers.last?.setDefault()
         signupViewControllers.last?.setDefault()
-        forgotViewControllers.last?.setDefault()
+//        forgotViewControllers.last?.setDefault()
     }
     
     func setAccount(acc: String, pwd: String) {
@@ -186,12 +187,12 @@ class LoginPageViewController: BaseViewController {
     }
     
     private func bindForgotViewControllers() {
-        for i in forgotViewControllers {
-            i.rxResetButtonPressed()
-                .subscribeSuccess { [weak self] dto in
-                    self?.resetLinkBtnClick.onNext(dto)
-                }.disposed(by: disposeBag)
-        }
+//        for i in forgotViewControllers {
+//            i.rxResetButtonPressed()
+//                .subscribeSuccess { [weak self] dto in
+//                    self?.resetLinkBtnClick.onNext(dto)
+//                }.disposed(by: disposeBag)
+//        }
     }
     
     private func bindVerifyCodeBtn(obs: Observable<String>?) {

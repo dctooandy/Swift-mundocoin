@@ -233,32 +233,35 @@ class UCPasswordViewController: BaseViewController {
         guard let account = KeychainManager.share.getLastAccount()?.account else {return}
         guard let pwString = oldInputView.textField.text else {return}
         LoadingViewController.show()
-        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                _ = LoadingViewController.dismiss()
-                Log.v("帳號有註冊過")
-                gotoTwoFAVC()
-            }
-        } onError: { [self] error in
-            if let error = error as? ApiServiceError {
-                _ = LoadingViewController.dismiss()
-                switch error {
-                case .errorDto(let dto):
-                    let status = dto.httpStatus ?? ""
-                    let reason = dto.reason
-                    
-                    if status == "400"
-                    {
-                        oldInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                    }else
-                    {
-                        ErrorHandler.show(error: error)
-                    }
-                default:
-                    ErrorHandler.show(error: error)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+            Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    Log.v("帳號有註冊過")
+                    gotoTwoFAVC()
                 }
-            }
-        }.disposed(by: disposeBag)
+            } onError: { [self] error in
+                if let error = error as? ApiServiceError {
+                    _ = LoadingViewController.dismiss().subscribeSuccess { [self] _ in
+                        switch error {
+                        case .errorDto(let dto):
+                            let status = dto.httpStatus ?? ""
+                            let reason = dto.reason
+                            
+                            if status == "400"
+                            {
+                                oldInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                            }else
+                            {
+                                ErrorHandler.show(error: error)
+                            }
+                        default:
+                            ErrorHandler.show(error: error)
+                        }                        
+                    }.disposed(by: disposeBag)
+                }
+            }.disposed(by: disposeBag)
+        }
     }
     func gotoTwoFAVC()
     {

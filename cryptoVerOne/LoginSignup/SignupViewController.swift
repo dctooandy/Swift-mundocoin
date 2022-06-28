@@ -24,7 +24,7 @@ class SignupViewController: BaseViewController {
     @IBOutlet weak var registerButton: CornerradiusButton!
     @IBOutlet weak var bottomMessageLabel: UILabel!
     private var checkboxView: CheckBoxView!
-    private var accountInputView: AccountInputView?
+    private var accountInputView: AccountInputView!
     // MARK: -
     // MARK:Life cycle
     static func instance(mode: LoginMode) -> SignupViewController {
@@ -52,9 +52,9 @@ class SignupViewController: BaseViewController {
         {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-            if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+            if ((accountInputView.registrationInputView.textField.isFirstResponder) == true)
             {
-                let diffHeight = view.frame.height - (accountInputView?.frame.maxY)!
+                let diffHeight = view.frame.height - (accountInputView.frame.maxY)
                 if diffHeight < (keyboardHeight + 50)
                 {
                     let upHeight = (keyboardHeight + 50) - diffHeight
@@ -81,11 +81,11 @@ class SignupViewController: BaseViewController {
     // MARK:業務方法
     func setDefault() {
         stopTimer()
-        accountInputView?.passwordInputView.displayRightButton.setTitle("发送验证码", for: .normal)
+        accountInputView.passwordInputView.displayRightButton.setTitle("发送验证码", for: .normal)
     }
     
     func cleanTextField() {
-        accountInputView?.cleanTextField()
+        accountInputView.cleanTextField()
     }
     
     private func setupUI() {
@@ -104,7 +104,7 @@ class SignupViewController: BaseViewController {
 //                                    checkBoxColor: .black)
         checkboxView = CheckBoxView(type: .checkType)
         checkboxView.isSelected = true
-        view.addSubview(accountInputView!)
+        view.addSubview(accountInputView)
         view.addSubview(checkboxView)
 //        accountInputView?.snp.makeConstraints { (make) in
 //            make.top.equalToSuperview().offset(88)
@@ -112,21 +112,21 @@ class SignupViewController: BaseViewController {
 //            make.width.equalToSuperview().multipliedBy(0.872)
 //            make.height.equalToSuperview().multipliedBy(0.275)
 //        }
-        accountInputView?.snp.makeConstraints { (make) in
+        accountInputView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight + Themes.inputViewDefaultHeight) 
         }
         bottomMessageLabel.snp.makeConstraints { make in
-            make.leading.equalTo(accountInputView!).offset(48)
-            make.trailing.equalTo(accountInputView!)
-            make.top.equalTo(accountInputView!.snp.bottom)
+            make.leading.equalTo(accountInputView).offset(48)
+            make.trailing.equalTo(accountInputView)
+            make.top.equalTo(accountInputView.snp.bottom)
             make.height.equalTo(48)
         }
 
         checkboxView.snp.makeConstraints { make in
-            make.leading.equalTo(accountInputView!).offset(20)
+            make.leading.equalTo(accountInputView).offset(20)
             make.centerY.equalTo(bottomMessageLabel!)
             make.height.equalTo(24)
         }
@@ -148,15 +148,18 @@ class SignupViewController: BaseViewController {
     }
     
     func showVerifyCode(_ code: String) {
-        self.accountInputView?.passwordInputView.textField.text = code
-        self.accountInputView?.passwordInputView.textField.sendActions(for: .valueChanged)
+        self.accountInputView.passwordInputView.textField.text = code
+        self.accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
     }
    
     // MARK: - Actions
     func bindAccountView() {
-        Observable.combineLatest(accountInputView!.rxCheckPassed(),
+        Observable.combineLatest(accountInputView.rxCheckPassed(),
                                  checkboxView.rxCheckBoxPassed())
-            .map { return $0.0 && $0.1 } //reget match result
+            .map {
+                return $0.0 && $0.1
+                
+            } //reget match result
             .bind(to: registerButton.rx.isEnabled)
             .disposed(by: disposeBag)
     }
@@ -169,7 +172,7 @@ class SignupViewController: BaseViewController {
     }
     func verificationID()
     {
-        guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
+        guard let account = accountInputView.accountInputView.textField.text?.lowercased() else {return}
 
         Beans.loginServer.verificationIDGet(idString: account).subscribe { [self] stringValue in
             Log.v("帳號沒註冊過")
@@ -182,7 +185,7 @@ class SignupViewController: BaseViewController {
                     let reason = dto.reason
                     if status == "400"
                     {
-                        accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
                     }else
                     {
                         ErrorHandler.show(error: error)
@@ -201,13 +204,13 @@ class SignupViewController: BaseViewController {
     func resetInputView()
     {
         // 重置輸入框的動作
-        accountInputView?.resetTFMaskView()
+        accountInputView.resetTFMaskView()
     }
     func signupActions()
     {
-        guard let acc = accountInputView?.accountInputView.textField.text?.lowercased() else { return }
-        guard let pwd = accountInputView?.passwordInputView.textField.text else { return }
-        guard let regis = accountInputView?.registrationInputView.textField.text else { return }
+        guard let acc = accountInputView.accountInputView.textField.text?.lowercased() else { return }
+        guard let pwd = accountInputView.passwordInputView.textField.text else { return }
+        guard let regis = accountInputView.registrationInputView.textField.text , !regis.isEmpty else { return }
         let dto = SignupPostDto(account: acc, password: pwd,registration: regis, signupMode: loginMode)
         self.view.endEditing(true)
         onSignupAction.onNext(dto)
@@ -245,7 +248,7 @@ class SignupViewController: BaseViewController {
     }
     func changeInvalidTextWith(dtos:[ErrorsDetailDto])
     {
-        accountInputView?.changeInvalidTextColor(with: dtos)
+        accountInputView.changeInvalidTextColor(with: dtos)
     }
 }
 

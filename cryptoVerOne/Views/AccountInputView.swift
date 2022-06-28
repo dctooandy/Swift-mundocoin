@@ -17,7 +17,7 @@ class AccountInputView: UIView {
     private var inputMode: InputViewMode = .email
     private var currentShowMode: ShowMode = .loginEmail
     private let dpg = DisposeBag()
-    private let accountCheckPassed = BehaviorSubject(value: false)
+    private let accountCheckPassed = PublishSubject<Bool>()
     // MARK: -
     // MARK:UI 設定
     var accountInputView : InputStyleView!
@@ -91,7 +91,10 @@ class AccountInputView: UIView {
 //            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
-                .map { return $0.0 && $0.1 && $0.2 } //reget match result
+                .map {
+                    return $0.0 && $0.1 && $0.2
+                    
+                } //reget match result
                 .bind(to: accountCheckPassed)
                 .disposed(by: dpg)
         }else

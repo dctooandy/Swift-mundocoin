@@ -349,7 +349,8 @@ extension LoginSignupViewController {
         // 原本方式
 //        currentShowMode = .forgotPW
         // 新改為推送
-        let accForgot = ForgotViewController.loadNib()
+
+        let accForgot = ForgotViewController.instance(mode: .emailPage)
         accForgot.rxResetButtonPressed().subscribeSuccess { [self](dto) in
             view.endEditing(true)
             // 推向传送验证码VC
@@ -629,9 +630,9 @@ extension LoginSignupViewController {
         for vc in loginPageVC.signupViewControllers {
             vc.resetInputView()
         }
-        for vc in loginPageVC.forgotViewControllers {
-            vc.resetInputView()
-        }
+//        for vc in loginPageVC.forgotViewControllers {
+//            vc.resetInputView()
+//        }
         currentShowMode = ((currentShowMode == .loginEmail) ? .signupEmail : .loginEmail)
     }
     
