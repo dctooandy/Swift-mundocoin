@@ -38,9 +38,13 @@ class SubPageCollectionCell: UICollectionViewCell {
     func setData(data: WalletBalancesDto) {
         amountLabel.text = "\(data.amount)".numberFormatter(.decimal, 8)
         equelLabel.text = "≈$"+"\(data.amount)".numberFormatter(.decimal, 2)
-        coinLabel.text = data.token
+        coinLabel.text = data.currency
         coinImageView.image = UIImage(named: "icon-usdt")
         currencyLabel.text = data.currency
+        if let pValue = data.persentValue
+        {
+            persentLabel.text = "\(pValue)%"
+        }
     }
     
     func setupUI()

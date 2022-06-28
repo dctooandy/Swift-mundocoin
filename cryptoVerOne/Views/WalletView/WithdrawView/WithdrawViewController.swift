@@ -113,7 +113,7 @@ class WithdrawViewController: BaseViewController {
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
         let maxString = "10000"
-        if let data = withdrawDatas.filter({ $0.token == "USDT" }).first
+        if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
         {
             availableBalanceAmountLabel.text = "\(String(describing: data.amount))"
             // 設定最高額度

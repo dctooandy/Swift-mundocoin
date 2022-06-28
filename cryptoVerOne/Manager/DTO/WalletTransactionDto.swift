@@ -178,7 +178,7 @@ struct ContentDto : Codable
     var chainTimestamp : TimeInterval? = 0
     var fromAddress : String = ""
     var toAddress : String = ""
-    var associatedWalletId : Int = 0
+    var associatedWalletId : Int? = 0
     var state : String = ""
     var confirmBlocks : Int = 0
     var processingState : String = ""

@@ -26,8 +26,7 @@ class WalletViewController: BaseViewController {
     private let dpg = DisposeBag()
     private var walletsDto : [WalletBalancesDto] = [WalletBalancesDto()] {
         didSet {
-            setUPAmount()
-            setUPDataForPageVC()
+            
         }
     }
     
@@ -145,19 +144,64 @@ class WalletViewController: BaseViewController {
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
             Log.v("取得Balances\n\(dto)")
             walletsDto = dto
+            setUPAmount()
+            setUPDataForPageVC()
         }.disposed(by: dpg)
+    }
+    func randomAmount(length: Int) -> Int {
+      let letters = "123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! }).toInt()
     }
     func setUPAmount()
     {
-        let data =  walletsDto.filter{
-            $0.token == "USDT"
-        }.first
-        if let dataDto = data
-        {
-            // 暫時給500
-            dataDto.amount = 500
-            totalBalanceLabel.text = String(describing: dataDto.amount).numberFormatter(.decimal, 8)
+        var amountString = 0
+        var dataDtoIndex = 0
+        for dataDto in walletsDto {
+            // 先給500
+            dataDto.amount = randomAmount(length: 4)
+            // 先拿到總額
+            amountString += dataDto.amount
         }
+        for dataDto in walletsDto {
+            dataDtoIndex = walletsDto.indexOfObject(object: dataDto)
+            if dataDto.amount > 0
+            {
+                dataDto.persentValue = String(describing: Double(dataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
+            }
+            walletsDto.remove(at: dataDtoIndex)
+            walletsDto.insert(dataDto, at: dataDtoIndex)
+        }
+//        
+//        let usdtData =  walletsDto.filter{
+//            $0.currency == "USDT"
+//        }.first
+//        var usdtDateIndex = 0
+//        let trxData =  walletsDto.filter{
+//            $0.currency == "TRX"
+//        }.first
+//        var trxDateIndex = 0
+//        guard let usdtDataDto = usdtData else { return }
+//        
+//        usdtDateIndex = walletsDto.indexOfObject(object: usdtDataDto)
+//        // 暫時給500
+//        usdtDataDto.amount = 500
+//        amountString += usdtDataDto.amount
+//         
+//        guard let trxDataDto = trxData else { return }
+//        
+//        trxDateIndex = walletsDto.indexOfObject(object: trxDataDto)
+//        // 暫時給200
+//        trxDataDto.amount = 200
+//        amountString += trxDataDto.amount
+//        
+//        usdtDataDto.persentValue = String(describing: Double(usdtDataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
+//        trxDataDto.persentValue = String(describing: Double(trxDataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
+//        walletsDto.remove(at: usdtDateIndex)
+//        walletsDto.insert(usdtDataDto, at: usdtDateIndex)
+//        walletsDto.remove(at: trxDateIndex)
+//        walletsDto.insert(trxDataDto, at: trxDateIndex)
+        totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 8)
+        
     }
     func setUPDataForPageVC()
     {
