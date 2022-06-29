@@ -14,17 +14,11 @@ struct SocketMessageDto: Codable{
 
 struct SocketApprovalDoneDto: Codable{
     var type: String
-    var payload: PayloadDto
+    var payload: ApprovalPayloadDto
 }
 
-struct PayloadDto : Codable {
-    var id : String? = ""
-    var createdDate : TimeInterval? = 0.0
-    var updatedDate : TimeInterval? = 0.0
-    var type : String? = ""
-    var state : String? = ""
-    var chain : [ChainSocketDto]? = []
-    var transaction : ContentSocketDto? = ContentSocketDto()
-    var issuer : IssuerSocketDto? = IssuerSocketDto()
-
+struct SocketTxCallBackDto: Codable{
+    var type: String
+    var payload: TXPayloadDto
 }
+

@@ -44,7 +44,7 @@ class TransHistoryCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: timeInterval)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        if let amountValue = data.amount {
+        if let amountValue = data.amountIntWithDecimal {
             amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
         }
         self.historyType = type

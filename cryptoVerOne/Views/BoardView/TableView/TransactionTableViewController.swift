@@ -135,7 +135,7 @@ class TransactionTableViewController: BaseViewController {
     }
     func pushToDetailVC(contentDto:ContentDto)
     {
-        if let amountValue = contentDto.amount?.stringValue?.numberFormatter(.decimal , 8)
+        if let amountValue = contentDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)
         {
             let detailData = DetailDto(detailType: contentDto.detailType,
                                        amount:amountValue,

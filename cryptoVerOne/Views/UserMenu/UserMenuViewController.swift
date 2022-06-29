@@ -79,7 +79,7 @@ class UserMenuViewController: BaseViewController {
     }
     func fetchData()
     {
-        viewModel.fetch()
+//        viewModel.fetch()
     }
     func bind()
     {

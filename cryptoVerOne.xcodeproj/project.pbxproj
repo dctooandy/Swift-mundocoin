@@ -1311,6 +1311,18 @@
 		09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
 		09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */; };
+		09DBDAE6286C2549007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAE7286C2549007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAE8286C2549007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAE9286C254A007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAEA286C254A007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAEB286C254A007162AE /* ApprovalPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */; };
+		09DBDAED286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
+		09DBDAEE286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
+		09DBDAEF286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
+		09DBDAF0286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
+		09DBDAF1286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
+		09DBDAF2286C279C007162AE /* TXPayloadDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09DBDAEC286C279C007162AE /* TXPayloadDto.swift */; };
 		09EED2E82856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED2E72856DB5B00CB4A64 /* SubListViewcontroller.swift */; };
 		09EED2E92856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED2E72856DB5B00CB4A64 /* SubListViewcontroller.swift */; };
 		09EED2EA2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EED2E72856DB5B00CB4A64 /* SubListViewcontroller.swift */; };
@@ -1719,6 +1731,8 @@
 		09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecaptchaViewController.xib; sourceTree = "<group>"; };
 		09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressDto.swift; sourceTree = "<group>"; };
+		09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApprovalPayloadDto.swift; sourceTree = "<group>"; };
+		09DBDAEC286C279C007162AE /* TXPayloadDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TXPayloadDto.swift; sourceTree = "<group>"; };
 		09EED2E72856DB5B00CB4A64 /* SubListViewcontroller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubListViewcontroller.swift; sourceTree = "<group>"; };
 		09EED2EE2856DB7300CB4A64 /* SubListViewcontroller.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubListViewcontroller.xib; sourceTree = "<group>"; };
 		09EED2F52856DEC800CB4A64 /* SubListPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubListPageViewController.swift; sourceTree = "<group>"; };
@@ -2120,6 +2134,8 @@
 			isa = PBXGroup;
 			children = (
 				0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */,
+				09DBDAE5286C2549007162AE /* ApprovalPayloadDto.swift */,
+				09DBDAEC286C279C007162AE /* TXPayloadDto.swift */,
 			);
 			path = Socket;
 			sourceTree = "<group>";
@@ -3798,6 +3814,7 @@
 				09905A6E2851A02B00BAEE78 /* SecurityViewController.swift in Sources */,
 				09905A6F2851A02B00BAEE78 /* DataRequest+util.swift in Sources */,
 				0909C8E228532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAF1286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				09905A702851A02B00BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905A712851A02B00BAEE78 /* ApiService.swift in Sources */,
 				0909C8CC2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -3903,6 +3920,7 @@
 				09905ACA2851A02B00BAEE78 /* MDNavigationController.swift in Sources */,
 				09905ACB2851A02B00BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905ACC2851A02B00BAEE78 /* GuidePageViewController.swift in Sources */,
+				09DBDAEA286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905ACD2851A02B00BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905ACE2851A02B00BAEE78 /* SignupSuccessView.swift in Sources */,
 				09905ACF2851A02B00BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
@@ -4005,6 +4023,7 @@
 				09905B602851A08500BAEE78 /* SecurityViewController.swift in Sources */,
 				09905B612851A08500BAEE78 /* DataRequest+util.swift in Sources */,
 				0909C8E328532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAF2286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				09905B622851A08500BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905B632851A08500BAEE78 /* ApiService.swift in Sources */,
 				0909C8CD2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4110,6 +4129,7 @@
 				09905BBC2851A08500BAEE78 /* MDNavigationController.swift in Sources */,
 				09905BBD2851A08500BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905BBE2851A08500BAEE78 /* GuidePageViewController.swift in Sources */,
+				09DBDAEB286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905BBF2851A08500BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905BC02851A08500BAEE78 /* SignupSuccessView.swift in Sources */,
 				09905BC12851A08500BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
@@ -4212,6 +4232,7 @@
 				09905C522851A09600BAEE78 /* SecurityViewController.swift in Sources */,
 				09905C532851A09600BAEE78 /* DataRequest+util.swift in Sources */,
 				0909C8E128532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAF0286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				09905C542851A09600BAEE78 /* WithdrawViewController.swift in Sources */,
 				09905C552851A09600BAEE78 /* ApiService.swift in Sources */,
 				0909C8CB2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4317,6 +4338,7 @@
 				09905CAE2851A09600BAEE78 /* MDNavigationController.swift in Sources */,
 				09905CAF2851A09600BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905CB02851A09600BAEE78 /* GuidePageViewController.swift in Sources */,
+				09DBDAE9286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905CB12851A09600BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905CB22851A09600BAEE78 /* SignupSuccessView.swift in Sources */,
 				09905CB32851A09600BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
@@ -4419,6 +4441,7 @@
 				09CAF46C283C77ED00D7B19B /* SecurityViewController.swift in Sources */,
 				09CAF46D283C77ED00D7B19B /* DataRequest+util.swift in Sources */,
 				0909C8DF28532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAEE286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				09CAF46E283C77ED00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C92851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4524,6 +4547,7 @@
 				09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF4AE283C77ED00D7B19B /* GuidePageViewController.swift in Sources */,
+				09DBDAE7286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09CAF4AF283C77ED00D7B19B /* TFBeginViewController.swift in Sources */,
 				09CAF4B0283C77ED00D7B19B /* SignupSuccessView.swift in Sources */,
 				09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
@@ -4626,6 +4650,7 @@
 				09CAF52D283C7BBE00D7B19B /* SecurityViewController.swift in Sources */,
 				09CAF52E283C7BBE00D7B19B /* DataRequest+util.swift in Sources */,
 				0909C8E028532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAEF286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				09CAF52F283C7BBE00D7B19B /* WithdrawViewController.swift in Sources */,
 				09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8CA2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4731,6 +4756,7 @@
 				09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */,
 				09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF56F283C7BBE00D7B19B /* GuidePageViewController.swift in Sources */,
+				09DBDAE8286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09CAF570283C7BBE00D7B19B /* TFBeginViewController.swift in Sources */,
 				09CAF571283C7BBE00D7B19B /* SignupSuccessView.swift in Sources */,
 				09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
@@ -4833,6 +4859,7 @@
 				A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */,
 				A19C718E28225B5E000AFC3F /* DataRequest+util.swift in Sources */,
 				0909C8DE28532E51003E2F58 /* AuditLoginViewController.swift in Sources */,
+				09DBDAED286C279C007162AE /* TXPayloadDto.swift in Sources */,
 				A1973A222828F3D3009932D8 /* WithdrawViewController.swift in Sources */,
 				09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C82851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
@@ -4938,6 +4965,7 @@
 				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
 				A19C70E728224BF5000AFC3F /* UserDefaults+util.swift in Sources */,
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,
+				09DBDAE6286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */,
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
 				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
@@ -5023,7 +5051,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5052,7 +5080,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -5082,7 +5110,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5111,7 +5139,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -5141,7 +5169,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5170,7 +5198,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_approval;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -5200,7 +5228,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5229,7 +5257,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -5259,7 +5287,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5288,7 +5316,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = dev_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -5437,7 +5465,7 @@
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -5465,7 +5493,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = store_mundocoin_cryptoVerOne;
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -231,7 +231,7 @@ extension LoginSignupViewController {
     }
     @objc func changeDomain()
     {
-        #if Mundo_PRO
+        #if Mundo_PRO || Mundo_STAGE
         #elseif Approval_PRO
         #else
         let versionString = Bundle.main.releaseVersionNumber ?? ""

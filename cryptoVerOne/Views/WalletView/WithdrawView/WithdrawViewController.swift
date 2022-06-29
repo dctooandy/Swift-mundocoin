@@ -308,7 +308,7 @@ class WithdrawViewController: BaseViewController {
     func showTransactionDetailView(dataDto : WalletWithdrawDto)
     {
         if let transDto = dataDto.transaction ,
-           let amountText = transDto.amount?.stringValue?.numberFormatter(.decimal , 8),
+           let amountText = transDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8),
            let fee = feeAmountLabel.text
         {
             let detailData = DetailDto(detailType: dataDto.detailType,

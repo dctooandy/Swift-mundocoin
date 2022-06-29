@@ -291,28 +291,31 @@ extension SocketIOManager
             decoder.dateDecodingStrategy = .millisecondsSince1970
             do {
                 let results = try decoder.decode(SocketMessageDto.self, from:resultData)
-                Log.i("result: \(results)")
+                Log.i("Socket.io - result: \(results)")
                 if results.type == "APPROVAL_DONE"
                 {
                     self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
+                }else if results.type == "TX_CALLBACK"
+                {
+                    self.createTypeDto(valueToFind: SocketTxCallBackDto.self, resultData: resultData)
                 }else
                 {
                     self.onTriggerLocalNotification(subtitle: "Message", body: [resultData])
                 }
             } catch DecodingError.dataCorrupted( _) {
-                Log.e("dataCorrupted")
+                Log.e("Socket.io -dataCorrupted")
             } catch DecodingError.keyNotFound( _,  _) {
-                Log.e("keyNotFound")
+                Log.e("Socket.io -keyNotFound")
             } catch DecodingError.typeMismatch( _, let context) {
-                Log.e("typeMismatch : \(context)")
+                Log.e("Socket.io -typeMismatch : \(context)")
             } catch DecodingError.valueNotFound( _,  _) {
-                Log.e("valueNotFound")
+                Log.e("Socket.io -valueNotFound")
             } catch {
                 Log.e(error.localizedDescription)
             }
         }else
         {
-            Log.e("Socket 回傳Null ,innerData: \(innerData)")
+            Log.e("Socket.io -回傳Null ,innerData: \(innerData)")
         }
     }
     func createTypeDto<T : Codable>(valueToFind: T.Type, resultData: Data)
@@ -324,16 +327,43 @@ extension SocketIOManager
             let resultsPayloadDto = try decoder.decode(T.self , from:resultData)
             if let resultsPayload = resultsPayloadDto as? SocketApprovalDoneDto
             {
-                if let chainData = resultsPayload.payload.chain,
-                   let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
-                   let userData = resultsPayload.payload.issuer
+//                if let chainData = resultsPayload.payload.chain,
+//                   let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
+//                   let userData = resultsPayload.payload.issuer
+//                {
+//                    let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
+//                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
+//#if Approval_PRO || Approval_DEV || Approval_STAGE
+//                    _ = AuditApprovalDto.update() // 更新清單列表
+//#else
+//
+//#endif
+//                }
+                let approvalDto = resultsPayload.payload
+                if let statsValue = approvalDto.state,
+                   let typeValue = approvalDto.type
                 {
-                    let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
-                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
+                    let bodyArray = ["\(typeValue)","\(statsValue)"]
+                    self.onTriggerLocalNotification(subtitle: "APPROVAL", body: bodyArray)
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     _ = AuditApprovalDto.update() // 更新清單列表
 #else
                     
+#endif
+                }
+            }else if let resultsPayload = resultsPayloadDto as? SocketTxCallBackDto
+            {
+                let txDto = resultsPayload.payload
+                if let statsValue = txDto.state,
+                   let typeValue = txDto.type,
+                   let amountValue = txDto.amountIntWithDecimal?.stringValue
+                {
+                    let bodyArray = ["\(typeValue)","\(statsValue)"]
+                    self.onTriggerLocalNotification(subtitle: amountValue, body: bodyArray)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                    
+#else
+                    TXPayloadDto.share = txDto
 #endif
                 }
             }

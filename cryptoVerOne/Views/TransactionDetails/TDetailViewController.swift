@@ -116,6 +116,26 @@ class TDetailViewController: BaseViewController {
             addVC.newAddressString = addressString
             navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
+        TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
+            if let data = dto
+            {
+                let detailDto = DetailDto(detailType: data.detailType,
+                                          amount: data.amountIntWithDecimal?.stringValue ?? "",
+                                          tether: data.currency ?? "",
+                                          network: "Tron(TRC20)",
+                                          confirmations: "\(data.confirmBlocks ?? 0)/1",
+//                                          fee: "\(data.fees ?? 1)",
+                                          fee: "1",
+                                          date: data.createdDateString,
+                                          address: data.toAddress ?? "",
+                                          txid: data.txId ?? "")
+                self.detailDataDto = detailDto
+                dataListView.detailDataDto = detailDto
+                dataListView.viewType = detailDto.detailType
+                topView.topViewType = detailDto.detailType
+                TransStyleThemes().acceptTopViewStatusStyle(detailDto.detailType)
+            }
+        }.disposed(by: dpg)
     }
     func setupData()
     {

@@ -157,8 +157,8 @@ class WalletViewController: BaseViewController {
         var amountString = 0
         var dataDtoIndex = 0
         for dataDto in walletsDto {
-            // 先給500
-            dataDto.amount = randomAmount(length: 4)
+            // 先給 = 500
+//            dataDto.amount = randomAmount(length: 4)
             // 先拿到總額
             amountString += dataDto.amount
         }
@@ -167,39 +167,13 @@ class WalletViewController: BaseViewController {
             if dataDto.amount > 0
             {
                 dataDto.persentValue = String(describing: Double(dataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
+            }else
+            {
+                dataDto.persentValue = "0.00"
             }
             walletsDto.remove(at: dataDtoIndex)
             walletsDto.insert(dataDto, at: dataDtoIndex)
         }
-//        
-//        let usdtData =  walletsDto.filter{
-//            $0.currency == "USDT"
-//        }.first
-//        var usdtDateIndex = 0
-//        let trxData =  walletsDto.filter{
-//            $0.currency == "TRX"
-//        }.first
-//        var trxDateIndex = 0
-//        guard let usdtDataDto = usdtData else { return }
-//        
-//        usdtDateIndex = walletsDto.indexOfObject(object: usdtDataDto)
-//        // 暫時給500
-//        usdtDataDto.amount = 500
-//        amountString += usdtDataDto.amount
-//         
-//        guard let trxDataDto = trxData else { return }
-//        
-//        trxDateIndex = walletsDto.indexOfObject(object: trxDataDto)
-//        // 暫時給200
-//        trxDataDto.amount = 200
-//        amountString += trxDataDto.amount
-//        
-//        usdtDataDto.persentValue = String(describing: Double(usdtDataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
-//        trxDataDto.persentValue = String(describing: Double(trxDataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
-//        walletsDto.remove(at: usdtDateIndex)
-//        walletsDto.insert(usdtDataDto, at: usdtDateIndex)
-//        walletsDto.remove(at: trxDateIndex)
-//        walletsDto.insert(trxDataDto, at: trxDateIndex)
         totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 8)
         
     }

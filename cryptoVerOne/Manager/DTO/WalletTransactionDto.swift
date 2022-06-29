@@ -163,7 +163,17 @@ struct ContentDto : Codable
             return updatedDate
         }
     }
-
+    var amountIntWithDecimal : JSONValue?
+    {
+        if let intValue = amount?.intValue
+        {
+            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+            return JSONValue.double(doubleValue)
+        }else
+        {
+            return JSONValue.double(0.00)
+        }
+    }
     var amount : JSONValue? = JSONValue.int(0)
     var id : String = ""
     var createdDate : String = ""
@@ -172,18 +182,18 @@ struct ContentDto : Codable
     var orderId : String = ""
     var currency : String = ""
     var txId : String? = ""
-    var blockHeight : String? = ""
+    var blockHeight : Int? = 0
     var fees : Int? = 0
-    var broadcastTimestamp : TimeInterval? = 0
-    var chainTimestamp : TimeInterval? = 0
+    var broadcastTimestamp : String? = ""
+    var chainTimestamp : String? = ""
     var fromAddress : String = ""
     var toAddress : String = ""
     var associatedWalletId : Int? = 0
     var state : String = ""
-    var confirmBlocks : Int = 0
+    var confirmBlocks : Int? = 0
     var processingState : String = ""
-    var decimal : Int = 0
-    var currencyBip44 : Int = 0
+    var decimal : Int? = 0
+    var currencyBip44 : Int? = 0
     var tokenAddress : String? = ""
     var memo : String? = ""
     var errorReason : String? = ""
@@ -203,15 +213,15 @@ struct ContentSocketDto : Codable
     var orderId : String = ""
     var currency : String = ""
     var txId : String? = ""
-    var blockHeight : String? = ""
+    var blockHeight : Int? = 0
     var fees : Int? = 0
-    var broadcastTimestamp : TimeInterval? = 0
-    var chainTimestamp : TimeInterval? = 0
+    var broadcastTimestamp : String? = ""
+    var chainTimestamp : String? = ""
     var fromAddress : String = ""
     var toAddress : String = ""
     var associatedWalletId : Int = 0
     var state : String = ""
-    var confirmBlocks : Int = 0
+    var confirmBlocks : Int? = 0
     var processingState : String = ""
     var decimal : Int = 0
     var currencyBip44 : Int = 0
