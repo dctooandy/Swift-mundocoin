@@ -230,7 +230,6 @@ class WithdrawViewController: BaseViewController {
             // 開啟驗證流程
             Log.i("驗證成功,開取款單")
             toCreateWithdrawal(emailVerifyValue: emailVerifyString)
-            clearAllData()
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(securityVerifyVC, animated: true)
     }
@@ -256,7 +255,7 @@ class WithdrawViewController: BaseViewController {
                     _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in
                         if let dataDto = dto
                         {
-                            securityVerifyVC.navigationController?.popViewController(animated: false)
+                            securityVCPopAction(animated: false)
                             showTransactionDetailView(dataDto:dataDto)
                         }
                     }).disposed(by: dpg)
@@ -264,7 +263,6 @@ class WithdrawViewController: BaseViewController {
             } onError: { error in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in
-                        securityVerifyVC.navigationController?.popViewController(animated: true)
                         if let error = error as? ApiServiceError {
                             switch error {
                             case .errorDto(let dto):
@@ -279,13 +277,16 @@ class WithdrawViewController: BaseViewController {
                                     if reason == "INSUFFICIENT_FUND"
                                     {
                                         Log.i("資金不足 :\(reason)")
+                                        securityVCPopAction(animated: true)
                                     }
                                     ErrorHandler.show(error: error)
                                 }else
                                 {
+                                    securityVCPopAction(animated: true)
                                     ErrorHandler.show(error: error)
                                 }
                             default:
+                                securityVCPopAction(animated: true)
                                 ErrorHandler.show(error: error)
                             }
                         }
@@ -295,9 +296,14 @@ class WithdrawViewController: BaseViewController {
         }
         else
         {
-            securityVerifyVC.navigationController?.popViewController(animated: true)
+            securityVCPopAction(animated: true)
             Log.i("輸入資訊有誤")
         }
+    }
+    func securityVCPopAction(animated:Bool)
+    {
+        clearAllData()
+        securityVerifyVC.navigationController?.popViewController(animated: animated)
     }
     func showTransactionDetailView(dataDto : WalletWithdrawDto)
     {
