@@ -117,23 +117,30 @@ class TDetailViewController: BaseViewController {
             navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
-            if let data = dto
+            if let data = dto,
+               let statsValue = dto?.detailType,
+               let socketID = dto?.id
             {
-                let detailDto = DetailDto(detailType: data.detailType,
-                                          amount: data.amountIntWithDecimal?.stringValue ?? "",
-                                          tether: data.currency ?? "",
-                                          network: "Tron(TRC20)",
-                                          confirmations: "\(data.confirmBlocks ?? 0)/1",
-//                                          fee: "\(data.fees ?? 1)",
-                                          fee: "1",
-                                          date: data.createdDateString,
-                                          address: data.toAddress ?? "",
-                                          txid: data.txId ?? "")
-                self.detailDataDto = detailDto
-                dataListView.detailDataDto = detailDto
-                dataListView.viewType = detailDto.detailType
-                topView.topViewType = detailDto.detailType
-                TransStyleThemes().acceptTopViewStatusStyle(detailDto.detailType)
+                if detailDataDto?.id == socketID, detailDataDto?.detailType != statsValue
+                {
+                    let detailDto = DetailDto(detailType: data.detailType,
+                                              amount: data.amountIntWithDecimal?.stringValue ?? "",
+                                              tether: data.currency ?? "",
+                                              network: "Tron(TRC20)",
+                                              confirmations: "\(data.confirmBlocks ?? 0)/1",
+                                              //                                          fee: "\(data.fees ?? 1)",
+                                              fee: "1",
+                                              date: data.createdDateString,
+                                              address: data.toAddress ?? "",
+                                              txid: data.txId ?? "",
+                                              id: data.id ?? "",
+                                              orderId: data.orderId ?? "")
+                    self.detailDataDto = detailDto
+                    dataListView.detailDataDto = detailDto
+                    dataListView.viewType = detailDto.detailType
+                    topView.topViewType = detailDto.detailType
+                    TransStyleThemes().acceptTopViewStatusStyle(detailDto.detailType)
+                }
             }
         }.disposed(by: dpg)
     }

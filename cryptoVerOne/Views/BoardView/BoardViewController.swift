@@ -41,7 +41,7 @@ class BoardViewController: BaseViewController {
             }
         }
     }
-    var transContentDto : [ContentDto] = []
+    var transContentDto : [ContentDto] = [ContentDto()]
     var currentPage: Int = 0
     var currentFilterDto:WalletTransPostDto?
     var isFilterAction : Bool = false
@@ -181,6 +181,23 @@ class BoardViewController: BaseViewController {
             self.transContentDto = dto.content
             self.resetData()
         }.disposed(by: dpg)
+        
+        TXPayloadDto.rxShare.subscribeSuccess { dto in
+            if let statsValue = dto?.state,
+               let socketID = dto?.id,
+               var currentTransDto = self.transContentDto.filter({$0.id == socketID}).first,
+               let currentTransIndex = self.transContentDto.firstIndex(where: { p in p.id == socketID })
+            {
+                if self.transContentDto[currentTransIndex].state != statsValue
+                {
+                    currentTransDto.state = statsValue
+                    self.transContentDto.remove(at: currentTransIndex)
+                    self.transContentDto.insert(currentTransDto, at: currentTransIndex)
+                    self.resetData()                    
+                }
+            }
+        }.disposed(by: dpg)
+        
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
             isFilterAction = false
             showMode = .deposits

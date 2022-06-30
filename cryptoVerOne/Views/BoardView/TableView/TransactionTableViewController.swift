@@ -91,6 +91,7 @@ class TransactionTableViewController: BaseViewController {
     }
     func createData()
     {
+        sectionDic.removeAll()
         var daySactionStringArray:[String] = []
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "MMMM dd,yyyy"
@@ -145,7 +146,9 @@ class TransactionTableViewController: BaseViewController {
                                        fee:"1",
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,
-                                       txid: contentDto.txId ?? "")
+                                       txid: contentDto.txId ?? "",
+                                       id: contentDto.id,
+                                       orderId: contentDto.orderId)
             let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
                                                           mode: .topViewHidden ,
                                                           dataDto:detailData)

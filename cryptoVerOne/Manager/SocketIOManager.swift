@@ -358,8 +358,11 @@ extension SocketIOManager
                    let typeValue = txDto.type,
                    let amountValue = txDto.amountIntWithDecimal?.stringValue
                 {
-                    let bodyArray = ["\(typeValue)","\(statsValue)"]
-                    self.onTriggerLocalNotification(subtitle: amountValue, body: bodyArray)
+                    if statsValue == "COMPLETE"
+                    {
+                        let bodyArray = ["\(typeValue)","\(statsValue)"]
+                        self.onTriggerLocalNotification(subtitle: amountValue, body: bodyArray)                        
+                    }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     
 #else

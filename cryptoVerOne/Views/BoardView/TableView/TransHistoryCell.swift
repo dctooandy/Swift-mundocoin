@@ -63,7 +63,22 @@ class TransHistoryCell: UITableViewCell {
     }
     func bindUI()
     {
-        
+        TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
+            if let statsValue = dto?.state,
+               let amountValue = dto?.amountIntWithDecimal?.stringValue,
+               let socketID = dto?.id
+            {
+                if cellData.amountIntWithDecimal?.stringValue == amountValue,
+                   cellData.id == socketID
+                {
+                    if statsValue == "COMPLETE"
+                    {
+                        statusLabel.isHidden = true
+                    }
+                    statusLabel.text = statsValue
+                }
+            }
+        }.disposed(by: dpg)
     }
 }
 // MARK: -

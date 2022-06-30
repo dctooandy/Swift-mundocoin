@@ -319,7 +319,9 @@ class WithdrawViewController: BaseViewController {
                                        fee:fee,
                                        date: dataDto.createdDateString,
                                        address: transDto.toAddress,
-                                       txid: transDto.txId ?? "")
+                                       txid: transDto.txId ?? "",
+                                       id:transDto.id,
+                                       orderId: transDto.orderId)
             let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
                                                           mode: .topViewShow ,
                                                           dataDto:detailData)

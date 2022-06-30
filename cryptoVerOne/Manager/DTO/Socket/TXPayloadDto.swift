@@ -22,7 +22,7 @@ struct TXPayloadDto : Codable {
             }
     })
     static let disposeBag = DisposeBag()
-    static private let subject = BehaviorSubject<TXPayloadDto?>(value: nil)
+    static private let subject = PublishSubject<TXPayloadDto?>()
     static func update() -> Observable<()>{
         let subject = PublishSubject<Void>()
         return subject.asObservable()
@@ -88,9 +88,9 @@ struct TXPayloadDto : Codable {
     }
     var createdDateString : String
     {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMMM dd, yyyy HH:mm"
         let timeValue =  (createdDate ?? 0) / 1000
-        return dateFormatter.string(from: Date(timeIntervalSince1970: timeValue))
+        return newDateFormatter.string(from: Date(timeIntervalSince1970: timeValue))
     }
 }
