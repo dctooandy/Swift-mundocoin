@@ -15,6 +15,16 @@ enum TransactionShowMode
     case deposits
     case withdrawals
     
+    var showTitleString:String
+    {
+        switch self {
+        case .deposits:
+            return "Deposits".localized
+        case .withdrawals:
+            return "Withdraw".localized
+        }
+    }
+    
     func ascendType() -> Bool
     {
         switch self {
@@ -193,7 +203,7 @@ class BoardViewController: BaseViewController {
                     currentTransDto.state = statsValue
                     self.transContentDto.remove(at: currentTransIndex)
                     self.transContentDto.insert(currentTransDto, at: currentTransIndex)
-                    self.resetData()                    
+                    self.resetData()
                 }
             }
         }.disposed(by: dpg)

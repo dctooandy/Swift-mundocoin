@@ -149,7 +149,8 @@ class TransactionTableViewController: BaseViewController {
                                        txid: contentDto.txId ?? "",
                                        id: contentDto.id,
                                        orderId: contentDto.orderId)
-            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
+            
+            let detailVC = TDetailViewController.instance(titleString: showModeAtTableView.showTitleString,
                                                           mode: .topViewHidden ,
                                                           dataDto:detailData)
             self.navigationController?.pushViewController(detailVC, animated: true)

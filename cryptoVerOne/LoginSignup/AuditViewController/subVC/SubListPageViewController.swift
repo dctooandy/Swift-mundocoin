@@ -108,7 +108,7 @@ class SubListPageViewController: BaseViewController {
                 self.finishedDataArray.removeAll()
             }
             let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
-            let pendingData = dto.content.filter{($0.state != "APPROVED")}
+            let pendingData = dto.content.filter{($0.state == "PENDING")}
             self.pendingDataArray.append(contentsOf: pendingData)
             self.finishedDataArray.append(contentsOf: finishedData)
             self.pendingDataArray = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })

@@ -165,7 +165,14 @@ extension String {
         formatter.dateFormat = format
         return formatter.date(from: self)
     }
-    func customWidth() -> CGFloat {
-        return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.pingFangSCRegular(14)]).width + 40
+    func customWidth(textSize:CGFloat = 14 , spaceWidth:CGFloat = 40) -> CGFloat {
+        return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.pingFangSCRegular(textSize)]).width + spaceWidth
+    }
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).uppercased() + self.lowercased().dropFirst()
+    }
+    
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }

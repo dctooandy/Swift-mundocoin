@@ -16,6 +16,7 @@ class TransHistoryCell: UITableViewCell {
     private let dpg = DisposeBag()
     var cellData:ContentDto!
     var historyType:TransactionShowMode = .deposits
+    @IBOutlet weak var labelWidthConstraint: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var currencyLabel: UILabel!
@@ -54,7 +55,17 @@ class TransHistoryCell: UITableViewCell {
         }else
         {
             statusLabel.isHidden = data.state == "COMPLETE" ? true : false
-            statusLabel.text = data.state
+            statusLabel.text = data.state.capitalizingFirstLetter()
+            labelWidthConstraint.constant = data.state.customWidth(textSize: 11, spaceWidth: 10)
+            if data.state == "FAILED"
+            {
+                statusLabel.textColor = Themes.grayA3AED0
+                statusLabel.backgroundColor = Themes.grayA3AED020
+            }else
+            {
+                statusLabel.textColor = Themes.blue0587FF
+                statusLabel.backgroundColor = Themes.blue0587FF10
+            }
         }
     }
     func setupUI()
@@ -75,7 +86,17 @@ class TransHistoryCell: UITableViewCell {
                     {
                         statusLabel.isHidden = true
                     }
-                    statusLabel.text = statsValue
+                    statusLabel.text = statsValue.capitalizingFirstLetter()
+                    labelWidthConstraint.constant = statsValue.customWidth(textSize: 11, spaceWidth: 10)
+                    if statsValue == "FAILED"
+                    {
+                        statusLabel.textColor = Themes.grayA3AED0
+                        statusLabel.backgroundColor = Themes.grayA3AED020
+                    }else
+                    {
+                        statusLabel.textColor = Themes.blue0587FF
+                        statusLabel.backgroundColor = Themes.blue0587FF10
+                    }
                 }
             }
         }.disposed(by: dpg)

@@ -188,7 +188,7 @@ struct ContentDto : Codable
     var chainTimestamp : String? = ""
     var fromAddress : String = ""
     var toAddress : String = ""
-    var associatedWalletId : Int? = 0
+    var associatedWalletId : JSONValue? = JSONValue.int(0)
     var state : String = ""
     var confirmBlocks : Int? = 0
     var processingState : String = ""
@@ -219,7 +219,7 @@ struct ContentSocketDto : Codable
     var chainTimestamp : String? = ""
     var fromAddress : String = ""
     var toAddress : String = ""
-    var associatedWalletId : Int = 0
+    var associatedWalletId : JSONValue? = JSONValue.int(0)
     var state : String = ""
     var confirmBlocks : Int? = 0
     var processingState : String = ""

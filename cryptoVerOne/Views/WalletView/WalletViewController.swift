@@ -77,6 +77,7 @@ class WalletViewController: BaseViewController {
         bindingIMGview()
         setupPagingView()
         bindViewModel()
+        bindSocket()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -146,6 +147,18 @@ class WalletViewController: BaseViewController {
             walletsDto = dto
             setUPAmount()
             setUPDataForPageVC()
+        }.disposed(by: dpg)
+    }
+    func bindSocket()
+    {
+        TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
+            if let statsValue = dto?.state
+            {
+                if statsValue == "COMPLETE"
+                {
+                    viewModel.fetchBalances()
+                }
+            }
         }.disposed(by: dpg)
     }
     func randomAmount(length: Int) -> Int {

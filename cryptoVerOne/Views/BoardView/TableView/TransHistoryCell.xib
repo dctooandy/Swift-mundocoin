@@ -46,9 +46,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pending" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dc6-px-yMG">
-                                <rect key="frame" x="119" y="16" width="43" height="14"/>
+                                <rect key="frame" x="119" y="15" width="60" height="16"/>
                                 <color key="backgroundColor" red="0.90066021679999997" green="0.95234960319999995" blue="0.99931210280000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="4t0-8D-a0e"/>
+                                    <constraint firstAttribute="height" constant="16" id="x8e-bs-9ZJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
                                 <color key="textColor" red="0.019607843137254902" green="0.52941176470588236" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
@@ -92,6 +96,7 @@
             <connections>
                 <outlet property="amountLabel" destination="p2q-4h-D3r" id="xjw-Rq-ULh"/>
                 <outlet property="currencyLabel" destination="nMP-3i-T3a" id="KMJ-tv-geq"/>
+                <outlet property="labelWidthConstraint" destination="4t0-8D-a0e" id="Vsd-Ee-mAO"/>
                 <outlet property="statusLabel" destination="dc6-px-yMG" id="PG5-6y-bUb"/>
                 <outlet property="timeLabel" destination="qUT-FG-864" id="FXF-ET-WX0"/>
             </connections>
