@@ -22,7 +22,7 @@ struct WalletAllBalancesDto :Codable {
             }
     })
             static let disposeBag = DisposeBag()
-            static private let subject = BehaviorSubject<WalletAllBalancesDto?>(value: nil)
+            static private let subject = PublishSubject<WalletAllBalancesDto?>()
             static func update() -> Observable<()>{
                 let subject = PublishSubject<Void>()
                 Beans.walletServer.walletBalances().subscribe { [self](balancesDto) in

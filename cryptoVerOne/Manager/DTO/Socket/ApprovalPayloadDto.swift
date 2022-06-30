@@ -13,7 +13,7 @@ struct ApprovalPayloadDto : Codable {
     var updatedDate : TimeInterval? = 0.0
     var type : String? = ""
     var state : String? = ""
-//    var chain : [ChainSocketDto]? = []
-//    var transaction : ContentSocketDto? = ContentSocketDto()
-//    var issuer : IssuerSocketDto? = IssuerSocketDto()
+    var chain : [ChainSocketDto]? = []
+    var transaction : ContentSocketDto? = ContentSocketDto()
+    var issuer : IssuerSocketDto? = IssuerSocketDto()
 }

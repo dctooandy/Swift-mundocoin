@@ -327,28 +327,16 @@ extension SocketIOManager
             let resultsPayloadDto = try decoder.decode(T.self , from:resultData)
             if let resultsPayload = resultsPayloadDto as? SocketApprovalDoneDto
             {
-//                if let chainData = resultsPayload.payload.chain,
-//                   let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
-//                   let userData = resultsPayload.payload.issuer
-//                {
-//                    let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
-//                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
-//#if Approval_PRO || Approval_DEV || Approval_STAGE
-//                    _ = AuditApprovalDto.update() // 更新清單列表
-//#else
-//
-//#endif
-//                }
-                let approvalDto = resultsPayload.payload
-                if let statsValue = approvalDto.state,
-                   let typeValue = approvalDto.type
+                if let chainData = resultsPayload.payload.chain,
+                   let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
+                   let userData = resultsPayload.payload.issuer
                 {
-                    let bodyArray = ["\(typeValue)","\(statsValue)"]
-                    self.onTriggerLocalNotification(subtitle: "APPROVAL", body: bodyArray)
+                    let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
+                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     _ = AuditApprovalDto.update() // 更新清單列表
 #else
-                    
+
 #endif
                 }
             }else if let resultsPayload = resultsPayloadDto as? SocketTxCallBackDto

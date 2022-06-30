@@ -254,8 +254,8 @@
             filePath = "cryptoVerOne/Manager/SocketIOManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "356"
-            endingLineNumber = "356"
+            startingLineNumber = "344"
+            endingLineNumber = "344"
             landmarkName = "createTypeDto(valueToFind:resultData:)"
             landmarkType = "7">
          </BreakpointContent>
