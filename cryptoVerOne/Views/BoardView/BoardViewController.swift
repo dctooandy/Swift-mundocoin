@@ -203,6 +203,7 @@ class BoardViewController: BaseViewController {
                     currentTransDto.state = statsValue
                     self.transContentDto.remove(at: currentTransIndex)
                     self.transContentDto.insert(currentTransDto, at: currentTransIndex)
+                    self.clearAllVCDataSource()
                     self.resetData()
                 }
             }

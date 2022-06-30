@@ -91,7 +91,7 @@ class TransactionTableViewController: BaseViewController {
     }
     func createData()
     {
-        sectionDic.removeAll()
+//        sectionDic.removeAll()
         var daySactionStringArray:[String] = []
         let newFormatter = DateFormatter()
         newFormatter.dateFormat = "MMMM dd,yyyy"

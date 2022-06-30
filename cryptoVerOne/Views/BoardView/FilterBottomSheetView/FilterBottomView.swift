@@ -186,15 +186,14 @@ class FilterBottomView: UIView {
     }
     func setupDatePackerLabel()
     {
-        let startDate = dateFormatter.string(from: Date())
+        let startDateValue = Date().addDay(day: -90)
+        let startDate = dateFormatter.string(from: startDateValue)
         startLabel.text = startDate
         let endDate = dateFormatter.string(from: Date())
         endLabel.text = endDate
         // 可以選擇的最早日期時間
         let fromDateTime = dateFormatter.date(from: startDate)
         endDatePicker.minimumDate = fromDateTime
-        startDatePicker.date = Date()
-        endDatePicker.date = Date()
         // 使用 UIDatePicker(frame:) 建立一個 UIDatePicker
 //        myDatePicker = UIDatePicker()
 //        // 設置 UIDatePicker 格式
@@ -250,9 +249,11 @@ class FilterBottomView: UIView {
         let endDateValue = Date()
         let startMinDate = dateFormatter.string(from: startDateValue)
         let fromStartDateTime = dateFormatter.date(from: startMinDate)
-        startDatePicker.minimumDate = fromStartDateTime
+        startDatePicker.minimumDate = startDateValue
         startDatePicker.maximumDate = endDateValue
         endDatePicker.maximumDate = endDateValue
+        startDatePicker.setDate(startDateValue, animated: true)
+        endDatePicker.date = Date()
         historyView.rxCellClick().subscribeSuccess { [self] data in
             if String(data.1) == "Deposits".localized
             {

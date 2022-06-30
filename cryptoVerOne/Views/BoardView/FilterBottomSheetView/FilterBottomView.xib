@@ -55,12 +55,15 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-cy-NuN">
                     <rect key="frame" x="24" y="275.5" width="366" height="46"/>
                     <subviews>
-                        <datePicker alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" translatesAutoresizingMaskIntoConstraints="NO" id="QlW-Jy-VoY">
+                        <datePicker alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlW-Jy-VoY">
                             <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
                             <color key="tintColor" systemColor="tintColor"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="130" id="8ps-bi-hj6"/>
                             </constraints>
+                            <date key="date" timeIntervalSinceReferenceDate="678275781.60868394">
+                                <!--2022-06-30 09:56:21 +0000-->
+                            </date>
                             <locale key="locale" localeIdentifier="en_AS"/>
                         </datePicker>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7EM-qn-Mro">
