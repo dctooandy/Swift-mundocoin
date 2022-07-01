@@ -280,7 +280,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "1637336E-FDFC-4654-8235-D20EC4E833C9"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoVerOne/Views/BoardView/BoardViewController.swift"
@@ -290,54 +290,6 @@
             endingLineNumber = "201"
             landmarkName = "bind()"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B0BE5A36-FB6E-4EC4-A9F7-BD4654A6EC24"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Manager/DTO/Socket/TXPayloadDto.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "TXPayloadDto"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "B0BE5A36-FB6E-4EC4-A9F7-BD4654A6EC24 - 93c67cdc63962138"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cryptoVerOne_dev.TXPayloadDto.amountIntWithDecimal.getter : Swift.Optional&lt;cryptoVerOne_dev.JSONValue&gt;"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Manager/DTO/Socket/TXPayloadDto.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "55">
-               </Location>
-               <Location
-                  uuid = "B0BE5A36-FB6E-4EC4-A9F7-BD4654A6EC24 - 93c67cdc63962138"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cryptoVerOne_dev.TXPayloadDto.amountIntWithDecimal.getter : Swift.Optional&lt;cryptoVerOne_dev.JSONValue&gt;"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Manager/DTO/Socket/TXPayloadDto.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "62"
-                  endingLineNumber = "62"
-                  offsetFromSymbolStart = "98">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

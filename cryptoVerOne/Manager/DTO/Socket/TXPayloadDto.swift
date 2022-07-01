@@ -37,7 +37,7 @@ struct TXPayloadDto : Codable {
     var currency : String? = ""
     var txId : String? = ""
     var blockHeight : Int? = 0
-    var amount : Int? = 0
+    var amount : JSONValue? = JSONValue.int(0)
     var fees : Int? = 0
     var broadcastTimestamp : TimeInterval? = 0.0
     var chainTimestamp : TimeInterval? = 0.0
@@ -59,7 +59,11 @@ struct TXPayloadDto : Codable {
     
     var amountIntWithDecimal : JSONValue?
     {
-        if let intValue = amount
+        if let amountDoubleValue = amount?.doubleValue
+        {
+            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+            return JSONValue.double(doubleValue)
+        }else if let intValue = amount?.intValue
         {
             let doubleValue = Double(intValue) / pow(10, Double(decimal!))
             return JSONValue.double(doubleValue)

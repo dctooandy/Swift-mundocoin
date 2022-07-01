@@ -22,7 +22,7 @@ enum DetailHiddenMode {
 class TDetailViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     var titleString = ""
     // model
     var detailType : DetailType = .pending
@@ -82,6 +82,7 @@ class TDetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        dpg = DisposeBag()
     }
     // MARK: -
     // MARK:業務方法
