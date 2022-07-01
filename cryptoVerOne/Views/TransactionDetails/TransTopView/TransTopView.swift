@@ -19,6 +19,7 @@ class TransTopView: UIView,NibOwnerLoadable {
             setupType()
         }
     }
+    var transID : String = ""
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topIconImageView: UIImageView!

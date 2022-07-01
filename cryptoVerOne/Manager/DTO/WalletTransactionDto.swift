@@ -182,11 +182,15 @@ struct ContentDto : Codable
     }
     var amountIntWithDecimal : JSONValue?
     {
-        if let intValue = amount?.intValue
+        if let amountDoubleValue = amount?.doubleValue
+        {
+            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+            return JSONValue.double(doubleValue)
+        }else if let intValue = amount?.intValue
         {
             let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
             return JSONValue.double(doubleValue)
-        }else
+        }else 
         {
             return JSONValue.double(0.00)
         }

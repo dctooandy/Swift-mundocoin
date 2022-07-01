@@ -129,7 +129,7 @@ class AuditDetailViewController: BaseViewController {
                 item.isHidden = (showMode == .pending ? true : false)
             }
             statusLabel.text = chainDto.state
-            commentTitleLabel.isHidden =  (showMode == .pending ? true : chainDto.memo.isEmpty)
+            commentTitleLabel.isHidden =  ((showMode == .pending ? true : chainDto.memo?.isEmpty) != nil)
             commentLabel.text = chainDto.memo
             txidLabel.text = transDto.txId ?? ""
             

@@ -74,7 +74,7 @@ struct ChainDto:Codable {
     var createdDate : String = ""
     var updatedDate : String = ""
     var state : String = ""
-    var memo : String = ""
+    var memo : String? = ""
     var approver : ApproverDto = ApproverDto()
 }
 struct ChainSocketDto:Codable {

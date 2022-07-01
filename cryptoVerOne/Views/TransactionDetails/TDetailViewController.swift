@@ -69,7 +69,6 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
-        
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -83,7 +82,6 @@ class TDetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
     }
     // MARK: -
     // MARK:業務方法
@@ -141,6 +139,9 @@ class TDetailViewController: BaseViewController {
                     dataListView.viewType = detailDto.detailType
                     topView.topViewType = detailDto.detailType
                     TransStyleThemes().acceptTopViewStatusStyle(detailDto.detailType)
+                    UIView.animate(withDuration: 0.3) {
+                        self.view.layoutIfNeeded()
+                    }
                 }
             }
         }.disposed(by: dpg)
