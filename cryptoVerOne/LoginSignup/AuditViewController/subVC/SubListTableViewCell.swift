@@ -49,7 +49,7 @@ class SubListTableViewCell: UITableViewCell {
         {
             topTitleLabel.text = "Withdraw Request \(userDto.email)"
             timeLabel.text = self.showMode == .pending ? transDto.createdDateString : transDto.updatedDateString
-            let iconImage = UIImage(named: chainDto.state == "REJECT" ? "icon-error":"icon-done")
+            let iconImage = UIImage(named: chainDto.state == "CANCELLED" ? "icon-error":"icon-done")
             finishedIcon.image = iconImage
         }
         finishedIcon.isHidden = (showMode == .pending ? true : false)

@@ -107,7 +107,8 @@ class SubListPageViewController: BaseViewController {
                 self.pendingDataArray.removeAll()
                 self.finishedDataArray.removeAll()
             }
-            let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
+//            let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "CANCELLED")}
+            let finishedData = dto.content.filter{($0.state != "PENDING")}
             let pendingData = dto.content.filter{($0.state == "PENDING")}
             self.pendingDataArray.append(contentsOf: pendingData)
             self.finishedDataArray.append(contentsOf: finishedData)
@@ -121,7 +122,10 @@ class SubListPageViewController: BaseViewController {
                 _ = LoadingViewController.dismiss()
                 // 停止 refreshControl 動畫
             }
-     
+        }.disposed(by: dpg)
+        viewModel.rxFetchListError().subscribeSuccess { [self] _ in
+            subVCs.first?.endFetchData()
+            subVCs.last?.endFetchData()
         }.disposed(by: dpg)
     }
     func reloadPageMenu(currentMode: AuditShowMode) {

@@ -12,8 +12,8 @@ import RxSwift
 
 class SubListViewModel: BaseViewModel {
     // MARK:業務設定
-    private var fetchSuccess = PublishSubject<Any>()
     private var fetchListSuccess = PublishSubject<(AuditApprovalDto, isUpdate:Bool)>()
+    private var fetchListError = PublishSubject<(Any)>()
     // MARK: -
     // MARK:UI 設定
     // MARK: -
@@ -55,28 +55,32 @@ class SubListViewModel: BaseViewModel {
                 }
             }
         }onError: { (error) in
-            if let errorData = error as? ApiServiceError
-            {
-                switch errorData {
-                case .errorDto(_):
-//                    let status = dto.httpStatus ?? ""
-//                    let code = dto.code
-//                    let reason = dto.reason
-//                    let errors = dto.errors
-                    ErrorHandler.show(error: error)
-                default:
-                    break
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                Log.v("audit 過期")
+                _ = LoadingViewController.dismiss()
+                if let errorData = error as? ApiServiceError
+                {
+                    switch errorData {
+                    case .errorDto(_):
+    //                    let status = dto.httpStatus ?? ""
+    //                    let code = dto.code
+    //                    let reason = dto.reason
+    //                    let errors = dto.errors
+                        ErrorHandler.show(error: error)
+                    default:
+                        break
+                    }
                 }
+                fetchListError.onNext(())
             }
         }.disposed(by: disposeBag)
-        fetchSuccess.onNext(())
     }
  
-    func rxFetchSuccess() -> Observable<Any> {
-        return fetchSuccess.asObserver()
-    }
     func rxFetchListSuccess() -> Observable<(AuditApprovalDto , isUpdate:Bool)> {
         return fetchListSuccess.asObserver()
+    }
+    func rxFetchListError() -> Observable<Any> {
+        return fetchListError.asObserver()
     }
     // MARK: -
     // MARK:業務方法
