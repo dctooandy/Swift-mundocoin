@@ -321,7 +321,8 @@ class WithdrawViewController: BaseViewController {
                                        address: transDto.toAddress,
                                        txid: transDto.txId ?? "",
                                        id:transDto.id,
-                                       orderId: transDto.orderId)
+                                       orderId: transDto.orderId,
+                                       confirmBlocks: transDto.confirmBlocks ?? 0)
             let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
                                                           mode: .topViewShow ,
                                                           dataDto:detailData)

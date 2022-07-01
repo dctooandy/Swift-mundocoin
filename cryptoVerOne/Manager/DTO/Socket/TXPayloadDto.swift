@@ -68,22 +68,36 @@ struct TXPayloadDto : Codable {
             return JSONValue.double(0.00)
         }
     }
-    var detailType:DetailType
-    {
-        if state == "PROCESSING"
+    var detailType:DetailType {
+        if self.state == "PENDING" || self.state == "Pending" || self.processingState == "PENDING"
+        {
+            return .pending
+        }else if state == "TRANSACTION_FAILED" ||
+                    self.state == "FAILED" ||
+                    self.state == "Failed" ||
+                    self.processingState == "FAILED"
+        {
+            return.failed
+        }else if state == "PROCESSING" || state == "Processing" || self.processingState == "IN_CHAIN"
         {
             return .processing
-        }
-        else if state == "COMPLETE"
+        }else
         {
             return .done
         }
-        else if state == "PENDING"
+    }
+    var stateValue:String
+    {
+        switch self.detailType
         {
-            return .pending
-        }else
-        {
-            return .failed
+        case .done:
+            return "COMPLETE"
+        case .pending:
+            return "PENDING"
+        case .failed:
+            return "FAILED"
+        case .processing:
+            return "PROCESSING"
         }
     }
     var createdDateString : String

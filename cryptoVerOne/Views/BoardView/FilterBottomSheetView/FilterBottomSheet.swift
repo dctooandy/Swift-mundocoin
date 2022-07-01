@@ -44,7 +44,7 @@ class FilterBottomSheet: BaseBottomSheet {
     {
         defaultContainer.addSubview(filterBottomView)
         filterBottomView.rxConfirmTrigger().subscribeSuccess { [self] dto in
-            dismiss(animated: true){
+            dismiss(animated: true){ [self] in
                 onConfirmClick.onNext(dto)
             }
         }.disposed(by: dpg)

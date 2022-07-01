@@ -148,7 +148,8 @@ class TransactionTableViewController: BaseViewController {
                                        address: contentDto.toAddress,
                                        txid: contentDto.txId ?? "",
                                        id: contentDto.id,
-                                       orderId: contentDto.orderId)
+                                       orderId: contentDto.orderId,
+                                       confirmBlocks: contentDto.confirmBlocks ?? 0)
             
             let detailVC = TDetailViewController.instance(titleString: showModeAtTableView.showTitleString,
                                                           mode: .topViewHidden ,

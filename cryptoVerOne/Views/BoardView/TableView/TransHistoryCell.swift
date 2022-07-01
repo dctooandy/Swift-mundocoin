@@ -54,10 +54,10 @@ class TransHistoryCell: UITableViewCell {
             statusLabel.isHidden = true
         }else
         {
-            statusLabel.isHidden = data.state == "COMPLETE" ? true : false
-            statusLabel.text = data.state.capitalizingFirstLetter()
-            labelWidthConstraint.constant = data.state.customWidth(textSize: 11, spaceWidth: 10)
-            if data.state == "FAILED"
+            statusLabel.isHidden = data.stateValue == "COMPLETE" ? true : false
+            statusLabel.text = data.stateValue.capitalizingFirstLetter()
+            labelWidthConstraint.constant = data.stateValue.customWidth(textSize: 11, spaceWidth: 10)
+            if data.stateValue == "FAILED"
             {
                 statusLabel.textColor = Themes.grayA3AED0
                 statusLabel.backgroundColor = Themes.grayA3AED020
@@ -75,7 +75,7 @@ class TransHistoryCell: UITableViewCell {
     func bindUI()
     {
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
-            if let statsValue = dto?.state,
+            if let statsValue = dto?.stateValue,
                let amountValue = dto?.amountIntWithDecimal?.stringValue,
                let socketID = dto?.id
             {

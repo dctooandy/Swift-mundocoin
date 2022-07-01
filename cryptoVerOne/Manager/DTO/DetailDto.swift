@@ -18,7 +18,8 @@ class DetailDto {
     let amount:String
     let id:String
     var orderId : String
-    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "" ,id:String = "" , orderId:String = "") {
+    var confirmBlocks : Int
+    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0) {
         self.detailType = detailType
         self.amount = amount
         self.tether = tether
@@ -30,5 +31,6 @@ class DetailDto {
         self.txid = txid
         self.id = id
         self.orderId = orderId
+        self.confirmBlocks = confirmBlocks
     }
 }

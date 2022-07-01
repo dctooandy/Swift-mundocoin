@@ -107,18 +107,35 @@ struct ContentDto : Codable
         }
     }
     var detailType:DetailType {
-        if self.state == "PENDING"
+        if self.state == "PENDING" || self.state == "Pending" || self.processingState == "PENDING"
         {
             return .pending
-        }else if state == "FAILED"
+        }else if state == "TRANSACTION_FAILED" ||
+                    self.state == "FAILED" ||
+                    self.state == "Failed" ||
+                    self.processingState == "FAILED"
         {
             return.failed
-        }else if state == "PROCESSING"
+        }else if state == "PROCESSING" || state == "Processing" || self.processingState == "IN_CHAIN"
         {
             return .processing
         }else
         {
             return .done
+        }
+    }
+    var stateValue:String
+    {
+        switch self.detailType
+        {
+        case .done:
+            return "COMPLETE"
+        case .pending:
+            return "PENDING"
+        case .failed:
+            return "FAILED"
+        case .processing:
+            return "PROCESSING"
         }
     }
     var createdDateString : String

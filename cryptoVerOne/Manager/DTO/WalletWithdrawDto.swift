@@ -17,30 +17,33 @@ struct WalletWithdrawDto :Codable {
     var chain : [ChainDto]? = []
     var transaction : ContentDto? = ContentDto()
     var issuer : IssuerDto? = IssuerDto()
-    
-    func socketRepresentation() -> SocketData {
-        return ["id": id
-                , "createdDate": createdDate
-                , "updatedDate": updatedDate
-                , "type": type
-                , "state": state
-                , "chain": chain
-                , "transaction": transaction
-                , "issuer": issuer]
-    }
     var detailType:DetailType {
-        if self.state == "PENDING"
+        if self.state == "PENDING" || self.state == "Pending"
         {
             return .pending
-        }else if state == "FAILED"
+        }else if state == "TRANSACTION_FAILED" || self.state == "FAILED" || self.state == "Failed"
         {
             return.failed
-        }else if state == "PROCESSING"
+        }else if state == "PROCESSING" || state == "Processing"
         {
             return .processing
         }else
         {
             return .done
+        }
+    }
+    var stateValue:String
+    {
+        switch self.detailType
+        {
+        case .done:
+            return "COMPLETE"
+        case .pending:
+            return "PENDING"
+        case .failed:
+            return "FAILED"
+        case .processing:
+            return "PROCESSING"
         }
     }
     var createdDateString : String

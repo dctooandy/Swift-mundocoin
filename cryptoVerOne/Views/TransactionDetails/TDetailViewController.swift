@@ -132,10 +132,11 @@ class TDetailViewController: BaseViewController {
                                           address: data.toAddress ?? "",
                                           txid: data.txId ?? "",
                                           id: data.id ?? "",
-                                          orderId: data.orderId ?? "")
-                dataListView.detailDataDto = detailDto
-                if detailDataDto?.id == socketID, detailDataDto?.detailType != statsValue
+                                          orderId: data.orderId ?? "",
+                                          confirmBlocks: data.confirmBlocks ?? 0)
+                if detailDataDto?.id == socketID, (detailDataDto?.detailType != statsValue || detailDataDto?.confirmBlocks != data.confirmBlocks)
                 {
+                    dataListView.detailDataDto = detailDto
                     self.detailDataDto = detailDto
                     dataListView.viewType = detailDto.detailType
                     topView.topViewType = detailDto.detailType
