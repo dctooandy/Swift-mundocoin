@@ -115,7 +115,8 @@ class WithdrawViewController: BaseViewController {
         let maxString = "10000"
         if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
         {
-            availableBalanceAmountLabel.text = "\(String(describing: data.amount))"
+            let amountValue = data.amount.doubleValue ?? 0.0
+            availableBalanceAmountLabel.text = "\(String(describing: amountValue))"
             // 設定最高額度
             let availableString = availableBalanceAmountLabel.text ?? "0"
             amountInputView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)

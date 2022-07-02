@@ -167,19 +167,21 @@ class WalletViewController: BaseViewController {
     }
     func setUPAmount()
     {
-        var amountString = 0
+        var amountString = 0.0
         var dataDtoIndex = 0
         for dataDto in walletsDto {
             // 先給 = 500
 //            dataDto.amount = randomAmount(length: 4)
             // 先拿到總額
-            amountString += dataDto.amount
+            let amountValue = dataDto.amount.doubleValue ?? 0.0
+            amountString += amountValue
         }
         for dataDto in walletsDto {
+            let amountValue = dataDto.amount.doubleValue ?? 0.0
             dataDtoIndex = walletsDto.indexOfObject(object: dataDto)
-            if dataDto.amount > 0
+            if amountValue > 0
             {
-                dataDto.persentValue = String(describing: Double(dataDto.amount)/Double(amountString) * 100).numberFormatter(.decimal , 2)
+                dataDto.persentValue = String(describing: amountValue/Double(amountString) * 100).numberFormatter(.decimal , 2)
             }else
             {
                 dataDto.persentValue = "0.00"

@@ -43,13 +43,13 @@ class WalletBalancesDto :Codable {
     var id: String
     var createdDate: String
     var updatedDate: String
-    var amount : Int
+    var amount : JSONValue
     var address: String
     var currency: String
 //    var token: String?
     var persentValue: String?
 
-    init(id: String = "", createdDate: String = "", updatedDate: String = "" , amount:Int = 0 ,address: String = "", currency: String = "", persentValue : String = "") {
+    init(id: String = "", createdDate: String = "", updatedDate: String = "" , amount:JSONValue = JSONValue.int(0) ,address: String = "", currency: String = "", persentValue : String = "") {
         self.id = id
         self.createdDate = createdDate
         self.updatedDate = updatedDate

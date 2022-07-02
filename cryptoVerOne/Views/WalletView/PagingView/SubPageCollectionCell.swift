@@ -36,8 +36,9 @@ class SubPageCollectionCell: UICollectionViewCell {
     // MARK: -
     // MARK:業務方法
     func setData(data: WalletBalancesDto) {
-        amountLabel.text = "\(data.amount)".numberFormatter(.decimal, 8)
-        equelLabel.text = "≈$"+"\(data.amount)".numberFormatter(.decimal, 2)
+        let amountValue = data.amount.doubleValue ?? 0.0
+        amountLabel.text = "\(amountValue)".numberFormatter(.decimal, 8)
+        equelLabel.text = "≈$"+"\(amountValue)".numberFormatter(.decimal, 2)
         coinLabel.text = data.currency
         coinImageView.image = UIImage(named: "icon-usdt")
         currencyLabel.text = data.currency
