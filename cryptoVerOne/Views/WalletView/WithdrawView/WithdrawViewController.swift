@@ -13,7 +13,6 @@ import DropDown
 class WithdrawViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
-    private let onConfirmClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
@@ -338,10 +337,6 @@ class WithdrawViewController: BaseViewController {
             withdrawToView.textField.text = ""
             withdrawToView.textField.sendActions(for: .valueChanged)
         }
-    }
-    func rxConfirmClick() -> Observable<Any>
-    {
-        return onConfirmClick.asObserver()
     }
 }
 // MARK: -

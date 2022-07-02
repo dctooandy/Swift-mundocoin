@@ -167,6 +167,7 @@ class BoardViewController: BaseViewController {
         {
             LoadingViewController.show()
             viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+            isFilterAndChangeVCAction = false
         }
         else
         {
