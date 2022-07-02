@@ -200,7 +200,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "605085F3-C4F8-4463-B4B6-CA90B641EABE"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoVerOne/LoginSignup/LoginViewController.swift"
@@ -254,8 +254,8 @@
             filePath = "cryptoVerOne/Manager/SocketIOManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "createTypeDto(valueToFind:resultData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -295,15 +295,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F043BEED-9441-4524-809F-4FE9778891A6"
-            shouldBeEnabled = "Yes"
+            uuid = "EEF98BC0-CAF5-43E3-AF04-83F969A3F7A4"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoVerOne/Manager/SocketIOManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "293"
-            endingLineNumber = "293"
+            startingLineNumber = "296"
+            endingLineNumber = "296"
             landmarkName = "receiveMessage(data:)"
             landmarkType = "7">
          </BreakpointContent>

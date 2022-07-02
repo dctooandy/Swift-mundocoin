@@ -26,7 +26,7 @@ class SocketIOManager: NSObject {
         setup()
         
     }
-    func setup()
+    func connectPrefix()
     {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         let token = KeychainManager.share.getAuditToken()
@@ -50,6 +50,10 @@ class SocketIOManager: NSObject {
         )
         // 掛鉤 NameSpace
         socket = manager.socket(forNamespace: "/notification")
+    }
+    func setup()
+    {
+        connectPrefix()
         if(socket != nil)
         {
             if(socket.status == .disconnected || socket.status == .notConnected)
@@ -293,6 +297,9 @@ extension SocketIOManager
                 let results = try decoder.decode(SocketMessageDto.self, from:resultData)
                 Log.i("Socket.io - result: \(results)")
                 if results.type == "APPROVAL_DONE"
+                {
+                    self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
+                }else if results.type == "APPROVAL_INIT"
                 {
                     self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
                 }else if results.type == "TX_CALLBACK"
