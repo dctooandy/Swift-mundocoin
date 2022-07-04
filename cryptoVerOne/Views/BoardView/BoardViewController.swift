@@ -19,9 +19,9 @@ enum TransactionShowMode
     {
         switch self {
         case .deposits:
-            return "Deposits".localized
+            return "Deposit Details".localized
         case .withdrawals:
-            return "Withdraw".localized
+            return "Withdrawal Details".localized
         }
     }
     
