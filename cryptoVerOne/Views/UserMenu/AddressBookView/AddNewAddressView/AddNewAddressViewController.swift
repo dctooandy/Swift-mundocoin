@@ -12,10 +12,11 @@ import RxSwift
 class AddNewAddressViewController: BaseViewController {
     // MARK:業務設定
     private let onDismissClick = PublishSubject<Any>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     private var currentNetwotkMethod = ""
     var isScanPopAction = false
-    var newAddressString :String = "" 
+    var newAddressString :String = ""
+    var isScanVCByAVCapture = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -54,10 +55,19 @@ class AddNewAddressViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        if isScanVCByAVCapture == false
+        {
+            bindWhenAppear()
+        }
+        isScanVCByAVCapture = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if isScanVCByAVCapture == false
+        {
+            self.dpg = DisposeBag()
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -201,21 +211,32 @@ class AddNewAddressViewController: BaseViewController {
     {
         addressStyleView.rxScanImagePressed().subscribeSuccess {[self] _ in
             Log.i("開鏡頭")
-            let scanVC = ScannerViewController()
-            scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
-                isScanPopAction = false
-                newAddressString = stringCode
-                addressStyleView.textField.text = stringCode
-                addressStyleView.textField.sendActions(for: .valueChanged)
-            }.disposed(by: dpg)
-            isScanPopAction = true
-            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+            if AuthorizeService.share.authorizeAVCapture()
             {
-                self.present(scanVC, animated: true)
-            }else
-            {
-                self.navigationController?.pushViewController(scanVC, animated: true)
+                isScanVCByAVCapture = true
+                Log.v("開始使用相機相簿")
+                let scanVC = ScannerViewController()
+                scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
+                    isScanPopAction = false
+                    newAddressString = stringCode
+                    addressStyleView.textField.text = stringCode
+                    addressStyleView.textField.sendActions(for: .valueChanged)
+                }.disposed(by: dpg)
+                isScanPopAction = true
+                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+                {
+                    self.present(scanVC, animated: true)
+                }else
+                {
+                    self.navigationController?.pushViewController(scanVC, animated: true)
+                }
             }
+        }.disposed(by: dpg)
+    }
+    func bindWhenAppear()
+    {
+        AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
+            UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
         }.disposed(by: dpg)
     }
     func setupAddressStyleView()

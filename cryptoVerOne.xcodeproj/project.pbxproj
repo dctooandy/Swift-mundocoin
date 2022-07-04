@@ -880,6 +880,12 @@
 		0998BF112861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
 		0998BF122861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
 		0998BF132861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0999D1032872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D1042872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D1052872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D1062872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D1072872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D1082872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1420,10 +1426,8 @@
 		1C773A2E5C8364BD89659124 /* Pods_cryptoVerOne_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4520D27D139D18EFDB32FE02 /* Pods_cryptoVerOne_dev.framework */; };
 		1CDF6130443BC417140C60E6 /* Pods_Approval_stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0ADFFC7B1C77BE0C33F18E27 /* Pods_Approval_stage.framework */; };
 		38BB6A8BBD5A4AF465B07F88 /* Pods_Approval_dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FDB89C43024A753ADDA8A3E /* Pods_Approval_dev.framework */; };
-		4009C015445F86AEF0A90703 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		4D555D24E55969229FB42920 /* Pods_cryptoVerOne_stage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 703C366D6345B72A4940F020 /* Pods_cryptoVerOne_stage.framework */; };
 		579C387CF0714F90D058275F /* Pods_Approval.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BBFC2BEE4143CE3FFC4C530 /* Pods_Approval.framework */; };
-		697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */; };
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
 		A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
@@ -1700,6 +1704,7 @@
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
+		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -1994,7 +1999,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4009C015445F86AEF0A90703 /* (null) in Frameworks */,
 				1C773A2E5C8364BD89659124 /* Pods_cryptoVerOne_dev.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2011,7 +2015,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				697B321D16866FD7AFC5D303 /* Pods_cryptoVerOne.framework in Frameworks */,
 				10B117A1F75DAE74B80D9407 /* Pods_cryptoVerOne.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2138,6 +2141,14 @@
 				09DBDAEC286C279C007162AE /* TXPayloadDto.swift */,
 			);
 			path = Socket;
+			sourceTree = "<group>";
+		};
+		0999D0FA2872B946003C5260 /* AuthorizwClass */ = {
+			isa = PBXGroup;
+			children = (
+				0999D1022872B992003C5260 /* AuthorizeService.swift */,
+			);
+			path = AuthorizwClass;
 			sourceTree = "<group>";
 		};
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
@@ -2563,6 +2574,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0999D0FA2872B946003C5260 /* AuthorizwClass */,
 				092E760D2850A9C200221997 /* NoDataView */,
 				092E75F8284F586B00221997 /* DynamicCollectionView */,
 				09056DA5284F1A9200038BF8 /* DropDownView */,
@@ -3918,6 +3930,7 @@
 				09905AC82851A02B00BAEE78 /* FilterCell.swift in Sources */,
 				09905AC92851A02B00BAEE78 /* UpdatePasswordDto.swift in Sources */,
 				09905ACA2851A02B00BAEE78 /* MDNavigationController.swift in Sources */,
+				0999D1072872B992003C5260 /* AuthorizeService.swift in Sources */,
 				09905ACB2851A02B00BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905ACC2851A02B00BAEE78 /* GuidePageViewController.swift in Sources */,
 				09DBDAEA286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -4127,6 +4140,7 @@
 				09905BBA2851A08500BAEE78 /* FilterCell.swift in Sources */,
 				09905BBB2851A08500BAEE78 /* UpdatePasswordDto.swift in Sources */,
 				09905BBC2851A08500BAEE78 /* MDNavigationController.swift in Sources */,
+				0999D1082872B992003C5260 /* AuthorizeService.swift in Sources */,
 				09905BBD2851A08500BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905BBE2851A08500BAEE78 /* GuidePageViewController.swift in Sources */,
 				09DBDAEB286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -4336,6 +4350,7 @@
 				09905CAC2851A09600BAEE78 /* FilterCell.swift in Sources */,
 				09905CAD2851A09600BAEE78 /* UpdatePasswordDto.swift in Sources */,
 				09905CAE2851A09600BAEE78 /* MDNavigationController.swift in Sources */,
+				0999D1062872B992003C5260 /* AuthorizeService.swift in Sources */,
 				09905CAF2851A09600BAEE78 /* UserDefaults+util.swift in Sources */,
 				09905CB02851A09600BAEE78 /* GuidePageViewController.swift in Sources */,
 				09DBDAE9286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -4545,6 +4560,7 @@
 				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF4AC283C77ED00D7B19B /* MDNavigationController.swift in Sources */,
+				0999D1042872B992003C5260 /* AuthorizeService.swift in Sources */,
 				09CAF4AD283C77ED00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF4AE283C77ED00D7B19B /* GuidePageViewController.swift in Sources */,
 				09DBDAE7286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -4754,6 +4770,7 @@
 				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				09CAF56D283C7BBE00D7B19B /* MDNavigationController.swift in Sources */,
+				0999D1052872B992003C5260 /* AuthorizeService.swift in Sources */,
 				09CAF56E283C7BBE00D7B19B /* UserDefaults+util.swift in Sources */,
 				09CAF56F283C7BBE00D7B19B /* GuidePageViewController.swift in Sources */,
 				09DBDAE8286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -4963,6 +4980,7 @@
 				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,
 				095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */,
 				A1973A012828E59A009932D8 /* MDNavigationController.swift in Sources */,
+				0999D1032872B992003C5260 /* AuthorizeService.swift in Sources */,
 				A19C70E728224BF5000AFC3F /* UserDefaults+util.swift in Sources */,
 				A19C70AF28223CB7000AFC3F /* GuidePageViewController.swift in Sources */,
 				09DBDAE6286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
@@ -5373,7 +5391,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -5430,7 +5448,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

@@ -13,10 +13,11 @@ import DropDown
 class WithdrawViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
     var isScanPopAction = false
+    var isScanVCByAVCapture = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var availableBalanceAmountLabel: UILabel!
@@ -64,10 +65,20 @@ class WithdrawViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         bindTextField()
+        if isScanVCByAVCapture == false
+        {
+            bindWhenAppear()
+        }
+        isScanVCByAVCapture = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        if isScanVCByAVCapture == false
+        {
+            self.dpg = DisposeBag()
+        }
+        
 //        clearAllData()
     }
     @objc func touch() {
@@ -121,18 +132,29 @@ class WithdrawViewController: BaseViewController {
             amountInputView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         }
     }
+    func bindWhenAppear()
+    {
+        AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
+            UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+        }.disposed(by: dpg)
+    }
     func bindAction()
     {
         withdrawToView.rxScanImagePressed().subscribeSuccess { [self](_) in
             Log.i("開鏡頭")
-            let scanVC = ScannerViewController()
-            scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
-                isScanPopAction = false
-                withdrawToView.textField.text = stringCode
-                withdrawToView.textField.sendActions(for: .valueChanged)
-            }.disposed(by: dpg)
-            isScanPopAction = true
-            self.navigationController?.pushViewController(scanVC, animated: true)
+            if AuthorizeService.share.authorizeAVCapture()
+            {
+                isScanVCByAVCapture = true
+                Log.v("開始使用相機相簿")
+                let scanVC = ScannerViewController()
+                scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
+                    isScanPopAction = false
+                    withdrawToView.textField.text = stringCode
+                    withdrawToView.textField.sendActions(for: .valueChanged)
+                }.disposed(by: dpg)
+                isScanPopAction = true
+                self.navigationController?.pushViewController(scanVC, animated: true)
+            }
         }.disposed(by: dpg)
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
             Log.i("開地址簿")

@@ -13,7 +13,7 @@ import RxSwift
 class DepositViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     fileprivate let viewModel = DepositViewModel()
     var qrCodeString : String!
     var walletDto :WalletAddressDto = WalletAddressDto(){
@@ -52,10 +52,12 @@ class DepositViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        bindWhenAppear()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        self.dpg = DisposeBag()
     }
     // MARK: -
     // MARK:業務方法
@@ -96,18 +98,30 @@ class DepositViewController: BaseViewController {
             Toast.show(msg: "Copied")
         }.disposed(by: dpg)
         saveButton.rx.tap.subscribeSuccess { [self](_) in
-//            let image = codeImageView.asImage()
-            let image = view.screenShot()!
-            /// 将转换后的UIImage保存到相机胶卷中
-            UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-            Toast.show(msg: "Saved")
+            if AuthorizeService.share.authorizePhoto()
+            {
+                //            let image = codeImageView.asImage()
+                Log.v("開始使用相機相簿")
+                let image = view.screenShot()!
+                /// 将转换后的UIImage保存到相机胶卷中
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                Toast.show(msg: "Saved")
+            }
+            
         }.disposed(by: dpg)
         shareButton.rx.tap.subscribeSuccess { [self](_) in
             shareInfo()
         }.disposed(by: dpg)
     }
+    func bindWhenAppear()
+    {
+        AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
+            UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+        }.disposed(by: dpg)
+    }
     @objc func saveImageToAlbum()
     {
+
         Toast.show(msg: "Saved")
     }
     func shareInfo() {
