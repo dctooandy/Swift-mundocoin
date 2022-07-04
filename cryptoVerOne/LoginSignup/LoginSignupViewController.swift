@@ -327,11 +327,37 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        willShowAgainFromVerifyVC = true
-        // 暫時改為直接推頁面
-        verifyVC = VerifyViewController.loadNib()
-        verifyVC.loginDto = dataDto
-        navigationController?.pushViewController(verifyVC, animated: true)
+        
+        Beans.loginServer.verificationIDPost(idString: dataDto.account , pwString: dataDto.password).subscribe { [self] dto in
+            Log.v("帳號有註冊過")
+            willShowAgainFromVerifyVC = true
+            // 暫時改為直接推頁面
+            verifyVC = VerifyViewController.loadNib()
+            verifyVC.loginDto = dataDto
+            navigationController?.pushViewController(verifyVC, animated: true)
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    
+                    if status == "400"
+                    {
+                        loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else if status == "404"
+                    {
+                        loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+       
     }
     func showVerifyVCWithSignUpData(_ dataDto: SignupPostDto)
     {

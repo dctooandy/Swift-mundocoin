@@ -144,8 +144,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 #if Mundo_PRO
         self.domainMode = .Pro
+#elseif Mundo_STAGE
+        self.domainMode = .Stage
 #elseif Approval_PRO
         self.domainMode = .AuditPro
+#elseif Approval_STAGE
+        self.domainMode = .AuditStage
 #else
         self.domainMode = KeychainManager.share.getDomainMode()
         Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")

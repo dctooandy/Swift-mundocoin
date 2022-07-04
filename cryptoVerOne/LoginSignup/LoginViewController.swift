@@ -15,7 +15,7 @@ class LoginViewController: BaseViewController {
 
     @IBOutlet weak private var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: CornerradiusButton!
-    private var accountInputView: AccountInputView?
+    var accountInputView: AccountInputView?
     
     private var timer: Timer?
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
