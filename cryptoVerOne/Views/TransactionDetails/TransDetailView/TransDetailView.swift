@@ -95,9 +95,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         let lineViewOne = UILabel()
         lineViewOne.textAlignment = .center
         lineViewOne.backgroundColor = .clear
+        lineViewOne.textColor = Themes.grayA3AED0
+        lineViewOne.lineBreakMode = .byCharWrapping
         withdrawToInputView.tfMaskView.addSubview(lineViewOne)
         lineViewOne.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(2)
         }
         lineViewOne.text = "----------------------------------------------------------"
@@ -110,9 +114,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         let lineViewTwo = UILabel()
         lineViewTwo.textAlignment = .center
         lineViewTwo.backgroundColor = .clear
+        lineViewTwo.textColor = Themes.grayA3AED0
+        lineViewTwo.lineBreakMode = .byCharWrapping
         txidInputView.tfMaskView.addSubview(lineViewTwo)
         lineViewTwo.snp.makeConstraints { make in
-            make.top.left.right.equalToSuperview()
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(2)
         }
         lineViewTwo.text = "----------------------------------------------------------"
