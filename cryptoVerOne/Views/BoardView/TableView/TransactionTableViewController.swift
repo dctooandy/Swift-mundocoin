@@ -138,11 +138,12 @@ class TransactionTableViewController: BaseViewController {
     {
         if let amountValue = contentDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)
         {
+            let conBlocks = contentDto.confirmBlocks ?? 0
             let detailData = DetailDto(detailType: contentDto.detailType,
                                        amount:amountValue,
                                        tether: contentDto.currency,
                                        network: "Tron(TRC20)",
-                                       confirmations: "50/1",
+                                       confirmations: "\(conBlocks)/1",
                                        fee:"1",
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,

@@ -311,11 +311,12 @@ class WithdrawViewController: BaseViewController {
            let amountText = transDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8),
            let fee = feeAmountLabel.text
         {
+            let conBlocks = dataDto.transaction?.confirmBlocks ?? 0
             let detailData = DetailDto(detailType: dataDto.detailType,
                                        amount: amountText,
                                        tether: transDto.currency ,
                                        network: "Tron(TRC20)",
-                                       confirmations: "50/1",
+                                       confirmations: "\(conBlocks)/1",
                                        fee:fee,
                                        date: dataDto.createdDateString,
                                        address: transDto.toAddress,
