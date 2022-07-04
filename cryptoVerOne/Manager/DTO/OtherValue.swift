@@ -45,6 +45,7 @@ enum JSONValue: Codable {
     var doubleValue: Double? {
         switch self {
         case .double(let double): return double
+        case .int(let int): return Double(int)
         default: return nil
         }
     }

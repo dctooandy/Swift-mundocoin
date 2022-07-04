@@ -173,11 +173,27 @@ class WalletViewController: BaseViewController {
             // 先給 = 500
 //            dataDto.amount = randomAmount(length: 4)
             // 先拿到總額
-            let amountValue = dataDto.amount.doubleValue ?? 0.0
-            amountString += amountValue
+            
+            if let doubleValue = dataDto.amount.doubleValue
+            {
+                amountString += doubleValue
+                
+            }else if let intValue = dataDto.amount.intValue
+            {
+                amountString += Double(intValue)
+            }
         }
         for dataDto in walletsDto {
-            let amountValue = dataDto.amount.doubleValue ?? 0.0
+            var amountValue = 0.0
+            if let doubleValue = dataDto.amount.doubleValue
+            {
+                amountValue = doubleValue
+                
+            }else if let intValue = dataDto.amount.intValue
+            {
+                amountValue = Double(intValue)
+            }
+             
             dataDtoIndex = walletsDto.indexOfObject(object: dataDto)
             if amountValue > 0
             {
