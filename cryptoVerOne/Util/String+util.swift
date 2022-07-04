@@ -93,7 +93,21 @@ extension String {
     ///   - minimumFractionDigits: 最少到小數第幾位
     /// - Returns: String
     func numberFormatter(_ style: NumberFormatter.Style , _ minimumFractionDigits: Int = 2, locale: Locale = Locale(identifier: "zh_Hans_CN")) -> String {
-        let num: Double = Double(self) ?? 0
+        var newString = ""
+        if self.contains(",")
+        {
+            for char in self
+            {
+                if char != ","
+                {
+                    newString += String(char)
+                }
+            }
+        }else
+        {
+            newString = self
+        }
+        let num: Double = Double(newString) ?? 0
         let formatter = NumberFormatter()
         formatter.numberStyle = style
         formatter.locale = locale
