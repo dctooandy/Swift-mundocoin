@@ -124,7 +124,7 @@ class TDetailViewController: BaseViewController {
                                           amount: data.amountIntWithDecimal?.stringValue ?? "",
                                           tether: data.currency ?? "",
                                           network: "Tron(TRC20)",
-                                          confirmations: "\(data.confirmBlocks ?? 0)/1",
+                                          confirmations: "\(data.confirmBlocks ?? 0)",
                                           //                                          fee: "\(data.fees ?? 1)",
                                           fee: "1",
                                           date: data.createdDateString,

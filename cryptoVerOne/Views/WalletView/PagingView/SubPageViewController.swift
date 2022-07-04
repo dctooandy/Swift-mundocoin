@@ -67,7 +67,7 @@ class SubPageViewController: BaseViewController {
     func modeTitle() -> String {
         switch self.walletPageMode {
         case .spot:
-            return "Sopt".localized
+            return "Spot".localized
         case.stake:
             return "Stake".localized
         }

@@ -38,6 +38,7 @@ class AuditDetailViewController: BaseViewController {
     
     @IBOutlet weak var commentTitleLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
+    @IBOutlet weak var txidTitleLabel: UILabel!
     @IBOutlet weak var txidLabel: UILabel!
     
     @IBOutlet var labelArray: [UILabel]!
@@ -129,8 +130,9 @@ class AuditDetailViewController: BaseViewController {
                 item.isHidden = (showMode == .pending ? true : false)
             }
             statusLabel.text = chainDto.state
-            commentTitleLabel.isHidden =  ((showMode == .pending ? true : chainDto.memo?.isEmpty) != nil)
+            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
             commentLabel.text = chainDto.memo
+            txidTitleLabel.isHidden = (showMode == .pending ? true : (transDto.txId?.isEmpty == nil || transDto.txId?.isEmpty == true))
             txidLabel.text = transDto.txId ?? ""
             
         }

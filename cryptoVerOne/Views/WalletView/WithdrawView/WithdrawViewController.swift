@@ -14,6 +14,7 @@ class WithdrawViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private var dpg = DisposeBag()
+    private var sacnerDpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
     var dropDataSource = ["TRC20"]
     var isScanPopAction = false
@@ -61,6 +62,7 @@ class WithdrawViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        sacnerDpg = DisposeBag()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -76,10 +78,11 @@ class WithdrawViewController: BaseViewController {
         super.viewWillDisappear(animated)
         if isScanVCByAVCapture == false
         {
-            self.dpg = DisposeBag()
+            self.sacnerDpg = DisposeBag()
+//            clearAllData()
         }
         
-//        clearAllData()
+        
     }
     @objc func touch() {
         self.view.endEditing(true)
@@ -91,6 +94,10 @@ class WithdrawViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    @objc override func popVC() {
+        clearAllData()
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     func setupUI()
     {
         view.backgroundColor = Themes.grayF4F7FE
@@ -136,7 +143,7 @@ class WithdrawViewController: BaseViewController {
     {
         AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
             UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
-        }.disposed(by: dpg)
+        }.disposed(by: sacnerDpg)
     }
     func bindAction()
     {
@@ -338,7 +345,7 @@ class WithdrawViewController: BaseViewController {
                                        amount: amountText,
                                        tether: transDto.currency ,
                                        network: "Tron(TRC20)",
-                                       confirmations: "\(conBlocks)/1",
+                                       confirmations: "\(conBlocks)",
                                        fee:fee,
                                        date: dataDto.createdDateString,
                                        address: transDto.toAddress,

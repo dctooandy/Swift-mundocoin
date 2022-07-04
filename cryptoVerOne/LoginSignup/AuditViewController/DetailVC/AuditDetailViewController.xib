@@ -237,6 +237,7 @@
                 <outlet property="networkLabel" destination="3RG-g0-0IJ" id="zpO-jG-Jma"/>
                 <outlet property="statusLabel" destination="yUO-pB-BwS" id="qM9-cJ-lzj"/>
                 <outlet property="txidLabel" destination="sXh-dc-l3f" id="uZl-NR-Fv4"/>
+                <outlet property="txidTitleLabel" destination="CC2-1D-x9z" id="Ccf-vZ-dwa"/>
                 <outlet property="userIDLabel" destination="RKz-Ba-0Od" id="APu-8v-WB2"/>
                 <outlet property="withdrawAmountLabel" destination="6lp-4Y-tMW" id="YvY-1R-yAe"/>
                 <outletCollection property="labelArray" destination="yUO-pB-BwS" collectionClass="NSMutableArray" id="xRl-rg-jQC"/>

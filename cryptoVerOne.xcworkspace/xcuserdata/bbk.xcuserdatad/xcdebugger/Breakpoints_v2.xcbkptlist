@@ -62,8 +62,8 @@
             filePath = "cryptoVerOne/Views/WalletView/WithdrawView/WithdrawViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "129"
-            endingLineNumber = "129"
+            startingLineNumber = "136"
+            endingLineNumber = "136"
             landmarkName = "setUPData(withdrawDatas:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "cryptoVerOne/LoginSignup/AuditViewController/DetailVC/AuditDetailViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "126"
+            endingLineNumber = "126"
             landmarkName = "setupDate(cellData:showMode:)"
             landmarkType = "7">
          </BreakpointContent>

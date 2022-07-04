@@ -143,7 +143,7 @@ class TransactionTableViewController: BaseViewController {
                                        amount:amountValue,
                                        tether: contentDto.currency,
                                        network: "Tron(TRC20)",
-                                       confirmations: "\(conBlocks)/1",
+                                       confirmations: "\(conBlocks)",
                                        fee:"1",
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,
