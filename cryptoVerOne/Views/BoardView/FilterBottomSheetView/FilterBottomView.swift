@@ -258,10 +258,12 @@ class FilterBottomView: UIView {
             if String(data.1) == "Deposits".localized
             {
                 filterHistoryValue = "DEPOSIT"
+                filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.deposits)
             }else
             {
                 filterHistoryValue = "WITHDRAW"
+                filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.withdrawals)
             }
         }.disposed(by: dpg)
