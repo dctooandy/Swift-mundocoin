@@ -112,8 +112,12 @@ class SubListPageViewController: BaseViewController {
             let pendingData = dto.content.filter{($0.state == "PENDING")}
             self.pendingDataArray.append(contentsOf: pendingData)
             self.finishedDataArray.append(contentsOf: finishedData)
-            self.pendingDataArray = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
-            self.finishedDataArray = self.finishedDataArray.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
+            var newPendingDate : [WalletWithdrawDto] = []
+            var newfinishedDate : [WalletWithdrawDto] = []
+            newPendingDate = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+            newfinishedDate = self.finishedDataArray.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
+            self.pendingDataArray = newPendingDate
+            self.finishedDataArray = newfinishedDate
             subVCs.first?.dataArray = self.pendingDataArray
             subVCs.last?.dataArray = self.finishedDataArray
             subVCs.first?.endFetchData()
