@@ -116,7 +116,7 @@ struct ContentDto : Codable
                     self.processingState == "FAILED"
         {
             return.failed
-        }else if state == "PROCESSING" || state == "Processing" || self.processingState == "IN_CHAIN"
+        }else if state == "PROCESSING" || state == "Processing"
         {
             return .processing
         }else

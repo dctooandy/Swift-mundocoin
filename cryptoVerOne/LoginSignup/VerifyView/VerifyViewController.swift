@@ -25,7 +25,7 @@ class VerifyViewController: BaseViewController {
     var verifificationType : VerifificationType = .loginOrForgotPW
     private var inputMode: LoginMode = .emailPage
     var isAlreadySetBackView = false
-    private var timer: Timer?
+    var timer: Timer?
     private var countTime = 60
     private var verifyCodeString = ""
     var loginDto : LoginPostDto?  {
