@@ -9,6 +9,8 @@ import UIKit
 import Toaster
 import RxSwift
 import DropDown
+import JWTDecode
+
 public typealias CheckCompletionBlock = (Bool) -> Void
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -179,36 +181,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAuditToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
-        LoadingViewController.show()
-        Beans.auditServer.auditApprovals().subscribe { [self] (dto) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                _ = LoadingViewController.dismiss()
-                // 沒過期,打refresh API, 時間加30分鐘
-                //            SocketIOManager.sharedInstance.establishConnection()
-                SocketIOManager.sharedInstance.reConnection()
-                Log.v("audit 沒過期")
-                if let successBlock = complete
-                {
-                    successBlock(true)
-                }else
-                {
-                    freshToken()
-                }
-            }
-        }onError: { (error) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                Log.v("audit 過期")
-                _ = LoadingViewController.dismiss()
-                if let successBlock = complete
-                {
-                    successBlock(false)
-                }else
-                {
-                    //過期去登入頁面
-                    DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
-                }
-            }
-        }.disposed(by: dpg)
+        checkTokenExpired(complete: complete)
+//        Beans.auditServer.auditApprovals().subscribe { [self] (dto) in
+//
+//        }onError: { (error) in
+//
+//        }.disposed(by: dpg)
     }
     func freshAuditToken()
     {
@@ -217,36 +195,100 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
+        checkTokenExpired(complete: complete)
+//        LoadingViewController.show()
+//        Beans.walletServer.walletBalances().subscribe { [self] (dto) in
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+//                _ = LoadingViewController.dismiss()
+//                // 沒過期,打refresh API, 時間加30分鐘
+//                //            SocketIOManager.sharedInstance.establishConnection()
+//                SocketIOManager.sharedInstance.reConnection()
+//                Log.v("mundocoin 沒過期")
+//                if let successBlock = complete
+//                {
+//                    successBlock(true)
+//                }else
+//                {
+//                    freshToken()
+//                }
+//            }
+//        } onError: { (error) in
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+//                Log.v("mundocoin 過期")
+//                _ = LoadingViewController.dismiss()
+//                if let successBlock = complete
+//                {
+//                    successBlock(false)
+//                }else
+//                {
+//                    DeepLinkManager.share.handleDeeplink(navigation: .login)
+//                }
+//                //過期去登入頁面
+//            }
+//        }.disposed(by: dpg)
+    }
+    func checkTokenExpired(complete:CheckCompletionBlock? = nil)
+    {
         LoadingViewController.show()
-        Beans.walletServer.walletBalances().subscribe { [self] (dto) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                _ = LoadingViewController.dismiss()
-                // 沒過期,打refresh API, 時間加30分鐘
-                //            SocketIOManager.sharedInstance.establishConnection()
-                SocketIOManager.sharedInstance.reConnection()
-                Log.v("mundocoin 沒過期")
-                if let successBlock = complete
-                {
-                    successBlock(true)
-                }else
-                {
-                    freshToken()
-                }
-            }
-        } onError: { (error) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                Log.v("mundocoin 過期")
-                _ = LoadingViewController.dismiss()
-                if let successBlock = complete
-                {
-                    successBlock(false)
-                }else
-                {
-                    DeepLinkManager.share.handleDeeplink(navigation: .login)                
-                }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        let token = KeychainManager.share.getAuditToken()
+#else
+        let token = KeychainManager.share.getToken()
+#endif
+        // 準備好 id 資料
+        var jwtValue :JWT!
+        do {
+            jwtValue = try decode(jwt: token)
+        } catch {
+            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            _ = LoadingViewController.dismiss()
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
                 //過期去登入頁面
+                DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
             }
-        }.disposed(by: dpg)
+        }
+        if jwtValue != nil , let isExpired = jwtValue?.expired
+        {
+            if isExpired == false
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    // 沒過期,打refresh API, 時間加30分鐘
+                    //            SocketIOManager.sharedInstance.establishConnection()
+                    SocketIOManager.sharedInstance.reConnection()
+                    Log.v("audit 沒過期")
+                    if let successBlock = complete
+                    {
+                        successBlock(true)
+                    }else
+                    {
+                        freshToken()
+                    }
+                }
+            }else
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    Log.v("audit 過期")
+                    _ = LoadingViewController.dismiss()
+                    if let successBlock = complete
+                    {
+                        successBlock(false)
+                    }else
+                    {
+                        //過期去登入頁面
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                        DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
+#else
+                        DeepLinkManager.share.handleDeeplink(navigation: .login)
+#endif
+                    }
+                }
+            }
+        }
     }
     func freshToken()
     {
