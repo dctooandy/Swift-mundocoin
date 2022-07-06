@@ -205,7 +205,7 @@ class WalletViewController: BaseViewController {
             walletsDto.remove(at: dataDtoIndex)
             walletsDto.insert(dataDto, at: dataDtoIndex)
         }
-        totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 6)
+        totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 8)
         
     }
     func setUPDataForPageVC()
