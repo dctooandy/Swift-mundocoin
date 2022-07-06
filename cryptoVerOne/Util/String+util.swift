@@ -116,6 +116,24 @@ extension String {
         let str = formatter.string(from: NSNumber(value: num)) ?? "0.00"
         return str
     }
+    func filterDecimal() -> String
+    {
+        var newString = ""
+        if self.contains(",")
+        {
+            for char in self
+            {
+                if char != ","
+                {
+                    newString += String(char)
+                }
+            }
+        }else
+        {
+            newString = self
+        }
+        return newString
+    }
     func numberFormatterOnlyStyle(_ style: NumberFormatter.Style) -> String
     {
         let num: Double = Double(self) ?? 0

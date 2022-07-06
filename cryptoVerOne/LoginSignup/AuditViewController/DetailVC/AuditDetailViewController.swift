@@ -119,7 +119,7 @@ class AuditDetailViewController: BaseViewController {
             {
                 withdrawAmountLabel.text = transAmountString
                 feeLabel.text = "\(transDto.fees ?? 1)".numberFormatter(.decimal,2)
-                let actualAmountValue = (Double(transAmountString) ?? 0.00) - Double((transDto.fees ?? 1))
+                let actualAmountValue = (Double(transAmountString.filterDecimal()) ?? 0.00) - Double((transDto.fees ?? 1))
                 actualAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
             }
             addressLabel.text = transDto.toAddress
