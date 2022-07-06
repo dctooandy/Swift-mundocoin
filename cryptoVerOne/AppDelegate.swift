@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BuildConfig().domainSet(mode: domainMode)
         }
     }
-    var timer: Timer?
+//    var timer: Timer?
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:Life cycle
@@ -61,7 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
-        stopRETimer()
+        CheckTokenExpiredService.share.stopRETimer()
+//        stopRETimer()
 //        SocketIOManager.sharedInstance.closeConnection()
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -181,12 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAuditToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
-        checkTokenExpired(complete: complete)
-//        Beans.auditServer.auditApprovals().subscribe { [self] (dto) in
-//
-//        }onError: { (error) in
-//
-//        }.disposed(by: dpg)
+        CheckTokenExpiredService.share.checkTokenExpired(complete: complete)
     }
     func freshAuditToken()
     {
@@ -195,139 +191,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
-        checkTokenExpired(complete: complete)
-//        LoadingViewController.show()
-//        Beans.walletServer.walletBalances().subscribe { [self] (dto) in
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-//                _ = LoadingViewController.dismiss()
-//                // 沒過期,打refresh API, 時間加30分鐘
-//                //            SocketIOManager.sharedInstance.establishConnection()
-//                SocketIOManager.sharedInstance.reConnection()
-//                Log.v("mundocoin 沒過期")
-//                if let successBlock = complete
-//                {
-//                    successBlock(true)
-//                }else
-//                {
-//                    freshToken()
-//                }
-//            }
-//        } onError: { (error) in
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-//                Log.v("mundocoin 過期")
-//                _ = LoadingViewController.dismiss()
-//                if let successBlock = complete
-//                {
-//                    successBlock(false)
-//                }else
-//                {
-//                    DeepLinkManager.share.handleDeeplink(navigation: .login)
-//                }
-//                //過期去登入頁面
-//            }
-//        }.disposed(by: dpg)
-    }
-    func checkTokenExpired(complete:CheckCompletionBlock? = nil)
-    {
-        LoadingViewController.show()
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-        let token = KeychainManager.share.getAuditToken()
-#else
-        let token = KeychainManager.share.getToken()
-#endif
-        // 準備好 id 資料
-        var jwtValue :JWT!
-        do {
-            jwtValue = try decode(jwt: token)
-        } catch {
-            Log.i("AppDelegate - Failed to decode JWT: \(error)")
-            _ = LoadingViewController.dismiss()
-            if let successBlock = complete
-            {
-                successBlock(false)
-            }else
-            {
-                //過期去登入頁面
-                DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
-            }
-        }
-        if jwtValue != nil , let isExpired = jwtValue?.expired
-        {
-            if isExpired == false
-            {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    _ = LoadingViewController.dismiss()
-                    // 沒過期,打refresh API, 時間加30分鐘
-                    //            SocketIOManager.sharedInstance.establishConnection()
-                    SocketIOManager.sharedInstance.reConnection()
-                    Log.v("audit 沒過期")
-                    if let successBlock = complete
-                    {
-                        successBlock(true)
-                    }else
-                    {
-                        freshToken()
-                    }
-                }
-            }else
-            {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    Log.v("audit 過期")
-                    _ = LoadingViewController.dismiss()
-                    if let successBlock = complete
-                    {
-                        successBlock(false)
-                    }else
-                    {
-                        //過期去登入頁面
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-                        DeepLinkManager.share.handleDeeplink(navigation: .auditLogin)
-#else
-                        DeepLinkManager.share.handleDeeplink(navigation: .login)
-#endif
-                    }
-                }
-            }
-        }
+        CheckTokenExpiredService.share.checkTokenExpired(complete: complete)
     }
     func freshToken()
     {
-        Log.v("刷新Token")
-        #if Approval_PRO || Approval_DEV || Approval_STAGE
-        #else
-        Beans.loginServer.refreshToken().subscribeSuccess { [self]dto in
-            if let dataDto = dto
-            {
-                KeychainManager.share.setToken(dataDto.token)
-                // 刷新時間
-                startToCountDown()
-            }
-        }.disposed(by: dpg)
-        #endif
+        CheckTokenExpiredService.share.freshToken()
     }
     func startToCountDown() {
-        Log.v("刷新時間")
-        stopRETimer()
-        var countInt = 1500
-        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-            guard let strongSelf = self else { return }
-            countInt -= 1
-            DispatchQueue.main.async {
-                // 先關起來
-//                Log.e("剩餘時間 : \(countInt) 秒")
-                if countInt == 0 {
-                    timer.invalidate()
-                    strongSelf.freshToken()
-                }
-            }
-        }
-        timer?.fire()
+        CheckTokenExpiredService.share.startToCountDown()
     }
     func stopRETimer()
     {
-        Log.v("消除倒數timer")
-        timer?.invalidate()
-        timer = nil
+        CheckTokenExpiredService.share.stopRETimer()
     }
 }
 // MARK: -
@@ -336,7 +211,7 @@ extension AppDelegate :UNUserNotificationCenterDelegate
 {
     // 在前景收到通知時所觸發的 function
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        Log.i("Socket.io - 在前景收到通知...")
+        Log.socket("Socket.io - 在前景收到通知...")
         completionHandler([.badge, .sound, .alert])
     }
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {

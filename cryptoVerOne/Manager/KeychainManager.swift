@@ -52,30 +52,21 @@ class KeychainManager {
     /// - Parameter value: 帳號
     @discardableResult
     func setLastAccount(_ value: String) -> Bool {
-        let success = self.setString(value.lowercased(), at: .account)
-        return success
-    }
-    func setLastAuditAccount(_ value: String) -> Bool {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
         let success = self.setString(value.lowercased(), at: .auditAccount)
+#else
+        let success = self.setString(value.lowercased(), at: .account)
+#endif
         return success
     }
-    
+
     func getLastAccount() -> LoginPostDto? {
-        guard let accInKeychain = self.getString(from: .account) else { return nil }
-        let accList = getAccList()
-        guard let accPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
-        let accArr = accPwdString.components(separatedBy: "/")
-        let acc = accArr[0]
-        let pwd = accArr[1]
-        let tel = accArr[2]
-        return LoginPostDto(account: acc.isEmpty ? tel : acc,
-                            password: pwd,
-                            loginMode: .emailPage ,
-                            showMode: .loginEmail)
-    }
-    func getLastAuditAccount() -> LoginPostDto? {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
         guard let accInKeychain = self.getString(from: .auditAccount) else { return nil }
-        let accList = getAuditAccList()
+#else
+        guard let accInKeychain = self.getString(from: .account) else { return nil }
+#endif
+        let accList = getAccList()
         guard let accPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
         let accArr = accPwdString.components(separatedBy: "/")
         let acc = accArr[0]
@@ -116,30 +107,6 @@ class KeychainManager {
         }
         saveAccList(newArr)
     }
-    func saveAuditAccPwd(acc: String, pwd: String, tel: String) {
-        let acc = acc.lowercased()
-        let arr = getAuditAccList()
-        var isNewAccount = true
-        var newArr = arr.map { (str) -> String in // update
-            let accArr = str.components(separatedBy: "/")
-            if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
-                isNewAccount = false
-                let finalAcc = acc.isEmpty ? accArr[0] : acc
-                let finalTel = tel.isEmpty ? accArr[2] : tel
-                let finalPwd = pwd.isEmpty ? accArr[1] : pwd
-                return "\(finalAcc)/\(finalPwd)/\(finalTel)"
-            
-            } else {
-                return str
-            }
-        }
-        
-        let accString = "\(acc)/\(pwd)/\(tel)"
-        if isNewAccount { // if false == new account
-            newArr.append(accString)
-        }
-        saveAuditAccList(newArr)
-    }
     
     func updateAccount(acc: String, pwd: String) {
         var isNewAccount = true
@@ -160,44 +127,22 @@ class KeychainManager {
         }
         saveAccList(newArr)
     }
-    func updateAuditAccount(acc: String, pwd: String) {
-        var isNewAccount = true
-        let arr = getAuditAccList()
-        let acc = acc.lowercased()
-        var newArr = arr.map { (str) -> String in // update
-            let accArr = str.components(separatedBy: "/")
-            if accArr.contains(acc) {
-                isNewAccount = false
-                let phone = accArr[2]
-                return "\(acc)/\(pwd)/\(phone)"
-            } else {
-                return str
-            }
-        }
-        if isNewAccount {
-            newArr.append("\(acc)/\(pwd)/")
-        }
-        saveAuditAccList(newArr)
-    }
     
     func saveAccList(_ list: [String]) {
         let data = NSKeyedArchiver.archivedData(withRootObject: list)
-        setData(data, at: .accList)
-    }
-    func saveAuditAccList(_ list: [String]) {
-        let data = NSKeyedArchiver.archivedData(withRootObject: list)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
         setData(data, at: .auditAccList)
+#else
+        setData(data, at: .accList)
+#endif
     }
-    
     
     private func getAccList() -> [String] {
-        guard let data = getData(from: .accList) else { return [] }
-        guard let arr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String] else { return [] }
-        return arr
-    }
-    
-    private func getAuditAccList() -> [String] {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
         guard let data = getData(from: .auditAccList) else { return [] }
+#else
+        guard let data = getData(from: .accList) else { return [] }
+#endif
         guard let arr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String] else { return [] }
         return arr
     }
@@ -205,14 +150,6 @@ class KeychainManager {
     func accountExist(_ acc: String) -> Bool {
         var isExist = false
         for accInfo in getAccList() {
-           isExist = (accInfo.hasPrefix(acc) && !accInfo.components(separatedBy: ".")[1].isEmpty)
-            if isExist { return true }
-        }
-        return isExist
-    }
-    func auditAccountExist(_ acc: String) -> Bool {
-        var isExist = false
-        for accInfo in getAuditAccList() {
            isExist = (accInfo.hasPrefix(acc) && !accInfo.components(separatedBy: ".")[1].isEmpty)
             if isExist { return true }
         }
@@ -255,23 +192,25 @@ class KeychainManager {
     }
     // 存取刪除 mundocoin token
     func getToken() -> String {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return getString(from: .auditToken) ?? ""
+#else
         return getString(from: .token) ?? ""
+#endif
     }
     func setToken(_ token:String){
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString(token, at: .auditToken)
+#else
         _ = setString(token, at: .token)
+#endif
     }
     func clearToken() {
-       _ = setString("", at: .token)
-    }
-    // 存取刪除 audit token
-    func getAuditToken() -> String {
-        return getString(from: .auditToken) ?? ""
-    }
-    func setAuditToken(_ token:String){
-        _ = setString(token, at: .auditToken)
-    }
-    func clearAuditToken() {
-       _ = setString("", at: .auditToken)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString("", at: .auditToken)
+#else
+        _ = setString("", at: .token)
+#endif
     }
 
     // 存取白名單狀態

@@ -48,7 +48,7 @@ class AuditLoginViewController: BaseViewController {
         }
         if KeychainManager.share.getAuditRememberMeStatus() == true
         {
-            if let loginPostDto = KeychainManager.share.getLastAuditAccount(),
+            if let loginPostDto = KeychainManager.share.getLastAccount(),
                BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account)
             {
                 DispatchQueue.main.async { [self] in
@@ -180,11 +180,11 @@ class AuditLoginViewController: BaseViewController {
                     MemberAccountDto.share = MemberAccountDto(account: idString,
                                                               password: password,
                                                               loginMode: .emailPage)
-                    _ = KeychainManager.share.setLastAuditAccount(idString)
-                    KeychainManager.share.updateAuditAccount(acc: idString,
+                    _ = KeychainManager.share.setLastAccount(idString)
+                    KeychainManager.share.updateAccount(acc: idString,
                                                         pwd: password)
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)
-                    KeychainManager.share.setAuditToken(data.token)
+                    KeychainManager.share.setToken(data.token)
                     let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
                     showAuditBioConfirmView(didShow: didAskBioLogin)
                 }
@@ -250,7 +250,7 @@ class AuditLoginViewController: BaseViewController {
         }else
         {
             if !BioVerifyManager.share.auditBioLoginSwitchState() { return }
-            if let loginPostDto = KeychainManager.share.getLastAuditAccount(),
+            if let loginPostDto = KeychainManager.share.getLastAccount(),
                BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account) {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in

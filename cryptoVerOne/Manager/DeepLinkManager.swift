@@ -133,7 +133,6 @@ class DeepLinkManager {
     func cleanDataForLogout()
     {
         KeychainManager.share.clearToken()
-        KeychainManager.share.clearAuditToken()
         WalletAddressDto.share = nil
         UserInfoDto.share = nil
         RegistrationDto.share = nil

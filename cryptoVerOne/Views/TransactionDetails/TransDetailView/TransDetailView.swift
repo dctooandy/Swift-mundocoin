@@ -185,6 +185,9 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     func bindCurrencyIcon()
     {
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+                
+#else    
         currencyIcon.rx.click.subscribeSuccess { [self] _ in
             var type : DetailType!
             if viewType == .done
@@ -203,6 +206,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             TransStyleThemes.share.acceptTopViewStatusStyle(type)
             viewType = type
         }.disposed(by: dpg)
+#endif
     }
     func setupType()
     {

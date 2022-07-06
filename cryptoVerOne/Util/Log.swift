@@ -15,51 +15,56 @@ import SwiftyBeaver
 //Log.e("ouch, an error did occur!")  // prio 5, ERROR in red
 
 class Log {
-  let log = SwiftyBeaver.self
-  private let console = ConsoleDestination()
-  private let file = FileDestination()
-  static let share = Log()
-
-  init() {
-    console.format = "\n$DHH:mm:ss$d $M" //$L
-    log.addDestination(console)
-    log.addDestination(file)
-  }
-
-  static func v(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.verbose("[\(path).\(function)]:\n📜==============📜 Line:\(line)\n\(message())\n📜🍀🍀🍀🍀🍀🍀🍀📜")
-  }
-
-  static func d(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.debug("[\(path).\(function)]:\n🐛==============🐛 Line:\(line)\n\(message())\n🐛🍀🍀🍀🍀🍀🍀🍀🐛")
-  }
-
-  static func i(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.info("[\(path).\(function)]:\nℹ️==============ℹ️ Line:\(line)\n\(message())\nℹ️♻️♻️♻️♻️♻️♻️♻️ℹ️")
-  }
-
-  static func w(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.warning("[\(path).\(function)]:\n⚠️==============⚠️ Line:\(line)\n\(message())\n⚠️🍀🍀🍀🍀🍀🍀🍀⚠️")
-  }
-
-  static func e(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.error("[\(path).\(function)]:\n🆘==============🆘 Line:\(line)\n\(message())\n🆘🍀🍀🍀🍀🍀🍀🍀🆘")
-  }
-
-  static func errorAndCrash(_ message:@autoclosure () -> Any, _
-  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) -> Never {
-      let path = (file as NSString).lastPathComponent.split(separator: ".").first!
-      Log.share.log.error("[\(path).\(function)]:\n🆘==============🆘 Line:\(line)\n\(message())\n🆘🍀🍀🍀🍀🍀🍀🍀🆘")
-    fatalError()
-  }
+    let log = SwiftyBeaver.self
+    private let console = ConsoleDestination()
+    private let file = FileDestination()
+    static let share = Log()
+    
+    init() {
+        console.format = "\n$DHH:mm:ss$d $M" //$L
+        log.addDestination(console)
+        log.addDestination(file)
+    }
+    
+    static func v(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.verbose("[\(path).\(function)]:\n📜==============📜 Line:\(line)\n\(message())\n📜🍀🍀🍀🍀🍀🍀🍀📜")
+    }
+    
+    static func d(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.debug("[\(path).\(function)]:\n🐛==============🐛 Line:\(line)\n\(message())\n🐛🍀🍀🍀🍀🍀🍀🍀🐛")
+    }
+    
+    static func i(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.info("[\(path).\(function)]:\nℹ️==============ℹ️ Line:\(line)\n\(message())\nℹ️🍀🍀🍀🍀🍀🍀🍀ℹ️")
+    }
+    static func socket(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.info("[\(path).\(function)]:\nℹ️==============ℹ️ Line:\(line)\n\(message())\n🍼♻️♻️♻️♻️♻️♻️♻️🍼")
+    }
+    
+    static func w(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.warning("[\(path).\(function)]:\n⚠️==============⚠️ Line:\(line)\n\(message())\n⚠️🍀🍀🍀🍀🍀🍀🍀⚠️")
+    }
+    
+    static func e(_ message:@autoclosure () -> Any, _
+                  file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.error("[\(path).\(function)]:\n🆘==============🆘 Line:\(line)\n\(message())\n🆘🍀🍀🍀🍀🍀🍀🍀🆘")
+    }
+    
+    static func errorAndCrash(_ message:@autoclosure () -> Any, _
+                              file:String = #file, _ function:String = #function, line:Int = #line, context:Any? = nil) -> Never {
+        let path = (file as NSString).lastPathComponent.split(separator: ".").first!
+        Log.share.log.error("[\(path).\(function)]:\n🆘==============🆘 Line:\(line)\n\(message())\n🆘🍀🍀🍀🍀🍀🍀🍀🆘")
+        fatalError()
+    }
 }

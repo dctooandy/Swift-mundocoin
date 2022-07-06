@@ -28,17 +28,13 @@ class SocketIOManager: NSObject {
     }
     func connectPrefix()
     {
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-        let token = KeychainManager.share.getAuditToken()
-#else
         let token = KeychainManager.share.getToken()
-#endif
         // 準備好 id 資料
         var jwtValue :JWT!
         do {
             jwtValue = try decode(jwt: token)
         } catch {
-            Log.i("Socket.io - Failed to decode JWT: \(error)")
+            Log.socket("Socket.io - Failed to decode JWT: \(error)")
             idValue = "123"
         }
         if jwtValue != nil , let idString = jwtValue.body["Id"] as? String
@@ -59,25 +55,17 @@ class SocketIOManager: NSObject {
             if(socket.status == .disconnected || socket.status == .notConnected)
             {
                 socket.on(clientEvent: .connect) {data, ack in
-                    Log.i("Socket.io - clientEvent connected")
+                    Log.socket("Socket.io - clientEvent connected")
                     
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-                    if !KeychainManager.share.getAuditToken().isEmpty
-                    {
-                        self.alreadyJoin = false
-                        self.sendJoin()
-                    }
-#else
                     if KeychainManager.share.getToken().isEmpty != true
                     {
                         self.alreadyJoin = false
                         self.sendJoin()
                     }
-#endif
                     self.socketOnEvents()
                 }
                 socket.on(clientEvent: .disconnect) {data, ack in
-                    Log.i("Socket.io - 接收到了 disconnect:\(data.description)")
+                    Log.socket("Socket.io - 接收到了 disconnect:\(data.description)")
                     self.socketOffEvents()
                 }
                 socket.on(clientEvent: .reconnectAttempt) {data, ack in
@@ -85,16 +73,16 @@ class SocketIOManager: NSObject {
                     self.establishConnection()
                 }
                 socket.on(clientEvent: .statusChange) {data, ack in
-                    Log.i("Socket.io - 接收到了 statusChange:\(data.description) ")
+                    Log.socket("Socket.io - 接收到了 statusChange:\(data.description) ")
                 }
                 socket.on(clientEvent: .error) {data, ack in
-                    Log.i("Socket.io - 接收到了 error:\(data.description) ")
+                    Log.socket("Socket.io - 接收到了 error:\(data.description) ")
                 }
                 socket.on(clientEvent: .ping) {data, _ in
-                    Log.i("Socket.io - 接收到了 ping:\(data.description) ")
+                    Log.socket("Socket.io - 接收到了 ping:\(data.description) ")
                 }
                 socket.on(clientEvent: .pong) {data, _ in
-                    Log.i("Socket.io - 接收到了 pong:\(data.description) ")
+                    Log.socket("Socket.io - 接收到了 pong:\(data.description) ")
                 }
 
             }
@@ -125,26 +113,25 @@ class SocketIOManager: NSObject {
     }
     func socketOnEvents()
     {
-        socket.on("notification") { resultData, ack in
-            self.onTriggerLocalNotification(subtitle: "notification", body: resultData)
+        socket.on("notification") { [self] resultData, ack in
+            onTriggerLocalNotification(subtitle: "notification", body: resultData)
         }
         socket.on("joinResult") { resultData, ack in
-            Log.i("Socket.io - joinResult Success")
-            self.onTriggerLocalNotification(subtitle: "joinResult", body: resultData)
+            Log.socket("Socket.io - joinResult Success")
+            // 接上 socket 封印
+//            onTriggerLocalNotification(subtitle: "joinResult", body: resultData)
         }
         socket.on("echoResult") { resultData, ack in
-            Log.i("Socket.io - echoResult Success")
-//            self.joinNameSpaceWithData(body: resultData)
-//                    self.onTriggerLocalNotification(suvtitle: "echoResult", body: resultData)
+            Log.socket("Socket.io - echoResult Success")
         }
         socket.on(self.idValue) { [self] data, ack in
-            Log.i("Socket.io - \(self.idValue) Success")
-            self.onTriggerLocalNotification(subtitle: self.idValue, body: data)
+            Log.socket("Socket.io - \(idValue ?? "") Success")
+//            onTriggerLocalNotification(subtitle: idValue, body: data)
         }
         socket.on("message") { [self] data, ack in
-            Log.i("Socket.io - message Success\n\(data)")
-            Log.i("接收到了: json Object")
-            self.receiveMessage(data: data)
+            Log.socket("Socket.io - message Success\n\(data)")
+            Log.socket("接收到了: json Object")
+            receiveMessage(data: data)
 //            self.onTriggerLocalNotification(subtitle: "message", body: data!)
         }
         
@@ -166,28 +153,21 @@ class SocketIOManager: NSObject {
         let socketConnectionStatus = SocketIOManager.sharedInstance.socket.status
         switch socketConnectionStatus {
         case .connected:
-            Log.i("Socket.io -  connected")
+            Log.socket("Socket.io -  connected")
         case .connecting:
-            Log.i("Socket.io -  connecting")
+            Log.socket("Socket.io -  connecting")
         case .disconnected:
-            Log.i("Socket.io -  disconnected")
+            Log.socket("Socket.io -  disconnected")
         case .notConnected:
-            Log.i("Socket.io -  not connected")
+            Log.socket("Socket.io -  not connected")
         }
         return socketConnectionStatus
     }
     func establishConnection() {
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-        if KeychainManager.share.getAuditToken().isEmpty != true
-        {
-            socket.connect()
-        }
-#else
         if KeychainManager.share.getToken().isEmpty != true
         {
             socket.connect()
         }
-#endif
     }
      
     func closeConnection() {
@@ -201,14 +181,14 @@ extension SocketIOManager
 {
     func sendMessage(event:String, para:String)
     {
-        Log.i("Socket.io - 發送訊息 事件 \(event) ,參數 \(para)")
+        Log.socket("Socket.io - 發送訊息 事件 \(event) ,參數 \(para)")
         var parameters: Parameters = [String: Any]()
         parameters["roomId"] = idValue
         parameters["message"] = para
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             socket.emit(event, jsonData) {
-                Log.i("Socket.io - [\(event)] call back")
+                Log.socket("Socket.io - [\(event)] call back")
             }
         } catch {
             print(error.localizedDescription)
@@ -216,14 +196,14 @@ extension SocketIOManager
     }
     func sendEchoEvent(event:String, para:String)
     {
-        Log.i("Socket.io - 發送訊息 事件 \(event) ,參數 \(para)")
+        Log.socket("Socket.io - 發送訊息 事件 \(event) ,參數 \(para)")
         var parameters: Parameters = [String: Any]()
         parameters["roomId"] = idValue
         parameters[event] = para
         do {
             let jsonData = try JSONSerialization.data(withJSONObject: parameters, options: .prettyPrinted)
             socket.emit("echo", jsonData) {
-                Log.i("Socket.io - [\(event)] call back")
+                Log.socket("Socket.io - [\(event)] call back")
             }
         } catch {
             print(error.localizedDescription)
@@ -234,7 +214,7 @@ extension SocketIOManager
         if alreadyJoin == false
         {
             self.socket.emit("join", self.idValue) {
-                Log.i("Socket.io - Join call back")
+                Log.socket("Socket.io - Join call back")
                 self.alreadyJoin = true
             }
         }
@@ -243,7 +223,7 @@ extension SocketIOManager
     {
         if let resultString = body.first as? String
         {
-            Log.i("Socket.io - receive :\(resultString)")
+            Log.socket("Socket.io - receive :\(resultString)")
             if resultString.contains("join.room.first")
             {
                 self.alreadyJoin = false
@@ -274,7 +254,7 @@ extension SocketIOManager
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 2, repeats: false)
         let request = UNNotificationRequest(identifier: "notification", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
-            Log.i("Socket.io - 成功建立通知...")
+            Log.socket("Socket.io - 成功建立通知...")
         })
 #endif
     }
@@ -295,7 +275,7 @@ extension SocketIOManager
             decoder.dateDecodingStrategy = .millisecondsSince1970
             do {
                 let results = try decoder.decode(SocketMessageDto.self, from:resultData)
-                Log.i("Socket.io - result: \(results)")
+                Log.socket("Socket.io - result: \(results)")
                 if results.type == "APPROVAL_DONE"
                 {
                     self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)

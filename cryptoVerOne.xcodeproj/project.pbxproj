@@ -886,6 +886,12 @@
 		0999D1062872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
 		0999D1072872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
 		0999D1082872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
+		0999D10B287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		0999D10C287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		0999D10D287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		0999D10E287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		0999D10F287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		0999D110287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1705,6 +1711,7 @@
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
+		0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenExpiredService.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -2151,6 +2158,14 @@
 			path = AuthorizwClass;
 			sourceTree = "<group>";
 		};
+		0999D109287531B3003C5260 /* CheckTokenExpired */ = {
+			isa = PBXGroup;
+			children = (
+				0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */,
+			);
+			path = CheckTokenExpired;
+			sourceTree = "<group>";
+		};
 		09C20F992845D83D00E70654 /* AddressBookView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2574,6 +2589,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				0999D109287531B3003C5260 /* CheckTokenExpired */,
 				0999D0FA2872B946003C5260 /* AuthorizwClass */,
 				092E760D2850A9C200221997 /* NoDataView */,
 				092E75F8284F586B00221997 /* DynamicCollectionView */,
@@ -3936,6 +3952,7 @@
 				09DBDAEA286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905ACD2851A02B00BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905ACE2851A02B00BAEE78 /* SignupSuccessView.swift in Sources */,
+				0999D10F287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				09905ACF2851A02B00BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905AD02851A02B00BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD928562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
@@ -4146,6 +4163,7 @@
 				09DBDAEB286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905BBF2851A08500BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905BC02851A08500BAEE78 /* SignupSuccessView.swift in Sources */,
+				0999D110287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				09905BC12851A08500BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905BC22851A08500BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADDA28562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
@@ -4356,6 +4374,7 @@
 				09DBDAE9286C254A007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09905CB12851A09600BAEE78 /* TFBeginViewController.swift in Sources */,
 				09905CB22851A09600BAEE78 /* SignupSuccessView.swift in Sources */,
+				0999D10E287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				09905CB32851A09600BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905CB42851A09600BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD828562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
@@ -4566,6 +4585,7 @@
 				09DBDAE7286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09CAF4AF283C77ED00D7B19B /* TFBeginViewController.swift in Sources */,
 				09CAF4B0283C77ED00D7B19B /* SignupSuccessView.swift in Sources */,
+				0999D10C287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF4B2283C77ED00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD628562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
@@ -4776,6 +4796,7 @@
 				09DBDAE8286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				09CAF570283C7BBE00D7B19B /* TFBeginViewController.swift in Sources */,
 				09CAF571283C7BBE00D7B19B /* SignupSuccessView.swift in Sources */,
+				0999D10D287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF573283C7BBE00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD728562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
@@ -4986,6 +5007,7 @@
 				09DBDAE6286C2549007162AE /* ApprovalPayloadDto.swift in Sources */,
 				A16F61C0282CBB7400D9CCE5 /* TFBeginViewController.swift in Sources */,
 				A19C71A628226229000AFC3F /* SignupSuccessView.swift in Sources */,
+				0999D10B287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */,
 				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
 				A1ADADD528562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,

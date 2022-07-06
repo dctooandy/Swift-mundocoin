@@ -48,13 +48,7 @@ extension DataRequest
                                 {
                                     // Login 回來的
                                     Log.v("Login token : \(innerData)")
-                                    if self.isNeedSaveAuditToken(url:response.request?.url)
-                                    {
-                                        KeychainManager.share.setAuditToken(innerData)
-                                    }else
-                                    {
-                                        KeychainManager.share.setToken(innerData)
-                                    }
+                                    KeychainManager.share.setToken(innerData)
                                 }
                             }
                             let results = try decoder.decode(T.self, from:data)

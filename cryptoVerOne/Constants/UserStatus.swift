@@ -11,11 +11,7 @@ class UserStatus {
     static let share = UserStatus()
     var loginUserModel:LoginDto?
     var isLogin:Bool {
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-        return !KeychainManager.share.getAuditToken().isEmpty
-#else
         return !KeychainManager.share.getToken().isEmpty
-#endif
     }
     func detectIsLogin() -> Bool
     {

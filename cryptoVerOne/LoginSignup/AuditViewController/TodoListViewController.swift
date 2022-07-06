@@ -78,10 +78,14 @@ class TodoListViewController: BaseViewController {
     }
     func socketEmit()
     {
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+                
+#else
         let jsonEncoder = JSONEncoder()
         let jsonData = try? jsonEncoder.encode(WalletWithdrawDto())
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
         SocketIOManager.sharedInstance.sendEchoEvent(event: "message", para: json!)
+#endif
     }
 }
 // MARK: -

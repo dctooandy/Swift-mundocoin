@@ -78,7 +78,7 @@ class AccountViewController: BaseViewController {
         appVersionLabel.text = appVersionString
         logoutLabel.layer.borderColor = UIColor.lightGray.cgColor
         logoutLabel.layer.borderWidth = 1
-        emailLabel.text = KeychainManager.share.getLastAuditAccount()?.account
+        emailLabel.text = KeychainManager.share.getLastAccount()?.account
     }
     func bindLabel()
     {
