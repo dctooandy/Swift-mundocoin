@@ -199,7 +199,7 @@ class InputStyleView: UIView {
         tfLabel.font = Fonts.sfProLight(16)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
-        tfLabel.minimumScaleFactor = 0.5
+        tfLabel.minimumScaleFactor = 0.8
         tfLabel.isUserInteractionEnabled = true
         return tfLabel
     }()
