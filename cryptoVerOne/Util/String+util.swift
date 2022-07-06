@@ -110,7 +110,7 @@ extension String {
         let num: Double = Double(newString) ?? 0
         let formatter = NumberFormatter()
         formatter.numberStyle = style
-        formatter.locale = locale
+//        formatter.locale = locale
         formatter.minimumFractionDigits = minimumFractionDigits > 1 ? 2 : minimumFractionDigits
         formatter.maximumFractionDigits = minimumFractionDigits
         let str = formatter.string(from: NSNumber(value: num)) ?? "0.00"

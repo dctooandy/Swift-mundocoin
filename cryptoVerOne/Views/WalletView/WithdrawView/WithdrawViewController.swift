@@ -271,7 +271,7 @@ class WithdrawViewController: BaseViewController {
         {
             LoadingViewController.show()
             var fAddressString = ""
-            if let fAddress = WalletAllBalancesDto.share?.allBalances?.filter({$0.currency == "USDT"}).first?.address
+            if let fAddress = WalletAllBalancesDto.share?.wallets?.filter({$0.currency == "USDT"}).first?.address
             {
                 fAddressString = fAddress
             }
