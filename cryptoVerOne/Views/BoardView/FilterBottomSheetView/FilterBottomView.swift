@@ -114,6 +114,7 @@ class FilterBottomView: UIView {
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var historyView:DynamicCollectionView!
     @IBOutlet weak var statusView:DynamicCollectionView!
+    @IBOutlet weak var cryptoInputView: InputStyleView!
     private lazy var confirmButton: OKButton = {
         let btn = OKButton()
         btn.setTitle("Confirm".localized, for: .normal)
@@ -183,6 +184,7 @@ class FilterBottomView: UIView {
         }
         historyView.setData(type: .history)
         statusView.setData(type: .status)
+        cryptoInputView.setMode(mode: .crypto(["USDT"]))
     }
     func setupDatePackerLabel()
     {
@@ -334,7 +336,7 @@ class FilterBottomView: UIView {
     }
     @objc private func confirmButtonPressed(_ sender: UIButton) {
         
-        if sender == confirmButton {
+        if sender == confirmButton ,let cryptoString = cryptoInputView.textField.text{
             Log.v("Confirm")
             let startDate = dateFormatter.string(from: startDatePicker.date)
 //            let endDate = dateFormatter.string(from: endDatePicker.date)
@@ -343,7 +345,7 @@ class FilterBottomView: UIView {
             let endTime = endDatePicker.date.addEndOfDay().timeIntervalSince1970
             transPostDto.beginDate = beginTime! * 1000
             transPostDto.endDate = endTime * 1000
-            transPostDto.currency = "ALL"
+            transPostDto.currency = cryptoString
             transPostDto.stats = filterStateValue
             transPostDto.historyType = filterHistoryValue
             onConfirmTrigger.onNext(transPostDto)

@@ -15,6 +15,15 @@ enum TransactionShowMode
     case deposits
     case withdrawals
     
+    var typeValue : String
+    {
+        switch self {
+        case .deposits:
+            return "DEPOSIT"
+        case .withdrawals:
+            return "WITHDRAW"
+        }
+    }
     var showTitleString:String
     {
         switch self {
@@ -166,7 +175,7 @@ class BoardViewController: BaseViewController {
         if let data = self.currentFilterDto
         {
             LoadingViewController.show()
-            viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+            viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: showMode.typeValue, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
             isFilterAndChangeVCAction = false
         }
         else
@@ -174,7 +183,7 @@ class BoardViewController: BaseViewController {
             if isFilterAndChangeVCAction == false
             {
                 LoadingViewController.show()
-                viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+                viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats,type: showMode.typeValue, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
             }
             isFilterAndChangeVCAction = false
         }

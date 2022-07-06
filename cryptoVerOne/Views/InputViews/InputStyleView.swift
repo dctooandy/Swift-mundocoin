@@ -24,6 +24,7 @@ enum InputViewMode :Equatable {
     case forgotPW
     case registration
     case networkMethod(Array<String>)
+    case crypto(Array<String>)
     case withdrawAddressToConfirm
     case withdrawAddressToDetail(Bool)
     case txid(String)
@@ -49,6 +50,7 @@ enum InputViewMode :Equatable {
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
+        case .crypto( _ ): return "Crypto".localized
         case .withdrawAddressToConfirm: return "Withdraw to address".localized
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .txid( _ ): return "Txid".localized
@@ -102,25 +104,36 @@ enum InputViewMode :Equatable {
     func dropDataSource() -> Array<String>
     {
         switch self {
-        case .networkMethod(let array):
+        case .networkMethod(let array),.crypto(let array):
             return array
         default:
             return []
         }
     }
-    func isNetworkMethod() -> Bool
+    func isDropDownStyle() -> Bool
     {
         switch self {
-        case .networkMethod( _ ):
+        case .networkMethod( _ ),.crypto( _ ):
             return true
         default:
             return false
         }
     }
-    func isNetworkMethodEnable() -> Bool
+    func dropDownStylePlaceHolder() -> String
     {
         switch self {
-        case .networkMethod( let array ):
+        case .networkMethod( _ ):
+            return "TRC20"
+        case .crypto( _ ):
+            return "USDT"
+        default:
+            return ""
+        }
+    }
+    func isDropDownStyleEnable() -> Bool
+    {
+        switch self {
+        case .networkMethod( let array ),.crypto( let array ):
             if array.count > 1
             {
                 return true
@@ -374,7 +387,7 @@ class InputStyleView: UIView {
         var rightLabelWidth : CGFloat = 0.0
         displayOffetWidth = (isPasswordType ? 18.0:0.0)
         switch self.inputViewMode {
-        case .copy ,.networkMethod(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
+        case .copy ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -419,9 +432,9 @@ class InputStyleView: UIView {
                 rightLabelWidth = 24 + 24 + 20
             }
         }
-        else if inputViewMode.isNetworkMethod()
+        else if inputViewMode.isDropDownStyle()
         {
-            textField.text = "TRC20"
+            textField.text = inputViewMode.dropDownStylePlaceHolder()
             let textFieldMulH = height(48/812)
             let tfWidth = width(361.0/414.0) - 40
             addSubview(dropDownImageView)
@@ -442,14 +455,16 @@ class InputStyleView: UIView {
                 make.edges.equalTo(textField)
             }
             rightLabelWidth = 18 + 20
-            if inputViewMode.isNetworkMethodEnable()
+            if inputViewMode.isDropDownStyleEnable()
             {
                 setupChooseDropdown()
                 bindChooseButton()
+                dropDownImageView.isHidden = false
             }else
             {
                 textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
                 tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
+                dropDownImageView.isHidden = true
             }
         }
         else if inputViewMode == .withdrawAddressToDetail(true)
@@ -624,7 +639,7 @@ class InputStyleView: UIView {
         // You can also use localizationKeysDataSource instead. Check the docs.
         chooseDropDown.direction = .bottom
         switch inputViewMode {
-        case .networkMethod(let array):
+        case .networkMethod(let array),.crypto(let array):
             chooseDropDown.dataSource = array
         default:
             break

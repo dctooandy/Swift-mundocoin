@@ -34,11 +34,12 @@ class WalletService {
                 return $0
             })
     }
-    func walletTransactions(currency:String = "ALL" , stats : String = "ALL", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :PagePostDto = PagePostDto()) -> Single<WalletTransactionDto?>
+    func walletTransactions(currency:String = "ALL" , stats : String = "ALL",type : String = "", beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :PagePostDto = PagePostDto()) -> Single<WalletTransactionDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["currency"] = currency
         parameters["stats"] = stats
+        parameters["type"] = type
         parameters["beginDate"] = beginDate
         parameters["endDate"] = endDate
         parameters["page"] = pageable.page

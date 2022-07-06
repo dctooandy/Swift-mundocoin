@@ -53,7 +53,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NU4-cy-NuN">
-                    <rect key="frame" x="24" y="275.5" width="366" height="46"/>
+                    <rect key="frame" x="20" y="275.5" width="374" height="46"/>
                     <subviews>
                         <datePicker alpha="0.050000000000000003" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" style="compact" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QlW-Jy-VoY">
                             <rect key="frame" x="0.0" y="0.0" width="130" height="46"/>
@@ -97,7 +97,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-Daterange" translatesAutoresizingMaskIntoConstraints="NO" id="AHr-bK-tWt">
-                            <rect key="frame" x="324" y="11" width="24" height="24"/>
+                            <rect key="frame" x="332" y="11" width="24" height="24"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="24" id="OnA-kb-LVq"/>
                                 <constraint firstAttribute="height" constant="24" id="yi6-wR-og6"/>
@@ -152,12 +152,11 @@
                         <constraint firstAttribute="height" constant="46" id="rM9-ca-xJ0"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GE-YN-ACi">
-                    <rect key="frame" x="202" y="443" width="10" height="10"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R2Y-Ib-8xH" customClass="InputStyleView" customModule="Approval" customModuleProvider="target">
+                    <rect key="frame" x="17" y="337.5" width="380" height="78"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="10" id="SU0-IA-wHH"/>
-                        <constraint firstAttribute="height" constant="10" id="xOY-Rj-k1D"/>
+                        <constraint firstAttribute="height" constant="78" id="ldR-Yc-2Te"/>
                     </constraints>
                 </view>
             </subviews>
@@ -168,24 +167,24 @@
                 <constraint firstItem="yJw-oF-xm7" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="30" id="9fQ-N9-nLq"/>
                 <constraint firstItem="NU4-cy-NuN" firstAttribute="top" secondItem="cS1-du-sEE" secondAttribute="bottom" constant="6" id="Ad4-7n-d7g"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="4s4-Xs-fPi" secondAttribute="trailing" constant="24" id="Iwb-f9-IRW"/>
-                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Les-fK-eSf"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="R2Y-Ib-8xH" secondAttribute="trailing" constant="17" id="LkN-v3-uSZ"/>
                 <constraint firstItem="cS1-du-sEE" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="NHJ-yu-pUC"/>
                 <constraint firstItem="CsH-Aq-2Te" firstAttribute="leading" secondItem="cS1-du-sEE" secondAttribute="leading" id="PQe-HX-8bV"/>
-                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Ri7-Rs-XlO"/>
-                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="SP4-I5-k1V"/>
                 <constraint firstItem="cS1-du-sEE" firstAttribute="top" secondItem="Ik1-Qt-DZr" secondAttribute="bottom" constant="16" id="ZwL-Dx-6ZX"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Ik1-Qt-DZr" secondAttribute="trailing" id="a0z-nL-fnu"/>
                 <constraint firstItem="4s4-Xs-fPi" firstAttribute="top" secondItem="CsH-Aq-2Te" secondAttribute="bottom" constant="6" id="aXc-Ht-HXP"/>
                 <constraint firstItem="4s4-Xs-fPi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="e0j-mw-Edt"/>
                 <constraint firstItem="Ik1-Qt-DZr" firstAttribute="top" secondItem="yJw-oF-xm7" secondAttribute="bottom" constant="5" id="gC5-I0-55S"/>
                 <constraint firstItem="CsH-Aq-2Te" firstAttribute="top" secondItem="NU4-cy-NuN" secondAttribute="bottom" constant="16" id="hFo-pH-sNG"/>
-                <constraint firstItem="2GE-YN-ACi" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="i78-u1-zsh"/>
-                <constraint firstItem="NU4-cy-NuN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="obp-c3-QXN"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NU4-cy-NuN" secondAttribute="trailing" constant="24" id="tMN-yN-xsL"/>
+                <constraint firstItem="NU4-cy-NuN" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="obp-c3-QXN"/>
+                <constraint firstItem="R2Y-Ib-8xH" firstAttribute="top" secondItem="NU4-cy-NuN" secondAttribute="bottom" constant="16" id="quC-9x-h8p"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NU4-cy-NuN" secondAttribute="trailing" constant="20" id="tMN-yN-xsL"/>
+                <constraint firstItem="R2Y-Ib-8xH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="17" id="zIj-uk-bQa"/>
                 <constraint firstItem="yJw-oF-xm7" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="zbE-ir-iih"/>
             </constraints>
             <connections>
                 <outlet property="cryptoContainerView" destination="4s4-Xs-fPi" id="wy7-AB-ohK"/>
+                <outlet property="cryptoInputView" destination="R2Y-Ib-8xH" id="Uqv-T0-Zea"/>
                 <outlet property="cryptoLabel" destination="ufI-p2-165" id="q21-ry-seN"/>
                 <outlet property="dateContainerView" destination="NU4-cy-NuN" id="JgP-om-cFl"/>
                 <outlet property="endDatePicker" destination="1OI-pU-I43" id="3EW-1Z-tGM"/>
