@@ -880,6 +880,18 @@
 		0995746728767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
 		0995746828767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
 		0995746928767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746E2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		0995746F2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		099574702876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		099574712876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		099574722876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		099574732876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */; };
+		0995747C2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		0995747D2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		0995747E2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
 		0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
@@ -1722,6 +1734,8 @@
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
 		09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditBindTwoFAViewController.swift; sourceTree = "<group>"; };
 		0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditBindTwoFAViewController.xib; sourceTree = "<group>"; };
+		0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFAFinishViewController.swift; sourceTree = "<group>"; };
+		0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditTwoFAFinishViewController.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
@@ -2093,6 +2107,8 @@
 			isa = PBXGroup;
 			children = (
 				099574542876797A005D44E2 /* BindTwoFAView */,
+				0995746A2876D36C005D44E2 /* FinishTwoFAView */,
+				0995746C2876D388005D44E2 /* CheckTwoFAView */,
 				09EED335285737D400CB4A64 /* AuditTriggerAlertView */,
 				09EED2FC2856EA3100CB4A64 /* DetailVC */,
 				09EED2C32856D24100CB4A64 /* subVC */,
@@ -2162,6 +2178,22 @@
 				0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */,
 			);
 			path = BindTwoFAView;
+			sourceTree = "<group>";
+		};
+		0995746A2876D36C005D44E2 /* FinishTwoFAView */ = {
+			isa = PBXGroup;
+			children = (
+				0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */,
+				0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */,
+			);
+			path = FinishTwoFAView;
+			sourceTree = "<group>";
+		};
+		0995746C2876D388005D44E2 /* CheckTwoFAView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CheckTwoFAView;
 			sourceTree = "<group>";
 		};
 		0998BF0C28619567000A4B5B /* Socket */ = {
@@ -3115,6 +3147,7 @@
 				09905AF22851A02B00BAEE78 /* AddressBottomView.xib in Resources */,
 				09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */,
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
+				099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3193,6 +3226,7 @@
 				09905BE42851A08500BAEE78 /* AddressBottomView.xib in Resources */,
 				09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */,
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
+				099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3271,6 +3305,7 @@
 				09905CD62851A09600BAEE78 /* AddressBottomView.xib in Resources */,
 				09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */,
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
+				0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3349,6 +3384,7 @@
 				09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
+				0995747D2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
@@ -3427,6 +3463,7 @@
 				09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
+				0995747E2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
@@ -3505,6 +3542,7 @@
 				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
+				0995747C2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
@@ -3849,6 +3887,7 @@
 				09905A592851A02B00BAEE78 /* CALayer+util.swift in Sources */,
 				09919ACB286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905A5A2851A02B00BAEE78 /* WMZCodeView.m in Sources */,
+				099574722876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905A5B2851A02B00BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905A5C2851A02B00BAEE78 /* LoginSignupViewController.swift in Sources */,
 				09905A5D2851A02B00BAEE78 /* FilterCollectionCell.swift in Sources */,
@@ -4061,6 +4100,7 @@
 				09905B4B2851A08500BAEE78 /* CALayer+util.swift in Sources */,
 				09919ACC286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905B4C2851A08500BAEE78 /* WMZCodeView.m in Sources */,
+				099574732876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905B4D2851A08500BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905B4E2851A08500BAEE78 /* LoginSignupViewController.swift in Sources */,
 				09905B4F2851A08500BAEE78 /* FilterCollectionCell.swift in Sources */,
@@ -4273,6 +4313,7 @@
 				09905C3D2851A09600BAEE78 /* CALayer+util.swift in Sources */,
 				09919ACA286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09905C3E2851A09600BAEE78 /* WMZCodeView.m in Sources */,
+				099574712876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905C3F2851A09600BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905C402851A09600BAEE78 /* LoginSignupViewController.swift in Sources */,
 				09905C412851A09600BAEE78 /* FilterCollectionCell.swift in Sources */,
@@ -4485,6 +4526,7 @@
 				09CAF45D283C77ED00D7B19B /* CALayer+util.swift in Sources */,
 				09919AC8286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09CAF45E283C77ED00D7B19B /* WMZCodeView.m in Sources */,
+				0995746F2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5EE283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */,
 				09056D86284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
@@ -4697,6 +4739,7 @@
 				09CAF51E283C7BBE00D7B19B /* CALayer+util.swift in Sources */,
 				09919AC9286556F700035835 /* UserMenuViewModel.swift in Sources */,
 				09CAF51F283C7BBE00D7B19B /* WMZCodeView.m in Sources */,
+				099574702876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5EF283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */,
 				09056D87284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
@@ -4909,6 +4952,7 @@
 				A19C719128225B8D000AFC3F /* CALayer+util.swift in Sources */,
 				09919AC7286556F600035835 /* UserMenuViewModel.swift in Sources */,
 				A19C71E3282268CC000AFC3F /* WMZCodeView.m in Sources */,
+				0995746E2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5ED283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
 				09056D85284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,

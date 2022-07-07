@@ -47,7 +47,7 @@ class Themes {
     static let grayF7F8FC = UIColor(rgb: 0xF7F8FC)
     static let green13BBB1 = UIColor(rgb: 0x13BBB1)
     static let black637684 = UIColor(rgb: 0x637684)
-    
+    static let black1B2559 = UIColor(rgb: 0x1B2559)
     static let primaryLight =  UIColor(rgb: 0xc2aaf2)
     static let primaryBase = UIColor(rgb: 0x8e73da)
     static let primaryDark = UIColor(rgb: 0x6b49aa)

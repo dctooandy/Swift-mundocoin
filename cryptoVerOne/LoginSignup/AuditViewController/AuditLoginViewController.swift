@@ -179,13 +179,13 @@ class AuditLoginViewController: BaseViewController {
     {
         // 判斷是否有綁定過2FA
         // 沒綁過
-//        let emailString = accountInputView.textField.text!
-//        let goAuthVC = AuditBindTwoFAViewController.instance(emailString: emailString)
-//        _ = self.navigationController?.pushViewController(goAuthVC, animated: true)
+        let emailString = accountInputView.textField.text!
+        let goAuthVC = AuditBindTwoFAViewController.instance(emailString: emailString)
+        _ = self.navigationController?.pushViewController(goAuthVC, animated: true)
         // 有綁過
         if let completeBlock = complete
         {
-            completeBlock(true)
+//            completeBlock(true)
         }
     }
     func goTodoViewController() {

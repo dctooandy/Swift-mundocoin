@@ -39,6 +39,12 @@ class AuditBindTwoFAViewController: BaseViewController {
         tfLabel.text = "Download Google Authentication"
         return tfLabel
     }()
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     static func instance(emailString : String ) -> AuditBindTwoFAViewController {
@@ -49,7 +55,9 @@ class AuditBindTwoFAViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Google Authentication".localized
-        view.backgroundColor = Themes.grayF4F7FE
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        view.backgroundColor = Themes.black1B2559
+        scrollView.backgroundColor = Themes.grayF4F7FE
         setupUI()
         bindButtonAction()
         bindTextfield()
@@ -61,7 +69,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         emailVerifyInputView.setMode(mode: .emailVerify(emailAccountString))
-
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -91,20 +99,10 @@ class AuditBindTwoFAViewController: BaseViewController {
         qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
         let image = UIImage().generateQRCode(from: qrCodeString, imageView: codeImageView, logo:nil)
         codeImageView.image = image
-//        copyView = InputStyleView(inputViewMode: .copy)
         copyInputView.setMode(mode: .copy)
         copyInputView.textField.text = qrCodeString
         emailVerifyInputView.setMode(mode: .emailVerify(emailAccountString))
         twoFAInputView.setMode(mode: .twoFAVerify)
-//        twoFAView = InputStyleView(inputViewMode: .twoFAVerify)
-//        copyInputView.addSubview(copyView)
-//        twoFAInputView.addSubview(twoFAView)
-//        copyView.snp.makeConstraints { (make) in
-//            make.edges.equalToSuperview()
-//        }
-//        twoFAView.snp.makeConstraints { (make) in
-//            make.edges.equalToSuperview()
-//        }
 
         bindButton.setTitle("Bind".localized, for: .normal)
         bindButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
@@ -121,19 +119,6 @@ class AuditBindTwoFAViewController: BaseViewController {
             make.centerX.equalTo(bindButton)
             make.top.equalTo(bindButton.snp.bottom).offset(14)
         }
-//        downloadButton.setTitle("Download APP".localized, for: .normal)
-//        downloadButton.setTitleColor(UIColor(rgb: 0x656565), for: .normal)
-//        downloadButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
-//        downloadButton.setBackgroundImage(UIImage(color: .white) , for: .disabled)
-//        downloadButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)) , for: .normal)
-//        downloadButton.layer.borderColor = UIColor(rgb: 0x656565).cgColor
-//        downloadButton.layer.borderWidth = 1
-//        downloadButton.snp.makeConstraints { (make) in
-//            make.top.equalTo(bindButton.snp.bottom).offset(15)
-//            make.centerX.equalToSuperview()
-//            make.width.equalToSuperview().multipliedBy(0.7)
-//            make.height.equalToSuperview().multipliedBy(0.065)
-//        }
     }
     func bindButtonAction()
     {
@@ -149,7 +134,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     func bindInputAction()
     {
         emailVerifyInputView.rxSendVerifyAction().subscribeSuccess { [weak self](_) in
-            self?.verifyResentPressed()
+//            self?.verifyResentPressed()
         }.disposed(by: dpg)
     }
     
@@ -242,8 +227,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     {
         //網路
         //假設成功
-        let finishVC = TFFinishReViewController.loadNib()
-        finishVC.viewMode = .back
+        let finishVC = AuditTwoFAFinishViewController.loadNib()
         self.navigationController?.pushViewController(finishVC, animated: true)
     }
 
@@ -252,10 +236,20 @@ class AuditBindTwoFAViewController: BaseViewController {
         {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
-           
+            var showKeyBoard = false
+            var maxY:CGFloat = 0.0
             if ((twoFAInputView?.textField.isFirstResponder) == true)
             {
-                let diffHeight = Views.screenHeight - twoFAInputView.frame.maxY
+                showKeyBoard = true
+                maxY = twoFAInputView.frame.maxY
+            }else if ((emailVerifyInputView?.textField.isFirstResponder) == true)
+            {
+                showKeyBoard = true
+                maxY = emailVerifyInputView.frame.maxY
+            }
+            if showKeyBoard == true
+            {
+                let diffHeight = Views.screenHeight - maxY
                 if diffHeight < (keyboardHeight + 50)
                 {
                     let upHeight = (keyboardHeight + 50) - diffHeight

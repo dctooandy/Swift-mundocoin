@@ -17,10 +17,10 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dZS-je-wJn">
-                        <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rhk-7J-T41" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="848"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="852.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2N-ri-24o">
                                         <rect key="frame" x="89.5" y="47" width="235" height="235"/>
@@ -111,7 +111,7 @@
                     <constraint firstItem="P2N-ri-24o" firstAttribute="height" secondItem="RUw-Ai-zZ5" secondAttribute="height" multiplier="0.262277" id="8SO-cE-0F0"/>
                     <constraint firstItem="dZS-je-wJn" firstAttribute="leading" secondItem="9vu-gI-znE" secondAttribute="leading" id="Aa2-h4-GWq"/>
                     <constraint firstItem="dZS-je-wJn" firstAttribute="top" secondItem="9vu-gI-znE" secondAttribute="top" id="ClL-jh-UzD"/>
-                    <constraint firstItem="9vu-gI-znE" firstAttribute="bottom" secondItem="dZS-je-wJn" secondAttribute="bottom" id="Gyn-Oy-hst"/>
+                    <constraint firstAttribute="bottom" secondItem="dZS-je-wJn" secondAttribute="bottom" id="Gyn-Oy-hst"/>
                 </constraints>
             </view>
             <connections>

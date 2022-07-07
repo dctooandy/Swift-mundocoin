@@ -38,7 +38,7 @@ class MDNavigationController:UINavigationController{
         self.navigationBar.shadowImage = UIImage()
         self.navigationBar.isTranslucent = true
         self.view.backgroundColor = .clear
-       
+        self.navigationBar.tintColor = .white
     }
     // MARK: -
     // MARK:業務方法
@@ -66,6 +66,10 @@ class MDNavigationController:UINavigationController{
     }
     
     override var preferredStatusBarStyle:UIStatusBarStyle {
-        return .default
+        if #available(iOS 13.0, *) {
+            return .darkContent
+        } else {
+            return .default
+        }
     }
 }
