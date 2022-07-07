@@ -892,6 +892,18 @@
 		0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
 		099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
 		099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */; };
+		099574832876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		099574842876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		099574852876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		099574862876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		099574872876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		099574882876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */; };
+		0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
 		0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
@@ -1736,6 +1748,8 @@
 		0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditBindTwoFAViewController.xib; sourceTree = "<group>"; };
 		0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFAFinishViewController.swift; sourceTree = "<group>"; };
 		0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditTwoFAFinishViewController.xib; sourceTree = "<group>"; };
+		099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFACheckViewController.swift; sourceTree = "<group>"; };
+		099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditTwoFACheckViewController.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
@@ -2192,6 +2206,8 @@
 		0995746C2876D388005D44E2 /* CheckTwoFAView */ = {
 			isa = PBXGroup;
 			children = (
+				099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */,
+				099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */,
 			);
 			path = CheckTwoFAView;
 			sourceTree = "<group>";
@@ -3149,6 +3165,7 @@
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */,
+				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
 				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3228,6 +3245,7 @@
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */,
+				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
 				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3307,6 +3325,7 @@
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
 				0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */,
+				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
 				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3386,6 +3405,7 @@
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747D2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
+				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3465,6 +3485,7 @@
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747E2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
+				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3544,6 +3565,7 @@
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				0995747C2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
+				0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
 				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
@@ -3893,6 +3915,7 @@
 				09905A5D2851A02B00BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905A5E2851A02B00BAEE78 /* AmountInputView.swift in Sources */,
 				09905A5F2851A02B00BAEE78 /* AddressBookDto.swift in Sources */,
+				099574872876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905A602851A02B00BAEE78 /* AppDelegate.swift in Sources */,
 				09905A612851A02B00BAEE78 /* PushNotiViewController.swift in Sources */,
 				09905A622851A02B00BAEE78 /* MundoResponseDto.swift in Sources */,
@@ -4106,6 +4129,7 @@
 				09905B4F2851A08500BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905B502851A08500BAEE78 /* AmountInputView.swift in Sources */,
 				09905B512851A08500BAEE78 /* AddressBookDto.swift in Sources */,
+				099574882876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905B522851A08500BAEE78 /* AppDelegate.swift in Sources */,
 				09905B532851A08500BAEE78 /* PushNotiViewController.swift in Sources */,
 				09905B542851A08500BAEE78 /* MundoResponseDto.swift in Sources */,
@@ -4319,6 +4343,7 @@
 				09905C412851A09600BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905C422851A09600BAEE78 /* AmountInputView.swift in Sources */,
 				09905C432851A09600BAEE78 /* AddressBookDto.swift in Sources */,
+				099574862876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905C442851A09600BAEE78 /* AppDelegate.swift in Sources */,
 				09905C452851A09600BAEE78 /* PushNotiViewController.swift in Sources */,
 				09905C462851A09600BAEE78 /* MundoResponseDto.swift in Sources */,
@@ -4532,6 +4557,7 @@
 				09056D86284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF460283C77ED00D7B19B /* AmountInputView.swift in Sources */,
 				092E76032850488700221997 /* AddressBookDto.swift in Sources */,
+				099574842876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */,
 				09CAF5C6283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
@@ -4745,6 +4771,7 @@
 				09056D87284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF521283C7BBE00D7B19B /* AmountInputView.swift in Sources */,
 				092E76042850488700221997 /* AddressBookDto.swift in Sources */,
+				099574852876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */,
 				09CAF5C7283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
@@ -4958,6 +4985,7 @@
 				09056D85284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */,
 				092E76022850488700221997 /* AddressBookDto.swift in Sources */,
+				099574832876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
 				09CAF5C5283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
