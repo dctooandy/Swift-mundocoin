@@ -9,6 +9,9 @@ import Foundation
 import RxCocoa
 import RxSwift
 import Toaster
+import UIKit
+
+public typealias AuthCompletionBlock = (Bool) -> Void
 class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
@@ -23,11 +26,13 @@ class AuditLoginViewController: BaseViewController {
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var logoButton : UIButton!
+    
+    @IBOutlet weak var middleView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = Themes.grayF7F8FC
         naviBackBtn.isHidden = true
         setupKeyboardNoti()
         setupUI()
@@ -122,6 +127,7 @@ class AuditLoginViewController: BaseViewController {
     {
         accountInputView.setMode(mode: .auditAccount)
         passwordInputView.setMode(mode: .auditPassword)
+        middleView.applyCornerAndShadow(radius: 12)
     }
     func bindTextfield()
     {
@@ -169,26 +175,43 @@ class AuditLoginViewController: BaseViewController {
     func getTabbarVC() -> AuditTabbarViewController? {
         return UIApplication.topViewController() as? AuditTabbarViewController
     }
+    func showTwoFAVC(complete:AuthCompletionBlock? = nil)
+    {
+        // 判斷是否有綁定過2FA
+        // 沒綁過
+//        let emailString = accountInputView.textField.text!
+//        let goAuthVC = AuditBindTwoFAViewController.instance(emailString: emailString)
+//        _ = self.navigationController?.pushViewController(goAuthVC, animated: true)
+        // 有綁過
+        if let completeBlock = complete
+        {
+            completeBlock(true)
+        }
+    }
     func goTodoViewController() {
-        let idString = accountInputView.textField.text!
-        let password = passwordInputView.textField.text!
-        Beans.auditServer.auditAuthentication(with: idString, password: password)
-            .subscribeSuccess { [self] (dto) in
-                _ = LoadingViewController.dismiss()
-                if let data = dto
-                {
-                    MemberAccountDto.share = MemberAccountDto(account: idString,
-                                                              password: password,
-                                                              loginMode: .emailPage)
-                    _ = KeychainManager.share.setLastAccount(idString)
-                    KeychainManager.share.updateAccount(acc: idString,
-                                                        pwd: password)
-                    BioVerifyManager.share.applyMemberInAuditBIOList(idString)
-                    KeychainManager.share.setToken(data.token)
-                    let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
-                    showAuditBioConfirmView(didShow: didAskBioLogin)
-                }
-            }.disposed(by: dpg)
+        showTwoFAVC(complete: { [self] _ in
+            
+            let idString = accountInputView.textField.text!
+            let password = passwordInputView.textField.text!
+            Beans.auditServer.auditAuthentication(with: idString, password: password)
+                .subscribeSuccess { [self] (dto) in
+                    _ = LoadingViewController.dismiss()
+                    if let data = dto
+                    {
+                        MemberAccountDto.share = MemberAccountDto(account: idString,
+                                                                  password: password,
+                                                                  loginMode: .emailPage)
+                        _ = KeychainManager.share.setLastAccount(idString)
+                        KeychainManager.share.updateAccount(acc: idString,
+                                                            pwd: password)
+                        BioVerifyManager.share.applyMemberInAuditBIOList(idString)
+                        KeychainManager.share.setToken(data.token)
+                        let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
+                        showAuditBioConfirmView(didShow: didAskBioLogin)
+                    }
+                }.disposed(by: dpg)
+        })
+        
     }
     // Confirm Touch/Face ID
     private func showAuditBioConfirmView(didShow:Bool) {

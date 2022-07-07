@@ -71,7 +71,11 @@ class UnderlinedLabel: UILabel {
             let textRange = NSMakeRange(0, text.count)
             let attributedText = NSMutableAttributedString(string: text)
             attributedText.addAttribute(NSAttributedString.Key.underlineStyle , value: NSUnderlineStyle.single.rawValue, range: textRange)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.black637684, range: textRange)
+#else
             attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
+#endif
             // Add other attributes if needed
             self.attributedText = attributedText
         }

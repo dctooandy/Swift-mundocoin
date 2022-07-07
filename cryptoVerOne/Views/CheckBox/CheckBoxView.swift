@@ -102,9 +102,14 @@ class CheckBoxView: UIControl {
             layer.borderWidth = 2
             layer.borderColor = Themes.grayE0E5F2.cgColor
         case .checkType:
-            backgroundColor = Themes.purple6149F6
             layer.borderWidth = 2
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            backgroundColor = Themes.green13BBB1
+            layer.borderColor = Themes.green13BBB1.cgColor
+#else
+            backgroundColor = Themes.purple6149F6
             layer.borderColor = Themes.purple6149F6.cgColor
+#endif
         case .invalidType:
             backgroundColor = .white
             layer.borderWidth = 2

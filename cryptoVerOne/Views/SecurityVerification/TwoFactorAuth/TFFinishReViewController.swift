@@ -129,8 +129,8 @@ class TFFinishReViewController: BaseViewController {
 
     func goRebindGoogleAuth()
     {
-        let googlwAuthVC = TwoFactorAuthViewController.loadNib()
-        _ = self.navigationController?.pushViewController(googlwAuthVC, animated: true)
+        let googleAuthVC = TwoFactorAuthViewController.loadNib()
+        _ = self.navigationController?.pushViewController(googleAuthVC, animated: true)
     }
     @objc override func popVC() {
         switch viewMode {

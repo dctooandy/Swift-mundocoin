@@ -34,7 +34,7 @@ class TwoFAVerifyView: UIView {
     
     // MARK: -
     // MARK:UI 設定
-    var emailInputView = InputStyleView(inputViewMode: .emailVerify)
+    var emailInputView = InputStyleView(inputViewMode: .emailVerify(KeychainManager.share.getLastAccount()?.account ?? ""))
     var twoFAInputView = InputStyleView(inputViewMode: .twoFAVerify)
     @IBOutlet weak var lostTwoFALabel: UILabel!
     let submitButton : CornerradiusButton = {
@@ -51,6 +51,7 @@ class TwoFAVerifyView: UIView {
         super.awakeFromNib()
         self.setup()
         self.bind()
+        
     }
     
     override init(frame: CGRect) {

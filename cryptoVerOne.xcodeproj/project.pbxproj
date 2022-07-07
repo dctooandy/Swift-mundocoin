@@ -868,6 +868,18 @@
 		09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
+		09957456287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		09957457287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		09957458287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		09957459287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		0995745A287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		0995745B287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
+		0995746428767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746528767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746628767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746728767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746828767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
+		0995746928767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */; };
 		0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
@@ -1708,6 +1720,8 @@
 		09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		09947BAF284DB433004F7FD7 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditBindTwoFAViewController.swift; sourceTree = "<group>"; };
+		0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditBindTwoFAViewController.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
@@ -2078,6 +2092,7 @@
 		0909C8DC28532DFE003E2F58 /* AuditViewController */ = {
 			isa = PBXGroup;
 			children = (
+				099574542876797A005D44E2 /* BindTwoFAView */,
 				09EED335285737D400CB4A64 /* AuditTriggerAlertView */,
 				09EED2FC2856EA3100CB4A64 /* DetailVC */,
 				09EED2C32856D24100CB4A64 /* subVC */,
@@ -2138,6 +2153,15 @@
 				09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		099574542876797A005D44E2 /* BindTwoFAView */ = {
+			isa = PBXGroup;
+			children = (
+				09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */,
+				0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */,
+			);
+			path = BindTwoFAView;
 			sourceTree = "<group>";
 		};
 		0998BF0C28619567000A4B5B /* Socket */ = {
@@ -3098,6 +3122,7 @@
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905AF82851A02B00BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905AF92851A02B00BAEE78 /* WhiteListBottomView.xib in Resources */,
+				0995746828767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905AFA2851A02B00BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905AFB2851A02B00BAEE78 /* NotiViewController.xib in Resources */,
 				09905AFC2851A02B00BAEE78 /* TransDetailView.xib in Resources */,
@@ -3175,6 +3200,7 @@
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905BEA2851A08500BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905BEB2851A08500BAEE78 /* WhiteListBottomView.xib in Resources */,
+				0995746928767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905BEC2851A08500BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905BED2851A08500BAEE78 /* NotiViewController.xib in Resources */,
 				09905BEE2851A08500BAEE78 /* TransDetailView.xib in Resources */,
@@ -3252,6 +3278,7 @@
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905CDC2851A09600BAEE78 /* AddressBookViewController.xib in Resources */,
 				09905CDD2851A09600BAEE78 /* WhiteListBottomView.xib in Resources */,
+				0995746728767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905CDE2851A09600BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905CDF2851A09600BAEE78 /* NotiViewController.xib in Resources */,
 				09905CE02851A09600BAEE78 /* TransDetailView.xib in Resources */,
@@ -3329,6 +3356,7 @@
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */,
+				0995746528767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
@@ -3406,6 +3434,7 @@
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */,
+				0995746628767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
@@ -3483,6 +3512,7 @@
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
 				09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
+				0995746428767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
 				09056DA2284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
@@ -3862,6 +3892,7 @@
 				09905A7D2851A02B00BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319261285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF122861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				0995745A287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8DA2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905A7E2851A02B00BAEE78 /* SignupPostDto.swift in Sources */,
 				09905A7F2851A02B00BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4073,6 +4104,7 @@
 				09905B6F2851A08500BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319262285F9412000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF132861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				0995745B287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8DB2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905B702851A08500BAEE78 /* SignupPostDto.swift in Sources */,
 				09905B712851A08500BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4284,6 +4316,7 @@
 				09905C612851A09600BAEE78 /* WalletTransactionDto.swift in Sources */,
 				A1319260285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF112861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				09957459287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D92852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905C622851A09600BAEE78 /* SignupPostDto.swift in Sources */,
 				09905C632851A09600BAEE78 /* IDVerificationViewController.swift in Sources */,
@@ -4495,6 +4528,7 @@
 				09056D8E284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF0F2861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				09957457287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D72852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4706,6 +4740,7 @@
 				09056D8F284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF102861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				09957458287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D82852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
 				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
@@ -4917,6 +4952,7 @@
 				09056D8D284EF15700038BF8 /* WalletTransactionDto.swift in Sources */,
 				A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */,
 				0998BF0E2861959D000A4B5B /* SocketMessageDto.swift in Sources */,
+				09957456287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D62852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,

@@ -13,7 +13,7 @@ import Toaster
 import DropDown
 
 enum InputViewMode :Equatable {
-    case emailVerify
+    case emailVerify(String)
     case twoFAVerify
     case copy
     case withdrawToAddress
@@ -39,7 +39,7 @@ enum InputViewMode :Equatable {
     
     func topString() -> String {
         switch self {
-        case .emailVerify: return "Enter the 6-digit code sent to ".localized
+        case .emailVerify(let emailString): return "Enter the 6-digit code sent to \(emailString)".localized
         case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
@@ -59,28 +59,29 @@ enum InputViewMode :Equatable {
         case .newPassword: return "New Password".localized
         case .confirmPassword: return "Confirm New Password".localized
         case .customLabel(let title): return "\(title)"
-        case .auditAccount,.auditPassword : return ""
+        case .auditAccount : return "Admin /Email"
+        case .auditPassword : return "Password"
         }
     }
     
     func textPlacehloder() -> String {
         switch self {
-        case .emailVerify: return "Email verification code".localized
+        case .emailVerify(_): return "Email verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress,.address: return "Long press to paste".localized
         case .email: return "...@mundocoin.com"
         case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
-        case .auditAccount : return "Account"
-        case .auditPassword : return "Password"
+        case .auditAccount : return ""
+        case .auditPassword : return ""
         default: return ""
         }
     }
     
     func invalidString() -> String {
         switch self {
-        case .emailVerify: return "Enter the 6-digit code".localized
+        case .emailVerify(_): return "Enter the 6-digit code".localized
         case .twoFAVerify: return "Enter the 6-digit code".localized
         case .withdrawToAddress,.address: return "Please check the withdrawal address.".localized
         case .email: return "...@mundocoin.com".localized
@@ -95,7 +96,7 @@ enum InputViewMode :Equatable {
     func rightLabelString() -> String
     {
         switch self {
-        case .emailVerify: return "Send".localized
+        case .emailVerify(_): return "Send".localized
         case .twoFAVerify: return "Paste".localized
         case .copy: return "Copy".localized
         default: return ""
@@ -174,7 +175,11 @@ class InputStyleView: UIView {
         view.layer.borderColor = Themes.grayE0E5F2.cgColor
         view.isUserInteractionEnabled = false
         view.alpha = 1.0
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        view.applyCornerRadius(radius: 4)
+#else
         view.applyCornerRadius(radius: 10)
+#endif
         return view
     }()
     let topLabel: UILabel = {
@@ -182,7 +187,11 @@ class InputStyleView: UIView {
         lb.textAlignment = .left
         lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
         lb.text = "Email".localized
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        lb.font = Fonts.pingFangSCSemibold(14)
+#else
         lb.font = Fonts.pingFangSCRegular(14)
+#endif
         return lb
     }()
     let textField: UITextField = {
@@ -314,9 +323,10 @@ class InputStyleView: UIView {
     func setup()
     {
         let isPasswordType = (inputViewMode == .password ||
-                                inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword ||
-                                inputViewMode == .oldPassword)
+                              inputViewMode == .newPassword ||
+                              inputViewMode == .confirmPassword ||
+                              inputViewMode == .oldPassword ||
+                              inputViewMode == .auditPassword)
         var isCustomLabel = false
         switch inputViewMode {
         case .customLabel(_) ,.auditAccount,.auditPassword:
@@ -378,9 +388,10 @@ class InputStyleView: UIView {
         displayRightButton.tintColor = Themes.gray707EAE
         cancelRightButton.tintColor = Themes.gray707EAE
         let isPasswordType = (inputViewMode == .password ||
-                                inputViewMode == .newPassword ||
-                                inputViewMode == .confirmPassword ||
-                                inputViewMode == .oldPassword)
+                              inputViewMode == .newPassword ||
+                              inputViewMode == .confirmPassword ||
+                              inputViewMode == .oldPassword ||
+                              inputViewMode == .auditPassword)
         var topLabelString = ""
         var placeHolderString = ""
         var invalidLabelString = ""
@@ -399,13 +410,16 @@ class InputStyleView: UIView {
         placeHolderString = inputViewMode.textPlacehloder()
         invalidLabelString = inputViewMode.invalidString()
      
-        if inputViewMode == .emailVerify ||
-            inputViewMode == .twoFAVerify ||
+        if inputViewMode == .twoFAVerify ||
             inputViewMode == .copy
         {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            verifyResentLabel.textColor = Themes.green13BBB1
+#else
             verifyResentLabel.textColor = Themes.purple6149F6
+#endif
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
@@ -541,6 +555,19 @@ class InputStyleView: UIView {
                 }
                 resetTopLabelAndMask()
                 tfMaskView.layer.borderColor = UIColor.clear.cgColor
+            case .emailVerify(_):
+                addSubview(verifyResentLabel)
+                verifyResentLabel.text = inputViewMode.rightLabelString()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                verifyResentLabel.textColor = Themes.green13BBB1
+#else
+                verifyResentLabel.textColor = Themes.purple6149F6
+#endif
+                verifyResentLabel.snp.makeConstraints { (make) in
+                    make.right.equalToSuperview().offset(-10)
+                    make.centerY.equalTo(textField)
+                }
+                rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
             default:
                 rightLabelWidth = 10
             }
@@ -664,7 +691,7 @@ class InputStyleView: UIView {
  
     private func verifyResentPressed() {
         switch inputViewMode {
-        case .emailVerify:
+        case .emailVerify(_):
             emailSendVerify()
         case .twoFAVerify:
             pasteStringToTF()
@@ -742,7 +769,11 @@ class InputStyleView: UIView {
     func resetTimerAndAll()
     {
         verifyResentLabel.text = "Send".localized
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        verifyResentLabel.textColor = Themes.green13BBB1
+#else
         verifyResentLabel.textColor = Themes.purple6149F6
+#endif
         resetDisplayBtnUI()
         timer?.invalidate()
         timer = nil
