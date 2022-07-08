@@ -12,7 +12,7 @@ import RxSwift
 
 class AuditTwoFACheckViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onSubmitClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     var emailAccountString : String = ""
     // MARK: -
@@ -42,6 +42,7 @@ class AuditTwoFACheckViewController: BaseViewController {
         setupUI()
         bindButtonAction()
         bindBorderColor()
+        bindTextfield()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -97,9 +98,26 @@ class AuditTwoFACheckViewController: BaseViewController {
     {
         //網路
         //假設成功
-        
+        if let codeString = twoFAVerifyInputView.textField.text
+        {
+            self.navigationController?.popViewController(animated: true)
+            onSubmitClick.onNext(codeString)
+        }
     }
-    
+    func bindTextfield()
+    {
+        let isCodeValid = twoFAVerifyInputView.textField.rx.text
+            .map { (str) -> Bool in
+                guard let acc = str else { return false  }
+                return RegexHelper.match(pattern: .otp, input: acc)
+        }
+        isCodeValid.skip(1).bind(to: twoFAVerifyInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isCodeValid.bind(to: submitButton.rx.isEnabled).disposed(by: dpg)
+    }
+    func rxSubmitClick() -> Observable<String>
+    {
+        return onSubmitClick.asObservable()
+    }
 }
 // MARK: -
 // MARK: 延伸

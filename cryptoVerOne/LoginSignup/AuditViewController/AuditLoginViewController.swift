@@ -11,7 +11,7 @@ import RxSwift
 import Toaster
 import UIKit
 
-public typealias AuthCompletionBlock = (Bool) -> Void
+public typealias AuthCompletionBlock = (String) -> Void
 class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
@@ -185,15 +185,17 @@ class AuditLoginViewController: BaseViewController {
         // 有綁過
         let emailString = accountInputView.textField.text!
         let goAuthVC = AuditTwoFACheckViewController.instance(emailString: emailString)
+        goAuthVC.rxSubmitClick().subscribeSuccess { stringValue in
+            if let completeBlock = complete
+            {
+                completeBlock(stringValue)
+            }
+        }.disposed(by: dpg)
         _ = self.navigationController?.pushViewController(goAuthVC, animated: true)
-        if let completeBlock = complete
-        {
-//            completeBlock(true)
-        }
     }
     func goTodoViewController() {
-        showTwoFAVC(complete: { [self] _ in
-            
+        showTwoFAVC(complete: { [self] stringValue in
+            Log.v("2FA Code: \(stringValue)")
             let idString = accountInputView.textField.text!
             let password = passwordInputView.textField.text!
             Beans.auditServer.auditAuthentication(with: idString, password: password)
