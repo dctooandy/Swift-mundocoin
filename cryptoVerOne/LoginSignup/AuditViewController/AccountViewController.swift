@@ -16,11 +16,13 @@ class AccountViewController: BaseViewController {
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var adminImageView: UIImageView!
-    @IBOutlet weak var adminLabel: UILabel!
+    @IBOutlet weak var backView: UIView!
+    
+    @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userLabel: UILabel!
+    @IBOutlet weak var detailView: UIView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var appVersionLabel: UILabel!
-    @IBOutlet weak var logoutLabel: UILabel!
     private lazy var logoBtn:UIButton = {
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -42,7 +44,6 @@ class AccountViewController: BaseViewController {
         super.viewDidLoad()
         naviBackBtn.isHidden = true
         setupUI()
-        bindLabel()
         setupBackUI()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -73,6 +74,15 @@ class AccountViewController: BaseViewController {
     }
     func setupUI()
     {
+        backView.backgroundColor = Themes.grayF7F8FC
+        userImageView.layer.cornerRadius = 18
+        userImageView.layer.masksToBounds = true
+        detailView.layer.cornerRadius = 12
+        detailView.layer.masksToBounds = true
+        detailView.layer.shadowColor = UIColor.black.cgColor
+        detailView.layer.shadowRadius = 35
+        detailView.layer.shadowOffset = .zero
+        detailView.layer.shadowOpacity = 0.2
         var version = ""
         var build = ""
         if let versionString = Bundle.main.releaseVersionNumber
@@ -93,22 +103,9 @@ class AccountViewController: BaseViewController {
         }
         let appVersionString = "version \(version)-\(build)"
         appVersionLabel.text = appVersionString
-        logoutLabel.layer.borderColor = UIColor.lightGray.cgColor
-        logoutLabel.layer.borderWidth = 1
         emailLabel.text = KeychainManager.share.getLastAccount()?.account
     }
-    func bindLabel()
-    {
-        logoutLabel.rx.click.subscribeSuccess { (_) in
-            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
-            {
-                DeepLinkManager.share.cleanDataForLogout()
-                let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
-                mainWindow.rootViewController = auditNavVC
-                mainWindow.makeKeyAndVisible()
-            }
-        }.disposed(by: dpg)
-    }
+  
     @objc func logoutAction()
     {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window

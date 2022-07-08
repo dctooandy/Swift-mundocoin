@@ -114,6 +114,13 @@
                         <constraint firstItem="V2N-gC-Xmb" firstAttribute="leading" secondItem="7Pn-eI-bm1" secondAttribute="trailing" id="xqO-uG-zy8"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cD6-Pa-Eer">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="1"/>
+                    <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="eNc-56-BHQ"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -122,8 +129,10 @@
                 <constraint firstItem="qHW-Im-5ru" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HNc-wU-Y4P"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hpn-Ma-222"/>
                 <constraint firstItem="jxe-Rk-y94" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="I8u-bK-St1"/>
+                <constraint firstItem="cD6-Pa-Eer" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IMq-E4-czd"/>
                 <constraint firstAttribute="bottom" secondItem="h8U-AU-KAm" secondAttribute="bottom" id="LRx-Qx-DLO"/>
                 <constraint firstItem="Bin-DV-3Tv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="NbA-XG-ARb"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cD6-Pa-Eer" secondAttribute="trailing" id="QLZ-od-gwZ"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="S3i-aE-OMB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h8U-AU-KAm" secondAttribute="trailing" id="Uav-vY-paF"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HMf-kc-3Y3" secondAttribute="trailing" id="UdK-HS-roN"/>
@@ -132,6 +141,7 @@
                 <constraint firstAttribute="bottom" secondItem="qHW-Im-5ru" secondAttribute="bottom" id="kw1-UO-1mL"/>
                 <constraint firstItem="qHW-Im-5ru" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="q8I-sn-fsR"/>
                 <constraint firstAttribute="bottom" secondItem="HMf-kc-3Y3" secondAttribute="bottom" id="uf9-sn-jJN"/>
+                <constraint firstItem="cD6-Pa-Eer" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="zA2-oJ-h5Z"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

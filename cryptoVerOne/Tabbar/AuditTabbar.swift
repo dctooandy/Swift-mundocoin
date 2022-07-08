@@ -62,11 +62,11 @@ class AuditTabbar: UIView {
     {
         backgroundColor = .clear
         bindView()
-        backgroundView.image = UIImage(color: UIColor(rgb: 0xF7F8FC))
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowRadius = 35
-        layer.shadowOffset = .zero
-        layer.shadowOpacity = 0.3
+        backgroundView.image = UIImage(color: Themes.grayF7F8FC)
+//        layer.shadowColor = UIColor.black.cgColor
+//        layer.shadowRadius = 35
+//        layer.shadowOffset = .zero
+//        layer.shadowOpacity = 0.3
     }
     func bindView()
     {
