@@ -9,6 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 import SnapKit
+import UIKit
 class AuditDetailViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
@@ -18,13 +19,16 @@ class AuditDetailViewController: BaseViewController {
     var showMode:AuditShowMode!
     // MARK: -
     // MARK:UI 設定
-    lazy var auditBackBtn:TopBackButton = {
-        let btn = TopBackButton(iconName: "icon-chevron-left", title: "Back")
-        btn.setTitleColor(.black, for: .normal)
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var normalView: UIView!
     @IBOutlet weak var userIDLabel: UILabel!
     @IBOutlet weak var cryptoLabel: UILabel!
     @IBOutlet weak var networkLabel: UILabel!
@@ -34,22 +38,27 @@ class AuditDetailViewController: BaseViewController {
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var finishedView: UIView!
+    
+    @IBOutlet weak var txidTitleLabel: UILabel!
+    @IBOutlet weak var txidLabel: UnderlinedLabel!
+    @IBOutlet weak var auditorLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
     @IBOutlet weak var commentTitleLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    @IBOutlet weak var txidTitleLabel: UILabel!
-    @IBOutlet weak var txidLabel: UILabel!
     
-    @IBOutlet var labelArray: [UILabel]!
+    
     
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: auditBackBtn)
+        setupBackUI()
+        setupUI()
         bindTabbar()
         bindViewModel()
+        bindTxIdLable()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,6 +80,18 @@ class AuditDetailViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupBackUI()
+    {
+        title = "Detail".localized
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        view.backgroundColor = Themes.black1B2559
+        scrollView.backgroundColor = Themes.grayF4F7FE
+    }
+    func setupUI()
+    {
+        stackView.layer.cornerRadius = 12
+        stackView.layer.masksToBounds = true
+    }
     func bindTabbar()
     {
         let tabbar = AuditTabbar.share
@@ -84,6 +105,14 @@ class AuditDetailViewController: BaseViewController {
         viewModel.rxFetchSuccess().subscribeSuccess { dto in
             Log.v("完成提案 \(dto)")
             self.navigationController?.popToRootViewController(animated: true)
+        }.disposed(by: dpg)
+    }
+    func bindTxIdLable()
+    {
+        txidLabel.rx.click.subscribeSuccess { [self] _ in
+            let txidString = txidLabel.text ?? ""
+            Log.v("outapp url str: \(txidString)")
+            UIApplication.shared.open((URL(string: "https://shasta.tronscan.org/#/transaction/\(txidString)")!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)
     }
     func showAlertView(accept:AuditTriggerMode)
@@ -126,11 +155,10 @@ class AuditDetailViewController: BaseViewController {
             dateLabel.text = transDto.createdDateString
             self.showMode = showMode
             
-            for item in labelArray {
-                item.isHidden = (showMode == .pending ? true : false)
-            }
+            finishedView.isHidden = (showMode == .pending ? true : false)
+            statusLabel.textColor = transDto.stateColor
             statusLabel.text = chainDto.state
-            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
+//            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
             commentLabel.text = chainDto.memo
             txidTitleLabel.isHidden = (showMode == .pending ? true : (transDto.txId?.isEmpty == nil || transDto.txId?.isEmpty == true))
             txidLabel.text = transDto.txId ?? ""

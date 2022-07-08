@@ -7,6 +7,7 @@
 
 import Foundation
 import RxSwift
+import UIKit
 struct WalletTransactionDto :Codable {
 
     let size: Int
@@ -138,6 +139,21 @@ struct ContentDto : Codable
             return "PROCESSING"
         }
     }
+    var stateColor:UIColor
+    {
+        switch self.detailType
+        {
+        case .done:
+            return UIColor(rgb: 0x47CD6C)
+        case .pending:
+            return UIColor(rgb: 0xF50D0D)
+        case .failed:
+            return UIColor(rgb: 0xF50D0D)
+        case .processing:
+            return UIColor(rgb: 0xF50D0D)
+        }
+    }
+
     var createdDateString : String
     {
         let newDateFormatter = DateFormatter()

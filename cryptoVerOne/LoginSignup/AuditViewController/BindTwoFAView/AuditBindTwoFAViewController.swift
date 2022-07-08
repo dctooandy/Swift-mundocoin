@@ -36,6 +36,7 @@ class AuditBindTwoFAViewController: BaseViewController {
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
         tfLabel.isUserInteractionEnabled = true
+        tfLabel.isGrayColor = true
         tfLabel.text = "Download Google Authentication"
         return tfLabel
     }()

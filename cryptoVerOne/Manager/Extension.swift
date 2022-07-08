@@ -64,7 +64,7 @@ extension Array {
     }
 }
 class UnderlinedLabel: UILabel {
-    
+    var isGrayColor : Bool = false
     override var text: String? {
         didSet {
             guard let text = text else { return }
@@ -72,7 +72,13 @@ class UnderlinedLabel: UILabel {
             let attributedText = NSMutableAttributedString(string: text)
             attributedText.addAttribute(NSAttributedString.Key.underlineStyle , value: NSUnderlineStyle.single.rawValue, range: textRange)
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-            attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.black637684, range: textRange)
+            if isGrayColor == true
+            {
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.black637684, range: textRange)
+            }else
+            {
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
+            }
 #else
             attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
 #endif

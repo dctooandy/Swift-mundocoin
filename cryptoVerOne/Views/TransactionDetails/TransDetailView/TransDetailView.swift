@@ -148,9 +148,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     func bindUI()
     {
         txidInputView.rxTextLabelClick().subscribeSuccess { (string) in
-            print("outapp url str: \(string)")
-//        https://shasta.tronscan.org/#/transaction/{TXID}
-              UIApplication.shared.open((URL(string: "https://shasta.tronscan.org/#/transaction/\(string)")!), options: [:], completionHandler: nil)
+            Log.v("outapp url str: \(string)")
+            UIApplication.shared.open((URL(string: "https://shasta.tronscan.org/#/transaction/\(string)")!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)
         withdrawToInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
