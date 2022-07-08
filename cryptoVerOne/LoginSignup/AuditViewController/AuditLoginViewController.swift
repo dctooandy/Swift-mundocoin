@@ -15,6 +15,7 @@ public typealias AuthCompletionBlock = (String) -> Void
 class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
+    var isPopBySubVC = false
     private let dpg = DisposeBag()
 //    static let share: AuditLoginViewController = AuditLoginViewController.loadNib()
     // MARK: -
@@ -26,7 +27,6 @@ class AuditLoginViewController: BaseViewController {
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
     @IBOutlet weak var logoButton : UIButton!
-    
     @IBOutlet weak var middleView: UIView!
     // MARK: -
     // MARK:Life cycle
@@ -47,10 +47,11 @@ class AuditLoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
-        if didAskBioLogin == true 
+        if didAskBioLogin == true ,isPopBySubVC == false
         {
             bioVerifyCheck()
         }
+        isPopBySubVC = false
         if KeychainManager.share.getAuditRememberMeStatus() == true
         {
             if let loginPostDto = KeychainManager.share.getLastAccount(),
@@ -177,6 +178,7 @@ class AuditLoginViewController: BaseViewController {
     }
     func showTwoFAVC(complete:AuthCompletionBlock? = nil)
     {
+        isPopBySubVC = true
         // 判斷是否有綁定過2FA
         // 沒綁過
 //        let emailString = accountInputView.textField.text!

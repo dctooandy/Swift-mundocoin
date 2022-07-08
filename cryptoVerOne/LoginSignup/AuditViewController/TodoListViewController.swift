@@ -26,22 +26,32 @@ class TodoListViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backImageView: UIImageView!
-    let logoImage : UIImageView = {
-        let image = UIImageView(image: UIImage(named: "mundoLogo"))
-        return image
+    private lazy var logoBtn:UIButton = {
+        let btn = UIButton()
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let image = UIImage(named: "mundoLogo")?.reSizeImage(reSize: CGSize(width: 26, height: 26))
+        btn.setImage(image, for: .normal)
+        return btn
+    }()
+    private lazy var logoutBtn:UIButton = {
+        let btn = UIButton()
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let image = UIImage(named: "icon-logoout")?.reSizeImage(reSize: CGSize(width: 26, height: 26))
+        btn.setImage(image, for: .normal)
+        btn.addTarget(self, action:#selector(logoutAction), for:.touchUpInside)
+        return btn
     }()
     fileprivate let subPageVC = SubListPageViewController()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "ToDoList"
         naviBackBtn.isHidden = true
-        self.navigationItem.titleView = logoImage
-        bindLogoView()
+        setupBackUI()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
         setupSubPageVC()
         setupNavigation()
         currentShowMode = .pending
@@ -55,11 +65,18 @@ class TodoListViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupBackUI()
+    {
+        title = "MC Audit".localized
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoBtn)
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logoutBtn)
+        view.backgroundColor = Themes.black1B2559
+    }
     func setupNavigation()
     {
         let bar = self.navigationController?.navigationBar
         bar?.isTranslucent = true
-        bar?.backgroundColor = .lightGray
+//        bar?.backgroundColor = .lightGray
     }
     private func setupSubPageVC() {
         addChild(subPageVC)
@@ -70,12 +87,7 @@ class TodoListViewController: BaseViewController {
             make.left.bottom.right.equalToSuperview()
         })
     }
-    func bindLogoView()
-    {
-        logoImage.rx.click.subscribeSuccess { (_) in
-            self.socketEmit()
-        }.disposed(by: dpg)
-    }
+
     func socketEmit()
     {
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
@@ -86,6 +98,16 @@ class TodoListViewController: BaseViewController {
         let json = String(data: jsonData ?? Data(), encoding: String.Encoding.utf8)
         SocketIOManager.sharedInstance.sendEchoEvent(event: "message", para: json!)
 #endif
+    }
+    @objc func logoutAction()
+    {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            DeepLinkManager.share.cleanDataForLogout()
+            let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
+            mainWindow.rootViewController = auditNavVC
+            mainWindow.makeKeyAndVisible()
+        }
     }
 }
 // MARK: -

@@ -35,10 +35,7 @@ class AuditTwoFACheckViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Security Verification".localized
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
-        view.backgroundColor = Themes.black1B2559
-        backView.backgroundColor = Themes.grayF4F7FE
+        setupBackUI()
         setupUI()
         bindButtonAction()
         bindBorderColor()
@@ -65,6 +62,13 @@ class AuditTwoFACheckViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func setupBackUI()
+    {
+        title = "Security Verification".localized
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        view.backgroundColor = Themes.black1B2559
+        backView.backgroundColor = Themes.grayF4F7FE
+    }
     func setupUI()
     {
         twoFAVerifyInputView.setMode(mode: .twoFAVerify)

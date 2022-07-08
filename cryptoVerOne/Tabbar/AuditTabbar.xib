@@ -24,7 +24,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8q-4D-9sJ">
                             <rect key="frame" x="0.0" y="0.0" width="207" height="95"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TodoIcon" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-Rk-y94">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Todo-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-Rk-y94">
                                     <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="jxe-Rk-y94" secondAttribute="height" multiplier="1:1" id="i4b-Ge-dVq"/>
@@ -48,7 +48,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gSe-9f-Mtf">
                             <rect key="frame" x="207" y="0.0" width="207" height="95"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AccountIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Bin-DV-3Tv">
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bin-DV-3Tv">
                                     <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Bin-DV-3Tv" secondAttribute="height" multiplier="1:1" id="nDy-sS-d25"/>
@@ -150,8 +150,8 @@
         </view>
     </objects>
     <resources>
-        <image name="AccountIcon" width="40" height="40"/>
-        <image name="TodoIcon" width="34" height="34"/>
+        <image name="Account-Icon" width="28" height="28"/>
+        <image name="Todo-Icon" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

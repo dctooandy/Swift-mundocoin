@@ -62,7 +62,7 @@ class AuditTabbar: UIView {
     {
         backgroundColor = .clear
         bindView()
-        backgroundView.image = UIImage(color: .lightGray)
+        backgroundView.image = UIImage(color: UIColor(rgb: 0xF7F8FC))
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowRadius = 35
         layer.shadowOffset = .zero
@@ -83,10 +83,19 @@ class AuditTabbar: UIView {
         rxItemClick.onNext(index)
         guard index != 2 ,
         UserStatus.share.isLogin || index < 2 else {return}
-        icons.forEach({$0?.image = $0?.image?.blendedByColor(.black)})
-        icons[index]?.image = icons[index]?.image?.blendedByColor(Themes.blue6149F6)
-        labels.forEach({$0?.textColor = .black})
-        labels[index]?.textColor = Themes.blue6149F6
+        if index == 1
+        {
+            todoIconImageView.image = UIImage(named: "Todo-Icon")
+            accountIconImageView.image = UIImage(named: "Account-unselect-Icon")
+        }else
+        {
+            todoIconImageView.image = UIImage(named: "Todo-unselect-Icon")
+            accountIconImageView.image = UIImage(named: "Account-Icon")
+        }
+//        icons.forEach({$0?.image = $0?.image?.blendedByColor(.black)})
+//        icons[index]?.image = icons[index]?.image?.blendedByColor(Themes.blue6149F6)
+//        labels.forEach({$0?.textColor = .black})
+//        labels[index]?.textColor = Themes.blue6149F6
     }
    func bindLabels()
     {
