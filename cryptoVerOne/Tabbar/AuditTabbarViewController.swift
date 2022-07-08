@@ -8,11 +8,13 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import SnapKit
 
 class AuditTabbarViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    static var share = AuditTabbarViewController()
     // MARK: -
     // MARK:UI 設定
     lazy var todoPageVC:MDNavigationController = {
@@ -29,6 +31,7 @@ class AuditTabbarViewController: BaseViewController {
         return vc
     }()
     let tabbar = AuditTabbar.share
+    var topConstraint: Constraint?
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -67,7 +70,7 @@ class AuditTabbarViewController: BaseViewController {
         view.addSubview(tabbar)
         tabbar.snp.makeConstraints { (make) in
             make.leading.bottom.trailing.equalToSuperview()
-            make.top.equalToSuperview().offset(Views.screenHeight - Views.baseTabbarHeight)
+            topConstraint = make.top.equalToSuperview().offset(Views.screenHeight - Views.baseTabbarHeight).constraint
         }
     }
     private func settingViewControllers() {

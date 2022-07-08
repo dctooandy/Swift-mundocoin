@@ -333,11 +333,59 @@
                                             <constraint firstAttribute="trailing" secondItem="BF2-FT-0VI" secondAttribute="trailing" id="vMQ-TP-XZG"/>
                                         </constraints>
                                     </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUu-e7-eX0">
+                                        <rect key="frame" x="20" y="682" width="374" height="50"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ulf-Fi-I8B">
+                                                <rect key="frame" x="0.0" y="0.0" width="182" height="50"/>
+                                                <color key="backgroundColor" red="0.0" green="0.25490196078431371" blue="0.40000000000000002" alpha="0.080000000000000002" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Reject">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                    <color key="baseForegroundColor" red="0.20000000000000001" green="0.38039215686274508" blue="0.49019607843137253" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBI-yP-mEZ">
+                                                <rect key="frame" x="192" y="0.0" width="182" height="50"/>
+                                                <color key="backgroundColor" red="0.074509803921568626" green="0.73333333333333328" blue="0.69411764705882351" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" title="Accept">
+                                                    <fontDescription key="titleFontDescription" type="system" pointSize="16"/>
+                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </buttonConfiguration>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g8q-g1-nqL">
+                                                <rect key="frame" x="182" y="0.0" width="10" height="50"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="10" id="sQC-SK-qtw"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstItem="g8q-g1-nqL" firstAttribute="leading" secondItem="ulf-Fi-I8B" secondAttribute="trailing" id="85u-oZ-rT3"/>
+                                            <constraint firstItem="XBI-yP-mEZ" firstAttribute="leading" secondItem="g8q-g1-nqL" secondAttribute="trailing" id="CGA-Vv-TAa"/>
+                                            <constraint firstAttribute="bottom" secondItem="XBI-yP-mEZ" secondAttribute="bottom" id="CmG-gO-nkf"/>
+                                            <constraint firstItem="g8q-g1-nqL" firstAttribute="top" secondItem="oUu-e7-eX0" secondAttribute="top" id="Jnf-qQ-R0G"/>
+                                            <constraint firstItem="ulf-Fi-I8B" firstAttribute="leading" secondItem="oUu-e7-eX0" secondAttribute="leading" id="LHP-ul-g2r"/>
+                                            <constraint firstItem="XBI-yP-mEZ" firstAttribute="top" secondItem="oUu-e7-eX0" secondAttribute="top" id="Lso-lO-w4i"/>
+                                            <constraint firstAttribute="bottom" secondItem="ulf-Fi-I8B" secondAttribute="bottom" id="NzM-MV-7We"/>
+                                            <constraint firstAttribute="height" constant="50" id="SVw-Ps-boi"/>
+                                            <constraint firstItem="ulf-Fi-I8B" firstAttribute="top" secondItem="oUu-e7-eX0" secondAttribute="top" id="YfA-Tr-mct"/>
+                                            <constraint firstItem="g8q-g1-nqL" firstAttribute="centerX" secondItem="oUu-e7-eX0" secondAttribute="centerX" id="eRd-h8-8ke"/>
+                                            <constraint firstAttribute="trailing" secondItem="XBI-yP-mEZ" secondAttribute="trailing" id="rjz-rp-pWd"/>
+                                            <constraint firstAttribute="bottom" secondItem="g8q-g1-nqL" secondAttribute="bottom" id="yc1-Ot-Jcs"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
+                                    <constraint firstItem="oUu-e7-eX0" firstAttribute="top" secondItem="PbN-UN-5Dp" secondAttribute="bottom" constant="30" id="6f2-zZ-q6j"/>
+                                    <constraint firstItem="oUu-e7-eX0" firstAttribute="leading" secondItem="PbN-UN-5Dp" secondAttribute="leading" id="A8f-rz-HsH"/>
                                     <constraint firstAttribute="trailing" secondItem="PbN-UN-5Dp" secondAttribute="trailing" constant="20" id="XcG-gM-UAS"/>
                                     <constraint firstItem="PbN-UN-5Dp" firstAttribute="top" secondItem="1P9-Md-uTh" secondAttribute="top" constant="20" id="Xxp-dv-gjF"/>
+                                    <constraint firstItem="oUu-e7-eX0" firstAttribute="trailing" secondItem="PbN-UN-5Dp" secondAttribute="trailing" id="uhg-9k-mtA"/>
                                     <constraint firstItem="PbN-UN-5Dp" firstAttribute="leading" secondItem="1P9-Md-uTh" secondAttribute="leading" constant="20" id="vGH-Mg-7bc"/>
                                 </constraints>
                             </view>
@@ -363,9 +411,11 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="acceptBtn" destination="XBI-yP-mEZ" id="dUK-P8-Htp"/>
                 <outlet property="actualAmountLabel" destination="44z-9b-i49" id="oTo-B4-iHJ"/>
                 <outlet property="addressLabel" destination="rPy-Ui-KUF" id="O0s-dG-HEw"/>
                 <outlet property="auditorLabel" destination="9e3-dd-vAX" id="qgJ-2b-9y4"/>
+                <outlet property="buttonView" destination="oUu-e7-eX0" id="sme-0g-hTE"/>
                 <outlet property="commentLabel" destination="j3r-KR-dMR" id="tTh-aI-5OV"/>
                 <outlet property="commentTitleLabel" destination="VOW-XO-2Ib" id="05b-0r-AFC"/>
                 <outlet property="cryptoLabel" destination="GaF-0U-Oc8" id="Jj6-e8-Kbc"/>
@@ -374,6 +424,7 @@
                 <outlet property="finishedView" destination="BF2-FT-0VI" id="KoM-R4-Nfz"/>
                 <outlet property="networkLabel" destination="3RG-g0-0IJ" id="zpO-jG-Jma"/>
                 <outlet property="normalView" destination="uhr-7w-xmF" id="FkY-EV-j60"/>
+                <outlet property="rejectBtn" destination="ulf-Fi-I8B" id="sfe-h4-sGe"/>
                 <outlet property="scrollView" destination="M5r-vx-sCS" id="heY-ue-1N3"/>
                 <outlet property="stackView" destination="PbN-UN-5Dp" id="Qrv-Ff-a9X"/>
                 <outlet property="statusLabel" destination="yUO-pB-BwS" id="qM9-cJ-lzj"/>

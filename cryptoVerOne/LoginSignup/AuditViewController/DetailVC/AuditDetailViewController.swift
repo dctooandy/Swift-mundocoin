@@ -37,18 +37,16 @@ class AuditDetailViewController: BaseViewController {
     @IBOutlet weak var actualAmountLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
-    
     @IBOutlet weak var finishedView: UIView!
-    
     @IBOutlet weak var txidTitleLabel: UILabel!
     @IBOutlet weak var txidLabel: UnderlinedLabel!
     @IBOutlet weak var auditorLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
-    
     @IBOutlet weak var commentTitleLabel: UILabel!
     @IBOutlet weak var commentLabel: UILabel!
-    
-    
+    @IBOutlet weak var buttonView: UIView!
+    @IBOutlet weak var rejectBtn: UIButton!
+    @IBOutlet weak var acceptBtn: UIButton!
     
     // MARK: -
     // MARK:Life cycle
@@ -56,25 +54,25 @@ class AuditDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupBackUI()
         setupUI()
-        bindTabbar()
+        bindButton()
         bindViewModel()
         bindTxIdLable()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        self.tabBarController?.tabBar.isHidden = true
-        AuditTabbar.share.detailTabbarView.isHidden = false
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+//        AuditTabbar.share.detailTabbarView.isHidden = false
         DispatchQueue.main.async {
             self.resetTabbarHeight()
         }
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        AuditTabbar.share.detailTabbarView.isHidden = true
+//        AuditTabbar.share.detailTabbarView.isHidden = true
         resetTabbarHeight(toLeave: true)
         dpg = DisposeBag()
     }
@@ -91,6 +89,21 @@ class AuditDetailViewController: BaseViewController {
     {
         stackView.layer.cornerRadius = 12
         stackView.layer.masksToBounds = true
+        acceptBtn.layer.cornerRadius = 12
+        acceptBtn.layer.masksToBounds = true
+        rejectBtn.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
+        rejectBtn.layer.borderWidth = 1
+        rejectBtn.layer.cornerRadius = 12
+        rejectBtn.layer.masksToBounds = true
+    }
+    func bindButton()
+    {
+        acceptBtn.rx.tap.subscribeSuccess { [self] _ in
+            showAlertView(accept: .accept)
+        }.disposed(by: dpg)
+        rejectBtn.rx.tap.subscribeSuccess { [self] _ in
+            showAlertView(accept: .reject)
+        }.disposed(by: dpg)
     }
     func bindTabbar()
     {
@@ -167,14 +180,16 @@ class AuditDetailViewController: BaseViewController {
     }
     func resetTabbarHeight(toLeave :Bool = false)
     {
+        buttonView.isHidden = (self.showMode == .finished ? true : false)
         if toLeave == false
         {
-//            AuditTabbar.share.snp.updateConstraints { make in
-//                make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
-//            }
             AuditTabbar.share.snp.remakeConstraints { (make) in
                 make.leading.bottom.trailing.equalToSuperview()
-                make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
+//                make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
+                make.top.equalToSuperview().offset(Views.screenHeight + 40)
+            }
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
             }
         }else
         {
