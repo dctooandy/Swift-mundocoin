@@ -904,6 +904,18 @@
 		0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
 		0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
 		0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */; };
+		09957491287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957492287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957493287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957494287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957495287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957496287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */; };
+		09957498287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
+		09957499287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
+		0995749A287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
+		0995749B287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
+		0995749C287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
+		0995749D287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */; };
 		0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
 		0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */; };
@@ -1750,6 +1762,8 @@
 		0995747B2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditTwoFAFinishViewController.xib; sourceTree = "<group>"; };
 		099574822876DCA5005D44E2 /* AuditTwoFACheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFACheckViewController.swift; sourceTree = "<group>"; };
 		099574892876DD1C005D44E2 /* AuditTwoFACheckViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditTwoFACheckViewController.xib; sourceTree = "<group>"; };
+		09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTriggerBottomSheet.swift; sourceTree = "<group>"; };
+		09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditTriggerAlertView.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
@@ -2307,7 +2321,9 @@
 		09EED335285737D400CB4A64 /* AuditTriggerAlertView */ = {
 			isa = PBXGroup;
 			children = (
+				09957490287845D5005D44E2 /* AuditTriggerBottomSheet.swift */,
 				09EED3362857392A00CB4A64 /* AuditTriggerAlertView.swift */,
+				09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */,
 			);
 			path = AuditTriggerAlertView;
 			sourceTree = "<group>";
@@ -3176,6 +3192,7 @@
 				09905AFA2851A02B00BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905AFB2851A02B00BAEE78 /* NotiViewController.xib in Resources */,
 				09905AFC2851A02B00BAEE78 /* TransDetailView.xib in Resources */,
+				0995749C287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905AFD2851A02B00BAEE78 /* Assets.xcassets in Resources */,
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3256,6 +3273,7 @@
 				09905BEC2851A08500BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905BED2851A08500BAEE78 /* NotiViewController.xib in Resources */,
 				09905BEE2851A08500BAEE78 /* TransDetailView.xib in Resources */,
+				0995749D287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905BEF2851A08500BAEE78 /* Assets.xcassets in Resources */,
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3336,6 +3354,7 @@
 				09905CDE2851A09600BAEE78 /* SubPageCollectionCell.xib in Resources */,
 				09905CDF2851A09600BAEE78 /* NotiViewController.xib in Resources */,
 				09905CE02851A09600BAEE78 /* TransDetailView.xib in Resources */,
+				0995749B287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905CE12851A09600BAEE78 /* Assets.xcassets in Resources */,
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3416,6 +3435,7 @@
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
+				09957499287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */,
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
@@ -3496,6 +3516,7 @@
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
+				0995749A287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */,
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
@@ -3576,6 +3597,7 @@
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
 				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
 				09056DA2284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
+				09957498287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
@@ -4005,6 +4027,7 @@
 				09905AA72851A02B00BAEE78 /* Beans.swift in Sources */,
 				09905AA82851A02B00BAEE78 /* InputStyleView.swift in Sources */,
 				09905AA92851A02B00BAEE78 /* ConfirmBottomSheet.swift in Sources */,
+				09957495287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				09905AAA2851A02B00BAEE78 /* AddressBottomCell.swift in Sources */,
 				09905AAB2851A02B00BAEE78 /* BadgeBtn.swift in Sources */,
 				09905AAC2851A02B00BAEE78 /* NotiViewController.swift in Sources */,
@@ -4219,6 +4242,7 @@
 				09905B992851A08500BAEE78 /* Beans.swift in Sources */,
 				09905B9A2851A08500BAEE78 /* InputStyleView.swift in Sources */,
 				09905B9B2851A08500BAEE78 /* ConfirmBottomSheet.swift in Sources */,
+				09957496287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				09905B9C2851A08500BAEE78 /* AddressBottomCell.swift in Sources */,
 				09905B9D2851A08500BAEE78 /* BadgeBtn.swift in Sources */,
 				09905B9E2851A08500BAEE78 /* NotiViewController.swift in Sources */,
@@ -4433,6 +4457,7 @@
 				09905C8B2851A09600BAEE78 /* Beans.swift in Sources */,
 				09905C8C2851A09600BAEE78 /* InputStyleView.swift in Sources */,
 				09905C8D2851A09600BAEE78 /* ConfirmBottomSheet.swift in Sources */,
+				09957494287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				09905C8E2851A09600BAEE78 /* AddressBottomCell.swift in Sources */,
 				09905C8F2851A09600BAEE78 /* BadgeBtn.swift in Sources */,
 				09905C902851A09600BAEE78 /* NotiViewController.swift in Sources */,
@@ -4647,6 +4672,7 @@
 				09CAF492283C77ED00D7B19B /* Beans.swift in Sources */,
 				09CAF493283C77ED00D7B19B /* InputStyleView.swift in Sources */,
 				09CAF494283C77ED00D7B19B /* ConfirmBottomSheet.swift in Sources */,
+				09957492287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				09CAF495283C77ED00D7B19B /* AddressBottomCell.swift in Sources */,
 				09CAF496283C77ED00D7B19B /* BadgeBtn.swift in Sources */,
 				09CAF497283C77ED00D7B19B /* NotiViewController.swift in Sources */,
@@ -4861,6 +4887,7 @@
 				09CAF553283C7BBE00D7B19B /* Beans.swift in Sources */,
 				09CAF554283C7BBE00D7B19B /* InputStyleView.swift in Sources */,
 				09CAF555283C7BBE00D7B19B /* ConfirmBottomSheet.swift in Sources */,
+				09957493287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				09CAF556283C7BBE00D7B19B /* AddressBottomCell.swift in Sources */,
 				09CAF557283C7BBE00D7B19B /* BadgeBtn.swift in Sources */,
 				09CAF558283C7BBE00D7B19B /* NotiViewController.swift in Sources */,
@@ -5075,6 +5102,7 @@
 				A19C70F128224C87000AFC3F /* Beans.swift in Sources */,
 				A19739E4282808B5009932D8 /* InputStyleView.swift in Sources */,
 				A16F6209282E4E2000D9CCE5 /* ConfirmBottomSheet.swift in Sources */,
+				09957491287845D5005D44E2 /* AuditTriggerBottomSheet.swift in Sources */,
 				A16F61FE282E3EBA00D9CCE5 /* AddressBottomCell.swift in Sources */,
 				A19C719D28225D99000AFC3F /* BadgeBtn.swift in Sources */,
 				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,

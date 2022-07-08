@@ -5,117 +5,52 @@
 //  Created by BBk on 6/13/22.
 //
 
-
 import Foundation
 import RxCocoa
 import RxSwift
 import UIKit
 
-enum AuditTriggerMode {
-    case accept
-    case reject
-    
-    var titleString: String {
-        switch self {
-        case .accept:
-            return "Withdrawals Accept"
-        case .reject:
-            return "Withdrawals Reject *"
-        }
-    }
-    var rightButtonString: String {
-        switch self {
-        case .accept:
-            return "Confirm"
-        case .reject:
-            return "Reject"
-        }
-    }
-}
-class AuditTriggerAlertView: PopupBottomSheet {
+class AuditTriggerAlertView: UIView {
     // MARK:業務設定
-    var alertMode : AuditTriggerMode!
+    private let onConfirmClick = PublishSubject<(Bool , String)>()
+    var alertMode : AuditTriggerMode = .accept{
+        didSet
+        {
+            titleLabel.text = alertMode.titleString
+            setTitleString()
+            confirmButton.setTitle(alertMode.rightButtonString, for: .normal)
+        }
+    }
     private let dpg = DisposeBag()
-    typealias DoneHandler = (Bool , String) -> ()
-    var doneHandler: DoneHandler?
+ 
     // MARK: -
     // MARK:UI 設定
-    private lazy var titleLabel: UILabel = {
-        let lb = UILabel()
-        lb.textColor = .black
-        lb.textAlignment = .left
-        lb.font = Fonts.pingFangTCRegular(20)
-        return lb
-    }()
-    
-    private lazy var messageTextView: UITextView = {
-        let tView = UITextView()
-        tView.isEditable = true
-        tView.isSelectable = true
-        tView.delegate = self
-        tView.font = Fonts.pingFangTCRegular(14)
-        return tView
-    }()
-    
-    private lazy var confirmButton: UIButton = {
-        let btn = UIButton()
-        btn.setBackgroundImage(UIImage(color: UIColor(rgb: 0x898989)), for: .normal)
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 3
-        btn.layer.borderColor = UIColor(rgb: 0x898989).cgColor
-        btn.layer.borderWidth = 1
-        btn.setTitleColor(.black, for: .normal)
-        btn.setTitle("Confirm".localized, for: .normal)
-        btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
-        return btn
-    }()
-    
-    private lazy var cancelButton: UIButton = {
-        let btn = UIButton()
-        btn.setBackgroundImage(UIImage(color: UIColor(rgb: 0xE4E4E4)), for: .normal)
-        btn.setTitle("Cancel".localized, for: .normal)
-        btn.clipsToBounds = true
-        btn.layer.cornerRadius = 3
-        btn.setTitleColor(UIColor(rgb: 0x434343), for: .normal)
-        btn.addTarget(self, action: #selector(confirmButtonPressed(_:)), for: .touchUpInside)
-        return btn
-    }()
-    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var messageTextView: UITextView!
+    @IBOutlet weak var confirmButton: UIButton!
+    @IBOutlet weak var cancelButton: UIButton!
 
     // MARK: -
     // MARK:Life cycle
-    init(alertMode:AuditTriggerMode = .accept , _ done: DoneHandler?) {
-        super.init()
-        self.alertMode = alertMode
-        titleLabel.text = alertMode.titleString
-        confirmButton.setTitle(alertMode.rightButtonString, for: .normal)
-        doneHandler = done
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        setupUI()
+        bindTextView()
+        bindButton()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
-    
 
-    required init(_ parameters: Any? = nil) {
-         super.init()
-    }
     // MARK: -
     // MARK:業務方法
-    override func setupViews() {
-        super.setupViews()
-        dismissButton.isHidden = true
-        setupUI()
-        bindTextView()
-    }
-    
-    private func setupUI() {
-        let defaultContainerHeight = 290.0
-        var stackView :UIStackView!
-        stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
-        stackView.distribution = .fillEqually
-        stackView.spacing = 20
-        let buttonViewMultiplied = 0.9
+    func setTitleString()
+    {
         switch self.alertMode {
         case .accept:
             break
@@ -126,48 +61,18 @@ class AuditTriggerAlertView: PopupBottomSheet {
             let markRange = NSMakeRange("Withdrawals Reject".count + 1, 1)
             attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: markRange)
             self.titleLabel.attributedText = attributedText
-        case .none:
-            break
         }
-        defaultContainer.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.85)
-            make.height.equalTo(defaultContainerHeight)
-        }
-       // title 背景漸層
-        let backView = UIView()
-
-        backView.backgroundColor = UIColor(rgb: 0xC4C4C4)
-        backView.clipsToBounds = true
-        backView.layer.cornerRadius = 3
-        defaultContainer.addSubview(backView)
-        backView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalToSuperview()
-        }
-
-        // title
-        backView.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { (make) in
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
-            make.top.equalToSuperview().offset(5)
-        }
-        // message
-        backView.addSubview(messageTextView)
-        messageTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom)
-            make.left.right.equalTo(titleLabel)
-
-            make.height.equalTo(168.0)
-        }
+    }
+    private func setupUI() {
         
-        backView.addSubview(stackView)
-        stackView.snp.makeConstraints { (make) in
-            make.width.equalToSuperview().multipliedBy(buttonViewMultiplied)
-            make.height.equalTo(44)
-            make.bottom.equalToSuperview().offset(-20)
-            make.centerX.equalToSuperview()
-        }
+        messageTextView.isEditable = true
+        messageTextView.isSelectable = true
+        messageTextView.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
+        messageTextView.layer.borderWidth = 1
+        confirmButton.layer.cornerRadius = 12
+        confirmButton.layer.masksToBounds = true
+        cancelButton.layer.cornerRadius = 12
+        cancelButton.layer.masksToBounds = true
     }
     func bindTextView()
     {
@@ -180,30 +85,18 @@ class AuditTriggerAlertView: PopupBottomSheet {
             isValid.skip(0).bind(to: confirmButton.rx.isEnabled).disposed(by: dpg)
         }
     }
-    override func dismissVC(nextSheet: BottomSheet? = nil) {
-        super.dismissVC()
-        print("vc dismiss")
-        confirmButtonVerify(false)
+    func bindButton()
+    {
+        confirmButton.rx.tap.subscribeSuccess { [self] _ in
+            onConfirmClick.onNext((true, messageTextView.text))
+        }.disposed(by: dpg)
+        cancelButton.rx.tap.subscribeSuccess { [self] _ in
+            onConfirmClick.onNext((false, messageTextView.text))
+        }.disposed(by: dpg)
     }
-    
-    override func dismissToTopVC() {
-        super.dismissToTopVC()
-        print("top vc dismiss")
-        confirmButtonVerify(false)
-    }
-
-    @objc private func confirmButtonPressed(_ sender: UIButton) {
-        
-        if sender == confirmButton {
-            confirmButtonVerify(true, memo:messageTextView.text)
-        } else {
-            confirmButtonVerify(false, memo:messageTextView.text)
-        }
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    func confirmButtonVerify(_ accept: Bool , memo:String = "") {
-        doneHandler?(accept , memo)
+    func rxConfirmClick() -> Observable<(Bool , String)>
+    {
+        onConfirmClick.asObservable()
     }
 }
 extension AuditTriggerAlertView : UITextViewDelegate{

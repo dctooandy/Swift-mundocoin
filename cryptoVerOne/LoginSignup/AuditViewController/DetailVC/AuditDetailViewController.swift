@@ -130,7 +130,7 @@ class AuditDetailViewController: BaseViewController {
     }
     func showAlertView(accept:AuditTriggerMode)
     {
-        let popVC =  AuditTriggerAlertView(alertMode: accept) {[self](acceptValue , memoString) in
+        let alertBottomSheet = AuditTriggerBottomSheet(alertMode: accept) {[self](acceptValue , memoString) in
             
             if acceptValue == true , let firstChainData = data.chain?.first {
                 Log.i("Confirm or Reject")
@@ -144,7 +144,7 @@ class AuditDetailViewController: BaseViewController {
                 Log.i("Cancel")
             }
         }
-        popVC.start(viewController: self)
+        alertBottomSheet.start(viewController: self ,height: 360)
     }
     func setupDate(cellData:WalletWithdrawDto ,showMode:AuditShowMode)
     {
