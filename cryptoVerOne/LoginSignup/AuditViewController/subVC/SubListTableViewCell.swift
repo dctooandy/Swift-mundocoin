@@ -24,6 +24,7 @@ class SubListTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var finishedIcon: UIImageView!
     
+    @IBOutlet weak var rightArrowImageView: UIImageView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -47,9 +48,13 @@ class SubListTableViewCell: UITableViewCell {
         self.showMode = showMode
         if let transDto = data.transaction , let userDto = data.issuer ,let chainDto = data.chain?.first
         {
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            topTitleLabel.text = "Withdraw Request"
+#else
             topTitleLabel.text = "Withdraw Request \(userDto.email)"
+#endif
             timeLabel.text = self.showMode == .pending ? transDto.createdDateString : transDto.updatedDateString
-            let iconImage = UIImage(named: chainDto.state == "CANCELLED" ? "icon-error":"icon-done")
+            let iconImage = UIImage(named: chainDto.state == "CANCELLED" ? "icon-red-close-round-fill":"icon-check-round-fill")
             finishedIcon.image = iconImage
         }
         finishedIcon.isHidden = (showMode == .pending ? true : false)

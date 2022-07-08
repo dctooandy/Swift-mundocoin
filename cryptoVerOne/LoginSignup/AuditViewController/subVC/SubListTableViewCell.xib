@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,35 +16,43 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="3p7-Oq-s1Y">
-                        <rect key="frame" x="20" y="12" width="36" height="36"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon-card" translatesAutoresizingMaskIntoConstraints="NO" id="3p7-Oq-s1Y">
+                        <rect key="frame" x="20" y="11" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="36" id="hkm-mt-UMc"/>
-                            <constraint firstAttribute="height" constant="36" id="lXV-jd-QR5"/>
+                            <constraint firstAttribute="width" constant="20" id="hkm-mt-UMc"/>
+                            <constraint firstAttribute="height" constant="20" id="lXV-jd-QR5"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdraw Request" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IV4-Kn-HI5">
-                        <rect key="frame" x="76" y="12" width="268" height="18"/>
+                        <rect key="frame" x="60" y="12" width="300" height="18"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.19215686274509802" green="0.29411764705882354" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2022/06/01 18:55:55" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyx-Cf-oGL">
-                        <rect key="frame" x="76" y="30" width="268" height="18"/>
+                        <rect key="frame" x="60" y="33" width="300" height="18"/>
                         <fontDescription key="fontDescription" type="system" weight="light" pointSize="15"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.63137254901960782" green="0.67450980392156867" blue="0.71372549019607845" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-done" translatesAutoresizingMaskIntoConstraints="NO" id="b2k-Lj-K6Z">
-                        <rect key="frame" x="354" y="10" width="40" height="40"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-chevron-right" translatesAutoresizingMaskIntoConstraints="NO" id="kJI-31-A8V">
+                        <rect key="frame" x="369" y="20" width="20" height="20"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="40" id="agm-Hm-vpq"/>
-                            <constraint firstAttribute="width" constant="40" id="fId-4h-brF"/>
+                            <constraint firstAttribute="width" constant="20" id="9gw-nU-6gw"/>
+                            <constraint firstAttribute="height" constant="20" id="ODi-j1-saq"/>
+                        </constraints>
+                    </imageView>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-check-round-fill" translatesAutoresizingMaskIntoConstraints="NO" id="b2k-Lj-K6Z">
+                        <rect key="frame" x="370" y="18" width="24" height="24"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.97254901960784312" blue="0.9882352941176471" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="24" id="agm-Hm-vpq"/>
+                            <constraint firstAttribute="width" constant="24" id="fId-4h-brF"/>
                         </constraints>
                     </imageView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstItem="3p7-Oq-s1Y" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="5A2-U9-uCa"/>
                     <constraint firstItem="b2k-Lj-K6Z" firstAttribute="leading" secondItem="vyx-Cf-oGL" secondAttribute="trailing" constant="10" id="5QG-b5-w4T"/>
                     <constraint firstItem="3p7-Oq-s1Y" firstAttribute="leading" secondItem="mD4-Bl-xaY" secondAttribute="leading" constant="20" id="5nE-lh-b0o"/>
                     <constraint firstAttribute="trailing" secondItem="b2k-Lj-K6Z" secondAttribute="trailing" constant="20" id="7Nq-CT-2xl"/>
@@ -52,14 +60,19 @@
                     <constraint firstItem="IV4-Kn-HI5" firstAttribute="leading" secondItem="3p7-Oq-s1Y" secondAttribute="trailing" constant="20" id="HeH-H7-2YO"/>
                     <constraint firstItem="vyx-Cf-oGL" firstAttribute="leading" secondItem="IV4-Kn-HI5" secondAttribute="leading" id="KoY-aZ-FMg"/>
                     <constraint firstItem="b2k-Lj-K6Z" firstAttribute="leading" secondItem="IV4-Kn-HI5" secondAttribute="trailing" constant="10" id="Owr-lf-HK9"/>
-                    <constraint firstItem="IV4-Kn-HI5" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="-9" id="UUt-Eg-WQx"/>
-                    <constraint firstItem="vyx-Cf-oGL" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" constant="9" id="Y7s-Io-T1r"/>
+                    <constraint firstItem="3p7-Oq-s1Y" firstAttribute="centerY" secondItem="IV4-Kn-HI5" secondAttribute="centerY" id="XAE-RM-gQ9"/>
+                    <constraint firstItem="vyx-Cf-oGL" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" multiplier="1.4" id="Y7s-Io-T1r"/>
+                    <constraint firstAttribute="trailing" secondItem="kJI-31-A8V" secondAttribute="trailing" constant="25" id="chF-hn-G3U"/>
+                    <constraint firstItem="IV4-Kn-HI5" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" multiplier="0.7" id="qJD-kZ-rqj"/>
+                    <constraint firstItem="kJI-31-A8V" firstAttribute="centerY" secondItem="mD4-Bl-xaY" secondAttribute="centerY" id="tKL-ka-1y5"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="finishedIcon" destination="b2k-Lj-K6Z" id="fUX-Yj-gVd"/>
                 <outlet property="iconImageView" destination="3p7-Oq-s1Y" id="JMe-LL-3dW"/>
                 <outlet property="iconWidth" destination="fId-4h-brF" id="Q0q-jI-CBM"/>
+                <outlet property="rightArrowImageView" destination="kJI-31-A8V" id="Ko5-TZ-6Bw"/>
                 <outlet property="timeLabel" destination="vyx-Cf-oGL" id="Pe3-hi-s7l"/>
                 <outlet property="topTitleLabel" destination="IV4-Kn-HI5" id="Glu-EW-dhD"/>
             </connections>
@@ -67,7 +80,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Arrow" width="36" height="28"/>
-        <image name="icon-done" width="42" height="42"/>
+        <image name="Icon-card" width="20" height="20"/>
+        <image name="icon-check-round-fill" width="24" height="24"/>
+        <image name="icon-chevron-right" width="25" height="24"/>
     </resources>
 </document>

@@ -52,30 +52,37 @@ class SubListPageViewController: BaseViewController {
         pageViewcontroller = PagingViewController<PagingIndexItem>()
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
+        
         // menu item
+        pageViewcontroller?.selectedBackgroundColor = .clear
         pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 48)
         // menu 上下左右控制
         pageViewcontroller?.menuInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
         pageViewcontroller?.menuHorizontalAlignment = .center
         pageViewcontroller?.menuItemSpacing = 20
-        pageViewcontroller?.menuBackgroundColor = Themes.grayA3AED020
-        pageViewcontroller?.borderColor = .clear
+        pageViewcontroller?.menuBackgroundColor = .white
+        pageViewcontroller?.borderColor = UIColor(rgb: 0xE0E5F2)
         // menu text
         pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 20)
         pageViewcontroller?.font = UIFont.systemFont(ofSize: 20)
-        pageViewcontroller?.textColor = .black
-        pageViewcontroller?.selectedTextColor = Themes.blue6149F6
+        pageViewcontroller?.textColor = Themes.grayA3AED0
+        pageViewcontroller?.selectedTextColor = .black
         // menu indicator
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = Themes.blue6149F6
-        pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
-        pageViewcontroller?.indicatorOptions = .visible(height: 1,
+        pageViewcontroller?.indicatorColor = .black
+        pageViewcontroller?.indicatorClass = IndicatorView.self
+        pageViewcontroller?.indicatorOptions = .visible(height: 9,
                                                         zIndex: Int.max,
-                                                        spacing: UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15),
-                                                        insets: UIEdgeInsets(top: 0, left: 15, bottom: 20, right: 15))
+                                                        spacing: UIEdgeInsets(top: 0, left: 45, bottom: 0, right: 45),
+                                                        insets: UIEdgeInsets(top: 5, left: 0, bottom: 0, right: 0))
+//        pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
+//        pageViewcontroller?.indicatorOptions = .visible(height: 1,
+//                                                        zIndex: Int.max,
+//                                                        spacing: UIEdgeInsets(top: 0, left: 15, bottom: 10, right: 15),
+//                                                        insets: UIEdgeInsets(top: 0, left: 15, bottom: 20, right: 15))
         addChild(pageViewcontroller!)
         view.addSubview(pageViewcontroller!.view)
         pageViewcontroller?.view.snp.makeConstraints({ (make) in

@@ -28,6 +28,7 @@ class SubListViewcontroller: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+        view.backgroundColor = Themes.grayF7F8FC
 //        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -68,36 +69,7 @@ class SubListViewcontroller: BaseViewController {
         case .finished: return "Finished".localized
         }
     }
-//    func bindViewModel()
-//    {
-//        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dto in
-//            DispatchQueue.main.async { [self] in
-//                if self.currentPage == 0
-//                {
-//                    self.dataArray.removeAll()
-//                }
-//                var finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "REJECT")}
-//                var pendingData = dto.content.filter{($0.state != "APPROVED")}
-//                finishedData = finishedData.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
-//                pendingData = pendingData.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
-//                if showMode == .pending
-//                {
-//                    self.dataArray.append(contentsOf: pendingData)
-//                }else if showMode == .finished
-//                {
-//                    self.dataArray.append(contentsOf: finishedData)
-//                }
-//            }
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-//                _ = LoadingViewController.dismiss()
-//                // 停止 refreshControl 動畫
-//                refresher.endRefreshing()
-//                tableView.tableFooterView = nil
-//                reloadTableView()
-//            }
-//     
-//        }.disposed(by: dpg)
-//    }
+
     func endFetchData()
     {
         refresher.endRefreshing()
