@@ -17,6 +17,11 @@ class AuditDetailViewController: BaseViewController {
     fileprivate var viewModel = AuditDetailViewModel()
     var data : WalletWithdrawDto!
     var showMode:AuditShowMode!
+    {
+        didSet{
+            self.buttonView.isHidden = (self.showMode == .finished ? true : false)
+        }
+    }
     // MARK: -
     // MARK:UI 設定
     private lazy var backBtn:TopBackButton = {
@@ -57,14 +62,10 @@ class AuditDetailViewController: BaseViewController {
         bindButton()
         bindViewModel()
         bindTxIdLable()
+        resetTabbarHeight()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.tabBarController?.tabBar.isHidden = true
-//        AuditTabbar.share.detailTabbarView.isHidden = false
-        DispatchQueue.main.async {
-            self.resetTabbarHeight()
-        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -72,7 +73,6 @@ class AuditDetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        AuditTabbar.share.detailTabbarView.isHidden = true
         resetTabbarHeight(toLeave: true)
         dpg = DisposeBag()
     }
@@ -172,24 +172,19 @@ class AuditDetailViewController: BaseViewController {
             statusLabel.textColor = chainDto.stateColor
             statusLabel.text = chainDto.state
 //            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
-            commentLabel.text = chainDto.memo
+            commentLabel.text = chainDto.memo?.filter({$0 != " "})
             txidTitleLabel.isHidden = (showMode == .pending ? true : (transDto.txId?.isEmpty == nil || transDto.txId?.isEmpty == true))
             txidLabel.text = transDto.txId ?? ""
-            
         }
     }
     func resetTabbarHeight(toLeave :Bool = false)
     {
-        buttonView.isHidden = (self.showMode == .finished ? true : false)
         if toLeave == false
         {
             AuditTabbar.share.snp.remakeConstraints { (make) in
                 make.leading.bottom.trailing.equalToSuperview()
 //                make.top.equalToSuperview().offset(self.showMode == .finished ? Views.screenHeight + 30 :Views.screenHeight - Views.baseTabbarHeight)
                 make.top.equalToSuperview().offset(Views.screenHeight + 40)
-            }
-            UIView.animate(withDuration: 0.3) {
-                self.view.layoutIfNeeded()
             }
         }else
         {
