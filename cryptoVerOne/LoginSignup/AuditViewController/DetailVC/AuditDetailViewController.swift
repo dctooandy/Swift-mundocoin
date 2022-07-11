@@ -160,8 +160,9 @@ class AuditDetailViewController: BaseViewController {
             if let transAmountString = transDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             {
                 withdrawAmountLabel.text = transAmountString
-                feeLabel.text = "\(transDto.fees ?? 1)".numberFormatter(.decimal,2)
-                let actualAmountValue = (Double(transAmountString.filterDecimal()) ?? 0.00) - Double((transDto.fees ?? 1))
+                let feesValue = (transDto.fees ?? 1) < 1 ? 1 : (transDto.fees ?? 1)
+                feeLabel.text = "\(feesValue)".numberFormatter(.decimal,2)
+                let actualAmountValue = (Double(transAmountString.filterDecimal()) ?? 0.00) - Double((feesValue))
                 actualAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
             }
             addressLabel.text = transDto.toAddress

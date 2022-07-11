@@ -164,7 +164,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TQpCcF8ifgiSBkFirYT31Yae962ENfF33k" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPy-Ui-KUF">
-                                                        <rect key="frame" x="157" y="260" width="187" height="33.5"/>
+                                                        <rect key="frame" x="138.5" y="260" width="205.5" height="33.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -215,7 +215,7 @@
                                                     <constraint firstItem="GaF-0U-Oc8" firstAttribute="centerY" secondItem="9LB-Xw-mLl" secondAttribute="centerY" id="ftX-Hj-BN9"/>
                                                     <constraint firstItem="6Ck-MT-tpN" firstAttribute="leading" secondItem="kER-oo-zcK" secondAttribute="leading" id="iJA-Q7-gKG"/>
                                                     <constraint firstItem="Mdl-gm-RjT" firstAttribute="leading" secondItem="Sa1-d9-8JT" secondAttribute="leading" id="lVZ-pF-sCS"/>
-                                                    <constraint firstItem="rPy-Ui-KUF" firstAttribute="width" secondItem="uhr-7w-xmF" secondAttribute="width" multiplier="0.5" id="lf5-z7-Vnk"/>
+                                                    <constraint firstItem="rPy-Ui-KUF" firstAttribute="width" secondItem="uhr-7w-xmF" secondAttribute="width" multiplier="0.55" id="lf5-z7-Vnk"/>
                                                     <constraint firstAttribute="trailing" secondItem="RKz-Ba-0Od" secondAttribute="trailing" constant="30" id="mPs-ni-Wek"/>
                                                     <constraint firstAttribute="trailing" secondItem="44z-9b-i49" secondAttribute="trailing" constant="30" id="ptC-Hn-bj4"/>
                                                     <constraint firstItem="kER-oo-zcK" firstAttribute="leading" secondItem="9LB-Xw-mLl" secondAttribute="leading" id="rTb-w5-G0A"/>
@@ -236,7 +236,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sXh-dc-l3f" customClass="UnderlinedLabel" customModule="Approval" customModuleProvider="target">
-                                                        <rect key="frame" x="157" y="0.0" width="187" height="17"/>
+                                                        <rect key="frame" x="138.5" y="0.0" width="205.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -291,7 +291,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ok" textAlignment="right" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j3r-KR-dMR">
-                                                        <rect key="frame" x="157" y="140.5" width="187" height="17"/>
+                                                        <rect key="frame" x="138.5" y="140.5" width="205.5" height="17"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                         <color key="textColor" red="0.0" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                         <nil key="highlightedColor"/>
@@ -304,7 +304,6 @@
                                                     <constraint firstAttribute="trailing" secondItem="j3r-KR-dMR" secondAttribute="trailing" constant="30" id="2BI-La-EKq"/>
                                                     <constraint firstItem="X2h-eU-R3y" firstAttribute="leading" secondItem="CC2-1D-x9z" secondAttribute="leading" id="2tA-PX-KTU"/>
                                                     <constraint firstItem="j3r-KR-dMR" firstAttribute="width" secondItem="sXh-dc-l3f" secondAttribute="width" id="6vn-4G-lSD"/>
-                                                    <constraint firstItem="sXh-dc-l3f" firstAttribute="width" secondItem="BF2-FT-0VI" secondAttribute="width" multiplier="0.5" id="7Dm-mf-oCi"/>
                                                     <constraint firstItem="j3r-KR-dMR" firstAttribute="top" secondItem="yUO-pB-BwS" secondAttribute="bottom" constant="23" id="CWh-WV-fq1"/>
                                                     <constraint firstItem="CC2-1D-x9z" firstAttribute="leading" secondItem="BF2-FT-0VI" secondAttribute="leading" constant="30" id="EZV-zv-hg5"/>
                                                     <constraint firstItem="CC2-1D-x9z" firstAttribute="top" secondItem="sXh-dc-l3f" secondAttribute="top" id="JyF-eT-85G"/>
@@ -326,6 +325,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="DGm-H3-zeU" secondAttribute="trailing" id="6ZT-ef-xEc"/>
+                                            <constraint firstItem="sXh-dc-l3f" firstAttribute="width" secondItem="rPy-Ui-KUF" secondAttribute="width" id="Age-kP-DXa"/>
                                             <constraint firstItem="DGm-H3-zeU" firstAttribute="leading" secondItem="PbN-UN-5Dp" secondAttribute="leading" id="CpY-ma-LRx"/>
                                             <constraint firstItem="uhr-7w-xmF" firstAttribute="leading" secondItem="PbN-UN-5Dp" secondAttribute="leading" id="SNd-0c-F6a"/>
                                             <constraint firstAttribute="trailing" secondItem="uhr-7w-xmF" secondAttribute="trailing" id="XlS-wq-jsY"/>
