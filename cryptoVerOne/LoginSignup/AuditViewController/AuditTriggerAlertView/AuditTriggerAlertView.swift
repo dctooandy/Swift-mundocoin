@@ -23,6 +23,7 @@ class AuditTriggerAlertView: UIView {
     }
     private let dpg = DisposeBag()
  
+    @IBOutlet weak var topIconTopConstant: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var titleLabel: UILabel!

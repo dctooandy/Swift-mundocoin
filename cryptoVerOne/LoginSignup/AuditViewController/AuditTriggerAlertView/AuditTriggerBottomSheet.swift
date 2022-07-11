@@ -47,6 +47,7 @@ class AuditTriggerBottomSheet: BaseBottomSheet {
         super.viewDidLoad()
         setupUI()
         bindViewAction()
+        setNotification()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -93,6 +94,47 @@ class AuditTriggerBottomSheet: BaseBottomSheet {
             }
 
         }.disposed(by: dpg)
+    }
+    func setNotification()
+    {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            
+            if ((alertView.messageTextView.isFirstResponder) == true)
+            {
+                let diffHeight = (360 - alertView.messageTextView.frame.minY)
+                if diffHeight < (keyboardHeight + 50)
+                {
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    var newFrame = self.view.frame
+                    newFrame.size.height = (Views.screenHeight - upHeight)
+                    UIView.animate(withDuration: 0.5) {
+                        self.view.frame = newFrame
+                        self.view.layoutIfNeeded() // add this
+                    }
+                }
+            }
+        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        var newFrame = self.view.frame
+        newFrame.size.height = Views.screenHeight
+        UIView.animate(withDuration: 0.5) {
+            self.view.frame = newFrame
+            self.view.layoutIfNeeded() // add this
+        }
     }
 }
 // MARK: -
