@@ -30,12 +30,16 @@ class AuditService {
                 return $0
             })
     }
-    func auditApprovals(pageable :PagePostDto = PagePostDto()) -> Single<AuditApprovalDto?>
+    func auditApprovals(state :String = "",pageable :PagePostDto = PagePostDto()) -> Single<AuditApprovalDto?>
     {
         var parameters: Parameters = [String: Any]()
 
         parameters["page"] = pageable.page
         parameters["size"] = pageable.size
+        if !state.isEmpty
+        {
+            parameters["state"] = state            
+        }
         return Beans.requestServer.singleRequestGet(
             path: ApiService.approvals.path,
             parameters: parameters,

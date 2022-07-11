@@ -13,7 +13,7 @@ class SubListPageViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    fileprivate let viewModel = SubListViewModel()
+//    fileprivate let viewModel = SubListViewModel()
     var pendingDataArray : [WalletWithdrawDto] = []
     var finishedDataArray : [WalletWithdrawDto] = []
     var currentPage: Int = 0
@@ -33,7 +33,7 @@ class SubListPageViewController: BaseViewController {
         super.viewDidLoad()
         setupMenu()
         setupVC()
-        bindViewModel()
+//        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -95,8 +95,8 @@ class SubListPageViewController: BaseViewController {
         subVCs = [pendingVC,finishedVC]
         for vc in subVCs {
             vc.rxFetchDataAction().subscribeSuccess { [self] index in
-                currentPage = index
-                viewModel.fetch(currentPage: currentPage)
+//                currentPage = index
+//                viewModel.fetch(currentPage: currentPage)
             }.disposed(by: dpg)
         }
         pageViewcontroller?.reloadData()
@@ -104,41 +104,41 @@ class SubListPageViewController: BaseViewController {
 //        bindSingupViewControllers()
 //        bindForgotViewControllers()
     }
-    func bindViewModel()
-    {
-        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dtoData in
-            let dto = dtoData.0
-            let isUpdate = dtoData.1
-            if self.currentPage == 0 || isUpdate == true
-            {
-                self.pendingDataArray.removeAll()
-                self.finishedDataArray.removeAll()
-            }
-//            let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "CANCELLED")}
-            let finishedData = dto.content.filter{($0.state != "PENDING")}
-            let pendingData = dto.content.filter{($0.state == "PENDING")}
-            self.pendingDataArray.append(contentsOf: pendingData)
-            self.finishedDataArray.append(contentsOf: finishedData)
-            var newPendingDate : [WalletWithdrawDto] = []
-            var newfinishedDate : [WalletWithdrawDto] = []
-            newPendingDate = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
-            newfinishedDate = self.finishedDataArray.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
-            self.pendingDataArray = newPendingDate
-            self.finishedDataArray = newfinishedDate
-            subVCs.first?.dataArray = self.pendingDataArray
-            subVCs.last?.dataArray = self.finishedDataArray
-            subVCs.first?.endFetchData()
-            subVCs.last?.endFetchData()
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
-                _ = LoadingViewController.dismiss()
-                // 停止 refreshControl 動畫
-            }
-        }.disposed(by: dpg)
-        viewModel.rxFetchListError().subscribeSuccess { [self] _ in
-            subVCs.first?.endFetchData()
-            subVCs.last?.endFetchData()
-        }.disposed(by: dpg)
-    }
+//    func bindViewModel()
+//    {
+//        viewModel.rxFetchListSuccess().subscribeSuccess { [self] dtoData in
+//            let dto = dtoData.0
+//            let isUpdate = dtoData.1
+//            if self.currentPage == 0 || isUpdate == true
+//            {
+//                self.pendingDataArray.removeAll()
+//                self.finishedDataArray.removeAll()
+//            }
+////            let finishedData = dto.content.filter{($0.state == "APPROVED" || $0.state == "CANCELLED")}
+//            let finishedData = dto.content.filter{($0.state != "PENDING")}
+//            let pendingData = dto.content.filter{($0.state == "PENDING")}
+//            self.pendingDataArray.append(contentsOf: pendingData)
+//            self.finishedDataArray.append(contentsOf: finishedData)
+//            var newPendingDate : [WalletWithdrawDto] = []
+//            var newfinishedDate : [WalletWithdrawDto] = []
+//            newPendingDate = self.pendingDataArray.sorted(by: { $0.transaction?.createdDateString ?? "" < $1.transaction?.createdDateString ?? "" })
+//            newfinishedDate = self.finishedDataArray.sorted(by: { $0.transaction?.updatedDateString ?? "" > $1.transaction?.updatedDateString ?? "" })
+//            self.pendingDataArray = newPendingDate
+//            self.finishedDataArray = newfinishedDate
+//            subVCs.first?.dataArray = self.pendingDataArray
+//            subVCs.last?.dataArray = self.finishedDataArray
+//            subVCs.first?.endFetchData()
+//            subVCs.last?.endFetchData()
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
+//                _ = LoadingViewController.dismiss()
+//                // 停止 refreshControl 動畫
+//            }
+//        }.disposed(by: dpg)
+//        viewModel.rxFetchListError().subscribeSuccess { [self] _ in
+//            subVCs.first?.endFetchData()
+//            subVCs.last?.endFetchData()
+//        }.disposed(by: dpg)
+//    }
     func reloadPageMenu(currentMode: AuditShowMode) {
         self.currentShowMode = currentMode
         DispatchQueue.main.async {[weak self] in

@@ -107,6 +107,25 @@ struct ContentDto : Codable
             return 0.0
         }
     }
+    var updatedDateTimeInterval : TimeInterval
+    {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        let frontTime = updatedDate.components(separatedBy: "T").first!
+        let subTime = updatedDate.components(separatedBy: "T").last!
+        let subSubtime = subTime.components(separatedBy: "+").first!
+        let aftertime = subSubtime.components(separatedBy: ".").first!
+        let totalTime = "\(frontTime) \(aftertime)"
+        if let dateFromString = dateFormatter.date(from:totalTime ) {
+            return dateFromString.timeIntervalSince1970
+        }else
+        {
+            return 0.0
+        }
+    }
     var detailType:DetailType {
         if self.state == "PENDING" || self.state == "Pending" || self.processingState == "PENDING"
         {

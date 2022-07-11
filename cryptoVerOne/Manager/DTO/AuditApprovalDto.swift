@@ -9,25 +9,49 @@
 import Foundation
 import RxSwift
 struct AuditApprovalDto :Codable {
-    static var share:AuditApprovalDto?
+    static let disposeBag = DisposeBag()
+    static var pendingShare:AuditApprovalDto?
     {
         didSet {
-            guard let share = share else { return }
-            subject.onNext(share)
+            guard let share = pendingShare else { return }
+            pendingSubject.onNext(share)
         }
     }
-    static var rxShare:Observable<AuditApprovalDto?> = subject
+    static var rxPendingShare:Observable<AuditApprovalDto?> = pendingSubject
         .do(onNext: { value in
-            if share == nil {
-                _ = update()
+            if pendingShare == nil {
+                _ = pendingUpdate()
             }
     })
-    static let disposeBag = DisposeBag()
-    static private let subject = BehaviorSubject<AuditApprovalDto?>(value: nil)
-    static func update() -> Observable<()>{
+    static private let pendingSubject = BehaviorSubject<AuditApprovalDto?>(value: nil)
+    static func pendingUpdate() -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.auditServer.auditApprovals(pageable: PagePostDto()).subscribeSuccess({ (configDto) in
-            share = configDto
+        Beans.auditServer.auditApprovals(state: "PENDING",pageable: PagePostDto()).subscribeSuccess({ (configDto) in
+            pendingShare = configDto
+            subject.onNext(())
+        }).disposed(by: disposeBag)
+        return subject.asObservable()
+    }
+            
+    // finish
+    static var finishShare:AuditApprovalDto?
+    {
+        didSet {
+            guard let share = finishShare else { return }
+            finishSubject.onNext(share)
+        }
+    }
+    static var rxFinishShare:Observable<AuditApprovalDto?> = finishSubject
+        .do(onNext: { value in
+            if finishShare == nil {
+                _ = finishUpdate()
+            }
+    })
+    static private let finishSubject = BehaviorSubject<AuditApprovalDto?>(value: nil)
+    static func finishUpdate() -> Observable<()>{
+        let subject = PublishSubject<Void>()
+        Beans.auditServer.auditApprovals(state: "APPROVED",pageable: PagePostDto()).subscribeSuccess({ (configDto) in
+            finishShare = configDto
             subject.onNext(())
         }).disposed(by: disposeBag)
         return subject.asObservable()

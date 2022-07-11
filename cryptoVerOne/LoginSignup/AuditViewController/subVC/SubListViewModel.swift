@@ -12,46 +12,76 @@ import RxSwift
 
 class SubListViewModel: BaseViewModel {
     // MARK:業務設定
-    private var fetchListSuccess = PublishSubject<(AuditApprovalDto, isUpdate:Bool)>()
+    private var fetchListSuccess = PublishSubject<(state:String,AuditApprovalDto, isUpdate:Bool)>()
     private var fetchListError = PublishSubject<(Any)>()
     // MARK: -
     // MARK:UI 設定
     // MARK: -
     // MARK:Life cycle
-    override init() {
+    init(state:AuditShowMode) {
         super.init()
-        bindDto()
+        bindDto(state: state)
     }
-    func bindDto()
+    func bindDto(state:AuditShowMode)
     {
-        AuditApprovalDto.rxShare.subscribe { (dto) in
+        if state == .pending
+        {
+            AuditApprovalDto.rxPendingShare.subscribe { (dto) in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    if let data = dto
+                    {
+                        self.fetchListSuccess.onNext(("PENDING",data , true))
+                    }
+                }
+            }onError: { (error) in
+                if let errorData = error as? ApiServiceError
+                {
+                    switch errorData {
+                    case .errorDto(_):
+                        ErrorHandler.show(error: error)
+                    default:
+                        break
+                    }
+                }
+            }.disposed(by: disposeBag)
+        }else
+        {
+            AuditApprovalDto.rxFinishShare.subscribe { (dto) in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    _ = LoadingViewController.dismiss()
+                    if let data = dto
+                    {
+                        self.fetchListSuccess.onNext(("APPROVED",data , true))
+                    }
+                }
+            }onError: { (error) in
+                if let errorData = error as? ApiServiceError
+                {
+                    switch errorData {
+                    case .errorDto(_):
+                        ErrorHandler.show(error: error)
+                    default:
+                        break
+                    }
+                }
+            }.disposed(by: disposeBag)
+        }
+    }
+    func fetch(state :String = "" , currentPage:Int = 0)
+    {
+        Beans.auditServer.auditApprovals(state: state, pageable: PagePostDto(size: "20", page: String(currentPage))).subscribe { (dto) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
-                    self.fetchListSuccess.onNext((data , true))
-                }
-            }
-        }onError: { (error) in
-            if let errorData = error as? ApiServiceError
-            {
-                switch errorData {
-                case .errorDto(_):
-                    ErrorHandler.show(error: error)
-                default:
-                    break
-                }
-            }
-        }.disposed(by: disposeBag)
-    }
-    func fetch(currentPage:Int = 0)
-    {
-        Beans.auditServer.auditApprovals(pageable: PagePostDto(size: "20", page: String(currentPage))).subscribe { (dto) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                _ = LoadingViewController.dismiss()
-                if let data = dto
-                {
-                    self.fetchListSuccess.onNext((data , false))
+                    if state == "PENDING"
+                    {
+                        self.fetchListSuccess.onNext(("PENDING",data , false))
+                    }else
+                    {
+                        self.fetchListSuccess.onNext(("APPROVED",data , false))
+                    }
                 }
             }
         }onError: { (error) in
@@ -76,7 +106,7 @@ class SubListViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
  
-    func rxFetchListSuccess() -> Observable<(AuditApprovalDto , isUpdate:Bool)> {
+    func rxFetchListSuccess() -> Observable<(state:String,AuditApprovalDto, isUpdate:Bool)> {
         return fetchListSuccess.asObserver()
     }
     func rxFetchListError() -> Observable<Any> {

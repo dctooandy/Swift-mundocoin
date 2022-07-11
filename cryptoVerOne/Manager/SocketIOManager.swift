@@ -321,7 +321,7 @@ extension SocketIOManager
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
                     self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-                    _ = AuditApprovalDto.update() // 更新清單列表
+                    _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
 #else
 
 #endif

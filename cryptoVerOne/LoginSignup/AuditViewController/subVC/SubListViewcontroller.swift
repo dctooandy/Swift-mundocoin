@@ -13,10 +13,13 @@ class SubListViewcontroller: BaseViewController {
     // MARK:業務設定
     private let onFetchDataAction = PublishSubject<Int>()
     private let dpg = DisposeBag()
-//    var dataArray = [AuditTransactionDto]()
     var dataArray : [WalletWithdrawDto] = []
     var showMode : AuditShowMode = .pending
-//    fileprivate let viewModel = SubListViewModel()
+    fileprivate var viewModel : SubListViewModel?{
+        didSet{
+            bindViewModel()
+        }
+    }
     let refresher = UIRefreshControl()
     var currentPage: Int = 0
 // MARK: -
@@ -29,7 +32,7 @@ class SubListViewcontroller: BaseViewController {
         super.viewDidLoad()
         setupTableView()
         view.backgroundColor = Themes.grayF7F8FC
-//        bindViewModel()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -46,6 +49,7 @@ class SubListViewcontroller: BaseViewController {
     static func instance(mode: AuditShowMode) -> SubListViewcontroller {
         let vc = SubListViewcontroller.loadNib()
         vc.showMode = mode
+        vc.viewModel = SubListViewModel(state: mode)
         return vc
     }
     // MARK: -
@@ -93,11 +97,59 @@ class SubListViewcontroller: BaseViewController {
     func fetchData(currentPage:Int)
     {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-//            self.viewModel.fetch(currentPage: currentPage)
-            self.onFetchDataAction.onNext(currentPage)
+            if self.showMode == .pending
+            {
+                self.viewModel?.fetch(state: "PENDING",currentPage: currentPage)
+            }else
+            {
+                self.viewModel?.fetch(state: "APPROVED",currentPage: currentPage)
+            }
+//            self.onFetchDataAction.onNext(currentPage)
+            
         }
     }
+    func bindViewModel()
+    {
+        viewModel?.rxFetchListSuccess().subscribeSuccess { [self] dtoData in
+            let stateString = dtoData.0
+            let dto = dtoData.1
+            let isUpdate = dtoData.2
+            if self.currentPage == 0 || isUpdate == true
+            {
+                self.dataArray.removeAll()
+            }
 
+//            let finishedData = dto.content.filter{($0.state != "PENDING")}
+//            let pendingData = dto.content.filter{($0.state == "PENDING")}
+            self.dataArray.append(contentsOf: dto.content)
+//            self.finishedDataArray.append(contentsOf: finishedData)
+            var newDate : [WalletWithdrawDto] = []
+//            var newfinishedDate : [WalletWithdrawDto] = []
+            if self.showMode == .pending , stateString == "PENDING"
+            {
+                newDate = self.dataArray.sorted(by: { $0.transaction?.createdDateTimeInterval ?? 0 < $1.transaction?.createdDateTimeInterval ?? 0 })
+                self.dataArray = newDate
+                self.endFetchData()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    _ = LoadingViewController.dismiss()
+                    // 停止 refreshControl 動畫
+                }
+            }else if self.showMode == .finished , stateString == "APPROVED"
+            {
+                newDate = self.dataArray.sorted(by: { $0.transaction?.updatedDateTimeInterval ?? 0 > $1.transaction?.updatedDateTimeInterval ?? 0 })
+                self.dataArray = newDate
+                self.endFetchData()
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                    _ = LoadingViewController.dismiss()
+                    // 停止 refreshControl 動畫
+                }
+            }
+            
+        }.disposed(by: dpg)
+        viewModel?.rxFetchListError().subscribeSuccess { [self] _ in
+            self.endFetchData()
+        }.disposed(by: dpg)
+    }
     func rxFetchDataAction() -> Observable<Int>
     {
         return onFetchDataAction.asObserver()
