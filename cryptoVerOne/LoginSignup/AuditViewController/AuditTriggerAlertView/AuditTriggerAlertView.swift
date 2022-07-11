@@ -72,6 +72,10 @@ class AuditTriggerAlertView: UIView {
         messageTextView.layer.borderWidth = 1
         confirmButton.layer.cornerRadius = 12
         confirmButton.layer.masksToBounds = true
+        confirmButton.setTitleColor(.white, for: .normal)
+        cancelButton.setTitleColor(Themes.gray33617D, for: .normal)
+        cancelButton.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
+        cancelButton.layer.borderWidth = 1
         cancelButton.layer.cornerRadius = 12
         cancelButton.layer.masksToBounds = true
     }

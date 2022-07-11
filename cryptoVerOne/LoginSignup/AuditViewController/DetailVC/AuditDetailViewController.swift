@@ -91,6 +91,8 @@ class AuditDetailViewController: BaseViewController {
         stackView.layer.masksToBounds = true
         acceptBtn.layer.cornerRadius = 12
         acceptBtn.layer.masksToBounds = true
+        acceptBtn.setTitleColor(.white, for: .normal)
+        rejectBtn.setTitleColor(Themes.gray33617D, for: .normal)
         rejectBtn.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
         rejectBtn.layer.borderWidth = 1
         rejectBtn.layer.cornerRadius = 12
