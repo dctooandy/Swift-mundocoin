@@ -83,7 +83,7 @@ class AuditTabbar: UIView {
         rxItemClick.onNext(index)
         guard index != 2 ,
         UserStatus.share.isLogin || index < 2 else {return}
-        if index == 1
+        if index == 0
         {
             todoIconImageView.image = UIImage(named: "Todo-Icon")
             accountIconImageView.image = UIImage(named: "Account-unselect-Icon")

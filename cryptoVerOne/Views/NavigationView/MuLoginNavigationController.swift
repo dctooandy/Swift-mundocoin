@@ -50,7 +50,11 @@ class MuLoginNavigationController:UINavigationController{
     
     override var preferredStatusBarStyle:UIStatusBarStyle {
         if #available(iOS 13.0, *) {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return .lightContent
+#else
             return .darkContent
+#endif
         } else {
             return .default
         }

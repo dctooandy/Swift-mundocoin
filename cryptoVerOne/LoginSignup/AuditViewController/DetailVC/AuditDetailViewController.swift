@@ -169,7 +169,7 @@ class AuditDetailViewController: BaseViewController {
             self.showMode = showMode
             
             finishedView.isHidden = (showMode == .pending ? true : false)
-            statusLabel.textColor = transDto.stateColor
+            statusLabel.textColor = chainDto.stateColor
             statusLabel.text = chainDto.state
 //            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
             commentLabel.text = chainDto.memo
@@ -197,6 +197,17 @@ class AuditDetailViewController: BaseViewController {
                 make.leading.bottom.trailing.equalToSuperview()
                 make.top.equalToSuperview().offset(Views.screenHeight - Views.baseTabbarHeight)
             }
+        }
+    }
+    override var preferredStatusBarStyle:UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return .lightContent
+#else
+            return .darkContent
+#endif
+        } else {
+            return .default
         }
     }
 }

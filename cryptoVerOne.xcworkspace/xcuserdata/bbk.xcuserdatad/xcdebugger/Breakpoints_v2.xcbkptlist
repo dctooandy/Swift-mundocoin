@@ -190,8 +190,8 @@
             filePath = "cryptoVerOne/Manager/SocketIOManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "331"
-            endingLineNumber = "331"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
             landmarkName = "createTypeDto(valueToFind:resultData:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -359,16 +359,32 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5DA6186C-F767-466F-A51F-ECAB2A0BA6A6"
+            uuid = "298BF7F8-8507-4FC6-8465-3D89BB467F3D"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/AuditViewController/subVC/SubListViewcontroller.swift"
+            filePath = "cryptoVerOne/Manager/DTO/WalletTransactionDto.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "102"
-            endingLineNumber = "102"
-            landmarkName = "fetchData(currentPage:)"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "ContentDto"
+            landmarkType = "14">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "19C78CF0-1508-4D25-82FA-A44C710DA6E4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/LoginSignup/AuditViewController/DetailVC/AuditDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "setupDate(cellData:showMode:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

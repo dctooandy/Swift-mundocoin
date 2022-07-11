@@ -76,6 +76,16 @@ struct ChainDto:Codable {
     var state : String = ""
     var memo : String? = ""
     var approver : ApproverDto = ApproverDto()
+    var stateColor:UIColor
+    {
+        switch self.state
+        {
+        case "APPROVED":
+            return UIColor(rgb: 0x47CD6C)
+        default:
+            return UIColor(rgb: 0xF50D0D)
+        }
+    }
 }
 struct ChainSocketDto:Codable {
     var id : String = ""

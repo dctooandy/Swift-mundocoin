@@ -105,15 +105,21 @@ extension AuditTriggerAlertView : UITextViewDelegate{
     {
         let newPosition = textView.endOfDocument
         textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
-        guard let text = textView.text else {
-            return true
+        guard let text = textView.text ,text.count < 100 else {
+            if string == ""
+            {
+                return true
+            }else
+            {
+                return false
+            }
         }
         if string == ""
         {
             return true
         }
         /// 3.检查总长度限制 (最多输入10位)
-        if text.count >= 100 {
+        if text.count >= 100 || (text.count + string.count) >= 100 {
             return false
         }
         return true

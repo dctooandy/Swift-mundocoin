@@ -61,6 +61,8 @@ class AuditTwoFAFinishViewController: BaseViewController {
         super.viewWillDisappear(animated)
 
     }
+    // MARK: -
+    // MARK:業務方法
     func setupUI()
     {
         titleLabel.text = "The App will generate verification codes for more protection when you logging in.".localized
@@ -106,8 +108,18 @@ class AuditTwoFAFinishViewController: BaseViewController {
     @objc override func popVC() {
         navigationController?.popToRootViewController(animated: true)
     }
-    // MARK: -
-    // MARK:業務方法
+
+    override var preferredStatusBarStyle:UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return .lightContent
+#else
+            return .darkContent
+#endif
+        } else {
+            return .default
+        }
+    }
 }
 // MARK: -
 // MARK: 延伸

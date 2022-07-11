@@ -161,13 +161,12 @@ class LaunchReciprocalViewController: BaseViewController {
     }
     private func appUpdateAlert() {
         AppUpdateAlert(AppVersionDto.share) { [weak self](success) in
-            
             if AppVersionDto.share != nil && AppVersionDto.share!.appVersionForceUpdate!.value! {
                 return
             }
             self?.showUpdateAlert = false
-            self?.checkForDirectAndWait(immediately: true)
-            }.start(viewController: self)
+            self?.checkForDirectAndWait(immediately: true)            
+        }.start(viewController: self)
     }
     
     private func startAnimation(){
@@ -208,7 +207,17 @@ class LaunchReciprocalViewController: BaseViewController {
 //                self?.showUpdateAlert = dto != nil
 //            }.disposed(by: disposeBag)
     }
-    
+    override var preferredStatusBarStyle:UIStatusBarStyle {
+        if #available(iOS 13.0, *) {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return .lightContent
+#else
+            return .darkContent
+#endif
+        } else {
+            return .default
+        }
+    }
 }
 
 
