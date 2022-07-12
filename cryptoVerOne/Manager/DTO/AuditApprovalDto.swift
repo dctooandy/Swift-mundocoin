@@ -26,7 +26,7 @@ struct AuditApprovalDto :Codable {
     static private let pendingSubject = BehaviorSubject<AuditApprovalDto?>(value: nil)
     static func pendingUpdate() -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.auditServer.auditApprovals(state: "PENDING",pageable: PagePostDto()).subscribeSuccess({ (configDto) in
+        Beans.auditServer.auditApprovals(state: AuditShowMode.pending.caseString,pageable: PagePostDto()).subscribeSuccess({ (configDto) in
             pendingShare = configDto
             subject.onNext(())
         }).disposed(by: disposeBag)
@@ -50,7 +50,7 @@ struct AuditApprovalDto :Codable {
     static private let finishSubject = BehaviorSubject<AuditApprovalDto?>(value: nil)
     static func finishUpdate() -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.auditServer.auditApprovals(state: "APPROVED",pageable: PagePostDto()).subscribeSuccess({ (configDto) in
+        Beans.auditServer.auditApprovals(state: AuditShowMode.finished.caseString,pageable: PagePostDto()).subscribeSuccess({ (configDto) in
             finishShare = configDto
             subject.onNext(())
         }).disposed(by: disposeBag)

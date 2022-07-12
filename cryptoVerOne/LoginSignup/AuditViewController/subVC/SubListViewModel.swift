@@ -12,7 +12,7 @@ import RxSwift
 
 class SubListViewModel: BaseViewModel {
     // MARK:業務設定
-    private var fetchListSuccess = PublishSubject<(state:String,AuditApprovalDto, isUpdate:Bool)>()
+    private var fetchListSuccess = PublishSubject<(state:AuditShowMode,AuditApprovalDto, isUpdate:Bool)>()
     private var fetchListError = PublishSubject<(Any)>()
     // MARK: -
     // MARK:UI 設定
@@ -31,7 +31,7 @@ class SubListViewModel: BaseViewModel {
                     _ = LoadingViewController.dismiss()
                     if let data = dto
                     {
-                        self.fetchListSuccess.onNext(("PENDING",data , true))
+                        self.fetchListSuccess.onNext((.pending,data , true))
                     }
                 }
             }onError: { (error) in
@@ -52,7 +52,7 @@ class SubListViewModel: BaseViewModel {
                     _ = LoadingViewController.dismiss()
                     if let data = dto
                     {
-                        self.fetchListSuccess.onNext(("APPROVED",data , true))
+                        self.fetchListSuccess.onNext((.finished,data , true))
                     }
                 }
             }onError: { (error) in
@@ -68,19 +68,19 @@ class SubListViewModel: BaseViewModel {
             }.disposed(by: disposeBag)
         }
     }
-    func fetch(state :String = "" , currentPage:Int = 0)
+    func fetch(state :AuditShowMode = .pending , currentPage:Int = 0)
     {
-        Beans.auditServer.auditApprovals(state: state, pageable: PagePostDto(size: "20", page: String(currentPage))).subscribe { (dto) in
+        Beans.auditServer.auditApprovals(state: state.caseString, pageable: PagePostDto(size: "20", page: String(currentPage))).subscribe { (dto) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
-                    if state == "PENDING"
+                    if state == .pending
                     {
-                        self.fetchListSuccess.onNext(("PENDING",data , false))
+                        self.fetchListSuccess.onNext((.pending,data , false))
                     }else
                     {
-                        self.fetchListSuccess.onNext(("APPROVED",data , false))
+                        self.fetchListSuccess.onNext((.finished,data , false))
                     }
                 }
             }
@@ -106,7 +106,7 @@ class SubListViewModel: BaseViewModel {
         }.disposed(by: disposeBag)
     }
  
-    func rxFetchListSuccess() -> Observable<(state:String,AuditApprovalDto, isUpdate:Bool)> {
+    func rxFetchListSuccess() -> Observable<(state:AuditShowMode,AuditApprovalDto, isUpdate:Bool)> {
         return fetchListSuccess.asObserver()
     }
     func rxFetchListError() -> Observable<Any> {

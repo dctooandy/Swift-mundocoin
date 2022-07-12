@@ -17,6 +17,18 @@ struct WalletWithdrawDto :Codable {
     var chain : [ChainDto]? = []
     var transaction : ContentDto? = ContentDto()
     var issuer : IssuerDto? = IssuerDto()
+    
+    var stateColor:UIColor
+    {
+        switch self.state
+        {
+        case "APPROVED":
+            return UIColor(rgb: 0x47CD6C)
+        default:
+            return UIColor(rgb: 0xF50D0D)
+        }
+    }
+    
     var detailType:DetailType {
         if self.state == "PENDING" || self.state == "Pending"
         {

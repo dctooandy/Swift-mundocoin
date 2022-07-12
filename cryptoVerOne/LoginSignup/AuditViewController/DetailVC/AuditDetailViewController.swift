@@ -161,19 +161,19 @@ class AuditDetailViewController: BaseViewController {
             networkLabel.text = "TRC20"
             if let transAmountString = transDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             {
-                withdrawAmountLabel.text = transAmountString
                 let feesValue = (transDto.fees ?? 1) < 1 ? 1 : (transDto.fees ?? 1)
                 feeLabel.text = "\(feesValue)".numberFormatter(.decimal,2)
-                let actualAmountValue = (Double(transAmountString.filterDecimal()) ?? 0.00) - Double((feesValue))
-                actualAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
+                let actualAmountValue = (Double(transAmountString.filterDecimal()) ?? 0.00) + Double((feesValue))
+                withdrawAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
+                actualAmountLabel.text = "\(transAmountString)".numberFormatter(.decimal,8)
             }
             addressLabel.text = transDto.toAddress
             dateLabel.text = transDto.createdDateString
             self.showMode = showMode
             
             finishedView.isHidden = (showMode == .pending ? true : false)
-            statusLabel.textColor = chainDto.stateColor
-            statusLabel.text = chainDto.state
+            statusLabel.textColor = self.data.stateColor
+            statusLabel.text = self.data.state
 //            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
             commentLabel.text = chainDto.memo?.filter({$0 != "\n"})
             txidTitleLabel.isHidden = (showMode == .pending ? true : (transDto.txId?.isEmpty == nil || transDto.txId?.isEmpty == true))

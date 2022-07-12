@@ -13,6 +13,16 @@ enum AuditShowMode
 {
     case pending
     case finished
+    
+    var caseString:String{
+        switch self {
+        case .pending:
+            return "PENDING"
+        case .finished:
+            return "APPROVED"
+//            return "CANCELLED"
+        }
+    }
 }
 class TodoListViewController: BaseViewController {
     // MARK:業務設定

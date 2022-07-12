@@ -97,13 +97,8 @@ class SubListViewcontroller: BaseViewController {
     func fetchData(currentPage:Int)
     {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()) {
-            if self.showMode == .pending
-            {
-                self.viewModel?.fetch(state: "PENDING",currentPage: currentPage)
-            }else
-            {
-                self.viewModel?.fetch(state: "APPROVED",currentPage: currentPage)
-            }
+            self.viewModel?.fetch(state: self.showMode,currentPage: currentPage)
+     
 //            self.onFetchDataAction.onNext(currentPage)
             
         }
@@ -111,7 +106,7 @@ class SubListViewcontroller: BaseViewController {
     func bindViewModel()
     {
         viewModel?.rxFetchListSuccess().subscribeSuccess { [self] dtoData in
-            let stateString = dtoData.0
+            let state = dtoData.0
             let dto = dtoData.1
             let isUpdate = dtoData.2
             if self.currentPage == 0 || isUpdate == true
@@ -125,7 +120,7 @@ class SubListViewcontroller: BaseViewController {
 //            self.finishedDataArray.append(contentsOf: finishedData)
             var newDate : [WalletWithdrawDto] = []
 //            var newfinishedDate : [WalletWithdrawDto] = []
-            if self.showMode == .pending , stateString == "PENDING"
+            if self.showMode == .pending , state == .pending
             {
                 newDate = self.dataArray.sorted(by: { $0.transaction?.createdDateTimeInterval ?? 0 < $1.transaction?.createdDateTimeInterval ?? 0 })
                 self.dataArray = newDate
@@ -134,7 +129,7 @@ class SubListViewcontroller: BaseViewController {
                     _ = LoadingViewController.dismiss()
                     // 停止 refreshControl 動畫
                 }
-            }else if self.showMode == .finished , stateString == "APPROVED"
+            }else if self.showMode == .finished , state == .finished
             {
                 newDate = self.dataArray.sorted(by: { $0.transaction?.updatedDateTimeInterval ?? 0 > $1.transaction?.updatedDateTimeInterval ?? 0 })
                 self.dataArray = newDate
