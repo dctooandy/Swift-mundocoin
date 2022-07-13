@@ -33,7 +33,7 @@ struct WalletWithdrawDto :Codable {
         if self.state == "PENDING" || self.state == "Pending"
         {
             return .pending
-        }else if state == "TRANSACTION_FAILED" || self.state == "FAILED" || self.state == "Failed"
+        }else if state == "TRANSACTION_FAILED" || self.state == "FAILED" || self.state == "Failed" || state == "CANCELLED"
         {
             return.failed
         }else if state == "PROCESSING" || state == "Processing"
