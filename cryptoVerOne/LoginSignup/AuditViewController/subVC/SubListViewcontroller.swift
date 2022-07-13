@@ -61,6 +61,8 @@ class SubListViewcontroller: BaseViewController {
         tableView.separatorStyle = .none
         refresher.attributedTitle = NSAttributedString(string: "Pull To Refresh",
                                                             attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+        tableView.backgroundView = NoDataView(image: UIImage(named: "No_Results"), title: "" , subTitle: "")
+        tableView.backgroundView?.isHidden = true
         refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
             self?.startRefresh()
         }.disposed(by: disposeBag)
@@ -82,6 +84,7 @@ class SubListViewcontroller: BaseViewController {
     }
     func reloadTableView()
     {
+        tableView.backgroundView?.isHidden = self.dataArray.count > 0 ? true : false
         tableView.reloadData()
     }
     private func startRefresh() {
