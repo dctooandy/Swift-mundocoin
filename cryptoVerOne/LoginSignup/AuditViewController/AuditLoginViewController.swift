@@ -196,29 +196,48 @@ class AuditLoginViewController: BaseViewController {
         _ = self.navigationController?.pushViewController(goAuthVC, animated: true)
     }
     func goTodoViewController() {
-        showTwoFAVC(complete: { [self] stringValue in
-            Log.v("2FA Code: \(stringValue)")
-            let idString = accountInputView.textField.text!
-            let password = passwordInputView.textField.text!
-            Beans.auditServer.auditAuthentication(with: idString, password: password)
-                .subscribeSuccess { [self] (dto) in
-                    _ = LoadingViewController.dismiss()
-                    if let data = dto
-                    {
-                        MemberAccountDto.share = MemberAccountDto(account: idString,
-                                                                  password: password,
-                                                                  loginMode: .emailPage)
-                        _ = KeychainManager.share.setLastAccount(idString)
-                        KeychainManager.share.updateAccount(acc: idString,
-                                                            pwd: password)
-                        BioVerifyManager.share.applyMemberInAuditBIOList(idString)
-                        KeychainManager.share.setToken(data.token)
-                        let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
-                        showAuditBioConfirmView(didShow: didAskBioLogin)
-                    }
-                }.disposed(by: dpg)
-        })
-        
+        // 2FA 先拿掉
+//        showTwoFAVC(complete: { [self] stringValue in
+//            Log.v("2FA Code: \(stringValue)")
+//            let idString = accountInputView.textField.text!
+//            let password = passwordInputView.textField.text!
+//            Beans.auditServer.auditAuthentication(with: idString, password: password)
+//                .subscribeSuccess { [self] (dto) in
+//                    _ = LoadingViewController.dismiss()
+//                    if let data = dto
+//                    {
+//                        MemberAccountDto.share = MemberAccountDto(account: idString,
+//                                                                  password: password,
+//                                                                  loginMode: .emailPage)
+//                        _ = KeychainManager.share.setLastAccount(idString)
+//                        KeychainManager.share.updateAccount(acc: idString,
+//                                                            pwd: password)
+//                        BioVerifyManager.share.applyMemberInAuditBIOList(idString)
+//                        KeychainManager.share.setToken(data.token)
+//                        let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
+//                        showAuditBioConfirmView(didShow: didAskBioLogin)
+//                    }
+//                }.disposed(by: dpg)
+//        })
+        let idString = accountInputView.textField.text!
+        let password = passwordInputView.textField.text!
+        Beans.auditServer.auditAuthentication(with: idString, password: password)
+            .subscribeSuccess { [self] (dto) in
+                _ = LoadingViewController.dismiss()
+                if let data = dto
+                {
+                    MemberAccountDto.share = MemberAccountDto(account: idString,
+                                                              password: password,
+                                                              loginMode: .emailPage)
+                    _ = KeychainManager.share.setLastAccount(idString)
+                    KeychainManager.share.updateAccount(acc: idString,
+                                                        pwd: password)
+                    BioVerifyManager.share.applyMemberInAuditBIOList(idString)
+                    KeychainManager.share.setToken(data.token)
+                    let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
+                    showAuditBioConfirmView(didShow: didAskBioLogin)
+                }
+            }.disposed(by: dpg)
     }
     // Confirm Touch/Face ID
     private func showAuditBioConfirmView(didShow:Bool) {
