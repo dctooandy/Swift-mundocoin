@@ -39,7 +39,6 @@ class AuditLoginViewController: BaseViewController {
         bindTextfield()
         bindLoginButton()
         bindCheckBox()
-        accountInputView?.bindTextfield()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,12 +61,18 @@ class AuditLoginViewController: BaseViewController {
                     passwordInputView.textField.text = loginPostDto.password
                     checkBoxView.isSelected = true
                     checkBoxView.checkType = .checkType
+                    accountInputView.textField.sendActions(for: .valueChanged)
+                    passwordInputView.textField.sendActions(for: .valueChanged)
                 }
             }else
             {
                 //暫時強制寫上
+                checkBoxView.isSelected = true
+                checkBoxView.checkType = .checkType
                 accountInputView.textField.text = "admin@mundocoin.com"
                 passwordInputView.textField.text = "Admin!234"
+                accountInputView.textField.sendActions(for: .valueChanged)
+                passwordInputView.textField.sendActions(for: .valueChanged)
             }
         }else
         {
@@ -76,6 +81,8 @@ class AuditLoginViewController: BaseViewController {
             //暫時強制寫上
             accountInputView.textField.text = "admin@mundocoin.com"
             passwordInputView.textField.text = "Admin!234"
+            accountInputView.textField.sendActions(for: .valueChanged)
+            passwordInputView.textField.sendActions(for: .valueChanged)
         }
     }
     
