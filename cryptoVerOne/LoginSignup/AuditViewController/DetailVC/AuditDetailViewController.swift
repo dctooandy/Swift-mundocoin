@@ -150,12 +150,14 @@ class AuditDetailViewController: BaseViewController {
     }
     func setupDate(cellData:WalletWithdrawDto ,showMode:AuditShowMode)
     {
-        if let userDto = cellData.issuer , let transDto = cellData.transaction , let chainDto = cellData.chain?.first
+        if let userDto = cellData.issuer , let transDto = cellData.transaction , let chainDto = cellData.chain?.first,
+           let approver = chainDto.approver
         {
             self.data = cellData
             Log.v("chain :\n\(String(describing: cellData.chain))")
             Log.v("issur :\n\(userDto)")
             Log.v("transDto :\n\(transDto)")
+            auditorLabel.text = approver.email
             userIDLabel.text = userDto.email
             cryptoLabel.text = transDto.currency
             networkLabel.text = "TRC20"

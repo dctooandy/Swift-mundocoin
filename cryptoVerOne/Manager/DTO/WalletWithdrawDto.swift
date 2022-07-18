@@ -87,7 +87,7 @@ struct ChainDto:Codable {
     var updatedDate : String = ""
     var state : String = ""
     var memo : String? = ""
-    var approver : ApproverDto = ApproverDto()
+    var approver : ApproverDto? = ApproverDto()
     var stateColor:UIColor
     {
         switch self.state
