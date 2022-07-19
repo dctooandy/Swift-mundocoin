@@ -43,11 +43,11 @@ class DepositViewController: BaseViewController {
         super.viewDidLoad()
         title = "Deposit USDT"
         setupUI()
-        bind()
-        bindViewModel()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        bind()
+        bindViewModel()
         fetchDepositData()
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -65,14 +65,7 @@ class DepositViewController: BaseViewController {
     {
         viewModel.fetchWalletForDeposit()
     }
-    func bindViewModel()
-    {
-        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
-            Log.v("取得Address\n\(dto)")
-            walletDto = dto
-        }.disposed(by: dpg)
-        
-    }
+
     func setupUI()
     {
         view.backgroundColor = Themes.grayF4F7FE
@@ -111,6 +104,13 @@ class DepositViewController: BaseViewController {
         }.disposed(by: dpg)
         shareButton.rx.tap.subscribeSuccess { [self](_) in
             shareInfo()
+        }.disposed(by: dpg)
+    }
+    func bindViewModel()
+    {
+        viewModel.rxFetchWalletAddressSuccess().subscribeSuccess { [self]dto in
+            Log.v("取得Address\n\(dto)")
+            walletDto = dto
         }.disposed(by: dpg)
     }
     func bindWhenAppear()
