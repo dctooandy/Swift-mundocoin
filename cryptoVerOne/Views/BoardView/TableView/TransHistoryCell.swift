@@ -46,8 +46,18 @@ class TransHistoryCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: timeInterval)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        if let amountValue = data.walletAmountIntWithDecimal {
-            amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+        if historyType == .withdrawals
+        {
+            if let amountValue = data.walletAmountIntWithDecimal
+            {
+                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+            }
+        }else
+        {
+            if let amountValue = data.walletDepositAmountIntWithDecimal
+            {
+                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+            }
         }
         self.historyType = type
         if historyType == .deposits
