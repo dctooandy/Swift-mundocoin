@@ -29,7 +29,8 @@ class TransHistoryCell: UITableViewCell {
         super.awakeFromNib()
         selectionStyle = .none
         setupUI()
-        bindUI()
+        // 暫時拿掉頁面監聽Socket事件
+//        bindUI()
     }
     // MARK: -
     // MARK:業務方法

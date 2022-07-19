@@ -95,6 +95,8 @@ class BoardViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
         bind()
+        // 暫時拿掉頁面監聽Socket事件
+//        bindSocketMessage()
         currentPage = 0
 //        goFetchTableViewData()
     }
@@ -193,37 +195,12 @@ class BoardViewController: BaseViewController {
         depositsViewController.clearData()
         withdrawalsViewController.clearData()
     }
-
     func bind()
     {
         viewModel.rxWalletTransactionsSuccess().subscribeSuccess { dto in
             Log.v("交易紀錄Dto count : \(dto.content.count)")
             self.transContentDto = dto.content
             self.resetData()
-        }.disposed(by: dpg)
-        
-        TXPayloadDto.rxShare.subscribeSuccess { dto in
-            if let statsValue = dto?.state,
-               let socketID = dto?.id,
-//               let feeValue = dto?.fees != nil ? ((dto?.fees)! > 0 ?  dto?.fees : 1) : 1 ,
-               let amount = dto?.txAmountIntWithDecimal,
-               var currentTransDto = self.transContentDto.filter({$0.id == socketID}).first,
-               let currentTransIndex = self.transContentDto.firstIndex(where: { p in p.id == socketID })
-            {
-                if self.transContentDto[currentTransIndex].state != statsValue
-                {
-                    if statsValue == "PROCESSING"
-                    {
-                        let newamount = (amount.intValue ?? 1) - 1
-                        currentTransDto.amount = JSONValue.int(newamount)
-                    }
-                    currentTransDto.state = statsValue
-                    self.transContentDto.remove(at: currentTransIndex)
-                    self.transContentDto.insert(currentTransDto, at: currentTransIndex)
-                    self.clearAllVCDataSource()
-                    self.resetData()
-                }
-            }
         }.disposed(by: dpg)
         
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
@@ -245,6 +222,31 @@ class BoardViewController: BaseViewController {
         withdrawalsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
             currentPage += 1
             goFetchTableViewData()
+        }.disposed(by: dpg)
+    }
+    func bindSocketMessage()
+    {
+        TXPayloadDto.rxShare.subscribeSuccess { dto in
+            if let statsValue = dto?.state,
+               let socketID = dto?.id,
+               let amount = dto?.txAmountIntWithDecimal,
+               var currentTransDto = self.transContentDto.filter({$0.id == socketID}).first,
+               let currentTransIndex = self.transContentDto.firstIndex(where: { p in p.id == socketID })
+            {
+                if self.transContentDto[currentTransIndex].state != statsValue
+                {
+                    if statsValue == "PROCESSING"
+                    {
+                        let newamount = (amount.intValue ?? 1) - 1
+                        currentTransDto.amount = JSONValue.int(newamount)
+                    }
+                    currentTransDto.state = statsValue
+                    self.transContentDto.remove(at: currentTransIndex)
+                    self.transContentDto.insert(currentTransDto, at: currentTransIndex)
+                    self.clearAllVCDataSource()
+                    self.resetData()
+                }
+            }
         }.disposed(by: dpg)
     }
     func resetData()
