@@ -46,19 +46,6 @@ class TransHistoryCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: timeInterval)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        if historyType == .withdrawals
-        {
-            if let amountValue = data.walletAmountIntWithDecimal
-            {
-                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
-            }
-        }else
-        {
-            if let amountValue = data.walletDepositAmountIntWithDecimal
-            {
-                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
-            }
-        }
         self.historyType = type
         if historyType == .deposits
         {
@@ -76,6 +63,19 @@ class TransHistoryCell: UITableViewCell {
             {
                 statusLabel.textColor = Themes.blue0587FF
                 statusLabel.backgroundColor = Themes.blue0587FF10
+            }
+        }
+        if historyType == .withdrawals
+        {
+            if let amountValue = data.walletAmountIntWithDecimal
+            {
+                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+            }
+        }else
+        {
+            if let amountValue = data.walletDepositAmountIntWithDecimal
+            {
+                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
             }
         }
     }
