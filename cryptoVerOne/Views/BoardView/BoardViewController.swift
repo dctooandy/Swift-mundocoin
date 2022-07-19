@@ -205,11 +205,18 @@ class BoardViewController: BaseViewController {
         TXPayloadDto.rxShare.subscribeSuccess { dto in
             if let statsValue = dto?.state,
                let socketID = dto?.id,
+//               let feeValue = dto?.fees != nil ? ((dto?.fees)! > 0 ?  dto?.fees : 1) : 1 ,
+               let amount = dto?.txAmountIntWithDecimal,
                var currentTransDto = self.transContentDto.filter({$0.id == socketID}).first,
                let currentTransIndex = self.transContentDto.firstIndex(where: { p in p.id == socketID })
             {
                 if self.transContentDto[currentTransIndex].state != statsValue
                 {
+                    if statsValue == "PROCESSING"
+                    {
+                        let newamount = (amount.intValue ?? 1) - 1
+                        currentTransDto.amount = JSONValue.int(newamount)
+                    }
                     currentTransDto.state = statsValue
                     self.transContentDto.remove(at: currentTransIndex)
                     self.transContentDto.insert(currentTransDto, at: currentTransIndex)

@@ -332,7 +332,7 @@ extension SocketIOManager
                 let txDto = resultsPayload.payload
                 if let statsValue = txDto.state,
                    let typeValue = txDto.type,
-                   let amountValue = txDto.amountIntWithDecimal?.stringValue
+                   let amountValue = txDto.txAmountIntWithDecimal?.stringValue
                 {
                     if statsValue == "COMPLETE"
                     {

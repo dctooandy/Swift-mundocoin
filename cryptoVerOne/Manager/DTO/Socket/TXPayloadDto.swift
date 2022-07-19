@@ -57,7 +57,7 @@ struct TXPayloadDto : Codable {
 //    var tindex : String? = ""
 //    var voutIndex : String? = ""
     
-    var amountIntWithDecimal : JSONValue?
+    var txAmountIntWithDecimal : JSONValue?
     {
         if let amountDoubleValue = amount?.doubleValue
         {

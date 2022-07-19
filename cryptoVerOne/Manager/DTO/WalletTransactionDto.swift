@@ -215,16 +215,21 @@ struct ContentDto : Codable
             return updatedDate
         }
     }
-    var amountIntWithDecimal : JSONValue?
+    var walletAmountIntWithDecimal : JSONValue?
     {
+        var difValue = 1.0
+        if stateValue == "FAILED" || stateValue == "PENDING"
+        {
+            difValue = 0.0
+        }
         if let amountDoubleValue = amount?.doubleValue
         {
             let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
-            return JSONValue.double(doubleValue)
+            return JSONValue.double(doubleValue + difValue)
         }else if let intValue = amount?.intValue
         {
             let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
-            return JSONValue.double(doubleValue)
+            return JSONValue.double(doubleValue + difValue)
         }else 
         {
             return JSONValue.double(0.00)

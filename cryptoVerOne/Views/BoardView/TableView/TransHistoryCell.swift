@@ -45,7 +45,7 @@ class TransHistoryCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: timeInterval)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        if let amountValue = data.amountIntWithDecimal {
+        if let amountValue = data.walletAmountIntWithDecimal {
             amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
         }
         self.historyType = type
@@ -76,11 +76,11 @@ class TransHistoryCell: UITableViewCell {
     {
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
             if let statsValue = dto?.stateValue,
-               let amountValue = dto?.amountIntWithDecimal?.stringValue,
+//               let amountValue = dto?.amountIntWithDecimal?.stringValue,
                let socketID = dto?.id
             {
-                if cellData.amountIntWithDecimal?.stringValue == amountValue,
-                   cellData.id == socketID
+                if cellData.id == socketID
+//                    ,cellData.amountIntWithDecimal?.stringValue == amountValue
                 {
                     if statsValue == "COMPLETE"
                     {

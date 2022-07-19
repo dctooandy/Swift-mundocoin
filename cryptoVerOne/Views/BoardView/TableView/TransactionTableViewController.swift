@@ -136,7 +136,8 @@ class TransactionTableViewController: BaseViewController {
     }
     func pushToDetailVC(contentDto:ContentDto)
     {
-        if let amountValue = contentDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)
+        if let amountValue = contentDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8),
+           let feeString = contentDto.fees != nil ? (contentDto.fees! > 0 ? "\(contentDto.fees!)": "1") : "1"
         {
             let conBlocks = contentDto.confirmBlocks ?? 0
             let detailData = DetailDto(detailType: contentDto.detailType,
@@ -144,7 +145,7 @@ class TransactionTableViewController: BaseViewController {
                                        tether: contentDto.currency,
                                        network: "Tron(TRC20)",
                                        confirmations: "\(conBlocks)",
-                                       fee:"1",
+                                       fee:feeString,
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,
                                        txid: contentDto.txId ?? "",

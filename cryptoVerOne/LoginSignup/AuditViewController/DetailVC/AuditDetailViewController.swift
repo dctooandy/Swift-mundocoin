@@ -161,7 +161,7 @@ class AuditDetailViewController: BaseViewController {
             userIDLabel.text = userDto.email
             cryptoLabel.text = transDto.currency
             networkLabel.text = "TRC20"
-            if let transAmountString = transDto.amountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
+            if let transAmountString = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             {
                 let feesValue = (transDto.fees ?? 1) < 1 ? 1 : (transDto.fees ?? 1)
                 feeLabel.text = "\(feesValue)".numberFormatter(.decimal,2)

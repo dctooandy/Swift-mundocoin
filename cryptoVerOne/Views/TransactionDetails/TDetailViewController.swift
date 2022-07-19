@@ -118,15 +118,16 @@ class TDetailViewController: BaseViewController {
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
             if let data = dto,
                let statsValue = dto?.detailType,
-               let socketID = dto?.id
+               let socketID = dto?.id,
+               let feeString = dto?.fees != nil ? ((dto?.fees)! > 0 ? "\(String(describing: dto?.fees))" : "1") : "1"
             {
                 let detailDto = DetailDto(detailType: data.detailType,
-                                          amount: data.amountIntWithDecimal?.stringValue ?? "",
+                                          amount: data.txAmountIntWithDecimal?.stringValue ?? "",
                                           tether: data.currency ?? "",
                                           network: "Tron(TRC20)",
                                           confirmations: "\(data.confirmBlocks ?? 0)",
                                           //                                          fee: "\(data.fees ?? 1)",
-                                          fee: "1",
+                                          fee: feeString,
                                           date: data.createdDateString,
                                           address: data.toAddress ?? "",
                                           txid: data.txId ?? "",
