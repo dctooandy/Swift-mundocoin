@@ -19,6 +19,7 @@ class AuditTriggerAlertView: UIView {
             titleLabel.text = alertMode.titleString
             setTitleString()
             confirmButton.setTitle(alertMode.rightButtonString, for: .normal)
+//            bindTextView()
         }
     }
     private let dpg = DisposeBag()
@@ -36,7 +37,6 @@ class AuditTriggerAlertView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
-        bindTextView()
         bindButton()
     }
     
@@ -87,13 +87,26 @@ class AuditTriggerAlertView: UIView {
                 guard  let acc = str else { return false  }
                 return !acc.isEmpty
             }
-            isValid.skip(0).bind(to: confirmButton.rx.isEnabled).disposed(by: dpg)
+            isValid.bind(to: confirmButton.rx.isEnabled).disposed(by: dpg)
         }
     }
     func bindButton()
     {
         confirmButton.rx.tap.subscribeSuccess { [self] _ in
-            onConfirmClick.onNext((true, messageTextView.text))
+            if alertMode == .accept
+            {
+                onConfirmClick.onNext((true, messageTextView.text))
+            }else
+            {
+                if messageTextView.text.isEmpty == true
+                {
+                    messageTextView.layer.borderColor = UIColor.red.cgColor
+                }else
+                {
+                    messageTextView.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
+                    onConfirmClick.onNext((true, messageTextView.text))
+                }
+            }
         }.disposed(by: dpg)
         cancelButton.rx.tap.subscribeSuccess { [self] _ in
             onConfirmClick.onNext((false, messageTextView.text))
@@ -107,6 +120,7 @@ class AuditTriggerAlertView: UIView {
 extension AuditTriggerAlertView : UITextViewDelegate{
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText string: String) -> Bool
     {
+        messageTextView.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
         let newPosition = textView.endOfDocument
         textView.selectedTextRange = textView.textRange(from: newPosition, to: newPosition)
         guard let text = textView.text ,text.count < 100 else {
