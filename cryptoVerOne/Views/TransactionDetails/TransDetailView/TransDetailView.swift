@@ -25,6 +25,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             setupType()
         }
     }
+    
+    @IBOutlet weak var withdrawToHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     // Switch
@@ -166,10 +168,6 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         {
             TransStyleThemes.txidViewType.bind(to: confirmationsView.rx.isHidden).disposed(by: dpg)
         }
-        if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
-        {
-            TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
-        }
         withdrawToInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
             if let addressText = withdrawToInputView.normalTextLabel.text
             {
@@ -219,6 +217,23 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             confirmationsLabel.text = dto.confirmations
             feeLabel.text = dto.fee
             dateLabel.text = dto.date
+            if dto.showMode == .deposits
+            {
+                if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
+                {
+                    feeView.isHidden = true
+                }
+                withdrawToInputView.isHidden = true
+                withdrawToHeight.constant = 0
+            }else
+            {
+                if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
+                {
+                    TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
+                }
+                withdrawToInputView.isHidden = false
+                withdrawToHeight.constant = 100
+            }
         }
     }
     func rxAddAddressClick() -> Observable<String>

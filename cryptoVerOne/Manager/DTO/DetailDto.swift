@@ -19,7 +19,8 @@ class DetailDto {
     let id:String
     var orderId : String
     var confirmBlocks : Int
-    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0) {
+    var showMode:TransactionShowMode?
+    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" , txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0 , showMode:TransactionShowMode = .deposits) {
         self.detailType = detailType
         self.amount = amount
         self.tether = tether
@@ -32,5 +33,6 @@ class DetailDto {
         self.id = id
         self.orderId = orderId
         self.confirmBlocks = confirmBlocks
+        self.showMode = showMode
     }
 }

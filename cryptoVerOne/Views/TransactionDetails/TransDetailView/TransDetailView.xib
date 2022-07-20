@@ -29,6 +29,7 @@
                 <outlet property="topAmountLabel" destination="g9R-CL-WEb" id="rMJ-02-cGj"/>
                 <outlet property="topSwitchView" destination="vZG-FH-lhs" id="dMN-Hy-iWS"/>
                 <outlet property="txidView" destination="TE3-w6-hck" id="dlH-SV-5Yb"/>
+                <outlet property="withdrawToHeight" destination="1xc-lz-mxb" id="PgE-NX-vFT"/>
                 <outlet property="withdrawToView" destination="TLn-7B-LL4" id="hb9-F1-GE8"/>
                 <outletCollection property="dataListViewArray" destination="7NG-FI-jMy" collectionClass="NSMutableArray" id="d99-df-qD0"/>
                 <outletCollection property="dataListViewArray" destination="VAF-If-hPs" collectionClass="NSMutableArray" id="3YR-sx-kzl"/>

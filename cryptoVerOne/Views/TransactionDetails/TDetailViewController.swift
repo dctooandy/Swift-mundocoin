@@ -136,6 +136,7 @@ class TDetailViewController: BaseViewController {
                                           confirmBlocks: data.confirmBlocks ?? 0)
                 if detailDataDto?.id == socketID, (detailDataDto?.detailType != statsValue || detailDataDto?.confirmBlocks != data.confirmBlocks)
                 {
+                    detailDto.showMode = dataListView.detailDataDto?.showMode
                     dataListView.detailDataDto = detailDto
                     self.detailDataDto = detailDto
                     dataListView.viewType = detailDto.detailType
