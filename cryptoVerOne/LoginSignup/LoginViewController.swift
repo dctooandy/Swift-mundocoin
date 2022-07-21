@@ -160,6 +160,7 @@ class LoginViewController: BaseViewController {
                     }else if status == "404"
                     {
                         accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        InputViewStyleThemes.share.acceptInputHeightStyle(.normalInvalidShow)
                     }else
                     {
                         ErrorHandler.show(error: error)

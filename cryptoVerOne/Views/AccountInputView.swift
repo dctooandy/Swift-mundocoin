@@ -55,6 +55,7 @@ class AccountInputView: UIView {
 //        Themes.chooseOrNotChoose.bind(to: accountInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
 //        Themes.chooseOrNotChoose.bind(to: passwordInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
 //        Themes.chooseOrNotChoose.bind(to: registrationInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+        InputViewStyleThemes.normalInputHeightType.bind(to: acHeightConstraint.rx.constant).disposed(by: dpg)
         InputViewStyleThemes.pwInputHeightType.bind(to: pwHeightConstraint.rx.constant).disposed(by: dpg)
     }
     func bindTextfield() {
@@ -62,33 +63,79 @@ class AccountInputView: UIView {
 //        let isAccountValid = accountTextField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false  }
-                if strongSelf.inputMode == .phone{
-                    return RegexHelper.match(pattern:. phone, input: acc)
+                if ((self?.accountInputView.textField.isFirstResponder) != true) {
+                    self?.accountInputView.invalidLabel.isHidden = true
                 }
-                return RegexHelper.match(pattern: .mail, input: acc)
+                var patternValue = RegexHelper.Pattern.phone
+                if strongSelf.inputMode == .phone {
+                    patternValue = .phone
+                }else
+                {
+                    patternValue = .mail
+                }
+                return RegexHelper.match(pattern: patternValue, input: acc)
         }
-        
+        let isAccountHeightType = accountInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                if ((self?.accountInputView.textField.isFirstResponder) == true) {
+                    var patternValue = RegexHelper.Pattern.phone
+                    if strongSelf.inputMode == .phone {
+                        patternValue = .phone
+                    }else
+                    {
+                        patternValue = .mail
+                    }
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .normalInvalidShow)
+                    if resultValue == .normalInvalidShow
+                    {
+                        self?.accountInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        self?.accountInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    return .invalidHidden
+                }
+        }
+        isAccountHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
         let isPasswordValid = passwordInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
-                if ((self?.passwordInputView.textField.isFirstResponder) == true) {
-                    if strongSelf.inputMode == .phone {
-                        return RegexHelper.match(pattern: .password, input: acc) || acc.isEmpty == true
-                    }
-                    return RegexHelper.match(pattern: .password, input: acc) || acc.isEmpty == true
+                if ((self?.passwordInputView.textField.isFirstResponder) != true) {
+                    self?.passwordInputView.invalidLabel.isHidden = true
+                }
+                var patternValue = RegexHelper.Pattern.phone
+                if strongSelf.inputMode == .phone {
+                    patternValue = .password
                 }else
                 {
-                    return true
+                    patternValue = .password
                 }
+                return RegexHelper.match(pattern: patternValue, input: acc)
         }
         let isPasswordHeightType = passwordInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
                 guard let strongSelf = self, let acc = str else { return .invalidHidden }
                 if ((self?.passwordInputView.textField.isFirstResponder) == true) {
+                    var patternValue = RegexHelper.Pattern.phone
                     if strongSelf.inputMode == .phone {
-                        return RegexHelper.match(pattern: .password, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                        patternValue = .password
+                    }else
+                    {
+                        patternValue = .password
                     }
-                    return RegexHelper.match(pattern: .password, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                    if resultValue == .pwInvalidShow
+                    {
+                        self?.passwordInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        self?.passwordInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
                 }else
                 {
                     return .invalidHidden
@@ -100,7 +147,7 @@ class AccountInputView: UIView {
                 guard let strongSelf = self, let acc = str else { return false }
                 return RegexHelper.match(pattern: .otp, input: acc)
         }
-        isAccountValid.skip(1).bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isAccountValid.bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         
         if currentShowMode == .forgotPW
         {
@@ -108,8 +155,7 @@ class AccountInputView: UIView {
         }else if currentShowMode == .signupEmail ||
                     currentShowMode == .signupPhone
         {
-            isPasswordValid.bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-           
+//            isPasswordValid.bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
@@ -121,7 +167,7 @@ class AccountInputView: UIView {
                 .disposed(by: dpg)
         }else
         {
-            isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//            isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isAccountValid, isPasswordValid)
                 .map { return $0.0 && $0.1 } //reget match result
@@ -205,14 +251,17 @@ class AccountInputView: UIView {
         self.accountInputView = accountView
         self.passwordInputView = passwordView
         self.registrationInputView = registrationView
+        acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewDefaultHeight)
+        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewPasswordHeight)
         addSubview(accountInputView)
         accountInputView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewDefaultHeight)
+            make.height.equalTo(acHeightConstraint.constant)
+//            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
-        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewPasswordHeight)
+        accountInputView.addConstraint(acHeightConstraint)
         
         switch currentShowMode {
         case .loginEmail , .loginPhone:

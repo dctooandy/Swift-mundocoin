@@ -44,15 +44,15 @@ class InputViewStyleThemes : NSObject {
     private static let viewHeightMode = InputViewStyleThemes.share.inputHeightStyle.asObservable()
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
-    private static func bindNormalInputViewHeight<T>(hidden: T , show: T) -> Observable<CGFloat>{
-        return viewHeightMode.map({($0 == .invalidHidden) ? 85.0 : Themes.inputViewDefaultHeight})
+    private static func bindNormalInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
+        return viewHeightMode.map({($0 != .normalInvalidShow) ? hidden : show })
     }
-    private static func bindPWInputViewHeight<T>(hidden: T , show: T) -> Observable<CGFloat>{
-        return viewHeightMode.map({($0 == .invalidHidden) ? 85.0 : Themes.inputViewPasswordHeight})
+    private static func bindPWInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
+        return viewHeightMode.map({($0 != .pwInvalidShow) ? hidden : show })
     }
     // MARK: -
     // MARK: 步驟五 釋放可全域綁定物件腳
-    static let normalInputHeightType : Observable<CGFloat> = bindNormalInputViewHeight(hidden: InputViewHeightType.invalidHidden, show: InputViewHeightType.normalInvalidShow)
-    static let pwInputHeightType : Observable<CGFloat> = bindPWInputViewHeight(hidden: InputViewHeightType.invalidHidden, show: InputViewHeightType.pwInvalidShow)
+    static let normalInputHeightType : Observable<CGFloat> = bindNormalInputViewHeight(hidden: 85.0, show: Themes.inputViewDefaultHeight)
+    static let pwInputHeightType : Observable<CGFloat> = bindPWInputViewHeight(hidden: 85.0, show: Themes.inputViewPasswordHeight)
 
 }

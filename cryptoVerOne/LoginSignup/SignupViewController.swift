@@ -191,6 +191,7 @@ class SignupViewController: BaseViewController {
                     if status == "400"
                     {
                         accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        InputViewStyleThemes.share.acceptInputHeightStyle(.normalInvalidShow)
                     }else
                     {
                         ErrorHandler.show(error: error)
