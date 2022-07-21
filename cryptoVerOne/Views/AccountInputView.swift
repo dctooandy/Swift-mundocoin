@@ -18,6 +18,8 @@ class AccountInputView: UIView {
     private var currentShowMode: ShowMode = .loginEmail
     private let dpg = DisposeBag()
     private let accountCheckPassed = PublishSubject<Bool>()
+    var acHeightConstraint : NSLayoutConstraint!
+    var pwHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     var accountInputView : InputStyleView!
@@ -53,6 +55,7 @@ class AccountInputView: UIView {
 //        Themes.chooseOrNotChoose.bind(to: accountInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
 //        Themes.chooseOrNotChoose.bind(to: passwordInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
 //        Themes.chooseOrNotChoose.bind(to: registrationInputView.tfMaskView.rx.borderColor).disposed(by: dpg)
+        InputViewStyleThemes.pwInputHeightType.bind(to: pwHeightConstraint.rx.constant).disposed(by: dpg)
     }
     func bindTextfield() {
         let isAccountValid = accountInputView.textField.rx.text
@@ -66,14 +69,32 @@ class AccountInputView: UIView {
         }
         
         let isPasswordValid = passwordInputView.textField.rx.text
-//        let isPasswordValid = passwordTextField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
-                if strongSelf.inputMode == .phone {
-                    return RegexHelper.match(pattern: .password, input: acc)
+                if ((self?.passwordInputView.textField.isFirstResponder) == true) {
+                    if strongSelf.inputMode == .phone {
+                        return RegexHelper.match(pattern: .password, input: acc) || acc.isEmpty == true
+                    }
+                    return RegexHelper.match(pattern: .password, input: acc) || acc.isEmpty == true
+                }else
+                {
+                    return true
                 }
-                return RegexHelper.match(pattern: .password, input: acc)
         }
+        let isPasswordHeightType = passwordInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                if ((self?.passwordInputView.textField.isFirstResponder) == true) {
+                    if strongSelf.inputMode == .phone {
+                        return RegexHelper.match(pattern: .password, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                    }
+                    return RegexHelper.match(pattern: .password, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                }else
+                {
+                    return .invalidHidden
+                }
+        }
+        isPasswordHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
         let isRegistrationValid = registrationInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
@@ -87,7 +108,8 @@ class AccountInputView: UIView {
         }else if currentShowMode == .signupEmail ||
                     currentShowMode == .signupPhone
         {
-            isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+            isPasswordValid.bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+           
 //            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
@@ -128,10 +150,15 @@ class AccountInputView: UIView {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText()
             resetTFMaskView(account:isChoose)
+            resetInputView(view: passwordInputView)
+//            accountInputView.textField.sendActions(for: .valueChanged)
+            InputViewStyleThemes.share.acceptInputHeightStyle(.invalidHidden)
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText()
             resetTFMaskView(password:isChoose)
+            resetInputView(view: accountInputView)
+//            passwordInputView.textField.sendActions(for: .valueChanged)
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText()
@@ -150,6 +177,10 @@ class AccountInputView: UIView {
         accountInputView.tfMaskView.changeBorderWith(isChoose:account)
         passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
         registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+    }
+    func resetInputView(view : InputStyleView)
+    {
+        view.invalidLabel.isHidden = true
     }
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()
@@ -181,6 +212,8 @@ class AccountInputView: UIView {
             make.trailing.equalToSuperview().offset(-20)
             make.height.equalTo(Themes.inputViewDefaultHeight)
         }
+        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewPasswordHeight)
+        
         switch currentShowMode {
         case .loginEmail , .loginPhone:
             addSubview(passwordInputView)
@@ -188,8 +221,10 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(Themes.inputViewPasswordHeight)
+                make.height.equalTo(pwHeightConstraint.constant)
+//                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
+            passwordInputView.addConstraint(pwHeightConstraint)
         case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
             addSubview(registrationInputView)
@@ -197,8 +232,10 @@ class AccountInputView: UIView {
                 make.top.equalTo(accountInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
                 make.trailing.equalToSuperview().offset(-20)
-                make.height.equalTo(Themes.inputViewPasswordHeight)
+                make.height.equalTo(pwHeightConstraint.constant)
+//                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
+            passwordInputView.addConstraint(pwHeightConstraint)
             registrationInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(passwordInputView.snp.bottom)
                 make.leading.equalToSuperview().offset(20)
@@ -207,7 +244,6 @@ class AccountInputView: UIView {
             }
         case .forgotPW:
             break
-
         }
     }
     func changeInvalidTextColor(with invalidDto:[ErrorsDetailDto])

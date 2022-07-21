@@ -190,7 +190,7 @@ class InputStyleView: UIView {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         lb.font = Fonts.pingFangSCSemibold(14)
 #else
-        lb.font = Fonts.pingFangSCRegular(14)
+        lb.font = Fonts.pingFangTCSemibold(14)
 #endif
         return lb
     }()

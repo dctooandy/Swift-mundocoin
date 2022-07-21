@@ -15,8 +15,6 @@ extension Reactive where Base: UIControl {
     internal var tap: ControlEvent<Void> {
         return controlEvent(.touchUpInside)
     }
-    
-    
 }
 
 class ImagetTextButton: UIControl {

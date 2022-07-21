@@ -940,6 +940,12 @@
 		0999D10E287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
 		0999D10F287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
 		0999D110287531D4003C5260 /* CheckTokenExpiredService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */; };
+		099A241728882C0A00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
+		099A241828882C0A00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
+		099A241928882C0A00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
+		099A241A28882C0A00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
+		099A241B28882C0B00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
+		099A241C28882C0B00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1768,6 +1774,7 @@
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
 		0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenExpiredService.swift; sourceTree = "<group>"; };
+		099A241628882C0A00A36375 /* InputViewStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewStyleThemes.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
@@ -2804,6 +2811,7 @@
 				09919AAA28645D0D00035835 /* FilterStyleThemes.swift */,
 				09919AB128645E3A00035835 /* WhiteListThemes.swift */,
 				09919AB82864605300035835 /* WalletSecurityThemes.swift */,
+				099A241628882C0A00A36375 /* InputViewStyleThemes.swift */,
 			);
 			path = Themes;
 			sourceTree = "<group>";
@@ -3913,6 +3921,7 @@
 				09905A4B2851A02B00BAEE78 /* ResendDto.swift in Sources */,
 				09EED2FA2856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADAE0028562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241B28882C0B00A36375 /* InputViewStyleThemes.swift in Sources */,
 				09905A4C2851A02B00BAEE78 /* LoadingViewController.swift in Sources */,
 				09905A4D2851A02B00BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905A4E2851A02B00BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
@@ -4128,6 +4137,7 @@
 				09905B3D2851A08500BAEE78 /* ResendDto.swift in Sources */,
 				09EED2FB2856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADAE0128562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241C28882C0B00A36375 /* InputViewStyleThemes.swift in Sources */,
 				09905B3E2851A08500BAEE78 /* LoadingViewController.swift in Sources */,
 				09905B3F2851A08500BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905B402851A08500BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
@@ -4343,6 +4353,7 @@
 				09905C2F2851A09600BAEE78 /* ResendDto.swift in Sources */,
 				09EED2F92856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADADFF28562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241A28882C0A00A36375 /* InputViewStyleThemes.swift in Sources */,
 				09905C302851A09600BAEE78 /* LoadingViewController.swift in Sources */,
 				09905C312851A09600BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905C322851A09600BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
@@ -4558,6 +4569,7 @@
 				09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09EED2F72856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADADFD28562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241828882C0A00A36375 /* InputViewStyleThemes.swift in Sources */,
 				09CAF452283C77ED00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
@@ -4773,6 +4785,7 @@
 				09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09EED2F82856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADADFE28562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241928882C0A00A36375 /* InputViewStyleThemes.swift in Sources */,
 				09CAF513283C7BBE00D7B19B /* LoadingViewController.swift in Sources */,
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
@@ -4988,6 +5001,7 @@
 				09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */,
 				09EED2F62856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
 				A1ADADFC28562E1600B07B12 /* AccountViewController.swift in Sources */,
+				099A241728882C0A00A36375 /* InputViewStyleThemes.swift in Sources */,
 				A19C712D2822570E000AFC3F /* LoadingViewController.swift in Sources */,
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
