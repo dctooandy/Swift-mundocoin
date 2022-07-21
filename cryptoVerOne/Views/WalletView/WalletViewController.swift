@@ -82,6 +82,7 @@ class WalletViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchBalances()
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -197,10 +198,10 @@ class WalletViewController: BaseViewController {
             dataDtoIndex = walletsDto.indexOfObject(object: dataDto)
             if amountValue > 0
             {
-                dataDto.persentValue = String(describing: amountValue/Double(amountString) * 100).numberFormatter(.decimal , 2)
+                dataDto.persentValue = String(describing: amountValue/Double(amountString) * 100).numberFormatter(.decimal , 0)
             }else
             {
-                dataDto.persentValue = "0.00"
+                dataDto.persentValue = "0"
             }
             walletsDto.remove(at: dataDtoIndex)
             walletsDto.insert(dataDto, at: dataDtoIndex)

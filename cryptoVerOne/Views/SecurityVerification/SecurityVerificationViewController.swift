@@ -45,6 +45,7 @@ class SecurityVerificationViewController: BaseViewController {
         onlyEmailVerifyViewController.verifyView.cleanTextField()
         onlyTwoFAVerifyViewController.verifyView.cleanTextField()
         resetHeightForView()
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

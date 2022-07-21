@@ -50,7 +50,7 @@ class AuditTwoFAFinishViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.PlusJakartaSansBold(20)]
 
     }
     override func viewDidAppear(_ animated: Bool) {

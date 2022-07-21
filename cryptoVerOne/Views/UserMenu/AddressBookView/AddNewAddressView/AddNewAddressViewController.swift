@@ -52,6 +52,7 @@ class AddNewAddressViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupAddressStyleView()
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

@@ -66,6 +66,7 @@ class AuditDetailViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

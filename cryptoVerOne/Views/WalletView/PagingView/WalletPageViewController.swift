@@ -74,16 +74,16 @@ class WalletPageViewController: BaseViewController {
         // menu底下的線
         pageViewcontroller?.borderColor = UIColor(rgb: 0xE0E5F2)
         // menu text
-        pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 15)
-        pageViewcontroller?.font = UIFont.systemFont(ofSize: 15)
-        pageViewcontroller?.textColor = .black
-        pageViewcontroller?.selectedTextColor = .black
+        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(18)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(18)
+        pageViewcontroller?.textColor = Themes.gray2B3674
+        pageViewcontroller?.selectedTextColor = Themes.gray2B3674
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
         // menu indicator
-        pageViewcontroller?.indicatorColor = .black
+        pageViewcontroller?.indicatorColor = Themes.gray2B3674
         // 下面浮標位置只能從menu 底下長出來
         // 浮標寬度跟隨menu
         // spacing 控制左右寬度

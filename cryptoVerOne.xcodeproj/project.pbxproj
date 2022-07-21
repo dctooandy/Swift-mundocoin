@@ -904,6 +904,12 @@
 		09954C3028893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
 		09954C3128893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
 		09954C3228893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C342889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
+		09954C352889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
+		09954C362889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
+		09954C372889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
+		09954C382889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
+		09954C392889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */; };
 		09957456287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
 		09957457287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
 		09957458287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
@@ -1804,6 +1810,7 @@
 		09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
 		09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
 		09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
+		09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Light.ttf"; sourceTree = "<group>"; };
 		09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditBindTwoFAViewController.swift; sourceTree = "<group>"; };
 		0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditBindTwoFAViewController.xib; sourceTree = "<group>"; };
 		0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFAFinishViewController.swift; sourceTree = "<group>"; };
@@ -2251,6 +2258,7 @@
 		09954C082889329B00E5E2BE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */,
 				09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */,
 				09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */,
 				09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */,
@@ -3296,6 +3304,7 @@
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				09954C382889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905B192851A02B00BAEE78 /* SignupViewController.xib in Resources */,
 				09905B1A2851A02B00BAEE78 /* mucoin_loading.json in Resources */,
 				09905B1B2851A02B00BAEE78 /* SecurityViewController.xib in Resources */,
@@ -3383,6 +3392,7 @@
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				09954C392889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905C0B2851A08500BAEE78 /* SignupViewController.xib in Resources */,
 				09905C0C2851A08500BAEE78 /* mucoin_loading.json in Resources */,
 				09905C0D2851A08500BAEE78 /* SecurityViewController.xib in Resources */,
@@ -3470,6 +3480,7 @@
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				09954C372889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */,
 				09905CFE2851A09600BAEE78 /* mucoin_loading.json in Resources */,
 				09905CFF2851A09600BAEE78 /* SecurityViewController.xib in Resources */,
@@ -3557,6 +3568,7 @@
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				09954C352889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF4F1283C77ED00D7B19B /* mucoin_loading.json in Resources */,
 				09CAF4F2283C77ED00D7B19B /* SecurityViewController.xib in Resources */,
@@ -3644,6 +3656,7 @@
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				09954C362889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF5B2283C7BBE00D7B19B /* mucoin_loading.json in Resources */,
 				09CAF5B3283C7BBE00D7B19B /* SecurityViewController.xib in Resources */,
@@ -3731,6 +3744,7 @@
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
+				09954C342889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
 				A1DD13B1282C027E00AB2E0A /* SecurityViewController.xib in Resources */,
