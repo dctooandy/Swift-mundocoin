@@ -256,8 +256,8 @@ class AccountInputView: UIView {
         addSubview(accountInputView)
         accountInputView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(25)
+            make.trailing.equalToSuperview().offset(-25)
             make.height.equalTo(acHeightConstraint.constant)
 //            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
@@ -268,8 +268,8 @@ class AccountInputView: UIView {
             addSubview(passwordInputView)
             passwordInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(accountInputView.snp.bottom)
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20)
+                make.leading.equalToSuperview().offset(25)
+                make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(pwHeightConstraint.constant)
 //                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
@@ -279,16 +279,16 @@ class AccountInputView: UIView {
             addSubview(registrationInputView)
             passwordInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(accountInputView.snp.bottom)
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20)
+                make.leading.equalToSuperview().offset(25)
+                make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(pwHeightConstraint.constant)
 //                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
             passwordInputView.addConstraint(pwHeightConstraint)
             registrationInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(passwordInputView.snp.bottom)
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20)
+                make.leading.equalToSuperview().offset(25)
+                make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(Themes.inputViewDefaultHeight)
             }
         case .forgotPW:

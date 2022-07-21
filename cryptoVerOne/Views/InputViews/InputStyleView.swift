@@ -150,8 +150,8 @@ enum InputViewMode :Equatable {
 class InputStyleView: UIView {
     // MARK:業務設定
     private var inputViewMode: InputViewMode = .email
-    private let displayPwdImg = UIImage(named: "icon-view")!.withRenderingMode(.alwaysTemplate)
-    private let undisplayPwdImg =  UIImage(named: "icon-view-hide")!.withRenderingMode(.alwaysTemplate)
+    private let displayPwdImg = UIImage(named: "icon-view")
+    private let undisplayPwdImg =  UIImage(named: "icon-view-hide")
     private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
     private let onClick = PublishSubject<String>()
     private let onSendClick = PublishSubject<Any>()
@@ -351,7 +351,7 @@ class InputStyleView: UIView {
             make.top.equalTo(topLabel.snp.bottom).offset(9)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(41)
+            make.height.equalTo(46)
         }
         invalidLabel.snp.makeConstraints { (make) in
             make.top.equalTo(textField.snp.bottom).offset(2)
@@ -396,7 +396,7 @@ class InputStyleView: UIView {
         var placeHolderString = ""
         var invalidLabelString = ""
         var rightLabelWidth : CGFloat = 0.0
-        displayOffetWidth = (isPasswordType ? 18.0:0.0)
+        displayOffetWidth = (isPasswordType ? 20.0:0.0)
         switch self.inputViewMode {
         case .copy ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
             cancelOffetWidth = 0.0
@@ -579,13 +579,15 @@ class InputStyleView: UIView {
         
         addSubview(displayRightButton)
         displayRightButton.setTitle(nil, for: .normal)
-        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
+        displayRightButton.setImage(displayPwdImg, for: .normal)
+//        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
         displayRightButton.snp.remakeConstraints { (make) in
             make.right.equalToSuperview().offset(-10 - rightLabelWidth)
             make.centerY.equalTo(textField)
-            make.height.equalTo(18)
+            make.height.equalTo(14)
             make.width.equalTo(displayOffetWidth)
         }
+        displayRightButton.imageView?.contentMode = .scaleAspectFill
         addSubview(cancelRightButton)
         //設定文字刪除
         cancelRightButton.setTitle(nil, for: .normal)
@@ -681,7 +683,7 @@ class InputStyleView: UIView {
     }
     private func displayRightPressed() {
         textField.isSecureTextEntry = !(textField.isSecureTextEntry)
-        displayRightButton.setBackgroundImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
+        displayRightButton.setImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
     }
     private func cancelButtonPressed() {
         textField.text = ""

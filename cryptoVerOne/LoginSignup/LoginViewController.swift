@@ -95,7 +95,7 @@ class LoginViewController: BaseViewController {
         forgetPasswordButton.titleLabel?.font = Fonts.pingFangTCRegular(14)
         forgetPasswordButton.snp.makeConstraints { (make) in
             make.left.equalTo(accountInputView!).offset(32)
-            make.top.equalTo(accountInputView!.snp.bottom)
+            make.top.equalTo(accountInputView!.passwordInputView.snp.bottom)
             make.height.equalTo(18)
         }
 

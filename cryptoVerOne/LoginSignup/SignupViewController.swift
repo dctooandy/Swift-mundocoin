@@ -124,20 +124,20 @@ class SignupViewController: BaseViewController {
             make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight + Themes.inputViewDefaultHeight) 
         }
         bottomMessageLabel.snp.makeConstraints { make in
-            make.leading.equalTo(accountInputView).offset(48)
-            make.trailing.equalTo(accountInputView)
-            make.top.equalTo(accountInputView.snp.bottom)
+            make.leading.equalTo(accountInputView).offset(60)
+            make.trailing.equalTo(accountInputView).offset(-28)
+            make.top.equalTo(accountInputView.registrationInputView.textField.snp.bottom).offset(8)
             make.height.equalTo(48)
         }
 
         checkboxView.snp.makeConstraints { make in
-            make.leading.equalTo(accountInputView).offset(20)
-            make.centerY.equalTo(bottomMessageLabel!)
-            make.height.equalTo(24)
+            make.leading.equalTo(accountInputView).offset(32)
+            make.top.equalTo(bottomMessageLabel!).offset(5)
+            make.height.width.equalTo(20)
         }
         
         registerButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.bottomMessageLabel!.snp.bottom).offset(20)
+            make.top.equalTo(self.bottomMessageLabel!.snp.bottom).offset(46)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
