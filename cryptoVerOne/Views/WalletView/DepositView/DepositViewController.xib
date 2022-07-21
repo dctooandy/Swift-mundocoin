@@ -8,6 +8,20 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.otf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="PlusJakartaSans-Bold.ttf">
+            <string>PlusJakartaSans-Bold</string>
+        </array>
+        <array key="PlusJakartaSans-Medium.ttf">
+            <string>PlusJakartaSans-Medium</string>
+        </array>
+        <array key="PlusJakartaSans-Regular.ttf">
+            <string>PlusJakartaSans-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -17,7 +31,7 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7" customClass="DropDownStyleView" customModule="Approval" customModuleProvider="target">
-                        <rect key="frame" x="24" y="54" width="366" height="56"/>
+                        <rect key="frame" x="24" y="54" width="366" height="52"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -39,26 +53,33 @@
                                 <rect key="frame" x="60" y="270" width="246" height="42"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-Info_fill" translatesAutoresizingMaskIntoConstraints="NO" id="wYA-ry-Ych">
-                                        <rect key="frame" x="18.5" y="14.5" width="13" height="13"/>
+                                        <rect key="frame" x="13.5" y="13.5" width="15" height="15"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="13" id="9zg-7d-DAn"/>
-                                            <constraint firstAttribute="width" constant="13" id="LMG-Iq-JY2"/>
+                                            <constraint firstAttribute="height" constant="15" id="9zg-7d-DAn"/>
+                                            <constraint firstAttribute="width" constant="15" id="LMG-Iq-JY2"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1zE-WW-5Xz">
-                                        <rect key="frame" x="36.5" y="13" width="173" height="16"/>
+                                        <rect key="frame" x="33.5" y="13" width="179.5" height="16"/>
                                         <attributedString key="attributedText">
-                                            <fragment content="Minimum deposit  ">
+                                            <fragment content="Minimum deposit">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="13" name="PlusJakartaSans-Bold"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="  ">
                                                 <attributes>
                                                     <color key="NSColor" red="0.64707875250000002" green="0.64308953290000004" blue="0.64709442849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system"/>
+                                                    <font key="NSFont" size="13" name="PlusJakartaSans-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
                                             <fragment content="USDT5.00">
                                                 <attributes>
                                                     <color key="NSColor" red="0.45283198359999999" green="0.37405869359999999" blue="0.97034066919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <font key="NSFont" metaFont="system"/>
+                                                    <font key="NSFont" size="13" name="PlusJakartaSans-Bold"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                 </attributes>
                                             </fragment>
@@ -89,28 +110,28 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT Wallet address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IHI-9h-f1L">
-                                <rect key="frame" x="18" y="345" width="137" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="18" y="345" width="140.5" height="17"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                                <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="THFfxoxMtMJGnjar...cXUNbHzry3" textAlignment="center" lineBreakMode="middleTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jiu-of-UhZ">
                                 <rect key="frame" x="18" y="369" width="286" height="20"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="16"/>
                                 <color key="textColor" red="0.63979864119999996" green="0.68253517149999998" blue="0.81610256430000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cwQ-Rq-hPx">
-                                <rect key="frame" x="0.0" y="389" width="10" height="24"/>
+                                <rect key="frame" x="0.0" y="389" width="10" height="15.5"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="6cA-i4-dsS"/>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lDT-vi-FC8">
-                                <rect key="frame" x="18" y="413" width="108" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="18" y="404.5" width="116" height="17"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                                <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-copy" translatesAutoresizingMaskIntoConstraints="NO" id="qJT-q8-GQs">
@@ -120,18 +141,18 @@
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-bv-3E3">
-                                <rect key="frame" x="18" y="436" width="330" height="44"/>
+                                <rect key="frame" x="18" y="427.5" width="330" height="46"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRC 20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7u5-ro-xv0">
-                                        <rect key="frame" x="15" y="12.5" width="54" height="19.5"/>
-                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
-                                        <color key="textColor" red="0.66964310410000005" green="0.71116697790000005" blue="0.83695602420000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <rect key="frame" x="15" y="11.5" width="55" height="20.5"/>
+                                        <fontDescription key="fontDescription" name="PlusJakartaSans-Regular" family="Plus Jakarta Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" red="0.87884569170000004" green="0.89729839560000002" blue="0.94803339239999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="7u5-ro-xv0" firstAttribute="centerY" secondItem="rjJ-bv-3E3" secondAttribute="centerY" id="Ggs-Zm-6Ch"/>
+                                    <constraint firstItem="7u5-ro-xv0" firstAttribute="centerY" secondItem="rjJ-bv-3E3" secondAttribute="centerY" constant="-1.25" id="Ggs-Zm-6Ch"/>
                                     <constraint firstItem="7u5-ro-xv0" firstAttribute="leading" secondItem="rjJ-bv-3E3" secondAttribute="leading" constant="15" id="cl7-lx-ZFo"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -148,7 +169,7 @@
                             <constraint firstItem="lDT-vi-FC8" firstAttribute="top" secondItem="cwQ-Rq-hPx" secondAttribute="bottom" id="3Jh-RU-bDa"/>
                             <constraint firstItem="nm0-vB-xPB" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.482353" id="94m-u7-Okd"/>
                             <constraint firstAttribute="trailing" secondItem="rjJ-bv-3E3" secondAttribute="trailing" constant="18" id="AHD-RB-wO9"/>
-                            <constraint firstItem="qJT-q8-GQs" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0470588" id="ASf-SR-jHc"/>
+                            <constraint firstItem="qJT-q8-GQs" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0470588" constant="1.2000000001677336e-05" id="ASf-SR-jHc"/>
                             <constraint firstItem="Jiu-of-UhZ" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0392157" id="Beq-QR-iT1"/>
                             <constraint firstItem="dDy-x4-GND" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" id="CLk-mz-o0z"/>
                             <constraint firstItem="Jiu-of-UhZ" firstAttribute="top" secondItem="IHI-9h-f1L" secondAttribute="bottom" constant="7" id="Ckj-0T-tTb"/>
@@ -156,14 +177,14 @@
                             <constraint firstItem="lDT-vi-FC8" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" constant="18" id="EZP-qg-A6f"/>
                             <constraint firstItem="UpV-ML-Ug6" firstAttribute="top" secondItem="dDy-x4-GND" secondAttribute="bottom" id="FWo-07-gl6"/>
                             <constraint firstItem="nm0-vB-xPB" firstAttribute="centerX" secondItem="cvz-5Q-Z0V" secondAttribute="centerX" id="GWd-HW-c3I"/>
-                            <constraint firstItem="cwQ-Rq-hPx" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0470588" id="IgX-Wf-wKD"/>
+                            <constraint firstItem="cwQ-Rq-hPx" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.03" id="IgX-Wf-wKD"/>
                             <constraint firstItem="3BH-Ii-s5N" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0823529" id="J2F-bF-4pE"/>
                             <constraint firstItem="cwQ-Rq-hPx" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" id="Nq7-nw-7Mk"/>
                             <constraint firstItem="IHI-9h-f1L" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" constant="18" id="U3Y-fR-wqR"/>
                             <constraint firstItem="UpV-ML-Ug6" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" id="UZL-d8-KtU"/>
                             <constraint firstItem="rjJ-bv-3E3" firstAttribute="top" secondItem="lDT-vi-FC8" secondAttribute="bottom" constant="6" id="Us2-Ma-uQp"/>
                             <constraint firstItem="qJT-q8-GQs" firstAttribute="leading" secondItem="Jiu-of-UhZ" secondAttribute="trailing" constant="20" id="WKc-AA-MNX"/>
-                            <constraint firstItem="rjJ-bv-3E3" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0862745" id="XBy-lE-D4y"/>
+                            <constraint firstItem="rjJ-bv-3E3" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0862745" constant="2.0000049999999945" id="XBy-lE-D4y"/>
                             <constraint firstItem="cwQ-Rq-hPx" firstAttribute="top" secondItem="Jiu-of-UhZ" secondAttribute="bottom" id="XLH-Za-9cf"/>
                             <constraint firstItem="IHI-9h-f1L" firstAttribute="top" secondItem="UpV-ML-Ug6" secondAttribute="bottom" id="XlL-c1-vSb"/>
                             <constraint firstItem="qJT-q8-GQs" firstAttribute="centerY" secondItem="Jiu-of-UhZ" secondAttribute="centerY" id="Xsh-to-Ewq"/>
@@ -193,29 +214,31 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oli-XG-RwX">
-                        <rect key="frame" x="48.5" y="652" width="317" height="31.5"/>
+                        <rect key="frame" x="45.5" y="652" width="323" height="33"/>
                         <string key="text">Any Assets sent to the wrong address will be lost.
 Please confirm the method must match the network.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                        <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45882352941176469" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
+                        <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WSu-fQ-jnD" customClass="SaveButton" customModule="Approval" customModuleProvider="target">
-                        <rect key="frame" x="39" y="780" width="160" height="40"/>
+                        <rect key="frame" x="39" y="780" width="160" height="44"/>
                         <color key="backgroundColor" red="0.85098039215686272" green="0.85098039215686272" blue="0.85098039215686272" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="WSu-fQ-jnD" secondAttribute="height" multiplier="4:1" id="Q3D-JJ-MNf"/>
+                            <constraint firstAttribute="width" secondItem="WSu-fQ-jnD" secondAttribute="height" multiplier="4:1" constant="-16" id="Q3D-JJ-MNf"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                         <state key="normal" title="Save">
-                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="titleColor" red="0.4392156862745098" green="0.49411764705882355" blue="0.68235294117647061" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gv-v9-FsN" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
-                        <rect key="frame" x="215" y="780" width="160" height="40"/>
-                        <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <rect key="frame" x="215" y="780" width="160" height="44"/>
+                        <color key="backgroundColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="3gv-v9-FsN" secondAttribute="height" multiplier="4:1" id="p3l-KI-10A"/>
+                            <constraint firstAttribute="width" secondItem="3gv-v9-FsN" secondAttribute="height" multiplier="4:1" constant="-16" id="p3l-KI-10A"/>
                         </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                         <state key="normal" title="Share">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
@@ -232,18 +255,18 @@ Please confirm the method must match the network.</string>
                 <viewLayoutGuide key="safeArea" id="ZCY-DL-skw"/>
                 <color key="backgroundColor" red="0.95522314310000001" green="0.96785312889999997" blue="0.99451512099999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 <constraints>
-                    <constraint firstItem="ZCY-DL-skw" firstAttribute="bottom" secondItem="3gv-v9-FsN" secondAttribute="bottom" constant="42" id="4tb-ya-dqX"/>
+                    <constraint firstItem="ZCY-DL-skw" firstAttribute="bottom" secondItem="3gv-v9-FsN" secondAttribute="bottom" constant="38" id="4tb-ya-dqX"/>
                     <constraint firstItem="j3C-Kw-xe7" firstAttribute="leading" secondItem="ZCY-DL-skw" secondAttribute="leading" constant="24" id="9Tr-W3-FJ1"/>
-                    <constraint firstItem="cvz-5Q-Z0V" firstAttribute="top" secondItem="j3C-Kw-xe7" secondAttribute="bottom" constant="16" id="BT3-wO-cKn"/>
+                    <constraint firstItem="cvz-5Q-Z0V" firstAttribute="top" secondItem="j3C-Kw-xe7" secondAttribute="bottom" constant="20" id="BT3-wO-cKn"/>
                     <constraint firstItem="WSu-fQ-jnD" firstAttribute="trailing" secondItem="CEs-ui-zuy" secondAttribute="leading" id="E85-6N-7MB"/>
                     <constraint firstItem="cvz-5Q-Z0V" firstAttribute="leading" secondItem="ZCY-DL-skw" secondAttribute="leading" constant="24" id="PVM-Th-9e2"/>
                     <constraint firstItem="3gv-v9-FsN" firstAttribute="width" secondItem="jAl-Ku-Qfi" secondAttribute="width" multiplier="0.386473" id="Txd-kV-xzg"/>
-                    <constraint firstItem="ZCY-DL-skw" firstAttribute="bottom" secondItem="WSu-fQ-jnD" secondAttribute="bottom" constant="42" id="ZdI-TK-Oyk"/>
+                    <constraint firstItem="ZCY-DL-skw" firstAttribute="bottom" secondItem="WSu-fQ-jnD" secondAttribute="bottom" constant="38" id="ZdI-TK-Oyk"/>
                     <constraint firstItem="CEs-ui-zuy" firstAttribute="centerX" secondItem="jAl-Ku-Qfi" secondAttribute="centerX" id="aX3-Po-coQ"/>
                     <constraint firstItem="3gv-v9-FsN" firstAttribute="leading" secondItem="CEs-ui-zuy" secondAttribute="trailing" id="al8-Fa-6XD"/>
                     <constraint firstItem="j3C-Kw-xe7" firstAttribute="top" secondItem="ZCY-DL-skw" secondAttribute="top" constant="10" id="bER-8D-f34"/>
                     <constraint firstItem="WSu-fQ-jnD" firstAttribute="width" secondItem="jAl-Ku-Qfi" secondAttribute="width" multiplier="0.386473" id="bea-rq-iwZ"/>
-                    <constraint firstItem="j3C-Kw-xe7" firstAttribute="height" secondItem="jAl-Ku-Qfi" secondAttribute="height" multiplier="0.0625" id="d1x-6b-BBG"/>
+                    <constraint firstItem="j3C-Kw-xe7" firstAttribute="height" secondItem="jAl-Ku-Qfi" secondAttribute="height" multiplier="0.0625" constant="-4" id="d1x-6b-BBG"/>
                     <constraint firstAttribute="bottom" secondItem="CEs-ui-zuy" secondAttribute="bottom" id="eJw-JM-3r1"/>
                     <constraint firstItem="ZCY-DL-skw" firstAttribute="trailing" secondItem="cvz-5Q-Z0V" secondAttribute="trailing" constant="24" id="iwS-Qn-uG4"/>
                     <constraint firstItem="ZCY-DL-skw" firstAttribute="trailing" secondItem="j3C-Kw-xe7" secondAttribute="trailing" constant="24" id="npg-4P-4nh"/>
@@ -265,7 +288,7 @@ Please confirm the method must match the network.</string>
                 <outlet property="walletAddressLabel" destination="Jiu-of-UhZ" id="W7p-Xz-NEm"/>
                 <outlet property="walletAddressTitle" destination="IHI-9h-f1L" id="2xe-iF-cf3"/>
             </connections>
-            <point key="canvasLocation" x="-220.28985507246378" y="30.803571428571427"/>
+            <point key="canvasLocation" x="-196" y="27"/>
         </viewController>
     </objects>
     <resources>

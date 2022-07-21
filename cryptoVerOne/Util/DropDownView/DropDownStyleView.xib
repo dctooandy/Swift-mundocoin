@@ -7,8 +7,13 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PlusJakartaSans-Bold.ttf">
+            <string>PlusJakartaSans-Bold</string>
+        </array>
+    </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownStyleView" customModule="cryptoVerOne" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DropDownStyleView" customModule="Approval" customModuleProvider="target">
             <connections>
                 <outlet property="topDrawDownIamge" destination="huV-O2-6Xy" id="RRE-nD-5WB"/>
                 <outlet property="topIconImageView" destination="7Q2-4O-JMZ" id="189-Kk-ef5"/>
@@ -21,16 +26,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ex-icon-down" translatesAutoresizingMaskIntoConstraints="NO" id="huV-O2-6Xy">
-                    <rect key="frame" x="122" y="16" width="14" height="14"/>
+                    <rect key="frame" x="110" y="16" width="14" height="14"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="14" id="CMY-Ni-eF8"/>
                         <constraint firstAttribute="height" constant="14" id="Usy-3G-afP"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h9U-H2-KNm">
-                    <rect key="frame" x="56" y="11" width="54" height="24"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="56" y="13" width="42" height="20.5"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
+                    <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-usdt" translatesAutoresizingMaskIntoConstraints="NO" id="7Q2-4O-JMZ">
