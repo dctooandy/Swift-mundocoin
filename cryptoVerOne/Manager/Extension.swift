@@ -80,7 +80,13 @@ class UnderlinedLabel: UILabel {
                 attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
             }
 #else
-            attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
+            if isGrayColor == true
+            {
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.gray707EAE, range: textRange)
+            }else
+            {
+                attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: Themes.blue0587FF, range: textRange)
+            }
 #endif
             // Add other attributes if needed
             self.attributedText = attributedText

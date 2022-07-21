@@ -77,7 +77,7 @@ class VerifyViewController: BaseViewController {
         lb.textAlignment = .center
         lb.textColor = .black
         lb.text = "Resend Email".localized
-        lb.font = Fonts.pingFangSCRegular(14)
+        lb.font = Fonts.PlusJakartaSansBold(14)
         return lb
     }()
     lazy var underLineView : UIView = {
@@ -178,9 +178,9 @@ class VerifyViewController: BaseViewController {
         view.addSubview(underLineView)
 
         verifyInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(userAccountLabel.snp.bottom).offset(80)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.top.equalTo(userAccountLabel.snp.bottom).offset(40)
+            make.leading.equalToSuperview().offset(26)
+            make.trailing.equalToSuperview().offset(-26)
             make.centerX.equalTo(userAccountLabel)
             make.height.equalTo(Themes.inputViewDefaultHeight)
         }
@@ -193,12 +193,12 @@ class VerifyViewController: BaseViewController {
             make.height.equalTo(50)
         }
         verifyResentLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(verifyButton.snp.bottom).offset(10)
+            make.top.equalTo(verifyButton.snp.bottom).offset(20)
             make.centerX.equalTo(userAccountLabel)
-            make.height.equalTo(view).multipliedBy(0.05)
+//            make.height.equalTo(view).multipliedBy(0.05)
         }
         underLineView.snp.makeConstraints { (make) in
-            make.top.equalTo(verifyResentLabel.snp.bottom).offset(-10)
+            make.top.equalTo(verifyResentLabel.snp.bottom).offset(1)
             make.width.centerX.equalTo(verifyResentLabel)
             make.height.equalTo(1)
         }
@@ -277,13 +277,13 @@ class VerifyViewController: BaseViewController {
         if enable == true
         {
             verifyResentLabel.text = "Resend Email".localized
-            verifyResentLabel.textColor = .black
+            verifyResentLabel.textColor = Themes.gray707EAE
             underLineView.isHidden = false
             verifyResentLabel.isUserInteractionEnabled = true
         }else
         {
             verifyResentLabel.isUserInteractionEnabled = false
-            verifyResentLabel.textColor = UIColor(rgb: 0xB5B5B5)
+            verifyResentLabel.textColor = Themes.gray707EAE
         }
     }
     func verifyResentPressed()

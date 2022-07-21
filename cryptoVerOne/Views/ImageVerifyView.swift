@@ -71,7 +71,7 @@ class ImageVerifyView: UIView {
             titleLabel = UILabel()
             titleLabel?.text = "滑块验证"
             titleLabel?.textColor = .white
-            titleLabel?.font = Fonts.pingFangTCRegular(20)
+            titleLabel?.font = Fonts.PlusJakartaSansRegular(20)
             addSubview(titleLabel!)
             titleLabel?.snp.makeConstraints({ (make) in
                 make.centerX.equalToSuperview()

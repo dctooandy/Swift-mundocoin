@@ -136,7 +136,7 @@ extension Reactive where Base: UITextField {
     var placeholderColor: Binder<UIColor> {
         return Binder(self.base, binding: { tf, color in
             let attributes = [
-                NSAttributedString.Key.foregroundColor: color,NSAttributedString.Key.font: Fonts.pingFangSCRegular(10)
+                NSAttributedString.Key.foregroundColor: color,NSAttributedString.Key.font: Fonts.PlusJakartaSansMedium(10)
             ]
             tf.attributedPlaceholder = NSAttributedString(string: tf.placeholder ?? "",
                                                             attributes: attributes)
@@ -147,7 +147,7 @@ extension Reactive where Base: UITextField {
             
             let attributeDic: [NSAttributedString.Key: Any] =
             [.foregroundColor: color,
-             .font: Fonts.pingFangSCRegular(12)]
+             .font: Fonts.PlusJakartaSansMedium(12)]
             tf.attributedPlaceholder = NSAttributedString(string: tf.placeholder ?? "",
                                                             attributes: attributeDic)
         })

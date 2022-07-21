@@ -47,7 +47,7 @@ class TFBeginViewController: BaseViewController {
         subTitleLabel.text = "Complete your Google Authentication to get started. Ensure the safety and security of Mundo.".localized
         view.addSubview(goAuthButton)
         goAuthButton.setTitle("Google Authentication".localized, for: .normal)
-        goAuthButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        goAuthButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         goAuthButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         goAuthButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         goAuthButton.snp.makeConstraints { (make) in

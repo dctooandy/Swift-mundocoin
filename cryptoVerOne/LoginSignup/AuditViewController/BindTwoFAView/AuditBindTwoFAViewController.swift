@@ -31,7 +31,7 @@ class AuditBindTwoFAViewController: BaseViewController {
         let tfLabel = UnderlinedLabel()
         tfLabel.contentMode = .center
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.sfProLight(14)
+        tfLabel.font = Fonts.PlusJakartaSansExtraLight(14)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
@@ -106,7 +106,7 @@ class AuditBindTwoFAViewController: BaseViewController {
         twoFAInputView.setMode(mode: .twoFAVerify)
 
         bindButton.setTitle("Bind".localized, for: .normal)
-        bindButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        bindButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         bindButton.snp.makeConstraints { (make) in

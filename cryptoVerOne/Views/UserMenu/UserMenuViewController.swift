@@ -281,7 +281,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         let header = UIView()
         let titleLable = UILabel(frame: CGRect(x: 32, y: 20, width: 300, height: 24))
         titleLable.text = section == 0 ?  "Account" : "App Settings"
-        titleLable.font = Fonts.pingFangTCRegular(18)
+        titleLable.font = Fonts.PlusJakartaSansRegular(18)
         header.addSubview(titleLable)
         header.backgroundColor = .clear
         return header

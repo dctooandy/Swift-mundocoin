@@ -81,7 +81,7 @@ class TwoFactorAuthViewController: BaseViewController {
         }
 
         bindButton.setTitle("Bind".localized, for: .normal)
-        bindButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        bindButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         bindButton.snp.makeConstraints { (make) in
@@ -92,7 +92,7 @@ class TwoFactorAuthViewController: BaseViewController {
         }
         downloadButton.setTitle("Download APP".localized, for: .normal)
         downloadButton.setTitleColor(UIColor(rgb: 0x656565), for: .normal)
-        downloadButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        downloadButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         downloadButton.setBackgroundImage(UIImage(color: .white) , for: .disabled)
         downloadButton.setBackgroundImage(UIImage(color: #colorLiteral(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)) , for: .normal)
         downloadButton.layer.borderColor = UIColor(rgb: 0x656565).cgColor

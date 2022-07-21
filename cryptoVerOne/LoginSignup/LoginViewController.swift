@@ -12,27 +12,45 @@ import RxSwift
 import Toaster
 
 class LoginViewController: BaseViewController {
-
-    @IBOutlet weak private var forgetPasswordButton: UIButton!
-    @IBOutlet weak var loginButton: CornerradiusButton!
-    var accountInputView: AccountInputView?
-    
+    // MARK:業務設定
     private var timer: Timer?
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
+    private var onClickForgot = PublishSubject<Void>()
     private var loginMode : LoginMode = .emailPage {
         didSet {
 //            self.loginModeDidChange()
         }
     }
-    // MARK: instance
+    // MARK: -
+    // MARK:UI 設定
+    let forgetPasswordLabel: UnderlinedLabel = {
+        let tfLabel = UnderlinedLabel()
+        tfLabel.contentMode = .center
+        tfLabel.backgroundColor = .clear
+        tfLabel.font = Fonts.PlusJakartaSansBold(14)
+        tfLabel.textColor = Themes.gray707EAE
+        tfLabel.numberOfLines = 0
+        tfLabel.adjustsFontSizeToFitWidth = true
+        tfLabel.minimumScaleFactor = 0.8
+        tfLabel.isUserInteractionEnabled = true
+        tfLabel.isGrayColor = true
+        tfLabel.text = "Forgot Password?".localized
+        return tfLabel
+    }()
+    @IBOutlet weak private var forgetPasswordButton: UIButton!
+    @IBOutlet weak var loginButton: CornerradiusButton!
+    var accountInputView: AccountInputView?
+    
+
+    // MARK: -
+    // MARK:Life cycle
     static func instance(mode: LoginMode) -> LoginViewController {
         let vc = LoginViewController.loadNib()
         vc.loginMode = mode
         return vc
     }
     
-    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -90,28 +108,29 @@ class LoginViewController: BaseViewController {
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight)
         }
-        view.addSubview(forgetPasswordButton)
+        view.addSubview(forgetPasswordLabel)
         view.addSubview(loginButton)
-        forgetPasswordButton.titleLabel?.font = Fonts.pingFangTCRegular(14)
-        forgetPasswordButton.snp.makeConstraints { (make) in
+        
+        forgetPasswordLabel.snp.makeConstraints { (make) in
             make.left.equalTo(accountInputView!).offset(32)
             make.top.equalTo(accountInputView!.passwordInputView.snp.bottom)
             make.height.equalTo(18)
         }
 
         loginButton.snp.makeConstraints { (make) in
-            make.top.equalTo(self.forgetPasswordButton.snp.bottom).offset(40)
+            make.top.equalTo(self.forgetPasswordLabel.snp.bottom).offset(40)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
         }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        forgetPasswordButton.isHidden = true
+        forgetPasswordLabel.isHidden = true
 #else
-        forgetPasswordButton.isHidden = loginMode == .phonePage
-        forgetPasswordButton.setTitle("Forgot Password?".localized, for: .normal)
-        forgetPasswordButton.setTitleColor(Themes.gray707EAE, for: .normal)
+        forgetPasswordLabel.isHidden = loginMode == .phonePage
 #endif
+        forgetPasswordLabel.rx.click.subscribeSuccess { [self] _ in
+            onClickForgot.onNext(())
+        }.disposed(by: disposeBag)
         loginButton.setTitle("Log In".localized, for: .normal)
     }
     
@@ -210,10 +229,9 @@ class LoginViewController: BaseViewController {
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: true)
     }
     
-    func rxForgetPassword() -> ControlEvent<Void> {
-        return forgetPasswordButton.rx.tap
+    func rxForgetPassword() -> Observable<Void> {
+        return onClickForgot.asObserver()
     }
-    
     func rxLoginButtonPressed() -> Observable<LoginPostDto> {
         return onClickLogin.asObserver()
     }

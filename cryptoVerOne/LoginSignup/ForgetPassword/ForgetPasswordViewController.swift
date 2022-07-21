@@ -277,7 +277,7 @@ class ForgetPasswordViewController: BaseViewController {
             make.size.equalTo(sizeFrom(scale: 96/375))
         }
         
-        let bottomLabel = UILabel(title: "请重新使用新的密码登录", textColor: Themes.grayBase, font: Fonts.pingFangSCRegular(16))
+        let bottomLabel = UILabel(title: "请重新使用新的密码登录", textColor: Themes.grayBase, font: Fonts.PlusJakartaSansMedium(16))
         bottomLabel.textAlignment = .center
         successContentView.addSubview(bottomLabel)
         bottomLabel.snp.makeConstraints { (make) in

@@ -122,7 +122,7 @@ class WithdrawViewController: BaseViewController {
         methodView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        continueButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        continueButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         continueButton.setTitle("Continue".localized, for: .normal)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)

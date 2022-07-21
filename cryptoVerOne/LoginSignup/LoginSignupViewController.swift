@@ -114,7 +114,7 @@ class LoginSignupViewController: BaseViewController {
         addChild(loginPageVC)
         view.insertSubview(loginPageVC.view, aboveSubview: backgroundImageView)
         loginPageVC.view.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.topLabel.snp.bottom).offset(30)
+            make.top.equalTo(self.topLabel.snp.bottom).offset(35)
             make.left.bottom.right.equalToSuperview()
         })
     }
@@ -174,7 +174,7 @@ class LoginSignupViewController: BaseViewController {
         }
         #if Approval_PRO || Approval_DEV || Approval_STAGE
         let label = UILabel(title: "Approval", textColor: .black)
-        label.font = Fonts.pingFangSCRegular(24)
+        label.font = Fonts.PlusJakartaSansMedium(24)
         logoView.addSubview(label)
         label.snp.makeConstraints { (make) in
             make.centerY.equalToSuperview()

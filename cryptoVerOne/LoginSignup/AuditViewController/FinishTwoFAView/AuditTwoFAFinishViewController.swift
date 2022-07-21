@@ -25,7 +25,7 @@ class AuditTwoFAFinishViewController: BaseViewController {
     let actionButton = CornerradiusButton()
     var bottomLabel : UILabel = {
        let label = UILabel()
-        label.font = Fonts.pingFangTCRegular(14)
+        label.font = Fonts.PlusJakartaSansRegular(14)
         label.textColor = UIColor(rgb: 0x757575)
         label.text = "To reset 2FA will take at lease 7 Days.".localized
         return label
@@ -68,7 +68,7 @@ class AuditTwoFAFinishViewController: BaseViewController {
         titleLabel.text = "The App will generate verification codes for more protection when you logging in.".localized
         backView.addSubview(actionButton)
         actionButton.setTitle("Got it".localized, for: .normal)
-        actionButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        actionButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         actionButton.snp.makeConstraints { (make) in

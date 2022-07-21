@@ -198,7 +198,7 @@ extension String {
         return formatter.date(from: self)
     }
     func customWidth(textSize:CGFloat = 14 , spaceWidth:CGFloat = 40) -> CGFloat {
-        return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.pingFangSCRegular(textSize)]).width + spaceWidth
+        return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.PlusJakartaSansMedium(textSize)]).width + spaceWidth
     }
     func capitalizingFirstLetter() -> String {
         return prefix(1).uppercased() + self.lowercased().dropFirst()

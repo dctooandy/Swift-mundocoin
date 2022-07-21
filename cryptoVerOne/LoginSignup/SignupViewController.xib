@@ -30,8 +30,8 @@
                             <fragment content="I have read and agree to the ">
                                 <attributes>
                                     <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                    <color key="NSColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                         <tabStops>
                                             <textTab alignment="left" location="39.549999237060547">
@@ -44,8 +44,8 @@
                             <fragment content="Terms of Service">
                                 <attributes>
                                     <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="NSColor" red="0.64707875250000002" green="0.64308953290000004" blue="0.64709442849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                    <color key="NSColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                         <tabStops>
                                             <textTab alignment="left" location="39.549999237060547">
@@ -56,11 +56,25 @@
                                     <integer key="NSUnderline" value="1"/>
                                 </attributes>
                             </fragment>
-                            <fragment content=" and ">
+                            <fragment content=" ">
                                 <attributes>
                                     <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                    <color key="NSColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
+                                        <tabStops>
+                                            <textTab alignment="left" location="39.549999237060547">
+                                                <options/>
+                                            </textTab>
+                                        </tabStops>
+                                    </paragraphStyle>
+                                </attributes>
+                            </fragment>
+                            <fragment content="and ">
+                                <attributes>
+                                    <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="NSColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                         <tabStops>
                                             <textTab alignment="left" location="39.549999237060547">
@@ -73,8 +87,8 @@
                             <fragment content="Privacy Policy">
                                 <attributes>
                                     <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="NSColor" red="0.64707875250000002" green="0.64308953290000004" blue="0.64709442849999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                    <color key="NSColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                         <tabStops>
                                             <textTab alignment="left" location="39.549999237060547">
@@ -88,8 +102,8 @@
                             <fragment content=".">
                                 <attributes>
                                     <color key="NSBackgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    <color key="NSColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                                    <font key="NSFont" size="14" name="PingFangTC-Regular"/>
+                                    <color key="NSColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <font key="NSFont" size="14" name="PlusJakartaSans-Regular"/>
                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" defaultTabInterval="39.549999999999997" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO">
                                         <tabStops>
                                             <textTab alignment="left" location="39.549999237060547">

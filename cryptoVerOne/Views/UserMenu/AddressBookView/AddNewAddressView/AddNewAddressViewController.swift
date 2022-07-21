@@ -130,7 +130,7 @@ class AddNewAddressViewController: BaseViewController {
         dropdownView.layer.masksToBounds = true
         dropdownView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         dropdownView?.layer.borderWidth = 1
-        dropdownView.topLabel.font = Fonts.pingFangSCRegular(14)
+        dropdownView.topLabel.font = Fonts.PlusJakartaSansMedium(14)
         addressStyleView.setMode(mode: .address)
         networkView.setData(type: .networkMethod)
         nameStyleView.setMode(mode: .customLabel("Name"))

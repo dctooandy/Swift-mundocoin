@@ -74,7 +74,7 @@ class AuditTwoFACheckViewController: BaseViewController {
         twoFAVerifyInputView.setMode(mode: .twoFAVerify)
         twoFAVerifyInputView.backgroundColor = .clear
         submitButton.setTitle("Submit".localized, for: .normal)
-        submitButton.titleLabel?.font = Fonts.pingFangTCMedium(16)
+        submitButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         submitButton.snp.makeConstraints { (make) in

@@ -868,6 +868,42 @@
 		09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
 		09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09947BB3284DB751004F7FD7 /* FilterCell.xib */; };
+		09954C0A288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C0B288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C0C288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C0D288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C0E288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C0F288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */; };
+		09954C11288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C12288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C13288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C14288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C15288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C16288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */; };
+		09954C1828893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1928893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1A28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1B28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1C28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1D28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */; };
+		09954C1F28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2028893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2128893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2228893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2328893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2428893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */; };
+		09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */; };
+		09954C2D28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C2E28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C2F28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C3028893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C3128893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
+		09954C3228893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */; };
 		09957456287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
 		09957457287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
 		09957458287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */; };
@@ -1762,6 +1798,12 @@
 		09947BA5284DA0C9004F7FD7 /* TransactionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionTableViewController.swift; sourceTree = "<group>"; };
 		09947BAF284DB433004F7FD7 /* FilterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterCell.swift; sourceTree = "<group>"; };
 		09947BB3284DB751004F7FD7 /* FilterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterCell.xib; sourceTree = "<group>"; };
+		09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Bold.ttf"; sourceTree = "<group>"; };
+		09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.otf"; sourceTree = "<group>"; };
+		09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Regular.ttf"; sourceTree = "<group>"; };
+		09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-Medium.ttf"; sourceTree = "<group>"; };
+		09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlusJakartaSans-ExtraLight.ttf"; sourceTree = "<group>"; };
 		09957455287679A7005D44E2 /* AuditBindTwoFAViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditBindTwoFAViewController.swift; sourceTree = "<group>"; };
 		0995746328767E6E005D44E2 /* AuditBindTwoFAViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuditBindTwoFAViewController.xib; sourceTree = "<group>"; };
 		0995746D2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditTwoFAFinishViewController.swift; sourceTree = "<group>"; };
@@ -2204,6 +2246,19 @@
 				09056D88284DBF6300038BF8 /* FilterCollectionCell.xib */,
 			);
 			path = Cell;
+			sourceTree = "<group>";
+		};
+		09954C082889329B00E5E2BE /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */,
+				09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */,
+				09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */,
+				09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */,
+				09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */,
+				09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		099574542876797A005D44E2 /* BindTwoFAView */ = {
@@ -2684,6 +2739,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				09954C082889329B00E5E2BE /* Fonts */,
 				0999D109287531B3003C5260 /* CheckTokenExpired */,
 				0999D0FA2872B946003C5260 /* AuthorizwClass */,
 				092E760D2850A9C200221997 /* NoDataView */,
@@ -3189,6 +3245,7 @@
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */,
+				09954C2328893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3205,6 +3262,7 @@
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905B002851A02B00BAEE78 /* BaseTabbar.xib in Resources */,
+				09954C3128893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905B012851A02B00BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F32856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905B022851A02B00BAEE78 /* AddressBookViewCell.xib in Resources */,
@@ -3215,6 +3273,7 @@
 				09905B072851A02B00BAEE78 /* CPasswordViewController.xib in Resources */,
 				09905B082851A02B00BAEE78 /* Main.storyboard in Resources */,
 				09905B092851A02B00BAEE78 /* DropDownStyleView.xib in Resources */,
+				09954C0E288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3332857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1328562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905B0A2851A02B00BAEE78 /* Localizable.strings in Resources */,
@@ -3223,6 +3282,7 @@
 				09905B0D2851A02B00BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905B0E2851A02B00BAEE78 /* VerifyViewController.xib in Resources */,
 				09905B0F2851A02B00BAEE78 /* WalletViewController.xib in Resources */,
+				09954C1C28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905B102851A02B00BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED35D2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3232,12 +3292,14 @@
 				09905B132851A02B00BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905B142851A02B00BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
 				09905B152851A02B00BAEE78 /* mucoin_sucess.json in Resources */,
+				09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09905B192851A02B00BAEE78 /* SignupViewController.xib in Resources */,
 				09905B1A2851A02B00BAEE78 /* mucoin_loading.json in Resources */,
 				09905B1B2851A02B00BAEE78 /* SecurityViewController.xib in Resources */,
+				09954C15288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3270,6 +3332,7 @@
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */,
+				09954C2428893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3286,6 +3349,7 @@
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905BF22851A08500BAEE78 /* BaseTabbar.xib in Resources */,
+				09954C3228893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905BF32851A08500BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F42856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905BF42851A08500BAEE78 /* AddressBookViewCell.xib in Resources */,
@@ -3296,6 +3360,7 @@
 				09905BF92851A08500BAEE78 /* CPasswordViewController.xib in Resources */,
 				09905BFA2851A08500BAEE78 /* Main.storyboard in Resources */,
 				09905BFB2851A08500BAEE78 /* DropDownStyleView.xib in Resources */,
+				09954C0F288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3342857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1428562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905BFC2851A08500BAEE78 /* Localizable.strings in Resources */,
@@ -3304,6 +3369,7 @@
 				09905BFF2851A08500BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905C002851A08500BAEE78 /* VerifyViewController.xib in Resources */,
 				09905C012851A08500BAEE78 /* WalletViewController.xib in Resources */,
+				09954C1D28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905C022851A08500BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED35E2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3313,12 +3379,14 @@
 				09905C052851A08500BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905C062851A08500BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
 				09905C072851A08500BAEE78 /* mucoin_sucess.json in Resources */,
+				09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09905C0B2851A08500BAEE78 /* SignupViewController.xib in Resources */,
 				09905C0C2851A08500BAEE78 /* mucoin_loading.json in Resources */,
 				09905C0D2851A08500BAEE78 /* SecurityViewController.xib in Resources */,
+				09954C16288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3351,6 +3419,7 @@
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
 				0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */,
+				09954C2228893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
@@ -3367,6 +3436,7 @@
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905CE42851A09600BAEE78 /* BaseTabbar.xib in Resources */,
+				09954C3028893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905CE52851A09600BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F22856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905CE62851A09600BAEE78 /* AddressBookViewCell.xib in Resources */,
@@ -3377,6 +3447,7 @@
 				09905CEB2851A09600BAEE78 /* CPasswordViewController.xib in Resources */,
 				09905CEC2851A09600BAEE78 /* Main.storyboard in Resources */,
 				09905CED2851A09600BAEE78 /* DropDownStyleView.xib in Resources */,
+				09954C0D288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3322857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1228562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905CEE2851A09600BAEE78 /* Localizable.strings in Resources */,
@@ -3385,6 +3456,7 @@
 				09905CF12851A09600BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905CF22851A09600BAEE78 /* VerifyViewController.xib in Resources */,
 				09905CF32851A09600BAEE78 /* WalletViewController.xib in Resources */,
+				09954C1B28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905CF42851A09600BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED35C2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3394,12 +3466,14 @@
 				09905CF72851A09600BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905CF82851A09600BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
 				09905CF92851A09600BAEE78 /* mucoin_sucess.json in Resources */,
+				09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */,
 				09905CFE2851A09600BAEE78 /* mucoin_loading.json in Resources */,
 				09905CFF2851A09600BAEE78 /* SecurityViewController.xib in Resources */,
+				09954C14288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3432,6 +3506,7 @@
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747D2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
+				09954C2028893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
@@ -3448,6 +3523,7 @@
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF4DC283C77ED00D7B19B /* BaseTabbar.xib in Resources */,
+				09954C2E28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F02856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09C20FA82845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
@@ -3458,6 +3534,7 @@
 				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */,
 				09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
+				09954C0B288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3302857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1028562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
@@ -3466,6 +3543,7 @@
 				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
+				09954C1928893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8ED28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED35A2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3475,12 +3553,14 @@
 				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
 				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
+				09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
 				09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF4F1283C77ED00D7B19B /* mucoin_loading.json in Resources */,
 				09CAF4F2283C77ED00D7B19B /* SecurityViewController.xib in Resources */,
+				09954C12288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3513,6 +3593,7 @@
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747E2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
+				09954C2128893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
@@ -3529,6 +3610,7 @@
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF59D283C7BBE00D7B19B /* BaseTabbar.xib in Resources */,
+				09954C2F28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F12856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09C20FA92845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
@@ -3539,6 +3621,7 @@
 				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
 				09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */,
 				09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
+				09954C0C288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3312857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1128562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
@@ -3547,6 +3630,7 @@
 				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
+				09954C1A28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8EE28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED35B2859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3556,12 +3640,14 @@
 				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
 				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
+				09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
 				09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF5B2283C7BBE00D7B19B /* mucoin_loading.json in Resources */,
 				09CAF5B3283C7BBE00D7B19B /* SecurityViewController.xib in Resources */,
+				09954C13288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3594,6 +3680,7 @@
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				0995747C2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
+				09954C1F28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
@@ -3610,6 +3697,7 @@
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
 				A19C70CD282246DF000AFC3F /* BaseTabbar.xib in Resources */,
+				09954C2D28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2EF2856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				A19C7142282257AB000AFC3F /* mucoin_question.json in Resources */,
@@ -3620,6 +3708,7 @@
 				09947B99284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
 				09C20F9F2845D87100E70654 /* AddressBookViewController.xib in Resources */,
+				09954C0A288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED32F2857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE0F28562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
@@ -3628,6 +3717,7 @@
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
 				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
+				09954C1828893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
 				0909C8EC28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
 				09EED3592859CD6000CB4A64 /* TransactionTableViewController.xib in Resources */,
@@ -3637,12 +3727,14 @@
 				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
+				09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
 				09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
 				A1DD13B1282C027E00AB2E0A /* SecurityViewController.xib in Resources */,
+				09954C11288934CB00E5E2BE /* Inter-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

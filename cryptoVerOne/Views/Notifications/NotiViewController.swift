@@ -79,7 +79,7 @@ class NotiViewController: BaseViewController {
         tableView.backgroundView?.isHidden = true
         
         deleteButton.setTitle("Delete".localized, for: .normal)
-        deleteButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        deleteButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
     }
     func bindButton()
     {

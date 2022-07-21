@@ -39,7 +39,7 @@ class TwoFAVerifyView: UIView {
     @IBOutlet weak var lostTwoFALabel: UILabel!
     let submitButton : CornerradiusButton = {
        let btn = CornerradiusButton()
-        btn.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        btn.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         btn.setTitle("Submit".localized, for: .normal)
         btn.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         btn.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)

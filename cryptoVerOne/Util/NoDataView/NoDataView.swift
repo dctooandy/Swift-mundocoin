@@ -12,7 +12,7 @@ class NoDataView: UIView {
     
     private let titleLabel: UILabel = {
         let lb = UILabel()
-        lb.font = Fonts.pingFangTCRegular(28)
+        lb.font = Fonts.PlusJakartaSansRegular(28)
         lb.textColor = Themes.blue6149F6
         lb.textAlignment = .center
         lb.numberOfLines = 0
@@ -20,7 +20,7 @@ class NoDataView: UIView {
     }()
     private let subLabel: UILabel = {
         let lb = UILabel()
-        lb.font = Fonts.pingFangTCRegular(16)
+        lb.font = Fonts.PlusJakartaSansRegular(16)
         lb.numberOfLines = 0
         lb.textAlignment = .center
         lb.textColor = .black

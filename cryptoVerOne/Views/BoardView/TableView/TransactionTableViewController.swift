@@ -227,7 +227,7 @@ extension TransactionTableViewController:UITableViewDelegate,UITableViewDataSour
         self.headerView.textAlignment = .center
         self.headerView.backgroundColor = .clear
         self.headerView.textColor = Themes.gray707EAE
-        self.headerView.font = Fonts.pingFangSCRegular(14)
+        self.headerView.font = Fonts.PlusJakartaSansMedium(14)
         return self.headerView
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

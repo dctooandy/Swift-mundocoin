@@ -87,7 +87,7 @@ class ResetPasswordViewController: BaseViewController {
             make.height.equalTo(Themes.inputViewPasswordHeight)
         }
       
-        submitButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        submitButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         submitButton.setTitle("Submit".localized, for: .normal)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)

@@ -31,7 +31,7 @@ class ConfirmPopupView: PopupBottomSheet {
         let lb = UILabel()
         lb.textColor = .black
         lb.textAlignment = .center
-        lb.font = Fonts.pingFangTCRegular(20)
+        lb.font = Fonts.PlusJakartaSansRegular(20)
         return lb
     }()
     
@@ -40,7 +40,7 @@ class ConfirmPopupView: PopupBottomSheet {
         lb.textAlignment = .center
         lb.textColor = .black
         lb.numberOfLines = 0
-        lb.font = Fonts.pingFangTCRegular(14)
+        lb.font = Fonts.PlusJakartaSansRegular(14)
         return lb
     }()
     

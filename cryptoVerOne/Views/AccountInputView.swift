@@ -25,7 +25,7 @@ class AccountInputView: UIView {
     var accountInputView : InputStyleView!
     var passwordInputView : InputStyleView!
     var registrationInputView : InputStyleView!
-   
+    var textFields:[UITextField] = []
     // MARK: -
     // MARK:Life cycle
     override init(frame: CGRect) {
@@ -46,6 +46,7 @@ class AccountInputView: UIView {
         self.bindBorderColor()
 //        self.bindTextfield()
         self.bindCancelButton()
+        self.bindTextfieldReturnKey()
     }
     
     // MARK: -
@@ -190,7 +191,18 @@ class AccountInputView: UIView {
 //            .bind(to: registrationInputView.cancelRightButton.rx.isHidden)
 //            .disposed(by: dpg)
     }
-    
+    func bindTextfieldReturnKey()
+    {
+        accountInputView.textField.returnKeyType = .next
+        if currentShowMode == .loginEmail || currentShowMode == .loginPhone
+        {
+            passwordInputView.textField.returnKeyType = .done
+        }else
+        {
+            passwordInputView.textField.returnKeyType = .next
+            registrationInputView.textField.returnKeyType = .done
+        }
+    }
     func bindBorderColor()
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
@@ -199,12 +211,20 @@ class AccountInputView: UIView {
             resetInputView(view: passwordInputView)
 //            accountInputView.textField.sendActions(for: .valueChanged)
             InputViewStyleThemes.share.acceptInputHeightStyle(.invalidHidden)
+            if isChoose == false
+            {
+                passwordInputView.textField.becomeFirstResponder()
+            }
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText()
             resetTFMaskView(password:isChoose)
             resetInputView(view: accountInputView)
 //            passwordInputView.textField.sendActions(for: .valueChanged)
+            if isChoose == false , currentShowMode == .signupEmail || currentShowMode == .signupPhone
+            {
+                registrationInputView.textField.becomeFirstResponder()
+            }
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText()
@@ -251,6 +271,11 @@ class AccountInputView: UIView {
         self.accountInputView = accountView
         self.passwordInputView = passwordView
         self.registrationInputView = registrationView
+        textFields = [self.accountInputView.textField ,
+                      self.passwordInputView.textField ,
+                      self.registrationInputView.textField]
+        self.accountInputView.textField.addTarget(self.passwordInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
+        self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
         acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewDefaultHeight)
         pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewPasswordHeight)
         addSubview(accountInputView)
@@ -267,7 +292,7 @@ class AccountInputView: UIView {
         case .loginEmail , .loginPhone:
             addSubview(passwordInputView)
             passwordInputView.snp.makeConstraints { (make) in
-                make.top.equalTo(accountInputView.snp.bottom)
+                make.top.equalTo(accountInputView.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(25)
                 make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(pwHeightConstraint.constant)
@@ -278,7 +303,7 @@ class AccountInputView: UIView {
             addSubview(passwordInputView)
             addSubview(registrationInputView)
             passwordInputView.snp.makeConstraints { (make) in
-                make.top.equalTo(accountInputView.snp.bottom)
+                make.top.equalTo(accountInputView.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(25)
                 make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(pwHeightConstraint.constant)
@@ -286,7 +311,7 @@ class AccountInputView: UIView {
             }
             passwordInputView.addConstraint(pwHeightConstraint)
             registrationInputView.snp.makeConstraints { (make) in
-                make.top.equalTo(passwordInputView.snp.bottom)
+                make.top.equalTo(passwordInputView.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(25)
                 make.trailing.equalToSuperview().offset(-25)
                 make.height.equalTo(Themes.inputViewDefaultHeight)

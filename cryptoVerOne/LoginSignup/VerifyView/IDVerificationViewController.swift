@@ -27,13 +27,13 @@ class IDVerificationViewController: BaseViewController {
         lb.textAlignment = .left
         lb.textColor = .black
         lb.text = "Country of Residence".localized
-        lb.font = Fonts.pingFangSCRegular(14)
+        lb.font = Fonts.PlusJakartaSansMedium(14)
         return lb
     }()
     lazy var countryTextField: UITextField = {
         let tf = UITextField()
         tf.borderStyle = .none
-        tf.font = Fonts.pingFangSCRegular(16)
+        tf.font = Fonts.PlusJakartaSansMedium(16)
         tf.keyboardType = .numberPad
         tf.placeholder = "Choose a country".localized
         return tf
@@ -116,7 +116,7 @@ class IDVerificationViewController: BaseViewController {
             make.left.equalTo(countryTextField).offset(-10)
             make.height.equalTo(17)
         }
-        goButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        goButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         goButton.setTitle("Let’s go".localized, for: .normal)
         goButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         goButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)

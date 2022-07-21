@@ -188,9 +188,9 @@ class InputStyleView: UIView {
         lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
         lb.text = "Email".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        lb.font = Fonts.pingFangSCSemibold(14)
+        lb.font = Fonts.PlusJakartaSansBold(14)
 #else
-        lb.font = Fonts.pingFangTCSemibold(14)
+        lb.font = Fonts.PlusJakartaSansBold(14)
 #endif
         return lb
     }()
@@ -198,14 +198,14 @@ class InputStyleView: UIView {
         let tf = UITextField()
         tf.backgroundColor = .clear
         tf.textInputView.backgroundColor = .clear
-        tf.font = Fonts.sfProLight(16)
+        tf.font = Fonts.PlusJakartaSansRegular(16)
         tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
         return tf
     }()
     let textLabel: UnderlinedLabel = {
         let tfLabel = UnderlinedLabel()
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.sfProLight(16)
+        tfLabel.font = Fonts.PlusJakartaSansRegular(16)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
@@ -215,7 +215,7 @@ class InputStyleView: UIView {
     let normalTextLabel: UILabel = {
         let tfLabel = UILabel()
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.pingFangTCLight(16)
+        tfLabel.font = Fonts.PlusJakartaSansRegular(16)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.5
@@ -225,7 +225,7 @@ class InputStyleView: UIView {
     let invalidLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
-        lb.font = Fonts.pingFangSCRegular(14)
+        lb.font = Fonts.PlusJakartaSansMedium(14)
         lb.textColor = Themes.grayA3AED0
         lb.isHidden = true
         lb.numberOfLines = 0
@@ -237,7 +237,7 @@ class InputStyleView: UIView {
         lb.textAlignment = .center
         lb.textColor = .black
         lb.text = "Send".localized
-        lb.font = Fonts.pingFangTCSemibold(14)
+        lb.font = Fonts.PlusJakartaSansRegular(14)
         return lb
     }()
     let addressBookImageView : UIImageView = {

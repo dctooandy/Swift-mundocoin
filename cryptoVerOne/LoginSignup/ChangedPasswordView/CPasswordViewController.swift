@@ -58,7 +58,7 @@ class CPasswordViewController: BaseViewController {
         view.backgroundColor = Themes.grayF4F7FE
         topLabel.text = "You’ve already change password".localized
         view.addSubview(returnButton)
-        returnButton.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        returnButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         returnButton.setTitle("Return to log in".localized, for: .normal)
         returnButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         returnButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)

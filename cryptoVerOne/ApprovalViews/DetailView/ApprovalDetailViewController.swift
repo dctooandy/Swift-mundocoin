@@ -52,7 +52,7 @@ class ApprovalDetailViewController: BaseViewController {
         textView.isSelectable = false
         view.backgroundColor = Themes.grayE0E5F2
         okBtn.setTitle("Approve".localized, for: .normal)
-        okBtn.titleLabel?.font = Fonts.pingFangTCRegular(16)
+        okBtn.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         okBtn.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         okBtn.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         self.okView.addSubview(okBtn)
