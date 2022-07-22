@@ -194,8 +194,8 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
-        withdrawToView.rxCancelClick().subscribeSuccess { [self] _ in
-            changeWithdrawInputViewHeight(constant: 46.0)
+        withdrawToView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
+            changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
     }
     func changeWithdrawInputViewHeight(constant:CGFloat)
@@ -203,10 +203,9 @@ class WithdrawViewController: BaseViewController {
         DispatchQueue.main.async(execute: { [self] in
             withdrawToView.tvHeightConstraint.constant = constant
             middleHeight.constant = 80.0 + (constant - 46.0)
-//            withdrawToView.textView.layoutSubviews()
-//            withdrawToView.textView.snp.updateConstraints { make in
-//                make.height.equalTo(72.0)
-//            }
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
         })
     }
     func bindTextField()

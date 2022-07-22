@@ -153,7 +153,7 @@ class InputStyleView: UIView {
     private let displayPwdImg = UIImage(named: "icon-view")
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")
     private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
-    private let onCancelClick = PublishSubject<Void>()
+    private let onChangeHeightAction = PublishSubject<CGFloat>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
     private let onAddressBookClick = PublishSubject<Any>()
@@ -167,6 +167,7 @@ class InputStyleView: UIView {
     var displayOffetWidth : CGFloat = 0.0
     var cancelOffetWidth : CGFloat = 0.0
     var tvHeightConstraint : NSLayoutConstraint!
+    var withdrawInputViewFullHeight = false
     // MARK: -
     // MARK:UI 設定
     let tfMaskView: UIView = {
@@ -730,6 +731,7 @@ class InputStyleView: UIView {
     }
     private func cancelButtonPressed() {
         tvHeightConstraint.constant = 46.0
+        withdrawInputViewFullHeight = false
         textView.text = ""
         textView.resignFirstResponder()
         textField.text = ""
@@ -737,7 +739,7 @@ class InputStyleView: UIView {
         textField.setPlaceholder(inputViewMode.textPlacehloder(), with: Themes.grayA3AED0)
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
-        onCancelClick.onNext(())
+        onChangeHeightAction.onNext(46.0)
     }
  
     private func verifyResentPressed() {
@@ -896,9 +898,9 @@ class InputStyleView: UIView {
     {
         return onChooseClick.asObserver()
     }
-    func rxCancelClick() -> Observable<Void>
+    func rxChangeHeightAction() -> Observable<CGFloat>
     {
-        return onCancelClick.asObserver()
+        return onChangeHeightAction.asObserver()
     }
 }
 // MARK: -
@@ -934,7 +936,21 @@ extension InputStyleView : UITextViewDelegate
         cancelRightButton.isHidden = false
         return true
     }
-    
+    func textViewDidChange(_ textView: UITextView) {
+        let endDocument = textView.endOfDocument
+        let currentRect = textView.caretRect(for: endDocument)
+        if currentRect.origin.y > 7 ,withdrawInputViewFullHeight == false
+        {
+            Log.v("下一行")
+            withdrawInputViewFullHeight = true
+            onChangeHeightAction.onNext(72.0)
+        }else if currentRect.origin.y == 7 ,withdrawInputViewFullHeight == true
+        {
+            withdrawInputViewFullHeight = false
+            onChangeHeightAction.onNext(46.0)
+        }
+        
+    }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         textField.placeholder = ""
         onChooseClick.onNext(true)
