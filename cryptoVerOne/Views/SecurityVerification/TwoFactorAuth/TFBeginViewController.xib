@@ -7,16 +7,24 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PlusJakartaSans-ExtraLight.ttf">
+            <string>PlusJakartaSans-ExtraLight</string>
+        </array>
+        <array key="PlusJakartaSans-Medium.ttf">
+            <string>PlusJakartaSans-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="Znb-Sh-1wG" customClass="TFBeginViewController" customModule="cryptoVerOne" customModuleProvider="target">
+        <viewController id="Znb-Sh-1wG" customClass="TFBeginViewController" customModule="Approval" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="5Tf-gN-2Di">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info-2fa-default" translatesAutoresizingMaskIntoConstraints="NO" id="fzC-yI-TbO">
-                        <rect key="frame" x="129" y="94" width="156" height="132"/>
+                        <rect key="frame" x="129" y="117" width="156" height="132"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="132" id="Oca-0Q-KoX"/>
                             <constraint firstAttribute="width" constant="156" id="adU-SB-L33"/>
@@ -24,17 +32,17 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Google Authentication" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwY-90-kV4">
-                        <rect key="frame" x="80" y="246" width="254" height="33.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
+                        <rect key="frame" x="56" y="269" width="302" height="35.5"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-ExtraLight" family="Plus Jakarta Sans" pointSize="28"/>
                         <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eb6-cH-ipt">
-                        <rect key="frame" x="48" y="295.5" width="318" height="64.5"/>
+                        <rect key="frame" x="48" y="320.5" width="318" height="60.5"/>
                         <string key="text">Complete your Google Authentication
 to get started. Ensure the safety 
 and security of Mundo.</string>
-                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="16"/>
                         <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -47,7 +55,7 @@ and security of Mundo.</string>
                     <constraint firstItem="lwY-90-kV4" firstAttribute="centerX" secondItem="5Tf-gN-2Di" secondAttribute="centerX" id="BLS-Te-6IF"/>
                     <constraint firstItem="fzC-yI-TbO" firstAttribute="centerX" secondItem="5Tf-gN-2Di" secondAttribute="centerX" id="Hnv-UB-jyB"/>
                     <constraint firstItem="lwY-90-kV4" firstAttribute="top" secondItem="fzC-yI-TbO" secondAttribute="bottom" constant="20" id="ISy-bC-CdD"/>
-                    <constraint firstItem="fzC-yI-TbO" firstAttribute="top" secondItem="hSD-3k-xFJ" secondAttribute="top" constant="50" id="VVL-Y5-bYy"/>
+                    <constraint firstItem="fzC-yI-TbO" firstAttribute="top" secondItem="hSD-3k-xFJ" secondAttribute="top" constant="73" id="VVL-Y5-bYy"/>
                     <constraint firstItem="Eb6-cH-ipt" firstAttribute="leading" secondItem="hSD-3k-xFJ" secondAttribute="leading" constant="48" id="cbs-Vk-jKD"/>
                     <constraint firstItem="Eb6-cH-ipt" firstAttribute="centerX" secondItem="5Tf-gN-2Di" secondAttribute="centerX" id="jt0-XV-Ang"/>
                 </constraints>

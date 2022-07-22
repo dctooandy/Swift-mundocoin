@@ -153,7 +153,7 @@ class InputStyleView: UIView {
     private let displayPwdImg = UIImage(named: "icon-view")
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")
     private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
-    private let onClick = PublishSubject<String>()
+    private let onCancelClick = PublishSubject<Void>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
     private let onAddressBookClick = PublishSubject<Any>()
@@ -166,6 +166,7 @@ class InputStyleView: UIView {
     private var countTime = 60
     var displayOffetWidth : CGFloat = 0.0
     var cancelOffetWidth : CGFloat = 0.0
+    var tvHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     let tfMaskView: UIView = {
@@ -201,6 +202,15 @@ class InputStyleView: UIView {
         tf.font = Fonts.PlusJakartaSansRegular(16)
         tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
         return tf
+    }()
+    let textView: UITextView = {
+        let tv = UITextView()
+        tv.backgroundColor = .clear
+        tv.textInputView.backgroundColor = .clear
+        tv.font = Fonts.PlusJakartaSansRegular(16)
+        tv.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
+        tv.returnKeyType = .done
+        return tv
     }()
     let textLabel: UnderlinedLabel = {
         let tfLabel = UnderlinedLabel()
@@ -328,16 +338,25 @@ class InputStyleView: UIView {
                               inputViewMode == .oldPassword ||
                               inputViewMode == .auditPassword)
         var isCustomLabel = false
+        var tfHeight = 46.0
+        var showTextView = false
         switch inputViewMode {
         case .customLabel(_) ,.auditAccount,.auditPassword:
             isCustomLabel = true
+        case .withdrawToAddress:
+            showTextView = true
         default:
             break
         }
         addSubview(topLabel)
         addSubview(textField)
+        tvHeightConstraint = NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: tfHeight)
+        if showTextView == true
+        {
+            addSubview(textView)
+            textView.delegate = self
+        }
         addSubview(invalidLabel)
-        
         textField.delegate = self
         displayRightButton.tintColor = Themes.grayA3AED0
         let topLabelH = 17
@@ -351,7 +370,20 @@ class InputStyleView: UIView {
             make.top.equalTo(topLabel.snp.bottom).offset(9)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(46)
+//            make.height.equalTo(46)
+        }
+        textField.addConstraint(tvHeightConstraint)
+        if showTextView == true
+        {
+//            textField.isHidden = true
+            textField.isUserInteractionEnabled = false
+            textView.snp.makeConstraints { make in
+                make.top.equalTo(textField).offset(5)
+                make.leading.equalToSuperview().offset(20)
+                make.trailing.equalToSuperview().offset(-20-(24 + 24 + 20 + 18 + 10))
+                make.bottom.equalTo(textField).offset(-5)
+            }
+            invalidLabel.isHidden = true
         }
         invalidLabel.snp.makeConstraints { (make) in
             make.top.equalTo(textField.snp.bottom).offset(2)
@@ -359,16 +391,27 @@ class InputStyleView: UIView {
             make.trailing.equalTo(textField)
             make.height.equalTo(invalidH)
         }
-        setMaskView()
+        setMaskView(showTV: showTextView)
         resetUI()
     }
-    func setMaskView() {
+    func setMaskView(showTV:Bool = false) {
         textField.addSubview(tfMaskView)
         tfMaskView.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(1.10)
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
+//        if showTV == false
+//        {
+//        }else
+//        {
+//            textView.addSubview(tfMaskView)
+//            tfMaskView.snp.makeConstraints { (make) in
+//                make.center.equalToSuperview()
+//                make.width.equalToSuperview().multipliedBy(1.10)
+//                make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+//            }
+//        }
     }
     func resetTopLabelAndMask() {
         topLabel.snp.updateConstraints { (make) in
@@ -686,9 +729,15 @@ class InputStyleView: UIView {
         displayRightButton.setImage(textField.isSecureTextEntry ? displayPwdImg : undisplayPwdImg , for: .normal)
     }
     private func cancelButtonPressed() {
+        tvHeightConstraint.constant = 46.0
+        textView.text = ""
+        textView.resignFirstResponder()
         textField.text = ""
+        textField.resignFirstResponder()
+        textField.setPlaceholder(inputViewMode.textPlacehloder(), with: Themes.grayA3AED0)
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
+        onCancelClick.onNext(())
     }
  
     private func verifyResentPressed() {
@@ -847,6 +896,10 @@ class InputStyleView: UIView {
     {
         return onChooseClick.asObserver()
     }
+    func rxCancelClick() -> Observable<Void>
+    {
+        return onCancelClick.asObserver()
+    }
 }
 // MARK: -
 // MARK: 延伸
@@ -868,4 +921,29 @@ extension InputStyleView: UITextFieldDelegate {
     func textFieldDidEndEditing(_ textField: UITextField) {
         cancelRightButton.isHidden = true
     }
+}
+extension InputStyleView : UITextViewDelegate
+{
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if(text == "\n") {
+            textView.resignFirstResponder()
+            onChooseClick.onNext(false)
+            return false
+        }
+        
+        cancelRightButton.isHidden = false
+        return true
+    }
+    
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        textField.placeholder = ""
+        onChooseClick.onNext(true)
+        cancelRightButton.isHidden = false
+        return true
+    }
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        cancelRightButton.isHidden = true
+        return true
+    }
+    
 }

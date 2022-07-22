@@ -19,6 +19,8 @@ class WithdrawViewController: BaseViewController {
     var dropDataSource = ["TRC20"]
     var isScanPopAction = false
     var isScanVCByAVCapture = false
+    
+    @IBOutlet weak var middleHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var availableBalanceAmountLabel: UILabel!
@@ -123,6 +125,11 @@ class WithdrawViewController: BaseViewController {
         methodView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+//        methodInputView.snp.makeConstraints { make in
+//            make.height.equalTo(100)
+//            make.leading.trailing.equalTo(withdrawToInputView)
+//            make.top.equalTo(withdrawToView.textView.snp.bottom)
+//        }
         continueButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         continueButton.setTitle("Continue".localized, for: .normal)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
@@ -157,8 +164,11 @@ class WithdrawViewController: BaseViewController {
                 let scanVC = ScannerViewController()
                 scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
                     isScanPopAction = false
-                    withdrawToView.textField.text = stringCode
-                    withdrawToView.textField.sendActions(for: .valueChanged)
+//                    withdrawToView.textField.text = stringCode
+//                    withdrawToView.textField.sendActions(for: .valueChanged)
+                    withdrawToView.textField.placeholder = ""
+                    withdrawToView.textView.text = stringCode
+                    changeWithdrawInputViewHeight(constant: 72.0)
                 }.disposed(by: dpg)
                 isScanPopAction = true
                 self.navigationController?.pushViewController(scanVC, animated: true)
@@ -168,8 +178,10 @@ class WithdrawViewController: BaseViewController {
             Log.i("開地址簿")
             let addressBottomSheet = AddressBottomSheet()
             addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
-                withdrawToView.textField.text = dataDto.address
-                withdrawToView.textField.sendActions(for: .valueChanged)
+//                withdrawToView.textView.text = dataDto.address
+                withdrawToView.textField.placeholder = ""
+                withdrawToView.textView.text = dataDto.address
+                changeWithdrawInputViewHeight(constant: 72.0)
             }.disposed(by: dpg)
             DispatchQueue.main.async {
                 addressBottomSheet.start(viewController: self)
@@ -182,6 +194,20 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
+        withdrawToView.rxCancelClick().subscribeSuccess { [self] _ in
+            changeWithdrawInputViewHeight(constant: 46.0)
+        }.disposed(by: dpg)
+    }
+    func changeWithdrawInputViewHeight(constant:CGFloat)
+    {
+        DispatchQueue.main.async(execute: { [self] in
+            withdrawToView.tvHeightConstraint.constant = constant
+            middleHeight.constant = 80.0 + (constant - 46.0)
+//            withdrawToView.textView.layoutSubviews()
+//            withdrawToView.textView.snp.updateConstraints { make in
+//                make.height.equalTo(72.0)
+//            }
+        })
     }
     func bindTextField()
     {
@@ -191,13 +217,13 @@ class WithdrawViewController: BaseViewController {
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
                     && acc.toDouble() >= 10.0
             }
-        
-        let isAddressValid = withdrawToView.textField.rx.text
+        let isAddressValid = withdrawToView.textView.rx.text
+//        let isAddressValid = withdrawToView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .coinAddress, input: acc)
         }
-        isAddressValid.skip(1).bind(to: withdrawToView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isAddressValid.skip(1).bind(to: withdrawToView.invalidLabel.rx.isHidden).disposed(by: dpg)
         let isProtocolValid = methodView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
@@ -225,13 +251,14 @@ class WithdrawViewController: BaseViewController {
     }
     func continueAction()
     {
-        if let _ = withdrawToView.textField.text
+//        if let _ = withdrawToView.textField.text
+        if let _ = withdrawToView.textView.text
         {
             let totleAmountText = amountInputView.amountTextView.text ?? ""
             let tetherText = currencyLabel.text  ?? ""
             let networkText = methodView.textField.text ?? ""
             let feeText = feeAmountLabel.text ?? ""
-            let addressText = withdrawToView.textField.text ?? ""
+            let addressText = withdrawToView.textView.text ?? ""
             let confirmData = ConfirmWithdrawDto(totalAmount: totleAmountText,
                                                  tether: tetherText,
                                                  network: networkText,
@@ -266,7 +293,8 @@ class WithdrawViewController: BaseViewController {
     func toCreateWithdrawal(emailVerifyValue : String , twoFAValue:String = "")
     {
         // 目前API並沒有驗證 驗證碼,等API更新
-        if let textString = withdrawToView.textField.text,
+//        if let textString = withdrawToView.textField.text,
+        if let textString = withdrawToView.textView.text,
             let amountText = amountInputView.amountTextView.text,
            let fee = feeAmountLabel.text
         {
@@ -366,8 +394,9 @@ class WithdrawViewController: BaseViewController {
         if isScanPopAction == false
         {
             amountInputView.amountTextView.text = "0"
-            withdrawToView.textField.text = ""
-            withdrawToView.textField.sendActions(for: .valueChanged)
+//            withdrawToView.textField.text = ""
+//            withdrawToView.textField.sendActions(for: .valueChanged)
+            withdrawToView.textView.text = ""
         }
     }
 }
