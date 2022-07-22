@@ -128,7 +128,8 @@ class AddressBookViewController: BaseViewController {
     }
     func showAlert(indexpath:IndexPath)
     {
-        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
+        let popVC =  ConfirmPopupView(viewHeight: 176,
+                                      iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
                                       title: "",
                                       message: "Are you sure you want to delete this address?") { [self] isOK in
 

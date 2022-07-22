@@ -1,30 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.otf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="PlusJakartaSans-Bold.ttf">
+            <string>PlusJakartaSans-Bold</string>
+        </array>
+        <array key="PlusJakartaSans-Medium.ttf">
+            <string>PlusJakartaSans-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="Kej-UN-D1S" customClass="WhiteListBottomView" customModule="cryptoVerOne" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="Kej-UN-D1S" customClass="WhiteListBottomView" customModule="Approval" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whitelist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ia-o1-WlF">
-                    <rect key="frame" x="172" y="74" width="70" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="168" y="74" width="78" height="23"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="18"/>
+                    <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-5y-7Nj">
-                    <rect key="frame" x="30" y="100" width="354" height="101.5"/>
+                    <rect key="frame" x="32" y="127" width="350" height="88.5"/>
                     <string key="text">When this function is turned on, your account will only be able to withdraw to whitelisted withdrawal addresses. When this function is turned off, your account is able to withdraw to any withdrawal addresses.</string>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -32,8 +43,8 @@
                     <rect key="frame" x="50" y="752" width="314" height="50"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pvE-hP-SeS">
-                            <rect key="frame" x="128" y="15" width="58" height="20"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <rect key="frame" x="126.5" y="15.5" width="61.5" height="19.5"/>
+                            <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                             <color key="textColor" red="0.3803921569" green="0.28627450980000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -114,11 +125,11 @@
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="4Hy-GR-oPc" secondAttribute="trailing" constant="50" id="UFQ-7K-TVM"/>
                 <constraint firstItem="5Ia-o1-WlF" firstAttribute="top" secondItem="s7S-X3-G3G" secondAttribute="top" constant="30" id="ewJ-zs-mqA"/>
                 <constraint firstItem="CBK-Hb-ynT" firstAttribute="centerY" secondItem="4Hy-GR-oPc" secondAttribute="centerY" id="m05-WO-eXs"/>
-                <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="F1X-5y-7Nj" secondAttribute="trailing" constant="30" id="qkB-ZD-dts"/>
+                <constraint firstItem="s7S-X3-G3G" firstAttribute="trailing" secondItem="F1X-5y-7Nj" secondAttribute="trailing" constant="32" id="qkB-ZD-dts"/>
                 <constraint firstItem="CBK-Hb-ynT" firstAttribute="centerX" secondItem="Kej-UN-D1S" secondAttribute="centerX" id="ttz-H8-3wt"/>
                 <constraint firstItem="s7S-X3-G3G" firstAttribute="bottom" secondItem="4Hy-GR-oPc" secondAttribute="bottom" constant="60" id="uWB-3v-s7I"/>
-                <constraint firstItem="F1X-5y-7Nj" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="30" id="uam-SV-NQz"/>
-                <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="5" id="xiR-fu-UqW"/>
+                <constraint firstItem="F1X-5y-7Nj" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="32" id="uam-SV-NQz"/>
+                <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="30" id="xiR-fu-UqW"/>
             </constraints>
             <connections>
                 <outlet property="backProgressView" destination="mjz-li-FWV" id="G27-9n-bUX"/>

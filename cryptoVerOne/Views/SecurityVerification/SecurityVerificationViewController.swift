@@ -207,10 +207,11 @@ class SecurityVerificationViewController: BaseViewController {
         pageViewcontroller?.backgroundColor = .white
         pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
         // menu text
-        pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 15)
-        pageViewcontroller?.font = UIFont.systemFont(ofSize: 15)
+        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.textColor = Themes.grayA3AED0
         pageViewcontroller?.selectedTextColor = .white
+        
         pageViewcontroller?.menuHorizontalAlignment = .center
         pageViewcontroller?.menuItemSpacing = 0
         let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 38), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)

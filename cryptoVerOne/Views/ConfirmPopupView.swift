@@ -22,6 +22,7 @@ enum ConfirmIconMode {
 }
 class ConfirmPopupView: PopupBottomSheet {
     var iconMode : ConfirmIconMode!
+    var containerHeight: CGFloat = 155.0
     private lazy var titleIcon: UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage()
@@ -38,9 +39,9 @@ class ConfirmPopupView: PopupBottomSheet {
     private lazy var messageLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .center
-        lb.textColor = .black
+        lb.textColor = Themes.gray2B3674
         lb.numberOfLines = 0
-        lb.font = Fonts.PlusJakartaSansRegular(14)
+        lb.font = Fonts.PlusJakartaSansMedium(16)
         return lb
     }()
     
@@ -61,8 +62,9 @@ class ConfirmPopupView: PopupBottomSheet {
     typealias DoneHandler = (Bool) -> ()
     var doneHandler: DoneHandler?
     
-    init(iconMode:ConfirmIconMode = .nonIcon(["Cancel".localized,"Logout".localized]), title: String = "", message: String ,  _ done: DoneHandler?) {
+    init(viewHeight:CGFloat = 155.0 ,iconMode:ConfirmIconMode = .nonIcon(["Cancel".localized,"Logout".localized]), title: String = "", message: String ,  _ done: DoneHandler?) {
         super.init()
+        containerHeight = viewHeight
         self.iconMode = iconMode
         titleLabel.text = title
         messageLabel.text = message
@@ -86,7 +88,7 @@ class ConfirmPopupView: PopupBottomSheet {
     
     
     private func setupUI() {
-        var defaultContainerHeight = 155.0
+        
         var iconHeight = 40.0
         var titleViewHeight = 96.0
         var stackView :UIStackView!
@@ -95,7 +97,6 @@ class ConfirmPopupView: PopupBottomSheet {
         case .nonIcon(let array):
             cancelButton.setTitle(array.first, for: .normal)
             confirmButton.setTitle(array.last, for: .normal)
-            defaultContainerHeight = 155.0
             iconHeight = 0.0
             titleViewHeight = 40.0
             stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
@@ -104,7 +105,7 @@ class ConfirmPopupView: PopupBottomSheet {
             buttonViewMultiplied = 0.8
         case .showIcon(let string):
             confirmButton.setTitle(string, for: .normal)
-            defaultContainerHeight = 222.0
+            containerHeight = 222.0
             iconHeight = 40.0
             titleViewHeight = 96.0
             stackView = UIStackView(arrangedSubviews: [confirmButton])
@@ -115,7 +116,7 @@ class ConfirmPopupView: PopupBottomSheet {
         defaultContainer.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.75)
-            make.height.equalTo(defaultContainerHeight)
+            make.height.equalTo(containerHeight)
         }
        // title 背景漸層
 //        let titleView = GradientView()
@@ -148,7 +149,7 @@ class ConfirmPopupView: PopupBottomSheet {
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom)
+            make.top.equalTo(titleLabel.snp.bottom).offset(20)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
         }
