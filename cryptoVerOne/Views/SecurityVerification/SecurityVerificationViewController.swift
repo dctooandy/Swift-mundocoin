@@ -203,7 +203,7 @@ class SecurityVerificationViewController: BaseViewController {
         // menu item
         pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
 
-        pageViewcontroller?.selectedBackgroundColor = Themes.blue2B3674
+        pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
         pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
         // menu text
@@ -267,7 +267,7 @@ class SecurityPagingTitleCell: PagingTitleCell {
         layer.cornerRadius = layoutAttributes.frame.height / 2
 //        if self.isSelected == true
 //        {
-//            titleLabel.backgroundColor = Themes.blue2B3674
+//            titleLabel.backgroundColor = Themes.gray2B3674
 ////            clipsToBounds = true
 //            if #available(iOS 11.0, *) {
 //                layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]

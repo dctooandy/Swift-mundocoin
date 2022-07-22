@@ -212,7 +212,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7jT-dj-67v">
-                            <rect key="frame" x="181.5" y="22" width="51" height="16.5"/>
+                            <rect key="frame" x="181.5" y="18" width="51" height="16.5"/>
                             <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="13"/>
                             <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -220,7 +220,7 @@
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="7jT-dj-67v" firstAttribute="top" secondItem="DwR-bk-QT0" secondAttribute="top" constant="22" id="2v5-kh-IJu"/>
+                        <constraint firstItem="7jT-dj-67v" firstAttribute="top" secondItem="DwR-bk-QT0" secondAttribute="top" constant="18" id="2v5-kh-IJu"/>
                         <constraint firstAttribute="trailing" secondItem="zRE-kH-s3X" secondAttribute="trailing" id="3mv-sl-2aU"/>
                         <constraint firstItem="mtz-jB-kls" firstAttribute="centerY" secondItem="g9R-CL-WEb" secondAttribute="centerY" id="5yE-U5-46L"/>
                         <constraint firstItem="b1s-HC-iby" firstAttribute="top" secondItem="DwR-bk-QT0" secondAttribute="top" id="Fa3-R3-dR9"/>

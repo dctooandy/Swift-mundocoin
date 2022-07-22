@@ -216,7 +216,7 @@ class InputStyleView: UIView {
     let textLabel: UnderlinedLabel = {
         let tfLabel = UnderlinedLabel()
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.PlusJakartaSansRegular(16)
+        tfLabel.font = Fonts.PlusJakartaSansRegular(14)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
@@ -226,7 +226,8 @@ class InputStyleView: UIView {
     let normalTextLabel: UILabel = {
         let tfLabel = UILabel()
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.PlusJakartaSansRegular(16)
+        tfLabel.font = Fonts.PlusJakartaSansRegular(14)
+        tfLabel.textColor = Themes.gray2B3674
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.5

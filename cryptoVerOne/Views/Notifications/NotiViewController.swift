@@ -42,7 +42,7 @@ class NotiViewController: BaseViewController {
     private lazy var selectBarBtn:UIButton = {
         let btn = UIButton(type: .custom)
         btn.setTitle("Select All".localized, for: .normal)
-        btn.setTitleColor(Themes.blue2B3674, for: .normal)
+        btn.setTitleColor(Themes.gray2B3674, for: .normal)
         btn.addTarget(self, action:#selector(selectAllAction), for:.touchUpInside)
         return btn
     }()

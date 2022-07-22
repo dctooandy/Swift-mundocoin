@@ -45,7 +45,7 @@ class TransStyleThemes {
         return topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
     }
     private static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.blue2B3674 })
+        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.gray2B3674 })
     }
     private static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
         return topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })

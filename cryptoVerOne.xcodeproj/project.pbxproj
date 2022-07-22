@@ -1002,6 +1002,12 @@
 		099B5F09288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
 		099B5F0A288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
 		099B5F0B288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F0D288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1840,6 +1846,7 @@
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
+		099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
@@ -2272,13 +2279,14 @@
 		09954C082889329B00E5E2BE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */,
+				09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */,
 				099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */,
 				099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */,
 				09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */,
 				09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */,
 				09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */,
 				09954C2528893C3400E5E2BE /* PlusJakartaSans-Medium.ttf */,
-				09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */,
 				09954C09288932A900E5E2BE /* PlusJakartaSans-Bold.ttf */,
 				09954C1728893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf */,
 			);
@@ -3273,6 +3281,7 @@
 				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
+				099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905AF82851A02B00BAEE78 /* AddressBookViewController.xib in Resources */,
@@ -3363,6 +3372,7 @@
 				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
+				099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905BEA2851A08500BAEE78 /* AddressBookViewController.xib in Resources */,
@@ -3453,6 +3463,7 @@
 				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
+				099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905CDC2851A09600BAEE78 /* AddressBookViewController.xib in Resources */,
@@ -3543,6 +3554,7 @@
 				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
@@ -3633,6 +3645,7 @@
 				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
@@ -3723,6 +3736,7 @@
 				0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
+				099B5F0D288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
 				09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */,

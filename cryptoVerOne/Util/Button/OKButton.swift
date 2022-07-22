@@ -14,6 +14,7 @@ class OKButton: UIButton {
         super.draw(rect)
         setBackgroundImage(UIImage(color: Themes.blue6149F6), for: .normal)
         setBackgroundImage(UIImage(color: Themes.blue6149F6), for: .normal)
+        titleLabel?.font = Fonts.interSemiBold(16)
         clipsToBounds = true
         layer.cornerRadius = rect.height / 2
         layer.borderColor = Themes.blue6149F6.cgColor

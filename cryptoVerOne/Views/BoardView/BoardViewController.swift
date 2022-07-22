@@ -129,12 +129,12 @@ class BoardViewController: BaseViewController {
         // menu item
         pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
 
-        pageViewcontroller?.selectedBackgroundColor = Themes.blue2B3674
+        pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
         pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
         // menu text
-        pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 15)
-        pageViewcontroller?.font = UIFont.systemFont(ofSize: 15)
+        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.textColor = Themes.grayA3AED0
         pageViewcontroller?.selectedTextColor = .white
         pageViewcontroller?.menuHorizontalAlignment = .center

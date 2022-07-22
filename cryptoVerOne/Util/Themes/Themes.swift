@@ -39,7 +39,6 @@ class Themes {
     static let gray707EAE = UIColor(rgb: 0x707EAE)
     static let gray1CD0C5 = UIColor(rgb: 0x1CD0C5)
     static let grayF4F7FE = UIColor(rgb: 0xF4F7FE)
-    static let blue2B3674 = UIColor(rgb: 0x2B3674)
     static let blue6149F6 = UIColor(rgb: 0x6149F6)
     static let blue0587FF = UIColor(rgb: 0x0587FF)
     static let blue0587FF10 = UIColor(rgb: 0x0587FF , alpha: 0.1)
