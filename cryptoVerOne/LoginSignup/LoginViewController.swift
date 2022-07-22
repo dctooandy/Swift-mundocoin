@@ -41,7 +41,6 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak private var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: CornerradiusButton!
     var accountInputView: AccountInputView?
-    
 
     // MARK: -
     // MARK:Life cycle
@@ -69,7 +68,6 @@ class LoginViewController: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         resetInputView()
-        
     }
     
     // MARK: - UI

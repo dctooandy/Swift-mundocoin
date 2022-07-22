@@ -206,6 +206,7 @@ class AccountInputView: UIView {
     func bindBorderColor()
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            accountInputView.textField.keyboardType = .emailAddress
             resetInvalidText()
             resetTFMaskView(account:isChoose)
             resetInputView(view: passwordInputView)

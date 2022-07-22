@@ -96,6 +96,7 @@ class VerifyViewController: BaseViewController {
         bindPwdButton()
         bindTextfield()
         bindResetPWVC()
+        bindBorderColor()
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -203,6 +204,21 @@ class VerifyViewController: BaseViewController {
             make.height.equalTo(1)
         }
     }
+    func resetInvalidText()
+    {
+        verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+    }
+    func resetTFMaskView()
+    {
+        verifyInputView.tfMaskView.changeBorderWith(isChoose:true)
+    }
+    func bindBorderColor()
+    {
+        verifyInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            resetInvalidText()
+            resetTFMaskView()
+        }.disposed(by: dpg)
+    }
     func bindPwdButton()
     {
         verifyResentLabel.rx.click
@@ -283,7 +299,7 @@ class VerifyViewController: BaseViewController {
         }else
         {
             verifyResentLabel.isUserInteractionEnabled = false
-            verifyResentLabel.textColor = Themes.gray707EAE
+            verifyResentLabel.textColor = Themes.grayE0E5F2
         }
     }
     func verifyResentPressed()
