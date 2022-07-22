@@ -40,7 +40,12 @@ enum InputViewMode :Equatable {
     func topString() -> String {
         switch self {
         case .emailVerify(let emailString): return "Enter the 6-digit code sent to \(emailString)".localized
-        case .twoFAVerify: return "Enter the 6-digit code from google 2FA".localized
+        case .twoFAVerify:
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return "*Enter the 6-digit code from google 2FA".localized
+#else
+            return "Enter the 6-digit code from google 2FA".localized
+#endif
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
         case .address: return "Address".localized
@@ -187,11 +192,13 @@ class InputStyleView: UIView {
     let topLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
-        lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
+        
         lb.text = "Email".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
+        lb.textColor = #colorLiteral(red: 0, green: 0.1254901961, blue: 0.2, alpha: 1)
         lb.font = Fonts.PlusJakartaSansBold(14)
 #else
+        lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
         lb.font = Fonts.PlusJakartaSansBold(14)
 #endif
         return lb
@@ -201,7 +208,11 @@ class InputStyleView: UIView {
         tf.backgroundColor = .clear
         tf.textInputView.backgroundColor = .clear
         tf.font = Fonts.PlusJakartaSansRegular(16)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        tf.textColor = #colorLiteral(red: 0.1921568627, green: 0.2941176471, blue: 0.3568627451, alpha: 1)
+#else
         tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
+#endif
         return tf
     }()
     let textView: UITextView = {
@@ -249,7 +260,11 @@ class InputStyleView: UIView {
         lb.textAlignment = .center
         lb.textColor = .black
         lb.text = "Send".localized
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        lb.font = Fonts.interBold(15)
+#else
         lb.font = Fonts.PlusJakartaSansRegular(14)
+#endif
         return lb
     }()
     let addressBookImageView : UIImageView = {
@@ -461,7 +476,7 @@ class InputStyleView: UIView {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-            verifyResentLabel.textColor = Themes.green13BBB1
+            verifyResentLabel.textColor = Themes.green19BBB1
 #else
             verifyResentLabel.textColor = Themes.purple6149F6
 #endif
@@ -604,7 +619,7 @@ class InputStyleView: UIView {
                 addSubview(verifyResentLabel)
                 verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-                verifyResentLabel.textColor = Themes.green13BBB1
+                verifyResentLabel.textColor = Themes.green19BBB1
 #else
                 verifyResentLabel.textColor = Themes.purple6149F6
 #endif
@@ -795,7 +810,7 @@ class InputStyleView: UIView {
             return
         }
         verifyResentLabel.text = "Resend in ".localized + "\(countTime) s"
-        verifyResentLabel.textColor = UIColor(rgb: 0xB5B5B5)
+        verifyResentLabel.textColor = UIColor(rgb: 0xDEE2E8)
         resetDisplayBtnUI()
     }
     func pasteStringToTF()
@@ -824,7 +839,7 @@ class InputStyleView: UIView {
     {
         verifyResentLabel.text = "Send".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        verifyResentLabel.textColor = Themes.green13BBB1
+        verifyResentLabel.textColor = Themes.green19BBB1
 #else
         verifyResentLabel.textColor = Themes.purple6149F6
 #endif

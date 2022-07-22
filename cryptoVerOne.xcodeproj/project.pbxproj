@@ -1008,6 +1008,12 @@
 		099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
 		099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
 		099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099B5F14288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
+		099B5F15288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
+		099B5F16288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
+		099B5F17288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
+		099B5F18288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
+		099B5F19288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1847,6 +1853,7 @@
 		099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
 		099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "sf-pro-text-semibold.ttf"; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
@@ -2279,6 +2286,7 @@
 		09954C082889329B00E5E2BE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				099B5F13288A94D200148FD9 /* sf-pro-text-semibold.ttf */,
 				099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */,
 				09954C10288934CB00E5E2BE /* Inter-SemiBold.otf */,
 				099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */,
@@ -3295,6 +3303,7 @@
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905B002851A02B00BAEE78 /* BaseTabbar.xib in Resources */,
+				099B5F18288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C3128893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905B012851A02B00BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F32856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
@@ -3386,6 +3395,7 @@
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905BF22851A08500BAEE78 /* BaseTabbar.xib in Resources */,
+				099B5F19288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C3228893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905BF32851A08500BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F42856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
@@ -3477,6 +3487,7 @@
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905CE42851A09600BAEE78 /* BaseTabbar.xib in Resources */,
+				099B5F17288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C3028893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09905CE52851A09600BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F22856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
@@ -3568,6 +3579,7 @@
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF4DC283C77ED00D7B19B /* BaseTabbar.xib in Resources */,
+				099B5F15288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C2E28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F02856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
@@ -3659,6 +3671,7 @@
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF59D283C7BBE00D7B19B /* BaseTabbar.xib in Resources */,
+				099B5F16288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C2F28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F12856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
@@ -3750,6 +3763,7 @@
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
 				A19C70CD282246DF000AFC3F /* BaseTabbar.xib in Resources */,
+				099B5F14288A94D200148FD9 /* sf-pro-text-semibold.ttf in Resources */,
 				09954C2D28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
 				A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2EF2856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,

@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="PlusJakartaSans-Medium.ttf">
+            <string>PlusJakartaSans-Medium</string>
+        </array>
+        <array key="SF-Pro-Display-Bold.ttf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -19,23 +27,23 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QaY-ic-NMe">
                         <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info-2fa-success" translatesAutoresizingMaskIntoConstraints="NO" id="efi-p9-RPo">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="audit-info-2fa-success" translatesAutoresizingMaskIntoConstraints="NO" id="efi-p9-RPo">
                                 <rect key="frame" x="116" y="80" width="182" height="182"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="efi-p9-RPo" secondAttribute="height" multiplier="1:1" id="Suh-XL-AAY"/>
                                     <constraint firstAttribute="width" constant="182" id="oxJ-09-Qbt"/>
+                                    <constraint firstAttribute="height" constant="182" id="tGb-We-JWi"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’ve enabled the Google Authenticator" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GIx-Tx-IBQ">
-                                <rect key="frame" x="53" y="262" width="308" height="48"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="53" y="292" width="308" height="48"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The App will generate verification codes for more protection when you logging in." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iFu-nb-sNR">
-                                <rect key="frame" x="39" y="321" width="336" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="39" y="351" width="336" height="33"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
+                                <color key="textColor" red="0.63137254901960782" green="0.67450980392156867" blue="0.71372549019607845" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -46,10 +54,9 @@
                             <constraint firstItem="GIx-Tx-IBQ" firstAttribute="centerX" secondItem="QaY-ic-NMe" secondAttribute="centerX" id="S3D-zg-eh1"/>
                             <constraint firstItem="iFu-nb-sNR" firstAttribute="leading" secondItem="QaY-ic-NMe" secondAttribute="leading" constant="39" id="Wk1-VZ-tBx"/>
                             <constraint firstAttribute="trailing" secondItem="iFu-nb-sNR" secondAttribute="trailing" constant="39" id="ZrX-CX-3Ze"/>
-                            <constraint firstItem="GIx-Tx-IBQ" firstAttribute="top" secondItem="efi-p9-RPo" secondAttribute="bottom" id="aG6-lA-DXV"/>
+                            <constraint firstItem="GIx-Tx-IBQ" firstAttribute="top" secondItem="efi-p9-RPo" secondAttribute="bottom" constant="30" id="aG6-lA-DXV"/>
                             <constraint firstItem="efi-p9-RPo" firstAttribute="top" secondItem="QaY-ic-NMe" secondAttribute="top" constant="80" id="eFj-p0-KIK"/>
                             <constraint firstItem="iFu-nb-sNR" firstAttribute="top" secondItem="GIx-Tx-IBQ" secondAttribute="bottom" constant="11" id="g9Q-03-pC7"/>
-                            <constraint firstItem="efi-p9-RPo" firstAttribute="height" secondItem="QaY-ic-NMe" secondAttribute="height" multiplier="0.213615" id="hgC-dZ-Sgy"/>
                             <constraint firstItem="efi-p9-RPo" firstAttribute="centerX" secondItem="QaY-ic-NMe" secondAttribute="centerX" id="upy-fL-CZ4"/>
                         </constraints>
                     </view>
@@ -72,7 +79,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="info-2fa-success" width="156" height="140"/>
+        <image name="audit-info-2fa-success" width="182" height="197"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

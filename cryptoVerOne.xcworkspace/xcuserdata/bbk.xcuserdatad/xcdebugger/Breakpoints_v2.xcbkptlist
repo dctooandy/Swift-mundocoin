@@ -14,8 +14,8 @@
             filePath = "cryptoVerOne/Views/InputViews/InputStyleView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "677"
-            endingLineNumber = "677"
+            startingLineNumber = "692"
+            endingLineNumber = "692"
             landmarkName = "bindImageView()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "cryptoVerOne/Views/InputViews/InputStyleView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "812"
-            endingLineNumber = "812"
+            startingLineNumber = "827"
+            endingLineNumber = "827"
             landmarkName = "copyStringToTF()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "cryptoVerOne/Views/InputViews/InputStyleView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "815"
-            endingLineNumber = "815"
+            startingLineNumber = "830"
+            endingLineNumber = "830"
             landmarkName = "copyStringToTF()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "cryptoVerOne/Views/InputViews/InputStyleView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "818"
-            endingLineNumber = "818"
+            startingLineNumber = "833"
+            endingLineNumber = "833"
             landmarkName = "copyStringToTF()"
             landmarkType = "7">
          </BreakpointContent>

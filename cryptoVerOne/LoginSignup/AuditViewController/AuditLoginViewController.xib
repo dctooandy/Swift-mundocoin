@@ -8,6 +8,14 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Display-Bold.ttf">
+            <string>SFProDisplay-Bold</string>
+        </array>
+        <array key="SF-Pro-Display-Medium.ttf">
+            <string>SFProDisplay-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -38,9 +46,9 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MC Audit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbT-iq-m0h">
-                                <rect key="frame" x="140" y="95" width="134" height="54"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
-                                <nil key="textColor"/>
+                                <rect key="frame" x="141.5" y="95" width="131" height="37"/>
+                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="31"/>
+                                <color key="textColor" red="0.10980392156862745" green="0.078431372549019607" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVe-H7-NkA">
@@ -70,9 +78,9 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zed-2O-naY">
-                                        <rect key="frame" x="55" y="216.5" width="82" height="15"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
+                                        <rect key="frame" x="55" y="215.5" width="88.5" height="17"/>
+                                        <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
+                                        <color key="textColor" red="0.19215686274509802" green="0.29411764705882354" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -118,7 +126,7 @@
                             <constraint firstAttribute="bottom" secondItem="cKr-9t-4TZ" secondAttribute="bottom" id="P3l-m6-qIz"/>
                             <constraint firstItem="3Ee-9L-J4d" firstAttribute="top" secondItem="l24-Tl-Drr" secondAttribute="top" id="P8c-Wa-72w"/>
                             <constraint firstItem="cKr-9t-4TZ" firstAttribute="top" secondItem="l24-Tl-Drr" secondAttribute="top" id="PPV-mQ-ndF"/>
-                            <constraint firstItem="xVe-H7-NkA" firstAttribute="top" secondItem="xbT-iq-m0h" secondAttribute="bottom" constant="40" id="Sx4-sb-mZZ"/>
+                            <constraint firstItem="xVe-H7-NkA" firstAttribute="top" secondItem="xbT-iq-m0h" secondAttribute="bottom" constant="57" id="Sx4-sb-mZZ"/>
                             <constraint firstItem="xbT-iq-m0h" firstAttribute="top" secondItem="QvN-wS-qpf" secondAttribute="bottom" constant="8" id="TWH-hi-PNA"/>
                             <constraint firstAttribute="trailing" secondItem="cKr-9t-4TZ" secondAttribute="trailing" id="VsO-rT-62p"/>
                             <constraint firstAttribute="trailing" secondItem="xVe-H7-NkA" secondAttribute="trailing" constant="22" id="a4J-I9-aej"/>
@@ -141,7 +149,7 @@
                     <constraint firstAttribute="bottom" secondItem="l24-Tl-Drr" secondAttribute="bottom" id="8Kh-pe-TgI"/>
                     <constraint firstItem="BaC-EJ-ogy" firstAttribute="trailing" secondItem="l24-Tl-Drr" secondAttribute="trailing" id="KuM-4Z-AV0"/>
                     <constraint firstItem="l24-Tl-Drr" firstAttribute="top" secondItem="BaC-EJ-ogy" secondAttribute="top" id="Y9x-fI-YuD"/>
-                    <constraint firstItem="xbT-iq-m0h" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.0602679" id="dPz-ge-Afh"/>
+                    <constraint firstItem="xbT-iq-m0h" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.0602679" constant="-17.000038400000001" id="dPz-ge-Afh"/>
                     <constraint firstItem="l24-Tl-Drr" firstAttribute="leading" secondItem="BaC-EJ-ogy" secondAttribute="leading" id="hLk-Xb-Nlm"/>
                     <constraint firstItem="3Ee-9L-J4d" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.03" id="kML-bn-Rb8"/>
                 </constraints>

@@ -31,7 +31,7 @@ class AuditBindTwoFAViewController: BaseViewController {
         let tfLabel = UnderlinedLabel()
         tfLabel.contentMode = .center
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.PlusJakartaSansExtraLight(14)
+        tfLabel.font = Fonts.PlusJakartaSansBold(14)
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
@@ -113,7 +113,7 @@ class AuditBindTwoFAViewController: BaseViewController {
             make.top.equalTo(twoFAInputView.snp.bottom).offset(50)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
+            make.height.equalTo(50)
         }
         view.addSubview(downloadTextLabel)
         downloadTextLabel.snp.makeConstraints { (make) in

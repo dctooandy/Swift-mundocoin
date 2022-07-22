@@ -68,14 +68,14 @@ class AuditTwoFAFinishViewController: BaseViewController {
         titleLabel.text = "The App will generate verification codes for more protection when you logging in.".localized
         backView.addSubview(actionButton)
         actionButton.setTitle("Got it".localized, for: .normal)
-        actionButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
+        actionButton.titleLabel?.font = Fonts.SFProTextSemibold(16)
         actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x19BBB1)) , for: .normal)
         actionButton.snp.makeConstraints { (make) in
             make.top.equalTo(titleLabel.snp.bottom).offset(60)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
+            make.height.equalTo(50)
         }
         backView.addSubview(bottomLabel)
         bottomLabel.isHidden = true
