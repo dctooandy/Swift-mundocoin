@@ -90,13 +90,13 @@ class TDetailViewController: BaseViewController {
     func setupUI()
     {
         checkButton.setTitle("Check History".localized, for: .normal)
-        checkButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
+//        checkButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        checkButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
         tryButton.setTitle("Try Again".localized, for: .normal)
-        tryButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
+//        tryButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
         tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        tryButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
     }
     func bindUI()
     {

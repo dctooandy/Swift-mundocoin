@@ -990,6 +990,18 @@
 		099A241C28882C0B00A36375 /* InputViewStyleThemes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099A241628882C0A00A36375 /* InputViewStyleThemes.swift */; };
 		099B5621283B93AA00F13630 /* UserMenuGrayLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */; };
 		099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */; };
+		099B5EFF288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F00288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F01288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F02288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F03288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F04288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */; };
+		099B5F06288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F07288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F08288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F09288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F0A288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
+		099B5F0B288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1826,6 +1838,8 @@
 		099A241628882C0A00A36375 /* InputViewStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewStyleThemes.swift; sourceTree = "<group>"; };
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
+		099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
+		099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.ttf"; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
@@ -2258,6 +2272,8 @@
 		09954C082889329B00E5E2BE /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				099B5F05288A686C00148FD9 /* SF-Pro-Display-Bold.ttf */,
+				099B5EFE288A644800148FD9 /* SF-Pro-Display-Medium.ttf */,
 				09954C332889519E00E5E2BE /* PlusJakartaSans-Light.ttf */,
 				09954C2C28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf */,
 				09954C1E28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf */,
@@ -3299,10 +3315,12 @@
 				09905B122851A02B00BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905B132851A02B00BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905B142851A02B00BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				099B5F0A288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				09905B152851A02B00BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
+				099B5F03288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09954C382889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905B192851A02B00BAEE78 /* SignupViewController.xib in Resources */,
@@ -3387,10 +3405,12 @@
 				09905C042851A08500BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905C052851A08500BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905C062851A08500BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				099B5F0B288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				09905C072851A08500BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
+				099B5F04288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09954C392889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905C0B2851A08500BAEE78 /* SignupViewController.xib in Resources */,
@@ -3475,10 +3495,12 @@
 				09905CF62851A09600BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905CF72851A09600BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905CF82851A09600BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				099B5F09288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				09905CF92851A09600BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
+				099B5F02288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
 				09954C372889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */,
@@ -3563,10 +3585,12 @@
 				09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				099B5F07288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
+				099B5F00288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
 				09954C352889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */,
@@ -3651,10 +3675,12 @@
 				09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				099B5F08288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
+				099B5F01288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
 				09954C362889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */,
@@ -3739,10 +3765,12 @@
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
+				099B5F06288A686C00148FD9 /* SF-Pro-Display-Bold.ttf in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
+				099B5EFF288A644800148FD9 /* SF-Pro-Display-Medium.ttf in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
 				09954C342889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */,

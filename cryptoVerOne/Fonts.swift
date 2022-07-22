@@ -55,4 +55,10 @@ class Fonts {
     static func interSemiBold(_ size: CGFloat) -> UIFont {
         return UIFont(name: "Inter-SemiBold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    static func SFProDisplayMedium(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SF-Pro-Display-Medium", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    static func SFProDisplayBold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SF-Pro-Display-Bold", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }

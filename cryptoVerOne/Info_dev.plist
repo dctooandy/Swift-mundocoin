@@ -39,8 +39,12 @@
 		<string>PlusJakartaSans-Bold.ttf</string>
 		<string>Inter-SemiBold.otf</string>
 		<string>PlusJakartaSans-SemiBold.ttf</string>
+		<string>PlusJakartaSans-ExtraLight.ttf</string>
 		<string>PlusJakartaSans-Regular.ttf</string>
 		<string>PlusJakartaSans-Medium.ttf</string>
+		<string>PlusJakartaSans-Light.ttf</string>
+		<string>SF-Pro-Display-Medium.ttf</string>
+		<string>SF-Pro-Display-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
