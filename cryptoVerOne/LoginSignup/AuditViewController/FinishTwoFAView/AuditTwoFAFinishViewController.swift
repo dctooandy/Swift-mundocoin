@@ -31,8 +31,8 @@ class AuditTwoFAFinishViewController: BaseViewController {
         return label
     }()
     private lazy var backBtn:TopBackButton = {
-        let btn = TopBackButton(iconName: "icon-chevron-left")
-        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let btn = TopBackButton(iconName: "audit-icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
@@ -68,7 +68,7 @@ class AuditTwoFAFinishViewController: BaseViewController {
         titleLabel.text = "The App will generate verification codes for more protection when you logging in.".localized
         backView.addSubview(actionButton)
         actionButton.setTitle("Got it".localized, for: .normal)
-        actionButton.titleLabel?.font = Fonts.SFProTextSemibold(16)
+        actionButton.titleLabel?.font = Fonts.SFProDisplaySemibold(16)
         actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         actionButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x19BBB1)) , for: .normal)
         actionButton.snp.makeConstraints { (make) in

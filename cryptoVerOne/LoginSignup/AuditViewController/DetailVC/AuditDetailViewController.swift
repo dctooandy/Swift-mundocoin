@@ -25,8 +25,8 @@ class AuditDetailViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     private lazy var backBtn:TopBackButton = {
-        let btn = TopBackButton(iconName: "icon-chevron-left")
-        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let btn = TopBackButton(iconName: "audit-icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
@@ -66,7 +66,7 @@ class AuditDetailViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.SFProDisplayBold(20)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -84,19 +84,20 @@ class AuditDetailViewController: BaseViewController {
         title = "Detail".localized
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         view.backgroundColor = Themes.black1B2559
-        scrollView.backgroundColor = Themes.grayF4F7FE
+        scrollView.backgroundColor = Themes.grayF7F8FC
     }
     func setupUI()
     {
         stackView.layer.cornerRadius = 12
         stackView.layer.masksToBounds = true
-        acceptBtn.layer.cornerRadius = 12
+        acceptBtn.layer.cornerRadius = 8
         acceptBtn.layer.masksToBounds = true
         acceptBtn.setTitleColor(.white, for: .normal)
         rejectBtn.setTitleColor(Themes.gray33617D, for: .normal)
-        rejectBtn.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
+        rejectBtn.backgroundColor = Themes.grayE3EbF3
+        rejectBtn.layer.borderColor = UIColor(rgb: 0x004116 ,alpha: 0.08).cgColor
         rejectBtn.layer.borderWidth = 1
-        rejectBtn.layer.cornerRadius = 12
+        rejectBtn.layer.cornerRadius = 8
         rejectBtn.layer.masksToBounds = true
     }
     func bindButton()

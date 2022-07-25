@@ -81,7 +81,7 @@ class TwoFactorAuthViewController: BaseViewController {
         }
 
         bindButton.setTitle("Bind".localized, for: .normal)
-        bindButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
+        bindButton.titleLabel?.font = Fonts.SFProDisplaySemibold(16)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         bindButton.snp.makeConstraints { (make) in

@@ -56,9 +56,10 @@ class AuditTriggerAlertView: UIView {
         case .accept:
             break
         case .reject:
+            
             let textRange = NSMakeRange(0, "Withdrawals Reject".count)
             let attributedText = NSMutableAttributedString(string: self.alertMode.titleString)
-            attributedText.addAttribute(NSAttributedString.Key.foregroundColor , value: UIColor.black, range: textRange)
+            attributedText.addAttributes([NSAttributedString.Key.foregroundColor: Themes.black002033,.font: Fonts.PlusJakartaSansBold(18)], range: textRange)
             let markRange = NSMakeRange("Withdrawals Reject".count + 1, 1)
             attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.red, range: markRange)
             self.titleLabel.attributedText = attributedText
@@ -70,13 +71,14 @@ class AuditTriggerAlertView: UIView {
         messageTextView.isSelectable = true
         messageTextView.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
         messageTextView.layer.borderWidth = 1
-        confirmButton.layer.cornerRadius = 12
+        confirmButton.layer.cornerRadius = 8
         confirmButton.layer.masksToBounds = true
         confirmButton.setTitleColor(.white, for: .normal)
+        cancelButton.backgroundColor = Themes.grayE3EbF3
+        cancelButton.layer.borderColor = UIColor(rgb: 0x004116 ,alpha: 0.08).cgColor
         cancelButton.setTitleColor(Themes.gray33617D, for: .normal)
-        cancelButton.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor
         cancelButton.layer.borderWidth = 1
-        cancelButton.layer.cornerRadius = 12
+        cancelButton.layer.cornerRadius = 8
         cancelButton.layer.masksToBounds = true
     }
     func bindTextView()

@@ -21,8 +21,8 @@ class AuditTwoFACheckViewController: BaseViewController {
     @IBOutlet weak var twoFAVerifyInputView: InputStyleView!
     @IBOutlet weak var submitButton: CornerradiusButton!
     private lazy var backBtn:TopBackButton = {
-        let btn = TopBackButton(iconName: "icon-chevron-left")
-        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let btn = TopBackButton(iconName: "audit-icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()

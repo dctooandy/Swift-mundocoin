@@ -61,7 +61,7 @@ class TodoListViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.PlusJakartaSansBold(20)]
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.SFProDisplayBold(20)]
         setupSubPageVC()
         setupNavigation()
         currentShowMode = .pending

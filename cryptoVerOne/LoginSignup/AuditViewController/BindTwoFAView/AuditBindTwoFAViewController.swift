@@ -41,8 +41,8 @@ class AuditBindTwoFAViewController: BaseViewController {
         return tfLabel
     }()
     private lazy var backBtn:TopBackButton = {
-        let btn = TopBackButton(iconName: "icon-chevron-left")
-        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        let btn = TopBackButton(iconName: "audit-icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
@@ -106,7 +106,7 @@ class AuditBindTwoFAViewController: BaseViewController {
         twoFAInputView.setMode(mode: .twoFAVerify)
 
         bindButton.setTitle("Bind".localized, for: .normal)
-        bindButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
+        bindButton.titleLabel?.font = Fonts.SFProDisplaySemibold(16)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         bindButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         bindButton.snp.makeConstraints { (make) in

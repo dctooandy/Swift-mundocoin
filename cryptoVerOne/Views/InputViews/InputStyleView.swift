@@ -196,7 +196,7 @@ class InputStyleView: UIView {
         lb.text = "Email".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         lb.textColor = #colorLiteral(red: 0, green: 0.1254901961, blue: 0.2, alpha: 1)
-        lb.font = Fonts.PlusJakartaSansBold(14)
+        lb.font = Fonts.SFProDisplayBold(14)
 #else
         lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
         lb.font = Fonts.PlusJakartaSansBold(14)
@@ -207,11 +207,13 @@ class InputStyleView: UIView {
         let tf = UITextField()
         tf.backgroundColor = .clear
         tf.textInputView.backgroundColor = .clear
-        tf.font = Fonts.PlusJakartaSansRegular(16)
+        
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         tf.textColor = #colorLiteral(red: 0.1921568627, green: 0.2941176471, blue: 0.3568627451, alpha: 1)
+        tf.font = Fonts.SFProDisplayRegular(16)
 #else
         tf.textColor = #colorLiteral(red: 0.169, green: 0.212, blue: 0.455, alpha: 1.0)
+        tf.font = Fonts.PlusJakartaSansRegular(16)
 #endif
         return tf
     }()
@@ -261,7 +263,7 @@ class InputStyleView: UIView {
         lb.textColor = .black
         lb.text = "Send".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        lb.font = Fonts.interBold(15)
+        lb.font = Fonts.SFProDisplayBold(15)
 #else
         lb.font = Fonts.PlusJakartaSansRegular(14)
 #endif
