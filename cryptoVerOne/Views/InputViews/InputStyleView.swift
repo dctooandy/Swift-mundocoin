@@ -157,7 +157,7 @@ class InputStyleView: UIView {
     private var inputViewMode: InputViewMode = .email
     private let displayPwdImg = UIImage(named: "icon-view")
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")
-    private let cancelImg = UIImage(named: "icon-close-round-fill")!.withRenderingMode(.alwaysTemplate)
+    private let cancelImg = UIImage(named: "icon-close-round-fill")
     private let onChangeHeightAction = PublishSubject<CGFloat>()
     private let onSendClick = PublishSubject<Any>()
     private let onPasteClick = PublishSubject<Any>()
@@ -458,13 +458,13 @@ class InputStyleView: UIView {
         var placeHolderString = ""
         var invalidLabelString = ""
         var rightLabelWidth : CGFloat = 0.0
-        displayOffetWidth = (isPasswordType ? 20.0:0.0)
+        displayOffetWidth = (isPasswordType ? 24.0:0.0)
         switch self.inputViewMode {
         case .copy ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
-            cancelOffetWidth = 18.0
+            cancelOffetWidth = 24.0
             textField.isUserInteractionEnabled = true
         }
         textField.isSecureTextEntry = isPasswordType
@@ -650,9 +650,9 @@ class InputStyleView: UIView {
         displayRightButton.setImage(displayPwdImg, for: .normal)
 //        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
         displayRightButton.snp.remakeConstraints { (make) in
-            make.right.equalToSuperview().offset(-10 - rightLabelWidth)
+            make.right.equalToSuperview().offset(-12 - rightLabelWidth)
             make.centerY.equalTo(textField)
-            make.height.equalTo(14)
+            make.height.equalTo(24)
             make.width.equalTo(displayOffetWidth)
         }
         displayRightButton.imageView?.contentMode = .scaleAspectFill
@@ -661,13 +661,13 @@ class InputStyleView: UIView {
         cancelRightButton.setTitle(nil, for: .normal)
         cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
         cancelRightButton.snp.remakeConstraints { (make) in
-            make.right.equalTo(displayRightButton.snp.left).offset(-10)
+            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
             make.centerY.equalTo(textField)
-            make.height.equalTo(18)
+            make.height.equalTo(24)
             make.width.equalTo(cancelOffetWidth)
         }
         cancelRightButton.isHidden = true
-        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 10 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 12 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView
         bringSubviewToFront(topLabel)

@@ -87,7 +87,7 @@ class AccountInputView: UIView {
                     {
                         patternValue = .mail
                     }
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .normalInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .normalInvalidShow : .normalInvalidShow)
                     if resultValue == .normalInvalidShow
                     {
                         self?.accountInputView.invalidLabel.isHidden = false
@@ -128,7 +128,7 @@ class AccountInputView: UIView {
                     {
                         patternValue = .password
                     }
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .invalidHidden : .pwInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .pwInvalidShow : .pwInvalidShow)
                     if resultValue == .pwInvalidShow
                     {
                         self?.passwordInputView.invalidLabel.isHidden = false
@@ -211,7 +211,7 @@ class AccountInputView: UIView {
             resetTFMaskView(account:isChoose)
             resetInputView(view: passwordInputView)
 //            accountInputView.textField.sendActions(for: .valueChanged)
-            InputViewStyleThemes.share.acceptInputHeightStyle(.invalidHidden)
+//            InputViewStyleThemes.share.acceptInputHeightStyle(.invalidHidden)
             if isChoose == false
             {
                 passwordInputView.textField.becomeFirstResponder()

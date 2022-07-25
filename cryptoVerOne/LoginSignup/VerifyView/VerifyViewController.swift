@@ -75,14 +75,14 @@ class VerifyViewController: BaseViewController {
     lazy var verifyResentLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .center
-        lb.textColor = .black
+        lb.textColor = Themes.gray707EAE
         lb.text = "Resend Email".localized
         lb.font = Fonts.PlusJakartaSansBold(14)
         return lb
     }()
     lazy var underLineView : UIView = {
         let view = UIView()
-        view.backgroundColor = .black
+        view.backgroundColor = Themes.gray707EAE
         return view
     }()
 //    let verifyCancelRightButton = UIButton()
