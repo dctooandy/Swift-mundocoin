@@ -36,8 +36,6 @@
 	<string>6LeWqx0gAAAAAIyi9BRPtskC6Re9AT8bHEEKpsNy</string>
 	<key>UIAppFonts</key>
 	<array>
-		<string>SF-Pro-Display-Regular.otf</string>
-		<string>SF-Pro-Display-Semibold.otf</string>
 		<string>PlusJakartaSans-Bold.ttf</string>
 		<string>Inter-SemiBold.otf</string>
 		<string>Inter-Bold.otf</string>
@@ -46,9 +44,6 @@
 		<string>PlusJakartaSans-Regular.ttf</string>
 		<string>PlusJakartaSans-Medium.ttf</string>
 		<string>PlusJakartaSans-Light.ttf</string>
-		<string>SF-Pro-Display-Medium.ttf</string>
-		<string>SF-Pro-Display-Bold.ttf</string>
-		<string>sf-pro-text-semibold.ttf</string>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>

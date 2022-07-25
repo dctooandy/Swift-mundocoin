@@ -44,8 +44,6 @@
 		<string>PlusJakartaSans-Regular.ttf</string>
 		<string>PlusJakartaSans-Medium.ttf</string>
 		<string>PlusJakartaSans-Light.ttf</string>
-		<string>SF-Pro-Display-Medium.ttf</string>
-		<string>SF-Pro-Display-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
