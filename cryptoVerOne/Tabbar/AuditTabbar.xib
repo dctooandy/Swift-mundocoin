@@ -8,6 +8,11 @@
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="sf-pro-text-semibold.ttf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -25,22 +30,22 @@
                             <rect key="frame" x="0.0" y="0.0" width="207" height="95"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Todo-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="jxe-Rk-y94">
-                                    <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
+                                    <rect key="frame" x="83.5" y="12.5" width="28" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="jxe-Rk-y94" secondAttribute="height" multiplier="1:1" id="i4b-Ge-dVq"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYi-kO-hjY">
-                                    <rect key="frame" x="84.5" y="52.5" width="38" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <rect key="frame" x="85.5" y="40.5" width="24.5" height="14"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="10"/>
+                                    <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerY" secondItem="f8q-4D-9sJ" secondAttribute="centerY" constant="-15" id="COC-FE-NKU"/>
-                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerX" secondItem="f8q-4D-9sJ" secondAttribute="centerX" id="Dcs-we-ci3"/>
+                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerY" secondItem="f8q-4D-9sJ" secondAttribute="centerY" constant="-21" id="COC-FE-NKU"/>
+                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerX" secondItem="f8q-4D-9sJ" secondAttribute="centerX" constant="-6" id="Dcs-we-ci3"/>
                                 <constraint firstItem="pYi-kO-hjY" firstAttribute="top" secondItem="jxe-Rk-y94" secondAttribute="bottom" id="Dhj-U8-T0r"/>
                                 <constraint firstItem="pYi-kO-hjY" firstAttribute="centerX" secondItem="jxe-Rk-y94" secondAttribute="centerX" id="Vvk-4X-l2F"/>
                             </constraints>
@@ -49,22 +54,22 @@
                             <rect key="frame" x="207" y="0.0" width="207" height="95"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="Bin-DV-3Tv">
-                                    <rect key="frame" x="83.5" y="12.5" width="40" height="40"/>
+                                    <rect key="frame" x="83.5" y="12.5" width="28" height="28"/>
                                     <constraints>
                                         <constraint firstAttribute="width" secondItem="Bin-DV-3Tv" secondAttribute="height" multiplier="1:1" id="nDy-sS-d25"/>
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfp-Cw-rc5">
-                                    <rect key="frame" x="72" y="52.5" width="63.5" height="20.5"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <rect key="frame" x="77" y="40.5" width="41" height="14"/>
+                                    <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="10"/>
+                                    <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerX" secondItem="gSe-9f-Mtf" secondAttribute="centerX" id="1FN-Ug-34A"/>
-                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerY" secondItem="gSe-9f-Mtf" secondAttribute="centerY" constant="-15" id="9X1-8I-Frk"/>
+                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerX" secondItem="gSe-9f-Mtf" secondAttribute="centerX" constant="-6" id="1FN-Ug-34A"/>
+                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerY" secondItem="gSe-9f-Mtf" secondAttribute="centerY" constant="-21" id="9X1-8I-Frk"/>
                                 <constraint firstItem="nfp-Cw-rc5" firstAttribute="centerX" secondItem="Bin-DV-3Tv" secondAttribute="centerX" id="JDp-lm-BSv"/>
                                 <constraint firstItem="nfp-Cw-rc5" firstAttribute="top" secondItem="Bin-DV-3Tv" secondAttribute="bottom" id="NQo-oV-4PJ"/>
                             </constraints>
@@ -128,10 +133,10 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qHW-Im-5ru" secondAttribute="trailing" id="GDR-tP-bcW"/>
                 <constraint firstItem="qHW-Im-5ru" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HNc-wU-Y4P"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hpn-Ma-222"/>
-                <constraint firstItem="jxe-Rk-y94" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="I8u-bK-St1"/>
+                <constraint firstItem="jxe-Rk-y94" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" constant="-12.000035000000004" id="I8u-bK-St1"/>
                 <constraint firstItem="cD6-Pa-Eer" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IMq-E4-czd"/>
                 <constraint firstAttribute="bottom" secondItem="h8U-AU-KAm" secondAttribute="bottom" id="LRx-Qx-DLO"/>
-                <constraint firstItem="Bin-DV-3Tv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" id="NbA-XG-ARb"/>
+                <constraint firstItem="Bin-DV-3Tv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" constant="-12.000035000000004" id="NbA-XG-ARb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cD6-Pa-Eer" secondAttribute="trailing" id="QLZ-od-gwZ"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="S3i-aE-OMB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h8U-AU-KAm" secondAttribute="trailing" id="Uav-vY-paF"/>
@@ -156,7 +161,7 @@
                 <outlet property="todoLabel" destination="pYi-kO-hjY" id="xwg-sU-YaG"/>
                 <outlet property="todoView" destination="f8q-4D-9sJ" id="AJn-vc-PbS"/>
             </connections>
-            <point key="canvasLocation" x="97" y="96"/>
+            <point key="canvasLocation" x="95.652173913043484" y="95.424107142857139"/>
         </view>
     </objects>
     <resources>

@@ -25,6 +25,7 @@ class SubListTableViewCell: UITableViewCell {
     @IBOutlet weak var finishedIcon: UIImageView!
     
     @IBOutlet weak var rightArrowImageView: UIImageView!
+    @IBOutlet weak var underLineView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {

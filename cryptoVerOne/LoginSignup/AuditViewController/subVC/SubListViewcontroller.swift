@@ -181,6 +181,13 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
         {
             cell.setData(data: dataArray[indexPath.item] , showMode: showMode)            
         }
+        if indexPath.item == (dataArray.count - 1)
+        {
+            cell.underLineView.isHidden = true
+        }else
+        {
+            cell.underLineView.isHidden = false
+        }
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -193,7 +200,7 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 66
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()

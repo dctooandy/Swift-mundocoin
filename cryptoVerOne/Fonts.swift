@@ -67,4 +67,10 @@ class Fonts {
     static func SFProTextSemibold(_ size: CGFloat) -> UIFont {
         return UIFont(name: "sf-pro-text-semibold", size: size) ?? UIFont.systemFont(ofSize: size)
     }
+    static func SFProDisplaySemibold(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SF-Pro-Display-Semibold", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
+    static func SFProDisplayRegular(_ size: CGFloat) -> UIFont {
+        return UIFont(name: "SF-Pro-Display-Regular", size: size) ?? UIFont.systemFont(ofSize: size)
+    }
 }

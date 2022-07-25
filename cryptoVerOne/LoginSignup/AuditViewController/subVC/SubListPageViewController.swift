@@ -63,16 +63,16 @@ class SubListPageViewController: BaseViewController {
         pageViewcontroller?.menuBackgroundColor = .white
         pageViewcontroller?.borderColor = UIColor(rgb: 0xE0E5F2)
         // menu text
-        pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 20)
-        pageViewcontroller?.font = UIFont.systemFont(ofSize: 20)
+        pageViewcontroller?.selectedFont = Fonts.SFProDisplaySemibold(18)
+        pageViewcontroller?.font = Fonts.SFProDisplayRegular(18)
         pageViewcontroller?.textColor = Themes.grayA3AED0
-        pageViewcontroller?.selectedTextColor = .black
+        pageViewcontroller?.selectedTextColor = Themes.gray2B3674
         // menu indicator
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = .black
+        pageViewcontroller?.indicatorColor = Themes.gray2B3674
         pageViewcontroller?.indicatorClass = IndicatorView.self
         pageViewcontroller?.indicatorOptions = .visible(height: 9,
                                                         zIndex: Int.max,
