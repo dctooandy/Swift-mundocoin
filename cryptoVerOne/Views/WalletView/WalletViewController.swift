@@ -145,7 +145,8 @@ class WalletViewController: BaseViewController {
     {
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
             Log.v("取得Balances\n\(dto)")
-            walletsDto = dto
+//            walletsDto = dto
+            walletsDto = dto.filter({$0.currency != "TRX"})// 先過濾掉TRX的錢包
             setUPAmount()
             setUPDataForPageVC()
         }.disposed(by: dpg)
