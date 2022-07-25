@@ -54,7 +54,8 @@ class WalletViewController: BaseViewController {
         let image = UIImage(named:"icon-bell")
         bellButton.setImage(image, for: .normal)
         bellButton.addTarget(self, action:#selector(pushToBell), for:.touchUpInside)
-//        bellButton.isHidden = true
+        // MC524 暫時隱藏
+        bellButton.isHidden = true
         return bellButton
     }()
     private lazy var boardButton:UIButton = {

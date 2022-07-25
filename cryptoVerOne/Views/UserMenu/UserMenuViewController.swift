@@ -62,11 +62,12 @@ class UserMenuViewController: BaseViewController {
         } else {
             // Fallback on earlier versions
         }
-        
-        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-        rightArrowImage.image = image
-        rightArrowImage.tintColor = .black
-        rightArrowImage.transform = rightArrowImage.transform.rotated(by: .pi)
+        // MC524 暫時隱藏
+        rightArrowImage.isHidden = true
+//        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
+//        rightArrowImage.image = image
+//        rightArrowImage.tintColor = .black
+//        rightArrowImage.transform = rightArrowImage.transform.rotated(by: .pi)
 
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: UserMenuTableViewCell.self)
@@ -90,10 +91,12 @@ class UserMenuViewController: BaseViewController {
 //                UIApplication.shared.open(url)
 //            }
 //        }.disposed(by: dpg)
-        topButton.rx.tap.subscribeSuccess { [self](_) in
-            let personalVC = PersonalInfoViewController.loadNib()
-            self.navigationController?.pushViewController(personalVC, animated: true)
-        }.disposed(by: dpg)
+        // MC524 暫時隱藏
+        // 人物訊息
+//        topButton.rx.tap.subscribeSuccess { [self](_) in
+//            let personalVC = PersonalInfoViewController.loadNib()
+//            self.navigationController?.pushViewController(personalVC, animated: true)
+//        }.disposed(by: dpg)
     }
     func bindViewModel()
     {
@@ -145,12 +148,15 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (section == 0 ? 4 : 6)
+        // MC524 暫時隱藏
+//        return (section == 0 ? 4 : 6)
+        return (section == 0 ? 2 : 5)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 6)
-        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
+        // MC524 暫時隱藏
+//        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
+        if indexPath.section == 1 && (indexPath.item == 1 || indexPath.item == 3)
         {
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
@@ -164,10 +170,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                     cell.cellData = .currency
                 case 1:
                     cell.cellData = .security
-                case 2:
-                    cell.cellData = .pushNotifications
-                case 3:
-                    cell.cellData = .addressBook
+                // MC524 暫時隱藏
+//                case 2:
+//                    cell.cellData = .pushNotifications
+//                case 3:
+//                    cell.cellData = .addressBook
                 default:
                     break
                 }
@@ -175,8 +182,9 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 switch indexPath.row {
                 case 0:
                     cell.cellData = .language
-                case 1:
-                    cell.cellData = .faceID
+                // MC524 暫時隱藏
+//                case 1:
+//                    cell.cellData = .faceID
 //                case 3:
 //                    cell.cellData = .helpSupport
 //                case 4:
@@ -185,9 +193,9 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                    cell.cellData = .about
 //                case 7:
 //                    cell.cellData = .logout
-                case 3:
+                case 2:// MC524 暫時隱藏 原本3
                     cell.cellData = .about
-                case 5:
+                case 4:// MC524 暫時隱藏 原本5
                     cell.cellData = .logout
                 default:
                     break
@@ -228,8 +236,10 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             case 0:
                 Log.i("language")
                 //language
-            case 1:
-                Log.i("faceID")
+            // MC524 暫時隱藏
+//            case 1:
+//                Log.i("faceID")
+            
                 //faceID
 //            case 3:
 //                Log.i("helpSupport")
@@ -245,11 +255,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                Log.i("logout")
 //                showLogotConfirmAlert()
 //                //logout
-            case 3:
+            case 2:// MC524 暫時隱藏 原本3
                 Log.i("about")
                 socketEmit()
                 //about
-            case 5:
+            case 4:// MC524 暫時隱藏 原本5
                 Log.i("logout")
                 showLogotConfirmAlert()
                 //logout
@@ -267,14 +277,19 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        if indexPath.section == 1 && indexPath.row == 7
-        if indexPath.section == 1 && indexPath.row == 5
+// MC524 暫時隱藏
+//        if indexPath.section == 1 && indexPath.row == 5
+        if indexPath.section == 1 && indexPath.row == 4
         {
             return 80
-//        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 6)
-        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
+// MC524 暫時隱藏
+//        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
+        }else if indexPath.section == 1 && (indexPath.row == 1 || indexPath.row == 3)
         {
             return 1
+        }else if indexPath.section == 1 && indexPath.row == 2
+        {
+            return 92
         }else
         {
             return 56            

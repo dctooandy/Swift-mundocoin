@@ -61,17 +61,24 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        // MC524 暫時隱藏
+//        return 3
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
         switch indexPath.row {
+        // MC524 暫時隱藏
+//        case 0:
+//            cell.cellData = .twoFactorAuthentication
+//        case 1:
+//            cell.cellData = .emailAuthemtication
+//        case 2:
+//            cell.cellData = .changePassword
         case 0:
-            cell.cellData = .twoFactorAuthentication
-        case 1:
             cell.cellData = .emailAuthemtication
-        case 2:
+        case 1:
             cell.cellData = .changePassword
         default:
             break
@@ -80,25 +87,29 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
-        case 0:
-            Log.i("twoFactorAuthentication")
-            // 初次使用未綁定
-            let twoFactorVC = TFBeginViewController.loadNib()
-            self.navigationController?.pushViewController(twoFactorVC, animated: true )
-            // 已綁定 要重綁
-//            let twoFactorVC = TFFinishReViewController.loadNib()
-//            twoFactorVC.viewMode = .reverify
+        // MC524 暫時隱藏
+//        case 0:
+//            Log.i("twoFactorAuthentication")
+//            // 初次使用未綁定
+//            let twoFactorVC = TFBeginViewController.loadNib()
 //            self.navigationController?.pushViewController(twoFactorVC, animated: true )
-            
-        //twoFactorAuthentication
-        case 1:
+//            // 已綁定 要重綁
+////            let twoFactorVC = TFFinishReViewController.loadNib()
+////            twoFactorVC.viewMode = .reverify
+////            self.navigationController?.pushViewController(twoFactorVC, animated: true )
+//        case 1:
+//            Log.i("emailAuthemtication")
+//        case 2:
+//            Log.i("changePassword")
+//            let ucPasswordVC = UCPasswordViewController()
+//            self.navigationController?.pushViewController(ucPasswordVC, animated: true )
+
+        case 0:
             Log.i("emailAuthemtication")
-        //emailAuthemtication
-        case 2:
+        case 1:
             Log.i("changePassword")
             let ucPasswordVC = UCPasswordViewController()
             self.navigationController?.pushViewController(ucPasswordVC, animated: true )
-        //changePassword
         default:
             break
         }

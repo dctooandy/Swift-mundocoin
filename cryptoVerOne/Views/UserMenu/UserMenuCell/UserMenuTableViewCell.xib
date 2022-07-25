@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -50,7 +50,7 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </stackView>
                     <stackView opaque="NO" contentMode="right" semanticContentAttribute="forceLeftToRight" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fQa-Eb-XwE">
-                        <rect key="frame" x="148" y="0.0" width="230" height="56"/>
+                        <rect key="frame" x="154" y="0.0" width="230" height="56"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unlock the app" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kjR-ah-gjk">
                                 <rect key="frame" x="0.0" y="18" width="118" height="20.5"/>
@@ -111,7 +111,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="fQa-Eb-XwE" secondAttribute="bottom" id="5im-5I-wm4"/>
-                    <constraint firstAttribute="trailing" secondItem="fQa-Eb-XwE" secondAttribute="trailing" constant="36" id="6XO-wb-pEJ"/>
+                    <constraint firstAttribute="trailing" secondItem="fQa-Eb-XwE" secondAttribute="trailing" constant="30" id="6XO-wb-pEJ"/>
                     <constraint firstItem="iTE-Q7-IEO" firstAttribute="height" secondItem="vhl-MJ-9w6" secondAttribute="height" multiplier="0.5" id="8JH-2x-qnX"/>
                     <constraint firstItem="iTE-Q7-IEO" firstAttribute="centerY" secondItem="vhl-MJ-9w6" secondAttribute="centerY" id="ByA-h1-V6c"/>
                     <constraint firstAttribute="bottom" secondItem="5Ok-Xb-Idh" secondAttribute="bottom" id="MO9-Fv-ebN"/>
