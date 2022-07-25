@@ -217,7 +217,36 @@ extension UINavigationBar {
         return CGSize(width: UIScreen.main.bounds.width, height: 51)
     }
 }
+extension UINavigationController {
 
+    func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
+        let theWindow = self.view
+        if (animated)
+        {
+            let transition = CATransition()
+            transition.duration = 0.25
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromLeft
+            transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            theWindow!.layer.add(transition, forKey: "")
+        }
+        self.pushViewController(viewController, animated: false)
+   }
+    func popFromLeft(animated:Bool)
+    {
+        let theWindow = self.view
+        if (animated)
+        {
+            let transition = CATransition()
+            transition.duration = 0.25
+            transition.type = CATransitionType.push
+            transition.subtype = CATransitionSubtype.fromRight
+            transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+            theWindow!.layer.add(transition, forKey: "")
+        }
+        self.popViewController(animated: false)
+    }
+}
 
 extension UIApplication {
     class func topViewController(base: UIViewController? = (UIApplication.shared.delegate as! AppDelegate).window?.rootViewController) -> UIViewController? {

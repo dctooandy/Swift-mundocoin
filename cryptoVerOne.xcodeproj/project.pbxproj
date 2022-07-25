@@ -996,6 +996,12 @@
 		099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
 		099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
 		099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */; };
+		099C35F2288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
+		099C35F3288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
+		099C35F4288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
+		099C35F5288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
+		099C35F6288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
+		099C35F7288E9027000C1C4E /* NoBalanceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099C35F1288E9027000C1C4E /* NoBalanceView.swift */; };
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
@@ -1833,6 +1839,7 @@
 		099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuGrayLineCell.swift; sourceTree = "<group>"; };
 		099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuGrayLineCell.xib; sourceTree = "<group>"; };
 		099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
+		099C35F1288E9027000C1C4E /* NoBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalanceView.swift; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
@@ -2226,6 +2233,7 @@
 			isa = PBXGroup;
 			children = (
 				092E760E2850A9D100221997 /* NoDataView.swift */,
+				099C35F1288E9027000C1C4E /* NoBalanceView.swift */,
 			);
 			path = NoDataView;
 			sourceTree = "<group>";
@@ -4046,6 +4054,7 @@
 				09905A4D2851A02B00BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905A4E2851A02B00BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF0A2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F6288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919AA12864570700035835 /* TemplateThemes.swift in Sources */,
 				09905A4F2851A02B00BAEE78 /* ForgotViewController.swift in Sources */,
 				09905A502851A02B00BAEE78 /* WalletBalancesDto.swift in Sources */,
@@ -4262,6 +4271,7 @@
 				09905B3F2851A08500BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905B402851A08500BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF0B2860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F7288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919AA22864570700035835 /* TemplateThemes.swift in Sources */,
 				09905B412851A08500BAEE78 /* ForgotViewController.swift in Sources */,
 				09905B422851A08500BAEE78 /* WalletBalancesDto.swift in Sources */,
@@ -4478,6 +4488,7 @@
 				09905C312851A09600BAEE78 /* BioVerifyManager.swift in Sources */,
 				09905C322851A09600BAEE78 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF092860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F5288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919AA02864570700035835 /* TemplateThemes.swift in Sources */,
 				09905C332851A09600BAEE78 /* ForgotViewController.swift in Sources */,
 				09905C342851A09600BAEE78 /* WalletBalancesDto.swift in Sources */,
@@ -4694,6 +4705,7 @@
 				09CAF453283C77ED00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF454283C77ED00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF072860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F3288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919A9E2864570700035835 /* TemplateThemes.swift in Sources */,
 				09CAF455283C77ED00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B328445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
@@ -4910,6 +4922,7 @@
 				09CAF514283C7BBE00D7B19B /* BioVerifyManager.swift in Sources */,
 				09CAF515283C7BBE00D7B19B /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF082860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F4288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919A9F2864570700035835 /* TemplateThemes.swift in Sources */,
 				09CAF516283C7BBE00D7B19B /* ForgotViewController.swift in Sources */,
 				099371B428445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,
@@ -5126,6 +5139,7 @@
 				A19C71A3282260F3000AFC3F /* BioVerifyManager.swift in Sources */,
 				A16F61E1282CCDBD00D9CCE5 /* TwoFactorAuthViewController.swift in Sources */,
 				0998BF062860207D000A4B5B /* AuditDetailViewModel.swift in Sources */,
+				099C35F2288E9027000C1C4E /* NoBalanceView.swift in Sources */,
 				09919A9D2864570700035835 /* TemplateThemes.swift in Sources */,
 				A14E1BA82824FF5000827148 /* ForgotViewController.swift in Sources */,
 				099371B228445DDD00D55E55 /* WalletBalancesDto.swift in Sources */,

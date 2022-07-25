@@ -64,6 +64,9 @@ class MDNavigationController:UINavigationController{
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
         super.pushViewController(viewController, animated:animated)
     }
+//    func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
+//        self.pushViewController(viewController, animated: animated)
+//   }
     
     override var preferredStatusBarStyle:UIStatusBarStyle {
         if #available(iOS 13.0, *) {

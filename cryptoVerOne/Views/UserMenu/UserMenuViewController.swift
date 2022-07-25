@@ -25,7 +25,7 @@ class UserMenuViewController: BaseViewController {
     @IBOutlet weak var topButton: UIButton!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton()
-        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        btn.addTarget(self, action:#selector(popVCFromLeft), for:.touchUpInside)
         return btn
     }()
     // MARK: -
@@ -41,6 +41,8 @@ class UserMenuViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -131,7 +133,9 @@ class UserMenuViewController: BaseViewController {
     func directToViewController() {
         DeepLinkManager.share.handleDeeplink(navigation: .login)
     }
-
+    @objc func popVCFromLeft() {
+        _ = self.navigationController?.popFromLeft(animated: true)
+    }
 }
 // MARK: -
 // MARK: 延伸

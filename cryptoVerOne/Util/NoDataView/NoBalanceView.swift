@@ -1,17 +1,19 @@
 //
-//  NoDataView.swift
+//  NoBalanceView.swift
 //  cryptoVerOne
 //
-//  Created by BBk on 6/8/22.
+//  Created by BBk on 7/25/22.
 //
+
 
 import UIKit
 import RxSwift
 import RxCocoa
 
-class NoDataView: UIView {
+class NoBalanceView: UIView {
     // MARK:業務設定
     private let onImageClick = PublishSubject<Void>()
+    private let onGoDepositAction = PublishSubject<Void>()
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
@@ -33,6 +35,15 @@ class NoDataView: UIView {
         lb.textAlignment = .center
         return lb
     }()
+    let goDepositLabel: UILabel = {
+       let lb = UILabel()
+       lb.font = Fonts.PlusJakartaSansBold(14)
+        lb.text = "Let’s Deposit"
+       lb.numberOfLines = 0
+       lb.textAlignment = .center
+       lb.textColor = Themes.blue6149F6
+       return lb
+   }()
     // MARK: -
     // MARK:Life cycle
     override init(frame: CGRect) {
@@ -49,7 +60,7 @@ class NoDataView: UIView {
         titleLabel.text = title
         subLabel.text = subTitle
         setup()
-        bindImage()
+        bindLabel()
     }
     // MARK: -
     // MARK:業務方法
@@ -57,6 +68,7 @@ class NoDataView: UIView {
         addSubview(imv)
         addSubview(titleLabel)
         addSubview(subLabel)
+        addSubview(goDepositLabel)
         imv.contentMode = .scaleAspectFill
         imv.snp.makeConstraints { (make) in
 //            let s = sizeFrom(scale: 0.44)
@@ -66,7 +78,6 @@ class NoDataView: UIView {
             make.width.equalTo(200)
             make.height.equalTo(133)
         }
-        
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(imv.snp.bottom)
             make.left.equalToSuperview().offset(50)
@@ -77,17 +88,22 @@ class NoDataView: UIView {
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(72)
             make.right.equalToSuperview().offset(-72)
-            
+        }
+        goDepositLabel.snp.makeConstraints { make in
+            make.top.equalTo(subLabel.snp.bottom).offset(30)
+            make.centerX.equalToSuperview()
         }
     }
-    func bindImage()
+
+    func bindLabel()
     {
-        imv.rx.click.subscribeSuccess { [self] _ in
-            onImageClick.onNext(())
+        goDepositLabel.rx.click.subscribeSuccess { [self] _ in
+            onGoDepositAction.onNext(())
         }.disposed(by: dpg)
     }
-    func rxImageClick() -> Observable<Void>
+    
+    func rxLabelClick() -> Observable<Void>
     {
-        return onImageClick.asObservable()
+        return onGoDepositAction.asObservable()
     }
 }

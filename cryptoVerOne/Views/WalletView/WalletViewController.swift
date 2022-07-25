@@ -78,6 +78,7 @@ class WalletViewController: BaseViewController {
         setupPagingView()
         bindViewModel()
         bindSocket()
+        bindPageVC()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -151,6 +152,13 @@ class WalletViewController: BaseViewController {
             setUPDataForPageVC()
         }.disposed(by: dpg)
     }
+    func bindPageVC()
+    {
+        pageVC.rxPageNoAccountAction().subscribeSuccess { [self] _ in
+            Log.v("沒有Account ,點去開Deposit")
+            self.navigationController?.pushViewController(depositVC, animated: true)
+        }.disposed(by: dpg)
+    }
     func bindSocket()
     {
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
@@ -214,6 +222,7 @@ class WalletViewController: BaseViewController {
     {
         pageVC.pageWalletsDto = walletsDto
     }
+
     private func setupPagingView() {
         addChild(pageVC)
         view.addSubview(pageVC.view)
@@ -226,7 +235,8 @@ class WalletViewController: BaseViewController {
     @objc func pushToProfile() {
         Log.i("推到個人清單")
         let userVC = UserMenuViewController.loadNib()
-        self.navigationController?.pushViewController(userVC, animated: true)
+//        self.navigationController?.pushViewController(userVC, animated: true)
+        self.navigationController?.pushViewControllerFromLeft(userVC, animated: true)
     }
     
     @objc func pushToBell() {

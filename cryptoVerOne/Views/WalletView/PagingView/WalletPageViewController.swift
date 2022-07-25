@@ -15,7 +15,7 @@ enum WalletPageMode {
 }
 class WalletPageViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onPageNoAccountAction = PublishSubject<Void>()
     private let dpg = DisposeBag()
     private var currentPageMode: WalletPageMode = .spot {
         didSet {
@@ -52,6 +52,9 @@ class WalletPageViewController: BaseViewController {
     }
     private func setupPageVC() {
         let spotPage = SubPageViewController.instance(mode: .spot)
+        spotPage.rxNoAccountAction().subscribeSuccess { [self] _ in
+            onPageNoAccountAction.onNext(())
+        }.disposed(by: dpg)
 //        let stakePage = SubPageViewController.instance(mode: .stake)
         subPageViewControllers = [spotPage]
         bindSubPageViewControllers()
@@ -115,6 +118,10 @@ class WalletPageViewController: BaseViewController {
     func bindSubPageViewControllers()
     {
         
+    }
+    func rxPageNoAccountAction() -> Observable<Void>
+    {
+        return onPageNoAccountAction.asObservable()
     }
 }
 // MARK: -

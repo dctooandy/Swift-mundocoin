@@ -11,7 +11,7 @@ import RxSwift
 
 class SubPageViewController: BaseViewController {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onNoAccountAction = PublishSubject<Void>()
     private let dpg = DisposeBag()
     private var walletPageMode : WalletPageMode = .spot {
         didSet {
@@ -20,7 +20,7 @@ class SubPageViewController: BaseViewController {
     }
     var dataDto : [WalletBalancesDto]? = nil {
         didSet {
-            collectionView.reloadData()
+            reloadTableView()
         }
     }
 
@@ -50,6 +50,7 @@ class SubPageViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupCollectionView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -80,6 +81,24 @@ class SubPageViewController: BaseViewController {
             make.top.equalToSuperview().offset(16)
             make.trailing.leading.bottom.equalToSuperview()
         }
+    }
+    func setupCollectionView()
+    {
+        let noDataView = NoBalanceView(image: UIImage(named: "empty-list"), title: "No coins found" , subTitle: "Deposit coins to your wallet")
+        noDataView.rxLabelClick().subscribeSuccess { [self] _ in
+            onNoAccountAction.onNext(())
+        }.disposed(by: dpg)
+        collectionView.backgroundView = noDataView
+        collectionView.backgroundView?.isHidden = true
+    }
+    func reloadTableView()
+    {
+        collectionView.backgroundView?.isHidden = self.dataDto!.count > 0 ? true : false
+        collectionView.reloadData()
+    }
+    func rxNoAccountAction() -> Observable<Void>
+    {
+        return onNoAccountAction.asObservable()
     }
 }
 // MARK: -
