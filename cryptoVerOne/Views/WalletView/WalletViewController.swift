@@ -41,6 +41,7 @@ class WalletViewController: BaseViewController {
     @IBOutlet weak var depositImg: UIImageView!
     @IBOutlet weak var withdrawImg: UIImageView!
     
+    @IBOutlet weak var spotValueLabel: UILabel!
     private lazy var profileButton:UIButton = {
         let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named:"icon-user")
@@ -146,8 +147,14 @@ class WalletViewController: BaseViewController {
     {
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
             Log.v("取得Balances\n\(dto)")
-//            walletsDto = dto
+            // 主要理念是 將TRX 錢包濾掉
+            // Asset Allocation 依據balance有無 出現漸層或單色
+            // spot value 依據balance有無 改為 100% or 0%
             walletsDto = dto.filter({$0.currency != "TRX"})// 先過濾掉TRX的錢包
+            let hasBalance = (dto.filter({$0.amount.doubleValue != 0.0}).count != 0)
+            balanceGradiView.haveBalance = hasBalance
+            spotGradiView.haveBalance = true
+            spotValueLabel.text = (hasBalance == true ? "100%":"0%")
             setUPAmount()
             setUPDataForPageVC()
         }.disposed(by: dpg)

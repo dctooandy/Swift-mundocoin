@@ -91,7 +91,7 @@
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="23v-Iw-OPw" customClass="BalanceGradientView" customModule="Approval" customModuleProvider="target">
                                         <rect key="frame" x="24" y="40" width="318" height="10"/>
-                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                        <color key="backgroundColor" red="0.8784313725490196" green="0.89803921568627454" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mae-3Y-TAW" customClass="BalanceGradientView" customModule="Approval" customModuleProvider="target">
                                         <rect key="frame" x="24" y="63.5" width="20" height="8"/>
@@ -246,6 +246,7 @@
                 <outlet property="eyeIconImageView" destination="d0l-cn-aaz" id="0FI-SY-8Jc"/>
                 <outlet property="hiddenTotalBalanceLabel" destination="aPZ-Xw-3jp" id="nR8-We-dPQ"/>
                 <outlet property="spotGradiView" destination="Mae-3Y-TAW" id="O7i-I7-RDa"/>
+                <outlet property="spotValueLabel" destination="p2v-MR-Lrz" id="Uqc-Ko-Onv"/>
                 <outlet property="totalBalanceLabel" destination="4u6-j2-PAc" id="9D8-uW-aRD"/>
                 <outlet property="withdrawImg" destination="fF6-bZ-cyI" id="5aP-JO-iJO"/>
             </connections>
@@ -258,9 +259,6 @@
         <image name="withdraw_wallet" width="66" height="50"/>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemTealColor">
-            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
