@@ -277,8 +277,8 @@ class AccountInputView: UIView {
                       self.registrationInputView.textField]
         self.accountInputView.textField.addTarget(self.passwordInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
         self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
-        acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewDefaultHeight)
-        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: Themes.inputViewPasswordHeight)
+        acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))
+        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
         addSubview(accountInputView)
         accountInputView.snp.makeConstraints { (make) in
             make.top.equalToSuperview()

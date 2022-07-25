@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -29,7 +29,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LNN-ff-an1">
-                        <rect key="frame" x="24" y="0.0" width="366" height="71"/>
+                        <rect key="frame" x="20" y="0.0" width="374" height="71"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XaP-xV-k7C">
                                 <rect key="frame" x="48" y="14.5" width="42" height="20.5"/>
@@ -51,7 +51,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHn-Tm-mJA">
-                                <rect key="frame" x="310" y="26" width="44" height="19"/>
+                                <rect key="frame" x="318" y="26" width="44" height="19"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="sLV-9u-Ma9"/>
                                 </constraints>
@@ -60,25 +60,25 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3764.67124746" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ml-dQ-1Vg">
-                                <rect key="frame" x="180.5" y="14.5" width="117.5" height="20.5"/>
+                                <rect key="frame" x="188.5" y="14.5" width="117.5" height="20.5"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
                                 <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈$3763.69" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSK-jd-XIw">
-                                <rect key="frame" x="226.5" y="37" width="71.5" height="18"/>
+                                <rect key="frame" x="234.5" y="37" width="71.5" height="18"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                 <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="******" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RBQ-pD-xs1">
-                                <rect key="frame" x="246" y="14.5" width="52" height="20.5"/>
+                                <rect key="frame" x="254" y="14.5" width="52" height="20.5"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
                                 <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="≈$******" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8C4-eu-e14">
-                                <rect key="frame" x="238" y="37" width="60" height="18"/>
+                                <rect key="frame" x="246" y="37" width="60" height="18"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                 <color key="textColor" red="0.63921568630000003" green="0.68235294120000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -112,9 +112,9 @@
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="LNN-ff-an1" secondAttribute="trailing" constant="24" id="bWy-5f-2UG"/>
+                    <constraint firstAttribute="trailing" secondItem="LNN-ff-an1" secondAttribute="trailing" constant="20" id="bWy-5f-2UG"/>
                     <constraint firstItem="LNN-ff-an1" firstAttribute="top" secondItem="xHl-Fr-bbe" secondAttribute="top" id="fPS-fk-gRd"/>
-                    <constraint firstItem="LNN-ff-an1" firstAttribute="leading" secondItem="xHl-Fr-bbe" secondAttribute="leading" constant="24" id="gAk-hb-9fH"/>
+                    <constraint firstItem="LNN-ff-an1" firstAttribute="leading" secondItem="xHl-Fr-bbe" secondAttribute="leading" constant="20" id="gAk-hb-9fH"/>
                     <constraint firstAttribute="bottom" secondItem="LNN-ff-an1" secondAttribute="bottom" id="ka5-1l-36a"/>
                 </constraints>
             </collectionViewCellContentView>

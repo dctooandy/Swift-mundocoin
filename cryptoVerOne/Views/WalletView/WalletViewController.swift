@@ -43,25 +43,26 @@ class WalletViewController: BaseViewController {
     
     @IBOutlet weak var spotValueLabel: UILabel!
     private lazy var profileButton:UIButton = {
-        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let profileButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named:"icon-user")
-        backToButton.setImage(image, for: .normal)
-        backToButton.addTarget(self, action:#selector(pushToProfile), for:.touchUpInside)
-        return backToButton
+        profileButton.setImage(image, for: .normal)
+        profileButton.addTarget(self, action:#selector(pushToProfile), for:.touchUpInside)
+        return profileButton
     }()
     private lazy var bellButton:UIButton = {
-        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let bellButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named:"icon-bell")
-        backToButton.setImage(image, for: .normal)
-        backToButton.addTarget(self, action:#selector(pushToBell), for:.touchUpInside)
-        return backToButton
+        bellButton.setImage(image, for: .normal)
+        bellButton.addTarget(self, action:#selector(pushToBell), for:.touchUpInside)
+//        bellButton.isHidden = true
+        return bellButton
     }()
     private lazy var boardButton:UIButton = {
-        let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
+        let boardButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named:"icon-record")
-        backToButton.setImage(image, for: .normal)
-        backToButton.addTarget(self, action:#selector(pushToBoard), for:.touchUpInside)
-        return backToButton
+        boardButton.setImage(image, for: .normal)
+        boardButton.addTarget(self, action:#selector(pushToBoard), for:.touchUpInside)
+        return boardButton
     }()
  
     
@@ -99,7 +100,11 @@ class WalletViewController: BaseViewController {
     func setupNavi()
     {
         title = "Wallet".localized
-        let rightBarItems = [UIBarButtonItem(customView: boardButton),UIBarButtonItem(customView: bellButton)]
+        let firstButtonItem = UIBarButtonItem(customView: boardButton)
+        let secondButtonItem = UIBarButtonItem(customView: bellButton)
+        let space = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
+        space.width = 12
+        let rightBarItems = [firstButtonItem,space,secondButtonItem]
         self.navigationItem.rightBarButtonItems = rightBarItems
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: profileButton)
     }

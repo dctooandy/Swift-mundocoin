@@ -125,6 +125,8 @@ class LoginViewController: BaseViewController {
         forgetPasswordLabel.isHidden = true
 #else
         forgetPasswordLabel.isHidden = loginMode == .phonePage
+// 暫時先隱藏
+//    forgetPasswordLabel.isHidden = true
 #endif
         forgetPasswordLabel.rx.click.subscribeSuccess { [self] _ in
             onClickForgot.onNext(())

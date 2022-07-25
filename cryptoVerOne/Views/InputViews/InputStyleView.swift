@@ -369,7 +369,7 @@ class InputStyleView: UIView {
         }
         addSubview(topLabel)
         addSubview(textField)
-        tvHeightConstraint = NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: tfHeight)
+        tvHeightConstraint = NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(tfHeight))
         if showTextView == true
         {
             addSubview(textView)

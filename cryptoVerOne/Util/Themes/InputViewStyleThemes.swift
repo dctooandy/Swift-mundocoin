@@ -52,7 +52,7 @@ class InputViewStyleThemes : NSObject {
     }
     // MARK: -
     // MARK: 步驟五 釋放可全域綁定物件腳
-    static let normalInputHeightType : Observable<CGFloat> = bindNormalInputViewHeight(hidden: 85.0, show: Themes.inputViewDefaultHeight)
-    static let pwInputHeightType : Observable<CGFloat> = bindPWInputViewHeight(hidden: 85.0, show: Themes.inputViewPasswordHeight)
+    static let normalInputHeightType : Observable<CGFloat> = bindNormalInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewDefaultHeight))
+    static let pwInputHeightType : Observable<CGFloat> = bindPWInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewPasswordHeight))
 
 }
