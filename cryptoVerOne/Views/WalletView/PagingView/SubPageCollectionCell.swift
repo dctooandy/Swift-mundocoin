@@ -41,7 +41,7 @@ class SubPageCollectionCell: UICollectionViewCell {
         equelLabel.text = "≈$"+"\(amountValue)".numberFormatter(.decimal, 2)
         coinLabel.text = data.currency
         coinImageView.image = UIImage(named: "icon-usdt")
-        currencyLabel.text = data.currency
+        currencyLabel.text = "Tether".localized
         if let pValue = data.persentValue
         {
             persentLabel.text = "\(pValue)%"

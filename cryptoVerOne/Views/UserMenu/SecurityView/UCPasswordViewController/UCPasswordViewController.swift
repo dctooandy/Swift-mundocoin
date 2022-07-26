@@ -193,7 +193,9 @@ class UCPasswordViewController: BaseViewController {
     }
     func bindAction()
     {
-        twoFAVC.securityViewMode = .selectedMode
+        // MC524 暫時隱藏
+//        twoFAVC.securityViewMode = .selectedMode
+        twoFAVC.securityViewMode = .onlyEmail
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0)
         }.disposed(by: dpg)
