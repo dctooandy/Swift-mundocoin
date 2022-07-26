@@ -34,6 +34,7 @@ class UCPasswordViewController: BaseViewController {
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupUI()
         bindTextfield()
+        bindTextfieldReturnKey()
         bindCancelButton()
         bindPwdButton()
         bindAction()
@@ -118,25 +119,50 @@ class UCPasswordViewController: BaseViewController {
         let isoldValid = oldInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return RegexHelper.match(pattern: .password, input: acc)
+                let resultValue = RegexHelper.match(pattern: .password, input: acc)
+                if resultValue != true , (self.oldInputView.textField.isFirstResponder) == true
+                {
+                    self.oldInputView.invalidLabel.isHidden = false
+                }else
+                {
+                    self.oldInputView.invalidLabel.isHidden = true
+                }
+                return resultValue
         }
         let isnewValid = newInputView.textField.rx.text
             .map { [self]  (str) -> Bool in
                 guard  let acc = str else { return false  }
+                var resultValue = false
                 if confirmInputView.textField.text == ""
                 {
-                    return RegexHelper.match(pattern: .password, input: acc)
+                    resultValue = RegexHelper.match(pattern: .password, input: acc)
                 }else
                 {
-                    return (acc == confirmInputView.textField.text) &&
+                    resultValue = (acc == confirmInputView.textField.text) &&
                         RegexHelper.match(pattern: .password, input: acc)
                 }
+                if resultValue != true, (self.newInputView.textField.isFirstResponder) == true
+                {
+                    self.newInputView.invalidLabel.isHidden = false
+                }else
+                {
+                    self.newInputView.invalidLabel.isHidden = true
+                }
+                return resultValue
         }
         let isconfirmValid = confirmInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
-                return (acc == self.newInputView.textField.text) &&
+                let resultValue = (acc == self.newInputView.textField.text) &&
                     RegexHelper.match(pattern: .password, input: acc)
+                if resultValue != true, (self.confirmInputView.textField.isFirstResponder) == true
+                {
+                    self.confirmInputView.invalidLabel.isHidden = false
+                }else
+                {
+                    self.confirmInputView.invalidLabel.isHidden = true
+                }
+                return resultValue
         }
         
         isoldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
@@ -146,6 +172,12 @@ class UCPasswordViewController: BaseViewController {
             .map { return $0.0 && $0.1 && $0.2 } //reget match result
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: dpg)
+    }
+    func bindTextfieldReturnKey()
+    {
+        oldInputView.textField.returnKeyType = .next
+        newInputView.textField.returnKeyType = .next
+        confirmInputView.textField.returnKeyType = .done
     }
     func bindCancelButton()
     {
@@ -202,30 +234,54 @@ class UCPasswordViewController: BaseViewController {
     }
     func bindBorderColor()
     {
-        oldInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            oldInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            newInputView.tfMaskView.changeBorderWith(isChoose:false)
-            confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
-            oldInputView.textField.sendActions(for: .valueChanged)
-            newInputView.textField.sendActions(for: .valueChanged)
-            confirmInputView.textField.sendActions(for: .valueChanged)
+        oldInputView.rxChooseClick().subscribeSuccess { (isChoose) in
+            DispatchQueue.main.async { [self] in
+                resetInvalidText()
+                resetTFMaskView(old: isChoose)
+                newInputView.invalidLabel.isHidden = true
+                confirmInputView.invalidLabel.isHidden = true
+                if isChoose == false
+                {
+                    newInputView.textField.becomeFirstResponder()
+                }
+            }
         }.disposed(by: dpg)
-        newInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            oldInputView.tfMaskView.changeBorderWith(isChoose:false)
-            newInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            confirmInputView.tfMaskView.changeBorderWith(isChoose:false)
-            oldInputView.textField.sendActions(for: .valueChanged)
-            newInputView.textField.sendActions(for: .valueChanged)
-            confirmInputView.textField.sendActions(for: .valueChanged)
+        newInputView.rxChooseClick().subscribeSuccess { (isChoose) in
+            DispatchQueue.main.async { [self] in
+                resetInvalidText()
+                resetTFMaskView(new: isChoose)
+                oldInputView.invalidLabel.isHidden = true
+                confirmInputView.invalidLabel.isHidden = true
+                if isChoose == false
+                {
+                    confirmInputView.textField.becomeFirstResponder()
+                }
+            }
         }.disposed(by: dpg)
-        confirmInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            oldInputView.tfMaskView.changeBorderWith(isChoose:false)
-            newInputView.tfMaskView.changeBorderWith(isChoose:false)
-            confirmInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            oldInputView.textField.sendActions(for: .valueChanged)
-            newInputView.textField.sendActions(for: .valueChanged)
-            confirmInputView.textField.sendActions(for: .valueChanged)
+        confirmInputView.rxChooseClick().subscribeSuccess { (isChoose) in
+            DispatchQueue.main.async { [self] in
+                resetInvalidText()
+                resetTFMaskView(confirm: isChoose)
+                oldInputView.invalidLabel.isHidden = true
+                newInputView.invalidLabel.isHidden = true
+            }
         }.disposed(by: dpg)
+    }
+    func resetInputView(view : InputStyleView)
+    {
+        view.invalidLabel.isHidden = true
+    }
+    func resetTFMaskView(old:Bool = false ,new:Bool = false ,confirm:Bool = false )
+    {
+        oldInputView.tfMaskView.changeBorderWith(isChoose:old)
+        newInputView.tfMaskView.changeBorderWith(isChoose:new)
+        confirmInputView.tfMaskView.changeBorderWith(isChoose:confirm)
+    }
+    func resetInvalidText()
+    {
+        oldInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        newInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        confirmInputView.changeInvalidLabelAndMaskBorderColor(with:"")
     }
     func submitButtonPressed()
     {
