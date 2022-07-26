@@ -74,12 +74,12 @@ class NoBalanceView: UIView {
 //            let s = sizeFrom(scale: 0.44)
 //            make.size.equalTo(s)
             make.centerX.equalToSuperview()
-            make.centerY.equalToSuperview().offset(-100)
-            make.width.equalTo(200)
-            make.height.equalTo(133)
+            make.top.equalToSuperview().offset(45)
+            make.width.equalTo(130)
+            make.height.equalTo(86)
         }
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(imv.snp.bottom)
+            make.top.equalTo(imv.snp.bottom).offset(12)
             make.left.equalToSuperview().offset(50)
             make.right.equalToSuperview().offset(-50)
             
