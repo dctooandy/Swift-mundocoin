@@ -10,9 +10,9 @@ import UIKit
 extension CALayer {
     func addShadow() {
         self.shadowOffset = .zero
-        self.shadowOpacity = 0.1
-        self.shadowRadius = 10
-        self.shadowColor = UIColor.black.cgColor
+        self.shadowOpacity = 0.2
+        self.shadowRadius = 16
+        self.shadowColor = Themes.grayE0E5F2.cgColor
         self.masksToBounds = false
         if cornerRadius != 0 {
             addShadowWithRoundedCorners()

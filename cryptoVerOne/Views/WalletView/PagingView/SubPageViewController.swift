@@ -123,8 +123,7 @@ extension SubPageViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let baseHeight = height(72/896)
-     
+        let baseHeight = height(84/896)// 上下各多6,為了加陰影
         return CGSize(width: Views.screenWidth, height: baseHeight)
     }
 }

@@ -25,6 +25,7 @@ class SubPageCollectionCell: UICollectionViewCell {
     @IBOutlet weak var hiddenequelLabel: UILabel!
     @IBOutlet weak var currencyLabel: UILabel!
     
+    @IBOutlet weak var cellBackView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -54,6 +55,7 @@ class SubPageCollectionCell: UICollectionViewCell {
         WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenMoneyLabel.rx.isHidden).disposed(by: dpg)
         WalletSecurityThemes.moneyVisibleOrNotVisible.bind(to: equelLabel.rx.isHidden).disposed(by: dpg)
         WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenequelLabel.rx.isHidden).disposed(by: dpg)
+        cellBackView.applyCornerAndShadow(radius: 16)
     }
 
 }

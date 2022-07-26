@@ -117,6 +117,7 @@ class WalletViewController: BaseViewController {
     {        
         WalletSecurityThemes.moneyVisibleOrNotVisible.bind(to: totalBalanceLabel.rx.isHidden).disposed(by: dpg)
         WalletSecurityThemes.stringVisibleOrNotVisible.bind(to: hiddenTotalBalanceLabel.rx.isHidden).disposed(by: dpg)
+        balanceFrameView.applyCornerAndShadow(radius: 24)
     }
     func bindAction()
     {
