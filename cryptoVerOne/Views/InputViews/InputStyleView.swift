@@ -75,7 +75,7 @@ enum InputViewMode :Equatable {
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress,.address: return "Long press to paste".localized
         case .email: return "...@mundocoin.com"
-        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
+//        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotPW: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         case .auditAccount : return ""
@@ -940,6 +940,7 @@ extension InputStyleView: UITextFieldDelegate {
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.placeholder = ""
         onChooseClick.onNext(true)
         cancelRightButton.isHidden = false
         return true

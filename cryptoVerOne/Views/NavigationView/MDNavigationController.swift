@@ -10,9 +10,15 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+//enum ViewFromType:Int{
+//    case fromLeft = 1
+//    case fromRight = 2
+//}
+
 class MDNavigationController:UINavigationController{
     // MARK:業務設定
     // MARK: -
+    let disposeBag = DisposeBag()
     // MARK:UI 設定
     lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton()
@@ -42,6 +48,11 @@ class MDNavigationController:UINavigationController{
     }
     // MARK: -
     // MARK:業務方法
+//    func viewPushAnimation(_ viewController:UIViewController,from orientation:ViewFromType)
+//    {
+//        self.view.bringSubviewToFront(viewController.view)
+//        AnimatorManager.scaleUp(view: viewController.view, frame: self.view.frame,orientation: orientation.rawValue).startAnimation()
+//    }
     @objc func popVC() {
         _ = self.popViewController(animated:true)
     }

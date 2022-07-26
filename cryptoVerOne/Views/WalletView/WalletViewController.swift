@@ -22,6 +22,7 @@ class WalletViewController: BaseViewController {
     let withdrawVC = WithdrawViewController.loadNib()
     let twoFAVC = SecurityVerificationViewController.loadNib()
     fileprivate let pageVC = WalletPageViewController()
+    let userVC = UserMenuViewController.loadNib()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var walletsDto : [WalletBalancesDto] = [WalletBalancesDto()] {
@@ -40,7 +41,6 @@ class WalletViewController: BaseViewController {
     @IBOutlet weak var balanceFrameView: UIView!
     @IBOutlet weak var depositImg: UIImageView!
     @IBOutlet weak var withdrawImg: UIImageView!
-    
     @IBOutlet weak var spotValueLabel: UILabel!
     private lazy var profileButton:UIButton = {
         let profileButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
@@ -87,9 +87,13 @@ class WalletViewController: BaseViewController {
         super.viewWillAppear(animated)
         viewModel.fetchBalances()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        LoadingViewController.show()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [self] in
+            _ = LoadingViewController.dismiss()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -247,9 +251,10 @@ class WalletViewController: BaseViewController {
     }
     @objc func pushToProfile() {
         Log.i("推到個人清單")
-        let userVC = UserMenuViewController.loadNib()
+//        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)
         self.navigationController?.pushViewControllerFromLeft(userVC, animated: true)
+//        self.navigationController?.viewPushAnimation(userVC, from: .fromLeft)
     }
     
     @objc func pushToBell() {

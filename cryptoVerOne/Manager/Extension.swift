@@ -218,14 +218,22 @@ extension UINavigationBar {
     }
 }
 extension UINavigationController {
-
+    enum ViewFromType:Int{
+        case fromLeft = 1
+        case fromRight = 2
+    }
+    func viewPushAnimation(_ viewController:UIViewController,from orientation:ViewFromType)
+    {
+        self.view.bringSubviewToFront(viewController.view)
+        AnimatorManager.scaleUp(view: viewController.view, frame: self.view.frame,orientation: orientation.rawValue).startAnimation()
+    }
     func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
         let theWindow = self.view
         if (animated)
         {
             let transition = CATransition()
-            transition.duration = 0.25
-            transition.type = CATransitionType.push
+            transition.duration = 0.4
+            transition.type = CATransitionType.moveIn
             transition.subtype = CATransitionSubtype.fromLeft
             transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             theWindow!.layer.add(transition, forKey: "")
@@ -238,8 +246,8 @@ extension UINavigationController {
         if (animated)
         {
             let transition = CATransition()
-            transition.duration = 0.25
-            transition.type = CATransitionType.push
+            transition.duration = 0.4
+            transition.type = CATransitionType.moveIn
             transition.subtype = CATransitionSubtype.fromRight
             transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
             theWindow!.layer.add(transition, forKey: "")

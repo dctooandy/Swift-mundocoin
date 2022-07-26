@@ -26,7 +26,7 @@ class WalletViewModel: BaseViewModel {
         if UserStatus.share.isLogin
         {
             WalletAllBalancesDto.rxShare.subscribe { [self](balanceDto) in
-                _ = LoadingViewController.dismiss()
+//                _ = LoadingViewController.dismiss()
                 if let dto = balanceDto?.wallets
                 {
                     fetchWalletBalancesSuccess.onNext(dto)

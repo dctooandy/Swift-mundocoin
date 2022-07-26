@@ -1545,6 +1545,12 @@
 		A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */; };
 		A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */; };
 		A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
+		A106C6802890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A106C6812890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A106C6822890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
 		A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
 		A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
 		A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
@@ -1907,6 +1913,7 @@
 		A1019DD82824C5BE00E6929E /* IDVerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IDVerificationViewController.swift; sourceTree = "<group>"; };
 		A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDVerificationViewController.xib; sourceTree = "<group>"; };
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
+		A106C67F2890288D005B7EBE /* AnimatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorManager.swift; sourceTree = "<group>"; };
 		A1319250285F938F000B2729 /* AuditApprovalDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditApprovalDto.swift; sourceTree = "<group>"; };
 		A14E1BA52824FF5000827148 /* ForgotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotViewController.xib; sourceTree = "<group>"; };
 		A14E1BA62824FF5000827148 /* ForgotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
@@ -2748,6 +2755,7 @@
 				A19C703A28223299000AFC3F /* KeychainManager.swift */,
 				A19C71A2282260F3000AFC3F /* BioVerifyManager.swift */,
 				0909C8D52852EA31003E2F58 /* SocketIOManager.swift */,
+				A106C67F2890288D005B7EBE /* AnimatorManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -4195,6 +4203,7 @@
 				09905AC32851A02B00BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905AC42851A02B00BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905AC52851A02B00BAEE78 /* SessionManager+util.swift in Sources */,
+				A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				09905AC62851A02B00BAEE78 /* Reactive+util.swift in Sources */,
 				09905AC72851A02B00BAEE78 /* Toast+util.swift in Sources */,
 				09905AC82851A02B00BAEE78 /* FilterCell.swift in Sources */,
@@ -4412,6 +4421,7 @@
 				09905BB52851A08500BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905BB62851A08500BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905BB72851A08500BAEE78 /* SessionManager+util.swift in Sources */,
+				A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				09905BB82851A08500BAEE78 /* Reactive+util.swift in Sources */,
 				09905BB92851A08500BAEE78 /* Toast+util.swift in Sources */,
 				09905BBA2851A08500BAEE78 /* FilterCell.swift in Sources */,
@@ -4629,6 +4639,7 @@
 				09905CA72851A09600BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905CA82851A09600BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905CA92851A09600BAEE78 /* SessionManager+util.swift in Sources */,
+				A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				09905CAA2851A09600BAEE78 /* Reactive+util.swift in Sources */,
 				09905CAB2851A09600BAEE78 /* Toast+util.swift in Sources */,
 				09905CAC2851A09600BAEE78 /* FilterCell.swift in Sources */,
@@ -4846,6 +4857,7 @@
 				09CAF4A8283C77ED00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
+				A106C6812890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
 				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5063,6 +5075,7 @@
 				09CAF569283C7BBE00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
+				A106C6822890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
 				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5280,6 +5293,7 @@
 				A19C71DA28226817000AFC3F /* ConfirmPopupView.swift in Sources */,
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
+				A106C6802890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
 				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,

@@ -40,12 +40,16 @@ class UserMenuViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        LoadingViewController.show()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
 
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [self] in
+            _ = LoadingViewController.dismiss()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
