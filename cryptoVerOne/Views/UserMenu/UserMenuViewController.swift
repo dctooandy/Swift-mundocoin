@@ -17,7 +17,7 @@ class UserMenuViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     
-    @IBOutlet weak var usetAccountLabel: UILabel!
+    @IBOutlet weak var userAccountLabel: UILabel!
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var rightArrowImage: UIImageView!
@@ -77,7 +77,7 @@ class UserMenuViewController: BaseViewController {
         let loginDto = KeychainManager.share.getLastAccount()
         if let userEmail = loginDto?.account , UserStatus.share.isLogin
         {
-            usetAccountLabel.text = userEmail
+            userAccountLabel.text = userEmail
         }
     }
     func fetchData()

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -30,7 +30,7 @@
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NOu-sE-TfT">
                         <rect key="frame" x="0.0" y="126" width="414" height="1"/>
-                        <color key="backgroundColor" red="0.85882352941176465" green="0.85882352941176465" blue="0.85882352941176465" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.9137254901960784" green="0.92941176470588238" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="Uuf-ex-HOe"/>
                         </constraints>
@@ -127,8 +127,8 @@
                 <outlet property="tableView" destination="DpH-Qc-Mpj" id="ys5-ox-8Fq"/>
                 <outlet property="titleView" destination="mwf-Ny-Icg" id="WVg-tD-dM7"/>
                 <outlet property="topButton" destination="Zoq-6r-0fg" id="i0S-Ot-WyK"/>
+                <outlet property="userAccountLabel" destination="emF-3g-wZP" id="XlJ-qd-4Ry"/>
                 <outlet property="userImageView" destination="D6d-sF-e3H" id="FMu-Tq-ZTy"/>
-                <outlet property="usetAccountLabel" destination="emF-3g-wZP" id="Ltq-cM-VPs"/>
             </connections>
             <point key="canvasLocation" x="-223.18840579710147" y="-36.160714285714285"/>
         </viewController>
