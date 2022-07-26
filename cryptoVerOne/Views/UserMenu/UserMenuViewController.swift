@@ -47,7 +47,7 @@ class UserMenuViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) { [self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             _ = LoadingViewController.dismiss()
         }
     }
