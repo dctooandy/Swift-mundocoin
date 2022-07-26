@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +36,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Sgr-sV-VZP" customClass="TransDetailView" customModule="Approval" customModuleProvider="target">
-                                        <rect key="frame" x="24" y="74" width="366" height="590"/>
+                                        <rect key="frame" x="24" y="80" width="366" height="572"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="16"/>
@@ -67,7 +67,7 @@
                                     <constraint firstAttribute="trailing" secondItem="Sgr-sV-VZP" secondAttribute="trailing" constant="24" id="Avo-34-pZr"/>
                                     <constraint firstItem="W5Y-6v-m4w" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="24" id="W2B-oY-oT1"/>
                                     <constraint firstItem="fWD-AR-dpF" firstAttribute="leading" secondItem="rgi-15-sLp" secondAttribute="leading" constant="62" id="WaS-VY-nXC"/>
-                                    <constraint firstItem="Sgr-sV-VZP" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="4" id="c9h-I3-tT9"/>
+                                    <constraint firstItem="Sgr-sV-VZP" firstAttribute="top" secondItem="W5Y-6v-m4w" secondAttribute="bottom" constant="10" id="c9h-I3-tT9"/>
                                     <constraint firstAttribute="bottom" secondItem="fWD-AR-dpF" secondAttribute="bottom" constant="128" id="ixw-4g-WBO"/>
                                     <constraint firstItem="nyW-1J-snF" firstAttribute="top" secondItem="fWD-AR-dpF" secondAttribute="top" id="lQU-6V-4Ew"/>
                                     <constraint firstItem="nyW-1J-snF" firstAttribute="leading" secondItem="fWD-AR-dpF" secondAttribute="leading" id="naA-Qf-eWg"/>

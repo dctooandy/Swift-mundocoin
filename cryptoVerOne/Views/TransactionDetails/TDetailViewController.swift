@@ -76,6 +76,8 @@ class TDetailViewController: BaseViewController {
         title = titleString
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         setupData()
+        topView.applyCornerAndShadow(radius: 16)
+        dataListView.applyCornerAndShadow(radius: 16)
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -161,12 +163,14 @@ class TDetailViewController: BaseViewController {
         if hiddenMode == .topViewShow
         {
             topViewHeight.constant = 70
+            topView.isHidden = false
             checkButton.isHidden = false
             tryButton.isHidden = false
             TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
         }else
         {
             topViewHeight.constant = 0
+            topView.isHidden = true
             checkButton.isHidden = true
             tryButton.isHidden = true
         }

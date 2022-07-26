@@ -399,7 +399,7 @@ class InputStyleView: UIView {
             textView.snp.makeConstraints { make in
                 make.top.equalTo(textField).offset(5)
                 make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20-(24 + 24 + 20 + 18 + 10))
+                make.trailing.equalToSuperview().offset(-20-(24 + 20 + 10))
                 make.bottom.equalTo(textField).offset(-5)
             }
             invalidLabel.isHidden = true
@@ -460,7 +460,7 @@ class InputStyleView: UIView {
         var rightLabelWidth : CGFloat = 0.0
         displayOffetWidth = (isPasswordType ? 24.0:0.0)
         switch self.inputViewMode {
-        case .copy ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
+        case .copy ,.withdrawToAddress ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -590,6 +590,7 @@ class InputStyleView: UIView {
                 make.right.equalToSuperview().offset(-20)
             }
             normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+            normalTextLabel.font = Fonts.PlusJakartaSansRegular(16)
             tfMaskView.backgroundColor = Themes.grayF4F7FE
             resetTopLabelAndMask()
             rightLabelWidth = 18 + 10
@@ -666,7 +667,6 @@ class InputStyleView: UIView {
             make.height.equalTo(24)
             make.width.equalTo(cancelOffetWidth)
         }
-        cancelRightButton.isHidden = true
         let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 12 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
         textField.rightViewMode = .always
         textField.rightView = rightView

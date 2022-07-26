@@ -37,6 +37,12 @@ class WithdrawViewController: BaseViewController {
     @IBOutlet weak var noticeLabel: UILabel!
     @IBOutlet weak var amountInputView: AmountInputView!
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var topAmountView: UIView!
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     var withdrawToView : InputStyleView!
     var methodView : InputStyleView!
     var confirmBottomSheet : ConfirmBottomSheet!
@@ -60,7 +66,7 @@ class WithdrawViewController: BaseViewController {
         recognizer.numberOfTapsRequired = 1
         recognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(recognizer)
-
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -75,6 +81,7 @@ class WithdrawViewController: BaseViewController {
             bindWhenAppear()
         }
         isScanVCByAVCapture = false
+        amountInputView.amountTextView.becomeFirstResponder()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -134,6 +141,7 @@ class WithdrawViewController: BaseViewController {
         continueButton.setTitle("Continue".localized, for: .normal)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
+        topAmountView.applyCornerAndShadow(radius: 16)
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
@@ -395,7 +403,9 @@ class WithdrawViewController: BaseViewController {
             amountInputView.amountTextView.text = "0"
 //            withdrawToView.textField.text = ""
 //            withdrawToView.textField.sendActions(for: .valueChanged)
+            withdrawToView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
             withdrawToView.textView.text = ""
+            changeWithdrawInputViewHeight(constant: 46.0)
         }
     }
 }

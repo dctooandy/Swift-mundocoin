@@ -54,7 +54,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var withdrawToView: UIView!
     @IBOutlet weak var txidView: UIView!
 
-    var contentView: UIView!
+    @IBOutlet weak var middleWhiteView: UIView!
     var withdrawToInputView : InputStyleView!
     var txidInputView : InputStyleView!
     // MARK: -
@@ -223,6 +223,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 {
                     feeView.isHidden = true
                 }
+                middleWhiteView.isHidden = true
                 withdrawToInputView.isHidden = true
                 withdrawToHeight.constant = 0
             }else
@@ -232,7 +233,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                     TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
                 withdrawToInputView.isHidden = false
-                withdrawToHeight.constant = 100
+                withdrawToHeight.constant = 82
+                TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
             }
         }
     }

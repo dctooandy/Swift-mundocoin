@@ -88,7 +88,7 @@ extension UIView {
     }
     
     func applyShadow(size:CGSize = CGSize(width: 0, height: 5), radius:CGFloat = 5) {
-        layer.masksToBounds = true
+        layer.masksToBounds = false
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = size
         layer.shadowRadius = radius

@@ -53,6 +53,7 @@ class AmountInputView: UIView ,NibOwnerLoadable{
     {
         currencyLabel.text = currency
         amountTextView.text = "0"
+        amountTextView.tintColor = .clear
     }
     func bindUI()
     {
