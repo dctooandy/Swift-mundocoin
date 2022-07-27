@@ -174,20 +174,22 @@ class BoardViewController: BaseViewController {
     }
     func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto())
     {
-        if let data = self.currentFilterDto
-        {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {[self] in
             LoadingViewController.show()
-            viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: showMode.typeValue, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
-            isFilterAndChangeVCAction = false
-        }
-        else
-        {
-            if isFilterAndChangeVCAction == false
+            if let data = self.currentFilterDto
             {
-                LoadingViewController.show()
-                viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats,type: showMode.typeValue, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+                viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: showMode.typeValue, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+                isFilterAndChangeVCAction = false
             }
-            isFilterAndChangeVCAction = false
+            else
+            {
+                if isFilterAndChangeVCAction == false
+                {
+                    //                LoadingViewController.show()
+                    viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats,type: showMode.typeValue, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+                }
+                isFilterAndChangeVCAction = false
+            }
         }
     }
     func clearAllVCDataSource()

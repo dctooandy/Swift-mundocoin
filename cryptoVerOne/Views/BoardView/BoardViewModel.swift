@@ -19,6 +19,7 @@ class BoardViewModel: BaseViewModel {
     
     func fetchWalletTransactions(currency:String = "" , stats : String = "",type : String = "",beginDate:TimeInterval = 0 , endDate:TimeInterval = 0 , pageable :PagePostDto = PagePostDto())
     {
+//        LoadingViewController.show()
         Beans.walletServer.walletTransactions(currency: currency, stats: stats,type: type, beginDate: beginDate, endDate: endDate, pageable: pageable).subscribe { [self](walletDto) in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
