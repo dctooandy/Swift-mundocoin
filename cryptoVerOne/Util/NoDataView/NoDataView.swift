@@ -62,9 +62,16 @@ class NoDataView: UIView {
 //            let s = sizeFrom(scale: 0.44)
 //            make.size.equalTo(s)
             make.centerX.equalToSuperview()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            make.top.equalToSuperview().offset(50)
+            make.width.equalTo(130)
+            make.height.equalTo(126)
+
+#else
             make.centerY.equalToSuperview().offset(-100)
             make.width.equalTo(200)
             make.height.equalTo(133)
+#endif
         }
         
         titleLabel.snp.makeConstraints { (make) in
