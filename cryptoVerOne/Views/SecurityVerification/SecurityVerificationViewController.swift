@@ -28,6 +28,12 @@ class SecurityVerificationViewController: BaseViewController {
     }
     // MARK: -
     // MARK:UI 設定
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     var twoFAVerifyView = TwoFAVerifyView.loadNib()
     var onlyEmailVerifyViewController = TwoFAVerifyViewController()
     var onlyTwoFAVerifyViewController = TwoFAVerifyViewController()
@@ -37,6 +43,7 @@ class SecurityVerificationViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         title = "Security Verification"
     }
     override func viewWillAppear(_ animated: Bool) {

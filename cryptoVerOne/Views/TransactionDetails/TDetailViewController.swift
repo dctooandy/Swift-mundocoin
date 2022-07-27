@@ -47,7 +47,8 @@ class TDetailViewController: BaseViewController {
     @IBOutlet weak var checkButton: CornerradiusButton!
     @IBOutlet weak var tryButton: CornerradiusButton!
     lazy var mdBackBtn:TopBackButton = {
-        let btn = TopBackButton()
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
         btn.addTarget(self, action:#selector(popToRootVC), for:.touchUpInside)
         return btn
     }()
@@ -69,6 +70,7 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: mdBackBtn)
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {
