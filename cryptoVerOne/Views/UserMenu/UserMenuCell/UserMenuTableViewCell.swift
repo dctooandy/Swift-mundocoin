@@ -82,7 +82,7 @@ enum cellData {
             let name = KeychainManager.share.getLastAccount()?.account
             return name
         case .currency:
-            return "USDT"
+            return "USD"
         case .security:
             return ""
         case .pushNotifications:
@@ -98,12 +98,13 @@ enum cellData {
         case .termPolicies:
             return ""
         case .about:
-            guard let versionString = Bundle.main.releaseVersionNumber else { return "version 1.2.3"}
-            guard let buildString = Bundle.main.buildVersionNumber else { return "1"}
+            guard let versionString = Bundle.main.releaseVersionNumber else { return "M 1.2.3"}
+//            guard let buildString = Bundle.main.buildVersionNumber else { return "1"}
 #if Mundo_PRO
-            return "version \(versionString)"
+            return "M \(versionString)"
 #else
-            return "\(KeychainManager.share.getDomainMode().rawValue) version \(versionString) b-\(buildString)"
+            return "M \(versionString)"
+//            return "\(KeychainManager.share.getDomainMode().rawValue) M \(versionString)"
 #endif
         case .logout:
             return ""
