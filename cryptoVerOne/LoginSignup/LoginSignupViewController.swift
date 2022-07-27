@@ -98,7 +98,8 @@ class LoginSignupViewController: BaseViewController {
         let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
         if didAskBioLogin == true , willShowAgainFromVerifyVC == false
         {
-            bioVerifyCheck()
+            // 暫時 關掉BioView FaceID
+//            bioVerifyCheck()
         }
         willShowAgainFromVerifyVC = false
 //        VideoManager.share.play()
@@ -564,9 +565,13 @@ extension LoginSignupViewController {
         }
         let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
         let showBioView = !didAskBioLogin
+        // 暫時 關掉BioView FaceID
         handleLoginSuccess(showLoadingView: false,
-                           showBioView: showBioView,
+                           showBioView: false,
                            route: .wallet)
+//        handleLoginSuccess(showLoadingView: false,
+//                           showBioView: showBioView,
+//                           route: .wallet)
     }
     
     func postPushDevice() {

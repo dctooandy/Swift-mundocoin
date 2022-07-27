@@ -48,7 +48,8 @@ class AuditLoginViewController: BaseViewController {
         let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
         if didAskBioLogin == true ,isPopBySubVC == false
         {
-            bioVerifyCheck()
+            // 暫時 關掉BioView FaceID
+//            bioVerifyCheck()
         }
         isPopBySubVC = false
         if KeychainManager.share.getAuditRememberMeStatus() == true
@@ -242,7 +243,9 @@ class AuditLoginViewController: BaseViewController {
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)
                     KeychainManager.share.setToken(data.token)
                     let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
-                    showAuditBioConfirmView(didShow: didAskBioLogin)
+                    // 暫時 關掉BioView FaceID
+                    showAuditBioConfirmView(didShow: true)
+//                    showAuditBioConfirmView(didShow: didAskBioLogin)
                 }
             }.disposed(by: dpg)
     }
