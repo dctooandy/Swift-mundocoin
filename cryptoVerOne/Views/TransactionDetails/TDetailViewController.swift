@@ -110,9 +110,14 @@ class TDetailViewController: BaseViewController {
             self.navigationController?.viewControllers = [WalletViewController.share]
             WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
         }.disposed(by: dpg)
-        tryButton.rx.tap.subscribeSuccess { (_) in
+        tryButton.rx.tap.subscribeSuccess { [self] (_) in
             Log.i("回到首頁")
-            self.navigationController?.popToRootViewController(animated: true)
+            if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
+            {
+                WithdrawViewController.share.setDataFromTryAgain(amount:amountValue , address: addressValue)
+            }
+            self.navigationController?.popToViewController(WithdrawViewController.share , animated: true)
+//            self.navigationController?.popToRootViewController(animated: true)
         }.disposed(by: dpg)
         dataListView.rxAddAddressClick().subscribeSuccess { [self] addressString in
             Log.i("增加錢包地址")

@@ -19,7 +19,7 @@ class WalletViewController: BaseViewController {
     fileprivate let viewModel = WalletViewModel()
     static let share: WalletViewController = WalletViewController.loadNib()
     let depositVC = DepositViewController.loadNib()
-    let withdrawVC = WithdrawViewController.loadNib()
+    let withdrawVC = WithdrawViewController.share
     let twoFAVC = SecurityVerificationViewController.loadNib()
     fileprivate let pageVC = WalletPageViewController()
     let userVC = UserMenuViewController.loadNib()

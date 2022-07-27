@@ -12,6 +12,7 @@ import DropDown
 
 class WithdrawViewController: BaseViewController {
     // MARK:業務設定
+    static let share: WithdrawViewController = WithdrawViewController.loadNib()
     private let onClick = PublishSubject<Any>()
     private var dpg = DisposeBag()
     private var sacnerDpg = DisposeBag()
@@ -82,6 +83,11 @@ class WithdrawViewController: BaseViewController {
         }
         isScanVCByAVCapture = false
         amountInputView.amountTextView.becomeFirstResponder()
+        if withdrawToView.textView.text.isEmpty == true
+        {
+            withdrawToView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
+        }
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -407,6 +413,13 @@ class WithdrawViewController: BaseViewController {
             withdrawToView.textView.text = ""
             changeWithdrawInputViewHeight(constant: 46.0)
         }
+    }
+    func setDataFromTryAgain(amount:String , address:String)
+    {
+        amountInputView.amountTextView.text = amount
+        withdrawToView.textView.text = address
+        changeWithdrawInputViewHeight(constant: 72.0)
+        withdrawToView.textField.placeholder = ""
     }
 }
 // MARK: -
