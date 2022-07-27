@@ -52,6 +52,12 @@ class TDetailViewController: BaseViewController {
         btn.addTarget(self, action:#selector(popToRootVC), for:.touchUpInside)
         return btn
     }()
+    lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     static func instance(titleString : String ,mode: DetailHiddenMode , dataDto: DetailDto) -> TDetailViewController {
@@ -70,7 +76,7 @@ class TDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: mdBackBtn)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {

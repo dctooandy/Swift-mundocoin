@@ -84,7 +84,7 @@ class AccountViewController: BaseViewController {
         detailView.layer.shadowOffset = .zero
         detailView.layer.shadowOpacity = 0.2
         var version = ""
-//        var build = ""
+        var build = ""
         if let versionString = Bundle.main.releaseVersionNumber
         {
             version = versionString
@@ -93,15 +93,15 @@ class AccountViewController: BaseViewController {
         {
             version = "version 1.2.3"
         }
-//        if let buildString = Bundle.main.buildVersionNumber
-//        {
-//            build = buildString
-//        }
-//        else
-//        {
-//            build = "1"
-//        }
-        let appVersionString = "A \(version)"
+        if let buildString = Bundle.main.buildVersionNumber
+        {
+            build = buildString
+        }
+        else
+        {
+            build = "1"
+        }
+        let appVersionString = "A \(version).\(build)"
         appVersionLabel.text = appVersionString
         emailLabel.text = KeychainManager.share.getLastAccount()?.account
         detailView.applyCornerAndShadow(radius: 12)

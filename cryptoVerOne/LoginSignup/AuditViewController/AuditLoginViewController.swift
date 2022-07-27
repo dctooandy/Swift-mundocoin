@@ -343,8 +343,8 @@ class AuditLoginViewController: BaseViewController {
         #elseif Approval_PRO
         #else
         let versionString = Bundle.main.releaseVersionNumber ?? ""
-//        let buildString = Bundle.main.buildVersionNumber ?? ""
-        let version = "A \(versionString)"
+        let buildString = Bundle.main.buildVersionNumber ?? ""
+        let version = "A \(versionString).\(buildString)"
         var envirment = ""
         if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
             switch KeychainManager.share.getDomainMode()
