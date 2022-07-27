@@ -104,6 +104,7 @@ class AccountViewController: BaseViewController {
         let appVersionString = "version \(version)-\(build)"
         appVersionLabel.text = appVersionString
         emailLabel.text = KeychainManager.share.getLastAccount()?.account
+        detailView.applyCornerAndShadow(radius: 12)
     }
   
     @objc func logoutAction()

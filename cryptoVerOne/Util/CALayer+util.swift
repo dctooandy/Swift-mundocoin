@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 extension CALayer {
     func addShadow() {
-        self.shadowOffset = .zero
-        self.shadowOpacity = 0.2
-        self.shadowRadius = 16
+        self.shadowOffset = .zero // 陰影方向
+        self.shadowOpacity = 1 // 陰影不透明度
+        self.shadowRadius = 1// 陰影厚度
         self.shadowColor = Themes.grayE0E5F2.cgColor
         self.masksToBounds = false
         if cornerRadius != 0 {

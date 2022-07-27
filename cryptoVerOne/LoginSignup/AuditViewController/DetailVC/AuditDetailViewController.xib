@@ -22,6 +22,10 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1P9-Md-uTh" userLabel="ContentView">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="978"/>
                                 <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOC-tf-6DI">
+                                        <rect key="frame" x="20" y="20" width="374" height="717"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="PbN-UN-5Dp">
                                         <rect key="frame" x="20" y="20" width="374" height="717"/>
                                         <subviews>
@@ -333,6 +337,12 @@
                                             <constraint firstItem="DGm-H3-zeU" firstAttribute="top" secondItem="PbN-UN-5Dp" secondAttribute="top" id="qSU-G1-Tpg"/>
                                             <constraint firstAttribute="trailing" secondItem="BF2-FT-0VI" secondAttribute="trailing" id="vMQ-TP-XZG"/>
                                         </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="12"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oUu-e7-eX0">
                                         <rect key="frame" x="20" y="767" width="374" height="50"/>
@@ -379,9 +389,13 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="oUu-e7-eX0" firstAttribute="top" secondItem="PbN-UN-5Dp" secondAttribute="bottom" constant="30" id="6f2-zZ-q6j"/>
+                                    <constraint firstItem="yOC-tf-6DI" firstAttribute="trailing" secondItem="PbN-UN-5Dp" secondAttribute="trailing" id="7gD-Jp-HJp"/>
                                     <constraint firstItem="oUu-e7-eX0" firstAttribute="leading" secondItem="PbN-UN-5Dp" secondAttribute="leading" id="A8f-rz-HsH"/>
+                                    <constraint firstItem="yOC-tf-6DI" firstAttribute="top" secondItem="PbN-UN-5Dp" secondAttribute="top" id="JSJ-qg-14o"/>
+                                    <constraint firstItem="yOC-tf-6DI" firstAttribute="bottom" secondItem="PbN-UN-5Dp" secondAttribute="bottom" id="KKe-n0-mCH"/>
                                     <constraint firstAttribute="trailing" secondItem="PbN-UN-5Dp" secondAttribute="trailing" constant="20" id="XcG-gM-UAS"/>
                                     <constraint firstItem="PbN-UN-5Dp" firstAttribute="top" secondItem="1P9-Md-uTh" secondAttribute="top" constant="20" id="Xxp-dv-gjF"/>
+                                    <constraint firstItem="yOC-tf-6DI" firstAttribute="leading" secondItem="PbN-UN-5Dp" secondAttribute="leading" id="rKt-ZT-GHj"/>
                                     <constraint firstItem="oUu-e7-eX0" firstAttribute="trailing" secondItem="PbN-UN-5Dp" secondAttribute="trailing" id="uhg-9k-mtA"/>
                                     <constraint firstItem="PbN-UN-5Dp" firstAttribute="leading" secondItem="1P9-Md-uTh" secondAttribute="leading" constant="20" id="vGH-Mg-7bc"/>
                                 </constraints>
@@ -423,6 +437,7 @@
                 <outlet property="normalView" destination="uhr-7w-xmF" id="FkY-EV-j60"/>
                 <outlet property="rejectBtn" destination="ulf-Fi-I8B" id="sfe-h4-sGe"/>
                 <outlet property="scrollView" destination="M5r-vx-sCS" id="heY-ue-1N3"/>
+                <outlet property="stackBackView" destination="yOC-tf-6DI" id="Spf-Ph-j99"/>
                 <outlet property="stackView" destination="PbN-UN-5Dp" id="Qrv-Ff-a9X"/>
                 <outlet property="statusLabel" destination="yUO-pB-BwS" id="qM9-cJ-lzj"/>
                 <outlet property="txidLabel" destination="sXh-dc-l3f" id="uZl-NR-Fv4"/>

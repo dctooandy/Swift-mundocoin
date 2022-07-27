@@ -52,7 +52,7 @@ class AuditDetailViewController: BaseViewController {
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var rejectBtn: UIButton!
     @IBOutlet weak var acceptBtn: UIButton!
-    
+    @IBOutlet weak var stackBackView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -88,6 +88,7 @@ class AuditDetailViewController: BaseViewController {
     }
     func setupUI()
     {
+        stackBackView.applyCornerAndShadow(radius: 16)
         stackView.layer.cornerRadius = 12
         stackView.layer.masksToBounds = true
         acceptBtn.layer.cornerRadius = 8
