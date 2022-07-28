@@ -479,14 +479,16 @@ class InputStyleView: UIView {
             verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             verifyResentLabel.textColor = Themes.green19BBB1
+            verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
             verifyResentLabel.textColor = Themes.purple6149F6
+            verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
 #endif
             verifyResentLabel.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
                 make.centerY.equalTo(textField)
             }
-            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
         }
         else if inputViewMode == .withdrawToAddress || inputViewMode == .address
         {
@@ -629,14 +631,16 @@ class InputStyleView: UIView {
                 verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                 verifyResentLabel.textColor = Themes.green19BBB1
+                verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
                 verifyResentLabel.textColor = Themes.purple6149F6
+                verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
 #endif
                 verifyResentLabel.snp.makeConstraints { (make) in
-                    make.right.equalToSuperview().offset(-10)
+                    make.right.equalToSuperview().offset(-17)
                     make.centerY.equalTo(textField)
                 }
-                rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+                rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
             default:
                 rightLabelWidth = 10
             }
@@ -662,7 +666,7 @@ class InputStyleView: UIView {
         cancelRightButton.setTitle(nil, for: .normal)
         cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
         cancelRightButton.snp.remakeConstraints { (make) in
-            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
+            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:-12)
             make.centerY.equalTo(textField)
             make.height.equalTo(24)
             make.width.equalTo(cancelOffetWidth)
@@ -849,8 +853,10 @@ class InputStyleView: UIView {
         verifyResentLabel.text = "Send".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         verifyResentLabel.textColor = Themes.green19BBB1
+        verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
         verifyResentLabel.textColor = Themes.purple6149F6
+        verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
 #endif
         resetDisplayBtnUI()
         timer?.invalidate()

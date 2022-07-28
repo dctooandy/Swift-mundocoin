@@ -108,7 +108,7 @@ class TwoFAVerifyView: UIView {
         }
         lostTwoFALabel.isHidden = (twoFAViewMode == .both ? false :true)
         submitButton.snp.remakeConstraints { (make) in
-            make.top.equalTo(lostTwoFALabel.snp.bottom).offset(40)
+            make.top.equalTo(lostTwoFALabel.snp.bottom).offset(10)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
@@ -118,8 +118,8 @@ class TwoFAVerifyView: UIView {
     {
         emailInputView.snp.remakeConstraints { (make) in
             make.top.equalTo(withTop)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(28)
+            make.trailing.equalToSuperview().offset(-28)
             make.height.equalTo(Themes.inputViewDefaultHeight)
         }
     }
@@ -127,8 +127,8 @@ class TwoFAVerifyView: UIView {
     {
         twoFAInputView.snp.remakeConstraints { (make) in
             make.top.equalTo(withTop)
-            make.leading.equalToSuperview().offset(20)
-            make.trailing.equalToSuperview().offset(-20)
+            make.leading.equalToSuperview().offset(28)
+            make.trailing.equalToSuperview().offset(-28)
             make.height.equalTo(Themes.inputViewDefaultHeight)
         }
     }
