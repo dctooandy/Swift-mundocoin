@@ -485,10 +485,10 @@ class InputStyleView: UIView {
             verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
 #endif
             verifyResentLabel.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10)
+                make.right.equalToSuperview().offset(-17)
                 make.centerY.equalTo(textField)
             }
-            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
         }
         else if inputViewMode == .withdrawToAddress || inputViewMode == .address
         {
@@ -666,7 +666,7 @@ class InputStyleView: UIView {
         cancelRightButton.setTitle(nil, for: .normal)
         cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
         cancelRightButton.snp.remakeConstraints { (make) in
-            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:-12)
+            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
             make.centerY.equalTo(textField)
             make.height.equalTo(24)
             make.width.equalTo(cancelOffetWidth)
@@ -762,9 +762,10 @@ class InputStyleView: UIView {
         tvHeightConstraint.constant = 46.0
         withdrawInputViewFullHeight = false
         textView.text = ""
-        textView.resignFirstResponder()
         textField.text = ""
-        textField.resignFirstResponder()
+        // 依照要求 點擊 X 之後還要有鍵盤
+        //        textView.resignFirstResponder()
+        //        textField.resignFirstResponder()
         textField.setPlaceholder(inputViewMode.textPlacehloder(), with: Themes.grayA3AED0)
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
@@ -798,7 +799,7 @@ class InputStyleView: UIView {
     func resetDisplayBtnUI()
     {
         var rightLabelWidth : CGFloat = 0.0
-        rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+        rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
         displayRightButton.snp.updateConstraints { (make) in
             make.right.equalToSuperview().offset(-10 - rightLabelWidth)
         }

@@ -241,9 +241,18 @@ class AccountInputView: UIView {
     }
     func resetTFMaskView(account:Bool = false ,password:Bool = false ,regis:Bool = false )
     {
-        accountInputView.tfMaskView.changeBorderWith(isChoose:account)
-        passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
-        registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+        if accountInputView.invalidLabel.textColor != .red
+        {
+            accountInputView.tfMaskView.changeBorderWith(isChoose:account)
+        }
+        if passwordInputView.invalidLabel.textColor != .red
+        {
+            passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
+        }
+        if registrationInputView.invalidLabel.textColor != .red
+        {
+            registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+        }
     }
     func resetInputView(view : InputStyleView)
     {

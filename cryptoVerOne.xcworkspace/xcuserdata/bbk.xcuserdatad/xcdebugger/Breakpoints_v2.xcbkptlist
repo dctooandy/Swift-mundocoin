@@ -30,8 +30,8 @@
             filePath = "cryptoVerOne/Views/AccountInputView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "261"
-            endingLineNumber = "261"
+            startingLineNumber = "270"
+            endingLineNumber = "270"
             landmarkName = "cleanTextField()"
             landmarkType = "7">
          </BreakpointContent>
