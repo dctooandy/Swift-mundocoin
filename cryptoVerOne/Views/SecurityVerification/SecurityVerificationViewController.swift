@@ -272,7 +272,8 @@ class SecurityPagingTitleCell: PagingTitleCell {
         titleLabel.layer.borderColor = UIColor.white.cgColor
         titleLabel.layer.borderWidth = 3
         titleLabel.layer.cornerRadius = layoutAttributes.frame.height / 2
-        layer.cornerRadius = layoutAttributes.frame.height / 2
+        self.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
+//        layer.cornerRadius = layoutAttributes.frame.height / 2
 //        if self.isSelected == true
 //        {
 //            titleLabel.backgroundColor = Themes.gray2B3674

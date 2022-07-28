@@ -92,6 +92,14 @@ extension AmountInputView:UITextFieldDelegate
             return false
         }
         /// 4.检查小数点后位数限制 (小数点后最多输入2位)
+        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location == 8 {
+            if text.toDouble() == 0 , string.toDouble() == 0
+            {
+                amountTextView.text = "0.00000001"
+                return false
+            }
+            return true
+        }
         if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location > 8 {
             return false
         }
