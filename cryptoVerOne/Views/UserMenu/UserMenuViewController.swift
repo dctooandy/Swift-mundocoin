@@ -76,6 +76,7 @@ class UserMenuViewController: BaseViewController {
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: UserMenuTableViewCell.self)
         tableView.registerXibCell(type: UserMenuGrayLineCell.self)
+        tableView.registerXibCell(type: UserMenuWhiteLineCell.self)
         tableView.separatorStyle = .none
         
         let loginDto = KeychainManager.share.getLastAccount()
@@ -154,17 +155,22 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // MC524 暫時隱藏
 //        return (section == 0 ? 4 : 6)
-        return (section == 0 ? 2 : 5)
+        return (section == 0 ? 2 : 6)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MC524 暫時隱藏
 //        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
-        if indexPath.section == 1 && (indexPath.item == 1 || indexPath.item == 3)
+        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
         {
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
-        }else
+        }else if indexPath.section == 1 && indexPath.item == 1
+        {
+            let lineCell = tableView.dequeueCell(type: UserMenuWhiteLineCell.self, indexPath: indexPath)
+            return lineCell
+        }
+        else
         {
             let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
             switch indexPath.section {
@@ -197,9 +203,9 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                    cell.cellData = .about
 //                case 7:
 //                    cell.cellData = .logout
-                case 2:// MC524 暫時隱藏 原本3
+                case 3:// MC524 暫時隱藏 原本3
                     cell.cellData = .about
-                case 4:// MC524 暫時隱藏 原本5
+                case 5:// MC524 暫時隱藏 原本5
                     cell.cellData = .logout
                 default:
                     break
@@ -259,11 +265,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                Log.i("logout")
 //                showLogotConfirmAlert()
 //                //logout
-            case 2:// MC524 暫時隱藏 原本3
+            case 3:// MC524 暫時隱藏 原本3
                 Log.i("about")
                 socketEmit()
                 //about
-            case 4:// MC524 暫時隱藏 原本5
+            case 5:// MC524 暫時隱藏 原本5
                 Log.i("logout")
                 showLogotConfirmAlert()
                 //logout
@@ -283,26 +289,29 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 // MC524 暫時隱藏
 //        if indexPath.section == 1 && indexPath.row == 5
-        if indexPath.section == 1 && indexPath.row == 4
+        if indexPath.section == 1 && indexPath.row == 5
         {
             return 80
 // MC524 暫時隱藏
 //        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
-        }else if indexPath.section == 1 && (indexPath.row == 1 || indexPath.row == 3)
+        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
         {
             return 1
-        }else if indexPath.section == 1 && indexPath.row == 2
+        }else if indexPath.section == 1 && indexPath.row == 1
+        {
+            return 20
+        }else if indexPath.section == 1 && indexPath.row == 3
         {
             return 92
         }else
         {
-            return 56            
+            return 52
         }
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         let header = UIView()
-        let titleLable = UILabel(frame: CGRect(x: 32, y: 20, width: 300, height: 24))
+        let titleLable = UILabel(frame: CGRect(x: 25, y: 20, width: 300, height: 23))
         titleLable.text = section == 0 ?  "Account" : "App Settings"
         titleLable.font = Fonts.PlusJakartaSansBold(18)
         titleLable.textColor = Themes.gray1B2559
@@ -311,7 +320,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return header
     }
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 64
+        return 54
     }
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude

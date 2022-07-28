@@ -970,6 +970,18 @@
 		0998BF112861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
 		0998BF122861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
 		0998BF132861959D000A4B5B /* SocketMessageDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */; };
+		0998C008289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C009289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C00A289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C00B289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C00C289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C00D289212590003567A /* UserMenuWhiteLineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0998C007289212590003567A /* UserMenuWhiteLineCell.swift */; };
+		0998C00F289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
+		0998C010289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
+		0998C011289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
+		0998C012289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
+		0998C013289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
+		0998C014289212910003567A /* UserMenuWhiteLineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */; };
 		0999D1032872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
 		0999D1042872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
 		0999D1052872B992003C5260 /* AuthorizeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0999D1022872B992003C5260 /* AuthorizeService.swift */; };
@@ -1839,6 +1851,8 @@
 		09957497287847F5005D44E2 /* AuditTriggerAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditTriggerAlertView.xib; sourceTree = "<group>"; };
 		0998BF052860207D000A4B5B /* AuditDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditDetailViewModel.swift; sourceTree = "<group>"; };
 		0998BF0D2861959D000A4B5B /* SocketMessageDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketMessageDto.swift; sourceTree = "<group>"; };
+		0998C007289212590003567A /* UserMenuWhiteLineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserMenuWhiteLineCell.swift; sourceTree = "<group>"; };
+		0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserMenuWhiteLineCell.xib; sourceTree = "<group>"; };
 		0999D1022872B992003C5260 /* AuthorizeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizeService.swift; sourceTree = "<group>"; };
 		0999D10A287531D4003C5260 /* CheckTokenExpiredService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckTokenExpiredService.swift; sourceTree = "<group>"; };
 		099A241628882C0A00A36375 /* InputViewStyleThemes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewStyleThemes.swift; sourceTree = "<group>"; };
@@ -2644,6 +2658,8 @@
 				A1973A80282A9600009932D8 /* UserMenuTableViewCell.xib */,
 				099B5620283B93AA00F13630 /* UserMenuGrayLineCell.swift */,
 				099B5622283B93FB00F13630 /* UserMenuGrayLineCell.xib */,
+				0998C007289212590003567A /* UserMenuWhiteLineCell.swift */,
+				0998C00E289212910003567A /* UserMenuWhiteLineCell.xib */,
 			);
 			path = UserMenuCell;
 			sourceTree = "<group>";
@@ -3324,6 +3340,7 @@
 				09905B122851A02B00BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905B132851A02B00BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905B142851A02B00BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				0998C013289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905B152851A02B00BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
@@ -3413,6 +3430,7 @@
 				09905C042851A08500BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905C052851A08500BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905C062851A08500BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				0998C014289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905C072851A08500BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
@@ -3502,6 +3520,7 @@
 				09905CF62851A09600BAEE78 /* UserMenuTableViewCell.xib in Resources */,
 				09905CF72851A09600BAEE78 /* IDVerificationViewController.xib in Resources */,
 				09905CF82851A09600BAEE78 /* UserMenuGrayLineCell.xib in Resources */,
+				0998C012289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905CF92851A09600BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
@@ -3591,6 +3610,7 @@
 				09CAF4E9283C77ED00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF4EA283C77ED00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF4EB283C77ED00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				0998C010289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
@@ -3680,6 +3700,7 @@
 				09CAF5AA283C7BBE00D7B19B /* UserMenuTableViewCell.xib in Resources */,
 				09CAF5AB283C7BBE00D7B19B /* IDVerificationViewController.xib in Resources */,
 				09CAF5AC283C7BBE00D7B19B /* UserMenuGrayLineCell.xib in Resources */,
+				0998C011289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
@@ -3769,6 +3790,7 @@
 				A1019DDC2824C5FF00E6929E /* IDVerificationViewController.xib in Resources */,
 				099B5623283B93FB00F13630 /* UserMenuGrayLineCell.xib in Resources */,
 				A19C7143282257AB000AFC3F /* mucoin_sucess.json in Resources */,
+				0998C00F289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
@@ -4193,6 +4215,7 @@
 				09905ABA2851A02B00BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905ABB2851A02B00BAEE78 /* MainViewController.swift in Sources */,
 				09905ABC2851A02B00BAEE78 /* DefaultDto.swift in Sources */,
+				0998C00C289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31E2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				09905ABD2851A02B00BAEE78 /* LoginViewController.swift in Sources */,
 				09905ABE2851A02B00BAEE78 /* ResponseDto.swift in Sources */,
@@ -4411,6 +4434,7 @@
 				09905BAC2851A08500BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905BAD2851A08500BAEE78 /* MainViewController.swift in Sources */,
 				09905BAE2851A08500BAEE78 /* DefaultDto.swift in Sources */,
+				0998C00D289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31F2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				09905BAF2851A08500BAEE78 /* LoginViewController.swift in Sources */,
 				09905BB02851A08500BAEE78 /* ResponseDto.swift in Sources */,
@@ -4629,6 +4653,7 @@
 				09905C9E2851A09600BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905C9F2851A09600BAEE78 /* MainViewController.swift in Sources */,
 				09905CA02851A09600BAEE78 /* DefaultDto.swift in Sources */,
+				0998C00B289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31D2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				09905CA12851A09600BAEE78 /* LoginViewController.swift in Sources */,
 				09905CA22851A09600BAEE78 /* ResponseDto.swift in Sources */,
@@ -4847,6 +4872,7 @@
 				09947BA7284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF4A3283C77ED00D7B19B /* MainViewController.swift in Sources */,
 				09CAF5C2283C85AE00D7B19B /* DefaultDto.swift in Sources */,
+				0998C009289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31B2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				09CAF4A4283C77ED00D7B19B /* LoginViewController.swift in Sources */,
 				09CAF4A5283C77ED00D7B19B /* ResponseDto.swift in Sources */,
@@ -5065,6 +5091,7 @@
 				09947BA8284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF564283C7BBE00D7B19B /* MainViewController.swift in Sources */,
 				09CAF5C3283C85AE00D7B19B /* DefaultDto.swift in Sources */,
+				0998C00A289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31C2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				09CAF565283C7BBE00D7B19B /* LoginViewController.swift in Sources */,
 				09CAF566283C7BBE00D7B19B /* ResponseDto.swift in Sources */,
@@ -5283,6 +5310,7 @@
 				09947BA6284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				A19C706628223584000AFC3F /* MainViewController.swift in Sources */,
 				09CAF5C1283C85AE00D7B19B /* DefaultDto.swift in Sources */,
+				0998C008289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31A2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
 				A19C71B32822636E000AFC3F /* LoginViewController.swift in Sources */,
 				A19C718B28225B25000AFC3F /* ResponseDto.swift in Sources */,
