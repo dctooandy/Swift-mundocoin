@@ -14,6 +14,9 @@ class UCPasswordViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var oldHeightConstraint : NSLayoutConstraint!
+    var newHeightConstraint : NSLayoutConstraint!
+    var confirmHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     let twoFAVC = SecurityVerificationViewController.loadNib()
@@ -39,6 +42,7 @@ class UCPasswordViewController: BaseViewController {
         bindPwdButton()
         bindAction()
         bindBorderColor()
+        bindStyle()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -54,6 +58,12 @@ class UCPasswordViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func bindStyle()
+    {
+        InputViewStyleThemes.oldInputHeightType.bind(to: oldHeightConstraint.rx.constant).disposed(by: dpg)
+        InputViewStyleThemes.newInputHeightType.bind(to: newHeightConstraint.rx.constant).disposed(by: dpg)
+        InputViewStyleThemes.confirmInputHeightType.bind(to: confirmHeightConstraint.rx.constant).disposed(by: dpg)
+    }
     func clearTextField()
     {
         oldInputView.textField.text = ""
@@ -76,29 +86,39 @@ class UCPasswordViewController: BaseViewController {
         view.addSubview(confirmInputView)
         view.addSubview(submitButton)
         
+        oldHeightConstraint = NSLayoutConstraint(item: oldInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
+        newHeightConstraint = NSLayoutConstraint(item: newInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
+        confirmHeightConstraint = NSLayoutConstraint(item: confirmInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
+        
         oldInputView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(110)
+            make.top.equalToSuperview().offset(115)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewPasswordHeight)
+//            make.height.equalTo(Themes.inputViewPasswordHeight)
+            make.height.equalTo(oldHeightConstraint.constant)
         }
+        oldInputView.addConstraint(oldHeightConstraint)
         newInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(oldInputView.snp.bottom)
+            make.top.equalTo(oldInputView.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewPasswordHeight)
+//            make.height.equalTo(Themes.inputViewPasswordHeight)
+            make.height.equalTo(newHeightConstraint.constant)
         }
+        newInputView.addConstraint(newHeightConstraint)
         confirmInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(newInputView.snp.bottom)
+            make.top.equalTo(newInputView.snp.bottom).offset(3)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewPasswordHeight)
+//            make.height.equalTo(Themes.inputViewPasswordHeight)
+            make.height.equalTo(confirmHeightConstraint.constant)
         }
+        confirmInputView.addConstraint(confirmHeightConstraint)
         submitButton.setTitle("Submit".localized, for: .normal)
         submitButton.snp.makeConstraints { (make) in
-            make.top.equalTo(confirmInputView.snp.bottom).offset(20)
+            make.top.equalTo(confirmInputView.snp.bottom).offset(27)
             make.centerX.equalTo(confirmInputView)
-            make.width.equalToSuperview().multipliedBy(0.7)
+            make.width.equalToSuperview().multipliedBy(311.0/415.0)
             make.height.equalTo(50)
         }
         
@@ -116,7 +136,7 @@ class UCPasswordViewController: BaseViewController {
     // MARK:業務方法
     func bindTextfield()
     {
-        let isoldValid = oldInputView.textField.rx.text
+        let isOldValid = oldInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 let resultValue = RegexHelper.match(pattern: .password, input: acc)
@@ -129,7 +149,28 @@ class UCPasswordViewController: BaseViewController {
                 }
                 return resultValue
         }
-        let isnewValid = newInputView.textField.rx.text
+        let isOldHeightType = oldInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                if ((strongSelf.oldInputView.textField.isFirstResponder) == true) {
+                    let patternValue = RegexHelper.Pattern.password
+
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .oldPWInvalidShow : .oldPWInvalidShow)
+                    if resultValue == .oldPWInvalidShow
+                    {
+                        strongSelf.oldInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        strongSelf.oldInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    return .invalidHidden
+                }
+        }
+        isOldHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+        let isNewValid = newInputView.textField.rx.text
             .map { [self]  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 var resultValue = false
@@ -150,7 +191,27 @@ class UCPasswordViewController: BaseViewController {
                 }
                 return resultValue
         }
-        let isconfirmValid = confirmInputView.textField.rx.text
+        let isNewHeightType = newInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                if ((strongSelf.newInputView.textField.isFirstResponder) == true) {
+                    let patternValue = RegexHelper.Pattern.password
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .newPWInvalidShow : .newPWInvalidShow)
+                    if resultValue == .newPWInvalidShow
+                    {
+                        strongSelf.newInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        strongSelf.newInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    return .invalidHidden
+                }
+        }
+        isNewHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+        let isConfirmValid = confirmInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 let resultValue = (acc == self.newInputView.textField.text) &&
@@ -164,11 +225,31 @@ class UCPasswordViewController: BaseViewController {
                 }
                 return resultValue
         }
-        
-        isoldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        isnewValid.skip(1).bind(to: newInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        isconfirmValid.skip(1).bind(to: confirmInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        Observable.combineLatest(isoldValid, isnewValid,isconfirmValid)
+        let isConfirmHeightType = confirmInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                if ((strongSelf.confirmInputView.textField.isFirstResponder) == true) {
+                    let patternValue = RegexHelper.Pattern.password
+
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .confirmPWInvalidShow : .confirmPWInvalidShow)
+                    if resultValue == .confirmPWInvalidShow
+                    {
+                        strongSelf.confirmInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        strongSelf.confirmInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    return .invalidHidden
+                }
+        }
+        isConfirmHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+        isOldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isNewValid.skip(1).bind(to: newInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isConfirmValid.skip(1).bind(to: confirmInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        Observable.combineLatest(isOldValid, isNewValid,isConfirmValid)
             .map { return $0.0 && $0.1 && $0.2 } //reget match result
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: dpg)
