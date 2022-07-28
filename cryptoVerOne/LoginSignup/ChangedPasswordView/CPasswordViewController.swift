@@ -65,8 +65,8 @@ class CPasswordViewController: BaseViewController {
         returnButton.snp.makeConstraints { (make) in
             make.top.equalTo(topLabel.snp.bottom).offset(50)
             make.centerX.equalTo(topLabel)
-            make.width.equalToSuperview().multipliedBy(0.7)
-            make.height.equalToSuperview().multipliedBy(0.065)
+            make.width.equalToSuperview().multipliedBy(311.0/415.0)
+            make.height.equalTo(50)
         }
     }
     func bindButton()

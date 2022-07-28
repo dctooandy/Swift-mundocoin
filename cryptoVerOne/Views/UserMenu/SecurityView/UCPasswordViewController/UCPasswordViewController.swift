@@ -300,6 +300,7 @@ class UCPasswordViewController: BaseViewController {
                     BioVerifyManager.share.applyMemberInBIOList(currentAcc.account)
                 }
                 changedPWVC.backgroundImageViewHidden()
+                changedPWVC.title = "Security Verification"
                 self.navigationController?.pushViewController(changedPWVC, animated: true)
             }.disposed(by: dpg)
         }
