@@ -106,6 +106,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="amountLabel" destination="p2q-4h-D3r" id="xjw-Rq-ULh"/>
+                <outlet property="cellBackView" destination="0Dk-AC-HaX" id="Fen-9l-wh8"/>
                 <outlet property="currencyLabel" destination="nMP-3i-T3a" id="KMJ-tv-geq"/>
                 <outlet property="labelWidthConstraint" destination="4t0-8D-a0e" id="Vsd-Ee-mAO"/>
                 <outlet property="statusLabel" destination="dc6-px-yMG" id="PG5-6y-bUb"/>

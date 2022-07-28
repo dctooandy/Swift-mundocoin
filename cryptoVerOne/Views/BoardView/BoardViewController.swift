@@ -49,6 +49,7 @@ class BoardViewController: BaseViewController {
     fileprivate var viewModel = BoardViewModel()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    var loadingDurarion:CGFloat = 0.0
     var showMode : TransactionShowMode = .deposits{
         didSet{
             self.currentFilterDto = nil
@@ -56,7 +57,13 @@ class BoardViewController: BaseViewController {
             self.clearAllVCDataSource()
             if isFilterAction != true
             {
-                self.goFetchTableViewData()
+                if loadingDurarion > 0
+                {
+                    self.goFetchTableViewData(duration:loadingDurarion)
+                }else
+                {
+                    self.goFetchTableViewData()
+                }
             }
         }
     }
@@ -131,7 +138,7 @@ class BoardViewController: BaseViewController {
 
         pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 123, height: 44)
         // menu text
         pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
@@ -172,10 +179,11 @@ class BoardViewController: BaseViewController {
     {
         
     }
-    func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto())
+    func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto() , duration:CGFloat = 0.0)
     {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {[self] in
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {[self] in
             LoadingViewController.show()
+            loadingDurarion = 0.0
             if let data = self.currentFilterDto
             {
                 viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: showMode.typeValue, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
@@ -218,12 +226,12 @@ class BoardViewController: BaseViewController {
         
         depositsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
             currentPage += 1
-            goFetchTableViewData()
+            goFetchTableViewData(duration:0.0)
         }.disposed(by: dpg)
         
         withdrawalsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
             currentPage += 1
-            goFetchTableViewData()
+            goFetchTableViewData(duration:0.0)
         }.disposed(by: dpg)
     }
     func bindSocketMessage()
@@ -276,7 +284,7 @@ class BoardViewController: BaseViewController {
                 self?.pageViewcontroller?.select(index: 0)
             }
             self?.currentFilterDto = dataDto
-            self?.goFetchTableViewData(filterDto: dataDto)
+            self?.goFetchTableViewData(filterDto: dataDto ,duration: 0.0)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
             filterBottomSheet.start(viewController: self ,height: 508)

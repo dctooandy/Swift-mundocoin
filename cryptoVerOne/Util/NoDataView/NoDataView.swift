@@ -68,14 +68,14 @@ class NoDataView: UIView {
             make.height.equalTo(126)
 
 #else
-            make.centerY.equalToSuperview().offset(-100)
-            make.width.equalTo(200)
-            make.height.equalTo(133)
+            make.top.equalToSuperview().offset(83)
+            make.width.equalTo(130)
+            make.height.equalTo(86.3)
 #endif
         }
         
         titleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(imv.snp.bottom)
+            make.top.equalTo(imv.snp.bottom).offset(16)
             make.left.equalToSuperview().offset(50)
             make.right.equalToSuperview().offset(-50)
             

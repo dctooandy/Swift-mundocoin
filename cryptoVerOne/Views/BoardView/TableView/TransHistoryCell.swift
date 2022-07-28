@@ -23,6 +23,7 @@ class TransHistoryCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var cellBackView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -81,7 +82,7 @@ class TransHistoryCell: UITableViewCell {
     }
     func setupUI()
     {
-        
+        cellBackView.applyCornerAndShadow(radius: 16)
     }
     func bindUI()
     {
