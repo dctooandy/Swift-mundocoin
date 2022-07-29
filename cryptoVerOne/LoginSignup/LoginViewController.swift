@@ -149,6 +149,7 @@ class LoginViewController: BaseViewController {
     func bindLoginBtn() {
         loginButton.rx.tap.subscribeSuccess { [self] _ in
             loginButton.isEnabled = false
+            accountInputView?.resignAllResponder()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             Log.v("帳號不驗證")
             login()
@@ -175,11 +176,11 @@ class LoginViewController: BaseViewController {
                     if status == "400"
                     {
                         accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.acceptInputHeightStyle(.pwInvalidShow)
+                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.pwInvalidShow)
                     }else if status == "404"
                     {
                         accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.acceptInputHeightStyle(.normalInvalidShow)
+                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
                     }else
                     {
                         ErrorHandler.show(error: error)

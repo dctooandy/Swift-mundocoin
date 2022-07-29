@@ -64,8 +64,8 @@ class AccountInputView: UIView {
 //        let isAccountValid = accountTextField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false  }
-                if ((self?.accountInputView.textField.isFirstResponder) != true) {
-                    self?.accountInputView.invalidLabel.isHidden = true
+                if ((strongSelf.accountInputView.textField.isFirstResponder) != true) {
+                    strongSelf.accountInputView.invalidLabel.isHidden = true
                 }
                 var patternValue = RegexHelper.Pattern.phone
                 if strongSelf.inputMode == .phone {
@@ -78,8 +78,8 @@ class AccountInputView: UIView {
         }
         let isAccountHeightType = accountInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
-                guard let strongSelf = self, let acc = str else { return .invalidHidden }
-                if ((self?.accountInputView.textField.isFirstResponder) == true) {
+                guard let strongSelf = self, let acc = str else { return .accountInvalidHidden }
+                if ((strongSelf.accountInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
                     if strongSelf.inputMode == .phone {
                         patternValue = .phone
@@ -87,26 +87,30 @@ class AccountInputView: UIView {
                     {
                         patternValue = .mail
                     }
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .normalInvalidShow : .normalInvalidShow)
-                    if resultValue == .normalInvalidShow
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .accountInvalidHidden : (acc.isEmpty == true ? .accountInvalidShow : .accountInvalidShow)
+                    if resultValue == .accountInvalidShow
                     {
-                        self?.accountInputView.invalidLabel.isHidden = false
+                        strongSelf.accountInputView.invalidLabel.isHidden = false
                     }else
                     {
-                        self?.accountInputView.invalidLabel.isHidden = true
+                        strongSelf.accountInputView.invalidLabel.isHidden = true
                     }
                     return resultValue
                 }else
                 {
-                    return .invalidHidden
+                    if strongSelf.accountInputView.invalidLabel.textColor == .red
+                    {
+                        return .accountInvalidShow
+                    }
+                    return .accountInvalidHidden
                 }
         }
         isAccountHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
         let isPasswordValid = passwordInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let strongSelf = self, let acc = str else { return false }
-                if ((self?.passwordInputView.textField.isFirstResponder) != true) {
-                    self?.passwordInputView.invalidLabel.isHidden = true
+                if ((strongSelf.passwordInputView.textField.isFirstResponder) != true) {
+                    strongSelf.passwordInputView.invalidLabel.isHidden = true
                 }
                 var patternValue = RegexHelper.Pattern.phone
                 if strongSelf.inputMode == .phone {
@@ -119,8 +123,8 @@ class AccountInputView: UIView {
         }
         let isPasswordHeightType = passwordInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
-                guard let strongSelf = self, let acc = str else { return .invalidHidden }
-                if ((self?.passwordInputView.textField.isFirstResponder) == true) {
+                guard let strongSelf = self, let acc = str else { return .pwInvalidHidden }
+                if ((strongSelf.passwordInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
                     if strongSelf.inputMode == .phone {
                         patternValue = .password
@@ -128,18 +132,22 @@ class AccountInputView: UIView {
                     {
                         patternValue = .password
                     }
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .pwInvalidShow : .pwInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .pwInvalidHidden : (acc.isEmpty == true ? .pwInvalidShow : .pwInvalidShow)
                     if resultValue == .pwInvalidShow
                     {
-                        self?.passwordInputView.invalidLabel.isHidden = false
+                        strongSelf.passwordInputView.invalidLabel.isHidden = false
                     }else
                     {
-                        self?.passwordInputView.invalidLabel.isHidden = true
+                        strongSelf.passwordInputView.invalidLabel.isHidden = true
                     }
                     return resultValue
                 }else
                 {
-                    return .invalidHidden
+                    if strongSelf.passwordInputView.invalidLabel.textColor == .red
+                    {
+                        return .pwInvalidShow
+                    }
+                    return .pwInvalidHidden
                 }
         }
         isPasswordHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
@@ -207,18 +215,17 @@ class AccountInputView: UIView {
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             accountInputView.textField.keyboardType = .emailAddress
-            resetInvalidText()
+            resetInvalidText(account:isChoose)
             resetTFMaskView(account:isChoose)
             resetInputView(view: passwordInputView)
 //            accountInputView.textField.sendActions(for: .valueChanged)
-//            InputViewStyleThemes.share.acceptInputHeightStyle(.invalidHidden)
             if isChoose == false
             {
                 passwordInputView.textField.becomeFirstResponder()
             }
         }.disposed(by: dpg)
         passwordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            resetInvalidText()
+            resetInvalidText(password:isChoose)
             resetTFMaskView(password:isChoose)
             resetInputView(view: accountInputView)
 //            passwordInputView.textField.sendActions(for: .valueChanged)
@@ -228,35 +235,49 @@ class AccountInputView: UIView {
             }
         }.disposed(by: dpg)
         registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            resetInvalidText()
+            resetInvalidText(regis:isChoose)
             resetTFMaskView(regis:isChoose)
             registrationInputView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
     }
-    func resetInvalidText()
+    func resetInvalidText(account:Bool = false ,password:Bool = false ,regis:Bool = false )
     {
-        accountInputView.changeInvalidLabelAndMaskBorderColor(with:"")
-        passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
-        registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        if account == true
+        {
+            accountInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+        if password == true
+        {
+            passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+
+        if regis == true
+        {
+            registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
     }
-    func resetTFMaskView(account:Bool = false ,password:Bool = false ,regis:Bool = false )
+    // 重置Border外觀
+    func resetTFMaskView(account:Bool = false ,password:Bool = false ,regis:Bool = false ,force:Bool = false )
     {
-        if accountInputView.invalidLabel.textColor != .red
+        if accountInputView.invalidLabel.textColor != .red || force == true
         {
             accountInputView.tfMaskView.changeBorderWith(isChoose:account)
         }
-        if passwordInputView.invalidLabel.textColor != .red
+        if passwordInputView.invalidLabel.textColor != .red || force == true
         {
             passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
         }
-        if registrationInputView.invalidLabel.textColor != .red
+        if registrationInputView.invalidLabel.textColor != .red || force == true
         {
             registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
         }
     }
     func resetInputView(view : InputStyleView)
     {
-        view.invalidLabel.isHidden = true
+        if view.invalidLabel.textColor != .red
+        {
+            view.invalidLabel.isHidden = true
+        }
     }
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()
@@ -272,6 +293,7 @@ class AccountInputView: UIView {
         accountInputView.invalidLabel.isHidden = true
         passwordInputView.invalidLabel.isHidden = true
         registrationInputView.invalidLabel.isHidden = true
+        resetTFMaskView(force:true)
     }
     
     func setup() {
@@ -347,6 +369,13 @@ class AccountInputView: UIView {
                 registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
             }
         }
+    }
+    func resignAllResponder()
+    {
+        resetTFMaskView()
+        accountInputView.textField.resignFirstResponder()
+        passwordInputView.textField.resignFirstResponder()
+        registrationInputView.textField.resignFirstResponder()
     }
 //    func changeInputMode(mode: LoginMode) {
 //        inputMode = mode

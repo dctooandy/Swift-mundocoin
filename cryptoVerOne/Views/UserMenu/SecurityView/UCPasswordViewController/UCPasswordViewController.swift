@@ -151,11 +151,11 @@ class UCPasswordViewController: BaseViewController {
         }
         let isOldHeightType = oldInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
-                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                guard let strongSelf = self, let acc = str else { return .oldPWInvalidHidden }
                 if ((strongSelf.oldInputView.textField.isFirstResponder) == true) {
                     let patternValue = RegexHelper.Pattern.password
 
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .oldPWInvalidShow : .oldPWInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .oldPWInvalidHidden : (acc.isEmpty == true ? .oldPWInvalidShow : .oldPWInvalidShow)
                     if resultValue == .oldPWInvalidShow
                     {
                         strongSelf.oldInputView.invalidLabel.isHidden = false
@@ -166,7 +166,7 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
-                    return .invalidHidden
+                    return .oldPWInvalidHidden
                 }
         }
         isOldHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
@@ -193,10 +193,10 @@ class UCPasswordViewController: BaseViewController {
         }
         let isNewHeightType = newInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
-                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                guard let strongSelf = self, let acc = str else { return .newPWInvalidHidden }
                 if ((strongSelf.newInputView.textField.isFirstResponder) == true) {
                     let patternValue = RegexHelper.Pattern.password
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .newPWInvalidShow : .newPWInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .newPWInvalidHidden : (acc.isEmpty == true ? .newPWInvalidShow : .newPWInvalidShow)
                     if resultValue == .newPWInvalidShow
                     {
                         strongSelf.newInputView.invalidLabel.isHidden = false
@@ -207,7 +207,7 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
-                    return .invalidHidden
+                    return .newPWInvalidHidden
                 }
         }
         isNewHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
@@ -227,11 +227,11 @@ class UCPasswordViewController: BaseViewController {
         }
         let isConfirmHeightType = confirmInputView.textField.rx.text
             .map { [weak self] (str) -> InputViewHeightType in
-                guard let strongSelf = self, let acc = str else { return .invalidHidden }
+                guard let strongSelf = self, let acc = str else { return .confirmPWInvalidHidden }
                 if ((strongSelf.confirmInputView.textField.isFirstResponder) == true) {
                     let patternValue = RegexHelper.Pattern.password
 
-                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .invalidHidden : (acc.isEmpty == true ? .confirmPWInvalidShow : .confirmPWInvalidShow)
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .confirmPWInvalidHidden : (acc.isEmpty == true ? .confirmPWInvalidShow : .confirmPWInvalidShow)
                     if resultValue == .confirmPWInvalidShow
                     {
                         strongSelf.confirmInputView.invalidLabel.isHidden = false
@@ -242,7 +242,7 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
-                    return .invalidHidden
+                    return .confirmPWInvalidHidden
                 }
         }
         isConfirmHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)

@@ -172,6 +172,7 @@ class SignupViewController: BaseViewController {
     
     func bindRegisterBtn() {
         registerButton.rx.tap.subscribeSuccess { [weak self] in
+            self?.accountInputView.resignAllResponder()
             self?.verificationID()
         }.disposed(by: disposeBag)
     }
@@ -191,7 +192,7 @@ class SignupViewController: BaseViewController {
                     if status == "400"
                     {
                         accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.acceptInputHeightStyle(.normalInvalidShow)
+                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
                     }else
                     {
                         ErrorHandler.show(error: error)
