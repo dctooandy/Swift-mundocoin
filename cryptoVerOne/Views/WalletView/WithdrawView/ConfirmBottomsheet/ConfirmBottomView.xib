@@ -75,7 +75,7 @@
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-4v-sa3">
                                             <rect key="frame" x="0.0" y="105.5" width="374" height="1"/>
-                                            <color key="backgroundColor" red="0.8784313725490196" green="0.8784313725490196" blue="0.8784313725490196" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.8784313725490196" green="0.89803921568627454" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="a2q-5b-nGU"/>
                                             </constraints>
@@ -215,35 +215,32 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                 </view>
-                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mN-fQ-u9b">
-                                    <rect key="frame" x="20" y="344" width="374" height="100"/>
+                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0mN-fQ-u9b">
+                                    <rect key="frame" x="20" y="344" width="374" height="84"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="100" id="h9Q-ee-vf6"/>
-                                    </constraints>
                                 </view>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please ensure that the address is correct and on the same network." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDr-dd-59L">
-                                    <rect key="frame" x="24" y="434" width="366" height="33"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Please ensure that the address is correct and on the same network." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kDr-dd-59L">
+                                    <rect key="frame" x="24" y="428" width="366" height="33"/>
                                     <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
                                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrA-PE-l5h" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
-                                    <rect key="frame" x="62" y="537" width="290" height="50"/>
+                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vrA-PE-l5h" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
+                                    <rect key="frame" x="62" y="531" width="290" height="50"/>
                                     <color key="backgroundColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="O4O-gr-KpP"/>
                                     </constraints>
                                     <state key="normal" title="Continue"/>
                                 </button>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Transactions cannot be cancelled." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyN-wW-emC">
-                                    <rect key="frame" x="111.5" y="611" width="211.5" height="16.5"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Transactions cannot be cancelled." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LyN-wW-emC">
+                                    <rect key="frame" x="111.5" y="605" width="211.5" height="16.5"/>
                                     <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
                                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-alert" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-7V-Syx">
-                                    <rect key="frame" x="86.5" y="609.5" width="20" height="20"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="icon-alert" translatesAutoresizingMaskIntoConstraints="NO" id="9qy-7V-Syx">
+                                    <rect key="frame" x="86.5" y="603.5" width="20" height="20"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="20" id="K5z-65-jHA"/>
                                         <constraint firstAttribute="width" constant="20" id="KeU-Qh-Eiy"/>
@@ -263,7 +260,7 @@
                                 <constraint firstItem="vrA-PE-l5h" firstAttribute="leading" secondItem="j0G-ia-kJl" secondAttribute="leading" constant="62" id="OgU-2g-6nI"/>
                                 <constraint firstItem="LyN-wW-emC" firstAttribute="leading" secondItem="9qy-7V-Syx" secondAttribute="trailing" constant="5" id="ZTk-Vh-GIW"/>
                                 <constraint firstItem="kDr-dd-59L" firstAttribute="centerX" secondItem="j0G-ia-kJl" secondAttribute="centerX" id="b4N-ID-PGU"/>
-                                <constraint firstItem="kDr-dd-59L" firstAttribute="top" secondItem="0mN-fQ-u9b" secondAttribute="bottom" constant="-10" id="iDs-XX-zcW"/>
+                                <constraint firstItem="kDr-dd-59L" firstAttribute="top" secondItem="0mN-fQ-u9b" secondAttribute="bottom" id="iDs-XX-zcW"/>
                                 <constraint firstItem="sfS-Iz-pos" firstAttribute="centerX" secondItem="j0G-ia-kJl" secondAttribute="centerX" id="lzN-kZ-eiS"/>
                                 <constraint firstAttribute="trailing" secondItem="kDr-dd-59L" secondAttribute="trailing" constant="24" id="nlL-z1-r0d"/>
                                 <constraint firstItem="vrA-PE-l5h" firstAttribute="top" secondItem="kDr-dd-59L" secondAttribute="bottom" constant="70" id="oPy-WE-MdZ"/>
@@ -300,6 +297,7 @@
                 <outlet property="confirmButton" destination="vrA-PE-l5h" id="3Ab-8I-Ip0"/>
                 <outlet property="currencyImageView" destination="r75-SD-lWW" id="hVy-75-HD0"/>
                 <outlet property="feeValueLabel" destination="dcO-4l-zTR" id="C96-fj-PY5"/>
+                <outlet property="introduceLabel" destination="kDr-dd-59L" id="oSO-9b-z6r"/>
                 <outlet property="networkValueLabel" destination="ACH-VF-6xo" id="k14-Nt-IOa"/>
                 <outlet property="tetherValueLabel" destination="ayC-eV-nSG" id="6ag-jt-hiH"/>
                 <outlet property="topLabel" destination="uZY-T6-ztC" id="e86-cP-zca"/>

@@ -31,6 +31,7 @@ class ConfirmBottomView: UIView {
     @IBOutlet weak var totalAmountValueLabel: UILabel!
     @IBOutlet weak var topListView: UIView!
     
+    @IBOutlet weak var introduceLabel: UILabel!
     var withdrawToInputView : InputStyleView!
     // MARK: -
     // MARK:Life cycle
@@ -65,7 +66,15 @@ class ConfirmBottomView: UIView {
         feeValueLabel.text = confirmData.fee
         networkValueLabel.text = confirmData.network
         tetherValueLabel.text = confirmData.tether
+        let stringHeight = confirmData.address.height(withConstrainedWidth: (Views.screenWidth - 80), font: Fonts.PlusJakartaSansRegular(16))
+        withdrawToInputView.tvHeightConstraint.constant = (stringHeight + 13)
         withdrawToInputView.setVisibleString(string: confirmData.address)
+        introduceLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(24)
+            make.right.equalToSuperview().offset(-24)
+            make.height.equalTo(33)
+            make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
+        }
         if let totalAmount = Double(confirmData.totalAmount)
         {
             let result = (totalAmount > 1.0 ?  totalAmount - 1.0 : 0.0)

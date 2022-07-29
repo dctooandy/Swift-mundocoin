@@ -242,9 +242,10 @@ class InputStyleView: UIView {
         tfLabel.font = Fonts.PlusJakartaSansRegular(14)
         tfLabel.textColor = Themes.gray2B3674
         tfLabel.numberOfLines = 0
-        tfLabel.adjustsFontSizeToFitWidth = true
-        tfLabel.minimumScaleFactor = 0.5
-        tfLabel.isUserInteractionEnabled = true
+        tfLabel.lineBreakMode = .byCharWrapping
+//        tfLabel.adjustsFontSizeToFitWidth = true
+//        tfLabel.minimumScaleFactor = 1
+//        tfLabel.isUserInteractionEnabled = true
         return tfLabel
     }()
     let invalidLabel: UILabel = {
@@ -441,6 +442,19 @@ class InputStyleView: UIView {
             make.centerX.equalToSuperview()
             make.top.equalTo(topLabel).offset(-15)
             make.bottom.equalTo(invalidLabel).offset(-15)
+            make.left.right.equalTo(self)
+        }
+        self.sendSubviewToBack(textField)
+    }
+    func resetConfirmTopLabelAndMask() {
+        topLabel.snp.updateConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+        }
+        tfMaskView.snp.remakeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(topLabel).offset(-15)
+            make.bottom.equalTo(normalTextLabel).offset(15)
             make.left.right.equalTo(self)
         }
         self.sendSubviewToBack(textField)

@@ -52,6 +52,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var dataListView: UIStackView!
     @IBOutlet weak var withdrawToView: UIView!
+    
     @IBOutlet weak var txidView: UIView!
 
     @IBOutlet weak var middleWhiteView: UIView!
@@ -209,6 +210,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     {
         if let dto = detailDataDto ,withdrawToInputView != nil
         {
+            let stringHeight = dto.address.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
+            withdrawToInputView.tvHeightConstraint.constant = (stringHeight )
             withdrawToInputView.setVisibleString(string: dto.address)
             txidInputView.setVisibleString(string: dto.txid)
             topAmountLabel.text = dto.amount.numberFormatter(.decimal, 8)
@@ -233,7 +236,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                     TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
                 withdrawToInputView.isHidden = false
-                withdrawToHeight.constant = 82
+                withdrawToHeight.constant = 46 + stringHeight
                 TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
             }
         }
