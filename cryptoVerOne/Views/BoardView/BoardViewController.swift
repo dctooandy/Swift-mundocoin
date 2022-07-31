@@ -138,7 +138,7 @@ class BoardViewController: BaseViewController {
 
         pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 123, height: 44)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 124, height: 48)
         // menu text
         pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
@@ -146,10 +146,10 @@ class BoardViewController: BaseViewController {
         pageViewcontroller?.selectedTextColor = .white
         pageViewcontroller?.menuHorizontalAlignment = .center
         pageViewcontroller?.menuItemSpacing = 0
-        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 38), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
+        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 44), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
 
         let bgImage = UIColor(patternImage: image!)
-        pageViewcontroller?.menuBackgroundColor = bgImage
+        pageViewcontroller?.menuBackgroundColor = Themes.grayF4F7FE
         pageViewcontroller?.borderColor = .clear
      
         // menu indicator

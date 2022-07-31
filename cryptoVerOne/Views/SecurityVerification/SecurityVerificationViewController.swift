@@ -9,6 +9,7 @@ import Foundation
 import Parchment
 import RxCocoa
 import RxSwift
+import SnapKit
 enum SecurityViewMode {
     case defaultMode
     case selectedMode
@@ -266,13 +267,104 @@ extension SecurityVerificationViewController: PagingViewControllerDataSource, Pa
         return twoFAViewControllers.count
     }
 }
+struct PagingTitleCellViewModel {
+  let title: String?
+  let font: UIFont
+  let selectedFont: UIFont
+  let textColor: UIColor
+  let selectedTextColor: UIColor
+  let backgroundColor: UIColor
+  let selectedBackgroundColor: UIColor
+  let selected: Bool
+  
+  init(title: String?, selected: Bool, options: PagingOptions) {
+    self.title = title
+    self.font = options.font
+    self.selectedFont = options.selectedFont
+    self.textColor = options.textColor
+    self.selectedTextColor = options.selectedTextColor
+    self.backgroundColor = options.backgroundColor
+    self.selectedBackgroundColor = options.selectedBackgroundColor
+    self.selected = selected
+  }
+  
+}
 class SecurityPagingTitleCell: PagingTitleCell {
+    var viewModel: PagingTitleCellViewModel?
+    open override func setPagingItem(_ pagingItem: PagingItem, selected: Bool, options: PagingOptions) {
+      if let titleItem = pagingItem as? PagingTitleItem {
+        viewModel = PagingTitleCellViewModel(
+          title: titleItem.title,
+          selected: selected,
+          options: options)
+      }
+      configureNewTitleLabel()
+    }
+    open func configureNewTitleLabel() {
+        guard let viewModel = viewModel else { return }
+        titleLabel.text = viewModel.title
+        titleLabel.textAlignment = .center
+        if viewModel.selected {
+            titleLabel.font = viewModel.selectedFont
+            titleLabel.textColor = viewModel.selectedTextColor
+            titleLabel.backgroundColor = viewModel.selectedBackgroundColor
+ 
+//            contentView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
+        } else {
+            titleLabel.font = viewModel.font
+            titleLabel.textColor = viewModel.textColor
+            titleLabel.backgroundColor = viewModel.backgroundColor
+
+//            contentView.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
+        }
+    }
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
       super.apply(layoutAttributes)
         titleLabel.layer.borderColor = UIColor.white.cgColor
         titleLabel.layer.borderWidth = 3
-        titleLabel.layer.cornerRadius = layoutAttributes.frame.height / 2
-        self.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
+        titleLabel.layer.cornerRadius = 22
+        titleLabel.layer.masksToBounds = true
+        self.backgroundColor = Themes.grayE0E5F2
+        self.contentView.backgroundColor = .white
+//        self.contentView.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
+//        self.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
+        self.layer.cornerRadius = layoutAttributes.frame.height / 2
+        self.contentView.layer.cornerRadius = 22
+        if layoutAttributes.indexPath.last == 1
+        {
+            contentView.snp.remakeConstraints { (make) in
+                make.centerX.equalToSuperview().offset(-1)
+                make.centerY.equalToSuperview()
+                make.width.equalTo(123)
+                make.height.equalTo(46)
+            }
+            titleLabel.snp.remakeConstraints { (make) in
+                make.centerX.equalToSuperview().offset(-1)
+                make.centerY.equalToSuperview()
+                make.width.equalTo(123)
+                make.height.equalTo(44)
+            }
+            self.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
+            self.contentView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
+        }else
+        {
+            contentView.snp.remakeConstraints { (make) in
+                make.centerX.equalToSuperview().offset(1)
+                make.centerY.equalToSuperview()
+                make.width.equalTo(123)
+                make.height.equalTo(46)
+            }
+            titleLabel.snp.remakeConstraints { (make) in
+                make.centerX.equalToSuperview().offset(1)
+                make.centerY.equalToSuperview()
+                make.width.equalTo(123)
+                make.height.equalTo(44)
+            }
+            self.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
+            self.contentView.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
+        }
+        self.layer.masksToBounds = true
+        self.contentView.layer.masksToBounds = true
 //        layer.cornerRadius = layoutAttributes.frame.height / 2
 //        if self.isSelected == true
 //        {
@@ -291,6 +383,21 @@ class SecurityPagingTitleCell: PagingTitleCell {
 //            } else {
 //                // Fallback on earlier versions
 //            }
+//        }
+    }
+    open override func layoutSubviews() {
+      super.layoutSubviews()
+//        contentView.snp.remakeConstraints { (make) in
+//            make.centerX.equalToSuperview().offset(viewModel!.selected ? 1: -1)
+//            make.centerY.equalToSuperview()
+//            make.width.equalTo(123)
+//            make.height.equalTo(46)
+//        }
+//        titleLabel.snp.remakeConstraints { (make) in
+//            make.centerX.equalToSuperview().offset(viewModel!.selected ? 1: -1)
+//            make.centerY.equalToSuperview()
+//            make.width.equalTo(123)
+//            make.height.equalTo(44)
 //        }
     }
 }
