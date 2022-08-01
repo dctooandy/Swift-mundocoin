@@ -140,10 +140,7 @@ class UCPasswordViewController: BaseViewController {
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 let resultValue = RegexHelper.match(pattern: .password, input: acc)
-                if resultValue != true , (self.oldInputView.textField.isFirstResponder) == true
-                {
-                    self.oldInputView.invalidLabel.isHidden = false
-                }else
+                if (self.oldInputView.textField.isFirstResponder) != true
                 {
                     self.oldInputView.invalidLabel.isHidden = true
                 }
@@ -166,6 +163,10 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
+                    if strongSelf.oldInputView.invalidLabel.textColor == .red
+                    {
+                        return .oldPWInvalidShow
+                    }
                     return .oldPWInvalidHidden
                 }
         }
@@ -182,10 +183,7 @@ class UCPasswordViewController: BaseViewController {
                     resultValue = (acc == confirmInputView.textField.text) &&
                         RegexHelper.match(pattern: .password, input: acc)
                 }
-                if resultValue != true, (self.newInputView.textField.isFirstResponder) == true
-                {
-                    self.newInputView.invalidLabel.isHidden = false
-                }else
+                if (self.newInputView.textField.isFirstResponder) != true
                 {
                     self.newInputView.invalidLabel.isHidden = true
                 }
@@ -207,6 +205,10 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
+                    if strongSelf.newInputView.invalidLabel.textColor == .red
+                    {
+                        return .newPWInvalidShow
+                    }
                     return .newPWInvalidHidden
                 }
         }
@@ -216,10 +218,7 @@ class UCPasswordViewController: BaseViewController {
                 guard  let acc = str else { return false  }
                 let resultValue = (acc == self.newInputView.textField.text) &&
                     RegexHelper.match(pattern: .password, input: acc)
-                if resultValue != true, (self.confirmInputView.textField.isFirstResponder) == true
-                {
-                    self.confirmInputView.invalidLabel.isHidden = false
-                }else
+                if (self.confirmInputView.textField.isFirstResponder) != true
                 {
                     self.confirmInputView.invalidLabel.isHidden = true
                 }
@@ -242,13 +241,17 @@ class UCPasswordViewController: BaseViewController {
                     return resultValue
                 }else
                 {
+                    if strongSelf.confirmInputView.invalidLabel.textColor == .red
+                    {
+                        return .confirmPWInvalidShow
+                    }
                     return .confirmPWInvalidHidden
                 }
         }
         isConfirmHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
-        isOldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        isNewValid.skip(1).bind(to: newInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        isConfirmValid.skip(1).bind(to: confirmInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isOldValid.skip(1).bind(to: oldInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isNewValid.skip(1).bind(to: newInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isConfirmValid.skip(1).bind(to: confirmInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
         Observable.combineLatest(isOldValid, isNewValid,isConfirmValid)
             .map { return $0.0 && $0.1 && $0.2 } //reget match result
             .bind(to: submitButton.rx.isEnabled)
@@ -318,10 +321,11 @@ class UCPasswordViewController: BaseViewController {
     {
         oldInputView.rxChooseClick().subscribeSuccess { (isChoose) in
             DispatchQueue.main.async { [self] in
-                resetInvalidText()
+                resetInvalidText(oldPW:isChoose)
                 resetTFMaskView(old: isChoose)
-                newInputView.invalidLabel.isHidden = true
-                confirmInputView.invalidLabel.isHidden = true
+                resetInputView(view: newInputView)
+//                newInputView.invalidLabel.isHidden = true
+//                confirmInputView.invalidLabel.isHidden = true
                 if isChoose == false
                 {
                     newInputView.textField.becomeFirstResponder()
@@ -330,10 +334,11 @@ class UCPasswordViewController: BaseViewController {
         }.disposed(by: dpg)
         newInputView.rxChooseClick().subscribeSuccess { (isChoose) in
             DispatchQueue.main.async { [self] in
-                resetInvalidText()
+                resetInvalidText(newPW:isChoose)
                 resetTFMaskView(new: isChoose)
-                oldInputView.invalidLabel.isHidden = true
-                confirmInputView.invalidLabel.isHidden = true
+                resetInputView(view: confirmInputView)
+//                oldInputView.invalidLabel.isHidden = true
+//                confirmInputView.invalidLabel.isHidden = true
                 if isChoose == false
                 {
                     confirmInputView.textField.becomeFirstResponder()
@@ -342,28 +347,52 @@ class UCPasswordViewController: BaseViewController {
         }.disposed(by: dpg)
         confirmInputView.rxChooseClick().subscribeSuccess { (isChoose) in
             DispatchQueue.main.async { [self] in
-                resetInvalidText()
+                resetInvalidText(confirmPW:isChoose)
                 resetTFMaskView(confirm: isChoose)
-                oldInputView.invalidLabel.isHidden = true
-                newInputView.invalidLabel.isHidden = true
+                resetInputView(view: newInputView)
+                confirmInputView.invalidLabel.isHidden = true
+//                oldInputView.invalidLabel.isHidden = true
+//                newInputView.invalidLabel.isHidden = true
             }
         }.disposed(by: dpg)
     }
+
+    func resetTFMaskView(old:Bool = false ,new:Bool = false ,confirm:Bool = false ,force:Bool = false)
+    {
+        if oldInputView.invalidLabel.textColor != .red || force == true
+        {
+            oldInputView.tfMaskView.changeBorderWith(isChoose:old)
+        }
+        if newInputView.invalidLabel.textColor != .red || force == true
+        {
+            newInputView.tfMaskView.changeBorderWith(isChoose:new)
+        }
+        if confirmInputView.invalidLabel.textColor != .red || force == true
+        {
+            confirmInputView.tfMaskView.changeBorderWith(isChoose:confirm)
+        }
+    }
     func resetInputView(view : InputStyleView)
     {
-        view.invalidLabel.isHidden = true
+        if view.invalidLabel.textColor != .red
+        {
+            view.invalidLabel.isHidden = true
+        }
     }
-    func resetTFMaskView(old:Bool = false ,new:Bool = false ,confirm:Bool = false )
+    func resetInvalidText(oldPW:Bool = false ,newPW:Bool = false ,confirmPW:Bool = false )
     {
-        oldInputView.tfMaskView.changeBorderWith(isChoose:old)
-        newInputView.tfMaskView.changeBorderWith(isChoose:new)
-        confirmInputView.tfMaskView.changeBorderWith(isChoose:confirm)
-    }
-    func resetInvalidText()
-    {
-        oldInputView.changeInvalidLabelAndMaskBorderColor(with:"")
-        newInputView.changeInvalidLabelAndMaskBorderColor(with:"")
-        confirmInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        if oldPW == true
+        {
+            oldInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+        if newPW == true
+        {
+            newInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+        if confirmPW == true
+        {
+            confirmInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
     }
     func submitButtonPressed()
     {
@@ -392,6 +421,7 @@ class UCPasswordViewController: BaseViewController {
                             if status == "400"
                             {
                                 oldInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                                InputViewStyleThemes.share.oldAcceptInputHeightStyle(.oldPWInvalidShow)
                             }else
                             {
                                 ErrorHandler.show(error: error)
