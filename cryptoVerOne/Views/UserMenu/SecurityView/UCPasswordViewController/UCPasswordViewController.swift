@@ -350,7 +350,7 @@ class UCPasswordViewController: BaseViewController {
                 resetInvalidText(confirmPW:isChoose)
                 resetTFMaskView(confirm: isChoose)
                 resetInputView(view: newInputView)
-                confirmInputView.invalidLabel.isHidden = true
+//                confirmInputView.invalidLabel.isHidden = true
 //                oldInputView.invalidLabel.isHidden = true
 //                newInputView.invalidLabel.isHidden = true
             }

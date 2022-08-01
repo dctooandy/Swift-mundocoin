@@ -159,6 +159,10 @@ class WithdrawViewController: BaseViewController {
             // 設定最高額度
             let availableString = availableBalanceAmountLabel.text ?? "0"
             amountInputView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+        }else
+        {
+            availableBalanceAmountLabel.text = "0.00"
+            amountInputView.maxAmount = "0"
         }
     }
     func bindWhenAppear()

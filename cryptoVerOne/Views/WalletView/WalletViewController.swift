@@ -158,6 +158,7 @@ class WalletViewController: BaseViewController {
     {
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
             Log.v("取得Balances\n\(dto)")
+            _ = LoadingViewController.dismiss()
             // 主要理念是 將TRX 錢包濾掉
             // Asset Allocation 依據balance有無 出現漸層或單色
             // spot value 依據balance有無 改為 100% or 0%
