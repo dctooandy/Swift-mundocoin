@@ -348,13 +348,22 @@ class WithdrawViewController: BaseViewController {
                                     if reason == "CODE_MISMATCH"
                                     {
                                         Log.i("驗證碼錯誤 :\(reason)")
+                                        if securityVerifyVC.securityViewMode == .onlyEmail
+                                        {
+                                            securityVerifyVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                                        }else if securityVerifyVC.securityViewMode == .onlyTwoFA
+                                        {
+                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                                        }
                                     }
                                     if reason == "INSUFFICIENT_FUND"
                                     {
                                         Log.i("資金不足 :\(reason)")
                                         securityVCPopAction(animated: true)
                                     }
-                                    ErrorHandler.show(error: error)
+//                                    ErrorHandler.show(error: error)
                                 }else
                                 {
                                     securityVCPopAction(animated: true)

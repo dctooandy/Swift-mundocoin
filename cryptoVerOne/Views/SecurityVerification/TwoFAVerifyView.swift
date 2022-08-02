@@ -68,6 +68,8 @@ class TwoFAVerifyView: UIView {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         endEditing(true)
+        emailInputView.changeInvalidLabelAndMaskBorderColor(with: "")
+        twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "")
         emailInputView.tfMaskView.changeBorderWith(isChoose:false)
         twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
@@ -185,10 +187,12 @@ class TwoFAVerifyView: UIView {
         emailInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             emailInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
             twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
+            emailInputView.changeInvalidLabelAndMaskBorderColor(with: "")
         }.disposed(by: dpg)
         twoFAInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             emailInputView.tfMaskView.changeBorderWith(isChoose:false)
             twoFAInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "")
         }.disposed(by: dpg)
     }
     func bindLostTwoFALabel()
