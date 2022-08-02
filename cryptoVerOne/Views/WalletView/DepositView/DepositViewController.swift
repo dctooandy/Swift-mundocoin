@@ -123,14 +123,14 @@ class DepositViewController: BaseViewController {
     }
     @objc func saveImageToAlbum()
     {
-
         Toast.show(msg: "Saved")
     }
     func shareInfo() {
         // activityItems 陣列中放入我們想要使用的元件，這邊我們放入使用者圖片、使用者名稱及個人部落格。
         // 這邊因為我們確認裡面有值，所以使用驚嘆號強制解包。
-        
-        let activityVC = UIActivityViewController(activityItems: [view.screenShot()!,"MundoCoin","Account Address"], applicationActivities: nil)
+        let imageData = view.screenShot()!
+//        let stringData = "MundoCoin \n Account Address"
+        let activityVC = UIActivityViewController(activityItems: [imageData], applicationActivities: nil)
         activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             // 如果錯誤存在，跳出錯誤視窗並顯示給使用者。
             if error != nil {
