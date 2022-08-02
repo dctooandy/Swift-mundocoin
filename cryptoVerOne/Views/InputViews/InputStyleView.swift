@@ -977,10 +977,9 @@ extension InputStyleView : UITextViewDelegate
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if(text == "\n") {
             textView.resignFirstResponder()
-            onChooseClick.onNext(false)
             return false
         }
-        
+        onChooseClick.onNext(false)        
         cancelRightButton.isHidden = false
         return true
     }
