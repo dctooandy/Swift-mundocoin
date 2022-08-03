@@ -19,6 +19,7 @@ class MDNavigationController:UINavigationController{
     // MARK:業務設定
     // MARK: -
     let disposeBag = DisposeBag()
+    var isFromLeft = false
     // MARK:UI 設定
     lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton()
@@ -55,6 +56,7 @@ class MDNavigationController:UINavigationController{
 //    }
     @objc func popVC() {
         _ = self.popViewController(animated:true)
+        self.isFromLeft = false
     }
     
     @objc func pushToProfile() {
@@ -68,12 +70,19 @@ class MDNavigationController:UINavigationController{
     @objc func pushToBoard() {
         _ = self.popViewController(animated:true)
     }
-   
+    
     override func pushViewController(_ viewController:UIViewController, animated:Bool) {
         viewController.hidesBottomBarWhenPushed = true
         viewController.tabBarController?.tabBar.isHidden = true
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
-        super.pushViewController(viewController, animated:animated)
+        if let newVC = viewController as? UserMenuViewController {
+            self.isFromLeft = true
+            super.pushViewController(newVC, animated:animated)
+        }else
+        {
+            self.isFromLeft = false
+            super.pushViewController(viewController, animated:animated)
+        }
     }
 //    func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
 //        self.pushViewController(viewController, animated: animated)

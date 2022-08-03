@@ -1775,6 +1775,12 @@
 		A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
 		A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
+		A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
+		A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
+		A1D5C71E289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
+		A1D5C71F289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
+		A1D5C720289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1DD13A5282B94BB00AB2E0A /* TwoFAVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */; };
 		A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */; };
 		A1DD13AE282BEE9E00AB2E0A /* SecurityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */; };
@@ -2107,6 +2113,7 @@
 		A1B051ED2823B0FF00056183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1B051F02823B10300056183 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
+		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
 		A1DD13AD282BEE9E00AB2E0A /* SecurityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityViewController.swift; sourceTree = "<group>"; };
@@ -2840,6 +2847,7 @@
 				A19C704728223409000AFC3F /* BaseViewController.swift */,
 				A19C70F728224D4F000AFC3F /* BaseDismissAnimationController.swift */,
 				A19C70F628224D4F000AFC3F /* BasePresentAnimationController.swift */,
+				A1D5C71A289A5478005117AC /* BaseTransition.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -4214,6 +4222,7 @@
 				09905AB92851A02B00BAEE78 /* BaseBottomSheet.swift in Sources */,
 				09905ABA2851A02B00BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905ABB2851A02B00BAEE78 /* MainViewController.swift in Sources */,
+				A1D5C71F289A5478005117AC /* BaseTransition.swift in Sources */,
 				09905ABC2851A02B00BAEE78 /* DefaultDto.swift in Sources */,
 				0998C00C289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31E2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
@@ -4433,6 +4442,7 @@
 				09905BAB2851A08500BAEE78 /* BaseBottomSheet.swift in Sources */,
 				09905BAC2851A08500BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905BAD2851A08500BAEE78 /* MainViewController.swift in Sources */,
+				A1D5C720289A5478005117AC /* BaseTransition.swift in Sources */,
 				09905BAE2851A08500BAEE78 /* DefaultDto.swift in Sources */,
 				0998C00D289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31F2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
@@ -4652,6 +4662,7 @@
 				09905C9D2851A09600BAEE78 /* BaseBottomSheet.swift in Sources */,
 				09905C9E2851A09600BAEE78 /* TransactionTableViewController.swift in Sources */,
 				09905C9F2851A09600BAEE78 /* MainViewController.swift in Sources */,
+				A1D5C71E289A5478005117AC /* BaseTransition.swift in Sources */,
 				09905CA02851A09600BAEE78 /* DefaultDto.swift in Sources */,
 				0998C00B289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31D2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
@@ -4871,6 +4882,7 @@
 				09CAF4A2283C77ED00D7B19B /* BaseBottomSheet.swift in Sources */,
 				09947BA7284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF4A3283C77ED00D7B19B /* MainViewController.swift in Sources */,
+				A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */,
 				09CAF5C2283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				0998C009289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31B2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
@@ -5090,6 +5102,7 @@
 				09CAF563283C7BBE00D7B19B /* BaseBottomSheet.swift in Sources */,
 				09947BA8284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				09CAF564283C7BBE00D7B19B /* MainViewController.swift in Sources */,
+				A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */,
 				09CAF5C3283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				0998C00A289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31C2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,
@@ -5309,6 +5322,7 @@
 				A19C70FD28224D78000AFC3F /* BaseBottomSheet.swift in Sources */,
 				09947BA6284DA0C9004F7FD7 /* TransactionTableViewController.swift in Sources */,
 				A19C706628223584000AFC3F /* MainViewController.swift in Sources */,
+				A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */,
 				09CAF5C1283C85AE00D7B19B /* DefaultDto.swift in Sources */,
 				0998C008289212590003567A /* UserMenuWhiteLineCell.swift in Sources */,
 				09EED31A2857197900CB4A64 /* AuditTransactionDto.swift in Sources */,

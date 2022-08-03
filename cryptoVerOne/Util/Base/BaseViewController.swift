@@ -13,12 +13,13 @@ import UIKit
 import SnapKit
 
 
-class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDelegate{
+class BaseViewController:UIViewController,Nibloadable{
     // MARK:業務設定
     let disposeBag = DisposeBag()
     var isNavBarTransparent:Bool
     var isEnablePopGesture = true
     var isRecoverNavBar = true
+    var isFromLeft = false
     private var isShowKeyboard = false
     // MARK: -
     // MARK:UI 設定
@@ -84,7 +85,7 @@ class BaseViewController:UIViewController,Nibloadable,UINavigationControllerDele
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-         self.navigationController?.delegate = self
+        self.navigationController?.delegate = self
     }
     
     deinit {
@@ -165,4 +166,29 @@ extension UIViewController: UIViewControllerTransitioningDelegate {
     }
     
 }
-
+extension BaseViewController: UINavigationControllerDelegate
+{
+    public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        let baseTransition = BaseTransition()
+        if let newNav = navigationController as? MDNavigationController
+        {
+            baseTransition.isFromLeft = newNav.isFromLeft
+        }
+        
+        if operation == UINavigationController.Operation.push {
+            baseTransition.operation = UINavigationController.Operation.push
+            baseTransition.duration = 0.3
+            return baseTransition
+        }
+        
+        if operation == UINavigationController.Operation.pop {
+            baseTransition.operation = UINavigationController.Operation.pop
+            baseTransition.duration = 0.3
+            
+            return baseTransition
+        }
+        
+        return nil
+    }
+}

@@ -87,7 +87,7 @@ class WalletViewController: BaseViewController {
         super.viewWillAppear(animated)
         viewModel.fetchBalances()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
-        LoadingViewController.show()
+//        LoadingViewController.show()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -255,8 +255,12 @@ class WalletViewController: BaseViewController {
         Log.i("推到個人清單")
 //        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)
-        self.navigationController?.pushViewControllerFromLeft(userVC, animated: true)
+        self.navigationController?.pushViewController(userVC, animated: true)
 //        self.navigationController?.viewPushAnimation(userVC, from: .fromLeft)
+//        let navVC = MDNavigationController(rootViewController: userVC)
+//        userVC.modalPresentationStyle = .custom
+//        userVC.modalTransitionStyle = .crossDissolve
+//        self.present(navVC, animated: true)
     }
     
     @objc func pushToBell() {

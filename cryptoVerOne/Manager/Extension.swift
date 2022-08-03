@@ -227,6 +227,7 @@ extension UINavigationController {
         self.view.bringSubviewToFront(viewController.view)
         AnimatorManager.scaleUp(view: viewController.view, frame: self.view.frame,orientation: orientation.rawValue).startAnimation()
     }
+    
     func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
         let theWindow = self.view
         if (animated)
