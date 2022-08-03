@@ -39,7 +39,8 @@ enum InputViewMode :Equatable {
     
     func topString() -> String {
         switch self {
-        case .emailVerify(let emailString): return "Enter the 6-digit code sent to \(emailString)".localized
+//        case .emailVerify(let emailString): return "Enter the 6-digit code sent to \(emailString)".localized
+        case .emailVerify(let emailString): return "Sent to \(emailString)".localized
         case .twoFAVerify:
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             return "*Enter the 6-digit code from google 2FA".localized
@@ -979,7 +980,7 @@ extension InputStyleView : UITextViewDelegate
             textView.resignFirstResponder()
             return false
         }
-        onChooseClick.onNext(false)        
+        onChooseClick.onNext(false)
         cancelRightButton.isHidden = false
         return true
     }

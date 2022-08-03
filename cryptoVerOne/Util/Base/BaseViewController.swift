@@ -94,6 +94,7 @@ class BaseViewController:UIViewController,Nibloadable{
     // MARK: -
     // MARK:業務方法
     @objc func popVC() {
+        
         _ = self.navigationController?.popViewController(animated: true)
     }
     func setupKeyboard(_ constraint:NSLayoutConstraint, height:CGFloat = 240){
