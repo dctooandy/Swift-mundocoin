@@ -119,7 +119,7 @@ class WithdrawViewController: BaseViewController {
     {
         view.backgroundColor = Themes.grayF4F7FE
         let minString = "10"
-        let maxString = "10000"
+        let maxString = "1000000"
         // 設定幣種
         amountInputView.setData(data: currencyLabel.text ?? "USDT")
         feeTitle.text = "Fee (USDT)".localized
@@ -152,7 +152,7 @@ class WithdrawViewController: BaseViewController {
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
-        let maxString = "10000"
+        let maxString = "1000000"
         if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
         {
             let amountValue = data.amount.doubleValue ?? 0.0
