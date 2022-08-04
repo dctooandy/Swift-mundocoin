@@ -207,10 +207,10 @@ class BoardViewController: BaseViewController {
     }
     func bind()
     {
-        viewModel.rxWalletTransactionsSuccess().subscribeSuccess { dto in
+        viewModel.rxWalletTransactionsSuccess().subscribeSuccess { [self] dto in
             Log.v("交易紀錄Dto count : \(dto.content.count)")
-            self.transContentDto = dto.content
-            self.resetData()
+            transContentDto = dto.content
+            resetData()
         }.disposed(by: dpg)
         
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
@@ -267,6 +267,11 @@ class BoardViewController: BaseViewController {
         withdrawalsViewController.data = withdrawData
         pageViewcontroller?.reloadMenu()
     }
+    func setFiletrActionFlag()
+    {
+        depositsViewController.isFilterAction = true
+        withdrawalsViewController.isFilterAction = true
+    }
     @objc func filterActionSheet() {
         Log.i("開啟過濾Sheet")
         let filterBottomSheet = FilterBottomSheet()
@@ -276,6 +281,7 @@ class BoardViewController: BaseViewController {
             self?.isFilterAndChangeVCAction = true
             self?.currentPage = 0
             self?.clearAllVCDataSource()
+            self?.setFiletrActionFlag()
             if dataDto.historyType == "WITHDRAW"
             {
                 self?.pageViewcontroller?.select(index: 1)

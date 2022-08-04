@@ -16,6 +16,7 @@ class TransactionTableViewController: BaseViewController {
     private let onPullDownToRefrash = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var didSelectCell : Bool = false
+    var isFilterAction : Bool = false
     var showModeAtTableView : TransactionShowMode = .deposits{
         didSet{
             setup()
@@ -49,10 +50,11 @@ class TransactionTableViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if didSelectCell == false
+        if didSelectCell == false , isFilterAction == false
         {
             startRefresh()
         }
+        isFilterAction = false
         didSelectCell = false
     }
     override func viewDidAppear(_ animated: Bool) {
