@@ -255,6 +255,7 @@ class WalletViewController: BaseViewController {
         Log.i("推到個人清單")
 //        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)
+        
         self.navigationController?.pushViewController(userVC, animated: true)
 //        self.navigationController?.viewPushAnimation(userVC, from: .fromLeft)
 //        let navVC = MDNavigationController(rootViewController: userVC)

@@ -37,6 +37,7 @@ class UserMenuViewController: BaseViewController {
         fetchData()
         bindViewModel()
         bind()
+//        self.transitioningDelegate = self
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

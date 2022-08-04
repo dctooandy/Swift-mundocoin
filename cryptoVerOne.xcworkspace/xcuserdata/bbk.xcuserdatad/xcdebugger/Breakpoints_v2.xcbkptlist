@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F50B4669-7281-411F-BF22-332118D0180D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/AccountInputView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
-            landmarkName = "bindTextfield()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3ED44352-FDE3-466E-A052-3E9880051240"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/NavigationView/MDNavigationController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "pushViewController(_:animated:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "B71B24D9-A96D-41C1-91F6-E05BEB8EB2BC"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/NavigationView/MDNavigationController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
-            landmarkName = "pushViewController(_:animated:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FED103D8-3447-45B4-8A6E-E6DA4AF0C701"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -62,8 +14,8 @@
             filePath = "cryptoVerOne/Views/NavigationView/MDNavigationController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "68"
+            endingLineNumber = "68"
             landmarkName = "popVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -71,32 +23,96 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "735C00A5-2B1D-4C52-BA57-9D6BB22AC7B6"
+            uuid = "E171FB9E-8CCC-49BD-AC6A-15C3F7D3A0B1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Util/Base/BaseViewController.swift"
+            filePath = "cryptoVerOne/Util/Base/BaseDismissInteration.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "navigationController(_:animationControllerFor:from:to:)"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
+            landmarkName = "handleGesture(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1E1B739F-AC28-4A2A-A0B7-760605C79E42"
+            uuid = "92E9CF97-04B4-4521-B0F7-3006EF6859CF"
             shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/Base/BaseDismissInteration.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "wireGesture(on:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BA251571-8958-43C1-A13E-58C6180E5589"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoVerOne/Util/Base/BaseViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
-            landmarkName = "popVC()"
+            startingLineNumber = "193"
+            endingLineNumber = "193"
+            landmarkName = "navigationController(_:interactionControllerFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "78ABDF8B-B036-4D35-96A0-7ECDBB3BC19F"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/Base/BaseViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "196"
+            endingLineNumber = "196"
+            landmarkName = "navigationController(_:interactionControllerFor:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6DB53FEA-DCD7-43A7-8FAB-D749FF88D652"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/NavigationView/MDNavigationController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "146"
+            endingLineNumber = "146"
+            landmarkName = "handleSwipeFromRight(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EFF73281-5C62-4430-9F00-AAEFB3563616"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/NavigationView/MDNavigationController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "handleSwipeFromRight(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

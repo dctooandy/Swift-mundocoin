@@ -21,6 +21,7 @@ class BaseViewController:UIViewController,Nibloadable{
     var isRecoverNavBar = true
     var isFromLeft = false
     private var isShowKeyboard = false
+
     // MARK: -
     // MARK:UI 設定
     lazy var naviBackBtn:TopBackButton = {
@@ -94,14 +95,26 @@ class BaseViewController:UIViewController,Nibloadable{
     // MARK: -
     // MARK:業務方法
     @objc func popVC() {
+        var fromLeft = false
         if self.navigationController?.viewControllers.last is UserMenuViewController
+        {
+            fromLeft = true
+        }else
+        {
+            fromLeft = false
+        }
+        if let newNav = navigationController as? MDNavigationController
+        {
+            newNav.isFromLeft = fromLeft
+        }
+        _ = self.navigationController?.popViewController(animated: true)
+        if (self.navigationController?.viewControllers.filter{ $0 is UserMenuViewController}.count)! > 0
         {
             if let newNav = navigationController as? MDNavigationController
             {
                 newNav.isFromLeft = true
             }
         }
-        _ = self.navigationController?.popViewController(animated: true)
     }
     func setupKeyboard(_ constraint:NSLayoutConstraint, height:CGFloat = 240){
         let origin = constraint.constant
@@ -171,10 +184,18 @@ extension UIViewController: UIViewControllerTransitioningDelegate {
     public func animationController(forDismissed dismissed:UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return BaseDismissAnimationController()
     }
-    
 }
 extension BaseViewController: UINavigationControllerDelegate
 {
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if let newNav = navigationController as? MDNavigationController
+        {
+            return newNav.interactionController
+        }else
+        {
+            return nil
+        }
+    }
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         let baseTransition = BaseTransition()

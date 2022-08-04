@@ -20,6 +20,8 @@ class MDNavigationController:UINavigationController{
     // MARK: -
     let disposeBag = DisposeBag()
     var isFromLeft = false
+    var interactionController: UIPercentDrivenInteractiveTransition?
+    private var couldComplete = false
     // MARK:UI 設定
     lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton()
@@ -38,6 +40,13 @@ class MDNavigationController:UINavigationController{
     
     override func viewWillAppear(_ animated:Bool) {
         super.viewWillAppear(animated)
+        
+        let left = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleSwipeFromLeft(_:)))
+        left.edges = .left
+        view.addGestureRecognizer(left)
+        let right = UIScreenEdgePanGestureRecognizer(target: self, action: #selector(handleSwipeFromRight(_:)))
+        right.edges = .right
+        view.addGestureRecognizer(right)
     }
     
     private func setupNavigationBar() {
@@ -80,15 +89,12 @@ class MDNavigationController:UINavigationController{
             super.pushViewController(newVC, animated:animated)
         }else
         {
-//            if self.viewControllers.last is UserMenuViewController
+            self.isFromLeft = false
+            super.pushViewController(viewController, animated:animated)
+//            if self.viewControllers.filter({ $0 is UserMenuViewController}).count > 0
 //            {
 //                self.isFromLeft = true
-//            }else
-//            {
 //            }
-            self.isFromLeft = false
-            
-            super.pushViewController(viewController, animated:animated)
         }
     }
 //    func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
@@ -104,6 +110,66 @@ class MDNavigationController:UINavigationController{
 #endif
         } else {
             return .default
+        }
+    }
+    @objc func handleSwipeFromLeft(_ gesture: UIScreenEdgePanGestureRecognizer) {
+
+        if (self.visibleViewController is UserMenuViewController) == true , interactionController == nil
+        {
+            
+        }else
+        {
+            let percent = gesture.translation(in: gesture.view!).x / gesture.view!.bounds.size.width
+            
+            if gesture.state == .began {
+                interactionController = UIPercentDrivenInteractiveTransition()
+                if viewControllers.count > 1 {
+                    popViewController(animated: true)
+                } else {
+                    //                dismiss(animated: true)
+                }
+            } else if gesture.state == .changed {
+                interactionController?.update(percent)
+            } else if gesture.state == .ended {
+                //            if percent > 0.5 && gesture.state != .cancelled {
+                //                interactionController?.finish()
+                //            } else {
+                //                interactionController?.cancel()
+                //            }
+                interactionController?.finish()
+                interactionController = nil
+            }
+        }
+
+    }
+    @objc func handleSwipeFromRight(_ gesture: UIScreenEdgePanGestureRecognizer) {
+        if (self.visibleViewController is UserMenuViewController) == false , interactionController == nil
+        {
+            
+        }else
+        {
+            self.isFromLeft = true
+
+            let percent = -gesture.translation(in: gesture.view!).x / gesture.view!.bounds.size.width
+            
+            if gesture.state == .began {
+                interactionController = UIPercentDrivenInteractiveTransition()
+                if viewControllers.count > 1 {
+                    popViewController(animated: true)
+                } else {
+                    //                dismiss(animated: true)
+                }
+            } else if gesture.state == .changed {
+                interactionController?.update(percent)
+            } else if gesture.state == .ended {
+                //            if percent > 0.5 && gesture.state != .cancelled {
+                //                interactionController?.finish()
+                //            } else {
+                //                interactionController?.cancel()
+                //            }
+                interactionController?.finish()
+                interactionController = nil
+            }
         }
     }
 }
