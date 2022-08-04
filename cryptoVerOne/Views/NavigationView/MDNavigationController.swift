@@ -80,13 +80,13 @@ class MDNavigationController:UINavigationController{
             super.pushViewController(newVC, animated:animated)
         }else
         {
-            if self.viewControllers.last is UserMenuViewController
-            {
-                self.isFromLeft = true
-            }else
-            {
-                self.isFromLeft = false
-            }
+//            if self.viewControllers.last is UserMenuViewController
+//            {
+//                self.isFromLeft = true
+//            }else
+//            {
+//            }
+            self.isFromLeft = false
             
             super.pushViewController(viewController, animated:animated)
         }

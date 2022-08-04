@@ -94,7 +94,13 @@ class BaseViewController:UIViewController,Nibloadable{
     // MARK: -
     // MARK:業務方法
     @objc func popVC() {
-        
+        if self.navigationController?.viewControllers.last is UserMenuViewController
+        {
+            if let newNav = navigationController as? MDNavigationController
+            {
+                newNav.isFromLeft = true
+            }
+        }
         _ = self.navigationController?.popViewController(animated: true)
     }
     func setupKeyboard(_ constraint:NSLayoutConstraint, height:CGFloat = 240){
