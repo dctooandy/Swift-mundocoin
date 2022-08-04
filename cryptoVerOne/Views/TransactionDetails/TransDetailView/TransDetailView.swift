@@ -187,22 +187,26 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 
 #else    
         currencyIcon.rx.click.subscribeSuccess { [self] _ in
-            var type : DetailType!
-            if viewType == .done
+            if KeychainManager.share.getDomainMode() == .Dev ||
+                KeychainManager.share.getDomainMode() == .Qa
             {
-                type = .failed
-            } else if viewType == .failed
-            {
-                type = .pending
-            }else if viewType == .pending
-            {
-                type = .processing
-            }else
-            {
-                type = .done
+                var type : DetailType!
+                if viewType == .done
+                {
+                    type = .failed
+                } else if viewType == .failed
+                {
+                    type = .pending
+                }else if viewType == .pending
+                {
+                    type = .processing
+                }else
+                {
+                    type = .done
+                }
+                TransStyleThemes.share.acceptTopViewStatusStyle(type)
+                viewType = type                
             }
-            TransStyleThemes.share.acceptTopViewStatusStyle(type)
-            viewType = type
         }.disposed(by: dpg)
 #endif
     }
