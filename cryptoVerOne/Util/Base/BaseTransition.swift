@@ -12,7 +12,7 @@ class BaseTransition:NSObject, UIViewControllerAnimatedTransitioning {
     var isFromLeft = false
     // 定義轉場動畫為0.8秒
     func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return duration
+        return TimeInterval(duration)
     }
     
     // 具體的轉場動畫
@@ -31,7 +31,7 @@ class BaseTransition:NSObject, UIViewControllerAnimatedTransitioning {
             let newFrame = CGRect(x: (isFromLeft ? -Views.screenWidth : Views.screenWidth), y: 0, width: (toView?.bounds.width)!, height: (toView?.bounds.height)!)
             let newFinalFrame = CGRect(x: 0, y: 0, width: (toView?.bounds.width)!, height: (toView?.bounds.height)!)
             toView?.frame = newFrame
-            UIView.animate(withDuration: duration, animations: {
+            UIView.animate(withDuration: TimeInterval(duration), animations: {
                 toView?.frame = newFinalFrame
                 
             }, completion: { finished in
@@ -44,7 +44,7 @@ class BaseTransition:NSObject, UIViewControllerAnimatedTransitioning {
             let newFrame = CGRect(x: (isFromLeft ? Views.screenWidth : -Views.screenWidth), y: 0, width: (toView?.bounds.width)!, height: (toView?.bounds.height)!)
             toView?.frame = newFrame
             let newFinalFrame = CGRect(x: 0, y: 0, width: (toView?.bounds.width)!, height: (toView?.bounds.height)!)
-            UIView.animate(withDuration: duration, animations: {
+            UIView.animate(withDuration: TimeInterval(duration), animations: {
                 toView?.frame = newFinalFrame
                 
             }, completion: { finished in

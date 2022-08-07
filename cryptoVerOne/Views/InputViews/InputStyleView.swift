@@ -631,6 +631,12 @@ class InputStyleView: UIView {
                         make.left.top.bottom.equalTo(textField)
                         make.right.equalToSuperview().offset(-35)
                     }
+                    addSubview(normalTextLabel)
+                    normalTextLabel.snp.makeConstraints { (make) in
+                        make.left.top.bottom.equalTo(textField)
+                        make.right.equalToSuperview().offset(-20)
+                    }
+                    normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
                     addSubview(copyAddressImageView)
                     copyAddressImageView.snp.makeConstraints { (make) in
                         make.right.equalToSuperview().offset(-10)
@@ -887,9 +893,12 @@ class InputStyleView: UIView {
             if string.count > 3
             {
                 textLabel.text = string
+                normalTextLabel.isHidden = true
             }else
             {
                 normalTextLabel.text = string
+                textLabel.isHidden = true
+                copyAddressImageView.isHidden = true
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_):
             let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})

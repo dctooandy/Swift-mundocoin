@@ -217,7 +217,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             let stringHeight = dto.address.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
             withdrawToInputView.tvHeightConstraint.constant = (stringHeight )
             withdrawToInputView.setVisibleString(string: dto.address)
-            txidInputView.setVisibleString(string: dto.txid)
+            txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             topAmountLabel.text = dto.amount.numberFormatter(.decimal, 8)
             tetherLabel.text = dto.tether
             networkLabel.text = dto.network
@@ -230,19 +230,22 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 {
                     feeView.isHidden = true
                 }
-                middleWhiteView.isHidden = true
-                withdrawToInputView.isHidden = true
-                withdrawToHeight.constant = 0
+//                middleWhiteView.isHidden = true
+//                withdrawToInputView.isHidden = false
+//                withdrawToHeight.constant = 46 + stringHeight
             }else
             {
                 if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
                 {
                     TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
-                withdrawToInputView.isHidden = false
-                withdrawToHeight.constant = 46 + stringHeight
-                TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
+//                withdrawToInputView.isHidden = false
+//                withdrawToHeight.constant = 46 + stringHeight
+//                TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
             }
+            withdrawToInputView.isHidden = false
+            withdrawToHeight.constant = 46 + stringHeight
+            TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
         }
     }
     func rxAddAddressClick() -> Observable<String>

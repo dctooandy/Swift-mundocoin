@@ -49,7 +49,7 @@ class BoardViewController: BaseViewController {
     fileprivate var viewModel = BoardViewModel()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var loadingDurarion:CGFloat = 0.0
+    var loadingDurarion:TimeInterval = 0
     var showMode : TransactionShowMode = .deposits{
         didSet{
             self.currentFilterDto = nil
@@ -179,7 +179,7 @@ class BoardViewController: BaseViewController {
     {
         
     }
-    func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto() , duration:CGFloat = 0.0)
+    func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto() , duration:TimeInterval = 0.0)
     {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {[self] in
             LoadingViewController.show()
