@@ -24,6 +24,7 @@ def shared_pods
   pod 'OOSwitch'
   pod 'Socket.IO-Client-Swift', '~> 15.2.0'
   pod 'JWTDecode', '~> 2.6'
+  pod 'Firebase/Analytics'
 end
 
 target 'cryptoVerOne_stage' do

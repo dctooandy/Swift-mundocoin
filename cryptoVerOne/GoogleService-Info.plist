@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>779216859933-3ch18q9as74oqofakr5fen3u13k88aob.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.779216859933-3ch18q9as74oqofakr5fen3u13k88aob</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDFzWvyrDIGfdpHznhfckseeMXCWu2IbJQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>779216859933</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.mundocoin.cryptoVerOne</string>
+	<key>PROJECT_ID</key>
+	<string>mundocoin-98f94</string>
+	<key>STORAGE_BUCKET</key>
+	<string>mundocoin-98f94.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:779216859933:ios:c52d8c7c5a1e6009e527f4</string>
+</dict>
+</plist>

@@ -1805,6 +1805,12 @@
 		A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
 		A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1C9555C28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1C9555D28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1C9555E28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
@@ -2148,6 +2154,7 @@
 		A1B051ED2823B0FF00056183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1B051F02823B10300056183 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
+		A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
@@ -2786,6 +2793,7 @@
 				09905D092851A53900BAEE78 /* Info_Approval.plist */,
 				09905D0B2851A53A00BAEE78 /* Info_Approval_dev.plist */,
 				09905D0A2851A53A00BAEE78 /* Info_Approval_stage.plist */,
+				A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */,
 				A1B051EE2823B0FF00056183 /* Localizable.strings */,
 			);
 			path = cryptoVerOne;
@@ -3365,6 +3373,7 @@
 				0995749C287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905AFD2851A02B00BAEE78 /* Assets.xcassets in Resources */,
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
+				A1C9555D28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905B002851A02B00BAEE78 /* BaseTabbar.xib in Resources */,
 				09954C3128893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
@@ -3455,6 +3464,7 @@
 				0995749D287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905BEF2851A08500BAEE78 /* Assets.xcassets in Resources */,
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
+				A1C9555E28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905BF22851A08500BAEE78 /* BaseTabbar.xib in Resources */,
 				09954C3228893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
@@ -3545,6 +3555,7 @@
 				0995749B287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09905CE12851A09600BAEE78 /* Assets.xcassets in Resources */,
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
+				A1C9555C28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905CE42851A09600BAEE78 /* BaseTabbar.xib in Resources */,
 				09954C3028893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
@@ -3635,6 +3646,7 @@
 				09957499287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */,
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
+				A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF4DC283C77ED00D7B19B /* BaseTabbar.xib in Resources */,
 				09954C2E28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
@@ -3725,6 +3737,7 @@
 				0995749A287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */,
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
+				A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF59D283C7BBE00D7B19B /* BaseTabbar.xib in Resources */,
 				09954C2F28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,
@@ -3815,6 +3828,7 @@
 				09957498287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
+				A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
 				A19C70CD282246DF000AFC3F /* BaseTabbar.xib in Resources */,
 				09954C2D28893F1F00E5E2BE /* PlusJakartaSans-ExtraLight.ttf in Resources */,

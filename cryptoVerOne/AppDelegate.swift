@@ -10,6 +10,7 @@ import Toaster
 import RxSwift
 import DropDown
 import JWTDecode
+import Firebase
 
 public typealias CheckCompletionBlock = (Bool) -> Void
 @main
@@ -158,6 +159,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Toast.show(msg: "目前是 \(self.domainMode.rawValue) 環境\n 域名:\(BuildConfig.Domain)")
 #endif
         DropDown.startListeningToKeyboard()
+        
+#if Mundo_PRO
+        // 啟動Firebase GA
+        FirebaseApp.configure()
+#else
+#endif
     }
     func isLaunchBefore() -> Bool {
         let isLaunchBefore = UserDefaults.Verification.bool(forKey: .launchBefore)
