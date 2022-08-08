@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2H7-Lr-Rmj">
                         <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Vector" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-86-6ex">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AuditAvatar" translatesAutoresizingMaskIntoConstraints="NO" id="PNl-86-6ex">
                                 <rect key="frame" x="24" y="34" width="36" height="36"/>
                                 <color key="backgroundColor" red="0.87058823529411766" green="0.88627450980392153" blue="0.90980392156862744" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -128,7 +128,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="Vector" width="26" height="30"/>
+        <image name="AuditAvatar" width="36" height="36"/>
         <image name="icon-email" width="29" height="28"/>
         <image name="icon-logo-gray" width="29" height="28"/>
         <systemColor name="systemBackgroundColor">

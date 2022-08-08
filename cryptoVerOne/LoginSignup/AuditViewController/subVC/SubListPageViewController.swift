@@ -55,12 +55,13 @@ class SubListPageViewController: BaseViewController {
         
         // menu item
         pageViewcontroller?.selectedBackgroundColor = .clear
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 48)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 46)
         // menu 上下左右控制
-        pageViewcontroller?.menuInsets = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        pageViewcontroller?.menuInsets = UIEdgeInsets(top: 0, left: 0, bottom: 3, right: 0)
         pageViewcontroller?.menuHorizontalAlignment = .center
         pageViewcontroller?.menuItemSpacing = 20
         pageViewcontroller?.menuBackgroundColor = .white
+        pageViewcontroller?.borderClass = BorderView.self
         pageViewcontroller?.borderColor = UIColor(rgb: 0xE0E5F2)
         // menu text
         pageViewcontroller?.selectedFont = Fonts.SFProDisplaySemibold(18)
@@ -137,4 +138,12 @@ extension SubListPageViewController: PagingViewControllerDataSource, PagingViewC
 ////            isFilterAction = false
 //        }
     }
+}
+class BorderView: PagingBorderView {
+    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
+        super.apply(layoutAttributes)
+        self.frame = CGRect(x: 0, y: 48, width: Views.screenWidth, height: 1)
+        
+    }
+
 }

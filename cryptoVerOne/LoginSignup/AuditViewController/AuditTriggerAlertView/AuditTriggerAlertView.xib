@@ -35,7 +35,7 @@
                             <constraints>
                                 <constraint firstAttribute="height" constant="130" id="CJ7-Bk-G7Q"/>
                             </constraints>
-                            <color key="textColor" systemColor="labelColor"/>
+                            <color key="textColor" red="0.0" green="0.12549019607843137" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             <connections>
@@ -119,9 +119,6 @@
         </view>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

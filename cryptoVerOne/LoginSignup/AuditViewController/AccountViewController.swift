@@ -26,16 +26,26 @@ class AccountViewController: BaseViewController {
     private lazy var logoBtn:UIButton = {
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
-        let image = UIImage(named: "mundoLogo")?.reSizeImage(reSize: CGSize(width: 26, height: 26))
+        let image = UIImage(named: "mundoLogo")
         btn.setImage(image, for: .normal)
+        btn.imageView?.contentMode = .scaleAspectFit
         return btn
+    }()
+    private lazy var logoImageView:UIImageView = {
+        let img = UIImageView()
+        img.frame = CGRect(x: 18, y: 0, width: 26, height: 26)
+        let image = UIImage(named: "mundoLogo")
+        img.image = image
+        img.contentMode = .scaleAspectFit
+        return img
     }()
     private lazy var logoutBtn:UIButton = {
         let btn = UIButton()
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
-        let image = UIImage(named: "icon-logoout")?.reSizeImage(reSize: CGSize(width: 26, height: 26))
+        let image = UIImage(named: "icon-logoout")
         btn.setImage(image, for: .normal)
         btn.addTarget(self, action:#selector(logoutAction), for:.touchUpInside)
+        btn.imageView?.contentMode = .scaleAspectFit
         return btn
     }()
     // MARK: -
@@ -63,9 +73,20 @@ class AccountViewController: BaseViewController {
     func setupBackUI()
     {
         title = "MC Audit".localized
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: logoBtn)
+        let letView = UIView(frame: CGRect(x: 0, y: 0, width: 44, height: 26))
+        letView.addSubview(logoImageView)
+        setLogoImageView()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: letView)
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: logoutBtn)
         view.backgroundColor = Themes.black1B2559
+    }
+    func setLogoImageView()
+    {
+        logoImageView.snp.makeConstraints { make in
+            make.size.equalTo(26)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview()
+        }
     }
     func setupNavigation()
     {

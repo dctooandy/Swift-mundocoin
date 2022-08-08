@@ -493,7 +493,7 @@ class InputStyleView: UIView {
             addSubview(verifyResentLabel)
             verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-            verifyResentLabel.textColor = Themes.green19BBB1
+            verifyResentLabel.textColor = Themes.green13BBB1
             verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
             verifyResentLabel.textColor = Themes.purple6149F6
@@ -651,7 +651,7 @@ class InputStyleView: UIView {
                 addSubview(verifyResentLabel)
                 verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-                verifyResentLabel.textColor = Themes.green19BBB1
+                verifyResentLabel.textColor = Themes.green13BBB1
                 verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
                 verifyResentLabel.textColor = Themes.purple6149F6
@@ -874,7 +874,7 @@ class InputStyleView: UIView {
     {
         verifyResentLabel.text = "Send".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        verifyResentLabel.textColor = Themes.green19BBB1
+        verifyResentLabel.textColor = Themes.green13BBB1
         verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
 #else
         verifyResentLabel.textColor = Themes.purple6149F6
@@ -969,12 +969,9 @@ extension InputStyleView: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        if textField.text?.isEmpty == true
-//        {
-//            cancelRightButton.isHidden = true
-//        }else
-//        {
-//        }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        cancelRightButton.isHidden = true
+#else
         if range.length == textField.text?.count , string == ""
         {
             cancelRightButton.isHidden = true
@@ -982,11 +979,16 @@ extension InputStyleView: UITextFieldDelegate {
         {
             cancelRightButton.isHidden = false
         }
+#endif
+      
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.placeholder = ""
         onChooseClick.onNext(true)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        cancelRightButton.isHidden = true
+#else
         if textField.text?.isEmpty == true
         {
             cancelRightButton.isHidden = true
@@ -994,6 +996,8 @@ extension InputStyleView: UITextFieldDelegate {
         {
             cancelRightButton.isHidden = false
         }
+#endif
+        
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {

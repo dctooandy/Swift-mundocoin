@@ -38,6 +38,7 @@ class AuditTriggerAlertView: UIView {
         super.awakeFromNib()
         setupUI()
         bindButton()
+        setupTextField()
     }
     
     override init(frame: CGRect) {
@@ -81,6 +82,12 @@ class AuditTriggerAlertView: UIView {
         cancelButton.layer.cornerRadius = 8
         cancelButton.layer.masksToBounds = true
     }
+    func setupTextField()
+    {
+        messageTextView.text = "Message"
+        messageTextView.textColor = Themes.grayA1ACB6
+    }
+    
     func bindTextView()
     {
         if alertMode == .reject
@@ -120,6 +127,18 @@ class AuditTriggerAlertView: UIView {
     }
 }
 extension AuditTriggerAlertView : UITextViewDelegate{
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if textView.textColor == Themes.grayA1ACB6 {
+            textView.text = nil
+            textView.textColor = Themes.black002033
+        }
+    }
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Message"
+            textView.textColor = Themes.grayA1ACB6
+        }
+    }
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText string: String) -> Bool
     {
         messageTextView.layer.borderColor = UIColor(rgb: 0xCDD9E4).cgColor

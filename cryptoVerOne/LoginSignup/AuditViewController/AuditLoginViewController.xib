@@ -9,9 +9,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SF-Pro-Display-Bold.ttf">
-            <string>SFProDisplay-Bold</string>
-        </array>
         <array key="SF-Pro-Display-Medium.ttf">
             <string>SFProDisplay-Medium</string>
         </array>
@@ -31,14 +28,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="852"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ee-9L-J4d">
-                                <rect key="frame" x="202" y="0.0" width="10" height="27"/>
+                                <rect key="frame" x="202" y="0.0" width="10" height="9"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="10" id="gj4-vt-4VV"/>
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mundoLogo" translatesAutoresizingMaskIntoConstraints="NO" id="QvN-wS-qpf">
-                                <rect key="frame" x="177" y="27" width="60" height="60"/>
+                                <rect key="frame" x="177" y="9" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="2vK-Lo-1dE"/>
                                     <constraint firstAttribute="width" secondItem="QvN-wS-qpf" secondAttribute="height" multiplier="1:1" id="N3J-si-ECx"/>
@@ -46,13 +43,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MC Audit" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbT-iq-m0h">
-                                <rect key="frame" x="141.5" y="95" width="131" height="37"/>
-                                <fontDescription key="fontDescription" name="SFProDisplay-Bold" family="SF Pro Display" pointSize="31"/>
+                                <rect key="frame" x="140" y="77" width="134" height="37"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="31"/>
                                 <color key="textColor" red="0.10980392156862745" green="0.078431372549019607" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xVe-H7-NkA">
-                                <rect key="frame" x="22" y="189" width="370" height="264"/>
+                                <rect key="frame" x="22" y="154" width="370" height="264"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCT-Xc-Tov" customClass="InputStyleView" customModule="Approval" customModuleProvider="target">
                                         <rect key="frame" x="25" y="32" width="320" height="78"/>
@@ -78,7 +75,7 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zed-2O-naY">
-                                        <rect key="frame" x="55" y="215.5" width="88.5" height="17"/>
+                                        <rect key="frame" x="55" y="215.5" width="92.5" height="17"/>
                                         <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="14"/>
                                         <color key="textColor" red="0.19215686274509802" green="0.29411764705882354" blue="0.35686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -100,7 +97,7 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfJ-cR-b1G" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
-                                <rect key="frame" x="51" y="493" width="312" height="50"/>
+                                <rect key="frame" x="51" y="458" width="312" height="50"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="WBV-61-V5v"/>
@@ -111,7 +108,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eda-Hh-pa4">
-                                <rect key="frame" x="177" y="27" width="60" height="60"/>
+                                <rect key="frame" x="177" y="9" width="60" height="60"/>
                                 <state key="normal" title=" "/>
                                 <connections>
                                     <action selector="changeDomain:" destination="B1e-Qe-VG8" eventType="touchUpOutside" id="eO9-Qa-FYA"/>
@@ -126,7 +123,7 @@
                             <constraint firstAttribute="bottom" secondItem="cKr-9t-4TZ" secondAttribute="bottom" id="P3l-m6-qIz"/>
                             <constraint firstItem="3Ee-9L-J4d" firstAttribute="top" secondItem="l24-Tl-Drr" secondAttribute="top" id="P8c-Wa-72w"/>
                             <constraint firstItem="cKr-9t-4TZ" firstAttribute="top" secondItem="l24-Tl-Drr" secondAttribute="top" id="PPV-mQ-ndF"/>
-                            <constraint firstItem="xVe-H7-NkA" firstAttribute="top" secondItem="xbT-iq-m0h" secondAttribute="bottom" constant="57" id="Sx4-sb-mZZ"/>
+                            <constraint firstItem="xVe-H7-NkA" firstAttribute="top" secondItem="xbT-iq-m0h" secondAttribute="bottom" constant="40" id="Sx4-sb-mZZ"/>
                             <constraint firstItem="xbT-iq-m0h" firstAttribute="top" secondItem="QvN-wS-qpf" secondAttribute="bottom" constant="8" id="TWH-hi-PNA"/>
                             <constraint firstAttribute="trailing" secondItem="cKr-9t-4TZ" secondAttribute="trailing" id="VsO-rT-62p"/>
                             <constraint firstAttribute="trailing" secondItem="xVe-H7-NkA" secondAttribute="trailing" constant="22" id="a4J-I9-aej"/>
@@ -151,7 +148,7 @@
                     <constraint firstItem="l24-Tl-Drr" firstAttribute="top" secondItem="BaC-EJ-ogy" secondAttribute="top" id="Y9x-fI-YuD"/>
                     <constraint firstItem="xbT-iq-m0h" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.0602679" constant="-17.000038400000001" id="dPz-ge-Afh"/>
                     <constraint firstItem="l24-Tl-Drr" firstAttribute="leading" secondItem="BaC-EJ-ogy" secondAttribute="leading" id="hLk-Xb-Nlm"/>
-                    <constraint firstItem="3Ee-9L-J4d" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.03" id="kML-bn-Rb8"/>
+                    <constraint firstItem="3Ee-9L-J4d" firstAttribute="height" secondItem="Fm6-Lj-NZE" secondAttribute="height" multiplier="0.01" id="kML-bn-Rb8"/>
                 </constraints>
             </view>
             <connections>
