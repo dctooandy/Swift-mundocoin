@@ -969,13 +969,31 @@ extension InputStyleView: UITextFieldDelegate {
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        cancelRightButton.isHidden = false
+//        if textField.text?.isEmpty == true
+//        {
+//            cancelRightButton.isHidden = true
+//        }else
+//        {
+//        }
+        if range.length == textField.text?.count , string == ""
+        {
+            cancelRightButton.isHidden = true
+        }else
+        {
+            cancelRightButton.isHidden = false
+        }
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         textField.placeholder = ""
         onChooseClick.onNext(true)
-        cancelRightButton.isHidden = true
+        if textField.text?.isEmpty == true
+        {
+            cancelRightButton.isHidden = true
+        }else
+        {
+            cancelRightButton.isHidden = false
+        }
         return true
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
