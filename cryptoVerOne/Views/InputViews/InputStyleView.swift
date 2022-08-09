@@ -895,11 +895,13 @@ class InputStyleView: UIView {
             if string.count > 3
             {
                 textLabel.text = string
+                textLabel.isHidden = false
                 normalTextLabel.isHidden = true
             }else
             {
                 normalTextLabel.text = string
                 textLabel.isHidden = true
+                normalTextLabel.isHidden = false
                 copyAddressImageView.isHidden = true
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) , .withdrawAddressFromDetail:
