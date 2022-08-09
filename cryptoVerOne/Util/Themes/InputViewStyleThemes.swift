@@ -26,9 +26,15 @@ extension Reactive where Base: InputViewStyleThemes {
             }else if value == .newPWInvalidShow || value == .newPWInvalidHidden
             {
                 control.newAcceptInputHeightStyle(value)
-            }else
+            }else if value == .confirmPWInvalidShow || value == .confirmPWInvalidHidden
             {
                 control.confirmAcceptInputHeightStyle(value)
+            }else if value == .emailInvalidShow || value == .emailInvalidHidden
+            {
+                control.emailAcceptInputHeightStyle(value)
+            }else if value == .twoFAInvalidShow || value == .twoFAInvalidHidden
+            {
+                control.twoFAAcceptInputHeightStyle(value)
             }
         }
     }
@@ -46,6 +52,10 @@ enum InputViewHeightType
     case newPWInvalidHidden
     case confirmPWInvalidShow
     case confirmPWInvalidHidden
+    case emailInvalidShow
+    case emailInvalidHidden
+    case twoFAInvalidShow
+    case twoFAInvalidHidden
 }
 class InputViewStyleThemes : NSObject {
     static var share = InputViewStyleThemes()
@@ -67,6 +77,12 @@ class InputViewStyleThemes : NSObject {
     private let confirmInputHeightStyle: BehaviorRelay<InputViewHeightType> = {
         return BehaviorRelay<InputViewHeightType>(value: .confirmPWInvalidHidden)
     }()
+    private let emailInputHeightStyle: BehaviorRelay<InputViewHeightType> = {
+        return BehaviorRelay<InputViewHeightType>(value: .emailInvalidHidden)
+    }()
+    private let twoFAInputHeightStyle: BehaviorRelay<InputViewHeightType> = {
+        return BehaviorRelay<InputViewHeightType>(value: .twoFAInvalidHidden)
+    }()
     // MARK: -
     // MARK: 步驟二 釋放可設定狀態
     func accountAcceptInputHeightStyle(_ style: InputViewHeightType) {
@@ -75,6 +91,7 @@ class InputViewStyleThemes : NSObject {
     func pwAcceptInputHeightStyle(_ style: InputViewHeightType) {
         pwInputHeightStyle.accept(style)
     }
+    // 更新密碼用
     func oldAcceptInputHeightStyle(_ style: InputViewHeightType) {
         oldInputHeightStyle.accept(style)
     }
@@ -84,6 +101,13 @@ class InputViewStyleThemes : NSObject {
     func confirmAcceptInputHeightStyle(_ style: InputViewHeightType) {
         confirmInputHeightStyle.accept(style)
     }
+    // 驗證TwoFA用
+    func emailAcceptInputHeightStyle(_ style: InputViewHeightType) {
+        emailInputHeightStyle.accept(style)
+    }
+    func twoFAAcceptInputHeightStyle(_ style: InputViewHeightType) {
+        twoFAInputHeightStyle.accept(style)
+    }
     // MARK: -
     // MARK: 步驟三 內部宣告可綁定名稱
     // 綁定取款成功頁面 上方狀態View
@@ -92,6 +116,8 @@ class InputViewStyleThemes : NSObject {
     private static let oldViewHeightMode = InputViewStyleThemes.share.oldInputHeightStyle.asObservable()
     private static let newViewHeightMode = InputViewStyleThemes.share.newInputHeightStyle.asObservable()
     private static let confirmViewHeightMode = InputViewStyleThemes.share.confirmInputHeightStyle.asObservable()
+    private static let emailViewHeightMode = InputViewStyleThemes.share.emailInputHeightStyle.asObservable()
+    private static let twoFAViewHeightMode = InputViewStyleThemes.share.twoFAInputHeightStyle.asObservable()
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
     private static func bindNormalInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
@@ -109,6 +135,12 @@ class InputViewStyleThemes : NSObject {
     private static func bindConfirmPWInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
         return confirmViewHeightMode.map({($0 == .confirmPWInvalidShow) ? show : hidden })
     }
+    private static func bindEmailInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
+        return emailViewHeightMode.map({($0 == .emailInvalidShow) ? show : hidden })
+    }
+    private static func bindTwoFAInputViewHeight<CGFloat>(hidden: CGFloat , show: CGFloat) -> Observable<CGFloat>{
+        return twoFAViewHeightMode.map({($0 == .twoFAInvalidShow) ? show : hidden })
+    }
     // MARK: -
     // MARK: 步驟五 釋放可全域綁定物件腳
     static let normalInputHeightType : Observable<CGFloat> = bindNormalInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewDefaultHeight))
@@ -116,5 +148,6 @@ class InputViewStyleThemes : NSObject {
     static let oldInputHeightType : Observable<CGFloat> = bindOldPWInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewPasswordHeight))
     static let newInputHeightType : Observable<CGFloat> = bindNewPWInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewPasswordHeight))
     static let confirmInputHeightType : Observable<CGFloat> = bindConfirmPWInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewPasswordHeight))
-
+    static let emailInputHeightType : Observable<CGFloat> = bindEmailInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewDefaultHeight))
+    static let twoFAInputHeightType : Observable<CGFloat> = bindTwoFAInputViewHeight(hidden: 85.0, show: CGFloat(Themes.inputViewDefaultHeight))
 }

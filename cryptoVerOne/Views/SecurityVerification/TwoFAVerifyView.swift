@@ -31,7 +31,8 @@ class TwoFAVerifyView: UIView {
             bindBorderColor()
         }
     }
-    
+    var emailHeightConstraint : NSLayoutConstraint!
+    var twoFAHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     var emailInputView = InputStyleView(inputViewMode: .emailVerify(KeychainManager.share.getLastAccount()?.account ?? ""))
@@ -51,7 +52,6 @@ class TwoFAVerifyView: UIView {
         super.awakeFromNib()
         self.setup()
         self.bind()
-        
     }
     
     override init(frame: CGRect) {
@@ -68,10 +68,14 @@ class TwoFAVerifyView: UIView {
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         endEditing(true)
-        emailInputView.changeInvalidLabelAndMaskBorderColor(with: "")
-        twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "")
         emailInputView.tfMaskView.changeBorderWith(isChoose:false)
         twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
+
+        emailInputView.textField.sendActions(for: .valueChanged)
+        twoFAInputView.textField.sendActions(for: .valueChanged)
+
+        
+        
     }
     // MARK: -
     // MARK:業務方法
@@ -80,23 +84,26 @@ class TwoFAVerifyView: UIView {
         addSubview(twoFAInputView)
         addSubview(submitButton)
     }
+    func bindStyle()
+    {
+        InputViewStyleThemes.emailInputHeightType.bind(to: emailHeightConstraint.rx.constant).disposed(by: dpg)
+        InputViewStyleThemes.twoFAInputHeightType.bind(to: twoFAHeightConstraint.rx.constant).disposed(by: dpg)
+    }
     func resetUI()
     {
-        let defaultHeight : CGFloat = 90
-        var bottomY : CGFloat = 90
         switch twoFAViewMode {
         case .both:
-            setupEmailInputView(withTop: 0)
-            setupTwoFAInputView(withTop: defaultHeight)
-            bottomY = 90 * 2.0
+            setupEmailInputView()
+            setupTwoFAInputView(withTop: true)
+            bindStyle()
         case .onlyEmail:
-            setupEmailInputView(withTop: 0)
+            setupEmailInputView()
             twoFAInputView.snp.updateConstraints { (make) in
                 make.height.equalTo(0)
             }
             twoFAInputView.isHidden = true
         case .onlyTwoFA:
-            setupTwoFAInputView(withTop: 0)
+            setupTwoFAInputView()
             emailInputView.snp.updateConstraints { (make) in
                 make.height.equalTo(0)
             }
@@ -105,7 +112,7 @@ class TwoFAVerifyView: UIView {
         lostTwoFALabel.text = "Lost google 2FA?".localized
         lostTwoFALabel.textColor = Themes.gray707EAE
         lostTwoFALabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(twoFAInputView.invalidLabel.snp.bottom)
+            make.top.equalTo(twoFAInputView.snp.bottom)
             make.leading.equalToSuperview().offset(32)
         }
         lostTwoFALabel.isHidden = (twoFAViewMode == .both ? false :true)
@@ -116,27 +123,39 @@ class TwoFAVerifyView: UIView {
             make.height.equalTo(50)
         }
     }
-    func setupEmailInputView(withTop:CGFloat)
+    func setupEmailInputView()
     {
+        emailHeightConstraint = NSLayoutConstraint(item: emailInputView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))
         emailInputView.snp.remakeConstraints { (make) in
-            make.top.equalTo(withTop)
+            make.top.equalToSuperview()
             make.leading.equalToSuperview().offset(28)
             make.trailing.equalToSuperview().offset(-28)
-            make.height.equalTo(Themes.inputViewDefaultHeight)
+//            make.height.equalTo(Themes.inputViewDefaultHeight)
+            make.height.equalTo(emailHeightConstraint.constant)
         }
+        emailInputView.addConstraint(emailHeightConstraint)
     }
-    func setupTwoFAInputView(withTop:CGFloat)
+    func setupTwoFAInputView(withTop:Bool = false)
     {
+        twoFAHeightConstraint = NSLayoutConstraint(item: twoFAInputView, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))
         twoFAInputView.snp.remakeConstraints { (make) in
-            make.top.equalTo(withTop)
+            if withTop == true
+            {
+                make.top.equalTo(emailInputView.snp.bottom)
+            }else
+            {
+                make.top.equalToSuperview()
+            }
             make.leading.equalToSuperview().offset(28)
             make.trailing.equalToSuperview().offset(-28)
-            make.height.equalTo(Themes.inputViewDefaultHeight)
+//            make.height.equalTo(Themes.inputViewDefaultHeight)
+            make.height.equalTo(twoFAHeightConstraint.constant)
         }
+        twoFAInputView.addConstraint(twoFAHeightConstraint)
     }
     func bind()
     {
-        bindBorderColor()
+//        bindBorderColor()
         bindCancelButton()
         bindLostTwoFALabel()
         bindAction()
@@ -147,17 +166,75 @@ class TwoFAVerifyView: UIView {
         let isEmailValid = emailInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
+                if (self?.emailInputView.textField.isFirstResponder) != true
+                {
+                    self?.emailInputView.invalidLabel.isHidden = true
+                }
                 return RegexHelper.match(pattern: .otp, input: acc)
         }
         let isTwoFAValid = twoFAInputView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
+                if (self?.twoFAInputView.textField.isFirstResponder) != true
+                {
+                    self?.twoFAInputView.invalidLabel.isHidden = true
+                }
                 return RegexHelper.match(pattern: .otp, input: acc)
         }
         switch twoFAViewMode {
         case .both:
-            isEmailValid.skip(1).bind(to: emailInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-            isTwoFAValid.skip(1).bind(to: twoFAInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+            let isEmailHeightType = emailInputView.textField.rx.text
+                .map { [weak self] (str) -> InputViewHeightType in
+                    guard let strongSelf = self, let acc = str else { return .emailInvalidHidden }
+                    if ((strongSelf.emailInputView.textField.isFirstResponder) == true) {
+                        let patternValue = RegexHelper.Pattern.otp
+
+                        let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .emailInvalidHidden : (acc.isEmpty == true ? .emailInvalidShow : .emailInvalidShow)
+                        if resultValue == .emailInvalidShow
+                        {
+                            strongSelf.emailInputView.invalidLabel.isHidden = false
+                        }else
+                        {
+                            strongSelf.emailInputView.invalidLabel.isHidden = true
+                        }
+                        return resultValue
+                    }else
+                    {
+                        if strongSelf.emailInputView.invalidLabel.textColor == .red
+                        {
+                            return .emailInvalidShow
+                        }
+                        return .emailInvalidHidden
+                    }
+            }
+            isEmailHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+            let isTwoFAHeightType = twoFAInputView.textField.rx.text
+                .map { [weak self] (str) -> InputViewHeightType in
+                    guard let strongSelf = self, let acc = str else { return .twoFAInvalidHidden }
+                    if ((strongSelf.twoFAInputView.textField.isFirstResponder) == true) {
+                        let patternValue = RegexHelper.Pattern.otp
+
+                        let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .twoFAInvalidHidden : (acc.isEmpty == true ? .twoFAInvalidShow : .twoFAInvalidShow)
+                        if resultValue == .twoFAInvalidShow
+                        {
+                            strongSelf.twoFAInputView.invalidLabel.isHidden = false
+                        }else
+                        {
+                            strongSelf.twoFAInputView.invalidLabel.isHidden = true
+                        }
+                        return resultValue
+                    }else
+                    {
+                        if strongSelf.twoFAInputView.invalidLabel.textColor == .red
+                        {
+                            return .twoFAInvalidShow
+                        }
+                        return .twoFAInvalidHidden
+                    }
+            }
+            isTwoFAHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+//            isEmailValid.skip(1).bind(to: emailInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//            isTwoFAValid.skip(1).bind(to: twoFAInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
             Observable.combineLatest(isEmailValid, isTwoFAValid)
                 .map { return $0.0 && $0.1 } //reget match result
                 .bind(to: submitButton.rx.isEnabled)
@@ -185,15 +262,48 @@ class TwoFAVerifyView: UIView {
     func bindBorderColor()
     {
         emailInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            emailInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
-            emailInputView.changeInvalidLabelAndMaskBorderColor(with: "")
+            resetInvalidText(email:isChoose)
+            resetTFMaskView(email: isChoose)
+            resetInputView(view: twoFAInputView)
+            if isChoose == false
+            {
+                twoFAInputView.textField.becomeFirstResponder()
+            }
         }.disposed(by: dpg)
         twoFAInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            emailInputView.tfMaskView.changeBorderWith(isChoose:false)
-            twoFAInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "")
+            resetInvalidText(twoFA:isChoose)
+            resetTFMaskView(twoFA: isChoose)
+           
         }.disposed(by: dpg)
+    }
+    func resetInvalidText(email:Bool = false ,twoFA:Bool = false )
+    {
+        if email == true
+        {
+            emailInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+        if twoFA == true
+        {
+            twoFAInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+    }
+    func resetTFMaskView(email:Bool = false ,twoFA:Bool = false ,force:Bool = false)
+    {
+        if emailInputView.invalidLabel.textColor != .red || force == true
+        {
+            emailInputView.tfMaskView.changeBorderWith(isChoose:email)
+        }
+        if twoFAInputView.invalidLabel.textColor != .red || force == true
+        {
+            twoFAInputView.tfMaskView.changeBorderWith(isChoose:twoFA)
+        }
+    }
+    func resetInputView(view : InputStyleView)
+    {
+        if view.invalidLabel.textColor != .red
+        {
+            view.invalidLabel.isHidden = true
+        }
     }
     func bindLostTwoFALabel()
     {
