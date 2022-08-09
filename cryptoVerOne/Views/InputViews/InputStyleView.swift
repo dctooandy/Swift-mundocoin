@@ -503,7 +503,7 @@ class InputStyleView: UIView {
                 make.right.equalToSuperview().offset(-17)
                 make.centerY.equalTo(textField)
             }
-            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
         }
         else if inputViewMode == .withdrawToAddress || inputViewMode == .address
         {

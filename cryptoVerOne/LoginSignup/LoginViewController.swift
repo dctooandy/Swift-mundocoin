@@ -175,12 +175,18 @@ class LoginViewController: BaseViewController {
                     
                     if status == "400"
                     {
-                        accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.pwInvalidShow)
+                        if reason == "ID_OR_PASSWORD_NOT_MATCH"
+                        {
+                            accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "Email or password error")
+                            InputViewStyleThemes.share.accountAcceptInputHeightStyle(.pwInvalidShow)
+                        }
                     }else if status == "404"
                     {
-                        accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
+                        if reason == "Provided Id not exist"
+                        {
+                            accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is not exist")
+                            InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
+                        }
                     }else
                     {
                         ErrorHandler.show(error: error)

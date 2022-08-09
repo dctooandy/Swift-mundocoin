@@ -438,7 +438,11 @@ extension LoginSignupViewController {
                     {
                         switch error {
                         case .errorDto(let dto):
-                            verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                            let reason = dto.reason
+                            if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
+                            {
+                                verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                            }
                         case .noData:
                             Log.v("登入返回沒有資料")
                         default:

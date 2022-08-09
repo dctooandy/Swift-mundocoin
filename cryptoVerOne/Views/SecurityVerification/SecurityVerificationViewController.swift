@@ -19,6 +19,7 @@ enum SecurityViewMode {
 class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
     private let onVerifySuccessClick = PublishSubject<(String,String)>()
+    private let onSelectedModeSuccessClick = PublishSubject<(String,String)>()
     private let dpg = DisposeBag()
     static let share: SecurityVerificationViewController = SecurityVerificationViewController.loadNib()
     var securityViewMode : SecurityViewMode = .defaultMode {
@@ -39,7 +40,7 @@ class SecurityVerificationViewController: BaseViewController {
     var onlyEmailVerifyViewController = TwoFAVerifyViewController()
     var onlyTwoFAVerifyViewController = TwoFAVerifyViewController()
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
-    private var twoFAViewControllers = [TwoFAVerifyViewController]()
+    var twoFAViewControllers = [TwoFAVerifyViewController]()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -156,12 +157,12 @@ class SecurityVerificationViewController: BaseViewController {
         
         self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
-            onVerifySuccessClick.onNext((stringData,""))
+            onSelectedModeSuccessClick.onNext((stringData,"onlyEmail"))
         }.disposed(by: dpg)
         
         self.onlyTwoFAVerifyViewController.rxSecondSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
-            onVerifySuccessClick.onNext((stringData,""))
+            onSelectedModeSuccessClick.onNext((stringData,"onlyTwoFA"))
         }.disposed(by: dpg)
     }
     func verifyResentAutoPressed(byMode: SecurityViewMode)
@@ -251,6 +252,10 @@ class SecurityVerificationViewController: BaseViewController {
     func rxVerifySuccessClick() -> Observable<(String,String)>
     {
         return onVerifySuccessClick.asObserver()
+    }
+    func rxSelectedModeSuccessClick() -> Observable<(String,String)>
+    {
+        return onSelectedModeSuccessClick.asObserver()
     }
 }
 // MARK: -

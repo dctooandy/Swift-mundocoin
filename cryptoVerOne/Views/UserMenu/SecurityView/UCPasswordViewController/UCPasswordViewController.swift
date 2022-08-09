@@ -285,12 +285,12 @@ class UCPasswordViewController: BaseViewController {
                 submitButtonPressed()
             }.disposed(by: dpg)
     }
-    func customerUpdatePassword(Withcode:String)
+    func customerUpdatePassword(Withcode:String , withMode:String = "")
     {
         if let currentString = oldInputView.textField.text,
         let newString = newInputView.textField.text
         {
-            Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribeSuccess { [self]data in
+            Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribe { [self] data in
                 Log.v("更改成功")
                 if let currentAcc = KeychainManager.share.getLastAccount()
                 {
@@ -305,6 +305,53 @@ class UCPasswordViewController: BaseViewController {
                 changedPWVC.backgroundImageViewHidden()
                 changedPWVC.title = "Security Verification"
                 self.navigationController?.pushViewController(changedPWVC, animated: true)
+            } onError: { [self] error in
+                if let error = error as? ApiServiceError {
+                    switch error {
+                    case .errorDto(let dto):
+                        let status = dto.httpStatus ?? ""
+                        let reason = dto.reason
+                        if status == "400"
+                        {
+                            if reason == "CODE_MISMATCH"
+                            {
+                                Log.i("驗證碼錯誤 :\(reason)")
+                                if twoFAVC.securityViewMode == .onlyEmail
+                                {
+                                    twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
+                                    twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                }else if twoFAVC.securityViewMode == .onlyTwoFA
+                                {
+                                    twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
+                                    twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                }else if twoFAVC.securityViewMode == .selectedMode
+                                {
+                                    if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
+                                    {
+                                        emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
+                                        emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                    }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
+                                    {
+                                        twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
+                                        twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                    }
+                                }else if twoFAVC.securityViewMode == .defaultMode
+                                {
+                                    if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
+                                    {
+                                        ErrorHandler.show(error: error)
+                                    }
+                                }
+                            }
+                          
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
+                        }
+                    default:
+                        ErrorHandler.show(error: error)
+                    }
+                }
             }.disposed(by: dpg)
         }
     }
@@ -315,6 +362,9 @@ class UCPasswordViewController: BaseViewController {
         twoFAVC.securityViewMode = .onlyEmail
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0)
+        }.disposed(by: dpg)
+        twoFAVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+            customerUpdatePassword(Withcode: stringData.0,withMode: stringData.1)
         }.disposed(by: dpg)
     }
     func bindBorderColor()
@@ -420,8 +470,11 @@ class UCPasswordViewController: BaseViewController {
                             
                             if status == "400"
                             {
-                                oldInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                                InputViewStyleThemes.share.oldAcceptInputHeightStyle(.oldPWInvalidShow)
+                                if reason == "ID_OR_PASSWORD_NOT_MATCH"
+                                {
+                                    oldInputView.changeInvalidLabelAndMaskBorderColor(with: "Password incorrect")
+                                    InputViewStyleThemes.share.oldAcceptInputHeightStyle(.oldPWInvalidShow)
+                                }
                             }else
                             {
                                 ErrorHandler.show(error: error)

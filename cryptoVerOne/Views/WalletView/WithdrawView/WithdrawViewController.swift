@@ -299,8 +299,8 @@ class WithdrawViewController: BaseViewController {
     func showSecurityVC()
     {
         securityVerifyVC = SecurityVerificationViewController.loadNib()
-//        securityVerifyVC.securityViewMode = .defaultMode
-        securityVerifyVC.securityViewMode = .onlyEmail
+        securityVerifyVC.securityViewMode = .defaultMode
+//        securityVerifyVC.securityViewMode = .onlyEmail
         securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
             // 開啟驗證流程
             Log.i("驗證成功,開取款單")
@@ -352,11 +352,11 @@ class WithdrawViewController: BaseViewController {
                                         if securityVerifyVC.securityViewMode == .onlyEmail
                                         {
                                             securityVerifyVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                         }else if securityVerifyVC.securityViewMode == .onlyTwoFA
                                         {
                                             securityVerifyVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                         }
                                     }
                                     if reason == "INSUFFICIENT_FUND"

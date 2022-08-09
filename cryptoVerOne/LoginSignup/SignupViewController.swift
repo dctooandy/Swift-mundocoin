@@ -191,8 +191,11 @@ class SignupViewController: BaseViewController {
                     let reason = dto.reason
                     if status == "400"
                     {
-                        accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
+                        if reason == "ID_NOT_EXISTS"
+                        {
+                            accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Email already registered.")
+                            InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
+                        }  
                     }else
                     {
                         ErrorHandler.show(error: error)
