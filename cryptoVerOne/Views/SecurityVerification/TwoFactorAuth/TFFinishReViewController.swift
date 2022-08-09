@@ -111,7 +111,7 @@ class TFFinishReViewController: BaseViewController {
                     }
                     if shouldDirectToWithdrawVC == true
                     {
-                        let withdrawVC = WithdrawViewController.loadNib()
+                        let withdrawVC = WithdrawViewController.share
                         self.navigationController?.viewControllers = [WalletViewController.share]
                         WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
                     }
@@ -119,7 +119,8 @@ class TFFinishReViewController: BaseViewController {
             case .reverify:
                 let twoFAVC = SecurityVerificationViewController.loadNib()
                 twoFAVC.securityViewMode = .onlyEmail
-                twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
+                twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+                    // 目前沒有驗證驗證碼
                     goRebindGoogleAuth()
                 }.disposed(by: dpg)
                 _ = self.navigationController?.pushViewController(twoFAVC, animated: true)
@@ -135,8 +136,9 @@ class TFFinishReViewController: BaseViewController {
     @objc override func popVC() {
         switch viewMode {
         case .back:
-            let securityVC = SecurityViewController.share
-            _ = self.navigationController?.popToViewController(securityVC, animated:true )
+//            let securityVC = SecurityViewController.share
+//            _ = self.navigationController?.popToViewController(securityVC, animated:true )
+            self.navigationController?.popToRootViewController(animated: true)
         case .reverify:
             super.popVC()
         }

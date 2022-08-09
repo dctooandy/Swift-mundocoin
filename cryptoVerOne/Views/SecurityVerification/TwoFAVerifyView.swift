@@ -70,12 +70,9 @@ class TwoFAVerifyView: UIView {
         endEditing(true)
         emailInputView.tfMaskView.changeBorderWith(isChoose:false)
         twoFAInputView.tfMaskView.changeBorderWith(isChoose:false)
-
         emailInputView.textField.sendActions(for: .valueChanged)
         twoFAInputView.textField.sendActions(for: .valueChanged)
-
-        
-        
+        InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidHidden)
     }
     // MARK: -
     // MARK:業務方法
@@ -112,7 +109,13 @@ class TwoFAVerifyView: UIView {
         lostTwoFALabel.text = "Lost google 2FA?".localized
         lostTwoFALabel.textColor = Themes.gray707EAE
         lostTwoFALabel.snp.remakeConstraints { (make) in
-            make.top.equalTo(twoFAInputView.snp.bottom)
+            if twoFAViewMode == .both
+            {
+                make.top.equalTo(twoFAInputView.snp.bottom)
+            }else
+            {
+                make.top.equalTo(emailInputView.snp.bottom)
+            }
             make.leading.equalToSuperview().offset(32)
         }
         lostTwoFALabel.isHidden = (twoFAViewMode == .both ? false :true)

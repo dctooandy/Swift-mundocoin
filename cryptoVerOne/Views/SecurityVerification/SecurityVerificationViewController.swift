@@ -127,7 +127,8 @@ class SecurityVerificationViewController: BaseViewController {
         }.disposed(by: dpg)
         self.twoFAVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,Email:\(stringData.0) ,2FA:\(stringData.1)")
-            self.navigationController?.popViewController(animated: false)
+            // 暫時取消推回
+//            self.navigationController?.popViewController(animated: false)
             onVerifySuccessClick.onNext((stringData.0,stringData.1))
             
         }.disposed(by: dpg)

@@ -357,6 +357,11 @@ class WithdrawViewController: BaseViewController {
                                         {
                                             securityVerifyVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
                                             securityVerifyVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                        }else if securityVerifyVC.securityViewMode == .defaultMode
+                                        {
+                                            securityVerifyVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                            InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
                                         }
                                     }
                                     if reason == "INSUFFICIENT_FUND"

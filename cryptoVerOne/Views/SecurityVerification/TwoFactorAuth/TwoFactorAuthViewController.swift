@@ -200,8 +200,9 @@ class TwoFactorAuthViewController: BaseViewController {
         }
     }
     @objc override func popVC() {
-        let securityVC = SecurityViewController.share
-        _ = self.navigationController?.popToViewController(securityVC, animated:true )
+//        let securityVC = SecurityViewController.share
+//        _ = self.navigationController?.popToViewController(securityVC, animated:true )
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 // MARK: -
