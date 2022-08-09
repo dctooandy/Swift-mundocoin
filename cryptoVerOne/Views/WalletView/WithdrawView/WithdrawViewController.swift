@@ -346,7 +346,7 @@ class WithdrawViewController: BaseViewController {
                                 let reason = dto.reason
                                 if status == "400"
                                 {
-                                    if reason == "CODE_MISMATCH"
+                                    if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                                     {
                                         Log.i("驗證碼錯誤 :\(reason)")
                                         if securityVerifyVC.securityViewMode == .onlyEmail
@@ -363,11 +363,14 @@ class WithdrawViewController: BaseViewController {
                                             securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                             InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
                                         }
-                                    }
-                                    if reason == "INSUFFICIENT_FUND"
+                                    }else if reason == "TO_ADDRESS_OWN_BY_CUSTOMER"
+                                    {
+                                        ErrorHandler.show(error: error)
+                                    }else if reason == "INSUFFICIENT_FUND"
                                     {
                                         Log.i("資金不足 :\(reason)")
                                         securityVCPopAction(animated: true)
+                                        ErrorHandler.show(error: error)
                                     }
 //                                    ErrorHandler.show(error: error)
                                 }else

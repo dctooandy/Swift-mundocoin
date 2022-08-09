@@ -111,4 +111,11 @@ struct TXPayloadDto : Codable {
         let timeValue =  (createdDate ?? 0) / 1000
         return newDateFormatter.string(from: Date(timeIntervalSince1970: timeValue))
     }
+    var updatedDateString : String
+    {
+        let newDateFormatter = DateFormatter()
+        newDateFormatter.dateFormat = "MMMM dd, yyyy HH:mm"
+        let timeValue =  (updatedDate ?? 0) / 1000
+        return newDateFormatter.string(from: Date(timeIntervalSince1970: timeValue))
+    }
 }

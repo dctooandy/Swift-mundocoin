@@ -332,12 +332,26 @@ extension SocketIOManager
                 let txDto = resultsPayload.payload
                 if let statsValue = txDto.state,
                    let typeValue = txDto.type,
-                   let amountValue = txDto.txAmountIntWithDecimal?.stringValue
+                   let amountValue = txDto.txAmountIntWithDecimal?.stringValue,
+                   let cryptotype = txDto.currency
                 {
                     if statsValue == "COMPLETE"
                     {
-                        let bodyArray = ["\(typeValue)","\(statsValue)"]
-                        self.onTriggerLocalNotification(subtitle: amountValue, body: bodyArray)                        
+                        var titleString = ""
+                        var bodyString = ""
+                        
+                        if typeValue == "WITHDRAW"
+                        {
+                            titleString = "Withdraw Succesful"
+                            bodyString = "You have withdrawn \(amountValue) \(cryptotype) at \(txDto.updatedDateString) (UTC)."
+                             
+                        }else
+                        {
+                            titleString = "Deposit Succesful"
+                            bodyString = "You have deposited \(amountValue) \(cryptotype) at \(txDto.updatedDateString) (UTC)."
+                        }
+                        
+                        self.onTriggerLocalNotification(subtitle: titleString, body: [bodyString])
                     }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     
