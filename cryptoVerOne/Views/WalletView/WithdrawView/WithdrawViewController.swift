@@ -413,6 +413,7 @@ class WithdrawViewController: BaseViewController {
                                        fee:fee,
                                        date: dataDto.createdDateString,
                                        address: transDto.toAddress,
+                                       fromAddress: transDto.fromAddress,
                                        txid: transDto.txId ?? "",
                                        id:transDto.id,
                                        orderId: transDto.orderId,

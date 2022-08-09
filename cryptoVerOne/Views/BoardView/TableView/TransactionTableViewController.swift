@@ -150,6 +150,7 @@ class TransactionTableViewController: BaseViewController {
                                        fee:feeString,
                                        date: contentDto.createdDateString,
                                        address: contentDto.toAddress,
+                                       fromAddress: contentDto.fromAddress,
                                        txid: contentDto.txId ?? "",
                                        id: contentDto.id,
                                        orderId: contentDto.orderId,

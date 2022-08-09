@@ -16,6 +16,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     private let dpg = DisposeBag()
     var detailDataDto : DetailDto? {
         didSet{
+            resetAddreddInputView()
 //            setupUI()
 //            bindUI()
         }
@@ -128,6 +129,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         }
         lineViewTwo.text = "----------------------------------------------------------"
     }
+    func resetAddreddInputView()
+    {
+        if detailDataDto?.showMode == .deposits
+        {
+            withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
+        }
+    }
     func drawDashLine(lineView : UIView,lineLength : Int ,lineSpacing : Int,lineColor : UIColor){
         let shapeLayer = CAShapeLayer()
         shapeLayer.bounds = lineView.bounds
@@ -216,7 +224,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         {
             let stringHeight = dto.address.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
             withdrawToInputView.tvHeightConstraint.constant = (stringHeight )
-            withdrawToInputView.setVisibleString(string: dto.address)
+            if dto.showMode == .deposits
+            {
+                withdrawToInputView.setVisibleString(string: dto.fromAddress)
+            }else
+            {
+                withdrawToInputView.setVisibleString(string: dto.address)
+            }
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             topAmountLabel.text = dto.amount.numberFormatter(.decimal, 8)
             tetherLabel.text = dto.tether

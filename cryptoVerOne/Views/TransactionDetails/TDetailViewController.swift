@@ -147,6 +147,7 @@ class TDetailViewController: BaseViewController {
                                           fee: feeString,
                                           date: data.createdDateString,
                                           address: data.toAddress ?? "",
+                                          fromAddress: data.fromAddress ?? "",
                                           txid: data.txId ?? "",
                                           id: data.id ?? "",
                                           orderId: data.orderId ?? "",
