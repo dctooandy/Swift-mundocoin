@@ -5691,7 +5691,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5722,7 +5722,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = 3225266GV6;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
