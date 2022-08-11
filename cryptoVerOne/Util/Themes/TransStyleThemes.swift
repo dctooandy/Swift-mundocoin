@@ -31,37 +31,40 @@ class TransStyleThemes {
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
     private static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
-        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
+        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
     }
     private static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
-        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
+        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
     }
     // 綁定取款成功頁面 下方隱藏物件
     private static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
+        return topViewMode.map({ ($0 == .pending || $0 == .innerDone || $0 == .innerFailed ) ? true : false})
+    }
+    private static func bindDetailListFeeViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
         return topViewMode.map({ ($0 == .pending ) ? true : false})
     }
     // 綁定 pending跟processing 的顯示
     private static func bindDetailViewProcessingBorderColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
+        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .failed || $0 == .innerFailed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
     }
     private static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done || $0 == .pending || $0 == .failed) ? Themes.grayE0E5F2:Themes.gray2B3674 })
+        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .failed || $0 == .innerFailed) ? Themes.grayE0E5F2:Themes.gray2B3674 })
     }
     private static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
         return topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })
     }
     // 綁定TopView 文字顏色
     private static func bindTopViewTextColor<T>(done: T , failed: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done ) ? Themes.green0DC897:Themes.redEE5D50 })
+        return topViewMode.map({($0 == .done || $0 == .innerDone ) ? Themes.green0DC897:Themes.redEE5D50 })
     }
     private static func bindDetailViewTryBtnHidden<T>(hidden: T , show: T) -> Observable<Bool>{
-        return topViewMode.map({($0 != .failed ) ? true:false })
+        return topViewMode.map({($0 != .failed || $0 != .innerFailed ) ? true:false })
     }
     private static func bindDetailListTopViewIconName<T>(done: T , failed : T) -> Observable<UIImage>{
-        return topViewMode.map({ (($0 == .done ) ? UIImage(named: "icon-done") : UIImage(named: "icon-error"))!})
+        return topViewMode.map({ (($0 == .done || $0 == .innerDone ) ? UIImage(named: "icon-done") : UIImage(named: "icon-error"))!})
     }
     private static func bindDetailListTopViewLabelText<T>(done: T , failed : T) -> Observable<String>{
-        return topViewMode.map({ (($0 == .done ) ? "Completed".localized : "Failed".localized)})
+        return topViewMode.map({ (($0 == .done || $0 == .innerDone ) ? "Completed".localized : "Failed".localized)})
     }
     // MARK: -
     // MARK: 步驟五 釋放可全域綁定物件腳
@@ -69,6 +72,7 @@ class TransStyleThemes {
     static let topLabelStringType : Observable<String> = bindDetailViewTopString(success: DetailType.done, failed: DetailType.failed)
     // 綁定取款成功頁面要不要顯示TXID欄位
     static let txidViewType : Observable<Bool> = bindDetailListViewHidden(hidden: true, visible: false)
+    static let feeViewType : Observable<Bool> = bindDetailListFeeViewHidden(hidden: true, visible: false)
     static let processingImageType : Observable<UIColor> = bindDetailViewProcessingBorderColor(noProcessing: DetailType.done, processing: DetailType.processing)
     static let processingLabelType : Observable<UIColor> = bindDetailViewProcessingTextColor(noProcessing: DetailType.done, processing: DetailType.processing)
     static let completeViewType : Observable<Bool> = bindDetailViewCompleteViewHidden(hidden: DetailType.pending, show: DetailType.done)

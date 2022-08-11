@@ -28,6 +28,7 @@ enum InputViewMode :Equatable {
     case withdrawAddressToConfirm
     case withdrawAddressToDetail(Bool)
     case withdrawAddressFromDetail
+    case withdrawAddressInnerFromDetail
     case txid(String)
     case securityVerification
     case oldPassword
@@ -61,6 +62,7 @@ enum InputViewMode :Equatable {
         case .withdrawAddressToConfirm: return "Withdraw to address".localized
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .withdrawAddressFromDetail: return "From Address".localized
+        case .withdrawAddressInnerFromDetail: return "From Mundocoin Address".localized
         case .txid( _ ): return "Txid".localized
         case .securityVerification: return "Security Verification".localized
         case .oldPassword: return "Old Password".localized
@@ -477,7 +479,7 @@ class InputStyleView: UIView {
         var rightLabelWidth : CGFloat = 0.0
         displayOffetWidth = (isPasswordType ? 24.0:0.0)
         switch self.inputViewMode {
-        case .copy ,.withdrawToAddress ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail ,.txid(_):
+        case .copy ,.withdrawToAddress ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -563,7 +565,7 @@ class InputStyleView: UIView {
                 dropDownImageView.isHidden = true
             }
         }
-        else if inputViewMode == .withdrawAddressToDetail(true) || inputViewMode == .withdrawAddressFromDetail
+        else if inputViewMode == .withdrawAddressToDetail(true) || inputViewMode == .withdrawAddressFromDetail || inputViewMode == .withdrawAddressInnerFromDetail
         {
             addSubview(normalTextLabel)
             // MC524 暫時隱藏 width 34
@@ -860,7 +862,7 @@ class InputStyleView: UIView {
     func copyStringToTF()
     {
         switch inputViewMode {
-        case .withdrawAddressToDetail( _ ) , .withdrawAddressFromDetail:
+        case .withdrawAddressToDetail( _ ) , .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
             UIPasteboard.general.string = normalTextLabel.text
             Toast.show(msg: "Copied")
         case .txid( _ ):
@@ -904,7 +906,7 @@ class InputStyleView: UIView {
                 normalTextLabel.isHidden = false
                 copyAddressImageView.isHidden = true
             }
-        case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) , .withdrawAddressFromDetail:
+        case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) , .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
             let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
             if theSame.count > 0
             {

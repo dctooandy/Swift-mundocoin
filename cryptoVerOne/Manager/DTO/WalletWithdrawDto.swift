@@ -48,11 +48,11 @@ struct WalletWithdrawDto :Codable {
     {
         switch self.detailType
         {
-        case .done:
+        case .done,.innerDone:
             return "COMPLETE"
         case .pending:
             return "PENDING"
-        case .failed:
+        case .failed,.innerFailed:
             return "FAILED"
         case .processing:
             return "PROCESSING"

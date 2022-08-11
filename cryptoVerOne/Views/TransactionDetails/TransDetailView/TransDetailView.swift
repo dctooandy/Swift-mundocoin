@@ -16,7 +16,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     private let dpg = DisposeBag()
     var detailDataDto : DetailDto? {
         didSet{
-            resetAddreddInputView()
+            resetAddressInputView()
 //            setupUI()
 //            bindUI()
         }
@@ -129,11 +129,25 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         }
         lineViewTwo.text = "----------------------------------------------------------"
     }
-    func resetAddreddInputView()
+    func resetAddressInputView(isAuto:Bool = true ,detailType:DetailType = .done)
     {
-        if detailDataDto?.showMode == .deposits
+        if detailDataDto?.showMode == .deposits , let trueDetailType = detailDataDto?.detailType
         {
-            withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
+            var typeValue:DetailType
+            if isAuto == false
+            {
+                typeValue = detailType
+            }else
+            {
+                typeValue = trueDetailType
+            }
+            if typeValue == .innerFailed || typeValue == .innerDone
+            {
+                withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressInnerFromDetail.topString()
+            }else
+            {
+                withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
+            }
         }
     }
     func drawDashLine(lineView : UIView,lineLength : Int ,lineSpacing : Int,lineColor : UIColor){
@@ -201,8 +215,14 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 var type : DetailType!
                 if viewType == .done
                 {
+                    type = .innerDone
+                }else if viewType == .innerDone
+                {
                     type = .failed
-                } else if viewType == .failed
+                }else if viewType == .failed
+                {
+                    type = .innerFailed
+                }else if viewType == .innerFailed
                 {
                     type = .pending
                 }else if viewType == .pending
@@ -212,6 +232,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 {
                     type = .done
                 }
+                resetAddressInputView(isAuto: false, detailType: type)
                 TransStyleThemes.share.acceptTopViewStatusStyle(type)
                 viewType = type                
             }
@@ -251,7 +272,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             {
                 if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
                 {
-                    TransStyleThemes.txidViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
+                    TransStyleThemes.feeViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
 //                withdrawToInputView.isHidden = false
 //                withdrawToHeight.constant = 46 + stringHeight

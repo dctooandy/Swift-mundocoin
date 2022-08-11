@@ -135,24 +135,28 @@ struct ContentDto : Codable
                     self.state == "Failed" ||
                     self.processingState == "FAILED"
         {
-            return.failed
+            //暫時改為Inner
+//            return .failed
+            return .innerFailed
         }else if state == "PROCESSING" || state == "Processing"
         {
             return .processing
         }else
         {
-            return .done
+            //暫時改為Inner
+//            return .done
+            return .innerDone
         }
     }
     var stateValue:String
     {
         switch self.detailType
         {
-        case .done:
+        case .done,.innerDone:
             return "COMPLETE"
         case .pending:
             return "PENDING"
-        case .failed:
+        case .failed,.innerFailed:
             return "FAILED"
         case .processing:
             return "PROCESSING"
@@ -162,11 +166,11 @@ struct ContentDto : Codable
     {
         switch self.detailType
         {
-        case .done:
+        case .done,.innerDone:
             return UIColor(rgb: 0x47CD6C)
         case .pending:
             return UIColor(rgb: 0xF50D0D)
-        case .failed:
+        case .failed,.innerFailed:
             return UIColor(rgb: 0xF50D0D)
         case .processing:
             return UIColor(rgb: 0xF50D0D)

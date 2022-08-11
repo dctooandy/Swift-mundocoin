@@ -81,24 +81,28 @@ struct TXPayloadDto : Codable {
                     self.state == "Failed" ||
                     self.processingState == "FAILED"
         {
-            return.failed
+            //暫時改為Inner
+//            return .failed
+            return .innerFailed
         }else if state == "PROCESSING" || state == "Processing" || self.processingState == "IN_CHAIN"
         {
             return .processing
         }else
         {
-            return .done
+            //暫時改為Inner
+//            return .done
+            return .innerDone
         }
     }
     var stateValue:String
     {
         switch self.detailType
         {
-        case .done:
+        case .done,.innerDone:
             return "COMPLETE"
         case .pending:
             return "PENDING"
-        case .failed:
+        case .failed,.innerFailed:
             return "FAILED"
         case .processing:
             return "PROCESSING"

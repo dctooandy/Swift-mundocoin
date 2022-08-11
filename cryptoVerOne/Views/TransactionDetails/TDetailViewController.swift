@@ -14,6 +14,8 @@ enum DetailType {
     case processing
     case done
     case failed
+    case innerDone
+    case innerFailed
 }
 enum DetailHiddenMode {
     case topViewHidden
