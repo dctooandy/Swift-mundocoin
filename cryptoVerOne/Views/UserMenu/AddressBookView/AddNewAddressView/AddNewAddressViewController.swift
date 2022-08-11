@@ -49,7 +49,7 @@ class AddNewAddressViewController: BaseViewController {
         bindSacnVC()
         setupUI()
         setupKeyboardNoti()
-        setupAddressStyleView()
+//        setupAddressStyleView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -259,7 +259,7 @@ class AddNewAddressViewController: BaseViewController {
 //        addressStyleView.textField.text = newAddressString
         addressStyleView.textField.placeholder = ""
         addressStyleView.textView.text = newAddressString
-        changeWithdrawInputViewHeight(constant: 72.0)
+        changeWithdrawInputViewHeight(constant: newAddressString.isEmpty ? 46.0 : 72.0)
 //        addressStyleView.textField.sendActions(for: .valueChanged)
     }
     func changeWithdrawInputViewHeight(constant:CGFloat)
