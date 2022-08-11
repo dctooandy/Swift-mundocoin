@@ -136,16 +136,16 @@ struct ContentDto : Codable
                     self.processingState == "FAILED"
         {
             //暫時改為Inner
-//            return .failed
-            return .innerFailed
+            return .failed
+//            return .innerFailed
         }else if state == "PROCESSING" || state == "Processing"
         {
             return .processing
         }else
         {
             //暫時改為Inner
-//            return .done
-            return .innerDone
+            return .done
+//            return .innerDone
         }
     }
     var stateValue:String

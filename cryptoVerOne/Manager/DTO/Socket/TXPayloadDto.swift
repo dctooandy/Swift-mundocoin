@@ -82,16 +82,16 @@ struct TXPayloadDto : Codable {
                     self.processingState == "FAILED"
         {
             //暫時改為Inner
-//            return .failed
-            return .innerFailed
+            return .failed
+//            return .innerFailed
         }else if state == "PROCESSING" || state == "Processing" || self.processingState == "IN_CHAIN"
         {
             return .processing
         }else
         {
             //暫時改為Inner
-//            return .done
-            return .innerDone
+            return .done
+//            return .innerDone
         }
     }
     var stateValue:String
