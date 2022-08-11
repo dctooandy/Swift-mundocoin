@@ -105,8 +105,14 @@ class AddressBookViewController: BaseViewController {
         let whiteListBottomSheet = WhiteListBottomSheet()
         whiteListBottomSheet.rxChangeWhiteListMode().subscribeSuccess { [self] _ in
             let twoFAVC = SecurityVerificationViewController.loadNib()
-            twoFAVC.securityViewMode = .defaultMode
+            // 暫時改為 onlyEmail
+//            twoFAVC.securityViewMode = .defaultMode
+//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+//                verifySuccessForChangeWhiteList()
+//            }.disposed(by: dpg)
+            twoFAVC.securityViewMode = .onlyEmail
             twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+                twoFAVC.navigationController?.popViewController(animated: true)
                 verifySuccessForChangeWhiteList()
             }.disposed(by: dpg)
             _ = self.navigationController?.pushViewController(twoFAVC, animated: true)

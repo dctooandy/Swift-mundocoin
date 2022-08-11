@@ -154,7 +154,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // MC524 暫時隱藏
 //        return (section == 0 ? 4 : 6)
-        return (section == 0 ? 2 : 6)
+        return (section == 0 ? 3 : 6)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -182,8 +182,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 // MC524 暫時隱藏
 //                case 2:
 //                    cell.cellData = .pushNotifications
-//                case 3:
-//                    cell.cellData = .addressBook
+                case 2:
+                    cell.cellData = .addressBook
                 default:
                     break
                 }
@@ -227,12 +227,12 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 let securityVC = SecurityViewController.share
                 self.navigationController?.pushViewController(securityVC, animated: true)
                 //security
-            case 2:
-                Log.i("pushNotifications")
-                let pushVC = PushNotiViewController.loadNib()
-                self.navigationController?.pushViewController(pushVC, animated: true)
+//            case 2:
+//                Log.i("pushNotifications")
+//                let pushVC = PushNotiViewController.loadNib()
+//                self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
-            case 3:
+            case 2:
                 Log.i("addressBook")
                 let addressBookVC = AddressBookViewController.loadNib()
                 self.navigationController?.pushViewController(addressBookVC, animated: true)
