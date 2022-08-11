@@ -368,7 +368,7 @@ class InputStyleView: UIView {
         switch inputViewMode {
         case .customLabel(_) ,.auditAccount,.auditPassword:
             isCustomLabel = true
-        case .withdrawToAddress:
+        case .withdrawToAddress , .address:
             showTextView = true
         default:
             break
@@ -479,7 +479,7 @@ class InputStyleView: UIView {
         var rightLabelWidth : CGFloat = 0.0
         displayOffetWidth = (isPasswordType ? 24.0:0.0)
         switch self.inputViewMode {
-        case .copy ,.withdrawToAddress ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
+        case .copy ,.withdrawToAddress,.address ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -521,13 +521,13 @@ class InputStyleView: UIView {
             if inputViewMode == .withdrawToAddress
             {
                 // MC524 暫時隱藏
-//                addSubview(addressBookImageView)
-//                addressBookImageView.snp.makeConstraints { (make) in
-//                    make.right.equalTo(scanImageView.snp.left).offset(-10)
-//                    make.centerY.equalTo(textField)
-//                    make.size.equalTo(24)
-//                }
-//                rightLabelWidth = 24 + 24 + 20
+                addSubview(addressBookImageView)
+                addressBookImageView.snp.makeConstraints { (make) in
+                    make.right.equalTo(scanImageView.snp.left).offset(-10)
+                    make.centerY.equalTo(textField)
+                    make.size.equalTo(24)
+                }
+                rightLabelWidth = 24 + 24 + 20
             }
         }
         else if inputViewMode.isDropDownStyle()
@@ -569,12 +569,12 @@ class InputStyleView: UIView {
         {
             addSubview(normalTextLabel)
             // MC524 暫時隱藏 width 34
-//            addSubview(addAddressImageView)
+            addSubview(addAddressImageView)
             addSubview(copyAddressImageView)
             normalTextLabel.snp.makeConstraints { (make) in
                 make.left.top.bottom.equalTo(textField)
-//                make.right.equalToSuperview().offset(-35 - 46)
-                make.right.equalToSuperview().offset(-35 - 46 + 34)
+                make.right.equalToSuperview().offset(-35 - 46)
+//                make.right.equalToSuperview().offset(-35 - 46 + 34)
             }
             copyAddressImageView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-10)
@@ -582,14 +582,14 @@ class InputStyleView: UIView {
                 make.size.equalTo(24)
             }
             // MC524 暫時隱藏 width 34
-//            addAddressImageView.snp.makeConstraints { (make) in
-//                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
-//                make.centerY.equalTo(textField)
-//                make.size.equalTo(24)
-//            }
+            addAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(24)
+            }
             // MC524 暫時隱藏 width 34
-//            rightLabelWidth = 18 + 18 + 10
-            rightLabelWidth = 18 + 18 + 10 - 34
+            rightLabelWidth = 18 + 18 + 10
+//            rightLabelWidth = 18 + 18 + 10 - 34
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
         }
@@ -906,7 +906,7 @@ class InputStyleView: UIView {
                 normalTextLabel.isHidden = false
                 copyAddressImageView.isHidden = true
             }
-        case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) , .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
+        case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) ,.address, .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
             let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
             if theSame.count > 0
             {

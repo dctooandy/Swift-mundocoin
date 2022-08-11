@@ -243,15 +243,19 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     {
         if let dto = detailDataDto ,withdrawToInputView != nil
         {
-            let stringHeight = dto.address.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
-            withdrawToInputView.tvHeightConstraint.constant = (stringHeight )
+            var targetAddress = ""
             if dto.showMode == .deposits
             {
-                withdrawToInputView.setVisibleString(string: dto.fromAddress)
+                targetAddress = dto.fromAddress
             }else
             {
-                withdrawToInputView.setVisibleString(string: dto.address)
+                targetAddress = dto.address
             }
+            // MC524 暫時隱藏
+//            let stringHeight = targetAddress.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
+            let stringHeight = targetAddress.height(withConstrainedWidth: (Views.screenWidth - 115 - 34), font:  Fonts.PlusJakartaSansRegular(14))
+            withdrawToInputView.tvHeightConstraint.constant = (stringHeight )
+            withdrawToInputView.setVisibleString(string: targetAddress)
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             topAmountLabel.text = dto.amount.numberFormatter(.decimal, 8)
             tetherLabel.text = dto.tether

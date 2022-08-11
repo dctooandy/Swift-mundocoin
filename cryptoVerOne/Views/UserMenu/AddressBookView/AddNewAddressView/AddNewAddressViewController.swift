@@ -34,6 +34,8 @@ class AddNewAddressViewController: BaseViewController {
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
+    
+    @IBOutlet weak var middleViewHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -53,6 +55,7 @@ class AddNewAddressViewController: BaseViewController {
         super.viewWillAppear(animated)
         setupAddressStyleView()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        addressStyleView.withdrawInputViewFullHeight = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -61,6 +64,10 @@ class AddNewAddressViewController: BaseViewController {
             bindWhenAppear()
         }
         isScanVCByAVCapture = false
+        if addressStyleView.textView.text.isEmpty == true
+        {
+            addressStyleView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -147,6 +154,10 @@ class AddNewAddressViewController: BaseViewController {
             addressStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
             addressStyleView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
+        addressStyleView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
+            changeWithdrawInputViewHeight(constant: heightValue)
+        }.disposed(by: dpg)
+        
         nameStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             nameStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
             nameStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
@@ -157,12 +168,12 @@ class AddNewAddressViewController: BaseViewController {
             walletLabelStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
             walletLabelStyleView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
-        let isAddressValid = addressStyleView.textField.rx.text
+        let isAddressValid = addressStyleView.textView.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. coinAddress, input: acc)
         }
-        isAddressValid.skip(1).bind(to: addressStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isAddressValid.skip(1).bind(to: addressStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
         let isNameValid = nameStyleView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
@@ -220,8 +231,11 @@ class AddNewAddressViewController: BaseViewController {
                 scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
                     isScanPopAction = false
                     newAddressString = stringCode
-                    addressStyleView.textField.text = stringCode
-                    addressStyleView.textField.sendActions(for: .valueChanged)
+//                    addressStyleView.textField.text = stringCode
+                    addressStyleView.textField.placeholder = ""
+                    addressStyleView.textView.text = newAddressString
+                    changeWithdrawInputViewHeight(constant: 72.0)
+//                    addressStyleView.textField.sendActions(for: .valueChanged)
                 }.disposed(by: dpg)
                 isScanPopAction = true
                 if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
@@ -242,9 +256,23 @@ class AddNewAddressViewController: BaseViewController {
     }
     func setupAddressStyleView()
     {
-        addressStyleView.textField.text = newAddressString
-        addressStyleView.textField.sendActions(for: .valueChanged)
+//        addressStyleView.textField.text = newAddressString
+        addressStyleView.textField.placeholder = ""
+        addressStyleView.textView.text = newAddressString
+        changeWithdrawInputViewHeight(constant: 72.0)
+//        addressStyleView.textField.sendActions(for: .valueChanged)
     }
+    func changeWithdrawInputViewHeight(constant:CGFloat)
+    {
+        DispatchQueue.main.async(execute: { [self] in
+            addressStyleView.tvHeightConstraint.constant = constant
+            middleViewHeight.constant = 80.0 + (constant - 46.0)
+            UIView.animate(withDuration: 0.3) {
+                self.view.layoutIfNeeded()
+            }
+        })
+    }
+    
     func rxDismissClick() -> Observable<Any>
     {
         return onDismissClick.asObserver()

@@ -42,6 +42,7 @@ class TDetailViewController: BaseViewController {
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    var isPushToAddAddressBookVC = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topView: TransTopView!
@@ -95,7 +96,14 @@ class TDetailViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        dpg = DisposeBag()
+        if isPushToAddAddressBookVC == true
+        {
+            
+        }else
+        {
+            dpg = DisposeBag()
+        }
+        isPushToAddAddressBookVC = false
     }
     // MARK: -
     // MARK:業務方法
@@ -132,6 +140,7 @@ class TDetailViewController: BaseViewController {
             Log.i("增加錢包地址")
             let addVC = AddNewAddressViewController.loadNib()
             addVC.newAddressString = addressString
+            isPushToAddAddressBookVC = true
             navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
         TXPayloadDto.rxShare.subscribeSuccess { [self] dto in
