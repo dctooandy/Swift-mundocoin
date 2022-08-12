@@ -197,7 +197,7 @@ class AddNewAddressViewController: BaseViewController {
         saveButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("點到Save")
             let coinString = dropdownView.topLabel.text ?? ""
-            let addressString = addressStyleView.textField.text ?? ""
+            let addressString = addressStyleView.textView.text ?? ""
             let nameString = nameStyleView.textField.text ?? ""
             let walletLabelString = walletLabelStyleView.textField.text ?? ""
             let isAddToWhiteList = checkBox.isSelected
