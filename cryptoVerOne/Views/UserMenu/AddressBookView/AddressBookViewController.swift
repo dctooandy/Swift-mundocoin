@@ -115,7 +115,7 @@ class AddressBookViewController: BaseViewController {
                 twoFAVC.navigationController?.popViewController(animated: true)
                 verifySuccessForChangeWhiteList()
             }.disposed(by: dpg)
-            _ = self.navigationController?.pushViewController(twoFAVC, animated: true)
+            self.navigationController?.pushViewController(twoFAVC, animated: true)
         }.disposed(by: dpg)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 317)
@@ -153,6 +153,23 @@ class AddressBookViewController: BaseViewController {
         }
         popVC.start(viewController: self)
     }
+    func toSecurityByType(data:AddressBookDto)
+    {
+        let twoFAVC = SecurityVerificationViewController.loadNib()
+        // 暫時改為 onlyEmail
+//            twoFAVC.securityViewMode = .defaultMode
+//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+//                verifySuccessForChangeWhiteList()
+//            }.disposed(by: dpg)
+        twoFAVC.securityViewMode = .onlyEmail
+        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
+            twoFAVC.navigationController?.popViewController(animated: true)
+            
+            // 需要填入修改白名單API
+            
+        }.disposed(by: dpg)
+        self.navigationController?.pushViewController(twoFAVC, animated: true)
+    }
 }
 // MARK: -
 // MARK: 延伸
@@ -170,6 +187,9 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         let cell = tableView.dequeueCell(type: AddressBookViewCell.self, indexPath: indexPath)
         cell.setData(data: addresBookDtos[indexPath.item])
         cell.shouldIndentWhileEditing = false
+        cell.rxWhiteListClick().subscribeSuccess { [self] cellData in
+            toSecurityByType(data: cellData)
+        }.disposed(by: dpg)
 //        cell.setAccountData(data: dataArray[indexPath.item])
         return cell
     }

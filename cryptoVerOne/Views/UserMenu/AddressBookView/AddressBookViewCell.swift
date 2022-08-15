@@ -12,7 +12,7 @@ import RxSwift
 
 class AddressBookViewCell: UITableViewCell {
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onWhiteListClick = PublishSubject<AddressBookDto>()
     private let dpg = DisposeBag()
     var cellData:AddressBookDto!
     // MARK: -
@@ -57,12 +57,23 @@ class AddressBookViewCell: UITableViewCell {
                 cellData.isWhiteList = isOn
                 if KeychainManager.share.updateAddressbook(cellData) == true
                 {
-                    
+                    if isOn == true
+                    {
+                        Log.i("開啟單獨WhiteList")
+                        onWhiteListClick.onNext(cellData)
+                    }else
+                    {
+                        Log.i("關閉單獨WhiteList")
+                    }
                 }else
                 {
                 }
             }
         }.disposed(by: dpg)
+    }
+    func rxWhiteListClick() -> Observable<AddressBookDto>
+    {
+        return onWhiteListClick.asObservable()
     }
 }
 // MARK: -

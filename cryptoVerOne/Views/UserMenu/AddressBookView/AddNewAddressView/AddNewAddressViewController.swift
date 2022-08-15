@@ -17,6 +17,7 @@ class AddNewAddressViewController: BaseViewController {
     var isScanPopAction = false
     var newAddressString :String = ""
     var isScanVCByAVCapture = false
+    var isToSecurityVC = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -65,11 +66,12 @@ class AddNewAddressViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if isScanVCByAVCapture == false
+        if isScanVCByAVCapture == false && isToSecurityVC == false
         {
             bindWhenAppear()
         }
         isScanVCByAVCapture = false
+        isToSecurityVC = false
         if addressStyleView.textView.text.isEmpty == true
         {
             addressStyleView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
@@ -78,7 +80,7 @@ class AddNewAddressViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        if isScanVCByAVCapture == false
+        if isScanVCByAVCapture == false && isToSecurityVC == false
         {
             self.dpg = DisposeBag()
         }
@@ -202,28 +204,46 @@ class AddNewAddressViewController: BaseViewController {
     {
         saveButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("點到Save")
-            let coinString = dropdownView.topLabel.text ?? ""
-            let addressString = addressStyleView.textView.text ?? ""
-            let nameString = nameStyleView.textField.text ?? ""
-            let walletLabelString = walletLabelStyleView.textField.text ?? ""
-            let isAddToWhiteList = checkBox.isSelected
-            let address = AddressBookDto(coin: coinString, address: addressString, network: currentNetwotkMethod, name: nameString, walletLabel: walletLabelString, isWhiteList: isAddToWhiteList)
-            if KeychainManager.share.saveAddressbook(address) == true
-            {
-                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+            isToSecurityVC = true
+            let address = createAddressDto()
+            let twoFAVC = SecurityVerificationViewController.loadNib()
+            // 暫時改為 onlyEmail
+//            twoFAVC.securityViewMode = .defaultMode
+//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+//                verifySuccessForChangeWhiteList()
+//            }.disposed(by: dpg)
+            twoFAVC.securityViewMode = .onlyEmail
+            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
+                twoFAVC.navigationController?.popViewController(animated: false)
+                if KeychainManager.share.saveAddressbook(address) == true
                 {
-                    self.dismiss(animated: true) {
-                        self.onDismissClick.onNext(())
+                    if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+                    {
+                        self.dismiss(animated: true) {
+                            self.onDismissClick.onNext(())
+                        }
+                    }else
+                    {
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }else
                 {
-                    self.navigationController?.popViewController(animated: true)
+                    Log.i("資料異常,無法存入")
                 }
-            }else
-            {
-                Log.i("資料異常,無法存入")
-            }
+                
+            }.disposed(by: dpg)
+            self.navigationController?.pushViewController(twoFAVC, animated: true)
         }.disposed(by: dpg)
+    }
+    func createAddressDto() -> AddressBookDto
+    {
+        let coinString = dropdownView.topLabel.text ?? ""
+        let addressString = addressStyleView.textView.text ?? ""
+        let nameString = nameStyleView.textField.text ?? ""
+        let walletLabelString = walletLabelStyleView.textField.text ?? ""
+        let isAddToWhiteList = checkBox.isSelected
+        let address = AddressBookDto(coin: coinString, address: addressString, network: currentNetwotkMethod, name: nameString, walletLabel: walletLabelString, isWhiteList: isAddToWhiteList)
+        return address
     }
     func bindSacnVC()
     {
