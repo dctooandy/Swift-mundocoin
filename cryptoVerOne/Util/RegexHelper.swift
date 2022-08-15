@@ -31,7 +31,7 @@ struct RegexHelper {
             case .delegateNumber:
                 return "^[0-9a-zA-Z_]{1,15}+$"
             case .delegateName:
-                return "^[0-9a-zA-Z_\\u4E00-\\u9FA5]{1,30}+$"
+                return "^[0-9a-zA-Z_\\u4E00-\\u9FA5 ]{1,30}+$"
             case .mail:
                 return "^([a-z0-9_\\.-]+)@([\\da-z\\.-]+)\\.([a-z\\.]{2,6})$"
             case .realName:

@@ -16,6 +16,7 @@ class AddressBookViewController: BaseViewController {
     var viewModel = AddressBookViewModel()
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    private var cellDpg = DisposeBag()
     var addresBookDtos : [AddressBookDto] = []
     // MARK: -
     // MARK:UI 設定
@@ -54,6 +55,7 @@ class AddressBookViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchDatas()
+        cellDpg = DisposeBag()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -164,7 +166,7 @@ class AddressBookViewController: BaseViewController {
         twoFAVC.securityViewMode = .onlyEmail
         twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
             twoFAVC.navigationController?.popViewController(animated: true)
-            
+            Log.i("返回Security並打API")
             // 需要填入修改白名單API
             
         }.disposed(by: dpg)
@@ -187,9 +189,10 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         let cell = tableView.dequeueCell(type: AddressBookViewCell.self, indexPath: indexPath)
         cell.setData(data: addresBookDtos[indexPath.item])
         cell.shouldIndentWhileEditing = false
-        cell.rxWhiteListClick().subscribeSuccess { [self] cellData in
+        cell.rxChangeWhiteListClick().subscribeSuccess {[self] cellData in
+            Log.i("呼叫修改API")
             toSecurityByType(data: cellData)
-        }.disposed(by: dpg)
+        }.disposed(by: cellDpg)
 //        cell.setAccountData(data: dataArray[indexPath.item])
         return cell
     }
