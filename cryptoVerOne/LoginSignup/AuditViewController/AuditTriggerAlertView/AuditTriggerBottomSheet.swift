@@ -117,7 +117,7 @@ class AuditTriggerBottomSheet: BaseBottomSheet {
                 let diffHeight = (360 - alertView.messageTextView.frame.minY)
                 if diffHeight < (keyboardHeight + 50)
                 {
-                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    let upHeight = (keyboardHeight) 
                     var newFrame = self.view.frame
                     newFrame.size.height = (Views.screenHeight - upHeight)
                     UIView.animate(withDuration: 0.5) {
