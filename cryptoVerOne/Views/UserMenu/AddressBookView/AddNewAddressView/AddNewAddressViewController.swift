@@ -34,8 +34,8 @@ class AddNewAddressViewController: BaseViewController {
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
-    
     @IBOutlet weak var middleViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var addToWhitelistView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -56,6 +56,12 @@ class AddNewAddressViewController: BaseViewController {
         setupAddressStyleView()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         addressStyleView.withdrawInputViewFullHeight = false
+        let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
+        if style == .whiteListOff
+        {
+            addToWhitelistView.isHidden = true
+            checkBox.isSelected = false
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

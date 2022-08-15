@@ -76,20 +76,34 @@
                                     <constraint firstAttribute="height" constant="70" id="qRf-Wc-faN"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-NO-2Wa" customClass="CheckBoxView" customModule="Approval" customModuleProvider="target">
-                                <rect key="frame" x="32" y="485" width="20" height="20"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0O9-FN-mPB">
+                                <rect key="frame" x="32" y="485" width="140" height="20"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EjD-NO-2Wa" customClass="CheckBoxView" customModule="Approval" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="5PF-JR-lUB"/>
+                                            <constraint firstAttribute="width" constant="20" id="mjF-MX-RMu"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to whitelist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-dV-xEs">
+                                        <rect key="frame" x="30" y="1" width="103.5" height="18"/>
+                                        <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
+                                        <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="5PF-JR-lUB"/>
-                                    <constraint firstAttribute="width" constant="20" id="mjF-MX-RMu"/>
+                                    <constraint firstItem="EjD-NO-2Wa" firstAttribute="top" secondItem="0O9-FN-mPB" secondAttribute="top" id="BtG-tl-jFM"/>
+                                    <constraint firstAttribute="bottom" secondItem="EjD-NO-2Wa" secondAttribute="bottom" id="Gif-Ep-AJd"/>
+                                    <constraint firstItem="jvD-dV-xEs" firstAttribute="leading" secondItem="EjD-NO-2Wa" secondAttribute="trailing" constant="10" id="IOm-fS-YYQ"/>
+                                    <constraint firstItem="EjD-NO-2Wa" firstAttribute="leading" secondItem="0O9-FN-mPB" secondAttribute="leading" id="j87-JH-h3L"/>
+                                    <constraint firstAttribute="width" constant="140" id="oVo-S7-ha6"/>
+                                    <constraint firstItem="jvD-dV-xEs" firstAttribute="centerY" secondItem="EjD-NO-2Wa" secondAttribute="centerY" id="xhP-0I-5SX"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add to whitelist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvD-dV-xEs">
-                                <rect key="frame" x="62" y="486" width="103.5" height="18"/>
-                                <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
-                                <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rkr-Jn-cpT" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
                                 <rect key="frame" x="51" y="520" width="312" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -100,16 +114,15 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="jvD-dV-xEs" firstAttribute="centerY" secondItem="EjD-NO-2Wa" secondAttribute="centerY" id="1PH-Rk-FGJ"/>
-                            <constraint firstItem="jvD-dV-xEs" firstAttribute="leading" secondItem="EjD-NO-2Wa" secondAttribute="trailing" constant="10" id="5Ev-qM-jyM"/>
                             <constraint firstItem="9fP-pO-7gj" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="8" id="782-6U-Lwi"/>
                             <constraint firstAttribute="trailing" secondItem="ZMu-Wu-fvl" secondAttribute="trailing" constant="32" id="7lU-EG-WdA"/>
                             <constraint firstAttribute="trailing" secondItem="9fP-pO-7gj" secondAttribute="trailing" constant="8" id="Ccb-xO-XHe"/>
-                            <constraint firstItem="EjD-NO-2Wa" firstAttribute="top" secondItem="XLS-VL-bOJ" secondAttribute="bottom" constant="16" id="D8A-Mp-ehb"/>
+                            <constraint firstItem="Rkr-Jn-cpT" firstAttribute="top" secondItem="0O9-FN-mPB" secondAttribute="bottom" constant="15" id="CwZ-C2-MIx"/>
                             <constraint firstAttribute="trailing" secondItem="niy-Ke-QTM" secondAttribute="trailing" constant="25" id="ECv-K3-eTL"/>
                             <constraint firstItem="ZMu-Wu-fvl" firstAttribute="top" secondItem="spa-wo-CtU" secondAttribute="bottom" constant="7" id="H42-nM-GCc"/>
                             <constraint firstAttribute="trailing" secondItem="XLS-VL-bOJ" secondAttribute="trailing" constant="25" id="Htv-a9-hTE"/>
                             <constraint firstItem="Yw8-IX-dUC" firstAttribute="centerX" secondItem="cTz-5J-Z4a" secondAttribute="centerX" id="Jd6-aS-BWt"/>
+                            <constraint firstItem="0O9-FN-mPB" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="32" id="LQ0-jl-et1"/>
                             <constraint firstItem="ZMu-Wu-fvl" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="32" id="M7B-YS-b6d"/>
                             <constraint firstItem="spa-wo-CtU" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="32" id="NDv-Rt-YHX"/>
                             <constraint firstItem="niy-Ke-QTM" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="25" id="NKb-bI-7W6"/>
@@ -118,15 +131,14 @@
                             <constraint firstItem="ZMu-Wu-fvl" firstAttribute="top" secondItem="spa-wo-CtU" secondAttribute="bottom" constant="7" id="R1z-c2-eRQ"/>
                             <constraint firstItem="LEC-84-Koy" firstAttribute="top" secondItem="ZMu-Wu-fvl" secondAttribute="bottom" constant="32" id="aam-JS-8S1"/>
                             <constraint firstAttribute="trailing" secondItem="Rkr-Jn-cpT" secondAttribute="trailing" constant="51" id="dG1-k6-QCh"/>
+                            <constraint firstItem="0O9-FN-mPB" firstAttribute="top" secondItem="XLS-VL-bOJ" secondAttribute="bottom" constant="16" id="dVc-Ne-a95"/>
                             <constraint firstItem="XLS-VL-bOJ" firstAttribute="top" secondItem="niy-Ke-QTM" secondAttribute="bottom" constant="16" id="gKg-nI-f9r"/>
                             <constraint firstItem="Rkr-Jn-cpT" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="51" id="gzX-yH-pT4"/>
                             <constraint firstAttribute="trailing" secondItem="LEC-84-Koy" secondAttribute="trailing" constant="25" id="hm3-Vr-4UU"/>
                             <constraint firstItem="Yw8-IX-dUC" firstAttribute="top" secondItem="LEC-84-Koy" secondAttribute="top" id="j9d-Fq-SKe"/>
-                            <constraint firstItem="EjD-NO-2Wa" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="32" id="kgs-MD-co8"/>
                             <constraint firstItem="XLS-VL-bOJ" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="25" id="lQf-ft-SHs"/>
                             <constraint firstItem="spa-wo-CtU" firstAttribute="top" secondItem="cTz-5J-Z4a" secondAttribute="top" constant="44" id="olN-hd-gkj"/>
                             <constraint firstItem="LEC-84-Koy" firstAttribute="leading" secondItem="cTz-5J-Z4a" secondAttribute="leading" constant="25" id="vDZ-pG-Csv"/>
-                            <constraint firstItem="Rkr-Jn-cpT" firstAttribute="top" secondItem="jvD-dV-xEs" secondAttribute="bottom" constant="16" id="xBz-fC-ioS"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -140,6 +152,7 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="addToWhitelistView" destination="0O9-FN-mPB" id="MMG-rp-3xG"/>
                 <outlet property="addressStyleView" destination="LEC-84-Koy" id="YkP-Xx-mQs"/>
                 <outlet property="backgroundView" destination="cTz-5J-Z4a" id="7NY-Ya-F58"/>
                 <outlet property="checkBox" destination="EjD-NO-2Wa" id="nFv-zC-sHN"/>
