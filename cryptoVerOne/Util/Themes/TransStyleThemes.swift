@@ -30,11 +30,18 @@ class TransStyleThemes {
     private static let topViewMode = TransStyleThemes.share.topViewStatusStyle.asObservable()
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
-    private static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage>{
-        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .processing) ? UIImage(named: "icon-done")!:UIImage(named: "icon-error")!})
+    func checkDetailViewTopIcon(data: DetailType) -> Bool {
+        return data == .done || data == .innerDone || data == .pending || data == .processing
+    }
+    private static func bindDetailViewTopIcon<T>(success: T , failed: T) -> Observable<UIImage> {
+        let doneImage = UIImage(named: "icon-done")!
+        let errorImage = UIImage(named: "icon-error")!
+        return topViewMode.map({ TransStyleThemes.share.checkDetailViewTopIcon(data: $0) ? doneImage : errorImage } )
     }
     private static func bindDetailViewTopString<T>(success: T , failed: T) -> Observable<String>{
-        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .processing) ? "Your withdrawal request is submitted Successfully.":"Your withdrawal request is submitted failed." })
+        let doneString = "Your withdrawal request is submitted Successfully."
+        let errorString = "Your withdrawal request is submitted failed."
+        return topViewMode.map({TransStyleThemes.share.checkDetailViewTopIcon(data: $0) ? doneString : errorString } )
     }
     // 綁定取款成功頁面 下方隱藏物件
     private static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
@@ -44,11 +51,14 @@ class TransStyleThemes {
         return topViewMode.map({ ($0 == .pending ) ? true : false})
     }
     // 綁定 pending跟processing 的顯示
+    func checkDetailViewProcessingBorderColor(data: DetailType) -> Bool {
+        return data == .done || data == .innerDone || data == .pending || data == .failed || data == .innerFailed
+    }
     private static func bindDetailViewProcessingBorderColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .failed || $0 == .innerFailed) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
+        return topViewMode.map({ TransStyleThemes.share.checkDetailViewProcessingBorderColor(data: $0) ? UIColor.clear:UIColor(red: 0.381, green: 0.286, blue: 0.967, alpha: 1) })
     }
     private static func bindDetailViewProcessingTextColor<T>(noProcessing: T , processing: T) -> Observable<UIColor>{
-        return topViewMode.map({($0 == .done || $0 == .innerDone || $0 == .pending || $0 == .failed || $0 == .innerFailed) ? Themes.grayE0E5F2:Themes.gray2B3674 })
+        return topViewMode.map({ TransStyleThemes.share.checkDetailViewProcessingBorderColor(data: $0) ? Themes.grayE0E5F2:Themes.gray2B3674 } )
     }
     private static func bindDetailViewCompleteViewHidden<T>(hidden: T , show: T) -> Observable<Bool>{
         return topViewMode.map({($0 == .processing || $0 == .pending ) ? true:false })
