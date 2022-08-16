@@ -225,7 +225,7 @@ class SignupViewController: BaseViewController {
         guard let pwd = accountInputView.passwordInputView.textField.text else { return }
         // 0816 產品驗收修改
 //        guard let regis = accountInputView.registrationInputView.textField.text , !regis.isEmpty else { return }
-        let dto = SignupPostDto(account: acc, password: pwd,registration: "", signupMode: loginMode)
+        let dto = SignupPostDto(account: acc, password: pwd,registration: "666666", signupMode: loginMode)
         self.view.endEditing(true)
         onSignupAction.onNext(dto)
     }
