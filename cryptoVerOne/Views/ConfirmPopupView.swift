@@ -115,7 +115,9 @@ class ConfirmPopupView: PopupBottomSheet {
         }
         defaultContainer.snp.makeConstraints { (make) in
             make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.75)
+//            make.width.equalToSuperview().multipliedBy(0.75)
+            make.left.equalToSuperview().offset(32)
+            make.right.equalToSuperview().offset(-32)
             make.height.equalTo(containerHeight)
         }
        // title 背景漸層

@@ -113,9 +113,9 @@ class UserMenuViewController: BaseViewController {
 //        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "The verification code is incorrect or has expired, you could try 5 more times a day.") { [self](_) in
 //
 //        }
-        let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Logout".localized]),
+        let popVC =  ConfirmPopupView(viewHeight:170.0 ,iconMode: .nonIcon(["Cancel".localized,"Logout".localized]),
                                       title: "",
-                                      message: "Are you sure you want to logout?") { [self] isOK in
+                                      message: "Are you sure you want \nto logout?") { [self] isOK in
 
             if isOK {
                 Log.i("登出")

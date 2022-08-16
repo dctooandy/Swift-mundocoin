@@ -42,6 +42,7 @@ class TDetailViewController: BaseViewController {
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var checkButtonTopSpace: NSLayoutConstraint!
     var isPushToAddAddressBookVC = false
     // MARK: -
     // MARK:UI 設定
