@@ -418,7 +418,7 @@ extension LoginSignupViewController {
             Beans.loginServer.authentication(with: idString, password: password, verificationCode: verificationCode).subscribe { [self]authDto in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
-                    verifyVC.timer?.invalidate()
+//                    verifyVC.timer?.invalidate()
                     if let data = authDto
                     {
                         if let loginData = loginDto
@@ -433,7 +433,7 @@ extension LoginSignupViewController {
             } onError: { [self] error in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
-                    verifyVC.timer?.invalidate()
+//                    verifyVC.timer?.invalidate()
                     if let error = error as? ApiServiceError
                     {
                         switch error {

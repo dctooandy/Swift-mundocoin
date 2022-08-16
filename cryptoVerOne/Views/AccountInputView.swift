@@ -24,8 +24,8 @@ class AccountInputView: UIView {
     // MARK:UI 設定
     var accountInputView : InputStyleView!
     var passwordInputView : InputStyleView!
-    var registrationInputView : InputStyleView!
-    var textFields:[UITextField] = []
+    // 0816 產品驗收修改
+//    var registrationInputView : InputStyleView!
     // MARK: -
     // MARK:Life cycle
     override init(frame: CGRect) {
@@ -151,12 +151,12 @@ class AccountInputView: UIView {
                 }
         }
         isPasswordHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
-        let isRegistrationValid = registrationInputView.textField.rx.text
-            .map { [weak self] (str) -> Bool in
-                guard let strongSelf = self, let acc = str else { return false }
-                return RegexHelper.match(pattern: .otp, input: acc)
-        }
-//        isAccountValid.bind(to: accountInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        // 0816 產品驗收修改
+//        let isRegistrationValid = registrationInputView.textField.rx.text
+//            .map { [weak self] (str) -> Bool in
+//                guard let strongSelf = self, let acc = str else { return false }
+//                return RegexHelper.match(pattern: .otp, input: acc)
+//        }
         
         if currentShowMode == .forgotPW
         {
@@ -167,10 +167,12 @@ class AccountInputView: UIView {
 //            isPasswordValid.bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
-            Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
+            // 0816 產品驗收修改
+//            Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
+            Observable.combineLatest(isAccountValid, isPasswordValid )
                 .map {
-                    return $0.0 && $0.1 && $0.2
-                    
+//                    return $0.0 && $0.1 && $0.2
+                    return $0.0 && $0.1
                 } //reget match result
                 .bind(to: accountCheckPassed)
                 .disposed(by: dpg)
@@ -207,8 +209,10 @@ class AccountInputView: UIView {
             passwordInputView.textField.returnKeyType = .done
         }else
         {
-            passwordInputView.textField.returnKeyType = .next
-            registrationInputView.textField.returnKeyType = .done
+            // 0816 產品驗收修改
+//            passwordInputView.textField.returnKeyType = .next
+//            registrationInputView.textField.returnKeyType = .done
+            passwordInputView.textField.returnKeyType = .done
         }
     }
     func bindBorderColor()
@@ -228,17 +232,18 @@ class AccountInputView: UIView {
             resetInvalidText(password:isChoose)
             resetTFMaskView(password:isChoose)
             resetInputView(view: accountInputView)
-//            passwordInputView.textField.sendActions(for: .valueChanged)
-            if isChoose == false , currentShowMode == .signupEmail || currentShowMode == .signupPhone
-            {
-                registrationInputView.textField.becomeFirstResponder()
-            }
+            // 0816 產品驗收修改
+//            if isChoose == false , currentShowMode == .signupEmail || currentShowMode == .signupPhone
+//            {
+//                registrationInputView.textField.becomeFirstResponder()
+//            }
         }.disposed(by: dpg)
-        registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            resetInvalidText(regis:isChoose)
-            resetTFMaskView(regis:isChoose)
-            registrationInputView.invalidLabel.isHidden = true
-        }.disposed(by: dpg)
+        // 0816 產品驗收修改
+//        registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+//            resetInvalidText(regis:isChoose)
+//            resetTFMaskView(regis:isChoose)
+//            registrationInputView.invalidLabel.isHidden = true
+//        }.disposed(by: dpg)
     }
     func resetInvalidText(account:Bool = false ,password:Bool = false ,regis:Bool = false )
     {
@@ -250,11 +255,11 @@ class AccountInputView: UIView {
         {
             passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
         }
-
-        if regis == true
-        {
-            registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
-        }
+        // 0816 產品驗收修改
+//        if regis == true
+//        {
+//            registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+//        }
     }
     // 重置Border外觀
     func resetTFMaskView(account:Bool = false ,password:Bool = false ,regis:Bool = false ,force:Bool = false )
@@ -267,10 +272,11 @@ class AccountInputView: UIView {
         {
             passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
         }
-        if registrationInputView.invalidLabel.textColor != .red || force == true
-        {
-            registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
-        }
+        // 0816 產品驗收修改
+//        if registrationInputView.invalidLabel.textColor != .red || force == true
+//        {
+//            registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+//        }
     }
     func resetInputView(view : InputStyleView)
     {
@@ -286,28 +292,29 @@ class AccountInputView: UIView {
     func cleanTextField() {
         accountInputView.textField.text = ""
         passwordInputView.textField.text = ""
-        registrationInputView.textField.text = ""
         accountInputView.textField.sendActions(for: .valueChanged)
         passwordInputView.textField.sendActions(for: .valueChanged)
-        registrationInputView.textField.sendActions(for: .valueChanged)
         accountInputView.invalidLabel.isHidden = true
         passwordInputView.invalidLabel.isHidden = true
-        registrationInputView.invalidLabel.isHidden = true
+        // 0816 產品驗收修改
+//        registrationInputView.textField.text = ""
+//        registrationInputView.textField.sendActions(for: .valueChanged)
+//        registrationInputView.invalidLabel.isHidden = true
         resetTFMaskView(force:true)
     }
     
     func setup() {
         let accountView = InputStyleView(inputViewMode: currentShowMode.accountInputMode)
         let passwordView = InputStyleView(inputViewMode: .password)
-        let registrationView = InputStyleView(inputViewMode: .registration)
         self.accountInputView = accountView
         self.passwordInputView = passwordView
-        self.registrationInputView = registrationView
-        textFields = [self.accountInputView.textField ,
-                      self.passwordInputView.textField ,
-                      self.registrationInputView.textField]
+        // 0816 產品驗收修改
+//        let registrationView = InputStyleView(inputViewMode: .registration)
+//        self.registrationInputView = registrationView
+ 
         self.accountInputView.textField.addTarget(self.passwordInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
-        self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
+        // 0816 產品驗收修改
+//        self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
         acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))
         pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
         addSubview(accountInputView)
@@ -333,7 +340,8 @@ class AccountInputView: UIView {
             passwordInputView.addConstraint(pwHeightConstraint)
         case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
-            addSubview(registrationInputView)
+            // 0816 產品驗收修改
+//            addSubview(registrationInputView)
             passwordInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(accountInputView.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(25)
@@ -342,12 +350,13 @@ class AccountInputView: UIView {
 //                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
             passwordInputView.addConstraint(pwHeightConstraint)
-            registrationInputView.snp.makeConstraints { (make) in
-                make.top.equalTo(passwordInputView.snp.bottom).offset(8)
-                make.leading.equalToSuperview().offset(25)
-                make.trailing.equalToSuperview().offset(-25)
-                make.height.equalTo(Themes.inputViewDefaultHeight)
-            }
+            // 0816 產品驗收修改
+//            registrationInputView.snp.makeConstraints { (make) in
+//                make.top.equalTo(passwordInputView.snp.bottom).offset(8)
+//                make.leading.equalToSuperview().offset(25)
+//                make.trailing.equalToSuperview().offset(-25)
+//                make.height.equalTo(Themes.inputViewDefaultHeight)
+//            }
         case .forgotPW:
             break
         }
@@ -364,10 +373,11 @@ class AccountInputView: UIView {
             {
                 passwordInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
             }
-            if registrationInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
-            {
-                registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
-            }
+            // 0816 產品驗收修改
+//            if registrationInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+//            {
+//                registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+//            }
         }
     }
     func resignAllResponder()
@@ -375,7 +385,8 @@ class AccountInputView: UIView {
         resetTFMaskView()
         accountInputView.textField.resignFirstResponder()
         passwordInputView.textField.resignFirstResponder()
-        registrationInputView.textField.resignFirstResponder()
+        // 0816 產品驗收修改
+//        registrationInputView.textField.resignFirstResponder()
     }
 //    func changeInputMode(mode: LoginMode) {
 //        inputMode = mode
