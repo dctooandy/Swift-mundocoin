@@ -76,7 +76,14 @@ extension AmountInputView:UITextFieldDelegate
         
         /// 1.过滤删除事件
         guard !string.isEmpty else {
-            return true
+            if textField.text?.count == 1
+            {
+                textField.text = "0"
+                return false
+            }else
+            {
+                return true
+            }
         }
         
         /// 2.检查允许输入的合法字符
