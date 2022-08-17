@@ -521,13 +521,13 @@ class InputStyleView: UIView {
             if inputViewMode == .withdrawToAddress
             {
                 // MC524 暫時隱藏
-                addSubview(addressBookImageView)
-                addressBookImageView.snp.makeConstraints { (make) in
-                    make.right.equalTo(scanImageView.snp.left).offset(-10)
-                    make.centerY.equalTo(textField)
-                    make.size.equalTo(24)
-                }
-                rightLabelWidth = 24 + 24 + 20
+//                addSubview(addressBookImageView)
+//                addressBookImageView.snp.makeConstraints { (make) in
+//                    make.right.equalTo(scanImageView.snp.left).offset(-10)
+//                    make.centerY.equalTo(textField)
+//                    make.size.equalTo(24)
+//                }
+//                rightLabelWidth = 24 + 24 + 20
             }
         }
         else if inputViewMode.isDropDownStyle()
@@ -569,7 +569,7 @@ class InputStyleView: UIView {
         {
             addSubview(normalTextLabel)
             // MC524 暫時隱藏 width 34
-            addSubview(addAddressImageView)
+//            addSubview(addAddressImageView)
             addSubview(copyAddressImageView)
             normalTextLabel.snp.makeConstraints { (make) in
                 make.left.top.bottom.equalTo(textField)
@@ -582,14 +582,14 @@ class InputStyleView: UIView {
                 make.size.equalTo(24)
             }
             // MC524 暫時隱藏 width 34
-            addAddressImageView.snp.makeConstraints { (make) in
-                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(24)
-            }
+//            addAddressImageView.snp.makeConstraints { (make) in
+//                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+//                make.centerY.equalTo(textField)
+//                make.size.equalTo(24)
+//            }
             // MC524 暫時隱藏 width 34
-            rightLabelWidth = 18 + 18 + 10
-//            rightLabelWidth = 18 + 18 + 10 - 34
+//            rightLabelWidth = 18 + 18 + 10
+            rightLabelWidth = 18 + 18 + 10 - 34
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
         }

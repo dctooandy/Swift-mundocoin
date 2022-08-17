@@ -154,18 +154,18 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // MC524 暫時隱藏
 //        return (section == 0 ? 4 : 6)
-        return (section == 0 ? 3 : 6)
+        return (section == 0 ? 2 : 6)// 隱藏地址簿
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MC524 暫時隱藏
 //        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
         if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
-        {
+        {// 線條View
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
         }else if indexPath.section == 1 && indexPath.item == 1
-        {
+        {// 白底View
             let lineCell = tableView.dequeueCell(type: UserMenuWhiteLineCell.self, indexPath: indexPath)
             return lineCell
         }
@@ -182,8 +182,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 // MC524 暫時隱藏
 //                case 2:
 //                    cell.cellData = .pushNotifications
-                case 2:
-                    cell.cellData = .addressBook
+//                case 2:
+//                    cell.cellData = .addressBook
                 default:
                     break
                 }
@@ -232,10 +232,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                let pushVC = PushNotiViewController.loadNib()
 //                self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
-            case 2:
-                Log.i("addressBook")
-                let addressBookVC = AddressBookViewController.loadNib()
-                self.navigationController?.pushViewController(addressBookVC, animated: true)
+                // MC524 暫時隱藏
+//            case 2:
+//                Log.i("addressBook")
+//                let addressBookVC = AddressBookViewController.loadNib()
+//                self.navigationController?.pushViewController(addressBookVC, animated: true)
                 //addressBook
             default:
                 break

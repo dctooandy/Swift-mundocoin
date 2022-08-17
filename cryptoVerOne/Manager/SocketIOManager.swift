@@ -114,7 +114,7 @@ class SocketIOManager: NSObject {
     func socketOnEvents()
     {
         socket.on("notification") { [self] resultData, ack in
-            onTriggerLocalNotification(subtitle: "notification", body: resultData)
+//            onTriggerLocalNotification(subtitle: "notification", body: resultData)
         }
         socket.on("joinResult") { resultData, ack in
             Log.socket("Socket.io - joinResult Success")
@@ -136,16 +136,16 @@ class SocketIOManager: NSObject {
         }
         
         socket.on("APPROVAL_DONE") { data, ark in
-            self.onTriggerLocalNotification(subtitle: "APPROVAL_DONE", body: data)
+//            self.onTriggerLocalNotification(subtitle: "APPROVAL_DONE", body: data)
         }
         socket.on("APPROVAL_PENDING") { data, ark in
-            self.onTriggerLocalNotification(subtitle: "APPROVAL_PENDING", body: data)
+//            self.onTriggerLocalNotification(subtitle: "APPROVAL_PENDING", body: data)
         }
         socket.on("APPROVAL_PROCESSING") { data, ark in
-            self.onTriggerLocalNotification(subtitle: "APPROVAL_PROCESSING", body: data)
+//            self.onTriggerLocalNotification(subtitle: "APPROVAL_PROCESSING", body: data)
         }
         socket.on("APPROVAL_FAILED") { data, ark in
-            self.onTriggerLocalNotification(subtitle: "APPROVAL_FAILED", body: data)
+//            self.onTriggerLocalNotification(subtitle: "APPROVAL_FAILED", body: data)
         }
     }
     func connectStatus() -> SocketIOStatus
@@ -234,10 +234,7 @@ extension SocketIOManager
     
     func onTriggerLocalNotification(subtitle:String , body:[Any])
     {
-#if Mundo_PRO || Approval_PRO
-                
-#else
-//        joinNameSpaceWithData(body: body)
+        //        joinNameSpaceWithData(body: body)
         let content = UNMutableNotificationContent()
         content.title = "Socket receive"
         content.subtitle = "\(subtitle)"
@@ -256,7 +253,6 @@ extension SocketIOManager
         UNUserNotificationCenter.current().add(request, withCompletionHandler: {error in
             Log.socket("Socket.io - 成功建立通知...")
         })
-#endif
     }
 
     private func receiveMessage(data: Any?) {
@@ -287,7 +283,11 @@ extension SocketIOManager
                     self.createTypeDto(valueToFind: SocketTxCallBackDto.self, resultData: resultData)
                 }else
                 {
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+                
+#else
                     self.onTriggerLocalNotification(subtitle: "Message", body: [resultData])
+#endif
                 }
             } catch DecodingError.dataCorrupted( _) {
                 Log.e("Socket.io -dataCorrupted")
@@ -318,9 +318,9 @@ extension SocketIOManager
                    let currentChain = chainData.filter({(!$0.state.isEmpty)}).first,
                    let userData = resultsPayload.payload.issuer
                 {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
                     self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
-#if Approval_PRO || Approval_DEV || Approval_STAGE
                     _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
                     _ = AuditApprovalDto.finishUpdate() // 更新清單列表
 #else
