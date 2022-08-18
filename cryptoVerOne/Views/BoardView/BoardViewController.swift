@@ -324,13 +324,13 @@ extension BoardViewController: PagingViewControllerDataSource, PagingViewControl
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, didScrollToItem pagingItem: T, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) where T : PagingItem, T : Comparable, T : Hashable {
         if let pageItem = pagingItem as? PagingIndexItem
         {
+            isFilterAction = false
             if isRefreshAction != true
             {
                 showMode = pageItem.index == 0 ? .deposits : .withdrawals
             }
             isRefreshAction = false
             Log.v("pagingItem :\(pageItem.index)")
-            isFilterAction = false
         }
     }
 }
