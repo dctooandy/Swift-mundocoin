@@ -22,9 +22,9 @@ class ErrorHandler {
             case .networkError(let code ,let urlString):
                 Log.e("\(code)")
                 showAlert(title: "Network failed", message: "\(code)\n\(urlString)")
-            case .unknownError(_ ,_ ,let msg):
+            case .unknownError(_ ,let title ,let msg):
                 Log.e(msg )
-                showAlert(title: "错误讯息", message: msg )
+                showAlert(title: title, message: msg )
             case .tokenError:
                 Log.e("tokenExpireError")
                 Toast.show(msg:"tokenExpireError")

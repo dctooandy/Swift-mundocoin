@@ -56,17 +56,17 @@ class SignupViewController: BaseViewController {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
         {
             // 0816 產品驗收修改
-//            let keyboardRectangle = keyboardFrame.cgRectValue
-//            let keyboardHeight = keyboardRectangle.height
-//            if ((accountInputView.registrationInputView.textField.isFirstResponder) == true)
-//            {
-//                let diffHeight = view.frame.height - (accountInputView.frame.maxY)
-//                if diffHeight < (keyboardHeight + 50)
-//                {
-//                    let upHeight = (keyboardHeight + 50) - diffHeight
-//                    view.frame.origin.y = Views.navigationBarHeight - upHeight
-//                }
-//            }
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            let keyboardHeight = keyboardRectangle.height
+            if ((accountInputView.registrationInputView.textField.isFirstResponder) == true)
+            {
+                let diffHeight = view.frame.height - (accountInputView.frame.maxY)
+                if diffHeight < (keyboardHeight + 50)
+                {
+                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    view.frame.origin.y = Views.navigationBarHeight - upHeight
+                }
+            }
         }
 //        if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
 //        {
@@ -128,8 +128,8 @@ class SignupViewController: BaseViewController {
             make.leading.equalTo(accountInputView).offset(60)
             make.trailing.equalTo(accountInputView).offset(-28)
             // 0816 產品驗收修改
-//            make.top.equalTo(accountInputView.registrationInputView.textField.snp.bottom).offset(8)
-            make.top.equalTo(accountInputView.passwordInputView.textField.snp.bottom).offset(36)
+            make.top.equalTo(accountInputView.registrationInputView.textField.snp.bottom).offset(8)
+//            make.top.equalTo(accountInputView.passwordInputView.textField.snp.bottom).offset(36)
             make.height.equalTo(48)
         }
 
@@ -224,10 +224,17 @@ class SignupViewController: BaseViewController {
         guard let acc = accountInputView.accountInputView.textField.text?.lowercased() else { return }
         guard let pwd = accountInputView.passwordInputView.textField.text else { return }
         // 0816 產品驗收修改
-//        guard let regis = accountInputView.registrationInputView.textField.text , !regis.isEmpty else { return }
-        let dto = SignupPostDto(account: acc, password: pwd,registration: "666666", signupMode: loginMode)
-        self.view.endEditing(true)
-        onSignupAction.onNext(dto)
+        guard let regis = accountInputView.registrationInputView.textField.text , !regis.isEmpty else { return }
+        if regis != "220831"
+        {
+            let error = ApiServiceError.unknownError(0,"Error","Registration Code Not Found")
+            ErrorHandler.show(error: error)
+        }else
+        {
+            let dto = SignupPostDto(account: acc, password: pwd,registration: regis, signupMode: loginMode)
+            self.view.endEditing(true)
+            onSignupAction.onNext(dto)
+        }
     }
     func rxSignupButtonPressed() -> Observable<SignupPostDto> {
         return onSignupAction.asObserver()

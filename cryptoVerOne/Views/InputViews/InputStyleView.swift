@@ -363,7 +363,7 @@ class InputStyleView: UIView {
                               inputViewMode == .oldPassword ||
                               inputViewMode == .auditPassword)
         var isCustomLabel = false
-        var tfHeight = 46.0
+        let tfHeight = 46.0
         var showTextView = false
         switch inputViewMode {
         case .customLabel(_) ,.auditAccount,.auditPassword:
@@ -612,9 +612,9 @@ class InputStyleView: UIView {
             }
             normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
             normalTextLabel.font = Fonts.PlusJakartaSansRegular(16)
-            tfMaskView.backgroundColor = Themes.grayF4F7FE
-            resetTopLabelAndMask()
             rightLabelWidth = 18 + 10
+            resetTopLabelAndMask()
+            tfMaskView.backgroundColor = Themes.grayF4F7FE
         }
         else
         {

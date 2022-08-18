@@ -53,11 +53,11 @@ class ConfirmBottomSheet: BaseBottomSheet {
     // MARK:業務方法
     func setupUI()
     {
-        confirmView.confirmData = self.confirmData
         defaultContainer.addSubview(confirmView)
         confirmView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+        confirmView.confirmData = self.confirmData
     }
     func bindUI()
     {

@@ -66,15 +66,14 @@ class ConfirmBottomView: UIView {
         feeValueLabel.text = confirmData.fee
         networkValueLabel.text = confirmData.network
         tetherValueLabel.text = confirmData.tether
+        withdrawToInputView.setVisibleString(string: confirmData.address)
         let stringHeight = confirmData.address.height(withConstrainedWidth: (Views.screenWidth - 80), font: Fonts.PlusJakartaSansRegular(16))
         withdrawToInputView.tvHeightConstraint.constant = (stringHeight + 13)
-        withdrawToInputView.setVisibleString(string: confirmData.address)
-        introduceLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(24)
-            make.right.equalToSuperview().offset(-24)
-            make.height.equalTo(33)
+        
+        introduceLabel.snp.updateConstraints { (make) in
             make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
         }
+
         if let totalAmount = Double(confirmData.totalAmount)
         {
             let result = (totalAmount > 1.0 ?  totalAmount - 1.0 : 0.0)
