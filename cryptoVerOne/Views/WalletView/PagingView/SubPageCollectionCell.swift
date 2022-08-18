@@ -41,7 +41,7 @@ class SubPageCollectionCell: UICollectionViewCell {
         amountLabel.text = "\(amountValue)".numberFormatter(.decimal, 8)
 //        equelLabel.text = "≈$"+"\(amountValue)".numberFormatter(.decimal, 2)
         // 暫時改為小數點不管
-        equelLabel.text = "≈$"+"\(amountValue)".numberFormatter(.decimal, 8)
+        equelLabel.text = "≈$"+"\(amountValue)".numberFormatter(.decimal, 2, floor: true)
         coinLabel.text = data.currency
         coinImageView.image = UIImage(named: "icon-usdt")
         currencyLabel.text = "Tether".localized

@@ -99,15 +99,17 @@ extension AmountInputView:UITextFieldDelegate
             return false
         }
         /// 4.检查小数点后位数限制 (小数点后最多输入2位)
-        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location == 8 {
+        /// 0818 產品驗收 限制長度調整為小數點後5位
+        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location == 5 {
             if text.toDouble() == 0 , string.toDouble() == 0
             {
-                amountTextView.text = "0.00000001"
+                amountTextView.text = "0.00001"
                 return false
             }
             return true
         }
-        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location > 8 {
+        /// 0818 產品驗收 限制長度調整為小數點後5位
+        if let ran = text.range(of: "."), range.location - NSRange(ran, in: text).location > 5 {
             return false
         }
         /// 5.检查首位输入是否为0

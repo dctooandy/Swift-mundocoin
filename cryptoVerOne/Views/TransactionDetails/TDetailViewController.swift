@@ -17,9 +17,13 @@ enum DetailType {
     case innerDone
     case innerFailed
 }
-enum DetailHiddenMode {
+enum DetailHiddenModeTopView {
     case topViewHidden
     case topViewShow
+}
+enum DetailHiddenModeBottomButton {
+    case buttonHidden
+    case buttonShow
 }
 class TDetailViewController: BaseViewController {
     // MARK:業務設定
@@ -33,12 +37,16 @@ class TDetailViewController: BaseViewController {
             detailType = detailDataDto!.detailType
         }
     }
-    var hiddenMode:DetailHiddenMode = .topViewShow{
+    var topHiddenMode:DetailHiddenModeTopView = .topViewShow{
         didSet{
-            if self.hiddenMode == .topViewShow
+            if self.topHiddenMode == .topViewShow
             {
                 self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
             }
+        }
+    }
+    var buttonHiddenMode:DetailHiddenModeBottomButton = .buttonShow{
+        didSet{
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
@@ -64,11 +72,12 @@ class TDetailViewController: BaseViewController {
     }()
     // MARK: -
     // MARK:Life cycle
-    static func instance(titleString : String ,mode: DetailHiddenMode , dataDto: DetailDto) -> TDetailViewController {
+    static func instance(titleString : String ,mode: DetailHiddenModeTopView ,buttonMode: DetailHiddenModeBottomButton , dataDto: DetailDto) -> TDetailViewController {
         let vc = TDetailViewController.loadNib()
         vc.titleString = titleString
         vc.detailDataDto = dataDto
-        vc.hiddenMode = mode
+        vc.topHiddenMode = mode
+        vc.buttonHiddenMode = buttonMode
         return vc
     }
 
@@ -187,17 +196,22 @@ class TDetailViewController: BaseViewController {
             dataListView.viewType = dataDto.detailType
             topView.topViewType = dataDto.detailType
         }
-        if hiddenMode == .topViewShow
+        if topHiddenMode == .topViewShow
         {
             topViewHeight.constant = 70
             topView.isHidden = false
+        }else
+        {
+            topViewHeight.constant = 0
+            topView.isHidden = true
+        }
+        if buttonHiddenMode == .buttonShow
+        {
             checkButton.isHidden = false
             tryButton.isHidden = false
             TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
         }else
         {
-            topViewHeight.constant = 0
-            topView.isHidden = true
             checkButton.isHidden = true
             tryButton.isHidden = true
         }

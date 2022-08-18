@@ -276,7 +276,9 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             {
                 if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
                 {
-                    TransStyleThemes.feeViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
+                    feeView.isHidden = false
+                    // 0818 產品驗收 不隱藏了
+//                    TransStyleThemes.feeViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
 //                withdrawToInputView.isHidden = false
 //                withdrawToHeight.constant = 46 + stringHeight

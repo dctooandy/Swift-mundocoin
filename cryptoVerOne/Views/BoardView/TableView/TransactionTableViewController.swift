@@ -159,6 +159,7 @@ class TransactionTableViewController: BaseViewController {
             
             let detailVC = TDetailViewController.instance(titleString: showModeAtTableView.showTitleString,
                                                           mode: .topViewHidden ,
+                                                          buttonMode: .buttonHidden,
                                                           dataDto:detailData)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }

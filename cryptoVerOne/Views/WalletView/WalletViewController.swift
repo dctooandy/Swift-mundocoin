@@ -30,7 +30,6 @@ class WalletViewController: BaseViewController {
             
         }
     }
-    
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var eyeIconImageView: UIImageView!
@@ -213,7 +212,7 @@ class WalletViewController: BaseViewController {
             }
         }
         for dataDto in walletsDto {
-            var amountValue = 0.0
+            var amountValue = 0.0// 總額
             if let doubleValue = dataDto.amount.doubleValue
             {
                 amountValue = doubleValue
@@ -234,7 +233,14 @@ class WalletViewController: BaseViewController {
             walletsDto.remove(at: dataDtoIndex)
             walletsDto.insert(dataDto, at: dataDtoIndex)
         }
-        totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 8)
+        if let totalBalance = WalletAllBalancesDto.share?.total.stringValue
+        {
+            totalBalanceLabel.text = totalBalance.numberFormatter(.decimal,2,floor: true)
+//            totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 8)
+        }else
+        {
+            totalBalanceLabel.text = String(describing: amountString).numberFormatter(.decimal, 2,floor: true)
+        }
         
     }
     func setUPDataForPageVC()

@@ -92,7 +92,7 @@ extension String {
     ///   - style: 單位類型
     ///   - minimumFractionDigits: 最少到小數第幾位
     /// - Returns: String
-    func numberFormatter(_ style: NumberFormatter.Style , _ minimumFractionDigits: Int = 2, locale: Locale = Locale(identifier: "zh_Hans_CN")) -> String {
+    func numberFormatter(_ style: NumberFormatter.Style , _ minimumFractionDigits: Int = 2, locale: Locale = Locale(identifier: "zh_Hans_CN"), floor: Bool = false) -> String {
         var newString = ""
         if self.contains(",")
         {
@@ -113,6 +113,10 @@ extension String {
 //        formatter.locale = locale
         formatter.minimumFractionDigits = minimumFractionDigits > 1 ? 2 : minimumFractionDigits
         formatter.maximumFractionDigits = minimumFractionDigits
+        if floor == true
+        {
+            formatter.roundingMode = .floor//無條件捨去
+        }
         let str = formatter.string(from: NSNumber(value: num)) ?? "0.00"
         return str
     }

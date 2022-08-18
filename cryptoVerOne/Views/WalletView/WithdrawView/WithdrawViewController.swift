@@ -419,8 +419,13 @@ class WithdrawViewController: BaseViewController {
                                        orderId: transDto.orderId,
                                        confirmBlocks: transDto.confirmBlocks ?? 0,
                                        showMode: .withdrawals)
+//            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
+//                                                          mode: .topViewShow ,
+//                                                          dataDto:detailData)
+            // 0818 產品驗收 topView 隱藏
             let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
-                                                          mode: .topViewShow ,
+                                                          mode: .topViewHidden ,
+                                                          buttonMode: .buttonShow,
                                                           dataDto:detailData)
             self.navigationController?.pushViewController(detailVC, animated: true)
         }
