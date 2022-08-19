@@ -209,7 +209,9 @@ class BoardViewController: BaseViewController {
     {
         viewModel.rxWalletTransactionsSuccess().subscribeSuccess { [self] dto in
             Log.v("交易紀錄Dto count : \(dto.content.count)")
-            transContentDto = dto.content
+            // 先隱藏 TRX
+//            transContentDto = dto.content
+            transContentDto = dto.content.filter({$0.currency != "TRX"})
             resetData()
         }.disposed(by: dpg)
         

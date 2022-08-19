@@ -178,7 +178,7 @@ class LoginViewController: BaseViewController {
                         if reason == "ID_OR_PASSWORD_NOT_MATCH"
                         {
                             accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "Email or password error")
-                            InputViewStyleThemes.share.accountAcceptInputHeightStyle(.pwInvalidShow)
+                            InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
                         }
                     }else if status == "404"
                     {
