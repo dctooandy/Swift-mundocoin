@@ -139,7 +139,9 @@ class ForgotViewController: BaseViewController {
         if let account = accountInputView?.accountInputView.textField.text
         {
             let dto = LoginPostDto(account: account, password:"",loginMode: self.loginMode ,showMode: .forgotPW)
-            self.onClickLogin.onNext(dto)
+            view.endEditing(true)
+            showVerifyVCWithLoginData(dto)
+//            self.onClickLogin.onNext(dto)y
         }
     }
 //    func startReciprocal() {
@@ -163,7 +165,39 @@ class ForgotViewController: BaseViewController {
 //        seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: true)
 //    }
-    
+    func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
+    {
+        Beans.loginServer.verificationIDGet(idString: dataDto.account).subscribe { [self] dto in
+            Log.v("帳號沒註冊過")
+            accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is not exist")
+//            willShowAgainFromVerifyVC = true
+            // 暫時改為直接推頁面
+//            let verifyVC = VerifyViewController.loadNib()
+//            verifyVC.loginDto = dataDto
+//            navigationController?.pushViewController(verifyVC, animated: true)
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    if status == "400"
+                    {
+                        Log.v("帳號已存在")
+//                        accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        let verifyVC = VerifyViewController.loadNib()
+                        verifyVC.forgotPWDto = dataDto
+                        navigationController?.pushViewController(verifyVC, animated: true)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
     
     func rxResetButtonPressed() -> Observable<LoginPostDto> {
         return onClickLogin.asObserver()

@@ -60,6 +60,8 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case refreshToken
     case customerUpdatePassword
     case customerLoginHistory
+    case customerForgotPasswordVerify
+    case customerForgotPassword
     
     case signup
     case jpush
@@ -99,6 +101,10 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/customer/updatePassword")
         case .customerLoginHistory:
             return URL(string:ApiService.host + "/v1/customer/loginHistory")
+        case .customerForgotPasswordVerify:
+            return URL(string:ApiService.host + "/v1/customer/forgotPasswordVerify")
+        case .customerForgotPassword:
+            return URL(string:ApiService.host + "/v1/customer/forgotPassword")
         case .login:
             return URL(string:ApiService.host + "/login") //暫時
         case .appVersion:

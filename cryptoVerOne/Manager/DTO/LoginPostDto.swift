@@ -15,11 +15,13 @@ struct LoginPostDto {
     let timestamp = Date.timestamp()
     let finger = KeychainManager.share.getFingerID()
     let currentShowMode : ShowMode
-    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode) {
+    var resetCode:String = ""
+    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "") {
         self.account = account
         self.password = password
         self.loginMode = loginMode
         self.currentShowMode = showMode
+        self.resetCode = resetCode
     }
 }
 

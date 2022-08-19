@@ -1017,6 +1017,12 @@
 		09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
 		09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A54F8128409A8A00164B27 /* MemberAccountDto.swift */; };
+		09A8539428AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09A8539528AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09A8539628AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09A8539728AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09A8539828AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09A8539928AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
 		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
@@ -1903,6 +1909,7 @@
 		099B5F0C288A6DEF00148FD9 /* Inter-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Bold.otf"; sourceTree = "<group>"; };
 		099C35F1288E9027000C1C4E /* NoBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalanceView.swift; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
+		09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPWVerifyDto.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
@@ -3041,6 +3048,7 @@
 				09CAF5DC283CE0C400D7B19B /* RegistrationDto.swift */,
 				09CAF5E0283CE58E00D7B19B /* OtherValue.swift */,
 				09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */,
+				09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */,
 				09A54F8128409A8A00164B27 /* MemberAccountDto.swift */,
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
@@ -4145,6 +4153,7 @@
 				09905A472851A02B00BAEE78 /* AddressBookViewModel.swift in Sources */,
 				09905A482851A02B00BAEE78 /* UIImage+util.swift in Sources */,
 				09905A492851A02B00BAEE78 /* UILabel+util.swift in Sources */,
+				09A8539828AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				09905A4A2851A02B00BAEE78 /* NotificationDto.swift in Sources */,
 				09905A4B2851A02B00BAEE78 /* ResendDto.swift in Sources */,
 				09EED2FA2856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
@@ -4370,6 +4379,7 @@
 				09905B392851A08500BAEE78 /* AddressBookViewModel.swift in Sources */,
 				09905B3A2851A08500BAEE78 /* UIImage+util.swift in Sources */,
 				09905B3B2851A08500BAEE78 /* UILabel+util.swift in Sources */,
+				09A8539928AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				09905B3C2851A08500BAEE78 /* NotificationDto.swift in Sources */,
 				09905B3D2851A08500BAEE78 /* ResendDto.swift in Sources */,
 				09EED2FB2856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
@@ -4595,6 +4605,7 @@
 				09905C2B2851A09600BAEE78 /* AddressBookViewModel.swift in Sources */,
 				09905C2C2851A09600BAEE78 /* UIImage+util.swift in Sources */,
 				09905C2D2851A09600BAEE78 /* UILabel+util.swift in Sources */,
+				09A8539728AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				09905C2E2851A09600BAEE78 /* NotificationDto.swift in Sources */,
 				09905C2F2851A09600BAEE78 /* ResendDto.swift in Sources */,
 				09EED2F92856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
@@ -4820,6 +4831,7 @@
 				092E760728504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				09CAF450283C77ED00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF451283C77ED00D7B19B /* UILabel+util.swift in Sources */,
+				09A8539528AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				092E760B2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7682840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09EED2F72856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
@@ -5045,6 +5057,7 @@
 				092E760828504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				09CAF511283C7BBE00D7B19B /* UIImage+util.swift in Sources */,
 				09CAF512283C7BBE00D7B19B /* UILabel+util.swift in Sources */,
+				09A8539628AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				092E760C2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7692840CCA100E33C57 /* ResendDto.swift in Sources */,
 				09EED2F82856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,
@@ -5270,6 +5283,7 @@
 				092E760628504A8600221997 /* AddressBookViewModel.swift in Sources */,
 				A19C70D728224819000AFC3F /* UIImage+util.swift in Sources */,
 				A19C71D72822662B000AFC3F /* UILabel+util.swift in Sources */,
+				09A8539428AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */,
 				092E760A2850998300221997 /* NotificationDto.swift in Sources */,
 				09F7A7672840CC9E00E33C57 /* ResendDto.swift in Sources */,
 				09EED2F62856DEC800CB4A64 /* SubListPageViewController.swift in Sources */,

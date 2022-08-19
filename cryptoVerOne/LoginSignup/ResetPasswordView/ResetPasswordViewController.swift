@@ -15,6 +15,9 @@ class ResetPasswordViewController: BaseViewController {
     private let dpg = DisposeBag()
     private let cancelImg = UIImage(named: "icon-close")!
     fileprivate let changedPWVC = CPasswordViewController.loadNib()
+    var newPasswordHeightConstraint : NSLayoutConstraint!
+    var confirmPasswordHeightConstraint : NSLayoutConstraint!
+    var resetPWDto : LoginPostDto?
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
@@ -38,6 +41,9 @@ class ResetPasswordViewController: BaseViewController {
         setupUI()
         bindPwdButton()
         bindTextfield()
+        bindBorderColor()
+        bindTextfieldReturnKey()
+        bindStyle()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -62,6 +68,23 @@ class ResetPasswordViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+        resetTFMaskView()
+        newPasswordInputView.textField.sendActions(for: .valueChanged)
+        confirmPasswordInputView.textField.sendActions(for: .valueChanged)
+    }
+    func resetTFMaskView(newPW:Bool = false ,confirmPW:Bool = false ,force:Bool = false )
+    {
+        if newPasswordInputView.invalidLabel.textColor != .red || force == true
+        {
+            newPasswordInputView.tfMaskView.changeBorderWith(isChoose:newPW)
+        }
+        if confirmPasswordInputView.invalidLabel.textColor != .red || force == true
+        {
+            confirmPasswordInputView.tfMaskView.changeBorderWith(isChoose:confirmPW)
+        }
+    }
     func setupUI()
     {
         view.backgroundColor = Themes.grayF4F7FE
@@ -69,30 +92,39 @@ class ResetPasswordViewController: BaseViewController {
         newPasswordInputView = newPasswordView
         let confirmPasswordView = InputStyleView(inputViewMode: .confirmPassword)
         confirmPasswordInputView = confirmPasswordView
+        
+        self.newPasswordInputView.textField.addTarget(self.confirmPasswordInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
+
+        newPasswordHeightConstraint = NSLayoutConstraint(item: newPasswordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
+        confirmPasswordHeightConstraint = NSLayoutConstraint(item: confirmPasswordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
+
         topLabel.text = "Reset password".localized
         view.addSubview(newPasswordInputView)
         view.addSubview(confirmPasswordInputView)
         view.addSubview(submitButton)
 
         newPasswordInputView.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(80)
+            make.top.equalTo(topLabel.snp.bottom).offset(40)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewPasswordHeight)
+            make.height.equalTo(newPasswordHeightConstraint.constant)
+//            make.height.equalTo(Themes.inputViewPasswordHeight)
         }
+        newPasswordInputView.addConstraint(newPasswordHeightConstraint)
         confirmPasswordInputView.snp.makeConstraints { (make) in
             make.top.equalTo(newPasswordInputView.snp.bottom)
             make.leading.equalToSuperview().offset(20)
             make.trailing.equalToSuperview().offset(-20)
-            make.height.equalTo(Themes.inputViewPasswordHeight)
+            make.height.equalTo(confirmPasswordHeightConstraint.constant)
+//            make.height.equalTo(Themes.inputViewPasswordHeight)
         }
-      
+        confirmPasswordInputView.addConstraint(confirmPasswordHeightConstraint)
         submitButton.titleLabel?.font = Fonts.PlusJakartaSansRegular(16)
         submitButton.setTitle("Submit".localized, for: .normal)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         submitButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
         submitButton.snp.makeConstraints { (make) in
-            make.top.equalTo(confirmPasswordInputView.snp.bottom).offset(10)
+            make.top.equalTo(confirmPasswordInputView.snp.bottom).offset(40)
             make.centerX.equalTo(confirmPasswordInputView)
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
@@ -110,28 +142,178 @@ class ResetPasswordViewController: BaseViewController {
         let isNewPWValid = newPasswordInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
+                if (self.newPasswordInputView.textField.isFirstResponder) != true
+                {
+                    self.newPasswordInputView.invalidLabel.isHidden = true
+                }
                 return RegexHelper.match(pattern:. password, input: acc)
         }
         let isConPWValid = confirmPasswordInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
+                if (self.confirmPasswordInputView.textField.isFirstResponder) != true
+                {
+                    self.confirmPasswordInputView.invalidLabel.isHidden = true
+                }
                 return (acc == self.newPasswordInputView.textField.text) &&
                     RegexHelper.match(pattern:. password, input: acc)
         }
-        isNewPWValid.skip(1).bind(to: newPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        isConPWValid.skip(1).bind(to: confirmPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
-
+        
+//        isNewPWValid.skip(1).bind(to: newPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+//        isConPWValid.skip(1).bind(to: confirmPasswordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        let isNewPWHeightType = newPasswordInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let password = str else { return .newPWInvalidHidden }
+                if ((strongSelf.newPasswordInputView.textField.isFirstResponder) == true) {
+                    var patternValue = RegexHelper.Pattern.phone
+                    patternValue = .password
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: password) == true ? .newPWInvalidHidden : (password.isEmpty == true ? .newPWInvalidShow : .newPWInvalidShow)
+                    if resultValue == .newPWInvalidShow
+                    {
+                        strongSelf.newPasswordInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        strongSelf.newPasswordInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    if strongSelf.newPasswordInputView.invalidLabel.textColor == .red
+                    {
+                        return .newPWInvalidShow
+                    }
+                    return .newPWInvalidHidden
+                }
+        }
+        
+        let isConfirmPWHeightType = confirmPasswordInputView.textField.rx.text
+            .map { [weak self] (str) -> InputViewHeightType in
+                guard let strongSelf = self, let password = str else { return .confirmPWInvalidHidden }
+                if ((strongSelf.confirmPasswordInputView.textField.isFirstResponder) == true) {
+                    var patternValue = RegexHelper.Pattern.phone
+                    patternValue = .password
+                    let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: password) == true ? .confirmPWInvalidHidden : (password.isEmpty == true ? .confirmPWInvalidShow : .confirmPWInvalidShow)
+                    if resultValue == .confirmPWInvalidShow
+                    {
+                        strongSelf.confirmPasswordInputView.invalidLabel.isHidden = false
+                    }else
+                    {
+                        strongSelf.confirmPasswordInputView.invalidLabel.isHidden = true
+                    }
+                    return resultValue
+                }else
+                {
+                    if strongSelf.confirmPasswordInputView.invalidLabel.textColor == .red
+                    {
+                        return .confirmPWInvalidShow
+                    }
+                    return .confirmPWInvalidHidden
+                }
+        }
+        isNewPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+        isConfirmPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
         Observable.combineLatest(isNewPWValid, isConPWValid)
             .map { return $0.0 && $0.1 } //reget match result
             .bind(to: submitButton.rx.isEnabled)
             .disposed(by: dpg)
     }
+    func bindBorderColor()
+    {
+        newPasswordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            resetInvalidText(newPW:isChoose)
+            resetTFMaskView(newPW:isChoose)
+            resetInputView(view: newPasswordInputView)
+//            accountInputView.textField.sendActions(for: .valueChanged)
+            if isChoose == false
+            {
+                confirmPasswordInputView.textField.becomeFirstResponder()
+            }
+        }.disposed(by: dpg)
+        confirmPasswordInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            resetInvalidText(confirmPW:isChoose)
+            resetTFMaskView(confirmPW:isChoose)
+            resetInputView(view: confirmPasswordInputView)
+        }.disposed(by: dpg)
+    }
+    func resetInvalidText(newPW:Bool = false ,confirmPW:Bool = false )
+    {
+        if newPW == true
+        {
+            newPasswordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+        if confirmPW == true
+        {
+            confirmPasswordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        }
+    }
+    func resetInputView(view : InputStyleView)
+    {
+        if view.invalidLabel.textColor != .red
+        {
+            view.invalidLabel.isHidden = true
+        }
+    }
+    func bindTextfieldReturnKey()
+    {
+        newPasswordInputView.textField.returnKeyType = .next
+        confirmPasswordInputView.textField.returnKeyType = .done
+    }
+    func bindStyle()
+    {
+        InputViewStyleThemes.newInputHeightType.bind(to: newPasswordHeightConstraint.rx.constant).disposed(by: dpg)
+        InputViewStyleThemes.confirmInputHeightType.bind(to: confirmPasswordHeightConstraint.rx.constant).disposed(by: dpg)
+    }
     func submitButtonPressed()
     {
         if let passwordString = newPasswordInputView.textField.text
         {
-            onSubmitClick.onNext(passwordString)
+            resignAllResponder()
+            if let resetData = self.resetPWDto
+            {
+                Beans.loginServer.customerForgotPassword(accountString: resetData.account.lowercased(), verificationCode: resetData.resetCode, newPassword: passwordString).subscribe { [self] (data) in
+                    gotoFinalVC()
+                } onError: { [self](error) in
+                    if let errorData = error as? ApiServiceError
+                    {
+                        switch errorData {
+                        case .errorDto(let dto):
+                            let status = dto.httpStatus ?? ""
+                            let reason = dto.reason
+                            if status == "400"
+                            {
+                                showAlert()
+                            }else
+                            {
+                                ErrorHandler.show(error: error)
+                            }
+                        default:
+                            ErrorHandler.show(error: error)
+                        }
+                    }
+                }.disposed(by: disposeBag)
+            }
         }
+    }
+    func showAlert()
+    {
+        let popVC =  ConfirmPopupView(viewHeight:222.0 ,iconMode: .showIcon("Back"),
+                                      title: "Error",
+                                      message: "The verification code is timeout, you could try it again.") { [self] isOK in
+
+            if isOK {
+                Log.i("返回")
+                self.popVC()
+            }
+        }
+        popVC.messageLabel.textColor = Themes.gray718096
+        popVC.messageLabel.font = Fonts.PlusJakartaSansMedium(14)
+        popVC.start(viewController: self)
+    }
+    func resignAllResponder()
+    {
+        resetTFMaskView()
+        newPasswordInputView.textField.resignFirstResponder()
+        confirmPasswordInputView.textField.resignFirstResponder()
     }
     func gotoFinalVC()
     {

@@ -13,8 +13,9 @@ import AVFoundation
 import AVKit
 enum VerifificationType
 {
-    case loginOrForgotPW
-    case signup
+    case loginVerity
+    case signupVerity
+    case forgotPWVerity
 }
 class VerifyViewController: BaseViewController {
     // MARK:業務設定
@@ -22,7 +23,7 @@ class VerifyViewController: BaseViewController {
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
     private let dpg = DisposeBag()
-    var verifificationType : VerifificationType = .loginOrForgotPW
+    var verifificationType : VerifificationType = .loginVerity
     private var inputMode: LoginMode = .emailPage
     var isAlreadySetBackView = false
     var timer: Timer?
@@ -32,7 +33,7 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let loginDto = self.loginDto
             {
-                verifificationType = .loginOrForgotPW
+                verifificationType = .loginVerity
                 switch loginDto.loginMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
@@ -43,11 +44,26 @@ class VerifyViewController: BaseViewController {
             }
         }
     }
+    var forgotPWDto : LoginPostDto?  {
+        didSet {
+            if let forgotDto = self.forgotPWDto
+            {
+                verifificationType = .forgotPWVerity
+                switch forgotDto.loginMode {
+                case .emailPage:
+                    self.sentToLabel.text = "We have sent an email to".localized
+                case .phonePage:
+                    self.sentToLabel.text = "We have sent messages to".localized
+                }
+                self.userAccountLabel.text = forgotDto.account
+            }
+        }
+    }
     var signupDto : SignupPostDto?  {
         didSet {
             if let signupDto = self.signupDto
             {
-                verifificationType = .signup
+                verifificationType = .signupVerity
                 switch signupDto.signupMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
@@ -249,14 +265,14 @@ class VerifyViewController: BaseViewController {
     }
     func bindResetPWVC()
     {
-        resetPWVC.rxSubmitClick().subscribeSuccess { [self] dataString in
-            // 發送驗證碼跟密碼
-            // dataString 新密碼
-            // verifyCodeString 驗證碼
-            // 先讓他去
-            Log.v("新密碼 : \(dataString)\n驗證碼 : \(verifyCodeString)")
-            resetPWVC.gotoFinalVC()
-        }.disposed(by: dpg)
+//        resetPWVC.rxSubmitClick().subscribeSuccess { [self] dataString in
+//            // 發送驗證碼跟密碼
+//            // dataString 新密碼
+//            // verifyCodeString 驗證碼
+//            // 先讓他去
+//            Log.v("新密碼 : \(dataString)\n驗證碼 : \(verifyCodeString)")
+//            resetPWVC.gotoFinalVC()
+//        }.disposed(by: dpg)
     }
     func verifyButtonPressed()
     {
@@ -272,20 +288,26 @@ class VerifyViewController: BaseViewController {
             idString = signupDto.account
             passwordString = signupDto.password
             registrationString = signupDto.registration
+        }else if let forgotDto = self.forgotPWDto
+        {
+            idString = forgotDto.account
         }
         let codeString = verifyInputView.textField.text ?? ""
         switch verifificationType {
-        case .loginOrForgotPW:
+        case .loginVerity:
             // 登入驗證
             fetchAuthenticationData(with: idString,
                                     password: passwordString,
                                     verificationCode: codeString)
-        case .signup:
+        case .signupVerity:
             // 註冊驗證
             fetchRegistrationData(code:registrationString,
                                   email: idString,
                                   password: passwordString,
                                   verificationCode: codeString)
+        case .forgotPWVerity:
+            fetchForgotPasswordVerify(with: idString,
+                                      verificationCode: codeString)
         }
     }
     func verifyResentLabelVisable(With enable:Bool)
@@ -315,6 +337,9 @@ class VerifyViewController: BaseViewController {
             }else if let signupDto = self.signupDto
             {
                 idString = signupDto.account
+            }else if let forgetDto = self.forgotPWDto
+            {
+                idString = forgetDto.account
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto
@@ -365,9 +390,49 @@ class VerifyViewController: BaseViewController {
                                                              signupDto: signupDto)
         }
     }
+    // 忘記密碼
+    func fetchForgotPasswordVerify(with idString:String ,
+                                   verificationCode:String)
+    {
+        Beans.loginServer.customerForgotPasswordVerify(accountString: idString.localizedLowercase, verificationCode: verificationCode).subscribe { [self] dto in
+            Log.i("成功回傳 \(dto)")
+            if let codeString = dto?.code
+            {
+                directToResetPWVC(codeString)                
+            }
+        } onError: { [self] error in
+            _ = LoadingViewController.dismiss()
+            if let error = error as? ApiServiceError
+            {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    if status == "400"
+                    {
+                        verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else if status == "404"
+                    {
+                        verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
+    
     func directToResetPWVC(_ verifyString : String)
     {
         verifyCodeString = verifyString
+        if var data = self.forgotPWDto
+        {
+            data.resetCode = verifyString
+            self.resetPWVC.resetPWDto = data
+        }
         self.navigationController?.pushViewController(resetPWVC, animated: true )
     }
     func defaultSetup()

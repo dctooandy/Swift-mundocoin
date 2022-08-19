@@ -147,4 +147,36 @@ class LoginService {
                 return $0
             })
     }
+    // 忘記密碼驗證
+    func customerForgotPasswordVerify(accountString:String , verificationCode:String) -> Single<ForgotPWVerifyDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["email"] = accountString
+        parameters["code"] = verificationCode
+        
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.customerForgotPasswordVerify.path,
+            parameters: parameters,
+            modify: false,
+            resultType: ForgotPWVerifyDto.self).map({
+                return $0
+            })
+    }
+    // 忘記密碼
+    func customerForgotPassword(accountString:String , verificationCode:String , newPassword:String) -> Single<String?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["email"] = accountString
+        parameters["code"] = verificationCode
+        parameters["newPassword"] = newPassword
+        
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.customerForgotPassword.path,
+            parameters: parameters,
+            modify: false,
+            resultType: String.self).map({
+                return $0
+            })
+    }
+
 }

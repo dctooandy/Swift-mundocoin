@@ -36,7 +36,7 @@ class ConfirmPopupView: PopupBottomSheet {
         return lb
     }()
     
-    private lazy var messageLabel: UILabel = {
+    lazy var messageLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .center
         lb.textColor = Themes.gray2B3674
@@ -151,7 +151,7 @@ class ConfirmPopupView: PopupBottomSheet {
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(20)
+            make.top.equalTo(titleLabel.snp.bottom).offset(10)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
         }

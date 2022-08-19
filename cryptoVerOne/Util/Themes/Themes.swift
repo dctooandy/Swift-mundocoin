@@ -27,6 +27,7 @@ class Themes {
     static let inputViewPasswordHeight = 85.0 + Themes.passwordInvalidLabelHeight
     
     static let gray6149F6 = UIColor(rgb: 0x6149F6)
+    static let gray718096 = UIColor(rgb: 0x718096)
     static let gray33617D = UIColor(rgb: 0x33617D)
     static let grayE9EDF7 = UIColor(rgb: 0xE9EDF7)
     static let green0DC897 = UIColor(rgb: 0x0DC897)
