@@ -70,9 +70,9 @@ class ConfirmBottomView: UIView {
         let stringHeight = confirmData.address.height(withConstrainedWidth: (Views.screenWidth - 80), font: Fonts.PlusJakartaSansRegular(16))
         withdrawToInputView.tvHeightConstraint.constant = (stringHeight + 13)
         
-        introduceLabel.snp.updateConstraints { (make) in
-            make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
-        }
+//        introduceLabel.snp.updateConstraints { (make) in
+//            make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
+//        }
 
         if let totalAmount = Double(confirmData.totalAmount)
         {
