@@ -350,8 +350,10 @@ extension SocketIOManager
                             titleString = "Deposit Succesful"
                             bodyString = "You have deposited \(amountValue) \(cryptotype) at \(txDto.updatedDateString) (UTC)."
                         }
-                        
-                        self.onTriggerLocalNotification(subtitle: titleString, body: [bodyString])
+                        if cryptotype != "TRX"// 先擋掉 TRX
+                        {
+                            self.onTriggerLocalNotification(subtitle: titleString, body: [bodyString])
+                        }
                     }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     
