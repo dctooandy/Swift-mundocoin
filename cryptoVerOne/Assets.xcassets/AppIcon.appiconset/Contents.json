@@ -1,13 +1,13 @@
 {
   "images" : [
     {
-      "filename" : "40@2x.png",
+      "filename" : "NewNotifications@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "60@3x.png",
+      "filename" : "NewNotifications@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"

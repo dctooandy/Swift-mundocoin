@@ -1,55 +1,55 @@
 {
   "images" : [
     {
-      "filename" : "1-11887-20@2x.png",
+      "filename" : "Notifications@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "1-11887-20@3x.png",
+      "filename" : "Notifications@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "1-11887-29@2x.png",
+      "filename" : "Settings@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "1-11887-29@3x.png",
+      "filename" : "Settings@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "1-11887-40@2x.png",
+      "filename" : "Spotlight@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "1-11887-40@3x.png",
+      "filename" : "Spotlight@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "1-11887-60@2x.png",
+      "filename" : "Home screen@2x.png",
       "idiom" : "iphone",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "1-11887-60@3x.png",
+      "filename" : "Home screen@3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
     },
     {
-      "filename" : "1-11887-1024.png",
+      "filename" : "Applesotre_1024x1024.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"

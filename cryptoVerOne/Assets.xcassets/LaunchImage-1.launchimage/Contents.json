@@ -2,7 +2,7 @@
   "images" : [
     {
       "extent" : "full-screen",
-      "filename" : "iPhone_11_Pro_Max__iPhone_XS_Max_portrait.png",
+      "filename" : "iOS 12_1242x2688.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -11,7 +11,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "iPhone_11__iPhone_XR_portrait.png",
+      "filename" : "iOS 12_828x1792.png",
       "idiom" : "iphone",
       "minimum-system-version" : "12.0",
       "orientation" : "portrait",
@@ -20,7 +20,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "iPhone_13_mini__iPhone_12_mini__iPhone_11_Pro__iPhone_XS__iPhone_X_portrait.png",
+      "filename" : "iOS 11_1125x2436.png",
       "idiom" : "iphone",
       "minimum-system-version" : "11.0",
       "orientation" : "portrait",
@@ -29,7 +29,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "iPhone_8_Plus__iPhone_7_Plus__iPhone_6s_Plus__iPhone_6_Plus_portrait.png",
+      "filename" : "iOS 8_1242x2208.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -38,7 +38,7 @@
     },
     {
       "extent" : "full-screen",
-      "filename" : "iPhone_8__iPhone_7__iPhone_6s__iPhone_6__4.7__iPhone_SE_portrait.png",
+      "filename" : "iOS 8_750x1334.png",
       "idiom" : "iphone",
       "minimum-system-version" : "8.0",
       "orientation" : "portrait",
@@ -47,6 +47,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "iOS 7_640x960.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
@@ -54,6 +55,7 @@
     },
     {
       "extent" : "full-screen",
+      "filename" : "iOS 7_640x1136.png",
       "idiom" : "iphone",
       "minimum-system-version" : "7.0",
       "orientation" : "portrait",
