@@ -5522,8 +5522,8 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5532,9 +5532,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Dev_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5553,8 +5553,8 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				CURRENT_PROJECT_VERSION = 4;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5563,9 +5563,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_DEV";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Dev_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5584,7 +5584,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5593,9 +5593,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Dev_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5615,7 +5615,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5624,9 +5624,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_STAGE";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Dev_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Dev-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5645,7 +5645,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5654,9 +5654,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Store_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Store-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -5676,7 +5676,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 5SJC774F3U;
+				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -5685,9 +5685,9 @@
 				);
 				MARKETING_VERSION = 1.3;
 				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -DApproval_PRO";
-				PRODUCT_BUNDLE_IDENTIFIER = com.mundotech.audit;
+				PRODUCT_BUNDLE_IDENTIFIER = mundotech.audit.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = Store_Mundotech_Audit;
+				PROVISIONING_PROFILE_SPECIFIER = "Store-audit";
 				SWIFT_OBJC_BRIDGING_HEADER = "cryptoVerOne/cryptoVerOne-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -5705,7 +5705,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5736,7 +5736,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = 75UJJQSYA3;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;

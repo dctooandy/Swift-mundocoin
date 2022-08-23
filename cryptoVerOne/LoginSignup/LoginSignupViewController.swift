@@ -345,7 +345,10 @@ extension LoginSignupViewController {
                     
                     if status == "400"
                     {
-                        loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        if reason == "CODE_MISMATCH"
+                        {
+                            loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")                            
+                        }
                     }else if status == "404"
                     {
                         loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
@@ -482,7 +485,18 @@ extension LoginSignupViewController {
             {
                 switch error {
                 case .errorDto(let dto):
-                    verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: dto.reason)
+                    let status = dto.httpStatus ?? ""
+                    let reason = dto.reason
+                    if status == "400"
+                    {
+                        if reason == "CODE_MISMATCH"
+                        {
+                            verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"The Email Code is incorrect. Please re-enter.")
+                        }
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
                 case .noData:
                     Log.v("註冊返回沒有資料")
                 default:

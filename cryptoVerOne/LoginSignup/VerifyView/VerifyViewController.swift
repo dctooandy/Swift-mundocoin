@@ -410,7 +410,10 @@ class VerifyViewController: BaseViewController {
                     let reason = dto.reason
                     if status == "400"
                     {
-                        verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        if reason == "CODE_MISMATCH"
+                        {
+                            verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                        }
                     }else if status == "404"
                     {
                         verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
