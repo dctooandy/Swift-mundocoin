@@ -70,20 +70,28 @@ class AuditLoginViewController: BaseViewController {
                 //暫時強制寫上
                 checkBoxView.isSelected = true
                 checkBoxView.checkType = .checkType
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            
+#else
                 accountInputView.textField.text = "admin@mundocoin.com"
                 passwordInputView.textField.text = "Admin!234"
                 accountInputView.textField.sendActions(for: .valueChanged)
                 passwordInputView.textField.sendActions(for: .valueChanged)
+#endif
             }
         }else
         {
             checkBoxView.isSelected = false
             checkBoxView.checkType = .defaultType
             //暫時強制寫上
-            accountInputView.textField.text = "admin@mundocoin.com"
-            passwordInputView.textField.text = "Admin!234"
-            accountInputView.textField.sendActions(for: .valueChanged)
-            passwordInputView.textField.sendActions(for: .valueChanged)
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            
+#else
+                accountInputView.textField.text = "admin@mundocoin.com"
+                passwordInputView.textField.text = "Admin!234"
+                accountInputView.textField.sendActions(for: .valueChanged)
+                passwordInputView.textField.sendActions(for: .valueChanged)
+#endif
         }
     }
     
