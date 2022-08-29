@@ -129,8 +129,9 @@ class AuditDetailViewController: BaseViewController {
     {
         txidLabel.rx.click.subscribeSuccess { [self] _ in
             let txidString = txidLabel.text ?? ""
-            Log.v("outapp url str: \(txidString)")
-            UIApplication.shared.open((URL(string: "https://shasta.tronscan.org/#/transaction/\(txidString)")!), options: [:], completionHandler: nil)
+            let outPutString = "https://tronscan.org/#/transaction/\(txidString)"
+            Log.v("outapp url str: \(outPutString)")
+            UIApplication.shared.open((URL(string: outPutString)!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)
     }
     func showAlertView(accept:AuditTriggerMode)

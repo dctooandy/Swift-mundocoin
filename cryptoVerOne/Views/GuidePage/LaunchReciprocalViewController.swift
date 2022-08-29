@@ -193,7 +193,8 @@ class LaunchReciprocalViewController: BaseViewController {
     private var showUpdateAlert = false
     func checkVersion() {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        backGroundImageView.image = UIImage(named: "App_Launcher")
+        backGroundImageView.image = UIImage(named: "Audit_Launcher")
+        
         beleadRightBottomLabel.text = "Approval"
 #else
         backGroundImageView.image = UIImage(named: "App_Launcher")
