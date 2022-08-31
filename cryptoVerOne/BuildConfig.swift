@@ -68,7 +68,7 @@ class BuildConfig {
         switch mode
         {
         case .Pro:
-            UserDefaults.DomainType.set(value: "api.mundocoin.com", forKey: .Domain)
+            UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
         case .Dev:
             UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
         case .Stage:
@@ -76,7 +76,7 @@ class BuildConfig {
         case .Qa:
             UserDefaults.DomainType.set(value: "qa.api.mundocoin.com", forKey: .Domain)
         case .AuditPro:
-            UserDefaults.DomainType.set(value: "api.mundocoin.com", forKey: .Domain)
+            UserDefaults.DomainType.set(value: "pro.api.mundocoin.com", forKey: .Domain)
         case .AuditDev:
             UserDefaults.DomainType.set(value: "dev.api.mundocoin.com", forKey: .Domain)
         case .AuditStage:
