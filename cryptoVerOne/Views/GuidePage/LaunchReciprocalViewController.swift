@@ -12,7 +12,7 @@ import RxSwift
 
 class LaunchReciprocalViewController: BaseViewController {
     // MARK:業務設定
-    private var count = 4
+    private var count = 1
     private var firstStart = false
     private var waitForGotoWallet = false
     // MARK: -

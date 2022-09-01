@@ -5522,7 +5522,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5553,7 +5553,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5583,7 +5583,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5614,7 +5614,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 0;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5705,7 +5705,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5736,7 +5736,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_dev.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_dev.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5766,7 +5766,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -5797,7 +5797,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne_stage.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_stage.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
