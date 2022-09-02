@@ -102,12 +102,13 @@ class AuditTriggerAlertView: UIView {
     func bindButton()
     {
         confirmButton.rx.tap.subscribeSuccess { [self] _ in
+            let stripped = messageTextView.text.trimmingCharacters(in: .whitespacesAndNewlines)
             if alertMode == .accept
             {
                 onConfirmClick.onNext((true, messageTextView.text))
             }else
             {
-                if messageTextView.text.isEmpty == true
+                if messageTextView.text.isEmpty == true || stripped.count == 0
                 {
                     messageTextView.layer.borderColor = UIColor.red.cgColor
                 }else
