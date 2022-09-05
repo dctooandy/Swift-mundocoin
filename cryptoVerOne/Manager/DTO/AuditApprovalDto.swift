@@ -10,6 +10,7 @@ import Foundation
 import RxSwift
 struct AuditApprovalDto :Codable {
     static let disposeBag = DisposeBag()
+    static var dataArray : [WalletWithdrawDto] = []
     static var pendingShare:AuditApprovalDto?
     {
         didSet {
@@ -32,7 +33,7 @@ struct AuditApprovalDto :Codable {
         }).disposed(by: disposeBag)
         return subject.asObservable()
     }
-            
+    static var tempShare:AuditApprovalDto?
     // finish
     static var finishShare:AuditApprovalDto?
     {
@@ -50,6 +51,59 @@ struct AuditApprovalDto :Codable {
     static private let finishSubject = BehaviorSubject<AuditApprovalDto?>(value: nil)
     static func finishUpdate() -> Observable<()>{
         let subject = PublishSubject<Void>()
+        
+        // 混合 approval / cancelled
+//        let group = DispatchGroup()
+//        let dispatchQueue = DispatchQueue.global(qos: .default)
+//        self.dataArray.removeAll()
+//        group.enter()
+//        dispatchQueue.async {
+//            Beans.auditServer.auditApprovals(state: AuditShowMode.approved.caseString,pageable: PagePostDto()).subscribe { (configDto) in
+//                if let data = configDto
+//                {
+//                    tempShare = data
+//                    self.dataArray.append(contentsOf: data.content)
+//                }
+//                group.leave()
+//            } onError: { error in
+//                if let errorData = error as? ApiServiceError
+//                {
+//                    switch errorData {
+//                    default:
+//                        ErrorHandler.show(error: error)
+//                    }
+//                    group.leave()
+//                }
+//            }.disposed(by: disposeBag)
+//        }
+//        group.enter()
+//        dispatchQueue.async {
+//            Beans.auditServer.auditApprovals(state: AuditShowMode.cancelled.caseString,pageable: PagePostDto()).subscribe { (configDto) in
+//                if let data = configDto
+//                {
+//                    tempShare = data
+//                    self.dataArray.append(contentsOf: data.content)
+//                }
+//                group.leave()
+//            } onError: { error in
+//                if let errorData = error as? ApiServiceError
+//                {
+//                    switch errorData {
+//                    default:
+//                        ErrorHandler.show(error: error)
+//                    }
+//                    group.leave()
+//                }
+//            }.disposed(by: disposeBag)
+//        }
+//
+//        group.notify(queue: DispatchQueue.main) {
+//            print("jobs done by group")
+//            tempShare?.content = self.dataArray
+//            finishShare = tempShare
+//             subject.onNext(())
+//        }
+        
         Beans.auditServer.auditApprovals(state: AuditShowMode.finished.caseString,pageable: PagePostDto()).subscribeSuccess({ (configDto) in
             finishShare = configDto
             subject.onNext(())
@@ -58,7 +112,7 @@ struct AuditApprovalDto :Codable {
     }
             
     let size: Int
-    let content: [WalletWithdrawDto]
+    var content: [WalletWithdrawDto]
     let number: Int
     let sort : SortDto
     let pageable: PageableDto

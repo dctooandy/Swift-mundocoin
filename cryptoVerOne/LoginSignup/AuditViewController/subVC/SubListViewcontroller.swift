@@ -73,6 +73,7 @@ class SubListViewcontroller: BaseViewController {
         switch  showMode {
         case .pending: return "Pending".localized
         case .finished: return "Finished".localized
+        default: return ""
         }
     }
 

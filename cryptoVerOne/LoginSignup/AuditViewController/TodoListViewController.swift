@@ -12,12 +12,18 @@ import Parchment
 enum AuditShowMode
 {
     case pending
+    case approved
+    case cancelled
     case finished
     
     var caseString:String{
         switch self {
         case .pending:
             return "PENDING"
+        case .approved:
+            return "APPROVED"
+        case .cancelled:
+            return "CANCELLED"
         case .finished:
             return "APPROVED"
 //            return "CANCELLED"
