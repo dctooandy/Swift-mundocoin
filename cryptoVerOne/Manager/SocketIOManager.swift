@@ -286,7 +286,7 @@ extension SocketIOManager
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
                 
 #else
-                    self.onTriggerLocalNotification(subtitle: "Message", body: [resultData])
+//                    self.onTriggerLocalNotification(subtitle: "Message", body: [resultData])
 #endif
                 }
             } catch DecodingError.dataCorrupted( _) {
@@ -320,7 +320,8 @@ extension SocketIOManager
                 {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
-                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
+                    Log.i("TriggerLocalNotification:\n\(userData.email),\(bodyArray)")
+//                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
                     _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
                     _ = AuditApprovalDto.finishUpdate() // 更新清單列表
 #else
