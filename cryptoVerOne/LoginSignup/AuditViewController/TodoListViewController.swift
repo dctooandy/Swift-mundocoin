@@ -26,6 +26,8 @@ enum AuditShowMode
             return "CANCELLED"
         case .finished:
             return "APPROVED"
+            // 0906 All State 過濾 pending
+//            return ""
 //            return "CANCELLED"
         }
     }

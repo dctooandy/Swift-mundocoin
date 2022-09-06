@@ -107,6 +107,17 @@ struct AuditApprovalDto :Codable {
         Beans.auditServer.auditApprovals(state: AuditShowMode.finished.caseString,pageable: PagePostDto()).subscribeSuccess({ (configDto) in
             finishShare = configDto
             subject.onNext(())
+            // 0906 All State 過濾 pending
+//            var newData:AuditApprovalDto = AuditApprovalDto()
+//            if let data = configDto
+//            {
+//                    newData = data
+//                    newData.content = data.content.filter {
+//                        $0.state?.lowercased() != "pending"
+//                        }
+//                finishShare = newData
+//                subject.onNext(())
+//            }
         }).disposed(by: disposeBag)
         return subject.asObservable()
     }

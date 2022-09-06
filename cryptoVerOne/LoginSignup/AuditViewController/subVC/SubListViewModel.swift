@@ -83,6 +83,22 @@ class SubListViewModel: BaseViewModel {
                         self.fetchListSuccess.onNext((.finished,data , false))
                     }
                 }
+                // 0906 All State 過濾 pending
+//                var newData:AuditApprovalDto = AuditApprovalDto()
+//                if let data = dto
+//                {
+//                    if state == .pending
+//                    {
+//                        self.fetchListSuccess.onNext((.pending,data , false))
+//                    }else
+//                    {
+//                        newData = data
+//                        newData.content = data.content.filter {
+//                            $0.state?.lowercased() != "pending"
+//                            }
+//                        self.fetchListSuccess.onNext((.finished,newData , false))
+//                    }
+//                }
             }
         }onError: { (error) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
