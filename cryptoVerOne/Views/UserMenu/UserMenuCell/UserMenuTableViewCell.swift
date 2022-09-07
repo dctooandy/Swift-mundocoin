@@ -61,7 +61,7 @@ enum cellData {
         case .twoFactorAuthentication:
             return "Two-Factor Authentication".localized
         case .emailAuthemtication:
-            return "E-Mail Authemtication".localized
+            return "E-Mail Authentication".localized
         case .changePassword:
             return "Change Password".localized
         case .systemNotifications:
