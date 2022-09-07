@@ -134,6 +134,7 @@ class TDetailViewController: BaseViewController {
             Log.i("去看金流歷史紀錄")
             let boardVC = BoardViewController.loadNib()
             boardVC.loadingDurarion = 1.0
+            boardVC.isFromWithdral = true
             self.navigationController?.viewControllers = [WalletViewController.share]
             WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
         }.disposed(by: dpg)

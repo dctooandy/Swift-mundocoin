@@ -50,6 +50,7 @@ class BoardViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var loadingDurarion:TimeInterval = 0
+    var isFromWithdral = false
     var showMode : TransactionShowMode = .deposits{
         didSet{
             self.currentFilterDto = nil
@@ -110,6 +111,11 @@ class BoardViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        if isFromWithdral == true
+        {
+            isFromWithdral = false
+            self.pageViewcontroller?.select(index: 1)
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
