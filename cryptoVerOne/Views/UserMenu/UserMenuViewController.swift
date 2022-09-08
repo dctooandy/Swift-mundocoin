@@ -113,7 +113,7 @@ class UserMenuViewController: BaseViewController {
 //        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "The verification code is incorrect or has expired, you could try 5 more times a day.") { [self](_) in
 //
 //        }
-        let popVC =  ConfirmPopupView(viewHeight:170.0 ,iconMode: .nonIcon(["Cancel".localized,"Logout".localized]),
+        let popVC = ConfirmPopupView(viewHeight:170.0 ,iconMode: .nonIcon(["Cancel".localized,"Logout".localized]),
                                       title: "",
                                       message: "Are you sure you want \nto logout?") { [self] isOK in
 
@@ -152,15 +152,16 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // MC524 暫時隱藏
+        // MC524 打開白名單
 //        return (section == 0 ? 4 : 6)
-        return (section == 0 ? 2 : 6)// 隱藏地址簿
+        return (section == 0 ? 3 : 6)// 打開白名單
+//        return (section == 0 ? 2 : 6)// 隱藏地址簿
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // MC524 暫時隱藏
 //        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
-        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
+        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)// 隱藏地址簿
         {// 線條View
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
@@ -179,11 +180,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                     cell.cellData = .currency
                 case 1:
                     cell.cellData = .security
-                // MC524 暫時隱藏
+                // MC524 打開白名單
 //                case 2:
 //                    cell.cellData = .pushNotifications
-//                case 2:
-//                    cell.cellData = .addressBook
+                case 2:
+                    cell.cellData = .addressBook
                 default:
                     break
                 }
@@ -232,11 +233,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                let pushVC = PushNotiViewController.loadNib()
 //                self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
-                // MC524 暫時隱藏
-//            case 2:
-//                Log.i("addressBook")
-//                let addressBookVC = AddressBookViewController.loadNib()
-//                self.navigationController?.pushViewController(addressBookVC, animated: true)
+                // MC524 打開白名單
+            case 2:
+                Log.i("addressBook")
+                let addressBookVC = AddressBookViewController.loadNib()
+                self.navigationController?.pushViewController(addressBookVC, animated: true)
                 //addressBook
             default:
                 break

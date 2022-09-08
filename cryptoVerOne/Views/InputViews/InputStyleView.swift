@@ -520,14 +520,14 @@ class InputStyleView: UIView {
             rightLabelWidth = 24 + 20
             if inputViewMode == .withdrawToAddress
             {
-                // MC524 暫時隱藏
-//                addSubview(addressBookImageView)
-//                addressBookImageView.snp.makeConstraints { (make) in
-//                    make.right.equalTo(scanImageView.snp.left).offset(-10)
-//                    make.centerY.equalTo(textField)
-//                    make.size.equalTo(24)
-//                }
-//                rightLabelWidth = 24 + 24 + 20
+                // MC524 打開白名單
+                addSubview(addressBookImageView)
+                addressBookImageView.snp.makeConstraints { (make) in
+                    make.right.equalTo(scanImageView.snp.left).offset(-10)
+                    make.centerY.equalTo(textField)
+                    make.size.equalTo(24)
+                }
+                rightLabelWidth = 24 + 24 + 20
             }
         }
         else if inputViewMode.isDropDownStyle()
@@ -568,8 +568,8 @@ class InputStyleView: UIView {
         else if inputViewMode == .withdrawAddressToDetail(true) || inputViewMode == .withdrawAddressFromDetail || inputViewMode == .withdrawAddressInnerFromDetail
         {
             addSubview(normalTextLabel)
-            // MC524 暫時隱藏 width 34
-//            addSubview(addAddressImageView)
+            // MC524 打開白名單
+            addSubview(addAddressImageView)
             addSubview(copyAddressImageView)
             normalTextLabel.snp.makeConstraints { (make) in
                 make.left.top.bottom.equalTo(textField)
@@ -581,15 +581,15 @@ class InputStyleView: UIView {
                 make.centerY.equalTo(textField)
                 make.size.equalTo(24)
             }
-            // MC524 暫時隱藏 width 34
-//            addAddressImageView.snp.makeConstraints { (make) in
-//                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
-//                make.centerY.equalTo(textField)
-//                make.size.equalTo(24)
-//            }
-            // MC524 暫時隱藏 width 34
-//            rightLabelWidth = 18 + 18 + 10
-            rightLabelWidth = 18 + 18 + 10 - 34
+            // MC524 打開白名單
+            addAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(24)
+            }
+            // MC524 打開白名單
+            rightLabelWidth = 18 + 18 + 10
+//            rightLabelWidth = 18 + 18 + 10 - 34
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
         }
