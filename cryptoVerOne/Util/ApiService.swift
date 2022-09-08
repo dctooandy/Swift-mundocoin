@@ -62,7 +62,13 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case customerLoginHistory
     case customerForgotPasswordVerify
     case customerForgotPassword
-    
+    // AddressBookWhite
+    case customerCreateAddressBook //Create Customer Address Book
+    case customerQueryAddressBooks //Query Customer Address Book
+    case customerEnableAddressBookWhiteList //Enable Customer Address Book White List
+    case customerUpdateAddressBookStatus(String) //Update Customer Address Book Status
+    case customerDeleteAddressBookStatus(String) //Delete Customer Address Book
+
     case signup
     case jpush
     case appVersion
@@ -105,6 +111,18 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/customer/forgotPasswordVerify")
         case .customerForgotPassword:
             return URL(string:ApiService.host + "/v1/customer/forgotPassword")
+        // 白名單功能
+        case .customerCreateAddressBook:
+            return URL(string:ApiService.host + "/v1/customer/address-book")
+        case .customerQueryAddressBooks:
+            return URL(string:ApiService.host + "/v1/customer/address-books")
+        case .customerEnableAddressBookWhiteList:
+            return URL(string:ApiService.host + "/v1/customer/settings/address-book")
+        case .customerUpdateAddressBookStatus(let endpoint):
+            return URL(string:ApiService.host + "/v1/customer/address-book/\(endpoint)")
+        case .customerDeleteAddressBookStatus(let endpoint):
+            return URL(string:ApiService.host + "/v1/customer/address-book/\(endpoint)")
+            
         case .login:
             return URL(string:ApiService.host + "/login") //暫時
         case .appVersion:

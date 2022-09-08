@@ -328,7 +328,6 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        
         Beans.loginServer.verificationIDPost(idString: dataDto.account , pwString: dataDto.password).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             willShowAgainFromVerifyVC = true
@@ -608,6 +607,8 @@ extension LoginSignupViewController {
             return
         }
         _ = LoadingViewController.dismiss()
+        // 拿取地址簿資料
+        fetchAddressBookList()
         navigateToRouter(showBioView: showBioView,
                          route: route)
     }
@@ -950,5 +951,10 @@ extension LoginSignupViewController {
     }
     func getTabbarVC() -> TabbarViewController? {
         return UIApplication.topViewController() as? TabbarViewController
+    }
+    func fetchAddressBookList()
+    {
+        Log.e("更新地址簿")
+        _ = AddressBookListDto.update(done: {})
     }
 }

@@ -58,7 +58,7 @@ class AddressBottomView: UIView {
         if isOn == true
         {
             allAddressList = KeychainManager.share.getAddressBookList()
-            allAddressList = allAddressList.filter({ $0.isWhiteList == true })
+            allAddressList = allAddressList.filter({ $0.enabled == true })
         }else
         {
             allAddressList = KeychainManager.share.getAddressBookList()

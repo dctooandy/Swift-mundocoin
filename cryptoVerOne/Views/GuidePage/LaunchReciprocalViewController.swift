@@ -119,10 +119,17 @@ class LaunchReciprocalViewController: BaseViewController {
             }
         }
     }
+    func fetchAddressBookList()
+    {
+        Log.e("更新地址簿")
+        _ = AddressBookListDto.update(done: {})
+    }
     func goToWallet()
     {
         // socket
         SocketIOManager.sharedInstance.establishConnection()
+        // addfressBook
+        fetchAddressBookList()
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
             let walletVC = WalletViewController.loadNib()

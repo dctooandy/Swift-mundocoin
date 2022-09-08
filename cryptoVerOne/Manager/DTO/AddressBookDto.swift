@@ -11,19 +11,27 @@ import RxSwift
 
 class AddressBookDto :Codable {
 
-    var coin: String = ""
+    var id:String = ""
+    var createdDate: String = ""
+    var updatedDate: String = ""
+    var currency: String = ""
+    var chain: String = ""
     var address: String = ""
-    var network: String = ""
     var name: String = ""
-    var walletLabel: String = ""
-    var isWhiteList:Bool = false
-
-    init(coin: String = "", address: String = "", network: String = "" , name: String = "", walletLabel: String = "", isWhiteList: Bool = false) {
-        self.coin = coin
+    var label: String = ""
+    var enabled:Bool = false
+    var network: String? = ""
+    
+    init(id: String = "",createdDate: String = "", updatedDate: String = "" , currency: String = "", chain: String = "", address: String = "" , name: String = "", label: String = "", enabled: Bool = false , network: String? = "") {
+        self.id = id
+        self.createdDate = createdDate
+        self.updatedDate = updatedDate
+        self.currency = currency
+        self.chain = chain
         self.address = address
-        self.network = network
         self.name = name
-        self.walletLabel = walletLabel
-        self.isWhiteList = isWhiteList
+        self.label = label
+        self.enabled = enabled
+        self.network = network
     }
 }

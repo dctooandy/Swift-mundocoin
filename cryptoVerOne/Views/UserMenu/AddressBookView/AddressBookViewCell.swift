@@ -35,9 +35,9 @@ class AddressBookViewCell: UITableViewCell {
     func setData(data:AddressBookDto)
     {
         self.cellData = data
-        whiteListSwitch.isOn = cellData.isWhiteList
+        whiteListSwitch.isOn = cellData.enabled
         nameLabel.text = cellData.name
-        walletLabel.text = cellData.walletLabel
+        walletLabel.text = cellData.label
         networkMethodLabel.text = cellData.network
         addressLabel.text = cellData.address
     }
@@ -54,7 +54,7 @@ class AddressBookViewCell: UITableViewCell {
         whiteListSwitch.rx.isOn.subscribeSuccess { [self]isOn in
             if cellData != nil
             {
-                cellData.isWhiteList = isOn
+                cellData.enabled = isOn
                 if KeychainManager.share.updateAddressbook(cellData) == true
                 {
                     if isOn == true

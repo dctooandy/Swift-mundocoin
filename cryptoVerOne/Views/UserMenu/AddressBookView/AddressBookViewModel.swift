@@ -18,8 +18,10 @@ class AddressBookViewModel: BaseViewModel {
     
     func fetchAddressBooks()
     {
-        let dtos = KeychainManager.share.getAddressBookList()
-        fetchSuccess.onNext(dtos)
+        _ = AddressBookListDto.update { [self] in
+            let dtos = KeychainManager.share.getAddressBookList()
+            fetchSuccess.onNext(dtos)
+        }
     }
   
     func rxFetchSuccess() -> Observable<[AddressBookDto]> {

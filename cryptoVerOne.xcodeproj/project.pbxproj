@@ -1044,6 +1044,18 @@
 		09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
 		09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
 		09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
+		09CA47E328C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47E428C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47E528C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47E628C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47E728C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47E828C992AC00CFE231 /* AddressBookService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E228C992AC00CFE231 /* AddressBookService.swift */; };
+		09CA47EA28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
+		09CA47EB28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
+		09CA47EC28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
+		09CA47ED28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
+		09CA47EE28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
+		09CA47EF28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */; };
 		09CAF439283C74D600D7B19B /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF438283C74D600D7B19B /* LoginService.swift */; };
 		09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A2D2828F63B009932D8 /* WalletPageViewController.swift */; };
 		09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1019DDF2824D0F300E6929E /* TemplateVC.swift */; };
@@ -1917,6 +1929,8 @@
 		09C20FAB2845FD5200E70654 /* WhiteListBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListBottomView.swift; sourceTree = "<group>"; };
 		09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteListBottomSheet.swift; sourceTree = "<group>"; };
 		09C20FB72846014B00E70654 /* WhiteListBottomView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WhiteListBottomView.xib; sourceTree = "<group>"; };
+		09CA47E228C992AC00CFE231 /* AddressBookService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookService.swift; sourceTree = "<group>"; };
+		09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookListDto.swift; sourceTree = "<group>"; };
 		09CAF438283C74D600D7B19B /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		09CAF4F7283C77ED00D7B19B /* cryptoVerOne_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cryptoVerOne_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CAF4F9283C78A700D7B19B /* Info_dev.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info_dev.plist; sourceTree = "<group>"; };
@@ -2445,6 +2459,7 @@
 				09CAF438283C74D600D7B19B /* LoginService.swift */,
 				09CAF5F0283E048B00D7B19B /* WalletService.swift */,
 				09EED312285718DF00CB4A64 /* AuditService.swift */,
+				09CA47E228C992AC00CFE231 /* AddressBookService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -3053,6 +3068,7 @@
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 				092E76012850488700221997 /* AddressBookDto.swift */,
+				09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */,
 				092E76092850998300221997 /* NotificationDto.swift */,
 			);
 			path = DTO;
@@ -4198,6 +4214,7 @@
 				09905A652851A02B00BAEE78 /* BaseViewController.swift in Sources */,
 				09905A662851A02B00BAEE78 /* GradientView.swift in Sources */,
 				09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */,
+				09CA47EE28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */,
 				09905A6A2851A02B00BAEE78 /* UserStatus.swift in Sources */,
 				09905A6B2851A02B00BAEE78 /* Themes.swift in Sources */,
@@ -4283,6 +4300,7 @@
 				09905AAB2851A02B00BAEE78 /* BadgeBtn.swift in Sources */,
 				09DB05EB289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				09905AAC2851A02B00BAEE78 /* NotiViewController.swift in Sources */,
+				09CA47E728C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905AAD2851A02B00BAEE78 /* UCPasswordViewController.swift in Sources */,
 				09905AAE2851A02B00BAEE78 /* BaseViewModel.swift in Sources */,
 				09905AAF2851A02B00BAEE78 /* BaseDismissAnimationController.swift in Sources */,
@@ -4424,6 +4442,7 @@
 				09905B572851A08500BAEE78 /* BaseViewController.swift in Sources */,
 				09905B582851A08500BAEE78 /* GradientView.swift in Sources */,
 				09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */,
+				09CA47EF28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */,
 				09905B5C2851A08500BAEE78 /* UserStatus.swift in Sources */,
 				09905B5D2851A08500BAEE78 /* Themes.swift in Sources */,
@@ -4509,6 +4528,7 @@
 				09905B9D2851A08500BAEE78 /* BadgeBtn.swift in Sources */,
 				09DB05EC289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				09905B9E2851A08500BAEE78 /* NotiViewController.swift in Sources */,
+				09CA47E828C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905B9F2851A08500BAEE78 /* UCPasswordViewController.swift in Sources */,
 				09905BA02851A08500BAEE78 /* BaseViewModel.swift in Sources */,
 				09905BA12851A08500BAEE78 /* BaseDismissAnimationController.swift in Sources */,
@@ -4650,6 +4670,7 @@
 				09905C492851A09600BAEE78 /* BaseViewController.swift in Sources */,
 				09905C4A2851A09600BAEE78 /* GradientView.swift in Sources */,
 				09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */,
+				09CA47ED28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */,
 				09905C4E2851A09600BAEE78 /* UserStatus.swift in Sources */,
 				09905C4F2851A09600BAEE78 /* Themes.swift in Sources */,
@@ -4735,6 +4756,7 @@
 				09905C8F2851A09600BAEE78 /* BadgeBtn.swift in Sources */,
 				09DB05EA289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				09905C902851A09600BAEE78 /* NotiViewController.swift in Sources */,
+				09CA47E628C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905C912851A09600BAEE78 /* UCPasswordViewController.swift in Sources */,
 				09905C922851A09600BAEE78 /* BaseViewModel.swift in Sources */,
 				09905C932851A09600BAEE78 /* BaseDismissAnimationController.swift in Sources */,
@@ -4876,6 +4898,7 @@
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
 				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
+				09CA47EB28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
 				09CAF469283C77ED00D7B19B /* Themes.swift in Sources */,
@@ -4961,6 +4984,7 @@
 				09CAF496283C77ED00D7B19B /* BadgeBtn.swift in Sources */,
 				09DB05E8289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				09CAF497283C77ED00D7B19B /* NotiViewController.swift in Sources */,
+				09CA47E428C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09CAF498283C77ED00D7B19B /* UCPasswordViewController.swift in Sources */,
 				09CAF499283C77ED00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */,
@@ -5102,6 +5126,7 @@
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
 				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
+				09CA47EC28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
 				09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */,
@@ -5187,6 +5212,7 @@
 				09CAF557283C7BBE00D7B19B /* BadgeBtn.swift in Sources */,
 				09DB05E9289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				09CAF558283C7BBE00D7B19B /* NotiViewController.swift in Sources */,
+				09CA47E528C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09CAF559283C7BBE00D7B19B /* UCPasswordViewController.swift in Sources */,
 				09CAF55A283C7BBE00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */,
@@ -5328,6 +5354,7 @@
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
 				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
+				09CA47EA28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,
 				A19C7089282239DC000AFC3F /* Themes.swift in Sources */,
@@ -5413,6 +5440,7 @@
 				A19C719D28225D99000AFC3F /* BadgeBtn.swift in Sources */,
 				09DB05E7289B5D95003C53ED /* BaseDismissInteration.swift in Sources */,
 				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,
+				09CA47E328C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,

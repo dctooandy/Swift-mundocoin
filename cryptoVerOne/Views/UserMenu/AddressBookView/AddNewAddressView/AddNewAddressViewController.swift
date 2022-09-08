@@ -237,12 +237,12 @@ class AddNewAddressViewController: BaseViewController {
     }
     func createAddressDto() -> AddressBookDto
     {
-        let coinString = dropdownView.topLabel.text ?? ""
+        let currencyString = dropdownView.topLabel.text ?? ""
         let addressString = addressStyleView.textView.text ?? ""
         let nameString = nameStyleView.textField.text ?? ""
         let walletLabelString = walletLabelStyleView.textField.text ?? ""
         let isAddToWhiteList = checkBox.isSelected
-        let address = AddressBookDto(coin: coinString, address: addressString, network: currentNetwotkMethod, name: nameString, walletLabel: walletLabelString, isWhiteList: isAddToWhiteList)
+        let address = AddressBookDto(currency: currencyString, address: addressString, name: nameString, label: walletLabelString, enabled: isAddToWhiteList, network: currentNetwotkMethod)
         return address
     }
     func bindSacnVC()
