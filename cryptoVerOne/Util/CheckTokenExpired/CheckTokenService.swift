@@ -11,12 +11,12 @@ import RxSwift
 import DropDown
 import JWTDecode
 
-class CheckTokenExpiredService{
+class CheckTokenService{
     // MARK:業務設定
     var timer: Timer?
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    static var share = CheckTokenExpiredService()
+    static var share = CheckTokenService()
     // MARK: -
     // MARK:UI 設定
    
@@ -25,6 +25,7 @@ class CheckTokenExpiredService{
     
     // MARK: -
     // MARK:業務方法
+    // 檢查 token 是否過期
     func checkTokenExpired(complete:CheckCompletionBlock? = nil)
     {
         let token = KeychainManager.share.getToken()
@@ -76,6 +77,49 @@ class CheckTokenExpiredService{
             }
         }
     }
+    // 檢查 白名單 isAddressBookWhiteListEnabled
+    func checkAddressBookWhiteListEnabled(complete:CheckCompletionBlock? = nil)
+    {
+        let token = KeychainManager.share.getToken()
+        // 準備好 id 資料
+        var jwtValue :JWT!
+        do {
+            jwtValue = try decode(jwt: token)
+        } catch {
+            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
+                //過期去登入頁面
+                goToLoginVC()
+            }
+        }
+        if jwtValue != nil , let isAddressBookWhiteListEnabled = jwtValue.body["isAddressBookWhiteListEnabled"] as? Bool
+        {
+            if isAddressBookWhiteListEnabled == false
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    Log.v("白名單 不啟用")
+                    if let successBlock = complete
+                    {
+                        successBlock(false)
+                    }
+                }
+            }else
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    Log.v("白名單 啟用")
+                    if let successBlock = complete
+                    {
+                        successBlock(true)
+                    }
+                }
+            }
+        }
+    }
+
     func goToLoginVC()
     {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
@@ -89,12 +133,13 @@ class CheckTokenExpiredService{
         Log.v("刷新Token")
         #if Approval_PRO || Approval_DEV || Approval_STAGE
         #else
-        Beans.loginServer.refreshToken().subscribeSuccess { [self]dto in
+        Beans.loginServer.refreshToken().subscribeSuccess { [self] dto in
             if let dataDto = dto
             {
                 KeychainManager.share.setToken(dataDto.token)
                 // 刷新時間
                 startToCountDown()
+                checkAddressBookWhiteListEnabled()
             }
         }.disposed(by: dpg)
         #endif

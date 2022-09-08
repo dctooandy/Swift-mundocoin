@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         application.beginBackgroundTask {} // allows to run background tasks
         // 消除倒數
-        CheckTokenExpiredService.share.stopRETimer()
+        CheckTokenService.share.stopRETimer()
 //        stopRETimer()
 //        SocketIOManager.sharedInstance.closeConnection()
     }
@@ -176,7 +176,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAppVersion() {
       
     }
-    
+    func checkAddressbook() {
+        CheckTokenService.share.checkAddressBookWhiteListEnabled { data in
+            
+        }
+    }
     func checkTime(complete:CheckCompletionBlock? = nil)
     {
         // 打API 檢查是否過期
@@ -189,7 +193,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAuditToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
-        CheckTokenExpiredService.share.checkTokenExpired(complete: complete)
+        CheckTokenService.share.checkTokenExpired(complete: complete)
     }
     func freshAuditToken()
     {
@@ -198,18 +202,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
     {
         // ErrorHandler 已經有過期導去登入
-        CheckTokenExpiredService.share.checkTokenExpired(complete: complete)
+        CheckTokenService.share.checkTokenExpired(complete: complete)
     }
     func freshToken()
     {
-        CheckTokenExpiredService.share.freshToken()
+        CheckTokenService.share.freshToken()
     }
     func startToCountDown() {
-        CheckTokenExpiredService.share.startToCountDown()
+        CheckTokenService.share.startToCountDown()
     }
     func stopRETimer()
     {
-        CheckTokenExpiredService.share.stopRETimer()
+        CheckTokenService.share.stopRETimer()
     }
 }
 // MARK: -
