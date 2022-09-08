@@ -214,9 +214,32 @@ class AddNewAddressViewController: BaseViewController {
 //            }.disposed(by: dpg)
             twoFAVC.securityViewMode = .onlyEmail
             twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
-                twoFAVC.navigationController?.popViewController(animated: false)
-                if KeychainManager.share.saveAddressbook(address) == true
+                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
                 {
+                    self.dismiss(animated: true)
+                }else
+                {
+                    twoFAVC.navigationController?.popViewController(animated: false)
+                }
+
+                let group = DispatchGroup()
+                let dispatchQueue = DispatchQueue.global(qos: .default)
+                group.enter()
+                dispatchQueue.async {
+                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label, done: {
+                        group.leave()
+                    })
+                }
+//                group.wait()
+                group.enter()
+                dispatchQueue.async {
+                    _ = AddressBookListDto.update(done: {
+                        group.leave()
+                    })
+                }
+
+                group.notify(queue: DispatchQueue.main) {
+                    print("jobs done by group")
                     if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
                     {
                         self.dismiss(animated: true) {
@@ -226,13 +249,16 @@ class AddNewAddressViewController: BaseViewController {
                     {
                         self.navigationController?.popViewController(animated: true)
                     }
-                }else
-                {
-                    Log.i("資料異常,無法存入")
                 }
-                
             }.disposed(by: dpg)
-            self.navigationController?.pushViewController(twoFAVC, animated: true)
+            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+            {
+                self.present(twoFAVC, animated: true)
+            }else
+            {
+                self.navigationController?.pushViewController(twoFAVC, animated: true)
+            }
+            
         }.disposed(by: dpg)
     }
     func createAddressDto() -> AddressBookDto

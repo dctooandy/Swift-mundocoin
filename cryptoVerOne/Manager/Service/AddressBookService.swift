@@ -14,11 +14,17 @@ import Alamofire
 class AddressBookService {
 
     //Create Customer Address Book
-    func createAddressBook() -> Single<AddressBookDto?>
+    func createAddressBook(address : String , name : String , label : String) -> Single<AddressBookDto?>
     {
-        let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestGet(
-            path: ApiService.walletAddress.path,
+        var parameters: Parameters = [String: Any]()
+        parameters["currency"] = "USDT"
+        parameters["chain"] = "TRON"
+        parameters["address"] = address
+        parameters["name"] = name
+        parameters["label"] = label
+
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.customerCreateAddressBook.path,
             parameters: parameters,
             modify: false,
             resultType: AddressBookDto.self).map({

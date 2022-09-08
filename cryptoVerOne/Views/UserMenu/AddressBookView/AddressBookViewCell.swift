@@ -38,7 +38,7 @@ class AddressBookViewCell: UITableViewCell {
         whiteListSwitch.isOn = cellData.enabled
         nameLabel.text = cellData.name
         walletLabel.text = cellData.label
-        networkMethodLabel.text = cellData.network
+        networkMethodLabel.text = cellData.network ?? "TRC20"
         addressLabel.text = cellData.address
     }
     // MARK: -
