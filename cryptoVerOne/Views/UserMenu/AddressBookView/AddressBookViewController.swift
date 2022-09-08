@@ -126,8 +126,11 @@ class AddressBookViewController: BaseViewController {
     func verifySuccessForChangeWhiteList()
     {
         let isOn = KeychainManager.share.getWhiteListOnOff()
-        KeychainManager.share.saveWhiteListOnOff(!isOn)
-        WhiteListThemes.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
+        Beans.addressBookServer.enableAddressBookWhiteList(enabled: !isOn).subscribeSuccess { _ in
+            
+            KeychainManager.share.saveWhiteListOnOff(!isOn)
+            WhiteListThemes.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
+        }.disposed(by: dpg)
     }
     @objc func addAddressBookAction() {
         Log.i("增加錢包地址")
@@ -145,8 +148,12 @@ class AddressBookViewController: BaseViewController {
                 Log.i("刪除此行 \(indexpath)")
                 let addressData = addresBookDtos[indexpath.item]
                 Beans.addressBookServer.deleteAddressBookStatus(addressBookID: addressData.id).subscribeSuccess { [self] _ in
-                    fetchDatas()
+                    _ = AddressBookListDto.update { [self] in
+                        addresBookDtos = KeychainManager.share.getAddressBookList()
+                        tableView.deleteRows(at: [indexpath], with: .fade)
+                    }
                 }.disposed(by: dpg)
+
             }else
             {
                 Log.i("不刪除")
@@ -163,13 +170,23 @@ class AddressBookViewController: BaseViewController {
 //                verifySuccessForChangeWhiteList()
 //            }.disposed(by: dpg)
         twoFAVC.securityViewMode = .onlyEmail
-        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
+        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
             twoFAVC.navigationController?.popViewController(animated: true)
             Log.i("返回Security並打API")
             // 需要填入修改白名單API
-            
+            changeCellWhiteListType(addressData: data)
         }.disposed(by: dpg)
         self.navigationController?.pushViewController(twoFAVC, animated: true)
+    }
+    func changeCellWhiteListType(addressData:AddressBookDto)
+    {
+        Beans.addressBookServer.updateAddressBookStatus(addressBookID: addressData.id , enabled: addressData.enabled).subscribeSuccess { _ in
+            _ = AddressBookListDto.update { [self] in
+                addresBookDtos = KeychainManager.share.getAddressBookList()
+                cellDpg = DisposeBag()
+                tableView.reloadData()
+            }
+        }.disposed(by: dpg)
     }
 }
 // MARK: -
@@ -188,9 +205,13 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         let cell = tableView.dequeueCell(type: AddressBookViewCell.self, indexPath: indexPath)
         cell.setData(data: addresBookDtos[indexPath.item])
         cell.shouldIndentWhileEditing = false
-        cell.rxChangeWhiteListClick().subscribeSuccess {[self] cellData in
-            Log.i("呼叫修改API")
+        cell.rxChangeWhiteListClickWhenOpen().subscribeSuccess {[self] cellData in
+            Log.i("發送驗證碼並呼叫修改API")
             toSecurityByType(data: cellData)
+        }.disposed(by: cellDpg)
+        cell.rxChangeWhiteListClickWhenClose().subscribeSuccess {[self] cellData in
+            Log.i("呼叫修改API")
+            changeCellWhiteListType(addressData: cellData)
         }.disposed(by: cellDpg)
 //        cell.setAccountData(data: dataArray[indexPath.item])
         return cell

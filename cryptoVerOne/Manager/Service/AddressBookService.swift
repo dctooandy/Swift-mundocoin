@@ -46,27 +46,29 @@ class AddressBookService {
             })
     }
     //Enable Customer Address Book White List
-    func enableAddressBookWhiteList() -> Single<WalletAddressDto?>
+    func enableAddressBookWhiteList(enabled:Bool) -> Single<String?>
     {
-        let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestGet(
-            path: ApiService.walletAddress.path,
+        var parameters: Parameters = [String: Any]()
+        parameters["enabled"] = enabled
+        return Beans.requestServer.singleRequestPut(
+            path: ApiService.customerEnableAddressBookWhiteList.path,
             parameters: parameters,
             modify: false,
-            resultType: WalletAddressDto.self).map({
+            resultType: String.self).map({
                 return $0
             })
     }
     
     //Update Customer Address Book Status
-    func updateAddressBookStatus(addressBook:String) -> Single<WalletAddressDto?>
+    func updateAddressBookStatus(addressBookID:String , enabled:Bool) -> Single<String?>
     {
-        let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestGet(
-            path: ApiService.walletAddress.path,
+        var parameters: Parameters = [String: Any]()
+        parameters["enabled"] = enabled
+        return Beans.requestServer.singleRequestPut(
+            path: ApiService.customerUpdateAddressBookStatus(addressBookID).path,
             parameters: parameters,
             modify: false,
-            resultType: WalletAddressDto.self).map({
+            resultType: String.self).map({
                 return $0
             })
     }

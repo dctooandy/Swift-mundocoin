@@ -176,11 +176,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func checkAppVersion() {
       
     }
-    func checkAddressbook() {
-        CheckTokenService.share.checkAddressBookWhiteListEnabled { data in
-            
-        }
-    }
+//    func checkAddressbook() {
+//        CheckTokenService.share.checkAddressBookWhiteListEnabled { data in
+//            
+//        }
+//    }
     func checkTime(complete:CheckCompletionBlock? = nil)
     {
         // 打API 檢查是否過期

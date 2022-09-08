@@ -12,7 +12,8 @@ import RxSwift
 
 class AddressBookViewCell: UITableViewCell {
     // MARK:業務設定
-    private let onChangeWhiteListClick = PublishSubject<AddressBookDto>()
+    private let onChangeWhiteListClickWhenOpen = PublishSubject<AddressBookDto>()
+    private let onChangeWhiteListClickWhenClose = PublishSubject<AddressBookDto>()
     private let dpg = DisposeBag()
     var cellData:AddressBookDto!
     // MARK: -
@@ -60,10 +61,11 @@ class AddressBookViewCell: UITableViewCell {
                     if isOn == true
                     {
                         Log.i("開啟單獨WhiteList")
-                        onChangeWhiteListClick.onNext(cellData)
+                        onChangeWhiteListClickWhenOpen.onNext(cellData)
                     }else
                     {
                         Log.i("關閉單獨WhiteList")
+                        onChangeWhiteListClickWhenClose.onNext(cellData)
                     }
                 }else
                 {
@@ -72,9 +74,13 @@ class AddressBookViewCell: UITableViewCell {
         }.disposed(by: dpg)
     }
     
-    func rxChangeWhiteListClick() -> Observable<AddressBookDto>
+    func rxChangeWhiteListClickWhenOpen() -> Observable<AddressBookDto>
     {
-        return onChangeWhiteListClick.asObservable()
+        return onChangeWhiteListClickWhenOpen.asObservable()
+    }
+    func rxChangeWhiteListClickWhenClose() -> Observable<AddressBookDto>
+    {
+        return onChangeWhiteListClickWhenClose.asObservable()
     }
 }
 // MARK: -

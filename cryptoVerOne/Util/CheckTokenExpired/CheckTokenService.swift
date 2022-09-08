@@ -98,24 +98,15 @@ class CheckTokenService{
         }
         if jwtValue != nil , let isAddressBookWhiteListEnabled = jwtValue.body["isAddressBookWhiteListEnabled"] as? Bool
         {
-            if isAddressBookWhiteListEnabled == false
-            {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    Log.v("白名單 不啟用")
-                    if let successBlock = complete
-                    {
-                        successBlock(false)
-                    }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                (isAddressBookWhiteListEnabled == false) ? Log.v("白名單 不啟用") : Log.v("白名單 啟用")
+                
+                if let successBlock = complete
+                {
+                    successBlock(isAddressBookWhiteListEnabled)
                 }
-            }else
-            {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    Log.v("白名單 啟用")
-                    if let successBlock = complete
-                    {
-                        successBlock(true)
-                    }
-                }
+                KeychainManager.share.saveWhiteListOnOff(isAddressBookWhiteListEnabled)
+                WhiteListThemes.share.acceptWhiteListTopImageStyle(isAddressBookWhiteListEnabled == true ? .whiteListOn : .whiteListOff)
             }
         }
     }
