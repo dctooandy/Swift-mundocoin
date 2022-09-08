@@ -63,9 +63,15 @@ extension DataRequest
                         }else if let responseString = String(data: data, encoding: .utf8)
                         {
                             // 是 空值或者String
-                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (responseString as AnyObject))
+                            if statusCode == 202
+                            {
+                                onData?("" as! T)
+                            }else
+                            {
+                                self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue:(responseString as AnyObject))
                             let results = try decoder.decode(T.self, from:data.jsonData())
-                            onData?(results)
+                                onData?(results)
+                            }
                         }else
                         {
                             // 無法編成資料

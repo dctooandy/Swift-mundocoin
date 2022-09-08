@@ -143,11 +143,10 @@ class AddressBookViewController: BaseViewController {
 
             if isOK {
                 Log.i("刪除此行 \(indexpath)")
-                if KeychainManager.share.deleteAddressbook(addresBookDtos[indexpath.item]) == true
-                {
-                    addresBookDtos = KeychainManager.share.getAddressBookList()
-                    tableView.deleteRows(at: [indexpath], with: .fade)
-                }
+                let addressData = addresBookDtos[indexpath.item]
+                Beans.addressBookServer.deleteAddressBookStatus(addressBookID: addressData.id).subscribeSuccess { [self] _ in
+                    fetchDatas()
+                }.disposed(by: dpg)
             }else
             {
                 Log.i("不刪除")

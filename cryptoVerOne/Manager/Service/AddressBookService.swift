@@ -71,14 +71,15 @@ class AddressBookService {
             })
     }
     //Delete Customer Address Book
-    func deleteAddressBookStatus(addressBook:String) -> Single<WalletAddressDto?>
+    func deleteAddressBookStatus(addressBookID:String) -> Single<String?>
     {
-        let parameters: Parameters = [String: Any]()
-        return Beans.requestServer.singleRequestGet(
-            path: ApiService.walletAddress.path,
+        var parameters: Parameters = [String: Any]()
+        parameters["id"] = addressBookID
+        return Beans.requestServer.singleRequestDelete(
+            path: ApiService.customerDeleteAddressBookStatus(addressBookID).path,
             parameters: parameters,
             modify: false,
-            resultType: WalletAddressDto.self).map({
+            resultType: String.self).map({
                 return $0
             })
     }
