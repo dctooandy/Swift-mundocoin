@@ -19,6 +19,7 @@ class AddressBookViewController: BaseViewController {
     private var cellDpg = DisposeBag()
     var addresBookDtos : [AddressBookDto] = []
     var twoFAVC = SecurityVerificationViewController.loadNib()
+    var isShowSecurityVC : Bool = false
     // MARK: -
     // MARK:UI 設定
 
@@ -56,6 +57,7 @@ class AddressBookViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cellDpg = DisposeBag()
+        isShowSecurityVC = false
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         fetchDatas()
     }
@@ -215,30 +217,38 @@ class AddressBookViewController: BaseViewController {
     }
     func toSecurityByType(data:AddressBookDto)
     {
-        twoFAVC = SecurityVerificationViewController.loadNib()
-        // 暫時改為 onlyEmail
-//            twoFAVC.securityViewMode = .defaultMode
-//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
-//                verifySuccessForChangeWhiteList()
-//            }.disposed(by: dpg)
-        twoFAVC.securityViewMode = .onlyEmail
-        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
-//            twoFAVC.navigationController?.popViewController(animated: true)
-            Log.i("返回Security並打API")
-            // 需要填入修改白名單API
-            changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: {
-                if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
-                {
-                    self.twoFAVC.navigationController?.popViewController(animated: true)
-                }
-                _ = AddressBookListDto.update { [self] in
-                    addresBookDtos = KeychainManager.share.getAddressBookList()
-                    cellDpg = DisposeBag()
-                    tableView.reloadData()
-                }
-            })
-        }.disposed(by: disposeBag)
-        self.navigationController?.pushViewController(twoFAVC, animated: true)
+        if isShowSecurityVC == false
+        {
+            
+            twoFAVC = SecurityVerificationViewController.loadNib()
+            // 暫時改為 onlyEmail
+            //            twoFAVC.securityViewMode = .defaultMode
+            //            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+            //                verifySuccessForChangeWhiteList()
+            //            }.disposed(by: dpg)
+            twoFAVC.securityViewMode = .onlyEmail
+            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
+                //            twoFAVC.navigationController?.popViewController(animated: true)
+                Log.i("返回Security並打API")
+                // 需要填入修改白名單API
+                changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: {
+                    if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                    {
+                        self.twoFAVC.navigationController?.popViewController(animated: true)
+                    }
+                    _ = AddressBookListDto.update { [self] in
+                        addresBookDtos = KeychainManager.share.getAddressBookList()
+                        cellDpg = DisposeBag()
+                        tableView.reloadData()
+                    }
+                })
+            }.disposed(by: disposeBag)
+            isShowSecurityVC = true
+            self.navigationController?.pushViewController(twoFAVC, animated: true)
+        }else
+        {
+//            isShowSecurityVC = false
+        }
     }
     func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping () -> Void)
     {
