@@ -223,7 +223,7 @@ class AddNewAddressViewController: BaseViewController {
                 }
 
                 let group = DispatchGroup()
-                let dispatchQueue = DispatchQueue.global(qos: .default)
+                let dispatchQueue = DispatchQueue.global(qos: .background)
                 group.enter()
                 dispatchQueue.async {
                     _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label, done: {
@@ -231,23 +231,21 @@ class AddNewAddressViewController: BaseViewController {
                     })
                 }
 //                group.wait()
-                group.enter()
-                dispatchQueue.async {
-                    _ = AddressBookListDto.update(done: {
-                        group.leave()
-                    })
-                }
 
                 group.notify(queue: DispatchQueue.main) {
                     print("jobs done by group")
-                    if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
-                    {
-                        self.dismiss(animated: true) {
-                            self.onDismissClick.onNext(())
-                        }
-                    }else
-                    {
-                        self.navigationController?.popViewController(animated: true)
+                    dispatchQueue.async {
+                        _ = AddressBookListDto.update(done: {
+                            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+                            {
+                                self.dismiss(animated: true) {
+                                    self.onDismissClick.onNext(())
+                                }
+                            }else
+                            {
+                                self.navigationController?.popViewController(animated: true)
+                            }
+                        })
                     }
                 }
             }.disposed(by: dpg)
