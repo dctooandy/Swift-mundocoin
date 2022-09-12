@@ -15,7 +15,7 @@ class AddressBookViewController: BaseViewController {
     // MARK:業務設定
     var viewModel = AddressBookViewModel()
     private let onClick = PublishSubject<Any>()
-    private let dpg = DisposeBag()
+//    private let dpg = DisposeBag()
     private var cellDpg = DisposeBag()
     var addresBookDtos : [AddressBookDto] = []
     var twoFAVC = SecurityVerificationViewController.loadNib()
@@ -87,7 +87,7 @@ class AddressBookViewController: BaseViewController {
     }
     func bindUI()
     {
-        WhiteListThemes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: dpg)
+        WhiteListThemes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: disposeBag)
         let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
         WhiteListThemes.share.acceptWhiteListTopImageStyle(style)
     }
@@ -97,7 +97,7 @@ class AddressBookViewController: BaseViewController {
             Log.v("取得地址簿")
             self.addresBookDtos = dtos
             self.tableView.reloadData()
-        }.disposed(by: dpg)
+        }.disposed(by: disposeBag)
     }
     func fetchDatas()
     {
@@ -119,9 +119,9 @@ class AddressBookViewController: BaseViewController {
                     self.twoFAVC.navigationController?.popViewController(animated: true)
                     
                 })
-            }.disposed(by: dpg)
+            }.disposed(by: disposeBag)
             self.navigationController?.pushViewController(twoFAVC, animated: true)
-        }.disposed(by: dpg)
+        }.disposed(by: disposeBag)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 317)
         }
@@ -204,7 +204,7 @@ class AddressBookViewController: BaseViewController {
                         addresBookDtos = KeychainManager.share.getAddressBookList()
                         tableView.deleteRows(at: [indexpath], with: .fade)
                     }
-                }.disposed(by: dpg)
+                }.disposed(by: disposeBag)
 
             }else
             {
@@ -237,7 +237,7 @@ class AddressBookViewController: BaseViewController {
                     tableView.reloadData()
                 }
             })
-        }.disposed(by: dpg)
+        }.disposed(by: disposeBag)
         self.navigationController?.pushViewController(twoFAVC, animated: true)
     }
     func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping () -> Void)

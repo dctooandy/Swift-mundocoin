@@ -8,6 +8,7 @@
 import Foundation
 import Foundation
 import RxSwift
+import UIKit
 
 class AddressBookListDto :Codable {
     static var share:AddressBookListDto?
@@ -45,12 +46,18 @@ class AddressBookListDto :Codable {
                                 label:String ,
                               enabled:Bool ,
                               verificationCode:String ,
-                                done: @escaping () -> Void) -> Observable<()>{
+                                done: @escaping () -> Void,
+                              field: @escaping (ApiServiceError) -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label ,enabled:enabled , verificationCode:verificationCode).subscribeSuccess({ (addressData) in
+        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label ,enabled:enabled , verificationCode:verificationCode).subscribe { _ in
             done()
             subject.onNext(())
-        }).disposed(by: disposeBag)
+        } onError: { error in
+            if let error = error as? ApiServiceError {
+                field(error)
+            }
+        }.disposed(by: disposeBag)
+
         return subject.asObservable()
     }
             

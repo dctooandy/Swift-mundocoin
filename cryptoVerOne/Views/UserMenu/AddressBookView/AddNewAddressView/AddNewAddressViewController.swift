@@ -215,39 +215,42 @@ class AddNewAddressViewController: BaseViewController {
 //            }.disposed(by: dpg)
             twoFAVC.securityViewMode = .onlyEmail
             twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
-                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
-                {
-                    self.dismiss(animated: true)
-                }else
-                {
-                    twoFAVC.navigationController?.popViewController(animated: false)
+                verifySuccessForCreateAddressBook(code: data.0, withMode: data.1) {
+                    
                 }
-
-                let group = DispatchGroup()
-                let dispatchQueue = DispatchQueue.global(qos: .background)
-                group.enter()
-                dispatchQueue.async {
-                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: data.0, done: {
-                        group.leave()
-                    })
-                }
-
-                group.notify(queue: DispatchQueue.main) {
-                    print("jobs done by group")
-                    dispatchQueue.async {
-                        _ = AddressBookListDto.update(done: {
-                            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
-                            {
-                                self.dismiss(animated: true) {
-                                    self.onDismissClick.onNext(())
-                                }
-                            }else
-                            {
-                                self.navigationController?.popViewController(animated: true)
-                            }
-                        })
-                    }
-                }
+//                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+//                {
+//                    self.dismiss(animated: true)
+//                }else
+//                {
+//                    twoFAVC.navigationController?.popViewController(animated: false)
+//                }
+//
+//                let group = DispatchGroup()
+//                let dispatchQueue = DispatchQueue.global(qos: .background)
+//                group.enter()
+//                dispatchQueue.async {
+//                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: data.0, done: {
+//                        group.leave()
+//                    })
+//                }
+//
+//                group.notify(queue: DispatchQueue.main) {
+//                    print("jobs done by group")
+//                    dispatchQueue.async {
+//                        _ = AddressBookListDto.update(done: {
+//                            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+//                            {
+//                                self.dismiss(animated: true) {
+//                                    self.onDismissClick.onNext(())
+//                                }
+//                            }else
+//                            {
+//                                self.navigationController?.popViewController(animated: true)
+//                            }
+//                        })
+//                    }
+//                }
             }.disposed(by: dpg)
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {
@@ -258,6 +261,77 @@ class AddNewAddressViewController: BaseViewController {
             }
             
         }.disposed(by: dpg)
+    }
+    func verifySuccessForCreateAddressBook(code:String, withMode:String = "",done: @escaping () -> Void)
+    {
+        let address = createAddressDto()
+        _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: code,
+                                             done: { [self] in
+            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+            {
+                self.dismiss(animated: true)
+            }else
+            {
+                twoFAVC.navigationController?.popViewController(animated: false)
+            }
+            _ = AddressBookListDto.update(done: {
+                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
+                {
+                    self.dismiss(animated: true) {
+                        self.onDismissClick.onNext(())
+                    }
+                }else
+                {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            })
+        } ,
+                                             field: { [self] error in
+            Log.e("有錯誤")
+            switch error {
+            case .errorDto(let dto):
+                let status = dto.httpStatus ?? ""
+                let reason = dto.reason
+                if status == "400"
+                {
+                    if reason == "CODE_MISMATCH"
+                    {
+                        Log.i("驗證碼錯誤 :\(reason)")
+                        if twoFAVC.securityViewMode == .onlyEmail
+                        {
+                            twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
+                            twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                        }else if twoFAVC.securityViewMode == .onlyTwoFA
+                        {
+                            twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
+                            twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                        }else if twoFAVC.securityViewMode == .selectedMode
+                        {
+                            if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
+                            {
+                                emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
+                                emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                            }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
+                            {
+                                twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
+                                twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                            }
+                        }else if twoFAVC.securityViewMode == .defaultMode
+                        {
+                            if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
+                            {
+                                ErrorHandler.show(error: error)
+                            }
+                        }
+                    }
+                }else
+                {
+                    ErrorHandler.show(error: error)
+                }
+            default:
+                ErrorHandler.show(error: error)
+            }
+        })
     }
     func createAddressDto() -> AddressBookDto
     {
