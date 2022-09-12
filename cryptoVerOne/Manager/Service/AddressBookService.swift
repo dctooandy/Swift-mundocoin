@@ -14,7 +14,7 @@ import Alamofire
 class AddressBookService {
 
     //Create Customer Address Book
-    func createAddressBook(address : String , name : String , label : String) -> Single<AddressBookDto?>
+    func createAddressBook(address : String , name : String , label : String ,enabled:Bool , verificationCode:String) -> Single<AddressBookDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["currency"] = "USDT"
@@ -22,7 +22,10 @@ class AddressBookService {
         parameters["address"] = address
         parameters["name"] = name
         parameters["label"] = label
-
+        
+        parameters["enabled"] = enabled
+        parameters["verificationCode"] = verificationCode
+        
         return Beans.requestServer.singleRequestPost(
             path: ApiService.customerCreateAddressBook.path,
             parameters: parameters,
@@ -46,34 +49,36 @@ class AddressBookService {
             })
     }
     //Enable Customer Address Book White List
-    func enableAddressBookWhiteList(enabled:Bool) -> Single<String?>
+    func enableAddressBookWhiteList(enabled:Bool, verificationCode:String) -> Single<EnableAddressListWhiteDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["enabled"] = enabled
+        parameters["verificationCode"] = verificationCode
         return Beans.requestServer.singleRequestPut(
             path: ApiService.customerEnableAddressBookWhiteList.path,
             parameters: parameters,
             modify: false,
-            resultType: String.self).map({
+            resultType: EnableAddressListWhiteDto.self).map({
                 return $0
             })
     }
     
     //Update Customer Address Book Status
-    func updateAddressBookStatus(addressBookID:String , enabled:Bool) -> Single<String?>
+    func updateAddressBookStatus(addressBookID:String , enabled:Bool , verificationCode:String = "") -> Single<AddressBookDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["enabled"] = enabled
+        parameters["verificationCode"] = verificationCode
         return Beans.requestServer.singleRequestPut(
             path: ApiService.customerUpdateAddressBookStatus(addressBookID).path,
             parameters: parameters,
             modify: false,
-            resultType: String.self).map({
+            resultType: AddressBookDto.self).map({
                 return $0
             })
     }
     //Delete Customer Address Book
-    func deleteAddressBookStatus(addressBookID:String) -> Single<String?>
+    func deleteAddressBookStatus(addressBookID:String) -> Single<AddressbookDeleteDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["id"] = addressBookID
@@ -81,7 +86,7 @@ class AddressBookService {
             path: ApiService.customerDeleteAddressBookStatus(addressBookID).path,
             parameters: parameters,
             modify: false,
-            resultType: String.self).map({
+            resultType: AddressbookDeleteDto.self).map({
                 return $0
             })
     }

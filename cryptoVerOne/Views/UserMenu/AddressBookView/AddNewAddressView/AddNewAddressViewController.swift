@@ -18,6 +18,7 @@ class AddNewAddressViewController: BaseViewController {
     var newAddressString :String = ""
     var isScanVCByAVCapture = false
     var isToSecurityVC = false
+    var twoFAVC = SecurityVerificationViewController.loadNib()
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -206,7 +207,7 @@ class AddNewAddressViewController: BaseViewController {
             Log.v("點到Save")
             isToSecurityVC = true
             let address = createAddressDto()
-            let twoFAVC = SecurityVerificationViewController.loadNib()
+            twoFAVC = SecurityVerificationViewController.loadNib()
             // 暫時改為 onlyEmail
 //            twoFAVC.securityViewMode = .defaultMode
 //            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
@@ -226,11 +227,10 @@ class AddNewAddressViewController: BaseViewController {
                 let dispatchQueue = DispatchQueue.global(qos: .background)
                 group.enter()
                 dispatchQueue.async {
-                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label, done: {
+                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: data.0, done: {
                         group.leave()
                     })
                 }
-//                group.wait()
 
                 group.notify(queue: DispatchQueue.main) {
                     print("jobs done by group")

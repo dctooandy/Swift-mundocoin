@@ -1823,6 +1823,18 @@
 		A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
 		A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		A1B2007C28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2007D28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2007E28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2007F28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2008028CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2008128CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
+		A1B2008328CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B2008428CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B2008528CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
 		A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
@@ -2175,6 +2187,8 @@
 		A1B051ED2823B0FF00056183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1B051F02823B10300056183 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
+		A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookDeleteDto.swift; sourceTree = "<group>"; };
+		A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableAddressListWhiteDto.swift; sourceTree = "<group>"; };
 		A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
@@ -3068,8 +3082,10 @@
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 				092E76012850488700221997 /* AddressBookDto.swift */,
+				A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */,
 				09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */,
 				092E76092850998300221997 /* NotificationDto.swift */,
+				A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -4213,6 +4229,7 @@
 				09EED3642859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905A652851A02B00BAEE78 /* BaseViewController.swift in Sources */,
 				09905A662851A02B00BAEE78 /* GradientView.swift in Sources */,
+				A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EE28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */,
@@ -4326,6 +4343,7 @@
 				09905AC02851A02B00BAEE78 /* ErrorDefaultDto.swift in Sources */,
 				09905AC12851A02B00BAEE78 /* TwoFAVerifyView.swift in Sources */,
 				09905AC22851A02B00BAEE78 /* RegistrationDto.swift in Sources */,
+				A1B2008028CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				09905AC32851A02B00BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905AC42851A02B00BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905AC52851A02B00BAEE78 /* SessionManager+util.swift in Sources */,
@@ -4441,6 +4459,7 @@
 				09EED3652859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905B572851A08500BAEE78 /* BaseViewController.swift in Sources */,
 				09905B582851A08500BAEE78 /* GradientView.swift in Sources */,
+				A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EF28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */,
@@ -4554,6 +4573,7 @@
 				09905BB22851A08500BAEE78 /* ErrorDefaultDto.swift in Sources */,
 				09905BB32851A08500BAEE78 /* TwoFAVerifyView.swift in Sources */,
 				09905BB42851A08500BAEE78 /* RegistrationDto.swift in Sources */,
+				A1B2008128CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				09905BB52851A08500BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905BB62851A08500BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905BB72851A08500BAEE78 /* SessionManager+util.swift in Sources */,
@@ -4669,6 +4689,7 @@
 				09EED3632859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09905C492851A09600BAEE78 /* BaseViewController.swift in Sources */,
 				09905C4A2851A09600BAEE78 /* GradientView.swift in Sources */,
+				A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47ED28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */,
@@ -4782,6 +4803,7 @@
 				09905CA42851A09600BAEE78 /* ErrorDefaultDto.swift in Sources */,
 				09905CA52851A09600BAEE78 /* TwoFAVerifyView.swift in Sources */,
 				09905CA62851A09600BAEE78 /* RegistrationDto.swift in Sources */,
+				A1B2007F28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				09905CA72851A09600BAEE78 /* ConfirmPopupView.swift in Sources */,
 				09905CA82851A09600BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905CA92851A09600BAEE78 /* SessionManager+util.swift in Sources */,
@@ -4897,6 +4919,7 @@
 				09EED3612859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF464283C77ED00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF465283C77ED00D7B19B /* GradientView.swift in Sources */,
+				A1B2008428CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EB28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
@@ -5010,6 +5033,7 @@
 				09CAF5DA283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				09CAF4A7283C77ED00D7B19B /* TwoFAVerifyView.swift in Sources */,
 				09CAF5DE283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
+				A1B2007D28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				09CAF4A8283C77ED00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
@@ -5125,6 +5149,7 @@
 				09EED3622859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				09CAF525283C7BBE00D7B19B /* BaseViewController.swift in Sources */,
 				09CAF526283C7BBE00D7B19B /* GradientView.swift in Sources */,
+				A1B2008528CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EC28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
@@ -5238,6 +5263,7 @@
 				09CAF5DB283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				09CAF568283C7BBE00D7B19B /* TwoFAVerifyView.swift in Sources */,
 				09CAF5DF283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
+				A1B2007E28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				09CAF569283C7BBE00D7B19B /* ConfirmPopupView.swift in Sources */,
 				09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
@@ -5353,6 +5379,7 @@
 				09EED3602859CEC800CB4A64 /* TransHistoryCell.swift in Sources */,
 				A19C704828223409000AFC3F /* BaseViewController.swift in Sources */,
 				A19C70F428224CF9000AFC3F /* GradientView.swift in Sources */,
+				A1B2008328CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EA28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
@@ -5466,6 +5493,7 @@
 				09CAF5D9283CCE2100D7B19B /* ErrorDefaultDto.swift in Sources */,
 				A1973A8F282AB572009932D8 /* TwoFAVerifyView.swift in Sources */,
 				09CAF5DD283CE0C400D7B19B /* RegistrationDto.swift in Sources */,
+				A1B2007C28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */,
 				A19C71DA28226817000AFC3F /* ConfirmPopupView.swift in Sources */,
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,

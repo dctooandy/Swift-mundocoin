@@ -43,9 +43,11 @@ class AddressBookListDto :Codable {
     static func addNewAddress(address:String ,
                                 name:String ,
                                 label:String ,
+                              enabled:Bool ,
+                              verificationCode:String ,
                                 done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label).subscribeSuccess({ (addressData) in
+        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label ,enabled:enabled , verificationCode:verificationCode).subscribeSuccess({ (addressData) in
             done()
             subject.onNext(())
         }).disposed(by: disposeBag)
