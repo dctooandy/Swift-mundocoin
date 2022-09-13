@@ -110,9 +110,11 @@ class AddNewAddressViewController: BaseViewController {
         {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
+            let navHeight = (self.navigationController == nil) ? 80.0 : 0.0
             if ((nameStyleView?.textField.isFirstResponder) == true)
             {
-                let diffHeight = Views.screenHeight - nameStyleView.frame.maxY
+               
+                let diffHeight = Views.screenHeight - nameStyleView.frame.maxY - navHeight
                 if diffHeight < (keyboardHeight + 50)
                 {
                     let upHeight = (keyboardHeight + 50) - diffHeight
@@ -123,7 +125,7 @@ class AddNewAddressViewController: BaseViewController {
             }
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
-                let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY
+                let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
                 if diffHeight < (keyboardHeight + 50)
                 {
                     let upHeight = (keyboardHeight + 50) - diffHeight
@@ -324,6 +326,23 @@ class AddNewAddressViewController: BaseViewController {
                             }
                         }
                     }
+                }else if status == "404"
+                {
+                    if self.presentedViewController != nil
+                    {
+                        twoFAVC.dismiss(animated: true) { [self] in
+                            errorHandlerWithReason(code:dto.code,reason: reason)
+                        }
+                    }else
+                    {
+                        if let navVC = twoFAVC.navigationController as? MDNavigationController
+                        {
+                            navVC.popViewControllerWithHandler(animated: true) { [self] in
+                                errorHandlerWithReason(code:dto.code,reason: reason)
+                            }
+                        }
+                    }
+                   
                 }else
                 {
                     ErrorHandler.show(error: error)
@@ -332,6 +351,18 @@ class AddNewAddressViewController: BaseViewController {
                 ErrorHandler.show(error: error)
             }
         })
+    }
+    func errorHandlerWithReason(code:String = "",reason:String)
+    {
+        if reason == "ADDRESS_ALREADY_EXISTS"
+        { // 新增了重覆的address
+            let results = ErrorDefaultDto(code: code, reason: "Unable to add exist address", timestamp: 0, httpStatus: "", errors: [])
+            ErrorHandler.show(error: ApiServiceError.errorDto(results))
+        }else if reason == ""
+        { // 新增了自己的address
+            let results = ErrorDefaultDto(code: code, reason: "Unable to add own address", timestamp: 0, httpStatus: "", errors: [])
+            ErrorHandler.show(error: ApiServiceError.errorDto(results))
+        }
     }
     func createAddressDto() -> AddressBookDto
     {

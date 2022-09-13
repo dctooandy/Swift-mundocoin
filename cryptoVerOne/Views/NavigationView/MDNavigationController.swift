@@ -80,13 +80,17 @@ class MDNavigationController:UINavigationController{
         _ = self.popViewController(animated:true)
     }
     
-    override func pushViewController(_ viewController:UIViewController, animated:Bool) {
+    func pushViewController(_ viewController:UIViewController, animated:Bool, completion: @escaping ()->()) {
         viewController.hidesBottomBarWhenPushed = true
         viewController.tabBarController?.tabBar.isHidden = true
         viewController.navigationItem.backBarButtonItem = UIBarButtonItem(customView:mdBackBtn)
         if let newVC = viewController as? UserMenuViewController {
             self.isFromLeft = true
-            super.pushViewController(newVC, animated:animated)
+            CATransaction.begin()
+            CATransaction.setCompletionBlock(completion)
+            super.pushViewController(newVC, animated: animated)
+            CATransaction.commit()
+//            super.pushViewController(newVC, animated:animated)
         }else
         {
             self.isFromLeft = false
@@ -97,6 +101,12 @@ class MDNavigationController:UINavigationController{
 //            }
         }
     }
+    func popViewControllerWithHandler(animated:Bool = true, completion: @escaping ()->()) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        super.popViewController(animated: animated)
+        CATransaction.commit()
+     }
 //    func pushViewControllerFromLeft(_ viewController:UIViewController, animated:Bool) {
 //        self.pushViewController(viewController, animated: animated)
 //   }

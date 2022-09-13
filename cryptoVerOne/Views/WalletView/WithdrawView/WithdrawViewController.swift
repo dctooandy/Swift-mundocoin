@@ -73,6 +73,8 @@ class WithdrawViewController: BaseViewController {
         super.viewWillAppear(animated)
         sacnerDpg = DisposeBag()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        let isOn = KeychainManager.share.getWhiteListOnOff()
+        withdrawToView.scanImageView.image = UIImage(named:isOn ? "icon-unscan" : "icon-scan")
         withdrawToView.withdrawInputViewFullHeight = false
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -128,7 +130,9 @@ class WithdrawViewController: BaseViewController {
         feeAmountLabel.text = "1.00"
         receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
+        let isOn = KeychainManager.share.getWhiteListOnOff()
         withdrawToView = InputStyleView(inputViewMode: .withdrawToAddress)
+        withdrawToView.scanImageView.image = UIImage(named:isOn ? "icon-unscan" : "icon-scan")
         methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource))
         
         withdrawToInputView.addSubview(withdrawToView)
@@ -364,11 +368,18 @@ class WithdrawViewController: BaseViewController {
                                             InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
                                         }
                                     }else if reason == "TO_ADDRESS_OWN_BY_CUSTOMER"
-                                    {
-                                        ErrorHandler.show(error: error)
+                                    { // 取款address是 自己的address
+                                        securityVCPopAction(animated: true)
+                                        let results = ErrorDefaultDto(code: dto.code, reason: "Unable to withdraw own address", timestamp: 0, httpStatus: "", errors: [])
+                                        ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                     }else if reason == "INSUFFICIENT_FUND"
                                     {
                                         Log.i("資金不足 :\(reason)")
+                                        securityVCPopAction(animated: true)
+                                        ErrorHandler.show(error: error)
+                                    }else if reason == "T0_ADDRESS_NOT_IN_WHITE_LIST"
+                                    {
+                                        Log.i("帳號在白名單內 :\(reason)")
                                         securityVCPopAction(animated: true)
                                         ErrorHandler.show(error: error)
                                     }

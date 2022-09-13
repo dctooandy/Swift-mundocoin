@@ -29,11 +29,16 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
         return label
     }()
     var imagePicker = UIImagePickerController()
+    lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton()
+        btn.addTarget(self, action:#selector(vcDismissAction), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        seupUI()
+        setupUI()
         setupFrame()
         setupLabel()
         setupImagePicker()
@@ -46,6 +51,10 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
             captureSession.startRunning()
         }
         bindWhenAppear()
+        if self.isBeingPresented == true
+        {
+            setupBackBtnUI()
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -57,7 +66,7 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
     }
     
     
-    func seupUI()
+    func setupUI()
     {
         view.backgroundColor = UIColor.black
         captureSession = AVCaptureSession()
@@ -97,6 +106,14 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
         view.layer.addSublayer(previewLayer)
 
         captureSession.startRunning()
+    }
+    func setupBackBtnUI()
+    {
+        self.view.addSubview(backBtn)
+        backBtn.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(30)
+            make.left.equalToSuperview().offset(20)
+        }
     }
     func setupFrame()
     {
@@ -223,6 +240,11 @@ class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsD
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        self.dismiss(animated: true)
+    }
+
+    @objc func vcDismissAction()
     {
         self.dismiss(animated: true)
     }

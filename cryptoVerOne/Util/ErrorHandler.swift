@@ -59,7 +59,15 @@ class ErrorHandler {
                     #endif
                 }else
                 {
-                    showAlert(title: "\(status):\(code)", message: "\(reason)\n\(errors)")
+                    var message = ""
+                    if errors.count > 0
+                    {
+                        message = "\(reason)\n\(errors)"
+                    }else
+                    {
+                        message = "\(reason)"
+                    }
+                    showAlert(title: "\(status) \(code)", message: message)
                 }
             case .noData:
                 break

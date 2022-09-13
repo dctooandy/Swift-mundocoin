@@ -16,7 +16,7 @@ enum InputViewMode :Equatable {
     case emailVerify(String)
     case twoFAVerify
     case copy
-    case withdrawToAddress
+    case withdrawToAddress // 取款頁面白名單關閉
     case address
     case email
     case phone
@@ -280,7 +280,7 @@ class InputStyleView: UIView {
         imgView.image = UIImage(named: "icon-addressbook")
         return imgView
     }()
-    let scanImageView : UIImageView = {
+    var scanImageView : UIImageView = {
         let imgView = UIImageView()
         imgView.image = UIImage(named: "icon-scan")
         return imgView
@@ -515,7 +515,7 @@ class InputStyleView: UIView {
             scanImageView.snp.makeConstraints { (make) in
                 make.right.equalToSuperview().offset(-20)
                 make.centerY.equalTo(textField)
-                make.size.equalTo(24)
+                make.size.equalTo(20)
             }
             rightLabelWidth = 24 + 20
             if inputViewMode == .withdrawToAddress
@@ -720,7 +720,14 @@ class InputStyleView: UIView {
     func bindImageView()
     {
         scanImageView.rx.click.subscribeSuccess { [self](_) in
-            self.onScanClick.onNext(())
+            let isOn = KeychainManager.share.getWhiteListOnOff()
+            if isOn == true , inputViewMode == .withdrawToAddress
+            {
+                self.onAddressBookClick.onNext(())
+            }else
+            {
+                self.onScanClick.onNext(())
+            }
         }.disposed(by: dpg)
         addressBookImageView.rx.click.subscribeSuccess { [self](_) in
             self.onAddressBookClick.onNext(())
@@ -1037,10 +1044,18 @@ extension InputStyleView : UITextViewDelegate
         
     }
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-        textField.placeholder = ""
-        onChooseClick.onNext(true)
-        cancelRightButton.isHidden = true
-        return true
+        let isOn = KeychainManager.share.getWhiteListOnOff()
+        if isOn == true , inputViewMode == .withdrawToAddress
+        {
+            self.onAddressBookClick.onNext(())
+            return false
+        }else
+        {
+            textField.placeholder = ""
+            onChooseClick.onNext(true)
+            cancelRightButton.isHidden = true
+            return true
+        }
     }
     func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         cancelRightButton.isHidden = true
