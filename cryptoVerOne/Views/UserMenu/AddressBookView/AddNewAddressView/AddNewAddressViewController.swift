@@ -325,6 +325,11 @@ class AddNewAddressViewController: BaseViewController {
                                 ErrorHandler.show(error: error)
                             }
                         }
+                    } else if reason == "ADDRESS_OWNED_BY_CUSTOMER"
+                    {
+                        // 新增了自己的address
+                        let results = ErrorDefaultDto(code: dto.code, reason: "Unable to add own address", timestamp: 0, httpStatus: "", errors: [])
+                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
                     }
                 }else if status == "404"
                 {
@@ -358,7 +363,7 @@ class AddNewAddressViewController: BaseViewController {
         { // 新增了重覆的address
             let results = ErrorDefaultDto(code: code, reason: "Unable to add exist address", timestamp: 0, httpStatus: "", errors: [])
             ErrorHandler.show(error: ApiServiceError.errorDto(results))
-        }else if reason == ""
+        }else if reason == "ADDRESS_OWNED_BY_CUSTOMER"
         { // 新增了自己的address
             let results = ErrorDefaultDto(code: code, reason: "Unable to add own address", timestamp: 0, httpStatus: "", errors: [])
             ErrorHandler.show(error: ApiServiceError.errorDto(results))
