@@ -298,56 +298,14 @@ class AddNewAddressViewController: BaseViewController {
                 {
                     if reason == "CODE_MISMATCH"
                     {
-                        Log.i("驗證碼錯誤 :\(reason)")
-                        if twoFAVC.securityViewMode == .onlyEmail
-                        {
-                            twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                            twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                        }else if twoFAVC.securityViewMode == .onlyTwoFA
-                        {
-                            twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
-                            twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                        }else if twoFAVC.securityViewMode == .selectedMode
-                        {
-                            if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
-                            {
-                                emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
-                                emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                            }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
-                            {
-                                twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
-                                twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                            }
-                        }else if twoFAVC.securityViewMode == .defaultMode
-                        {
-                            if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
-                            {
-                                ErrorHandler.show(error: error)
-                            }
-                        }
-                    } else if reason == "ADDRESS_OWNED_BY_CUSTOMER"
+                        errorHandlerWithReason(code: dto.code, reason: reason, withMode: withMode, error: error)
+                    } else
                     {
-                        // 新增了自己的address
-                        let results = ErrorDefaultDto(code: dto.code, reason: "Unable to add own address", timestamp: 0, httpStatus: "", errors: [])
-                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                        vcDetector(code:dto.code,reason: reason)
                     }
                 }else if status == "404"
                 {
-                    if self.presentedViewController != nil
-                    {
-                        twoFAVC.dismiss(animated: true) { [self] in
-                            errorHandlerWithReason(code:dto.code,reason: reason)
-                        }
-                    }else
-                    {
-                        if let navVC = twoFAVC.navigationController as? MDNavigationController
-                        {
-                            navVC.popViewControllerWithHandler(animated: true) { [self] in
-                                errorHandlerWithReason(code:dto.code,reason: reason)
-                            }
-                        }
-                    }
-                   
+                    vcDetector(code:dto.code,reason: reason)
                 }else
                 {
                     ErrorHandler.show(error: error)
@@ -357,9 +315,55 @@ class AddNewAddressViewController: BaseViewController {
             }
         })
     }
-    func errorHandlerWithReason(code:String = "",reason:String)
+    func vcDetector(code:String = "",reason:String)
+    {// 需判斷是否 pusr或者 present
+        if self.presentedViewController != nil
+        {
+            twoFAVC.dismiss(animated: true) { [self] in
+                errorHandlerWithReason(code:code,reason: reason)
+            }
+        }else
+        {
+            if let navVC = twoFAVC.navigationController as? MDNavigationController
+            {
+                navVC.popViewControllerWithHandler(animated: true) { [self] in
+                    errorHandlerWithReason(code:code,reason: reason)
+                }
+            }
+        }
+    }
+    func errorHandlerWithReason(code:String = "",reason:String , withMode : String? = nil , error : Error? = nil)
     {
-        if reason == "ADDRESS_ALREADY_EXISTS"
+        if reason == "CODE_MISMATCH"
+        {
+            Log.i("驗證碼錯誤 :\(reason)")
+            if twoFAVC.securityViewMode == .onlyEmail
+            {
+                twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
+                twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+            }else if twoFAVC.securityViewMode == .onlyTwoFA
+            {
+                twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
+                twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+            }else if twoFAVC.securityViewMode == .selectedMode
+            {
+                if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
+                {
+                    emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
+                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
+                {
+                    twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
+                    twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                }
+            }else if twoFAVC.securityViewMode == .defaultMode , let error = error
+            {
+                if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
+                {
+                    ErrorHandler.show(error: error)
+                }
+            }
+        } else if reason == "ADDRESS_ALREADY_EXISTS"
         { // 新增了重覆的address
             let results = ErrorDefaultDto(code: code, reason: "Unable to add exist address", timestamp: 0, httpStatus: "", errors: [])
             ErrorHandler.show(error: ApiServiceError.errorDto(results))
