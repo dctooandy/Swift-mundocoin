@@ -370,7 +370,7 @@ class WithdrawViewController: BaseViewController {
                                     }else if reason == "TO_ADDRESS_OWN_BY_CUSTOMER"
                                     { // 取款address是 自己的address
                                         securityVCPopAction(animated: true)
-                                        let results = ErrorDefaultDto(code: dto.code, reason: "Unable to withdraw own address", timestamp: 0, httpStatus: "", errors: [])
+                                        let results = ErrorDefaultDto(code: "", reason: "Unable to withdraw own address", timestamp: 0, httpStatus: "", errors: [])
                                         ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                     }else if reason == "INSUFFICIENT_FUND"
                                     {

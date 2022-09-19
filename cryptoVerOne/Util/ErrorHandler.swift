@@ -67,7 +67,13 @@ class ErrorHandler {
                     {
                         message = "\(reason)"
                     }
-                    showAlert(title: "\(status) \(code)", message: message)
+                    if code.isEmpty == true
+                    {
+                        showAlert(title: "", message: message)
+                    }else
+                    {
+                        showAlert(title: "\(status) \(code)", message: message)
+                    }
                 }
             case .noData:
                 break
@@ -82,11 +88,21 @@ class ErrorHandler {
         if UIApplication.topViewController() is LoadingViewController {
             _ = LoadingViewController.action(mode: .fail, title: message)
         } else {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "确定", style: .default, handler: {(action) in
-            })
-        alert.addAction(okAction)
-        UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+            if let currentVC = UIApplication.topViewController()
+            {
+                let popVC = ConfirmPopupView(viewHeight:155.0 ,
+                                             iconMode: .nonIcon(["Close".localized]),
+                                             title: title,
+                                             message: message ){ _ in }
+                popVC.start(viewController: currentVC)
+            }else
+            {
+                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "确定", style: .default, handler: {(action) in
+                })
+                alert.addAction(okAction)
+                UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+            }
         }
     }
     

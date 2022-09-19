@@ -95,14 +95,22 @@ class ConfirmPopupView: PopupBottomSheet {
         var buttonViewMultiplied = 0.45
         switch self.iconMode {
         case .nonIcon(let array):
-            cancelButton.setTitle(array.first, for: .normal)
-            confirmButton.setTitle(array.last, for: .normal)
+            if array.count > 1
+            {
+                cancelButton.setTitle(array.first, for: .normal)
+                confirmButton.setTitle(array.last, for: .normal)
+                stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
+                stackView.distribution = .fillEqually
+                stackView.spacing = 10
+                buttonViewMultiplied = 0.8
+            }else
+            {
+                confirmButton.setTitle(array.first, for: .normal)
+                stackView = UIStackView(arrangedSubviews: [confirmButton])
+                buttonViewMultiplied = 0.45
+            }
             iconHeight = 0.0
             titleViewHeight = 40.0
-            stackView = UIStackView(arrangedSubviews: [cancelButton,confirmButton])
-            stackView.distribution = .fillEqually
-            stackView.spacing = 10
-            buttonViewMultiplied = 0.8
         case .showIcon(let string):
             confirmButton.setTitle(string, for: .normal)
             containerHeight = 222.0
