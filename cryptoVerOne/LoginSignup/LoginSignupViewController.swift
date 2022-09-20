@@ -491,7 +491,13 @@ extension LoginSignupViewController {
                         if reason == "CODE_MISMATCH"
                         {
                             verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"The Email Code is incorrect. Please re-enter.")
+                        }else if reason == "PARAMETER_INVALID"
+                        {
+                            verifyVC.popVC(isAnimation: true)
+                            let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
                         }
+                            
                     }else
                     {
                         ErrorHandler.show(error: error)

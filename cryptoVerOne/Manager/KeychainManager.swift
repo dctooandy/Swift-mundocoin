@@ -23,6 +23,7 @@ class KeychainManager {
         case auditAccount = "audit_account"
         case auditAccList = "audit_acc_list"
         case auditRememberMeStatus = "audit_remember_me_status"
+        case registrationMode = "registration_Mode"
     }
     
     static let share = KeychainManager()
@@ -286,5 +287,25 @@ class KeychainManager {
     }
     func getAuditRememberMeStatus() -> Bool {
         return getString(from: .auditRememberMeStatus) == "true" ? true:false
+    }
+    // 設定是否出現邀請碼欄位
+    func setRegistrationMode(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .registrationMode)
+        return success
+    }
+    func getRegistrationMode() -> Bool {
+        if let modeValue = getString(from: .registrationMode)
+        {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return false
+#else
+            return (modeValue == "true" ? true : false)
+#endif
+        }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return false
+#else
+        return false
+#endif
     }
 }

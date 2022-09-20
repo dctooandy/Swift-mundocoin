@@ -24,7 +24,7 @@ class AccountInputView: UIView {
     // MARK:UI 設定
     var accountInputView : InputStyleView!
     var passwordInputView : InputStyleView!
-    // 0816 產品驗收修改
+    // 0920 註冊取消驗證碼輸入
     var registrationInputView : InputStyleView!
     // MARK: -
     // MARK:Life cycle
@@ -151,13 +151,7 @@ class AccountInputView: UIView {
                 }
         }
         isPasswordHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
-        // 0816 產品驗收修改
-        let isRegistrationValid = registrationInputView.textField.rx.text
-            .map { [weak self] (str) -> Bool in
-                guard let strongSelf = self, let acc = str else { return false }
-                return RegexHelper.match(pattern: .otp, input: acc)
-        }
-        
+
         if currentShowMode == .forgotPW
         {
             isAccountValid.bind(to: accountCheckPassed).disposed(by: dpg)
@@ -167,15 +161,30 @@ class AccountInputView: UIView {
 //            isPasswordValid.bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isRegistrationValid.skip(1).bind(to: registrationInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
 //            isPasswordValid.skip(1).bind(to: passwordInvalidLabel.rx.isHidden).disposed(by: dpg)
-            // 0816 產品驗收修改
-//            Observable.combineLatest(isAccountValid, isPasswordValid )
-            Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
-                .map {
-                    return $0.0 && $0.1 && $0.2
-//                    return $0.0 && $0.1
-                } //reget match result
-                .bind(to: accountCheckPassed)
-                .disposed(by: dpg)
+            // 0920 註冊取消驗證碼輸入
+            if KeychainManager.share.getRegistrationMode() == true
+            {
+                // 0920 註冊取消驗證碼輸入
+                let isRegistrationValid = registrationInputView.textField.rx.text
+                    .map { [weak self] (str) -> Bool in
+                        guard let strongSelf = self, let acc = str else { return false }
+                        return RegexHelper.match(pattern: .otp, input: acc)
+                    }
+                Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)
+                    .map {
+                        return $0.0 && $0.1 && $0.2
+                    } //reget match result
+                    .bind(to: accountCheckPassed)
+                    .disposed(by: dpg)
+            }else
+            {
+                Observable.combineLatest(isAccountValid, isPasswordValid )
+                    .map {
+                        return $0.0 && $0.1
+                    } //reget match result
+                    .bind(to: accountCheckPassed)
+                    .disposed(by: dpg)
+            }
         }else
         {
 //            isPasswordValid.skip(1).bind(to: passwordInputView.invalidLabel.rx.isHidden).disposed(by: dpg)
@@ -209,10 +218,15 @@ class AccountInputView: UIView {
             passwordInputView.textField.returnKeyType = .done
         }else
         {
-            // 0816 產品驗收修改
-            passwordInputView.textField.returnKeyType = .next
-            registrationInputView.textField.returnKeyType = .done
-//            passwordInputView.textField.returnKeyType = .done
+            // 0920 註冊取消驗證碼輸入
+            if KeychainManager.share.getRegistrationMode() == true
+            {
+                passwordInputView.textField.returnKeyType = .next
+                registrationInputView.textField.returnKeyType = .done
+            }else
+            {
+                passwordInputView.textField.returnKeyType = .done
+            }
         }
     }
     func bindBorderColor()
@@ -232,18 +246,24 @@ class AccountInputView: UIView {
             resetInvalidText(password:isChoose)
             resetTFMaskView(password:isChoose)
             resetInputView(view: accountInputView)
-            // 0816 產品驗收修改
+            // 0920 註冊取消驗證碼輸入
             if isChoose == false , currentShowMode == .signupEmail || currentShowMode == .signupPhone
             {
-                registrationInputView.textField.becomeFirstResponder()
+                if KeychainManager.share.getRegistrationMode() == true
+                {
+                    registrationInputView.textField.becomeFirstResponder()
+                }
             }
         }.disposed(by: dpg)
-        // 0816 產品驗收修改
-        registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            resetInvalidText(regis:isChoose)
-            resetTFMaskView(regis:isChoose)
-            registrationInputView.invalidLabel.isHidden = true
-        }.disposed(by: dpg)
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            registrationInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+                resetInvalidText(regis:isChoose)
+                resetTFMaskView(regis:isChoose)
+                registrationInputView.invalidLabel.isHidden = true
+            }.disposed(by: dpg)
+        }
     }
     func resetInvalidText(account:Bool = false ,password:Bool = false ,regis:Bool = false )
     {
@@ -255,10 +275,13 @@ class AccountInputView: UIView {
         {
             passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
         }
-        // 0816 產品驗收修改
+        // 0920 註冊取消驗證碼輸入
         if regis == true
         {
-            registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+            if KeychainManager.share.getRegistrationMode() == true
+            {
+                registrationInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+            }
         }
     }
     // 重置Border外觀
@@ -272,10 +295,13 @@ class AccountInputView: UIView {
         {
             passwordInputView.tfMaskView.changeBorderWith(isChoose:password)
         }
-        // 0816 產品驗收修改
-        if registrationInputView.invalidLabel.textColor != .red || force == true
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
         {
-            registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+            if registrationInputView.invalidLabel.textColor != .red || force == true
+            {
+                registrationInputView.tfMaskView.changeBorderWith(isChoose:regis)
+            }
         }
     }
     func resetInputView(view : InputStyleView)
@@ -296,10 +322,13 @@ class AccountInputView: UIView {
         passwordInputView.textField.sendActions(for: .valueChanged)
         accountInputView.invalidLabel.isHidden = true
         passwordInputView.invalidLabel.isHidden = true
-        // 0816 產品驗收修改
-        registrationInputView.textField.text = ""
-        registrationInputView.textField.sendActions(for: .valueChanged)
-        registrationInputView.invalidLabel.isHidden = true
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            registrationInputView.textField.text = ""
+            registrationInputView.textField.sendActions(for: .valueChanged)
+            registrationInputView.invalidLabel.isHidden = true
+        }
         resetTFMaskView(force:true)
     }
     
@@ -308,13 +337,19 @@ class AccountInputView: UIView {
         let passwordView = InputStyleView(inputViewMode: .password)
         self.accountInputView = accountView
         self.passwordInputView = passwordView
-        // 0816 產品驗收修改
-        let registrationView = InputStyleView(inputViewMode: .registration)
-        self.registrationInputView = registrationView
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            let registrationView = InputStyleView(inputViewMode: .registration)
+            self.registrationInputView = registrationView
+        }
  
         self.accountInputView.textField.addTarget(self.passwordInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
-        // 0816 產品驗收修改
-        self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            self.passwordInputView.textField.addTarget(self.registrationInputView.textField, action: #selector(becomeFirstResponder), for: .editingDidEndOnExit)
+        }
         acHeightConstraint = NSLayoutConstraint(item: accountInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))
         pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
         addSubview(accountInputView)
@@ -340,8 +375,6 @@ class AccountInputView: UIView {
             passwordInputView.addConstraint(pwHeightConstraint)
         case .signupEmail , .signupPhone:
             addSubview(passwordInputView)
-            // 0816 產品驗收修改
-            addSubview(registrationInputView)
             passwordInputView.snp.makeConstraints { (make) in
                 make.top.equalTo(accountInputView.snp.bottom).offset(8)
                 make.leading.equalToSuperview().offset(25)
@@ -350,12 +383,16 @@ class AccountInputView: UIView {
 //                make.height.equalTo(Themes.inputViewPasswordHeight)
             }
             passwordInputView.addConstraint(pwHeightConstraint)
-            // 0816 產品驗收修改
-            registrationInputView.snp.makeConstraints { (make) in
-                make.top.equalTo(passwordInputView.snp.bottom).offset(8)
-                make.leading.equalToSuperview().offset(25)
-                make.trailing.equalToSuperview().offset(-25)
-                make.height.equalTo(Themes.inputViewDefaultHeight)
+            // 0920 註冊取消驗證碼輸入
+            if KeychainManager.share.getRegistrationMode() == true
+            {
+                addSubview(registrationInputView)
+                registrationInputView.snp.makeConstraints { (make) in
+                    make.top.equalTo(passwordInputView.snp.bottom).offset(8)
+                    make.leading.equalToSuperview().offset(25)
+                    make.trailing.equalToSuperview().offset(-25)
+                    make.height.equalTo(Themes.inputViewDefaultHeight)
+                }
             }
         case .forgotPW:
             break
@@ -373,10 +410,13 @@ class AccountInputView: UIView {
             {
                 passwordInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
             }
-            // 0816 產品驗收修改
-            if registrationInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+            // 0920 註冊取消驗證碼輸入
+            if KeychainManager.share.getRegistrationMode() == true
             {
-                registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+                if registrationInputView.textField.text?.lowercased() == subData.rejectValue.lowercased()
+                {
+                    registrationInputView.changeInvalidLabelAndMaskBorderColor(with: subData.reason)
+                }
             }
         }
     }
@@ -385,8 +425,11 @@ class AccountInputView: UIView {
         resetTFMaskView()
         accountInputView.textField.resignFirstResponder()
         passwordInputView.textField.resignFirstResponder()
-        // 0816 產品驗收修改
-        registrationInputView.textField.resignFirstResponder()
+        // 0920 註冊取消驗證碼輸入
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            registrationInputView.textField.resignFirstResponder()
+        }
     }
 //    func changeInputMode(mode: LoginMode) {
 //        inputMode = mode
