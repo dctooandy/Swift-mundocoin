@@ -14,6 +14,7 @@ class AddressBottomView: UIView {
     // MARK:業務設定
     private let onCellClick = PublishSubject<AddressBookDto>()
     private let onAddNewAddressClick = PublishSubject<Any>()
+    private let onAddressBookClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
 //    var dataArray = [UserAddressDto]()
     var dataArray = [AddressBookDto]()
@@ -22,6 +23,7 @@ class AddressBottomView: UIView {
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
     @IBOutlet weak var addNewAddressLabel: UILabel!
+    @IBOutlet weak var addressBookLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
     // MARK: -
     // MARK:Life cycle
@@ -46,7 +48,7 @@ class AddressBottomView: UIView {
         topLabel.text = "USDT address".localized
         subLabel.text = "The method must match the network.".localized
         addNewAddressLabel.text = "+ Add new address".localized
-        
+        addressBookLabel.text = "Address book".localized
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBottomCell.self)
         tableView.separatorStyle = .none
@@ -71,6 +73,9 @@ class AddressBottomView: UIView {
         addNewAddressLabel.rx.click.subscribeSuccess { [self] _ in
             onAddNewAddressClick.onNext(())
         }.disposed(by: dpg)
+        addressBookLabel.rx.click.subscribeSuccess { [self] _ in
+            onAddressBookClick.onNext(())
+        }.disposed(by: dpg)
     }
     func rxCellDidClick() -> Observable<AddressBookDto>
     {
@@ -79,6 +84,10 @@ class AddressBottomView: UIView {
     func rxAddNewAddressClick() -> Observable<Any>
     {
         return onAddNewAddressClick.asObserver()
+    }
+    func rxAddressBookClick() -> Observable<Any>
+    {
+        return onAddressBookClick.asObserver()
     }
 }
 // MARK: -

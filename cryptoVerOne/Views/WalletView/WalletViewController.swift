@@ -45,7 +45,7 @@ class WalletViewController: BaseViewController {
         let profileButton = UIButton(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
         let image = UIImage(named:"icon-user")
         profileButton.setImage(image, for: .normal)
-        profileButton.addTarget(self, action:#selector(pushToProfile), for:.touchUpInside)
+//        profileButton.addTarget(self, action:#selector(pushToProfile()), for:.touchUpInside)
         return profileButton
     }()
     private lazy var bellButton:UIButton = {
@@ -126,6 +126,9 @@ class WalletViewController: BaseViewController {
         }.disposed(by: dpg)
         eyeIconImageView.rx.click.subscribeSuccess { [self](_) in
             changeEyeMode()
+        }.disposed(by: dpg)
+        profileButton.rx.tap.subscribeSuccess { [self](_) in
+            pushToProfile()
         }.disposed(by: dpg)
     }
     func changeEyeMode()
@@ -257,12 +260,18 @@ class WalletViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-5)
         })
     }
-    @objc func pushToProfile() {
+    func pushToProfile(withCellData : cellData = .currency) {
         Log.i("推到個人清單")
 //        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)
-        
-        self.navigationController?.pushViewController(userVC, animated: true)
+        if withCellData == .addressBook
+        {
+            userVC.targetCellData = .addressBook
+            self.navigationController?.pushViewController(userVC, animated: false)
+        }else
+        {
+            self.navigationController?.pushViewController(userVC, animated: true)
+        }
 //        self.navigationController?.viewPushAnimation(userVC, from: .fromLeft)
 //        let navVC = MDNavigationController(rootViewController: userVC)
 //        userVC.modalPresentationStyle = .custom

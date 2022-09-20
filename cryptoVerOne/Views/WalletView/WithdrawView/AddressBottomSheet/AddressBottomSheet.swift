@@ -65,6 +65,10 @@ class AddressBottomSheet: BaseBottomSheet {
             self.present(addVC, animated: true)
 //            self.navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
+        addressView.rxAddressBookClick().subscribeSuccess { [self] _ in
+            Log.i("前往錢包地址")
+            DeepLinkManager.share.handleDeeplink(navigation: .addressBook)
+        }.disposed(by: dpg)
     }
     func rxCellSecondClick() -> Observable<AddressBookDto>
     {

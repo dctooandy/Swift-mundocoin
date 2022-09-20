@@ -36,7 +36,19 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add new address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y74-0h-4Si">
-                    <rect key="frame" x="142" y="824" width="130" height="18"/>
+                    <rect key="frame" x="82" y="824" width="130" height="18"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                    <color key="textColor" red="0.38106214999999999" green="0.28515273330000002" blue="0.96450716260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="|" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwC-ce-w0X">
+                    <rect key="frame" x="212" y="824" width="25" height="18"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                    <color key="textColor" red="0.38106214999999999" green="0.28515273330000002" blue="0.96450716260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address book" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWJ-DZ-HmZ">
+                    <rect key="frame" x="237" y="824" width="95" height="18"/>
                     <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                     <color key="textColor" red="0.38106214999999999" green="0.28515273330000002" blue="0.96450716260000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -56,16 +68,24 @@
                 <constraint firstItem="0oC-YH-ATU" firstAttribute="top" secondItem="eLO-4t-Mg8" secondAttribute="bottom" constant="4" id="5tt-Lo-VSz"/>
                 <constraint firstItem="i2g-O2-Nd9" firstAttribute="top" secondItem="0oC-YH-ATU" secondAttribute="bottom" constant="5" id="BTs-R0-e1l"/>
                 <constraint firstItem="0oC-YH-ATU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DMO-o9-3Mf"/>
+                <constraint firstItem="lwC-ce-w0X" firstAttribute="bottom" secondItem="Y74-0h-4Si" secondAttribute="bottom" id="IKY-xx-sSq"/>
+                <constraint firstItem="lwC-ce-w0X" firstAttribute="leading" secondItem="Y74-0h-4Si" secondAttribute="trailing" id="JEg-b5-WAO"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="uWJ-DZ-HmZ" secondAttribute="trailing" constant="82" id="Ju1-SZ-EGm"/>
+                <constraint firstItem="uWJ-DZ-HmZ" firstAttribute="top" secondItem="Y74-0h-4Si" secondAttribute="top" id="M8Y-5P-7Cz"/>
+                <constraint firstItem="uWJ-DZ-HmZ" firstAttribute="bottom" secondItem="Y74-0h-4Si" secondAttribute="bottom" id="MPU-XS-aUb"/>
+                <constraint firstItem="uWJ-DZ-HmZ" firstAttribute="leading" secondItem="lwC-ce-w0X" secondAttribute="trailing" id="UdN-df-n16"/>
                 <constraint firstItem="i2g-O2-Nd9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aa8-1E-0Pv"/>
                 <constraint firstItem="eLO-4t-Mg8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="afC-qR-43J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="Y74-0h-4Si" secondAttribute="bottom" constant="20" id="eOb-Xh-eea"/>
                 <constraint firstItem="eLO-4t-Mg8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="j2c-5u-5TP"/>
-                <constraint firstItem="Y74-0h-4Si" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="lvq-eR-ey2"/>
+                <constraint firstItem="lwC-ce-w0X" firstAttribute="top" secondItem="Y74-0h-4Si" secondAttribute="top" id="oaz-qx-f4C"/>
                 <constraint firstItem="Y74-0h-4Si" firstAttribute="top" secondItem="i2g-O2-Nd9" secondAttribute="bottom" constant="5" id="oqd-H4-on0"/>
+                <constraint firstItem="Y74-0h-4Si" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="82" id="pZd-BC-fnv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i2g-O2-Nd9" secondAttribute="trailing" id="qsJ-gp-Q2g"/>
             </constraints>
             <connections>
                 <outlet property="addNewAddressLabel" destination="Y74-0h-4Si" id="cGq-3R-muA"/>
+                <outlet property="addressBookLabel" destination="uWJ-DZ-HmZ" id="81G-Xv-rFr"/>
                 <outlet property="subLabel" destination="0oC-YH-ATU" id="Mjf-Rp-pbd"/>
                 <outlet property="tableView" destination="i2g-O2-Nd9" id="gMK-mX-in8"/>
                 <outlet property="topLabel" destination="eLO-4t-Mg8" id="dQs-a3-S5B"/>

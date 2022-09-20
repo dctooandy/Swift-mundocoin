@@ -161,6 +161,7 @@ extension DeepLinkManager {
         case member
         case walletDeposit
         case walletWithdrawal
+        case addressBook
         
         case login
         case signup
@@ -286,7 +287,23 @@ extension DeepLinkManager {
                 print("wallet Withdrawal")
                 guard let vc = getBaseTabbarVC() else { return }
                 vc.selected(1)
-                
+            case .addressBook:
+                print("go AddressBook")
+                if let vc = UIApplication.topViewController()
+                {
+                    vc.dismiss(animated: false){
+                        if let subVC = UIApplication.topViewController()
+                        {
+                            subVC.navigationController?.popViewController(animated: false)
+                            if let newVC = UIApplication.topViewController() as? WalletViewController
+                            {
+                                newVC.pushToProfile(withCellData: .addressBook)
+                            }
+//                            guard let currentTabbarVC = getBaseTabbarVC() else { return }
+//                            currentTabbarVC.selected(0)
+                        }
+                    }
+                }
             case .login:
                 print("login")
                 DeepLinkManager.share.cleanDataForLogout()
@@ -326,7 +343,7 @@ extension DeepLinkManager {
                 print("service")
             case .inapp(let urlStr):
                 print("inapp url str: \(urlStr)")
-                guard let topVC = UIApplication.topViewController() else { return }
+                guard let _ = UIApplication.topViewController() else { return }
 //                topVC.navigationController?.pushViewController(BetLeadWebViewController(urlStr), animated: true)
                 
             case .outapp(let urlStr):

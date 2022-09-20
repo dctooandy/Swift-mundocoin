@@ -14,6 +14,7 @@ class UserMenuViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private let viewModel = UserMenuViewModel()
+    var targetCellData :cellData?
     // MARK: -
     // MARK:UI 設定
     
@@ -51,11 +52,23 @@ class UserMenuViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
             _ = LoadingViewController.dismiss()
         }
+        if let cellDAta = targetCellData
+        {
+            switch cellDAta {
+            case .addressBook:
+                Log.i("addressBook")
+                let addressBookVC = AddressBookViewController.loadNib()
+                self.navigationController?.pushViewController(addressBookVC, animated: true)
+            default:
+                break
+            }
+        }
+        targetCellData = .currency
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+        targetCellData = nil
     }
     // MARK: -
     // MARK:業務方法
