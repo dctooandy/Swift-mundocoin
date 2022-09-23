@@ -99,7 +99,13 @@ class CheckTokenService{
         if jwtValue != nil , let isAddressBookWhiteListEnabled = jwtValue.body["isAddressBookWhiteListEnabled"] as? Bool
         {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                (isAddressBookWhiteListEnabled == false) ? Log.v("白名單 不啟用") : Log.v("白名單 啟用")
+                if (isAddressBookWhiteListEnabled == false)
+                {
+                    Log.v("白名單 不啟用")
+                }else
+                {
+                    Log.v("白名單 啟用")
+                }
                 
                 if let successBlock = complete
                 {
@@ -138,6 +144,8 @@ class CheckTokenService{
     func startToCountDown() {
         Log.v("刷新時間")
         stopRETimer()
+        Log.v("確定白名單功能")
+        checkAddressBookWhiteListEnabled()
         var countInt = 1500
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
             guard let strongSelf = self else { return }
