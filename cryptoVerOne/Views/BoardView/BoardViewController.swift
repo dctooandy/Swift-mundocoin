@@ -190,9 +190,9 @@ class BoardViewController: BaseViewController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {[self] in
             LoadingViewController.show()
             loadingDurarion = 0.0
-            if let data = self.currentFilterDto
+            if let data = self.currentFilterDto , let dataType = data.historyType
             {
-                viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: showMode.typeValue, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
+                viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: dataType, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
                 isFilterAndChangeVCAction = false
             }
             else
@@ -332,11 +332,11 @@ extension BoardViewController: PagingViewControllerDataSource, PagingViewControl
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, didScrollToItem pagingItem: T, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) where T : PagingItem, T : Comparable, T : Hashable {
         if let pageItem = pagingItem as? PagingIndexItem
         {
-            isFilterAction = false
             if isRefreshAction != true
             {
                 showMode = pageItem.index == 0 ? .deposits : .withdrawals
             }
+            isFilterAction = false
             isRefreshAction = false
             Log.v("pagingItem :\(pageItem.index)")
         }

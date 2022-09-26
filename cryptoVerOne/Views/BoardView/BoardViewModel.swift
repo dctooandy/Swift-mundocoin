@@ -29,7 +29,7 @@ class BoardViewModel: BaseViewModel {
                     }
                 }
             } onError: { (error) in
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
                     _ = LoadingViewController.dismiss().subscribeSuccess { _ in
                         ErrorHandler.show(error: error)
                     }
