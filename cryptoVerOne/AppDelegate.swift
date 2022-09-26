@@ -192,30 +192,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         checkMundocoinAPIToken(complete: complete)
 #endif
     }
-    func checkAuditToken(complete:CheckCompletionBlock? = nil)
-    {
-        // ErrorHandler 已經有過期導去登入
-        CheckTokenService.share.checkTokenExpired(complete: complete)
-    }
     func freshAuditToken()
     {
         Log.v("刷新AuditToken")
     }
+    func checkAuditToken(complete:CheckCompletionBlock? = nil)
+    {
+        // 確定有否過期,再導去登入頁面
+        CheckTokenService.share
+            .checkTokenExpired(complete: complete)
+    }
     func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
     {
-        // ErrorHandler 已經有過期導去登入
-        CheckTokenService.share.checkTokenExpired(complete: complete)
+        // 確定有否過期,再導去登入頁面
+        CheckTokenService.share
+            .checkTokenExpired(complete: complete)
     }
     func freshToken()
     {
-        CheckTokenService.share.freshToken()
+        CheckTokenService.share
+            .freshToken()
     }
-    func startToCountDown() {
-        CheckTokenService.share.startToCountDown()
+    func startToCountDown()
+    {
+        CheckTokenService.share
+            .startToCountDown()
     }
     func stopRETimer()
     {
-        CheckTokenService.share.stopRETimer()
+        CheckTokenService.share
+            .stopRETimer()
     }
 }
 // MARK: -

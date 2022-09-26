@@ -163,6 +163,8 @@ extension DecodingError: LocalizedError {
             return NSLocalizedString("\(context.debugDescription)", comment: "")
         case .valueNotFound(_, let context):
             return NSLocalizedString("\(context.debugDescription)", comment: "")
+        @unknown default:
+            fatalError()
         }
     }
 }

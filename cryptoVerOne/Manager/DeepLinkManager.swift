@@ -36,7 +36,7 @@ class DeepLinkManager {
         let path = url.path
         let parameter = url.queryDictionary
         print("url domain: \(host) + \(path)")
-        print("url path parameters: \(parameter)")
+        print("url path parameters: \(parameter ?? [:])")
         
         if parameter != nil {
             if let type = parameter?["type"] {
@@ -235,7 +235,7 @@ extension DeepLinkManager {
                 
             case .promotionContent(let id):
                 print("promotion Content")
-                guard let vc = getBaseTabbarVC(), let id = Int(id) else { return }
+                guard let vc = getBaseTabbarVC(), let _ = Int(id) else { return }
                 vc.selected(2)
 //                Beans.promotionServer.getPromotion(id: id).subscribeSuccess { (dto) in
 //                    let promotionContentSheet = PromotionContentBottomSheet()
@@ -328,11 +328,11 @@ extension DeepLinkManager {
                 }
             case .appNews:
                 print("app news")
-                guard let vc = getBaseTabbarVC() else { return }
+                guard let _ = getBaseTabbarVC() else { return }
 //                NewsBottomSheet().start(viewController: vc)
                 
             case .news(let id):
-                guard let vc = getBaseTabbarVC(), let id = Int(id) else { return }
+                guard let _ = getBaseTabbarVC(), let _ = Int(id) else { return }
 //                Beans.newsServer.frontendNews(id: id).subscribeSuccess { (dto) in
 //                    DispatchQueue.main.async {
 //                        NewsDetailBottomSheet(newsDto: dto).start(viewController: vc)

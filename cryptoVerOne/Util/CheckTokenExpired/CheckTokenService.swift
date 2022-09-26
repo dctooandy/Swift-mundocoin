@@ -98,7 +98,7 @@ class CheckTokenService{
         }
         if jwtValue != nil , let isAddressBookWhiteListEnabled = jwtValue.body["isAddressBookWhiteListEnabled"] as? Bool
         {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { 
                 if (isAddressBookWhiteListEnabled == false)
                 {
                     Log.v("白名單 不啟用")
