@@ -46,7 +46,13 @@ class AddressBottomCell: UITableViewCell {
     func setAccountData(data:AddressBookDto)
     {
         nameLabel.text = data.name
-        protocolLabel.text = data.network
+        if let networkString = data.network
+        {
+            protocolLabel.text = networkString
+        }else
+        {
+            protocolLabel.text = "(TRC20)"
+        }
         addressLabel.text = data.address
     }
     func bindUI()
