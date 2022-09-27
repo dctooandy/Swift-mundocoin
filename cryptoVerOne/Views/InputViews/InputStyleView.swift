@@ -1002,7 +1002,28 @@ extension InputStyleView: UITextFieldDelegate {
             {
                 return true
             }
-            if text.count >= 20 {
+            var textNumber = 0
+            var stringNumber = 0
+            for char in text.unicodeScalars{
+                if char.isASCII{
+                    textNumber += 1
+                }else
+                {
+                    textNumber += 2
+                }
+            }
+            for char in string.unicodeScalars{
+                if char.isASCII{
+                    stringNumber += 1
+                }else
+                {
+                    stringNumber += 2
+                }
+            }
+            if textNumber >= 20 {
+                return false
+            }else if textNumber + stringNumber >= 20
+            {
                 return false
             }
         default:
