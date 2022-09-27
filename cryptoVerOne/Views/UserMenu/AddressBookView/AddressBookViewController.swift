@@ -53,6 +53,7 @@ class AddressBookViewController: BaseViewController {
         setupUI()
         bindUI()
         bindViewModel()
+        setLongPressGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -100,6 +101,12 @@ class AddressBookViewController: BaseViewController {
             self.addresBookDtos = dtos
             self.tableView.reloadData()
         }.disposed(by: disposeBag)
+    }
+    func setLongPressGesture()
+    {
+        // 0927 刪除交互修改
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(sender:)))
+        tableView.addGestureRecognizer(longPress)
     }
     func fetchDatas()
     {
@@ -352,7 +359,9 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         return UIView()
     }
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
+        // 0927 刪除交互修改
+        return false
+//        return true
     }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "Delete".localized) { [self ](action, indexPath) in
@@ -380,4 +389,14 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
 //        delete.backgroundColor = UIColor(rgb: 0x2B3674)
 //        return UISwipeActionsConfiguration(actions: [delete])
 //    }
+    // 0927 刪除交互修改
+    @objc private func handleLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .began {
+            let touchPoint = sender.location(in: tableView)
+            if let indexPath = tableView.indexPathForRow(at: touchPoint) {
+                Log.v("刪除\(indexPath)")
+                showAlert(indexpath: indexPath)
+            }
+        }
+    }
 }
