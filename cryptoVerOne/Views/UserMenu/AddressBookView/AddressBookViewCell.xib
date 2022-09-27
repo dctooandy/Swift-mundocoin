@@ -35,8 +35,8 @@
                                     <constraint firstAttribute="height" constant="1" id="Fm0-Gf-qr4"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kraken wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qq5-qj-HvT">
-                                <rect key="frame" x="20" y="12.5" width="118" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kraken wallet" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qq5-qj-HvT">
+                                <rect key="frame" x="20" y="12.5" width="219.5" height="23"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="18"/>
                                 <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -73,6 +73,9 @@
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Whitelist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mHH-cc-IVF">
                                 <rect key="frame" x="252.5" y="26.5" width="50.5" height="15.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50.5" id="bmB-eE-OnL"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="12"/>
                                 <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -87,6 +90,7 @@
                             <constraint firstItem="V0D-Dp-8cn" firstAttribute="centerY" secondItem="9rE-aM-buP" secondAttribute="centerY" multiplier="0.5" id="3WI-3D-JZ3"/>
                             <constraint firstItem="Qq5-qj-HvT" firstAttribute="centerY" secondItem="mHH-cc-IVF" secondAttribute="centerY" multiplier="0.7" id="6Bj-dd-gJr"/>
                             <constraint firstAttribute="trailing" secondItem="V0D-Dp-8cn" secondAttribute="trailing" constant="12" id="HnF-f9-4rf"/>
+                            <constraint firstItem="Qq5-qj-HvT" firstAttribute="width" secondItem="9rE-aM-buP" secondAttribute="width" multiplier="0.6" id="JHX-gd-UoV"/>
                             <constraint firstItem="mHH-cc-IVF" firstAttribute="centerY" secondItem="9rE-aM-buP" secondAttribute="centerY" multiplier="0.5" constant="1" id="NVv-K8-5Ob"/>
                             <constraint firstItem="Roj-bF-eIe" firstAttribute="leading" secondItem="6E1-oR-6AX" secondAttribute="trailing" constant="10" id="ODI-8m-zRS"/>
                             <constraint firstAttribute="trailing" secondItem="Roj-bF-eIe" secondAttribute="trailing" constant="20" id="OLB-Oh-3ZN"/>

@@ -993,7 +993,17 @@ extension InputStyleView: UITextFieldDelegate {
             cancelRightButton.isHidden = false
         }
 #endif
-      
+        switch inputViewMode {
+        case .customLabel(_):
+            guard let text = textField.text else {
+                return true
+            }
+            if text.count >= 20 {
+                return false
+            }
+        default:
+            break
+        }
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
