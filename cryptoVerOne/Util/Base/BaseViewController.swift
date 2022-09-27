@@ -201,7 +201,16 @@ extension BaseViewController: UINavigationControllerDelegate
         let baseTransition = BaseTransition()
         if let newNav = navigationController as? MDNavigationController
         {
-            baseTransition.isFromLeft = newNav.isFromLeft
+            if ((toVC as? UserMenuViewController) != nil) , ((fromVC as? WalletViewController) != nil)
+            {
+                baseTransition.isFromLeft = true
+            }else if ((fromVC as? UserMenuViewController) != nil) , ((toVC as? WalletViewController) != nil)
+            {
+                baseTransition.isFromLeft = true
+            }else
+            {
+                baseTransition.isFromLeft = false
+            }
         }
         
         if operation == UINavigationController.Operation.push {
