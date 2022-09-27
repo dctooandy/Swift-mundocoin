@@ -200,6 +200,9 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
             Log.i("開地址簿")
             let addressBottomSheet = AddressBottomSheet()
+            addressBottomSheet.rxCleanDataClick().subscribeSuccess { [self] _ in
+                clearAllData()
+            }.disposed(by: dpg)
             addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
 //                withdrawToView.textView.text = dataDto.address
                 withdrawToView.textField.placeholder = ""

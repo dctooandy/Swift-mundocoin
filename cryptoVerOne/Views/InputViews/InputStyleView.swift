@@ -998,6 +998,10 @@ extension InputStyleView: UITextFieldDelegate {
             guard let text = textField.text else {
                 return true
             }
+            if string == ""
+            {
+                return true
+            }
             if text.count >= 20 {
                 return false
             }

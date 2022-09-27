@@ -12,6 +12,7 @@ import RxSwift
 class AddressBottomSheet: BaseBottomSheet {
     // MARK:業務設定
     private let onCellSecondClick = PublishSubject<AddressBookDto>()
+    private let onCleanDataClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
@@ -67,12 +68,17 @@ class AddressBottomSheet: BaseBottomSheet {
         }.disposed(by: dpg)
         addressView.rxAddressBookClick().subscribeSuccess { [self] _ in
             Log.i("前往錢包地址")
+            onCleanDataClick.onNext(())
             DeepLinkManager.share.handleDeeplink(navigation: .addressBook)
         }.disposed(by: dpg)
     }
     func rxCellSecondClick() -> Observable<AddressBookDto>
     {
         return onCellSecondClick.asObserver()
+    }
+    func rxCleanDataClick() -> Observable<Any>
+    {
+        return onCleanDataClick.asObserver()
     }
 }
 // MARK: -

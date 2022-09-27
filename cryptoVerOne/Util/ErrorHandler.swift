@@ -69,7 +69,7 @@ class ErrorHandler {
                     }
                     if code.isEmpty == true
                     {
-                        showAlert(title: "", message: message)
+                        showAlert(title: " ", message: message)
                     }else
                     {
                         showAlert(title: "\(status) \(code)", message: message)
@@ -90,7 +90,7 @@ class ErrorHandler {
         } else {
             if let currentVC = UIApplication.topViewController()
             {
-                let popVC = ConfirmPopupView(viewHeight:155.0 ,
+                let popVC = ConfirmPopupView(viewHeight:200.0 ,
                                              iconMode: .nonIcon(["Close".localized]),
                                              title: title,
                                              message: message ){ _ in }
