@@ -47,8 +47,8 @@ class AddressBottomView: UIView {
     {
         topLabel.text = "USDT address".localized
         subLabel.text = "The method must match the network.".localized
-        addNewAddressLabel.text = "+ Add new address".localized
-        addressBookLabel.text = "Address book".localized
+//        addNewAddressLabel.text = "+ Add new address".localized
+//        addressBookLabel.text = "Address book".localized
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBottomCell.self)
         tableView.separatorStyle = .none
