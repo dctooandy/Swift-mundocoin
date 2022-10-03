@@ -167,6 +167,7 @@ extension DeepLinkManager {
         case signup
         
         case auditLogin
+        case auditLoginWithUnAuthorized
         
         case none
         case appNews
@@ -325,6 +326,22 @@ extension DeepLinkManager {
                     if vc.isKind(of: AuditLoginViewController.self) { return }
                     let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
                     UIApplication.shared.keyWindow?.rootViewController = auditNavVC
+                }
+            case .auditLoginWithUnAuthorized:
+                DeepLinkManager.share.cleanDataForLogout()
+                if let vc = UIApplication.topViewController()
+                {
+                    if vc.isKind(of: AuditLoginViewController.self) { return }
+                    let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
+                    UIApplication.shared.keyWindow?.rootViewController = auditNavVC
+                    if let currentVC = UIApplication.topViewController()
+                    {
+                        let popVC = ConfirmPopupView(viewHeight:200.0 ,
+                                                     iconMode: .nonIcon(["Close".localized]),
+                                                     title: "",
+                                                     message: "UNAUTHORIZED" ){ _ in }
+                        popVC.start(viewController: currentVC)
+                    }
                 }
             case .appNews:
                 print("app news")

@@ -116,7 +116,63 @@ class CheckTokenService{
             }
         }
     }
-
+    // 檢查 白名單 isAddressBookWhiteListEnabled
+    func checkAuth(complete:CheckCompletionBlock? = nil)
+    {
+        let token = KeychainManager.share.getToken()
+        // 準備好 id 資料
+        var jwtValue :JWT!
+        do {
+            jwtValue = try decode(jwt: token)
+        } catch {
+            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
+                //過期去登入頁面
+                gotoAuditLoginVC()
+            }
+        }
+        if jwtValue != nil , let permissions = jwtValue.body["permissions"] as? Array<[String:Any]>
+        {
+            Log.e("\(permissions)")
+            for permissionData in permissions
+            {
+                if permissionData["name"] as! String == "APP" ,
+                   let features = permissionData["features"] as? Array<[String:Any]> ,
+                    let firstObject = features.first ,
+                    let levelArray = firstObject["level"] as? Array<String>
+                {
+                    if levelArray.contains("READABLE")
+                    {
+                        KeychainManager.share.setReadable("READABLE")
+                    }else
+                    {
+                        KeychainManager.share.setReadable("")
+                    }
+                    if levelArray.contains("EDITABLE")
+                    {
+                        KeychainManager.share.setEditable("EDITABLE")
+                    }else
+                    {
+                        KeychainManager.share.setEditable("")
+                    }
+                }
+            }
+        }
+    }
+    func gotoAuditLoginVC()
+    {
+        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+        {
+            DeepLinkManager.share.cleanDataForLogout()
+            let auditNavVC = MDNavigationController(rootViewController: AuditLoginViewController.loadNib())
+            mainWindow.rootViewController = auditNavVC
+            mainWindow.makeKeyAndVisible()
+        }
+    }
     func goToLoginVC()
     {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
@@ -129,6 +185,8 @@ class CheckTokenService{
     {
         Log.v("刷新Token")
         #if Approval_PRO || Approval_DEV || Approval_STAGE
+        Log.v("查詢權限")
+        checkAuth()
         #else
         Beans.loginServer.refreshToken().subscribeSuccess { [self] dto in
             if let dataDto = dto

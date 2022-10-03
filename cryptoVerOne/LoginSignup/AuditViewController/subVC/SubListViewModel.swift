@@ -20,7 +20,14 @@ class SubListViewModel: BaseViewModel {
     // MARK:Life cycle
     init(state:AuditShowMode) {
         super.init()
-        bindDto(state: state)
+        let readable = KeychainManager.share.getReadable()
+        if readable == ""
+        {
+            DeepLinkManager.share.handleDeeplink(navigation: .auditLoginWithUnAuthorized)
+        }else
+        {
+            bindDto(state: state)
+        }
     }
     func bindDto(state:AuditShowMode)
     {

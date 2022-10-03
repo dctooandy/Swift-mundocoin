@@ -18,6 +18,8 @@ class KeychainManager {
         case whiteListOnoff = "mundocoin_whiteListOnoff_list"
         case token = "mundocoin_token"
         case auditToken = "audit_token"
+        case auditReadable = "audit_readable"
+        case auditEditable = "audit_editable"
         case domain = "domain"
         case addressBookList = "mundocoin_addressBook_list"
         case auditAccount = "audit_account"
@@ -213,6 +215,51 @@ class KeychainManager {
         _ = setString("", at: .token)
 #endif
     }
+    // 存取刪除 approval Readable
+    func getReadable() -> String {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return getString(from: .auditReadable) ?? ""
+#else
+        return ""
+#endif
+    }
+    func setReadable(_ token:String){
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString(token, at: .auditReadable)
+#else
+        
+#endif
+    }
+    func clearReadable() {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString("", at: .auditReadable)
+#else
+        
+#endif
+    }
+    // 存取刪除 approval Editable
+    func getEditable() -> String {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return getString(from: .auditEditable) ?? ""
+#else
+        return ""
+#endif
+    }
+    func setEditable(_ token:String){
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString(token, at: .auditEditable)
+#else
+        
+#endif
+    }
+    func clearEditable() {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        _ = setString("", at: .auditEditable)
+#else
+        
+#endif
+    }
+    
 
     // 存取白名單狀態
     func saveWhiteListOnOff(_ isOn :Bool ) {

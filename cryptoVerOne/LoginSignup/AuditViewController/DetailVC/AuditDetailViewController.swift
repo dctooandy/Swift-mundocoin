@@ -91,6 +91,7 @@ class AuditDetailViewController: BaseViewController {
         stackBackView.applyCornerAndShadow(radius: 16)
         stackView.layer.cornerRadius = 12
         stackView.layer.masksToBounds = true
+        
         acceptBtn.layer.cornerRadius = 8
         acceptBtn.layer.masksToBounds = true
         acceptBtn.setTitleColor(.white, for: .normal)
@@ -100,6 +101,18 @@ class AuditDetailViewController: BaseViewController {
         rejectBtn.layer.borderWidth = 1
         rejectBtn.layer.cornerRadius = 8
         rejectBtn.layer.masksToBounds = true
+        acceptBtn.setTitleColor(.gray, for: .disabled)
+        rejectBtn.setTitleColor(.gray, for: .disabled)
+        let editable = KeychainManager.share.getEditable()
+        if editable == ""
+        {
+            acceptBtn.isEnabled = false
+            rejectBtn.isEnabled = false
+        }else
+        {
+            acceptBtn.isEnabled = true
+            rejectBtn.isEnabled = true
+        }
     }
     func bindButton()
     {
