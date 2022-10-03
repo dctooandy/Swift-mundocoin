@@ -37,9 +37,42 @@ class LoginSignupViewController: BaseViewController {
     /// 显示注册或登入页面
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
-            resetUI()
-            setNavigationLeftView(isForgotView: currentShowMode == .forgotPW ? true : false)
-            loginPageVC.reloadPageMenu(currentMode: currentShowMode)
+            
+            UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+                self.topLabel.alpha = 0.0
+                self.backgroundImageView.alpha = 0.0
+                self.loginPageVC.view.alpha = 0.0
+            }){ _ in
+                UIView.animate(withDuration: 0.0, delay: 0, options: .curveEaseInOut, animations: { [self] in
+                    resetUI()
+                    setNavigationLeftView(isForgotView: currentShowMode == .forgotPW ? true : false)
+                
+                }) { _ in
+                    UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+                        self.topLabel.alpha = 1.0
+                        self.backgroundImageView.alpha = 1.0
+                        self.loginPageVC.view.alpha = 1.0
+                    })
+                }
+            }
+            UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+
+                self.topLabel.transform = CGAffineTransform(translationX: 0, y: Views.screenHeight/2)
+                self.backgroundImageView.transform = CGAffineTransform(translationX: 0, y: Views.screenHeight/2)
+                self.loginPageVC.view.transform = CGAffineTransform(translationX: 0, y: Views.screenHeight/2)
+
+            }) { _ in
+                UIView.animate(withDuration: 0.0, delay: 0, options: .curveEaseInOut, animations: {
+                    self.loginPageVC.reloadPageMenu(currentMode: self.currentShowMode)
+
+                }) { _ in
+                    UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseInOut, animations: {
+                        self.topLabel.transform = CGAffineTransform.identity
+                        self.backgroundImageView.transform = CGAffineTransform.identity
+                        self.loginPageVC.view.transform = CGAffineTransform.identity
+                    })
+                }
+            }
         }
     }
     private var shouldVerify = true
