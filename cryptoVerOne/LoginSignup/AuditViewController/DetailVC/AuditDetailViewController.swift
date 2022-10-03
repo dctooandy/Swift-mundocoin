@@ -101,17 +101,17 @@ class AuditDetailViewController: BaseViewController {
         rejectBtn.layer.borderWidth = 1
         rejectBtn.layer.cornerRadius = 8
         rejectBtn.layer.masksToBounds = true
-        acceptBtn.setTitleColor(.gray, for: .disabled)
-        rejectBtn.setTitleColor(.gray, for: .disabled)
+//        acceptBtn.setTitleColor(.gray, for: .disabled)
+//        rejectBtn.setTitleColor(.gray, for: .disabled)
         let editable = KeychainManager.share.getEditable()
         if editable == ""
         {
-            acceptBtn.isEnabled = false
-            rejectBtn.isEnabled = false
+            acceptBtn.isHidden = true
+            rejectBtn.isHidden = true
         }else
         {
-            acceptBtn.isEnabled = true
-            rejectBtn.isEnabled = true
+            acceptBtn.isHidden = false
+            rejectBtn.isHidden = false
         }
     }
     func bindButton()

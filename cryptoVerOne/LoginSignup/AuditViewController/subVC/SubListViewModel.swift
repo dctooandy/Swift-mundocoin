@@ -23,7 +23,7 @@ class SubListViewModel: BaseViewModel {
         let readable = KeychainManager.share.getReadable()
         if readable == ""
         {
-            DeepLinkManager.share.handleDeeplink(navigation: .auditLoginWithUnAuthorized)
+            DeepLinkManager.share.handleDeeplink(navigation: .auditLoginWithUnAuthorized("UNAUTHORIZED"))
         }else
         {
             bindDto(state: state)
