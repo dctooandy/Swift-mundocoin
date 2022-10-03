@@ -108,7 +108,7 @@ class AuditTriggerAlertView: UIView {
                 onConfirmClick.onNext((true, messageTextView.text))
             }else
             {
-                if messageTextView.text.isEmpty == true || stripped.count == 0
+                if messageTextView.text.isEmpty == true || stripped.count == 0 || messageTextView.text == "Message"
                 {
                     messageTextView.layer.borderColor = UIColor.red.cgColor
                 }else

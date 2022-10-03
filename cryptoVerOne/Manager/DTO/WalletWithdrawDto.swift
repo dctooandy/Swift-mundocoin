@@ -109,12 +109,12 @@ struct ChainSocketDto:Codable {
 }
 struct ApproverDto:Codable {
     var id : String = ""
-    var createdDate : String = ""
-    var updatedDate : String = ""
+    var createdDate : String? = ""
+    var updatedDate : String? = ""
     var name : String = ""
     var email : String = ""
-    var role : String = ""
-    var lastLoginDate : String = ""
+    var role : String? = ""
+    var lastLoginDate : String? = ""
 }
 struct ApproverSocketDto:Codable {
     var id : String = ""
@@ -127,21 +127,21 @@ struct ApproverSocketDto:Codable {
 }
 struct IssuerDto : Codable {
     var id : String = ""
-    var createdDate : String = ""
-    var updatedDate : String = ""
+    var createdDate : String? = ""
+    var updatedDate : String? = ""
     var email : String = ""
     var phone : String? = ""
-    var registrationCode : String = ""
+    var registrationCode : String? = ""
     var firstName : String? = ""
     var middleName : String? = ""
     var lastName : String? = ""
-    var status : String = ""
-    var roles : String = ""
-    var registrationIP : String = ""
-    var lastLoginIP : String = ""
+    var status : String? = ""
+    var roles : String? = ""
+    var registrationIP : String? = ""
+    var lastLoginIP : String? = ""
     var lastLoginDate : String? = ""
-    var isPhoneRegistry : Bool = false
-    var isEmailRegistry : Bool = false
+    var isPhoneRegistry : Bool? = false
+    var isEmailRegistry : Bool? = false
 }
 struct IssuerSocketDto : Codable {
     var id : String = ""
