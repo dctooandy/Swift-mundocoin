@@ -141,23 +141,27 @@ class CheckTokenService{
             for permissionData in permissions
             {
                 if permissionData["name"] as! String == "APP" ,
-                   let features = permissionData["features"] as? Array<[String:Any]> ,
-                    let firstObject = features.first ,
-                    let levelArray = firstObject["level"] as? Array<String>
+                   let features = permissionData["features"] as? Array<[String:Any]>
                 {
-                    if levelArray.contains("READABLE")
-                    {
-                        KeychainManager.share.setReadable("READABLE")
-                    }else
-                    {
-                        KeychainManager.share.setReadable("")
-                    }
-                    if levelArray.contains("EDITABLE")
-                    {
-                        KeychainManager.share.setEditable("EDITABLE")
-                    }else
-                    {
-                        KeychainManager.share.setEditable("")
+                    for item in features {
+                        if (item["feature"] as! String) == "WITHDRAW_APPROVAL" ,
+                           let levelArray = item["level"] as? Array<String>
+                        {
+                            if levelArray.contains("READABLE")
+                            {
+                                KeychainManager.share.setReadable("READABLE")
+                            }else
+                            {
+                                KeychainManager.share.setReadable("")
+                            }
+                            if levelArray.contains("EDITABLE")
+                            {
+                                KeychainManager.share.setEditable("EDITABLE")
+                            }else
+                            {
+                                KeychainManager.share.setEditable("")
+                            }
+                        }
                     }
                 }
             }
