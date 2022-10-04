@@ -33,7 +33,7 @@ class AddressBookViewController: BaseViewController {
     }()
     private lazy var whiteListButton:UIButton = {
         let backToButton = UIButton(frame: CGRect(x: 0, y: 0, width: 26, height: 26))
-        let image = UIImage(named:"icon-Chield_check")
+        let image = UIImage(named:"icon-Chield_check2")
         backToButton.setImage(image, for: .normal)
         backToButton.addTarget(self, action:#selector(whiteListAction), for:.touchUpInside)
         return backToButton
@@ -87,6 +87,7 @@ class AddressBookViewController: BaseViewController {
         // 暫時打開
 //        customDrowDownView.config(showDropdown: true, dropDataSource: ["USDT","USD"])
         customDrowDownView.config(showDropdown: false, dropDataSource: ["USDT"])
+        customDrowDownView.topLabel.font = Fonts.PlusJakartaSansBold(20.8)
     }
     func bindUI()
     {
@@ -132,7 +133,7 @@ class AddressBookViewController: BaseViewController {
             self.navigationController?.pushViewController(twoFAVC, animated: true)
         }.disposed(by: disposeBag)
         DispatchQueue.main.async {
-            whiteListBottomSheet.start(viewController: self ,height: 317)
+            whiteListBottomSheet.start(viewController: self ,height: 283)
         }
     }
     func verifySuccessForChangeWhiteList(code:String, withMode:String = "",done: @escaping () -> Void)

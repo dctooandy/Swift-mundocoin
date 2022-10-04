@@ -430,7 +430,7 @@ class AddNewAddressViewController: BaseViewController {
     {
         DispatchQueue.main.async(execute: { [self] in
             addressStyleView.tvHeightConstraint.constant = constant
-            middleViewHeight.constant = 80.0 + (constant - 46.0)
+            middleViewHeight.constant = 90.0 + (constant - 46.0)
             UIView.animate(withDuration: 0.3) {
                 self.view.layoutIfNeeded()
             }

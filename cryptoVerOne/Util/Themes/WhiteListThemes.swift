@@ -32,7 +32,7 @@ class WhiteListThemes {
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
     private static func bindWhiteListTopIcon<T>(isON: T , isOff: T) -> Observable<UIImage>{
-        return WhiteListThemes.topWhiteListImageMode.map({($0 == .whiteListOn) ? UIImage(named: "icon-Chield_check")!:UIImage(named: "icon-Chield")!})
+        return WhiteListThemes.topWhiteListImageMode.map({($0 == .whiteListOn) ? UIImage(named: "icon-Chield_check2")!:UIImage(named: "icon-Chield2")!})
     }
     private static func bindWhiteListSwitchAlpha<T>(isOn:T , isOff:T) -> Observable<CGFloat>{
         return WhiteListThemes.topWhiteListImageMode.map({($0 == .whiteListOn) ? 1.0 : 0.5})

@@ -36,7 +36,15 @@ class AddressBookViewCell: UITableViewCell {
     func setData(data:AddressBookDto)
     {
         self.cellData = data
+        let onColor  = UIColor(rgb: 0x0DC897)
+        let offColor = UIColor(rgb: 0xA3AED0)
         whiteListSwitch.isOn = cellData.enabled
+        /*For on state*/
+        whiteListSwitch.onTintColor = onColor
+
+        /*For off state*/
+        whiteListSwitch.tintColor = offColor
+        whiteListSwitch.backgroundColor = offColor
         nameLabel.text = cellData.name
         walletLabel.text = cellData.label
         networkMethodLabel.text = cellData.network ?? "TRC20"
@@ -49,6 +57,8 @@ class AddressBookViewCell: UITableViewCell {
         WhiteListThemes.whiteListSwitchAlpha.bind(to: whiteListSwitch.rx.alpha).disposed(by: dpg)
         WhiteListThemes.whiteListSwitchEnable.bind(to: whiteListSwitch.rx.isUserInteractionEnabled).disposed(by: dpg)
         whiteListSwitch.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        whiteListSwitch.layer.cornerRadius = 15.5
+        whiteListSwitch.clipsToBounds = true
     }
     func bindUI()
     {

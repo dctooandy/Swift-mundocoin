@@ -56,7 +56,7 @@ enum FilterLabelType {
                     "Completed".localized,
                     "Failed".localized]
         case .networkMethod:
-            return ["TRC20".localized]
+            return ["TRC 20".localized]
         }
     }
     var widths:[CGFloat] {

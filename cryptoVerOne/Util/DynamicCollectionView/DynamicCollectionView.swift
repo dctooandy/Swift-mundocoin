@@ -75,10 +75,23 @@ extension DynamicCollectionView: UICollectionViewDelegate, UICollectionViewDataS
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueCell(type: FilterCollectionCell.self, indexPath: indexPath)
         cell.setData(modeName: labelType.titles[indexPath.item])
+        if labelType == FilterLabelType.networkMethod
+        {
+            cell.titleLabel.font = Fonts.pingFangTCMedium(16)
+        }else
+        {
+
+        }
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: labelType.widths[indexPath.item], height: 33)
+        if labelType == FilterLabelType.networkMethod
+        {
+            return CGSize(width: labelType.widths[indexPath.item], height: 39)
+        }else
+        {
+            return CGSize(width: labelType.widths[indexPath.item], height: 33)
+        }
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         onClick.onNext((labelType , labelType.titles[indexPath.item]))
