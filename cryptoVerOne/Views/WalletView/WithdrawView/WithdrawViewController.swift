@@ -209,8 +209,8 @@ class WithdrawViewController: BaseViewController {
                 withdrawToView.textView.text = dataDto.address
                 changeWithdrawInputViewHeight(constant: 72.0)
             }.disposed(by: dpg)
-            DispatchQueue.main.async {
-                addressBottomSheet.start(viewController: self)
+            DispatchQueue.main.async { [self] in
+                addressBottomSheet.start(viewController: self, height: addressViewSheetHeight())
             }
         }.disposed(by: dpg)
         continueButton.rx.tap.subscribeSuccess { [self](_) in
@@ -223,6 +223,24 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
             changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
+    }
+    func addressViewSheetHeight() -> CGFloat
+    {
+        var sheetHeight = 266.0
+        var cellCount = 0.0
+        let isOn = KeychainManager.share.getWhiteListOnOff()
+        var allAddressList:[AddressBookDto] = []
+        if isOn == true
+        {
+            allAddressList = KeychainManager.share.getAddressBookList()
+            allAddressList = allAddressList.filter({ $0.enabled == true })
+        }else
+        {
+            allAddressList = KeychainManager.share.getAddressBookList()
+        }
+        cellCount = (allAddressList.count >= 3 ? 3 :(allAddressList.count == 2 ? 2:1))
+        sheetHeight += 92.0 * (cellCount - 1)
+        return sheetHeight
     }
     func changeWithdrawInputViewHeight(constant:CGFloat)
     {

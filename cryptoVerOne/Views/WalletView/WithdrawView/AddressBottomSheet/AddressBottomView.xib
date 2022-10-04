@@ -15,6 +15,9 @@
         <array key="PlusJakartaSans-Medium.ttf">
             <string>PlusJakartaSans-Medium</string>
         </array>
+        <array key="PlusJakartaSans-Regular.ttf">
+            <string>PlusJakartaSans-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -23,6 +26,20 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o6r-Jh-2hw">
+                    <rect key="frame" x="174.5" y="56" width="65" height="4"/>
+                    <color key="backgroundColor" red="0.76862745098039209" green="0.76862745098039209" blue="0.76862745098039209" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="65" id="SN8-HO-cci"/>
+                        <constraint firstAttribute="height" constant="4" id="vsj-vD-OKj"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                    </userDefinedRuntimeAttributes>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eLO-4t-Mg8">
                     <rect key="frame" x="146.5" y="80" width="121.5" height="23"/>
                     <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="18"/>
@@ -37,7 +54,7 @@
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ Add new address | Address book" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lnR-4a-ect">
                     <rect key="frame" x="82" y="824" width="250" height="18"/>
-                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Regular" family="Plus Jakarta Sans" pointSize="14"/>
                     <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
@@ -60,7 +77,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="i2g-O2-Nd9">
-                    <rect key="frame" x="0.0" y="130" width="414" height="689"/>
+                    <rect key="frame" x="0.0" y="147" width="414" height="659"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="iN0-l3-epB" id="lUA-Yf-YcX"/>
@@ -75,23 +92,26 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="lnR-4a-ect" secondAttribute="trailing" constant="82" id="4k3-F4-9mx"/>
                 <constraint firstItem="0oC-YH-ATU" firstAttribute="top" secondItem="eLO-4t-Mg8" secondAttribute="bottom" constant="4" id="5tt-Lo-VSz"/>
                 <constraint firstItem="lnR-4a-ect" firstAttribute="trailing" secondItem="uWJ-DZ-HmZ" secondAttribute="trailing" id="9p8-pB-Hou"/>
-                <constraint firstItem="i2g-O2-Nd9" firstAttribute="top" secondItem="0oC-YH-ATU" secondAttribute="bottom" constant="5" id="BTs-R0-e1l"/>
+                <constraint firstItem="i2g-O2-Nd9" firstAttribute="top" secondItem="0oC-YH-ATU" secondAttribute="bottom" constant="22" id="BTs-R0-e1l"/>
                 <constraint firstItem="0oC-YH-ATU" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="DMO-o9-3Mf"/>
                 <constraint firstItem="uWJ-DZ-HmZ" firstAttribute="bottom" secondItem="lnR-4a-ect" secondAttribute="bottom" id="Ewv-Qc-0Iu"/>
                 <constraint firstItem="lnR-4a-ect" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="82" id="I4B-eu-dKH"/>
                 <constraint firstItem="lnR-4a-ect" firstAttribute="leading" secondItem="Y74-0h-4Si" secondAttribute="leading" id="WPO-6e-bCw"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="lnR-4a-ect" secondAttribute="bottom" constant="20" id="Wa2-pS-qYl"/>
+                <constraint firstAttribute="bottom" secondItem="lnR-4a-ect" secondAttribute="bottom" constant="54" id="Wa2-pS-qYl"/>
                 <constraint firstItem="i2g-O2-Nd9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="aa8-1E-0Pv"/>
                 <constraint firstItem="eLO-4t-Mg8" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="36" id="afC-qR-43J"/>
+                <constraint firstItem="o6r-Jh-2hw" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="dP1-xm-Jek"/>
                 <constraint firstItem="eLO-4t-Mg8" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="j2c-5u-5TP"/>
-                <constraint firstItem="lnR-4a-ect" firstAttribute="top" secondItem="i2g-O2-Nd9" secondAttribute="bottom" constant="5" id="kUj-di-sbG"/>
+                <constraint firstItem="lnR-4a-ect" firstAttribute="top" secondItem="i2g-O2-Nd9" secondAttribute="bottom" constant="18" id="kUj-di-sbG"/>
                 <constraint firstItem="lnR-4a-ect" firstAttribute="bottom" secondItem="Y74-0h-4Si" secondAttribute="bottom" id="lLu-Ns-CMl"/>
                 <constraint firstItem="lnR-4a-ect" firstAttribute="top" secondItem="Y74-0h-4Si" secondAttribute="top" id="nuX-GV-SQy"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="i2g-O2-Nd9" secondAttribute="trailing" id="qsJ-gp-Q2g"/>
+                <constraint firstItem="o6r-Jh-2hw" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="tds-jl-9KP"/>
             </constraints>
             <connections>
                 <outlet property="addNewAddressLabel" destination="Y74-0h-4Si" id="cGq-3R-muA"/>
                 <outlet property="addressBookLabel" destination="uWJ-DZ-HmZ" id="81G-Xv-rFr"/>
+                <outlet property="addressBookTextLabel" destination="lnR-4a-ect" id="XF9-sI-YpX"/>
                 <outlet property="subLabel" destination="0oC-YH-ATU" id="Mjf-Rp-pbd"/>
                 <outlet property="tableView" destination="i2g-O2-Nd9" id="gMK-mX-in8"/>
                 <outlet property="topLabel" destination="eLO-4t-Mg8" id="dQs-a3-S5B"/>

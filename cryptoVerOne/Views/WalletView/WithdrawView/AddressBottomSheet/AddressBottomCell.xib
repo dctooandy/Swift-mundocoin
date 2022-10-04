@@ -18,14 +18,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Bfh-hx-BdT" customClass="AddressBottomCell" customModule="Approval" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Bfh-hx-BdT" id="yHc-uR-m29">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="86"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qLO-7j-2Dk">
-                        <rect key="frame" x="34" y="5" width="346" height="76"/>
+                        <rect key="frame" x="24" y="8" width="366" height="76"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kraken wallet" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mf-bQ-2ca">
                                 <rect key="frame" x="24" y="16" width="118" height="23"/>
@@ -46,7 +46,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.93828994040000002" green="0.95769757030000002" blue="0.98441940549999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.95686274509803915" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="LuN-ja-xDF" firstAttribute="leading" secondItem="2mf-bQ-2ca" secondAttribute="leading" id="1Na-NZ-Hpw"/>
                             <constraint firstItem="2mf-bQ-2ca" firstAttribute="leading" secondItem="qLO-7j-2Dk" secondAttribute="leading" constant="24" id="5On-qb-jAX"/>
@@ -65,10 +65,10 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="qLO-7j-2Dk" secondAttribute="bottom" constant="5" id="2Ln-Br-WA9"/>
-                    <constraint firstItem="qLO-7j-2Dk" firstAttribute="top" secondItem="yHc-uR-m29" secondAttribute="top" constant="5" id="SXa-aP-ai4"/>
-                    <constraint firstAttribute="trailing" secondItem="qLO-7j-2Dk" secondAttribute="trailing" constant="34" id="Zgu-90-m1c"/>
-                    <constraint firstItem="qLO-7j-2Dk" firstAttribute="leading" secondItem="yHc-uR-m29" secondAttribute="leading" constant="34" id="w08-bF-wTc"/>
+                    <constraint firstAttribute="bottom" secondItem="qLO-7j-2Dk" secondAttribute="bottom" constant="8" id="2Ln-Br-WA9"/>
+                    <constraint firstItem="qLO-7j-2Dk" firstAttribute="top" secondItem="yHc-uR-m29" secondAttribute="top" constant="8" id="SXa-aP-ai4"/>
+                    <constraint firstAttribute="trailing" secondItem="qLO-7j-2Dk" secondAttribute="trailing" constant="24" id="Zgu-90-m1c"/>
+                    <constraint firstItem="qLO-7j-2Dk" firstAttribute="leading" secondItem="yHc-uR-m29" secondAttribute="leading" constant="24" id="w08-bF-wTc"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

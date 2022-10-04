@@ -1855,6 +1855,18 @@
 		A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
 		A1DD13BD282C0B8300AB2E0A /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */; };
 		A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */; };
+		A1E72A8A28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A8B28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A8C28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A8D28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A8E28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A8F28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
+		A1E72A9128EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E72A9228EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E72A9328EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E72A9428EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E72A9528EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E72A9628EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2199,6 +2211,8 @@
 		A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushNotiViewController.xib; sourceTree = "<group>"; };
 		A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
+		A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressCell.swift; sourceTree = "<group>"; };
+		A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressCell.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B928B8429867F4964B1660EA /* Pods-Approval_stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Approval_stage.release.xcconfig"; path = "Target Support Files/Pods-Approval_stage/Pods-Approval_stage.release.xcconfig"; sourceTree = "<group>"; };
 		DD74FE76EBADF5EB742DFEB5 /* Pods-cryptoVerOne_stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_stage.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage.release.xcconfig"; sourceTree = "<group>"; };
@@ -2610,6 +2624,8 @@
 				A16F61FA282E389400D9CCE5 /* AddressBottomView.xib */,
 				A16F61FD282E3EBA00D9CCE5 /* AddressBottomCell.swift */,
 				A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */,
+				A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */,
+				A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */,
 			);
 			path = AddressBottomSheet;
 			sourceTree = "<group>";
@@ -3448,6 +3464,7 @@
 				0998C013289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905B152851A02B00BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9528EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3539,6 +3556,7 @@
 				0998C014289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905C072851A08500BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9628EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3630,6 +3648,7 @@
 				0998C012289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09905CF92851A09600BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9428EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3721,6 +3740,7 @@
 				0998C010289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9228EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
@@ -3812,6 +3832,7 @@
 				0998C011289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9328EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
@@ -3903,6 +3924,7 @@
 				0998C00F289212910003567A /* UserMenuWhiteLineCell.xib in Resources */,
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
+				A1E72A9128EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
@@ -4297,6 +4319,7 @@
 				09905A9B2851A02B00BAEE78 /* DepositViewModel.swift in Sources */,
 				09905A9C2851A02B00BAEE78 /* AddressBottomView.swift in Sources */,
 				09905A9D2851A02B00BAEE78 /* OtherValue.swift in Sources */,
+				A1E72A8E28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3252857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09905A9E2851A02B00BAEE78 /* Connectivity.swift in Sources */,
 				09905A9F2851A02B00BAEE78 /* AddressBookViewController.swift in Sources */,
@@ -4527,6 +4550,7 @@
 				09905B8D2851A08500BAEE78 /* DepositViewModel.swift in Sources */,
 				09905B8E2851A08500BAEE78 /* AddressBottomView.swift in Sources */,
 				09905B8F2851A08500BAEE78 /* OtherValue.swift in Sources */,
+				A1E72A8F28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3262857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09905B902851A08500BAEE78 /* Connectivity.swift in Sources */,
 				09905B912851A08500BAEE78 /* AddressBookViewController.swift in Sources */,
@@ -4757,6 +4781,7 @@
 				09905C7F2851A09600BAEE78 /* DepositViewModel.swift in Sources */,
 				09905C802851A09600BAEE78 /* AddressBottomView.swift in Sources */,
 				09905C812851A09600BAEE78 /* OtherValue.swift in Sources */,
+				A1E72A8D28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3242857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09905C822851A09600BAEE78 /* Connectivity.swift in Sources */,
 				09905C832851A09600BAEE78 /* AddressBookViewController.swift in Sources */,
@@ -4987,6 +5012,7 @@
 				099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
+				A1E72A8B28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3222857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09CAF5D2283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
@@ -5217,6 +5243,7 @@
 				099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
+				A1E72A8C28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3232857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09CAF5D3283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
@@ -5447,6 +5474,7 @@
 				099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
+				A1E72A8A28EC233D006EB767 /* AddNewAddressCell.swift in Sources */,
 				09EED3212857226600CB4A64 /* SubListTableViewCell.swift in Sources */,
 				09CAF5D1283C8CB700D7B19B /* Connectivity.swift in Sources */,
 				09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */,
