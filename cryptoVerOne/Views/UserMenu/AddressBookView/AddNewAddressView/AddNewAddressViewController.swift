@@ -19,6 +19,7 @@ class AddNewAddressViewController: BaseViewController {
     var isScanVCByAVCapture = false
     var isToSecurityVC = false
     var twoFAVC = SecurityVerificationViewController.loadNib()
+    @IBOutlet weak var coinLabelTopConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -38,6 +39,11 @@ class AddNewAddressViewController: BaseViewController {
     }()
     @IBOutlet weak var middleViewHeight: NSLayoutConstraint!
     @IBOutlet weak var addToWhitelistView: UIView!
+    // 上層 只有present 才會出現的頂層
+    @IBOutlet weak var topWhiteView: UIView!
+    @IBOutlet weak var topBorderView: UIView!
+    @IBOutlet weak var topLeftBackImageView: UIImageView!
+    @IBOutlet weak var topRightLabel: UILabel!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -49,6 +55,7 @@ class AddNewAddressViewController: BaseViewController {
         bindDynamicView()
         bindSaveButton()
         bindSacnVC()
+        bindTopView()
         setupUI()
         setupKeyboardNoti()
 //        setupAddressStyleView()
@@ -63,6 +70,18 @@ class AddNewAddressViewController: BaseViewController {
         {
             addToWhitelistView.isHidden = true
             checkBox.isSelected = false
+        }
+        if self.navigationController != nil
+        {
+            coinLabelTopConstraint.constant = 64
+            topWhiteView.isHidden = true
+            
+        }else
+        {
+            coinLabelTopConstraint.constant = 32
+            topWhiteView.isHidden = false
+            topBorderView.layer.borderWidth = 1
+            topBorderView.layer.borderColor = UIColor(rgb: 0xF1F1F1).cgColor
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -416,6 +435,15 @@ class AddNewAddressViewController: BaseViewController {
     {
         AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
             UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+        }.disposed(by: dpg)
+    }
+    func bindTopView()
+    {
+        topLeftBackImageView.rx.click.subscribeSuccess { _ in
+            self.dismiss(animated: true)
+        }.disposed(by: dpg)
+        topRightLabel.rx.click.subscribeSuccess { _ in
+            self.dismiss(animated: true)
         }.disposed(by: dpg)
     }
     func setupAddressStyleView()

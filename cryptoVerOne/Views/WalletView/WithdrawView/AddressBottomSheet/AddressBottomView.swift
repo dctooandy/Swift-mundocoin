@@ -74,7 +74,13 @@ class AddressBottomView: UIView {
         {
             addressBookTextLabel.text = "+ Add new address | Address book"
         }
-
+        if allAddressList.count > 3
+        {
+            tableView.isScrollEnabled = true
+        }else
+        {
+            tableView.isScrollEnabled = false
+        }
         dataArray = allAddressList
         tableView.reloadData()
     }

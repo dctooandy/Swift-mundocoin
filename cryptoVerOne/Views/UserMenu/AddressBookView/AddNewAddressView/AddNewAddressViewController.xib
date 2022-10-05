@@ -24,6 +24,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iRs-7r-kPS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="93"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGF-Xu-Ziy">
+                                <rect key="frame" x="0.0" y="43" width="414" height="50"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-chevron-left" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-bx-23P">
+                                        <rect key="frame" x="12" y="14" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="QXY-dh-EbV"/>
+                                            <constraint firstAttribute="height" constant="24" id="SCB-JL-zhq"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wp-G8-KBR">
+                                        <rect key="frame" x="132.5" y="10" width="149" height="26"/>
+                                        <fontDescription key="fontDescription" name="PingFangSC-Semibold" family="PingFang SC" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Done" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jlO-CO-BtR">
+                                        <rect key="frame" x="358" y="16" width="40" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                        <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="TLu-i0-yRU"/>
+                                    <constraint firstItem="2wp-G8-KBR" firstAttribute="centerX" secondItem="BGF-Xu-Ziy" secondAttribute="centerX" id="UTz-7Z-djm"/>
+                                    <constraint firstAttribute="trailing" secondItem="jlO-CO-BtR" secondAttribute="trailing" constant="16" id="bT3-F5-LNF"/>
+                                    <constraint firstAttribute="bottom" secondItem="jlO-CO-BtR" secondAttribute="bottom" constant="14" id="flD-Hi-UHq"/>
+                                    <constraint firstItem="TO3-bx-23P" firstAttribute="leading" secondItem="BGF-Xu-Ziy" secondAttribute="leading" constant="12" id="ihb-gS-EMZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="2wp-G8-KBR" secondAttribute="bottom" constant="14" id="s1X-fm-tPW"/>
+                                    <constraint firstAttribute="bottom" secondItem="TO3-bx-23P" secondAttribute="bottom" constant="12" id="yYQ-vI-SNg"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="BGF-Xu-Ziy" firstAttribute="leading" secondItem="iRs-7r-kPS" secondAttribute="leading" id="Awe-e4-GlX"/>
+                            <constraint firstAttribute="trailing" secondItem="BGF-Xu-Ziy" secondAttribute="trailing" id="Sdr-iO-nfv"/>
+                            <constraint firstAttribute="bottom" secondItem="BGF-Xu-Ziy" secondAttribute="bottom" id="hkv-Zr-mPn"/>
+                        </constraints>
+                    </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cTz-5J-Z4a">
                         <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                         <subviews>
@@ -145,10 +190,14 @@
                 <viewLayoutGuide key="safeArea" id="M3K-DN-md0"/>
                 <color key="backgroundColor" systemColor="systemGray4Color"/>
                 <constraints>
+                    <constraint firstItem="iRs-7r-kPS" firstAttribute="leading" secondItem="M3K-DN-md0" secondAttribute="leading" id="70r-YG-Wla"/>
                     <constraint firstItem="M3K-DN-md0" firstAttribute="bottom" secondItem="cTz-5J-Z4a" secondAttribute="bottom" id="MZn-L2-Bed"/>
                     <constraint firstItem="cTz-5J-Z4a" firstAttribute="top" secondItem="Qoq-1e-Qy0" secondAttribute="top" constant="44" id="MdX-6x-qkX"/>
                     <constraint firstAttribute="trailing" secondItem="cTz-5J-Z4a" secondAttribute="trailing" id="Mku-LJ-cpf"/>
+                    <constraint firstItem="iRs-7r-kPS" firstAttribute="bottom" secondItem="spa-wo-CtU" secondAttribute="top" constant="-15" id="P2J-gf-gV8"/>
+                    <constraint firstItem="iRs-7r-kPS" firstAttribute="trailing" secondItem="M3K-DN-md0" secondAttribute="trailing" id="Rqw-KA-Lgc"/>
                     <constraint firstItem="cTz-5J-Z4a" firstAttribute="leading" secondItem="Qoq-1e-Qy0" secondAttribute="leading" id="Ttj-U5-xra"/>
+                    <constraint firstItem="iRs-7r-kPS" firstAttribute="top" secondItem="Qoq-1e-Qy0" secondAttribute="top" id="q7F-uB-agg"/>
                 </constraints>
             </view>
             <connections>
@@ -157,17 +206,23 @@
                 <outlet property="backgroundView" destination="cTz-5J-Z4a" id="7NY-Ya-F58"/>
                 <outlet property="checkBox" destination="EjD-NO-2Wa" id="nFv-zC-sHN"/>
                 <outlet property="coinLabel" destination="spa-wo-CtU" id="JsI-vA-FyU"/>
+                <outlet property="coinLabelTopConstraint" destination="olN-hd-gkj" id="6yB-pY-m9r"/>
                 <outlet property="dropdownView" destination="ZMu-Wu-fvl" id="bxo-wO-7xH"/>
                 <outlet property="middleViewHeight" destination="c5p-2D-EvI" id="e4X-7J-aiq"/>
                 <outlet property="nameStyleView" destination="niy-Ke-QTM" id="2GX-3a-B6B"/>
                 <outlet property="networkView" destination="9fP-pO-7gj" id="39Q-ey-rra"/>
                 <outlet property="saveButton" destination="Rkr-Jn-cpT" id="N9b-Nj-SIV"/>
+                <outlet property="topBorderView" destination="BGF-Xu-Ziy" id="BZJ-Bk-Dhh"/>
+                <outlet property="topLeftBackImageView" destination="TO3-bx-23P" id="hQl-Nf-Pxv"/>
+                <outlet property="topRightLabel" destination="jlO-CO-BtR" id="xd8-o1-C7C"/>
+                <outlet property="topWhiteView" destination="iRs-7r-kPS" id="COr-Nc-p0T"/>
                 <outlet property="walletLabelStyleView" destination="XLS-VL-bOJ" id="B3W-rw-qkw"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </viewController>
     </objects>
     <resources>
+        <image name="icon-chevron-left" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

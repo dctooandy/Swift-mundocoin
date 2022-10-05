@@ -226,7 +226,7 @@ class WithdrawViewController: BaseViewController {
     }
     func addressViewSheetHeight() -> CGFloat
     {
-        var sheetHeight = 266.0
+        var sheetHeight = 251.0
         var cellCount = 0.0
         let isOn = KeychainManager.share.getWhiteListOnOff()
         var allAddressList:[AddressBookDto] = []
