@@ -70,7 +70,15 @@ class ConfirmPopupView: PopupBottomSheet {
         messageLabel.text = message
         doneHandler = done
     }
-    
+    func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
+        let label:UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: CGFloat.greatestFiniteMagnitude))
+        label.numberOfLines = 0
+        label.lineBreakMode = NSLineBreakMode.byWordWrapping
+        label.font = font
+        label.text = text
+        label.sizeToFit()
+        return label.frame.height
+    }
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -85,7 +93,6 @@ class ConfirmPopupView: PopupBottomSheet {
         dismissButton.isHidden = true
         setupUI()
     }
-    
     
     private func setupUI() {
         
@@ -121,13 +128,7 @@ class ConfirmPopupView: PopupBottomSheet {
         case .none: break
             
         }
-        defaultContainer.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-//            make.width.equalToSuperview().multipliedBy(0.75)
-            make.left.equalToSuperview().offset(32)
-            make.right.equalToSuperview().offset(-32)
-            make.height.equalTo(containerHeight)
-        }
+  
        // title 背景漸層
 //        let titleView = GradientView()
 //        defaultContainer.addSubview(titleView)
@@ -170,6 +171,21 @@ class ConfirmPopupView: PopupBottomSheet {
             make.height.equalTo(44)
             make.bottom.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
+        }
+        let height = heightForView(text: messageLabel.text ?? "", font: messageLabel.font, width: defaultContainer.frame.width)
+        if (height + 120) > containerHeight
+        {
+            containerHeight = (messageLabel.frame.height + 200)
+        }else
+        {
+//            containerHeight = viewHeight
+        }
+        defaultContainer.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+//            make.width.equalToSuperview().multipliedBy(0.75)
+            make.left.equalToSuperview().offset(32)
+            make.right.equalToSuperview().offset(-32)
+            make.height.equalTo(containerHeight)
         }
     }
     

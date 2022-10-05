@@ -90,8 +90,7 @@ class ErrorHandler {
         } else {
             if let currentVC = UIApplication.topViewController()
             {
-                let popVC = ConfirmPopupView(viewHeight:400.0 ,
-                                             iconMode: .nonIcon(["Close".localized]),
+                let popVC = ConfirmPopupView(iconMode: .nonIcon(["Close".localized]),
                                              title: title,
                                              message: message ){ _ in }
                 popVC.start(viewController: currentVC)
