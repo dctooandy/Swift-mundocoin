@@ -254,8 +254,8 @@
             filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "349"
-            endingLineNumber = "349"
+            startingLineNumber = "350"
+            endingLineNumber = "350"
             landmarkName = "showVerifyVCWithLoginData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -270,8 +270,8 @@
             filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "showVerifyVCWithLoginData(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -286,8 +286,8 @@
             filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "386"
-            endingLineNumber = "386"
+            startingLineNumber = "387"
+            endingLineNumber = "387"
             landmarkName = "showForgetPasswordVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -318,122 +318,42 @@
             filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "500"
-            endingLineNumber = "500"
+            startingLineNumber = "501"
+            endingLineNumber = "501"
             landmarkName = "gotoSignupAction(code:email:password:phone:verificationCode:signupDto:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1168C2BD-C437-42CD-8E7F-54412D08BFA7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/AuditViewController/AuditTriggerAlertView/AuditTriggerAlertView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "bindButton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "70AD585A-253C-460F-AA39-E6B24899BD51"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/AuditViewController/AuditTriggerAlertView/AuditTriggerAlertView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "116"
-            endingLineNumber = "116"
-            landmarkName = "bindButton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0CC9F918-613F-42D6-BF85-C2E416DC2071"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/AuditViewController/AuditTriggerAlertView/AuditTriggerAlertView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
-            landmarkName = "bindButton()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "DCD7EDB5-75C0-4A3E-AA0D-DB352AA07180"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Util/CheckTokenExpired/CheckTokenExpiredService.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "checkTokenExpired(complete:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "57B8FEC3-6C48-4A16-A1D8-04920A17553C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/ApprovalViews/MainView/ApprovalMainViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
-            landmarkName = "bindViewModel()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "67D5DE04-47CE-48FD-971C-A4B5087FEC62"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/ApprovalViews/MainView/ApprovalMainViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "0484D119-1F1B-43F2-B2A6-24D3C383182A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/GuidePage/LaunchReciprocalViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "checkForDirectAndWait(immediately:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 76298f19de4d057a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne.RegistrationDto&gt;) -&gt; () in cryptoVerOne.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne.SignupPostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "501"
+                  endingLineNumber = "501"
+                  offsetFromSymbolStart = "633">
+               </Location>
+               <Location
+                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 76298f19de4d057a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne.RegistrationDto&gt;) -&gt; () in cryptoVerOne.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne.SignupPostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "501"
+                  endingLineNumber = "501"
+                  offsetFromSymbolStart = "667">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
