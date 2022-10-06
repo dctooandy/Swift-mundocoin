@@ -26,6 +26,7 @@ class KeychainManager {
         case auditAccList = "audit_acc_list"
         case auditRememberMeStatus = "audit_remember_me_status"
         case registrationMode = "registration_Mode"
+        case whiteListModeEnable = "whiteListMode_Enable"
     }
     
     static let share = KeychainManager()
@@ -342,6 +343,26 @@ class KeychainManager {
     }
     func getRegistrationMode() -> Bool {
         if let modeValue = getString(from: .registrationMode)
+        {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+            return false
+#else
+            return (modeValue == "true" ? true : false)
+#endif
+        }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        return false
+#else
+        return false
+#endif
+    }
+    // 設定是否出現白名單功能
+    func setWhiteListModeEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .whiteListModeEnable)
+        return success
+    }
+    func getWhiteListModeEnable() -> Bool {
+        if let modeValue = getString(from: .whiteListModeEnable)
         {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             return false

@@ -28,17 +28,21 @@ class AddressBookListDto :Codable {
     static private let subject = PublishSubject<AddressBookListDto?>()
     static func update(done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.addressBookServer.queryAddressBooks().subscribeSuccess({ (addressData) in
-            share = addressData
-            if let addressBookList = addressData?.content
-            {
-                if KeychainManager.share.saveAddressBookList(addressBookList) == true
+        // 1006 白名單功能開關
+        if KeychainManager.share.getRegistrationMode() == true
+        {        
+            Beans.addressBookServer.queryAddressBooks().subscribeSuccess({ (addressData) in
+                share = addressData
+                if let addressBookList = addressData?.content
                 {
-                    done()
-                    subject.onNext(())
+                    if KeychainManager.share.saveAddressBookList(addressBookList) == true
+                    {
+                        done()
+                        subject.onNext(())
+                    }
                 }
-            }
-        }).disposed(by: disposeBag)
+            }).disposed(by: disposeBag)
+        }
         return subject.asObservable()
     }
     static func addNewAddress(address:String ,

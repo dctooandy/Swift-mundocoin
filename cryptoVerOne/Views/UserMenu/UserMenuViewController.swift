@@ -165,10 +165,16 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // MC524 打開白名單
+        // 1006 白名單功能開關
+        if KeychainManager.share.getRegistrationMode() == true
+        {
+            // MC524 打開白名單
+            return (section == 0 ? 3 : 6)// 打開白名單
+        }else
+        {
+            return (section == 0 ? 2 : 6)// 隱藏地址簿
+        }
 //        return (section == 0 ? 4 : 6)
-        return (section == 0 ? 3 : 6)// 打開白名單
-//        return (section == 0 ? 2 : 6)// 隱藏地址簿
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -193,11 +199,18 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                     cell.cellData = .currency
                 case 1:
                     cell.cellData = .security
-                // MC524 打開白名單
 //                case 2:
 //                    cell.cellData = .pushNotifications
                 case 2:
-                    cell.cellData = .addressBook
+                    // 1006 白名單功能開關
+                    if KeychainManager.share.getRegistrationMode() == true
+                    {
+                        // MC524 打開白名單
+                        cell.cellData = .addressBook
+                    }else
+                    {
+                        break
+                    }
                 default:
                     break
                 }
@@ -246,11 +259,18 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                let pushVC = PushNotiViewController.loadNib()
 //                self.navigationController?.pushViewController(pushVC, animated: true)
                 //pushNotifications
-                // MC524 打開白名單
             case 2:
-                Log.i("addressBook")
-                let addressBookVC = AddressBookViewController.loadNib()
-                self.navigationController?.pushViewController(addressBookVC, animated: true)
+                // 1006 白名單功能開關
+                if KeychainManager.share.getRegistrationMode() == true
+                {
+                    // MC524 打開白名單
+                    Log.i("addressBook")
+                    let addressBookVC = AddressBookViewController.loadNib()
+                    self.navigationController?.pushViewController(addressBookVC, animated: true)
+                }else
+                {
+                    break
+                }
                 //addressBook
             default:
                 break

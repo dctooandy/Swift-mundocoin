@@ -127,6 +127,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func initSingleton(){
         // 0920 註冊取消驗證碼輸入
         _ = KeychainManager.share.setRegistrationMode(false)
+        // 1006 白名單功能開關
+        _ = KeychainManager.share.setWhiteListModeEnable(false)
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
         if isLaunchBefore() == false {
