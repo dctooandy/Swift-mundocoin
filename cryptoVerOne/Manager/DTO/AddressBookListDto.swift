@@ -29,8 +29,8 @@ class AddressBookListDto :Codable {
     static func update(done: @escaping () -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
         // 1006 白名單功能開關
-        if KeychainManager.share.getRegistrationMode() == true
-        {        
+        if KeychainManager.share.getWhiteListModeEnable() == true
+        {
             Beans.addressBookServer.queryAddressBooks().subscribeSuccess({ (addressData) in
                 share = addressData
                 if let addressBookList = addressData?.content

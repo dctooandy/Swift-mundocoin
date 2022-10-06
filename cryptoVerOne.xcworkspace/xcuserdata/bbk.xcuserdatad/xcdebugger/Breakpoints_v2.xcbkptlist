@@ -324,12 +324,12 @@
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 76298f19de4d057a"
+                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 1724bfbdefd21ee1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne.RegistrationDto&gt;) -&gt; () in cryptoVerOne.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne.SignupPostDto) -&gt; ()"
-                  moduleName = "cryptoVerOne"
+                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne_dev.RegistrationDto&gt;) -&gt; () in cryptoVerOne_dev.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne_dev.SignupPostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -339,12 +339,12 @@
                   offsetFromSymbolStart = "633">
                </Location>
                <Location
-                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 76298f19de4d057a"
+                  uuid = "A2D2CB04-EFB2-482C-94C1-6D7E5ABCCE3D - 1724bfbdefd21ee1"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne.RegistrationDto&gt;) -&gt; () in cryptoVerOne.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne.SignupPostDto) -&gt; ()"
-                  moduleName = "cryptoVerOne"
+                  symbolName = "closure #1 (Swift.Optional&lt;cryptoVerOne_dev.RegistrationDto&gt;) -&gt; () in cryptoVerOne_dev.LoginSignupViewController.gotoSignupAction(code: Swift.String, email: Swift.String, password: Swift.String, phone: Swift.String, verificationCode: Swift.String, signupDto: cryptoVerOne_dev.SignupPostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -354,6 +354,22 @@
                   offsetFromSymbolStart = "667">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87416F21-8628-43BD-8631-564763F5A69F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "301"
+            endingLineNumber = "301"
+            landmarkName = "verifySuccessForCreateAddressBook(code:withMode:done:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

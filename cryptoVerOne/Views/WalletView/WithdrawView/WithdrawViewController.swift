@@ -199,19 +199,7 @@ class WithdrawViewController: BaseViewController {
         }.disposed(by: dpg)
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
             Log.i("開地址簿")
-            let addressBottomSheet = AddressBottomSheet()
-            addressBottomSheet.rxCleanDataClick().subscribeSuccess { [self] _ in
-                clearAllData()
-            }.disposed(by: dpg)
-            addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
-//                withdrawToView.textView.text = dataDto.address
-                withdrawToView.textField.placeholder = ""
-                withdrawToView.textView.text = dataDto.address
-                changeWithdrawInputViewHeight(constant: 72.0)
-            }.disposed(by: dpg)
-            DispatchQueue.main.async { [self] in
-                addressBottomSheet.start(viewController: self, height: addressViewSheetHeight())
-            }
+            showAddressBottomSheet()
         }.disposed(by: dpg)
         continueButton.rx.tap.subscribeSuccess { [self](_) in
             Log.i("開confirm")
@@ -223,6 +211,33 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
             changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
+    }
+    func showAddressBottomSheet()
+    {
+        let addressBottomSheet = AddressBottomSheet()
+        addressBottomSheet.rxCleanDataClick().subscribeSuccess { [self] _ in
+            clearAllData()
+        }.disposed(by: dpg)
+        addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
+//                withdrawToView.textView.text = dataDto.address
+            withdrawToView.textField.placeholder = ""
+            withdrawToView.textView.text = dataDto.address
+            changeWithdrawInputViewHeight(constant: 72.0)
+        }.disposed(by: dpg)
+        addressBottomSheet.rxAddNewAddressClick()
+            .subscribeSuccess { [self] _ in
+                let addVC = AddNewAddressViewController.loadNib()
+                addVC.rxDismissClick().subscribeSuccess {[self] _ in
+                    showAddressBottomSheet()
+                }.disposed(by: dpg)
+                addVC.modalPresentationStyle = .popover
+                self.present(addVC, animated: true)
+            }.disposed(by: dpg)
+       
+
+        DispatchQueue.main.async { [self] in
+            addressBottomSheet.start(viewController: self, height: addressViewSheetHeight())
+        }
     }
     func addressViewSheetHeight() -> CGFloat
     {

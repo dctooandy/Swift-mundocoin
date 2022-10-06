@@ -47,7 +47,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F1X-5y-7Nj">
-                    <rect key="frame" x="32" y="127" width="350" height="88.5"/>
+                    <rect key="frame" x="32" y="113" width="350" height="88.5"/>
                     <string key="text">When this function is turned on, your account will only be able to withdraw to whitelisted withdrawal addresses. When this function is turned off, your account is able to withdraw to any withdrawal addresses.</string>
                     <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                     <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +145,7 @@
                 <constraint firstItem="CBK-Hb-ynT" firstAttribute="centerX" secondItem="Kej-UN-D1S" secondAttribute="centerX" id="ttz-H8-3wt"/>
                 <constraint firstAttribute="bottom" secondItem="4Hy-GR-oPc" secondAttribute="bottom" constant="54" id="uWB-3v-s7I"/>
                 <constraint firstItem="F1X-5y-7Nj" firstAttribute="leading" secondItem="s7S-X3-G3G" secondAttribute="leading" constant="32" id="uam-SV-NQz"/>
-                <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="30" id="xiR-fu-UqW"/>
+                <constraint firstItem="F1X-5y-7Nj" firstAttribute="top" secondItem="5Ia-o1-WlF" secondAttribute="bottom" constant="16" id="xiR-fu-UqW"/>
             </constraints>
             <connections>
                 <outlet property="backProgressView" destination="mjz-li-FWV" id="G27-9n-bUX"/>

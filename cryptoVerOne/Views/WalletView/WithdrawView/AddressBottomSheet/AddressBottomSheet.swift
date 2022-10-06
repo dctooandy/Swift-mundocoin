@@ -13,6 +13,7 @@ class AddressBottomSheet: BaseBottomSheet {
     // MARK:業務設定
     private let onCellSecondClick = PublishSubject<AddressBookDto>()
     private let onCleanDataClick = PublishSubject<Any>()
+    private let onAddNewAddressClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:UI 設定
@@ -59,11 +60,14 @@ class AddressBottomSheet: BaseBottomSheet {
         }.disposed(by: dpg)
         addressView.rxAddNewAddressClick().subscribeSuccess { [self] _ in
             Log.i("增加錢包地址")
-            let addVC = AddNewAddressViewController.loadNib()
-            addVC.rxDismissClick().subscribeSuccess { _ in
-                self.addressView.setupData()
-            }.disposed(by: dpg)
-            self.present(addVC, animated: true)
+            dismissToTopVC(animation: false)
+            onAddNewAddressClick.onNext(())
+//            let addVC = AddNewAddressViewController.loadNib()
+//            addVC.rxDismissClick().subscribeSuccess { _ in
+//                self.addressView.setupData()
+//            }.disposed(by: dpg)
+//            addVC.modalPresentationStyle = .popover
+//            self.present(addVC, animated: true)
 //            self.navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
         addressView.rxAddressBookClick().subscribeSuccess { [self] _ in
@@ -79,6 +83,10 @@ class AddressBottomSheet: BaseBottomSheet {
     func rxCleanDataClick() -> Observable<Any>
     {
         return onCleanDataClick.asObserver()
+    }
+    func rxAddNewAddressClick() -> Observable<Any>
+    {
+        return onAddNewAddressClick.asObserver()
     }
 }
 // MARK: -

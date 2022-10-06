@@ -521,7 +521,7 @@ class InputStyleView: UIView {
             if inputViewMode == .withdrawToAddress
             {
                 // 1006 白名單功能開關
-                if KeychainManager.share.getRegistrationMode() == true
+                if KeychainManager.share.getWhiteListModeEnable() == true
                 {
                     // MC524 打開白名單
                     addSubview(addressBookImageView)
@@ -573,7 +573,7 @@ class InputStyleView: UIView {
         {
             addSubview(normalTextLabel)
             // 1006 白名單功能開關
-            if KeychainManager.share.getRegistrationMode() == true
+            if KeychainManager.share.getWhiteListModeEnable() == true
             {
                 // MC524 打開白名單
                 addSubview(addAddressImageView)
@@ -590,7 +590,7 @@ class InputStyleView: UIView {
                 make.size.equalTo(24)
             }
             // 1006 白名單功能開關
-            if KeychainManager.share.getRegistrationMode() == true
+            if KeychainManager.share.getWhiteListModeEnable() == true
             {
                 // MC524 打開白名單
                 addAddressImageView.snp.makeConstraints { (make) in

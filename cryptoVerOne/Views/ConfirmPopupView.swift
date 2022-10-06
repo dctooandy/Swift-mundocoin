@@ -195,8 +195,8 @@ class ConfirmPopupView: PopupBottomSheet {
         usedBioVerify(false)
     }
     
-    override func dismissToTopVC() {
-        super.dismissToTopVC()
+    override func dismissToTopVC(animation:Bool = true) {
+        super.dismissToTopVC(animation: animation)
         print("top vc dismiss")
         usedBioVerify(false)
     }

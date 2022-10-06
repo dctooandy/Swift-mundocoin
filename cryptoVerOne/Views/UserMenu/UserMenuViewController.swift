@@ -166,7 +166,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // 1006 白名單功能開關
-        if KeychainManager.share.getRegistrationMode() == true
+        if KeychainManager.share.getWhiteListModeEnable() == true
         {
             // MC524 打開白名單
             return (section == 0 ? 3 : 6)// 打開白名單
@@ -203,7 +203,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                    cell.cellData = .pushNotifications
                 case 2:
                     // 1006 白名單功能開關
-                    if KeychainManager.share.getRegistrationMode() == true
+                    if KeychainManager.share.getWhiteListModeEnable() == true
                     {
                         // MC524 打開白名單
                         cell.cellData = .addressBook
@@ -261,7 +261,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 //pushNotifications
             case 2:
                 // 1006 白名單功能開關
-                if KeychainManager.share.getRegistrationMode() == true
+                if KeychainManager.share.getWhiteListModeEnable() == true
                 {
                     // MC524 打開白名單
                     Log.i("addressBook")

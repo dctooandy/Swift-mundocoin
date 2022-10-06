@@ -80,8 +80,8 @@ class AddNewAddressViewController: BaseViewController {
         {
             coinLabelTopConstraint.constant = 32
             topWhiteView.isHidden = false
-            topBorderView.layer.borderWidth = 1
-            topBorderView.layer.borderColor = UIColor(rgb: 0xF1F1F1).cgColor
+//            topBorderView.layer.borderWidth = 1
+//            topBorderView.layer.borderColor = UIColor(rgb: 0xF1F1F1).cgColor
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -168,7 +168,7 @@ class AddNewAddressViewController: BaseViewController {
         dropdownView.layer.masksToBounds = true
         dropdownView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         dropdownView?.layer.borderWidth = 1
-        dropdownView.topLabel.font = Fonts.PlusJakartaSansMedium(14)
+        dropdownView.topLabel.font = Fonts.PlusJakartaSansBold(16)
         addressStyleView.setMode(mode: .address)
         networkView.setData(type: .networkMethod)
         nameStyleView.setMode(mode: .customLabel("Name"))
@@ -439,11 +439,15 @@ class AddNewAddressViewController: BaseViewController {
     }
     func bindTopView()
     {
-        topLeftBackImageView.rx.click.subscribeSuccess { _ in
-            self.dismiss(animated: true)
+        topLeftBackImageView.rx.click.subscribeSuccess { [self] _ in
+            dismiss(animated: true){ [self] in
+                onDismissClick.onNext(())
+            }
         }.disposed(by: dpg)
-        topRightLabel.rx.click.subscribeSuccess { _ in
-            self.dismiss(animated: true)
+        topRightLabel.rx.click.subscribeSuccess { [self] _ in
+            dismiss(animated: true){ [self] in
+                onDismissClick.onNext(())
+            }
         }.disposed(by: dpg)
     }
     func setupAddressStyleView()

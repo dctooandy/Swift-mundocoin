@@ -49,14 +49,24 @@
                                         <color key="textColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="G3C-q7-QmT">
+                                        <rect key="frame" x="0.0" y="49" width="414" height="1"/>
+                                        <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="8iW-1A-IlX"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="G3C-q7-QmT" firstAttribute="leading" secondItem="BGF-Xu-Ziy" secondAttribute="leading" id="EgD-PQ-Huj"/>
                                     <constraint firstAttribute="height" constant="50" id="TLu-i0-yRU"/>
                                     <constraint firstItem="2wp-G8-KBR" firstAttribute="centerX" secondItem="BGF-Xu-Ziy" secondAttribute="centerX" id="UTz-7Z-djm"/>
+                                    <constraint firstAttribute="trailing" secondItem="G3C-q7-QmT" secondAttribute="trailing" id="XsR-Du-o3L"/>
                                     <constraint firstAttribute="trailing" secondItem="jlO-CO-BtR" secondAttribute="trailing" constant="16" id="bT3-F5-LNF"/>
                                     <constraint firstAttribute="bottom" secondItem="jlO-CO-BtR" secondAttribute="bottom" constant="14" id="flD-Hi-UHq"/>
                                     <constraint firstItem="TO3-bx-23P" firstAttribute="leading" secondItem="BGF-Xu-Ziy" secondAttribute="leading" constant="12" id="ihb-gS-EMZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="G3C-q7-QmT" secondAttribute="bottom" id="mj3-tP-BDi"/>
                                     <constraint firstAttribute="bottom" secondItem="2wp-G8-KBR" secondAttribute="bottom" constant="14" id="s1X-fm-tPW"/>
                                     <constraint firstAttribute="bottom" secondItem="TO3-bx-23P" secondAttribute="bottom" constant="12" id="yYQ-vI-SNg"/>
                                 </constraints>
