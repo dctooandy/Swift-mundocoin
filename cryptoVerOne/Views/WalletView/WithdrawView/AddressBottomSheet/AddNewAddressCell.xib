@@ -24,26 +24,42 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzq-FC-3gg">
                         <rect key="frame" x="24" y="14" width="366" height="64"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLN-jW-1xL">
-                                <rect key="frame" x="131" y="22" width="135" height="20.5"/>
-                                <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
-                                <color key="textColor" red="0.16862745100000001" green="0.21176470589999999" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-math-plus" translatesAutoresizingMaskIntoConstraints="NO" id="7NK-HB-6X9">
-                                <rect key="frame" x="100" y="20" width="24" height="24"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z1R-4m-6mG">
+                                <rect key="frame" x="100" y="0.0" width="166" height="64"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add new address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLN-jW-1xL">
+                                        <rect key="frame" x="31" y="22" width="135" height="20.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="135" id="mdv-13-7hU"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
+                                        <color key="textColor" red="0.16862745100000001" green="0.21176470589999999" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-math-plus" translatesAutoresizingMaskIntoConstraints="NO" id="7NK-HB-6X9">
+                                        <rect key="frame" x="0.0" y="20" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="3R7-tX-RlR"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="24" id="I8k-0v-E2J"/>
+                                            <constraint firstAttribute="height" constant="24" id="M2h-jd-Peg"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="24" id="3R7-tX-RlR"/>
-                                    <constraint firstAttribute="height" constant="24" id="M2h-jd-Peg"/>
+                                    <constraint firstItem="xLN-jW-1xL" firstAttribute="centerY" secondItem="z1R-4m-6mG" secondAttribute="centerY" id="539-En-T5f"/>
+                                    <constraint firstItem="7NK-HB-6X9" firstAttribute="leading" secondItem="z1R-4m-6mG" secondAttribute="leading" id="61V-XM-SrC"/>
+                                    <constraint firstAttribute="trailing" secondItem="xLN-jW-1xL" secondAttribute="trailing" id="7OL-8F-cCZ"/>
+                                    <constraint firstItem="7NK-HB-6X9" firstAttribute="centerY" secondItem="z1R-4m-6mG" secondAttribute="centerY" id="JmT-Zj-47j"/>
+                                    <constraint firstItem="xLN-jW-1xL" firstAttribute="leading" secondItem="7NK-HB-6X9" secondAttribute="trailing" constant="7" id="plw-3X-smB"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.95686274509803915" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xLN-jW-1xL" firstAttribute="centerY" secondItem="rzq-FC-3gg" secondAttribute="centerY" id="39q-IP-JR5"/>
-                            <constraint firstAttribute="trailing" secondItem="xLN-jW-1xL" secondAttribute="trailing" constant="100" id="847-1z-9uI"/>
-                            <constraint firstItem="7NK-HB-6X9" firstAttribute="leading" secondItem="rzq-FC-3gg" secondAttribute="leading" constant="100" id="W9F-kf-dhU"/>
-                            <constraint firstItem="7NK-HB-6X9" firstAttribute="centerY" secondItem="rzq-FC-3gg" secondAttribute="centerY" id="xF8-WE-uIi"/>
+                            <constraint firstItem="z1R-4m-6mG" firstAttribute="centerX" secondItem="rzq-FC-3gg" secondAttribute="centerX" id="Ujv-R1-BFZ"/>
+                            <constraint firstItem="z1R-4m-6mG" firstAttribute="top" secondItem="rzq-FC-3gg" secondAttribute="top" id="doP-eU-t5B"/>
+                            <constraint firstAttribute="bottom" secondItem="z1R-4m-6mG" secondAttribute="bottom" id="sxQ-cD-AYm"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
