@@ -134,7 +134,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     }
     func bindInputAction()
     {
-        emailVerifyInputView.rxSendVerifyAction().subscribeSuccess { [weak self](_) in
+        emailVerifyInputView.rxSendVerifyAction().subscribeSuccess { (_) in
 //            self?.verifyResentPressed()
         }.disposed(by: dpg)
     }

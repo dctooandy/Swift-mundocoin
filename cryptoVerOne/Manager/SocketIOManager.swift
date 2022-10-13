@@ -113,7 +113,7 @@ class SocketIOManager: NSObject {
     }
     func socketOnEvents()
     {
-        socket.on("notification") { [self] resultData, ack in
+        socket.on("notification") { resultData, ack in
 //            onTriggerLocalNotification(subtitle: "notification", body: resultData)
         }
         socket.on("joinResult") { resultData, ack in

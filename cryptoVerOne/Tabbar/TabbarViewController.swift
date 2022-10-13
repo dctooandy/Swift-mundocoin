@@ -112,7 +112,7 @@ class TabbarViewController:BaseViewController {
     
     private func bindFanmenu() {
         tabbar.rxMenuClick.subscribeSuccess { (menuType) in
-            guard let topVC = UIApplication.topViewController() else { return }
+            guard let _ = UIApplication.topViewController() else { return }
             if menuType == .service {
 //                LiveChatService.share.betLeadServicePresent()
                 return

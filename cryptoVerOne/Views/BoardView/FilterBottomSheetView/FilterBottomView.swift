@@ -249,7 +249,7 @@ class FilterBottomView: UIView {
         // start 可以選擇的最早日期
         let startDateValue = Date().addDay(day: -90)
         let endDateValue = Date()
-        let startMinDate = dateFormatter.string(from: startDateValue)
+//        let startMinDate = dateFormatter.string(from: startDateValue)
 //        let fromStartDateTime = dateFormatter.date(from: startMinDate)
         startDatePicker.minimumDate = startDateValue
         startDatePicker.maximumDate = endDateValue

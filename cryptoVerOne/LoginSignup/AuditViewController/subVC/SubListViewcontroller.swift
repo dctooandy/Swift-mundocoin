@@ -245,7 +245,7 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
                 let size = scrollView.contentSize
                 let inset = scrollView.contentInset
                 let y:CGFloat = offset.y + bouns.size.height - inset.bottom
-                let h:CGFloat = size.height
+//                let h:CGFloat = size.height
                 let reloadDistence = 50.0
                 let newH = size.height + CGFloat(reloadDistence) + Views.tabBarHeight
                 if y > newH {

@@ -395,9 +395,10 @@ class VerifyViewController: BaseViewController {
                                    verificationCode:String)
     {
         Beans.loginServer.customerForgotPasswordVerify(accountString: idString.localizedLowercase, verificationCode: verificationCode).subscribe { [self] dto in
-            Log.i("成功回傳 \(dto)")
-            if let codeString = dto?.code
+            if let currentData = dto
             {
+                Log.i("成功回傳 \(currentData)")
+                let codeString = currentData.code
                 directToResetPWVC(codeString)                
             }
         } onError: { [self] error in

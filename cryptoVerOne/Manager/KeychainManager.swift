@@ -133,12 +133,16 @@ class KeychainManager {
     }
     
     func saveAccList(_ list: [String]) {
-        let data = NSKeyedArchiver.archivedData(withRootObject: list)
+        do {
+            let data = try NSKeyedArchiver.archivedData(withRootObject: list, requiringSecureCoding: false)
 #if Approval_PRO || Approval_DEV || Approval_STAGE
-        setData(data, at: .auditAccList)
+            setData(data, at: .auditAccList)
 #else
-        setData(data, at: .accList)
+            setData(data, at: .accList)
 #endif
+        }catch{
+            
+        }
     }
     
     private func getAccList() -> [String] {
@@ -147,8 +151,14 @@ class KeychainManager {
 #else
         guard let data = getData(from: .accList) else { return [] }
 #endif
-        guard let arr = NSKeyedUnarchiver.unarchiveObject(with: data) as? [String] else { return [] }
-        return arr
+        do {
+            guard let arr = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [String] else { return [] }
+            return arr
+        }
+        catch{
+            
+        }
+        return []
     }
     
     func accountExist(_ acc: String) -> Bool {

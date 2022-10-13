@@ -199,7 +199,7 @@ extension BaseViewController: UINavigationControllerDelegate
     public func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         let baseTransition = BaseTransition()
-        if let newNav = navigationController as? MDNavigationController
+        if let _ = navigationController as? MDNavigationController
         {
             if ((toVC as? UserMenuViewController) != nil) , ((fromVC as? WalletViewController) != nil)
             {

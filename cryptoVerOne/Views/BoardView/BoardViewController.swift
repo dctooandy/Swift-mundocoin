@@ -152,9 +152,8 @@ class BoardViewController: BaseViewController {
         pageViewcontroller?.selectedTextColor = .white
         pageViewcontroller?.menuHorizontalAlignment = .center
         pageViewcontroller?.menuItemSpacing = 0
-        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 44), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
-
-        let bgImage = UIColor(patternImage: image!)
+//        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 44), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
+//        let bgImage = UIColor(patternImage: image!)
         pageViewcontroller?.menuBackgroundColor = Themes.grayF4F7FE
         pageViewcontroller?.borderColor = .clear
      

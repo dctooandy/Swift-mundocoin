@@ -619,9 +619,9 @@ extension LoginSignupViewController {
             KeychainManager.share.setLastAccount(dto.account)
             BioVerifyManager.share.applyMemberInBIOList(dto.account)
         }
-        let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-        let showBioView = !didAskBioLogin
         // 暫時 關掉BioView FaceID
+//        let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+//        let showBioView = !didAskBioLogin
         handleLoginSuccess(showLoadingView: false,
                            showBioView: false,
                            route: .wallet)
@@ -936,7 +936,7 @@ extension LoginSignupViewController {
             return
         }
         
-        let lastUpdateDate = UserDefaults.Verification.string(forKey: .loginVideoUpdateDate)
+//        let lastUpdateDate = UserDefaults.Verification.string(forKey: .loginVideoUpdateDate)
         //        Beans.bannerServer.loginVideo().subscribe(onSuccess: { [weak self] (dto) in
         //            guard let urlString = dto?.bannerVideoMobile, !urlString.isEmpty, let updaateDate = dto?.bannerUpdatedAt else {
         //                    self?.fetchLoginVideofromLocal()

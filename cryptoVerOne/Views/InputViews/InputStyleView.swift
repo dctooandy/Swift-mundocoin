@@ -835,7 +835,7 @@ class InputStyleView: UIView {
     func emailSendVerify()
     {
         Log.v("重發驗證")
-        if self.timer == nil, let idString = textField.text
+        if self.timer == nil, let _ = textField.text
         {
             verifyResentLabel.isUserInteractionEnabled = false
             setupTimer()

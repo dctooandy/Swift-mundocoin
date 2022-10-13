@@ -167,7 +167,7 @@ class AccountInputView: UIView {
                 // 0920 註冊取消驗證碼輸入
                 let isRegistrationValid = registrationInputView.textField.rx.text
                     .map { [weak self] (str) -> Bool in
-                        guard let strongSelf = self, let acc = str else { return false }
+                        guard let _ = self, let acc = str else { return false }
                         return RegexHelper.match(pattern: .otp, input: acc)
                     }
                 Observable.combineLatest(isAccountValid, isPasswordValid , isRegistrationValid)

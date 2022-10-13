@@ -278,7 +278,7 @@ class ResetPasswordViewController: BaseViewController {
                         switch errorData {
                         case .errorDto(let dto):
                             let status = dto.httpStatus ?? ""
-                            let reason = dto.reason
+//                            let reason = dto.reason
                             if status == "400"
                             {
                                 showAlert()
