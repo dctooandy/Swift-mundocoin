@@ -47,7 +47,7 @@ class SubListTableViewCell: UITableViewCell {
     func setData(data : WalletWithdrawDto ,showMode:AuditShowMode)
     {
         self.showMode = showMode
-        if let transDto = data.transaction , let userDto = data.issuer ,let chainDto = data.chain?.first
+        if let transDto = data.transaction , let userDto = data.issuer ,let _ = data.chain?.first
         {
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
             topTitleLabel.text = "Withdraw Request"

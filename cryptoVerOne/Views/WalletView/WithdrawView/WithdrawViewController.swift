@@ -354,7 +354,7 @@ class WithdrawViewController: BaseViewController {
 //        if let textString = withdrawToView.textField.text,
         if let textString = withdrawToView.textView.text,
             let amountText = amountInputView.amountTextView.text,
-           let fee = feeAmountLabel.text
+           let _ = feeAmountLabel.text
         {
             LoadingViewController.show()
             var fAddressString = ""

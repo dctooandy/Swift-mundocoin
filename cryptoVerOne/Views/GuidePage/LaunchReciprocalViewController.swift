@@ -76,7 +76,7 @@ class LaunchReciprocalViewController: BaseViewController {
     }
     
     func checkForDirectAndWait(immediately:Bool = false) {
-        if let mainWindow = (UIApplication.shared.delegate as? AppDelegate)?.window {
+        if let _ = (UIApplication.shared.delegate as? AppDelegate)?.window {
             if showUpdateAlert {
                 appUpdateAlert()
                 return

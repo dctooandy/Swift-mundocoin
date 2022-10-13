@@ -72,8 +72,6 @@ enum cellData {
             return "Registration info".localized
         case .memberSince:
             return "Member since".localized
-        default :
-            return ""
         }
     }
     var subTitleLabel:String? {
@@ -114,8 +112,6 @@ enum cellData {
              .systemNotifications,
              .transactionNotifications,
              .memberSince:
-            return ""
-        default :
             return ""
         }
     }

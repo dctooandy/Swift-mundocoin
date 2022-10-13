@@ -250,8 +250,8 @@ class AuditLoginViewController: BaseViewController {
                                                         pwd: password)
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)
                     KeychainManager.share.setToken(data.token)
-                    let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
                     // 暫時 關掉BioView FaceID
+//                    let didAskBioLogin = BioVerifyManager.share.didAskAuditBioLogin()
                     showAuditBioConfirmView(didShow: true)
 //                    showAuditBioConfirmView(didShow: didAskBioLogin)
                 }

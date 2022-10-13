@@ -250,7 +250,7 @@ class FilterBottomView: UIView {
         let startDateValue = Date().addDay(day: -90)
         let endDateValue = Date()
         let startMinDate = dateFormatter.string(from: startDateValue)
-        let fromStartDateTime = dateFormatter.date(from: startMinDate)
+//        let fromStartDateTime = dateFormatter.date(from: startMinDate)
         startDatePicker.minimumDate = startDateValue
         startDatePicker.maximumDate = endDateValue
         endDatePicker.maximumDate = endDateValue

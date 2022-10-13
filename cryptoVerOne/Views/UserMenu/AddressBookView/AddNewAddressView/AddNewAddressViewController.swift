@@ -227,7 +227,7 @@ class AddNewAddressViewController: BaseViewController {
         saveButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("點到Save")
             isToSecurityVC = true
-            let address = createAddressDto()
+//            let address = createAddressDto()
             twoFAVC = SecurityVerificationViewController.loadNib()
             // 暫時改為 onlyEmail
 //            twoFAVC.securityViewMode = .defaultMode

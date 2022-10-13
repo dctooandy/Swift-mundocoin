@@ -524,8 +524,8 @@ class ForgetPasswordViewController: BaseViewController {
     // MARK: - API
     func postNewPwd() {
 //        LoadingViewController.show()
-        let p1 = inputTf.text!
-        let p2 = inputTf2.text!
+//        let p1 = inputTf.text!
+//        let p2 = inputTf2.text!
 //        Beans.memberServer
 //            .postForgetPassChange(acc: account, otpCert: otpCert, p1: p1, p2: p2)
 //            .subscribeSuccess { [weak self] (dto) in
@@ -537,7 +537,7 @@ class ForgetPasswordViewController: BaseViewController {
     
     func postOtp() {
 //        LoadingViewController.show()
-        let otp = inputTf.text!
+//        let otp = inputTf.text!
 //        Beans.memberServer
 //            .postForgetPassCert(acc: account, otp: otp)
 //            .subscribeSuccess { [weak self] (dto) in
