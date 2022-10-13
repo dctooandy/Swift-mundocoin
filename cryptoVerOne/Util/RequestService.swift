@@ -114,15 +114,15 @@ extension RequestService
 
         
         return Single<T>.create { observer in
-            _ = self.sessionManager
+            self.sessionManager
                 .uploadResponseCustomModel(
                     path:path,T.self,
                     imgData:imgData,
                     parameters: parameters ,
                     onData: { (result:T) in observer(.success(result))
-            }, onError: { (error:ApiServiceError) in
-                observer(.error(error))
-            })
+                    }, onError: { (error:ApiServiceError) in
+                        observer(.error(error))
+                    })
             return Disposables.create { () }
         }
     }

@@ -84,7 +84,7 @@ class NotiViewController: BaseViewController {
     func bindButton()
     {
         deleteButton.rx.tap
-            .subscribeSuccess { [weak self] in
+            .subscribeSuccess { _ in
                 Log.v("點擊刪除")
             }.disposed(by: dpg)
     }

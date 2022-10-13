@@ -24,7 +24,7 @@ extension SessionManager
         guard let url = path else {
             Log.errorAndCrash(ApiServiceError.unknownError(0,"","url 解析錯誤"))
         }
-        _ = self.upload(multipartFormData: { (multipartFormData) in
+        self.upload(multipartFormData: { (multipartFormData) in
             multipartFormData.append(imgData!,
                                      withName: "file_name",
                                      fileName: "\(self.randomString(length: 5)).jpeg",

@@ -44,7 +44,7 @@
                             <constraint firstAttribute="height" constant="40" id="hMB-YP-1bo"/>
                         </constraints>
                     </imageView>
-                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MundoCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lfr-IG-yza">
+                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MundoCoin" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="lfr-IG-yza">
                         <rect key="frame" x="185.66666666666666" y="644" width="90.999999999999972" height="31"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -85,7 +85,7 @@
     </objects>
     <resources>
         <image name="App_Launcher" width="1242" height="2688"/>
-        <image name="icon-usdt" width="24" height="24"/>
+        <image name="icon-usdt" width="26" height="26"/>
         <image name="mundoLogo" width="37" height="37"/>
     </resources>
 </document>

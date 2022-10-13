@@ -34,8 +34,12 @@ enum JSONValue: Codable {
     }
 
     public func encode(to encoder: Encoder) throws {
-        var container = try encoder.container(keyedBy: EncodedKeys.self)
-        try container.encode("", forKey: .id)
+        do {
+            var container = encoder.container(keyedBy: EncodedKeys.self)
+            try container.encode("", forKey: .id)
+        }catch{
+            
+        }
     }
     
     enum EncodedKeys: String, CodingKey {

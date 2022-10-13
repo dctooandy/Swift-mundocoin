@@ -120,7 +120,7 @@ class TwoFactorAuthViewController: BaseViewController {
         let isTwoFACodeValid = twoFAView.textField.rx.text
 //        let isAccountValid = accountTextField.rx.text
             .map { [weak self] (str) -> Bool in
-                guard let strongSelf = self, let acc = str else { return false  }
+                guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .otp, input: acc)
         }
         isTwoFACodeValid.skip(1).bind(to: twoFAView.invalidLabel.rx.isHidden).disposed(by: dpg)

@@ -26,12 +26,12 @@ class UserMenuViewModel: BaseViewModel {
     
     func fetch()
     {
-        Beans.loginServer.customerLoginHistory().subscribe { [self](walletDto) in
+        Beans.loginServer.customerLoginHistory().subscribe { (walletDto) in
             _ = LoadingViewController.dismiss()
-            if let data = walletDto
-            {
-                
-            }
+//            if let data = walletDto
+//            {
+//                
+//            }
         } onError: { (error) in
             ErrorHandler.show(error: error)
         }.disposed(by: disposeBag)

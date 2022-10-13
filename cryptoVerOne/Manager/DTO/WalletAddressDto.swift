@@ -37,7 +37,7 @@ struct WalletAddressDto :Codable {
             _ = LoadingViewController.dismiss()
             done()
             subject.onNext(())
-        } onError: { [self](error) in
+        } onError: { (error) in
             _ = LoadingViewController.dismiss()
             subject.onError(error)
         }.disposed(by: disposeBag)

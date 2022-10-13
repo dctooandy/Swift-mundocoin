@@ -151,7 +151,7 @@ extension UIScrollView {
 }
 
 
-extension DecodingError: LocalizedError {
+extension DecodingError {
     
     public var errorDescription: String? {
         switch  self {

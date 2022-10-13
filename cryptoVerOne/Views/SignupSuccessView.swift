@@ -59,7 +59,7 @@ class SignupSuccessView: UIView {
         fetchBanner()
     }
     func fetchBanner() {
-        let emptyUrl = "https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/c9fcc3cec3fdfc03b7614cfed93f8794a4c2265e.jpg"
+//        let emptyUrl = "https://gss0.baidu.com/-vo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/c9fcc3cec3fdfc03b7614cfed93f8794a4c2265e.jpg"
 //        Beans.bannerServer.frontendBanner(banner_group: 4)
 //            .subscribeSuccess { [weak self](response) in
 //                guard let bannerDto = response.0.first else { return }

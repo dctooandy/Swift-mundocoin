@@ -10,8 +10,8 @@ import RxSwift
 import RxCocoa
 import Toaster
 
-extension PrimitiveSequence where TraitType == SingleTrait {
-  public func subscribeSuccess(_ callback:((ElementType) -> Void)? = nil) -> Disposable {
+extension PrimitiveSequence where Trait == SingleTrait {
+    public func subscribeSuccess(_ callback:((Element) -> Void)? = nil) -> Disposable {
     return subscribe(onSuccess: callback, onError: { error in
         ErrorHandler.show(error: error)
     })
