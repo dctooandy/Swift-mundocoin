@@ -20,6 +20,7 @@ class AddNewAddressViewController: BaseViewController {
     var isToSecurityVC = false
     var twoFAVC = SecurityVerificationViewController.loadNib()
     @IBOutlet weak var coinLabelTopConstraint : NSLayoutConstraint!
+    @IBOutlet weak var saveButtonTopConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var coinLabel: UILabel!
@@ -51,17 +52,18 @@ class AddNewAddressViewController: BaseViewController {
         title = "Add new address".localized
         view.backgroundColor = Themes.grayF4F7FE
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
-        bindTextfield()
-        bindDynamicView()
-        bindSaveButton()
-        bindSacnVC()
-        bindTopView()
+  
         setupUI()
         setupKeyboardNoti()
 //        setupAddressStyleView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        bindTextfield()
+        bindDynamicView()
+        bindSaveButton()
+        bindSacnVC()
+        bindTopView()
         setupAddressStyleView()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         addressStyleView.withdrawInputViewFullHeight = false
@@ -82,6 +84,18 @@ class AddNewAddressViewController: BaseViewController {
             topWhiteView.isHidden = false
 //            topBorderView.layer.borderWidth = 1
 //            topBorderView.layer.borderColor = UIColor(rgb: 0xF1F1F1).cgColor
+        }
+        addressStyleView.textField.sendActions(for: .valueChanged)
+        nameStyleView.textField.sendActions(for: .valueChanged)
+        walletLabelStyleView.textField.sendActions(for: .valueChanged)
+        let navHeight = (self.navigationController == nil) ? 80.0 : 0.0
+        let diffHeight = Views.screenHeight - saveButton.frame.maxY - navHeight
+        if diffHeight < 100
+        {
+            saveButtonTopConstraint.constant = 15
+        }else
+        {
+            saveButtonTopConstraint.constant = 44
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -134,9 +148,9 @@ class AddNewAddressViewController: BaseViewController {
             {
                
                 let diffHeight = Views.screenHeight - nameStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 50)
+                if diffHeight < (keyboardHeight + 50 )
                 {
-                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    let upHeight = (keyboardHeight + 50 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
@@ -145,12 +159,14 @@ class AddNewAddressViewController: BaseViewController {
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
                 let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 50)
+                if diffHeight < (keyboardHeight + 50 )
                 {
-                    let upHeight = (keyboardHeight + 50) - diffHeight
+                    let upHeight = (keyboardHeight + 50 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
+                    coinLabel.isHidden = true
+                    dropdownView.isHidden = true
                 }
             }
         }
@@ -159,6 +175,8 @@ class AddNewAddressViewController: BaseViewController {
         if backgroundView.frame.origin.y != Views.navigationBarHeight {
             backgroundView.frame.origin.y = Views.navigationBarHeight
          }
+        coinLabel.isHidden = false
+        dropdownView.isHidden = false
     }
     func setupUI()
     {
@@ -192,6 +210,10 @@ class AddNewAddressViewController: BaseViewController {
             nameStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
             nameStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
             nameStyleView.invalidLabel.isHidden = true
+            if isChoose == false
+            {
+                walletLabelStyleView.textField.becomeFirstResponder()
+            }
         }.disposed(by: dpg)
         walletLabelStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             walletLabelStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
@@ -214,6 +236,8 @@ class AddNewAddressViewController: BaseViewController {
             .map { return $0.0 && $0.1 } //reget match result
             .bind(to: saveButton.rx.isEnabled)
             .disposed(by: dpg)
+        nameStyleView.textField.returnKeyType = .next
+        walletLabelStyleView.textField.returnKeyType = .done
     }
     func bindDynamicView()
     {
