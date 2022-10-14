@@ -1023,12 +1023,6 @@
 		09A8539728AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
 		09A8539828AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
 		09A8539928AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
-		09AA372828F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
-		09AA372928F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
-		09AA372A28F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
-		09AA372B28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
-		09AA372C28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
-		09AA372D28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
 		09AA372F28F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
 		09AA373028F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
 		09AA373128F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
@@ -1970,7 +1964,6 @@
 		099C35F1288E9027000C1C4E /* NoBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalanceView.swift; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPWVerifyDto.swift; sourceTree = "<group>"; };
-		09AA372728F90B920034333D /* CICDHistory.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CICDHistory.md; sourceTree = "<group>"; };
 		09AA372E28F910800034333D /* ProCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ProCICD.md; sourceTree = "<group>"; };
 		09AA373528F910A10034333D /* StagingCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StagingCICD.md; sourceTree = "<group>"; };
 		09AA373C28F910AD0034333D /* DevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DevCICD.md; sourceTree = "<group>"; };
@@ -2844,7 +2837,6 @@
 		A19C6FD0282218D6000AFC3F /* cryptoVerOne */ = {
 			isa = PBXGroup;
 			children = (
-				09AA372728F90B920034333D /* CICDHistory.md */,
 				09AA372E28F910800034333D /* ProCICD.md */,
 				09AA373528F910A10034333D /* StagingCICD.md */,
 				09AA373C28F910AD0034333D /* DevCICD.md */,
@@ -3440,7 +3432,6 @@
 				09905AEF2851A02B00BAEE78 /* LoginViewController.xib in Resources */,
 				09905AF02851A02B00BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905AF12851A02B00BAEE78 /* TransTopView.xib in Resources */,
-				09AA372C28F90B930034333D /* CICDHistory.md in Resources */,
 				09AA373A28F910A10034333D /* StagingCICD.md in Resources */,
 				09905AF22851A02B00BAEE78 /* AddressBottomView.xib in Resources */,
 				09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */,
@@ -3536,7 +3527,6 @@
 				09905BE12851A08500BAEE78 /* LoginViewController.xib in Resources */,
 				09905BE22851A08500BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905BE32851A08500BAEE78 /* TransTopView.xib in Resources */,
-				09AA372D28F90B930034333D /* CICDHistory.md in Resources */,
 				09AA373B28F910A10034333D /* StagingCICD.md in Resources */,
 				09905BE42851A08500BAEE78 /* AddressBottomView.xib in Resources */,
 				09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */,
@@ -3632,7 +3622,6 @@
 				09905CD32851A09600BAEE78 /* LoginViewController.xib in Resources */,
 				09905CD42851A09600BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905CD52851A09600BAEE78 /* TransTopView.xib in Resources */,
-				09AA372B28F90B930034333D /* CICDHistory.md in Resources */,
 				09AA373928F910A10034333D /* StagingCICD.md in Resources */,
 				09905CD62851A09600BAEE78 /* AddressBottomView.xib in Resources */,
 				09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */,
@@ -3728,7 +3717,6 @@
 				09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF4D0283C77ED00D7B19B /* TransTopView.xib in Resources */,
-				09AA372928F90B920034333D /* CICDHistory.md in Resources */,
 				09AA373728F910A10034333D /* StagingCICD.md in Resources */,
 				09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
@@ -3824,7 +3812,6 @@
 				09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF591283C7BBE00D7B19B /* TransTopView.xib in Resources */,
-				09AA372A28F90B920034333D /* CICDHistory.md in Resources */,
 				09AA373828F910A10034333D /* StagingCICD.md in Resources */,
 				09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
@@ -3920,7 +3907,6 @@
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
 				09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */,
-				09AA372828F90B920034333D /* CICDHistory.md in Resources */,
 				09AA373628F910A10034333D /* StagingCICD.md in Resources */,
 				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
