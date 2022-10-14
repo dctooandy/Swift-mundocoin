@@ -1023,6 +1023,12 @@
 		09A8539728AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
 		09A8539828AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
 		09A8539928AF18140088D843 /* ForgotPWVerifyDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */; };
+		09AA372828F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372928F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372A28F90B920034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372B28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372C28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372D28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
 		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
@@ -1946,6 +1952,7 @@
 		099C35F1288E9027000C1C4E /* NoBalanceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoBalanceView.swift; sourceTree = "<group>"; };
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPWVerifyDto.swift; sourceTree = "<group>"; };
+		09AA372728F90B920034333D /* CICDHistory.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CICDHistory.md; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
@@ -2816,6 +2823,7 @@
 		A19C6FD0282218D6000AFC3F /* cryptoVerOne */ = {
 			isa = PBXGroup;
 			children = (
+				09AA372728F90B920034333D /* CICDHistory.md */,
 				09EED355285870ED00CB4A64 /* Approval.entitlements */,
 				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
 				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
@@ -3408,6 +3416,7 @@
 				09905AEF2851A02B00BAEE78 /* LoginViewController.xib in Resources */,
 				09905AF02851A02B00BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905AF12851A02B00BAEE78 /* TransTopView.xib in Resources */,
+				09AA372C28F90B930034333D /* CICDHistory.md in Resources */,
 				09905AF22851A02B00BAEE78 /* AddressBottomView.xib in Resources */,
 				09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */,
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3500,6 +3509,7 @@
 				09905BE12851A08500BAEE78 /* LoginViewController.xib in Resources */,
 				09905BE22851A08500BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905BE32851A08500BAEE78 /* TransTopView.xib in Resources */,
+				09AA372D28F90B930034333D /* CICDHistory.md in Resources */,
 				09905BE42851A08500BAEE78 /* AddressBottomView.xib in Resources */,
 				09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */,
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3592,6 +3602,7 @@
 				09905CD32851A09600BAEE78 /* LoginViewController.xib in Resources */,
 				09905CD42851A09600BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905CD52851A09600BAEE78 /* TransTopView.xib in Resources */,
+				09AA372B28F90B930034333D /* CICDHistory.md in Resources */,
 				09905CD62851A09600BAEE78 /* AddressBottomView.xib in Resources */,
 				09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */,
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3684,6 +3695,7 @@
 				09CAF4CE283C77ED00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF4D0283C77ED00D7B19B /* TransTopView.xib in Resources */,
+				09AA372928F90B920034333D /* CICDHistory.md in Resources */,
 				09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
@@ -3776,6 +3788,7 @@
 				09CAF58F283C7BBE00D7B19B /* LoginViewController.xib in Resources */,
 				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF591283C7BBE00D7B19B /* TransTopView.xib in Resources */,
+				09AA372A28F90B920034333D /* CICDHistory.md in Resources */,
 				09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
@@ -3868,6 +3881,7 @@
 				A19C71B22822636E000AFC3F /* LoginViewController.xib in Resources */,
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
 				09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */,
+				09AA372828F90B920034333D /* CICDHistory.md in Resources */,
 				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
