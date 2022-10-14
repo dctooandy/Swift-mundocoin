@@ -1029,6 +1029,24 @@
 		09AA372B28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
 		09AA372C28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
 		09AA372D28F90B930034333D /* CICDHistory.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372728F90B920034333D /* CICDHistory.md */; };
+		09AA372F28F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373028F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373128F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373228F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373328F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373428F910800034333D /* ProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA372E28F910800034333D /* ProCICD.md */; };
+		09AA373628F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373728F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373828F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373928F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373A28F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373B28F910A10034333D /* StagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373528F910A10034333D /* StagingCICD.md */; };
+		09AA373D28F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09AA373E28F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09AA373F28F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09AA374028F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09AA374128F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09AA374228F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
 		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
@@ -1953,6 +1971,9 @@
 		09A54F8128409A8A00164B27 /* MemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberAccountDto.swift; sourceTree = "<group>"; };
 		09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPWVerifyDto.swift; sourceTree = "<group>"; };
 		09AA372728F90B920034333D /* CICDHistory.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CICDHistory.md; sourceTree = "<group>"; };
+		09AA372E28F910800034333D /* ProCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ProCICD.md; sourceTree = "<group>"; };
+		09AA373528F910A10034333D /* StagingCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StagingCICD.md; sourceTree = "<group>"; };
+		09AA373C28F910AD0034333D /* DevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DevCICD.md; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
@@ -2824,6 +2845,9 @@
 			isa = PBXGroup;
 			children = (
 				09AA372728F90B920034333D /* CICDHistory.md */,
+				09AA372E28F910800034333D /* ProCICD.md */,
+				09AA373528F910A10034333D /* StagingCICD.md */,
+				09AA373C28F910AD0034333D /* DevCICD.md */,
 				09EED355285870ED00CB4A64 /* Approval.entitlements */,
 				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
 				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
@@ -3417,6 +3441,7 @@
 				09905AF02851A02B00BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905AF12851A02B00BAEE78 /* TransTopView.xib in Resources */,
 				09AA372C28F90B930034333D /* CICDHistory.md in Resources */,
+				09AA373A28F910A10034333D /* StagingCICD.md in Resources */,
 				09905AF22851A02B00BAEE78 /* AddressBottomView.xib in Resources */,
 				09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */,
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3445,6 +3470,7 @@
 				09905B012851A02B00BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F32856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905B022851A02B00BAEE78 /* AddressBookViewCell.xib in Resources */,
+				09AA374128F910AD0034333D /* DevCICD.md in Resources */,
 				09905B032851A02B00BAEE78 /* FilterCollectionCell.xib in Resources */,
 				09905B042851A02B00BAEE78 /* mucoin_question.json in Resources */,
 				09905B052851A02B00BAEE78 /* FilterCell.xib in Resources */,
@@ -3456,6 +3482,7 @@
 				09EED3332857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1328562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905B0A2851A02B00BAEE78 /* Localizable.strings in Resources */,
+				09AA373328F910800034333D /* ProCICD.md in Resources */,
 				09905B0B2851A02B00BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905B0C2851A02B00BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905B0D2851A02B00BAEE78 /* ConfirmBottomView.xib in Resources */,
@@ -3510,6 +3537,7 @@
 				09905BE22851A08500BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905BE32851A08500BAEE78 /* TransTopView.xib in Resources */,
 				09AA372D28F90B930034333D /* CICDHistory.md in Resources */,
+				09AA373B28F910A10034333D /* StagingCICD.md in Resources */,
 				09905BE42851A08500BAEE78 /* AddressBottomView.xib in Resources */,
 				09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */,
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3538,6 +3566,7 @@
 				09905BF32851A08500BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F42856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905BF42851A08500BAEE78 /* AddressBookViewCell.xib in Resources */,
+				09AA374228F910AD0034333D /* DevCICD.md in Resources */,
 				09905BF52851A08500BAEE78 /* FilterCollectionCell.xib in Resources */,
 				09905BF62851A08500BAEE78 /* mucoin_question.json in Resources */,
 				09905BF72851A08500BAEE78 /* FilterCell.xib in Resources */,
@@ -3549,6 +3578,7 @@
 				09EED3342857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1428562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905BFC2851A08500BAEE78 /* Localizable.strings in Resources */,
+				09AA373428F910800034333D /* ProCICD.md in Resources */,
 				09905BFD2851A08500BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905BFE2851A08500BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905BFF2851A08500BAEE78 /* ConfirmBottomView.xib in Resources */,
@@ -3603,6 +3633,7 @@
 				09905CD42851A09600BAEE78 /* TwoFAVerifyView.xib in Resources */,
 				09905CD52851A09600BAEE78 /* TransTopView.xib in Resources */,
 				09AA372B28F90B930034333D /* CICDHistory.md in Resources */,
+				09AA373928F910A10034333D /* StagingCICD.md in Resources */,
 				09905CD62851A09600BAEE78 /* AddressBottomView.xib in Resources */,
 				09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */,
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
@@ -3631,6 +3662,7 @@
 				09905CE52851A09600BAEE78 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F22856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09905CE62851A09600BAEE78 /* AddressBookViewCell.xib in Resources */,
+				09AA374028F910AD0034333D /* DevCICD.md in Resources */,
 				09905CE72851A09600BAEE78 /* FilterCollectionCell.xib in Resources */,
 				09905CE82851A09600BAEE78 /* mucoin_question.json in Resources */,
 				09905CE92851A09600BAEE78 /* FilterCell.xib in Resources */,
@@ -3642,6 +3674,7 @@
 				09EED3322857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1228562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905CEE2851A09600BAEE78 /* Localizable.strings in Resources */,
+				09AA373228F910800034333D /* ProCICD.md in Resources */,
 				09905CEF2851A09600BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905CF02851A09600BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905CF12851A09600BAEE78 /* ConfirmBottomView.xib in Resources */,
@@ -3696,6 +3729,7 @@
 				09CAF4CF283C77ED00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF4D0283C77ED00D7B19B /* TransTopView.xib in Resources */,
 				09AA372928F90B920034333D /* CICDHistory.md in Resources */,
+				09AA373728F910A10034333D /* StagingCICD.md in Resources */,
 				09CAF4D1283C77ED00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
@@ -3724,6 +3758,7 @@
 				09CAF4DD283C77ED00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F02856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09C20FA82845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
+				09AA373E28F910AD0034333D /* DevCICD.md in Resources */,
 				09056D8A284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				09CAF4DE283C77ED00D7B19B /* mucoin_question.json in Resources */,
 				09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */,
@@ -3735,6 +3770,7 @@
 				09EED3302857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1028562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
+				09AA373028F910800034333D /* ProCICD.md in Resources */,
 				09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA3284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
@@ -3789,6 +3825,7 @@
 				09CAF590283C7BBE00D7B19B /* TwoFAVerifyView.xib in Resources */,
 				09CAF591283C7BBE00D7B19B /* TransTopView.xib in Resources */,
 				09AA372A28F90B920034333D /* CICDHistory.md in Resources */,
+				09AA373828F910A10034333D /* StagingCICD.md in Resources */,
 				09CAF592283C7BBE00D7B19B /* AddressBottomView.xib in Resources */,
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
@@ -3817,6 +3854,7 @@
 				09CAF59E283C7BBE00D7B19B /* SecurityVerificationViewController.xib in Resources */,
 				09EED2F12856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				09C20FA92845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
+				09AA373F28F910AD0034333D /* DevCICD.md in Resources */,
 				09056D8B284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				09CAF59F283C7BBE00D7B19B /* mucoin_question.json in Resources */,
 				09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */,
@@ -3828,6 +3866,7 @@
 				09EED3312857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1128562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
+				09AA373128F910800034333D /* ProCICD.md in Resources */,
 				09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA4284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
@@ -3882,6 +3921,7 @@
 				A1973A92282AB57B009932D8 /* TwoFAVerifyView.xib in Resources */,
 				09947BB4284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				09AA372828F90B920034333D /* CICDHistory.md in Resources */,
+				09AA373628F910A10034333D /* StagingCICD.md in Resources */,
 				A1559E0F28375BAB00755783 /* TransTopView.xib in Resources */,
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
@@ -3910,6 +3950,7 @@
 				A1973A8C282AB3B3009932D8 /* SecurityVerificationViewController.xib in Resources */,
 				09EED2EF2856DB7300CB4A64 /* SubListViewcontroller.xib in Resources */,
 				A19C7142282257AB000AFC3F /* mucoin_question.json in Resources */,
+				09AA373D28F910AD0034333D /* DevCICD.md in Resources */,
 				09056D89284DBF6300038BF8 /* FilterCollectionCell.xib in Resources */,
 				A19C719428225C56000AFC3F /* LoginSignupViewController.xib in Resources */,
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
@@ -3921,6 +3962,7 @@
 				09EED32F2857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE0F28562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				09AA372F28F910800034333D /* ProCICD.md in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
