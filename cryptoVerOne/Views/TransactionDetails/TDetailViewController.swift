@@ -108,7 +108,7 @@ class TDetailViewController: BaseViewController {
         super.viewWillDisappear(animated)
         if isPushToAddAddressBookVC == true
         {
-            
+            Log.i("此為測試內容")
         }else
         {
             dpg = DisposeBag()
