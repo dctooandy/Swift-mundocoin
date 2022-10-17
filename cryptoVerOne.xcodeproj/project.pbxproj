@@ -1629,6 +1629,24 @@
 		A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
 		A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
 		A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A110FBBB28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBBC28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBBD28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBBE28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBBF28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBC028FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
+		A110FBC228FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC328FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC428FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC528FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC628FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC728FD2C2D00472439 /* AuditStagingCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */; };
+		A110FBC928FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
+		A110FBCA28FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
+		A110FBCB28FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
+		A110FBCC28FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
+		A110FBCD28FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
+		A110FBCE28FD2C3E00472439 /* AuditProCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBC828FD2C3E00472439 /* AuditProCICD.md */; };
 		A1319251285F938F000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
 		A1319258285F9410000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
 		A131925F285F9411000B2729 /* AuditApprovalDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1319250285F938F000B2729 /* AuditApprovalDto.swift */; };
@@ -2041,6 +2059,9 @@
 		A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDVerificationViewController.xib; sourceTree = "<group>"; };
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
 		A106C67F2890288D005B7EBE /* AnimatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorManager.swift; sourceTree = "<group>"; };
+		A110FBBA28FD2C1700472439 /* AuditDevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditDevCICD.md; sourceTree = "<group>"; };
+		A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditStagingCICD.md; sourceTree = "<group>"; };
+		A110FBC828FD2C3E00472439 /* AuditProCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditProCICD.md; sourceTree = "<group>"; };
 		A1319250285F938F000B2729 /* AuditApprovalDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditApprovalDto.swift; sourceTree = "<group>"; };
 		A14E1BA52824FF5000827148 /* ForgotViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ForgotViewController.xib; sourceTree = "<group>"; };
 		A14E1BA62824FF5000827148 /* ForgotViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotViewController.swift; sourceTree = "<group>"; };
@@ -2840,6 +2861,9 @@
 				09AA372E28F910800034333D /* ProCICD.md */,
 				09AA373528F910A10034333D /* StagingCICD.md */,
 				09AA373C28F910AD0034333D /* DevCICD.md */,
+				A110FBBA28FD2C1700472439 /* AuditDevCICD.md */,
+				A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */,
+				A110FBC828FD2C3E00472439 /* AuditProCICD.md */,
 				09EED355285870ED00CB4A64 /* Approval.entitlements */,
 				09EED356285870F300CB4A64 /* Approval_dev.entitlements */,
 				09EED357285870F800CB4A64 /* Approval_stage.entitlements */,
@@ -3413,6 +3437,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905AE22851A02B00BAEE78 /* TDetailViewController.xib in Resources */,
+				A110FBC628FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				09905AE32851A02B00BAEE78 /* TwoFactorAuthViewController.xib in Resources */,
 				09905AE42851A02B00BAEE78 /* DynamicCollectionView.xib in Resources */,
 				A1ADAE39285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3452,7 +3477,9 @@
 				09905AFB2851A02B00BAEE78 /* NotiViewController.xib in Resources */,
 				09905AFC2851A02B00BAEE78 /* TransDetailView.xib in Resources */,
 				0995749C287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBCD28FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				09905AFD2851A02B00BAEE78 /* Assets.xcassets in Resources */,
+				A110FBBF28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
 				A1C9555D28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3508,6 +3535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905BD42851A08500BAEE78 /* TDetailViewController.xib in Resources */,
+				A110FBC728FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				09905BD52851A08500BAEE78 /* TwoFactorAuthViewController.xib in Resources */,
 				09905BD62851A08500BAEE78 /* DynamicCollectionView.xib in Resources */,
 				A1ADAE3A285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3547,7 +3575,9 @@
 				09905BED2851A08500BAEE78 /* NotiViewController.xib in Resources */,
 				09905BEE2851A08500BAEE78 /* TransDetailView.xib in Resources */,
 				0995749D287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBCE28FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				09905BEF2851A08500BAEE78 /* Assets.xcassets in Resources */,
+				A110FBC028FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
 				A1C9555E28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3603,6 +3633,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905CC62851A09600BAEE78 /* TDetailViewController.xib in Resources */,
+				A110FBC528FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				09905CC72851A09600BAEE78 /* TwoFactorAuthViewController.xib in Resources */,
 				09905CC82851A09600BAEE78 /* DynamicCollectionView.xib in Resources */,
 				A1ADAE38285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3642,7 +3673,9 @@
 				09905CDF2851A09600BAEE78 /* NotiViewController.xib in Resources */,
 				09905CE02851A09600BAEE78 /* TransDetailView.xib in Resources */,
 				0995749B287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBCC28FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				09905CE12851A09600BAEE78 /* Assets.xcassets in Resources */,
+				A110FBBE28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
 				A1C9555C28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
@@ -3698,6 +3731,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09CAF4C3283C77ED00D7B19B /* TDetailViewController.xib in Resources */,
+				A110FBC328FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				09CAF4C4283C77ED00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
 				092E75FF284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				A1ADAE36285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3737,7 +3771,9 @@
 				09CAF4D7283C77ED00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF4D8283C77ED00D7B19B /* TransDetailView.xib in Resources */,
 				09957499287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBCA28FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */,
+				A110FBBC28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
 				A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
@@ -3793,6 +3829,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				09CAF584283C7BBE00D7B19B /* TDetailViewController.xib in Resources */,
+				A110FBC428FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				09CAF585283C7BBE00D7B19B /* TwoFactorAuthViewController.xib in Resources */,
 				092E7600284F590900221997 /* DynamicCollectionView.xib in Resources */,
 				A1ADAE37285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3832,7 +3869,9 @@
 				09CAF598283C7BBE00D7B19B /* NotiViewController.xib in Resources */,
 				09CAF599283C7BBE00D7B19B /* TransDetailView.xib in Resources */,
 				0995749A287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBCB28FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */,
+				A110FBBD28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
 				A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
@@ -3888,6 +3927,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A16F62162831FACD00D9CCE5 /* TDetailViewController.xib in Resources */,
+				A110FBC228FD2C2D00472439 /* AuditStagingCICD.md in Resources */,
 				A16F61BC282CB83300D9CCE5 /* TwoFactorAuthViewController.xib in Resources */,
 				A19C7145282257AB000AFC3F /* mucoin_error.json in Resources */,
 				A1ADAE35285635E700B07B12 /* AuditTabbar.xib in Resources */,
@@ -3927,7 +3967,9 @@
 				A1559E1528376A4600755783 /* TransDetailView.xib in Resources */,
 				09056DA2284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09957498287847F5005D44E2 /* AuditTriggerAlertView.xib in Resources */,
+				A110FBC928FD2C3E00472439 /* AuditProCICD.md in Resources */,
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
+				A110FBBB28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
 				A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
