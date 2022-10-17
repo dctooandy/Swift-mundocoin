@@ -168,9 +168,9 @@ class AddNewAddressViewController: BaseViewController {
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
                 let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 120 )
+                if diffHeight < (keyboardHeight + 135 )
                 {
-                    let upHeight = (keyboardHeight + 120 ) - diffHeight
+                    let upHeight = (keyboardHeight + 135 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
