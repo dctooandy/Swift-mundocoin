@@ -18,6 +18,7 @@ class AddNewAddressViewController: BaseViewController {
     var newAddressString :String = ""
     var isScanVCByAVCapture = false
     var isToSecurityVC = false
+    let scanVC = ScannerViewController()
     var twoFAVC = SecurityVerificationViewController.loadNib()
     @IBOutlet weak var coinLabelTopConstraint : NSLayoutConstraint!
     @IBOutlet weak var saveButtonTopConstraint : NSLayoutConstraint!
@@ -154,15 +155,15 @@ class AddNewAddressViewController: BaseViewController {
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
-                    if upHeight > 50
-                    {
-                        coinLabel.isHidden = true
-                        dropdownView.isHidden = true
-                    }else
-                    {
-                        coinLabel.isHidden = false
-                        dropdownView.isHidden = false
+                    UIView.animate(withDuration: 0.3, delay: 0) { [self] in
+
+                        if upHeight > 50
+                        {
+                            coinLabel.alpha = 0.0
+                            dropdownView.alpha = 0.0
+                        }
                     }
+                   
                 }
             }
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
@@ -172,23 +173,24 @@ class AddNewAddressViewController: BaseViewController {
                 {
                     let upHeight = (keyboardHeight + 135 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
-                        backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
+                        
+                        backgroundView.frame.origin.y = Views.navigationBarHeight - ((upHeight > 135) ? 200 : upHeight)
                     }
                     if upHeight > 50
                     {
-                        coinLabel.isHidden = true
-                        dropdownView.isHidden = true
-                        if upHeight > 150
-                        {
-                            addressStyleView.isHidden = true
-                        }else
-                        {
-                            addressStyleView.isHidden = false
+                        UIView.animate(withDuration: 0.3, delay: 0) { [self] in
+                            
+                            coinLabel.alpha = 0.0
+                            dropdownView.alpha = 0.0
+                            if upHeight > 135
+                            {
+                                addressStyleView.alpha = 0.0
+                            }
                         }
                     }else
                     {
-                        coinLabel.isHidden = false
-                        dropdownView.isHidden = false
+//                        coinLabel.isHidden = false
+//                        dropdownView.isHidden = false
                     }
                 }
             }
@@ -197,10 +199,19 @@ class AddNewAddressViewController: BaseViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         if backgroundView.frame.origin.y != Views.navigationBarHeight {
             backgroundView.frame.origin.y = Views.navigationBarHeight
-         }
-        coinLabel.isHidden = false
-        dropdownView.isHidden = false
-        addressStyleView.isHidden = false
+        }
+        UIView.animate(withDuration: 0.3, delay: 0) { [self] in
+            
+            if coinLabel.alpha == 0.0
+            {
+                coinLabel.alpha = 1.0
+                dropdownView.alpha = 1.0
+            }
+            if addressStyleView.alpha == 0.0
+            {
+                addressStyleView.alpha = 1.0
+            }
+        }
     }
     func setupUI()
     {
@@ -458,7 +469,6 @@ class AddNewAddressViewController: BaseViewController {
             {
                 isScanVCByAVCapture = true
                 Log.v("開始使用相機相簿")
-                let scanVC = ScannerViewController()
                 scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
                     isScanPopAction = false
                     newAddressString = stringCode
@@ -482,7 +492,10 @@ class AddNewAddressViewController: BaseViewController {
     func bindWhenAppear()
     {
         AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
-            UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+            if let _ = UIApplication.topViewController() as? AddNewAddressViewController
+            {
+                UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+            }
         }.disposed(by: dpg)
     }
     func bindTopView()

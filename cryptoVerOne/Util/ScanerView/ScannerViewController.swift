@@ -15,6 +15,7 @@ import RxSwift
 
 class ScannerViewController: BaseViewController, AVCaptureMetadataOutputObjectsDelegate, UIImagePickerControllerDelegate {
     // MARK:業務設定
+    static var share = ScannerViewController()
     private let onSacnSuccessAction = PublishSubject<String>()
     private let dpg = DisposeBag()
     var captureSession: AVCaptureSession!

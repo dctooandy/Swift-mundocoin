@@ -20,7 +20,7 @@ class WithdrawViewController: BaseViewController {
     var dropDataSource = ["TRC20"]
     var isScanPopAction = false
     var isScanVCByAVCapture = false
-    
+    let scanVC = ScannerViewController()
     @IBOutlet weak var middleHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
@@ -173,7 +173,10 @@ class WithdrawViewController: BaseViewController {
     func bindWhenAppear()
     {
         AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
-            UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+            if let _ = UIApplication.topViewController() as? WithdrawViewController
+            {
+                UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
+            }
         }.disposed(by: sacnerDpg)
     }
     func bindAction()
@@ -184,7 +187,7 @@ class WithdrawViewController: BaseViewController {
             {
                 isScanVCByAVCapture = true
                 Log.v("開始使用相機相簿")
-                let scanVC = ScannerViewController()
+                
                 scanVC.rxSacnSuccessAction().subscribeSuccess { [self](stringCode) in
                     isScanPopAction = false
 //                    withdrawToView.textField.text = stringCode
