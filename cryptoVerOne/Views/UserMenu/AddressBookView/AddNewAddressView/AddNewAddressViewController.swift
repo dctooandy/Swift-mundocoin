@@ -148,25 +148,48 @@ class AddNewAddressViewController: BaseViewController {
             {
                
                 let diffHeight = Views.screenHeight - nameStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 50 )
+                if diffHeight < (keyboardHeight + 120 )
                 {
-                    let upHeight = (keyboardHeight + 50 ) - diffHeight
+                    let upHeight = (keyboardHeight + 120 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
+                    }
+                    if upHeight > 50
+                    {
+                        coinLabel.isHidden = true
+                        dropdownView.isHidden = true
+                    }else
+                    {
+                        coinLabel.isHidden = false
+                        dropdownView.isHidden = false
                     }
                 }
             }
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
                 let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 50 )
+                if diffHeight < (keyboardHeight + 120 )
                 {
-                    let upHeight = (keyboardHeight + 50 ) - diffHeight
+                    let upHeight = (keyboardHeight + 120 ) - diffHeight
                     if backgroundView.frame.origin.y == Views.navigationBarHeight {
                         backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
                     }
-                    coinLabel.isHidden = true
-                    dropdownView.isHidden = true
+                    if upHeight > 50
+                    {
+                        coinLabel.isHidden = true
+                        dropdownView.isHidden = true
+                        if upHeight > 150
+                        {
+                            addressStyleView.isHidden = true
+                        }else
+                        {
+                            addressStyleView.isHidden = false
+                        }
+                    }else
+                    {
+                        coinLabel.isHidden = false
+                        dropdownView.isHidden = false
+                    }
                 }
             }
         }
@@ -177,6 +200,7 @@ class AddNewAddressViewController: BaseViewController {
          }
         coinLabel.isHidden = false
         dropdownView.isHidden = false
+        addressStyleView.isHidden = false
     }
     func setupUI()
     {
