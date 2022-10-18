@@ -60,6 +60,7 @@ class AddNewAddressViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.dpg = DisposeBag()
         bindTextfield()
         bindDynamicView()
         bindSaveButton()
