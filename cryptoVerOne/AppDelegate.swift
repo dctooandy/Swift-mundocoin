@@ -137,7 +137,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #elseif Mundo_STAGE
             _ = KeychainManager.share.setDomainMode(.Stage)
             // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(false)
+            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Mundo_DEV
             _ = KeychainManager.share.setDomainMode(.Dev)
             // 1006 白名單功能開關
