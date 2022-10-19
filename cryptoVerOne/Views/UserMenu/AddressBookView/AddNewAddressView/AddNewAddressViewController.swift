@@ -148,23 +148,19 @@ class AddNewAddressViewController: BaseViewController {
             let navHeight = (self.navigationController == nil) ? 80.0 : 0.0
             if ((nameStyleView?.textField.isFirstResponder) == true)
             {
-               
                 let diffHeight = Views.screenHeight - nameStyleView.frame.maxY - navHeight
                 if diffHeight < (keyboardHeight + 120 )
                 {
-                    let upHeight = (keyboardHeight + 120 ) - diffHeight
-                    if backgroundView.frame.origin.y == Views.navigationBarHeight {
-                        backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
-                    }
                     UIView.animate(withDuration: 0.3, delay: 0) { [self] in
-
+                        let upHeight = (keyboardHeight + 120 ) - diffHeight
+                        backgroundView.frame.origin.y = Views.navigationBarHeight - upHeight
+                        addressStyleView.alpha = 1.0
                         if upHeight > 50
                         {
                             coinLabel.alpha = 0.0
                             dropdownView.alpha = 0.0
                         }
                     }
-                   
                 }
             }
             if ((walletLabelStyleView?.textField.isFirstResponder) == true)
@@ -172,15 +168,11 @@ class AddNewAddressViewController: BaseViewController {
                 let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
                 if diffHeight < (keyboardHeight + 135 )
                 {
-                    let upHeight = (keyboardHeight + 135 ) - diffHeight
-                    if backgroundView.frame.origin.y == Views.navigationBarHeight {
-                        
+                    UIView.animate(withDuration: 0.3, delay: 0) { [self] in
+                        let upHeight = (keyboardHeight + 135 ) - diffHeight
                         backgroundView.frame.origin.y = Views.navigationBarHeight - ((upHeight > 135) ? 200 : upHeight)
-                    }
-                    if upHeight > 50
-                    {
-                        UIView.animate(withDuration: 0.3, delay: 0) { [self] in
-                            
+                        if upHeight > 50
+                        {
                             coinLabel.alpha = 0.0
                             dropdownView.alpha = 0.0
                             if upHeight > 135
@@ -188,10 +180,6 @@ class AddNewAddressViewController: BaseViewController {
                                 addressStyleView.alpha = 0.0
                             }
                         }
-                    }else
-                    {
-//                        coinLabel.isHidden = false
-//                        dropdownView.isHidden = false
                     }
                 }
             }
