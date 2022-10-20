@@ -58,7 +58,7 @@ xcuserdata/
 *.xcuserstate
 *.xcbkptlist
 *.xcworkspace
-/cryptoVerOne.xcworkspace/xcuserdata/bbk.xcuserdatad/UserInterfaceState.xcuserstate
+cryptoVerOne.xcworkspace/xcuserdata/bbk.xcuserdatad/UserInterfaceState.xcuserstate
 
 ## Obj-C/Swift specific
 *.hmap
