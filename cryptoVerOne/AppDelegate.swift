@@ -42,14 +42,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK:Life cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        setupAppearance()
-        initSingleton()
-        launchFromNotification(options: launchOptions)
-        askForLocalNotification(application: application)
-        application.applicationIconBadgeNumber = 0
-        window = UIWindow(frame: UIScreen.main.bounds)
-        window?.makeKeyAndVisible()
-        let vc = LaunchReciprocalViewController.loadNib()
-        window?.rootViewController = vc
+        if detectIsJialbrokenDevice()
+        {
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            let vc = UIViewController()
+            window?.rootViewController = vc
+            self.showAlertForJillbreakDevice(withVC: vc)
+        }else
+        {
+            initSingleton()
+            launchFromNotification(options: launchOptions)
+            askForLocalNotification(application: application)
+            application.applicationIconBadgeNumber = 0
+            window = UIWindow(frame: UIScreen.main.bounds)
+            window?.makeKeyAndVisible()
+            let vc = LaunchReciprocalViewController.loadNib()
+            window?.rootViewController = vc
+        }
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
@@ -67,34 +77,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        SocketIOManager.sharedInstance.closeConnection()
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
-        // 檢查版本
-        checkAppVersion()
-        
-        if let vc = UIApplication.topViewController() {
-            print("current top vc: \(vc)")
-            if vc.isKind(of: LaunchReciprocalViewController.self) { return }
-            #if Approval_PRO || Approval_DEV || Approval_STAGE
-            if vc.isKind(of: AuditLoginViewController.self) { return }
-            #else
-            if vc.isKind(of: LoginSignupViewController.self) { return }
-            #endif
-            if let vcArray = vc.navigationController?.viewControllers
+        if detectIsJialbrokenDevice()
+        {
+            if let vc = window?.rootViewController
             {
-                for vc in vcArray {
-                    #if Approval_PRO || Approval_DEV || Approval_STAGE
-                    if vc is AuditLoginViewController { return }
-                    #else
-                    if vc is LoginSignupViewController { return }
-                    #endif
-                }
+                self.showAlertForJillbreakDevice(withVC: vc)
             }
-            // 檢查時間
-            checkTime()
-//            if !vc.isKind(of: TabbarViewController.self) ,
-//               !vc.isKind(of: AuditTabbarViewController.self){
-//            } else {
-//                print("current vc is tabbar vc finished.")
-//            }
+        }else
+        {
+            // 檢查版本
+            checkAppVersion()
+            
+            if let vc = UIApplication.topViewController() {
+                print("current top vc: \(vc)")
+                if vc.isKind(of: LaunchReciprocalViewController.self) { return }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                if vc.isKind(of: AuditLoginViewController.self) { return }
+#else
+                if vc.isKind(of: LoginSignupViewController.self) { return }
+#endif
+                if let vcArray = vc.navigationController?.viewControllers
+                {
+                    for vc in vcArray {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                        if vc is AuditLoginViewController { return }
+#else
+                        if vc is LoginSignupViewController { return }
+#endif
+                    }
+                }
+                // 檢查時間
+                checkTime()
+//                if !vc.isKind(of: TabbarViewController.self) ,
+//                   !vc.isKind(of: AuditTabbarViewController.self){
+//                } else {
+//                    print("current vc is tabbar vc finished.")
+//                }
+                
+            }
         }
     }
     // MARK: -
@@ -238,6 +258,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         CheckTokenService.share
             .stopRETimer()
+    }
+}
+// MARK: -
+// MARK: 延伸 有否越獄
+extension AppDelegate
+{
+    func showAlertForJillbreakDevice(withVC vc:UIViewController)
+    {
+        let textString = "It has been detected that your mobile phone has a connection risk. In order to protect the security of your account, this service is temporarily closed."
+        let stringHeight = textString.height(withConstrainedWidth: (Views.screenWidth - 116), font: Fonts.PlusJakartaSansMedium(16))
+        let popVC = ConfirmPopupView(viewHeight:stringHeight + 130 ,iconMode: .nonIcon(["OK".localized]),
+                                      title: "",
+                                      message: textString) { isOK in
+
+            if isOK {
+                Log.i("越獄機器")
+                UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
+            }else
+            {
+                
+            }
+        }
+        popVC.start(viewController: vc)
+    }
+    func detectIsJialbrokenDevice() -> Bool
+    {
+        if isCydiaAppInstalled() == true
+           || isJailBrokenFilesPresentInTheDirectory() == true
+           || AppDelegate.canEditSandboxFilesForJailBreakDetecttion() == true
+        {
+            return true
+        }else
+        {
+//            return true
+            return false
+        }
+    }
+    func isCydiaAppInstalled() -> Bool {
+        return UIApplication.shared.canOpenURL(URL(string: "cydia://")!)
+    }
+    func isJailBrokenFilesPresentInTheDirectory() -> Bool {
+        let fm = FileManager.default
+        if(fm.fileExists(atPath: "/private/var/lib/apt")) || (fm.fileExists(atPath: "/Applications/Cydia.app"))
+        {
+            // This Device is jailbroken
+            return true
+        } else {
+            // Continue the device is not jailbroken
+            return false
+        }
+    }
+    static func canEditSandboxFilesForJailBreakDetecttion() -> Bool {
+        let jailBreakTestText = "Test for JailBreak"
+        do {
+            try jailBreakTestText.write(toFile:"/private/jailBreakTestText.txt", atomically:true, encoding:String.Encoding.utf8)
+            return true
+        } catch {
+            return false
+        }
     }
 }
 // MARK: -
