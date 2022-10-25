@@ -165,26 +165,40 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         return 2
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var firstSectionNum = 3
+        var sectionSectionNum = 3
         // 1006 白名單功能開關
         if KeychainManager.share.getWhiteListModeEnable() == true
         {
             // MC524 打開白名單
-            return (section == 0 ? 3 : 6)// 打開白名單
+            // 打開白名單
+            firstSectionNum = 3
         }else
         {
-            return (section == 0 ? 2 : 6)// 隱藏地址簿
+            // 隱藏地址簿
+            firstSectionNum = 2
         }
-//        return (section == 0 ? 4 : 6)
+        // 1025 FaceID 功能狀態
+        if KeychainManager.share.getFaceIDStatus() == true
+        {
+            sectionSectionNum = 7
+        }else
+        {
+            sectionSectionNum = 6
+        }
+        return (section == 0 ? firstSectionNum : sectionSectionNum)
+
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let whiteListRowDiff = ( KeychainManager.share.getWhiteListModeEnable() == true ? 1 : 0)
+        let faceIDRowDiff = ( KeychainManager.share.getFaceIDStatus() == true ? 1 : 0)
         // MC524 暫時隱藏
-//        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)
-        if indexPath.section == 1 && (indexPath.item == 2 || indexPath.item == 4)// 隱藏地址簿
+        if indexPath.section == 1 && (indexPath.item == (2 + faceIDRowDiff) || indexPath.item == (4 + faceIDRowDiff))
         {// 線條View
             let lineCell = tableView.dequeueCell(type: UserMenuGrayLineCell.self, indexPath: indexPath)
             return lineCell
-        }else if indexPath.section == 1 && indexPath.item == 1
+        }else if indexPath.section == 1 && indexPath.item == (1 + faceIDRowDiff)
         {// 白底View
             let lineCell = tableView.dequeueCell(type: UserMenuWhiteLineCell.self, indexPath: indexPath)
             return lineCell
@@ -219,8 +233,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 case 0:
                     cell.cellData = .language
                 // MC524 暫時隱藏
-//                case 1:
-//                    cell.cellData = .faceID
+                case (0 + faceIDRowDiff):
+                    cell.cellData = .faceID
 //                case 3:
 //                    cell.cellData = .helpSupport
 //                case 4:
@@ -229,9 +243,9 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                    cell.cellData = .about
 //                case 7:
 //                    cell.cellData = .logout
-                case 3:// MC524 暫時隱藏 原本3
+                case (3 + faceIDRowDiff):// MC524 暫時隱藏 原本3
                     cell.cellData = .about
-                case 5:// MC524 暫時隱藏 原本5
+                case (5 + faceIDRowDiff):// MC524 暫時隱藏 原本5
                     cell.cellData = .logout
                 default:
                     break
@@ -243,6 +257,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let faceIDRowDiff = ( KeychainManager.share.getFaceIDStatus() == true ? 1 : 0)
         switch indexPath.section {
         case 0:
             switch indexPath.row {
@@ -281,9 +296,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 Log.i("language")
                 //language
             // MC524 暫時隱藏
-//            case 1:
-//                Log.i("faceID")
-            
+            case (0 + faceIDRowDiff):
+                Log.i("faceID")
                 //faceID
 //            case 3:
 //                Log.i("helpSupport")
@@ -299,11 +313,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                Log.i("logout")
 //                showLogotConfirmAlert()
 //                //logout
-            case 3:// MC524 暫時隱藏 原本3
+            case (3 + faceIDRowDiff):// MC524 暫時隱藏 原本3
                 Log.i("about")
                 socketEmit()
                 //about
-            case 5:// MC524 暫時隱藏 原本5
+            case (5 + faceIDRowDiff):// MC524 暫時隱藏 原本5
                 Log.i("logout")
                 showLogotConfirmAlert()
                 //logout
@@ -321,20 +335,21 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //        }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let faceIDRowDiff = ( KeychainManager.share.getFaceIDStatus() == true ? 1 : 0)
 // MC524 暫時隱藏
 //        if indexPath.section == 1 && indexPath.row == 5
-        if indexPath.section == 1 && indexPath.row == 5
+        if indexPath.section == 1 && indexPath.row == (5 + faceIDRowDiff)
         {
             return 80
 // MC524 暫時隱藏
 //        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
-        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
+        }else if indexPath.section == 1 && (indexPath.row == (2 + faceIDRowDiff) || indexPath.row == (4 + faceIDRowDiff))
         {
             return 1
-        }else if indexPath.section == 1 && indexPath.row == 1
+        }else if indexPath.section == 1 && indexPath.row == (1 + faceIDRowDiff)
         {
             return 20
-        }else if indexPath.section == 1 && indexPath.row == 3
+        }else if indexPath.section == 1 && indexPath.row == (3 + faceIDRowDiff)
         {
             return 92
         }else

@@ -10,7 +10,7 @@ import UIKit
 class MyApplication: UIApplication {
     override func sendEvent(_ event: UIEvent) {
         super.sendEvent(event)
-        print("Event sent:\(event)")
+//        print("Event sent:\(event)")
     }
 }
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE

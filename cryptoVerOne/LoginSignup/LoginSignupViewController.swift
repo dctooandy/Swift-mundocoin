@@ -78,7 +78,7 @@ class LoginSignupViewController: BaseViewController {
     private var shouldVerify = true
     private var route: SuccessViewAction.Route? = nil
     private var backGroundVideoUrl: URL? = nil
-    private var willShowAgainFromVerifyVC = false
+    var willShowAgainFromVerifyVC = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -131,8 +131,11 @@ class LoginSignupViewController: BaseViewController {
         let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
         if didAskBioLogin == true , willShowAgainFromVerifyVC == false
         {
-            // 暫時 關掉BioView FaceID
-//            bioVerifyCheck()
+            // 1025 FaceID 功能狀態
+            if KeychainManager.share.getFaceIDStatus() == true
+            {
+                bioVerifyCheck()
+            }
         }
         willShowAgainFromVerifyVC = false
 //        VideoManager.share.play()
@@ -619,15 +622,16 @@ extension LoginSignupViewController {
             KeychainManager.share.setLastAccount(dto.account)
             BioVerifyManager.share.applyMemberInBIOList(dto.account)
         }
-        // 暫時 關掉BioView FaceID
-//        let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-//        let showBioView = !didAskBioLogin
+        // 1025 FaceID 功能狀態
+        var showBioView = false
+        if KeychainManager.share.getFaceIDStatus() == true
+        {
+            let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+            showBioView = !didAskBioLogin
+        }
         handleLoginSuccess(showLoadingView: false,
-                           showBioView: false,
+                           showBioView: showBioView,
                            route: .wallet)
-//        handleLoginSuccess(showLoadingView: false,
-//                           showBioView: showBioView,
-//                           route: .wallet)
     }
     
     func postPushDevice() {

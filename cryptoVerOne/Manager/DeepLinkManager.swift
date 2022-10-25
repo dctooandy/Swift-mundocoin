@@ -74,6 +74,7 @@ class DeepLinkManager {
             case .member,.walletDeposit, .walletWithdrawal:
                 if !UserStatus.share.isLogin {
                     DispatchQueue.main.async {
+                        LoginSignupViewController.share.willShowAgainFromVerifyVC = false
                         let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
                         UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                     }
@@ -311,6 +312,7 @@ extension DeepLinkManager {
                 if let vc = UIApplication.topViewController()
                 {
                     if vc.isKind(of: LoginSignupViewController.self) { return }
+                    LoginSignupViewController.share.willShowAgainFromVerifyVC = false
                     let loginNavVC = MuLoginNavigationController(rootViewController: LoginSignupViewController.share.showMode(.loginEmail))
                     UIApplication.shared.keyWindow?.rootViewController = loginNavVC
                 }

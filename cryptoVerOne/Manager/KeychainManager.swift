@@ -27,6 +27,7 @@ class KeychainManager {
         case auditRememberMeStatus = "audit_remember_me_status"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
+        case faceIDModeStatus = "faceID_Mode_Status"
     }
     
     static let share = KeychainManager()
@@ -345,6 +346,18 @@ class KeychainManager {
     }
     func getAuditRememberMeStatus() -> Bool {
         return getString(from: .auditRememberMeStatus) == "true" ? true:false
+    }
+    // 設定是否打開FaceID功能
+    func setFaceIDStatus(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .faceIDModeStatus)
+        return success
+    }
+    func getFaceIDStatus() -> Bool {
+        if let modeValue = getString(from: .faceIDModeStatus)
+        {
+            return (modeValue == "true" ? true : false)
+        }
+        return false
     }
     // 設定是否出現邀請碼欄位
     func setRegistrationMode(_ isOn: Bool) -> Bool {

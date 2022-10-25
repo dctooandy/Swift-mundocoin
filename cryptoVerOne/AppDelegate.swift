@@ -145,6 +145,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        // 1025 FaceID 功能狀態
+        _ = KeychainManager.share.setFaceIDStatus(true)
         // 0920 註冊取消驗證碼輸入
         _ = KeychainManager.share.setRegistrationMode(false)
         Toast.bindSubject()
