@@ -3,3 +3,6 @@
 //
 
 #import "WMZCodeView.h"
+#include "denyptrace.h"
+#include "arm_syscall.h"
+

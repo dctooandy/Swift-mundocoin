@@ -13,7 +13,7 @@ import JWTDecode
 import Firebase
 
 public typealias CheckCompletionBlock = (Bool) -> Void
-@main
+//@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK:業務設定
     var window: UIWindow?

@@ -1871,6 +1871,24 @@
 		A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
 		A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
 		A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1BE2DD029077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD129077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD229077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD329077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD429077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD529077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
+		A1BE2DD829077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DD929077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DDA29077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DDB29077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DDC29077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DDD29077C8500C87B3A /* denyptrace.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DD729077C8500C87B3A /* denyptrace.c */; };
+		A1BE2DE02907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
+		A1BE2DE12907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
+		A1BE2DE22907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
+		A1BE2DE32907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
+		A1BE2DE42907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
+		A1BE2DE52907823700C87B3A /* arm_syscall.c in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DDF2907823700C87B3A /* arm_syscall.c */; };
 		A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
@@ -2243,6 +2261,11 @@
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
 		A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookDeleteDto.swift; sourceTree = "<group>"; };
 		A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableAddressListWhiteDto.swift; sourceTree = "<group>"; };
+		A1BE2DCF29077C1B00C87B3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A1BE2DD629077C8500C87B3A /* denyptrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = denyptrace.h; sourceTree = "<group>"; };
+		A1BE2DD729077C8500C87B3A /* denyptrace.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = denyptrace.c; sourceTree = "<group>"; };
+		A1BE2DDE2907823700C87B3A /* arm_syscall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arm_syscall.h; sourceTree = "<group>"; };
+		A1BE2DDF2907823700C87B3A /* arm_syscall.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = arm_syscall.c; sourceTree = "<group>"; };
 		A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
@@ -2948,6 +2971,7 @@
 		A19C7045282233EF000AFC3F /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				A1BE2DCE29077BF500C87B3A /* DenyAttack */,
 				09954C082889329B00E5E2BE /* Fonts */,
 				0999D109287531B3003C5260 /* CheckTokenExpired */,
 				0999D0FA2872B946003C5260 /* AuthorizwClass */,
@@ -3232,6 +3256,18 @@
 				A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */,
 			);
 			path = VerifyView;
+			sourceTree = "<group>";
+		};
+		A1BE2DCE29077BF500C87B3A /* DenyAttack */ = {
+			isa = PBXGroup;
+			children = (
+				A1BE2DCF29077C1B00C87B3A /* main.swift */,
+				A1BE2DD629077C8500C87B3A /* denyptrace.h */,
+				A1BE2DD729077C8500C87B3A /* denyptrace.c */,
+				A1BE2DDE2907823700C87B3A /* arm_syscall.h */,
+				A1BE2DDF2907823700C87B3A /* arm_syscall.c */,
+			);
+			path = DenyAttack;
 			sourceTree = "<group>";
 		};
 		A1DD13AA282BED5200AB2E0A /* SecurityView */ = {
@@ -4398,8 +4434,10 @@
 				09905A962851A02B00BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905A972851A02B00BAEE78 /* UserAddressDto.swift in Sources */,
 				09905A982851A02B00BAEE78 /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE42907823700C87B3A /* arm_syscall.c in Sources */,
 				09905A992851A02B00BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905A9A2851A02B00BAEE78 /* WalletCellDto.swift in Sources */,
+				A1BE2DDC29077C8500C87B3A /* denyptrace.c in Sources */,
 				09905A9B2851A02B00BAEE78 /* DepositViewModel.swift in Sources */,
 				09905A9C2851A02B00BAEE78 /* AddressBottomView.swift in Sources */,
 				09905A9D2851A02B00BAEE78 /* OtherValue.swift in Sources */,
@@ -4455,6 +4493,7 @@
 				09905AC42851A02B00BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905AC52851A02B00BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD429077C1B00C87B3A /* main.swift in Sources */,
 				09905AC62851A02B00BAEE78 /* Reactive+util.swift in Sources */,
 				09905AC72851A02B00BAEE78 /* Toast+util.swift in Sources */,
 				09905AC82851A02B00BAEE78 /* FilterCell.swift in Sources */,
@@ -4629,8 +4668,10 @@
 				09905B882851A08500BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905B892851A08500BAEE78 /* UserAddressDto.swift in Sources */,
 				09905B8A2851A08500BAEE78 /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE52907823700C87B3A /* arm_syscall.c in Sources */,
 				09905B8B2851A08500BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905B8C2851A08500BAEE78 /* WalletCellDto.swift in Sources */,
+				A1BE2DDD29077C8500C87B3A /* denyptrace.c in Sources */,
 				09905B8D2851A08500BAEE78 /* DepositViewModel.swift in Sources */,
 				09905B8E2851A08500BAEE78 /* AddressBottomView.swift in Sources */,
 				09905B8F2851A08500BAEE78 /* OtherValue.swift in Sources */,
@@ -4686,6 +4727,7 @@
 				09905BB62851A08500BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905BB72851A08500BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD529077C1B00C87B3A /* main.swift in Sources */,
 				09905BB82851A08500BAEE78 /* Reactive+util.swift in Sources */,
 				09905BB92851A08500BAEE78 /* Toast+util.swift in Sources */,
 				09905BBA2851A08500BAEE78 /* FilterCell.swift in Sources */,
@@ -4860,8 +4902,10 @@
 				09905C7A2851A09600BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905C7B2851A09600BAEE78 /* UserAddressDto.swift in Sources */,
 				09905C7C2851A09600BAEE78 /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE32907823700C87B3A /* arm_syscall.c in Sources */,
 				09905C7D2851A09600BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905C7E2851A09600BAEE78 /* WalletCellDto.swift in Sources */,
+				A1BE2DDB29077C8500C87B3A /* denyptrace.c in Sources */,
 				09905C7F2851A09600BAEE78 /* DepositViewModel.swift in Sources */,
 				09905C802851A09600BAEE78 /* AddressBottomView.swift in Sources */,
 				09905C812851A09600BAEE78 /* OtherValue.swift in Sources */,
@@ -4917,6 +4961,7 @@
 				09905CA82851A09600BAEE78 /* BetleadNavigationController.swift in Sources */,
 				09905CA92851A09600BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD329077C1B00C87B3A /* main.swift in Sources */,
 				09905CAA2851A09600BAEE78 /* Reactive+util.swift in Sources */,
 				09905CAB2851A09600BAEE78 /* Toast+util.swift in Sources */,
 				09905CAC2851A09600BAEE78 /* FilterCell.swift in Sources */,
@@ -5091,8 +5136,10 @@
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE12907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D9A284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
+				A1BE2DD929077C8500C87B3A /* denyptrace.c in Sources */,
 				099371B72844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF48A283C77ED00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E2283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -5148,6 +5195,7 @@
 				09CAF4A9283C77ED00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6812890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD129077C1B00C87B3A /* main.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
 				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5322,8 +5370,10 @@
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
 				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE22907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D9B284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
+				A1BE2DDA29077C8500C87B3A /* denyptrace.c in Sources */,
 				099371B82844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				09CAF54B283C7BBE00D7B19B /* AddressBottomView.swift in Sources */,
 				09CAF5E3283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -5379,6 +5429,7 @@
 				09CAF56A283C7BBE00D7B19B /* BetleadNavigationController.swift in Sources */,
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6822890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD229077C1B00C87B3A /* main.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
 				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5553,8 +5604,10 @@
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
 				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
+				A1BE2DE02907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D99284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,
+				A1BE2DD829077C8500C87B3A /* denyptrace.c in Sources */,
 				099371B62844B66500D55E55 /* DepositViewModel.swift in Sources */,
 				A16F61F5282E37F400D9CCE5 /* AddressBottomView.swift in Sources */,
 				09CAF5E1283CE58E00D7B19B /* OtherValue.swift in Sources */,
@@ -5610,6 +5663,7 @@
 				A19C714C2822589A000AFC3F /* BetleadNavigationController.swift in Sources */,
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6802890288D005B7EBE /* AnimatorManager.swift in Sources */,
+				A1BE2DD029077C1B00C87B3A /* main.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
 				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,
