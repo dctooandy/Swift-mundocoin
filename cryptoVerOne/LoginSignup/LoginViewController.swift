@@ -40,7 +40,7 @@ class LoginViewController: BaseViewController {
     }()
     @IBOutlet weak private var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: CornerradiusButton!
-    var accountInputView: AccountInputView?
+    var accountInputView: AccountInputView!
 
     // MARK: -
     // MARK:Life cycle
@@ -56,6 +56,7 @@ class LoginViewController: BaseViewController {
         bindLoginBtn()
         bindAccountView()
         accountInputView?.bindTextfield()
+        addKeyboardAction()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -64,7 +65,49 @@ class LoginViewController: BaseViewController {
             acView.cleanTextField()
         }
     }
-    
+    func addKeyboardAction()
+    {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillShow),
+                                               name: UIResponder.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(keyboardWillHide),
+                                               name: UIResponder.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+        {
+            // 0920 註冊取消驗證碼輸入
+            if KeychainManager.share.getRegistrationMode() == true
+            {
+                let keyboardRectangle = keyboardFrame.cgRectValue
+                let keyboardHeight = keyboardRectangle.height
+                if ((accountInputView.registrationInputView.textField.isFirstResponder) == true)
+                {
+                    let diffHeight = view.frame.height - (accountInputView.frame.maxY)
+                    if diffHeight < (keyboardHeight + 50)
+                    {
+                        let upHeight = (keyboardHeight + 50) - diffHeight
+                        view.frame.origin.y = Views.navigationBarHeight - upHeight
+                    }
+                }
+            }else
+            {
+                
+            }
+        }
+//        if ((accountInputView?.registrationInputView.textField.isFirstResponder) == true)
+//        {
+//            var info = notification.userInfo!
+//            let keyboardSize = (info[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue.size
+//            self.view.frame.origin.y = 0 - keyboardSize!.height
+//        }
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+        self.view.frame.origin.y = 0
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         resetInputView()
@@ -97,7 +140,9 @@ class LoginViewController: BaseViewController {
     
     func setup() {
         
-        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .loginEmail, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
+                                            currentShowMode: .loginEmail,
+                                            lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
@@ -156,7 +201,6 @@ class LoginViewController: BaseViewController {
 #else
             verificationID()
 #endif
-            
             }.disposed(by: disposeBag)
     }
     func verificationID()

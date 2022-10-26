@@ -213,6 +213,8 @@ class AccountInputView: UIView {
     func bindTextfieldReturnKey()
     {
         accountInputView.textField.returnKeyType = .next
+        accountInputView.textField.keyboardType = .emailAddress
+        accountInputView.textField.textContentType = .emailAddress
         if currentShowMode == .loginEmail || currentShowMode == .loginPhone
         {
             passwordInputView.textField.returnKeyType = .done
@@ -232,7 +234,6 @@ class AccountInputView: UIView {
     func bindBorderColor()
     {
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            accountInputView.textField.keyboardType = .emailAddress
             resetInvalidText(account:isChoose)
             resetTFMaskView(account:isChoose)
             resetInputView(view: passwordInputView)

@@ -38,6 +38,15 @@ class SignupViewController: BaseViewController {
         bindRegisterBtn()
         bindAccountView()
         accountInputView?.bindTextfield()
+        addKeyboardAction()
+    }
+   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        checkboxView.isSelected = true
+    }
+    func addKeyboardAction()
+    {
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(keyboardWillShow),
                                                name: UIResponder.keyboardWillShowNotification,
@@ -46,11 +55,6 @@ class SignupViewController: BaseViewController {
                                                selector: #selector(keyboardWillHide),
                                                name: UIResponder.keyboardWillHideNotification,
                                                object: nil)
-    
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        checkboxView.isSelected = true
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         if let keyboardFrame: NSValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
@@ -104,9 +108,13 @@ class SignupViewController: BaseViewController {
         
         switch loginMode {
         case .emailPage:
-            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupEmail, lineColor: Themes.grayLight)
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
+                                                currentShowMode: .signupEmail,
+                                                lineColor: Themes.grayLight)
         case .phonePage:
-            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .signupPhone, lineColor: Themes.grayLight)
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
+                                                currentShowMode: .signupPhone,
+                                                lineColor: Themes.grayLight)
         }
         
 //        rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
