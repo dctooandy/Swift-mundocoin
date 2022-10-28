@@ -12,31 +12,27 @@ import Parchment
 
 enum TransactionShowMode
 {
+    case all
     case deposits
     case withdrawals
     
     var typeValue : String
     {
         switch self {
+        case .all:
+            return "ALL"
         case .deposits:
             return "DEPOSIT"
         case .withdrawals:
             return "WITHDRAW"
         }
     }
-    var showTitleString:String
-    {
-        switch self {
-        case .deposits:
-            return "Deposit Details".localized
-        case .withdrawals:
-            return "Withdrawal Details".localized
-        }
-    }
     
     func ascendType() -> Bool
     {
         switch self {
+        case .all:
+            return true
         case .deposits:
             return true
         case .withdrawals:
@@ -76,6 +72,7 @@ class BoardViewController: BaseViewController {
     var isRefreshAction : Bool = false
     // MARK: -
     // MARK:UI 設定
+    var allViewController : TransactionTableViewController!
     var depositsViewController : TransactionTableViewController!
     var withdrawalsViewController : TransactionTableViewController!
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
@@ -140,14 +137,14 @@ class BoardViewController: BaseViewController {
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
+        pageViewcontroller?.menuItemSource = (.class(type: BoardPagingTitleCell.self))
 
         pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
         pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 124, height: 48)
         // menu text
         pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
-        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansMedium(15)
         pageViewcontroller?.textColor = Themes.grayA3AED0
         pageViewcontroller?.selectedTextColor = .white
         pageViewcontroller?.menuHorizontalAlignment = .center
@@ -174,9 +171,11 @@ class BoardViewController: BaseViewController {
     }
     func setupPageVC()
     {
+        self.allViewController = TransactionTableViewController.instance(mode: .all)
         self.depositsViewController = TransactionTableViewController.instance(mode: .deposits)
         self.withdrawalsViewController = TransactionTableViewController.instance(mode: .withdrawals)
-        transTableViewControllers = [self.depositsViewController,
+        transTableViewControllers = [self.allViewController,
+                                     self.depositsViewController,
                                      self.withdrawalsViewController]
         bindViewControllers()
     }
@@ -207,6 +206,7 @@ class BoardViewController: BaseViewController {
     }
     func clearAllVCDataSource()
     {
+        allViewController.clearData()
         depositsViewController.clearData()
         withdrawalsViewController.clearData()
     }
@@ -220,6 +220,11 @@ class BoardViewController: BaseViewController {
             resetData()
         }.disposed(by: dpg)
         
+        allViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
+            isFilterAction = false
+            showMode = .all
+            isRefreshAction = true
+        }.disposed(by: dpg)
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
             isFilterAction = false
             showMode = .deposits
@@ -229,6 +234,11 @@ class BoardViewController: BaseViewController {
             isFilterAction = false
             showMode = .withdrawals
             isRefreshAction = true
+        }.disposed(by: dpg)
+        
+        allViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
+            currentPage += 1
+            goFetchTableViewData(duration:0.0)
         }.disposed(by: dpg)
         
         depositsViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
@@ -270,12 +280,15 @@ class BoardViewController: BaseViewController {
     {
         let depositData = transContentDto.filter{$0.type == "DEPOSIT"}
         let withdrawData = transContentDto.filter{$0.type == "WITHDRAW"}
+        let allData = transContentDto.filter{$0.type == "WITHDRAW" || $0.type == "DEPOSIT"}
+        allViewController.data = allData
         depositsViewController.data = depositData
         withdrawalsViewController.data = withdrawData
         pageViewcontroller?.reloadMenu()
     }
     func setFiletrActionFlag()
     {
+        allViewController.isFilterAction = true
         depositsViewController.isFilterAction = true
         withdrawalsViewController.isFilterAction = true
     }

@@ -130,6 +130,8 @@ class TransactionTableViewController: BaseViewController {
     func modeTitle() -> String {
         switch showModeAtTableView
         {
+        case .all:
+            return  "All".localized
         case .deposits:
             return  "Deposits".localized
         case .withdrawals:
@@ -157,7 +159,7 @@ class TransactionTableViewController: BaseViewController {
                                        confirmBlocks: contentDto.confirmBlocks ?? 0,
                                        showMode: showModeAtTableView)
             
-            let detailVC = TDetailViewController.instance(titleString: showModeAtTableView.showTitleString,
+            let detailVC = TDetailViewController.instance(titleString: contentDto.showTitleString,
                                                           mode: .topViewHidden ,
                                                           buttonMode: .buttonHidden,
                                                           dataDto:detailData)

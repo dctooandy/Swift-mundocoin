@@ -27,7 +27,7 @@ enum FilterLabelType {
         switch self
         {
         case .history:
-            return 2
+            return 3
         case .status:
             return 5
         case .networkMethod:
@@ -47,7 +47,8 @@ enum FilterLabelType {
     var titles:[String] {
         switch self {
         case .history:
-            return ["Deposits".localized,
+            return ["All".localized,
+                    "Deposits".localized,
                     "Withdrawals".localized]
         case .status:
             return ["All".localized,
@@ -62,7 +63,8 @@ enum FilterLabelType {
     var widths:[CGFloat] {
         switch self {
         case .history:
-            return ["Deposits".localized.customWidth(),
+            return ["All".localized.customWidth(),
+                    "Deposits".localized.customWidth(),
                     "Withdrawals".localized.customWidth()]
         case .status:
             return ["All".localized.customWidth(),
@@ -90,16 +92,19 @@ class FilterBottomView: UIView {
             if showModeAtView == .deposits
             {
                 filterHistoryValue = "DEPOSIT"
-            }else
+            }else if showModeAtView == .withdrawals
             {
                 filterHistoryValue = "WITHDRAW"
+            }else
+            {
+                filterHistoryValue = "ALL"
             }
             FilterStyleThemes.share.acceptSheetHeightStyle(showModeAtView)
-            historyView.collectionView.selectItem(at: IndexPath(item: showModeAtView == .deposits ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+            historyView.collectionView.selectItem(at: IndexPath(item: (showModeAtView == .deposits || showModeAtView == .all) ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
     var transPostDto :WalletTransPostDto = WalletTransPostDto()
-    var filterHistoryValue:String = "DEPOSIT"
+    var filterHistoryValue:String = "ALL"
     var filterStateValue:String = "ALL"
     
     // MARK: -
@@ -262,11 +267,16 @@ class FilterBottomView: UIView {
                 filterHistoryValue = "DEPOSIT"
                 filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.deposits)
-            }else
+            }else if String(data.1) == "Withdrawals".localized
             {
                 filterHistoryValue = "WITHDRAW"
                 filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.withdrawals)
+            }else
+            {
+                filterHistoryValue = "ALL"
+                filterStateValue = "ALL"
+                FilterStyleThemes.share.acceptSheetHeightStyle(.all)
             }
         }.disposed(by: dpg)
         statusView.rxCellClick().subscribeSuccess { [self] data in

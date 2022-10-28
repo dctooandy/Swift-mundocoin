@@ -15,7 +15,7 @@ class FilterBottomSheet: BaseBottomSheet {
     // MARK:業務設定
     private let onConfirmClick = PublishSubject<WalletTransPostDto>()
     private let dpg = DisposeBag()
-    var showModeAtSheet : TransactionShowMode = .deposits
+    var showModeAtSheet : TransactionShowMode = .all
     // MARK: -
     // MARK:UI 設定
     var filterBottomView = FilterBottomView.loadNib()

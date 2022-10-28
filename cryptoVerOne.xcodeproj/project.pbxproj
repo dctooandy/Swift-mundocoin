@@ -1041,6 +1041,18 @@
 		09AA374028F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
 		09AA374128F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
 		09AA374228F910AD0034333D /* DevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = 09AA373C28F910AD0034333D /* DevCICD.md */; };
+		09B49379290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B4937A290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B4937B290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B4937C290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B4937D290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B4937E290BAD620024E984 /* TransCustomerDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B49378290BAD620024E984 /* TransCustomerDto.swift */; };
+		09B49380290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B49381290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B49382290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B49383290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B49384290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B49385290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
 		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
@@ -2003,6 +2015,8 @@
 		09AA372E28F910800034333D /* ProCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = ProCICD.md; sourceTree = "<group>"; };
 		09AA373528F910A10034333D /* StagingCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = StagingCICD.md; sourceTree = "<group>"; };
 		09AA373C28F910AD0034333D /* DevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DevCICD.md; sourceTree = "<group>"; };
+		09B49378290BAD620024E984 /* TransCustomerDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransCustomerDto.swift; sourceTree = "<group>"; };
+		09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPagingTitleCell.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
@@ -2790,6 +2804,7 @@
 				09947B8B284D9C3D004F7FD7 /* FilterBottomSheetView */,
 				09056D94284EF53100038BF8 /* BoardViewModel.swift */,
 				A1973A122828EE13009932D8 /* BoardViewController.swift */,
+				09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */,
 				A1973A152828EE6A009932D8 /* BoardViewController.xib */,
 			);
 			path = BoardView;
@@ -3171,6 +3186,7 @@
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 				092E76012850488700221997 /* AddressBookDto.swift */,
 				A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */,
+				09B49378290BAD620024E984 /* TransCustomerDto.swift */,
 				09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */,
 				092E76092850998300221997 /* NotificationDto.swift */,
 				A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */,
@@ -4306,6 +4322,7 @@
 				09905A362851A02B00BAEE78 /* Extension.swift in Sources */,
 				09905A372851A02B00BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905A382851A02B00BAEE78 /* UICollectionView+util.swift in Sources */,
+				09B4937D290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABD2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905A392851A02B00BAEE78 /* LoginPostDto.swift in Sources */,
 				09905A3A2851A02B00BAEE78 /* PopupBottomSheet.swift in Sources */,
@@ -4509,6 +4526,7 @@
 				09905ACF2851A02B00BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905AD02851A02B00BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD928562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49384290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905AD12851A02B00BAEE78 /* TransTopView.swift in Sources */,
 				09905AD22851A02B00BAEE78 /* AddressBottomSheet.swift in Sources */,
 				09905AD32851A02B00BAEE78 /* UITableViewCell+util.swift in Sources */,
@@ -4540,6 +4558,7 @@
 				09905B282851A08500BAEE78 /* Extension.swift in Sources */,
 				09905B292851A08500BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905B2A2851A08500BAEE78 /* UICollectionView+util.swift in Sources */,
+				09B4937E290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABE2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905B2B2851A08500BAEE78 /* LoginPostDto.swift in Sources */,
 				09905B2C2851A08500BAEE78 /* PopupBottomSheet.swift in Sources */,
@@ -4743,6 +4762,7 @@
 				09905BC12851A08500BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905BC22851A08500BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADDA28562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49385290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905BC32851A08500BAEE78 /* TransTopView.swift in Sources */,
 				09905BC42851A08500BAEE78 /* AddressBottomSheet.swift in Sources */,
 				09905BC52851A08500BAEE78 /* UITableViewCell+util.swift in Sources */,
@@ -4774,6 +4794,7 @@
 				09905C1A2851A09600BAEE78 /* Extension.swift in Sources */,
 				09905C1B2851A09600BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905C1C2851A09600BAEE78 /* UICollectionView+util.swift in Sources */,
+				09B4937C290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABC2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09905C1D2851A09600BAEE78 /* LoginPostDto.swift in Sources */,
 				09905C1E2851A09600BAEE78 /* PopupBottomSheet.swift in Sources */,
@@ -4977,6 +4998,7 @@
 				09905CB32851A09600BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905CB42851A09600BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD828562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49383290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905CB52851A09600BAEE78 /* TransTopView.swift in Sources */,
 				09905CB62851A09600BAEE78 /* AddressBottomSheet.swift in Sources */,
 				09905CB72851A09600BAEE78 /* UITableViewCell+util.swift in Sources */,
@@ -5008,6 +5030,7 @@
 				09CAF440283C77ED00D7B19B /* Extension.swift in Sources */,
 				09CAF441283C77ED00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */,
+				09B4937A290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABA2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09CAF443283C77ED00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF444283C77ED00D7B19B /* PopupBottomSheet.swift in Sources */,
@@ -5211,6 +5234,7 @@
 				09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF4B2283C77ED00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD628562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49381290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09CAF4B3283C77ED00D7B19B /* TransTopView.swift in Sources */,
 				09CAF4B4283C77ED00D7B19B /* AddressBottomSheet.swift in Sources */,
 				09CAF4B5283C77ED00D7B19B /* UITableViewCell+util.swift in Sources */,
@@ -5242,6 +5266,7 @@
 				09CAF501283C7BBE00D7B19B /* Extension.swift in Sources */,
 				09CAF502283C7BBE00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */,
+				09B4937B290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABB2864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				09CAF504283C7BBE00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF505283C7BBE00D7B19B /* PopupBottomSheet.swift in Sources */,
@@ -5445,6 +5470,7 @@
 				09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF573283C7BBE00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD728562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49382290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09CAF574283C7BBE00D7B19B /* TransTopView.swift in Sources */,
 				09CAF575283C7BBE00D7B19B /* AddressBottomSheet.swift in Sources */,
 				09CAF576283C7BBE00D7B19B /* UITableViewCell+util.swift in Sources */,
@@ -5476,6 +5502,7 @@
 				A19C702C28222D97000AFC3F /* Extension.swift in Sources */,
 				A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */,
 				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,
+				09B49379290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919AB92864605300035835 /* WalletSecurityThemes.swift in Sources */,
 				A19C71A928226279000AFC3F /* LoginPostDto.swift in Sources */,
 				A19C70BE28223D82000AFC3F /* PopupBottomSheet.swift in Sources */,
@@ -5679,6 +5706,7 @@
 				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
 				A1ADADD528562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				09B49380290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				A1559E0B28375B9B00755783 /* TransTopView.swift in Sources */,
 				A16F61EA282E30F900D9CCE5 /* AddressBottomSheet.swift in Sources */,
 				A1973A84282AA3B6009932D8 /* UITableViewCell+util.swift in Sources */,

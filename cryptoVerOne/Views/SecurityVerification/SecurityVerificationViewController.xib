@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="fnq-86-Ned" customClass="SecurityVerificationViewController" customModule="cryptoVerOne" customModuleProvider="target">
+        <viewController id="fnq-86-Ned" customClass="SecurityVerificationViewController" customModule="Approval" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="Fg0-2O-uaD">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

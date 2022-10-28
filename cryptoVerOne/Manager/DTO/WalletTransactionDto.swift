@@ -88,6 +88,16 @@ struct PageableDto :Codable
 }
 struct ContentDto : Codable
 {
+    var showTitleString:String
+    {
+        switch self.type {
+        case "DEPOSIT":
+            return "Deposit Details".localized
+        case "WITHDRAW":
+            return "Withdrawal Details".localized
+        default: return ""
+        }
+    }
     var createdDateTimeInterval : TimeInterval
     {
         let dateFormatter = DateFormatter()
@@ -281,7 +291,7 @@ struct ContentDto : Codable
     var feeDecimal : Int? = 0
     var tindex : String? = ""
     var voutIndex : String? = ""
-
+    var customer : TransCustomerDto = TransCustomerDto()
 }
 struct ContentSocketDto : Codable
 {
