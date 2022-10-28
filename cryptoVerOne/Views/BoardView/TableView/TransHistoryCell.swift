@@ -22,8 +22,12 @@ class TransHistoryCell: UITableViewCell {
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var amountLabel: UILabel!
+    @IBOutlet weak var balanceFlagLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var cellBackView: UIView!
+    @IBOutlet weak var inOutImageView: UIImageView!
+    @IBOutlet weak var inOutLabel: UILabel!
+    @IBOutlet weak var txidLabel: UILabel!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -40,7 +44,7 @@ class TransHistoryCell: UITableViewCell {
         self.cellData = data
         currencyLabel.text = data.currency
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "MMMM dd,yyyy HH:mm:ss"
         // 將時間戳轉換成 TimeInterval
         let timeInterval = TimeInterval(data.createdDateTimeInterval)
         // 初始化一個 Date
@@ -78,6 +82,28 @@ class TransHistoryCell: UITableViewCell {
             {
                 amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
             }
+        }
+        if data.type == "DEPOSIT"
+        {
+            amountLabel.textColor = UIColor(rgb: 0x0DC897)
+            balanceFlagLabel.textColor = UIColor(rgb: 0x0DC897)
+            balanceFlagLabel.text = "+"
+            inOutImageView.image = UIImage(named: "icon-transfer-in")
+            inOutLabel.text = "Deposit"
+        }else
+        {
+            amountLabel.textColor = UIColor(rgb: 0xF33828)
+            balanceFlagLabel.textColor = UIColor(rgb: 0xF33828)
+            balanceFlagLabel.text = "-"
+            inOutImageView.image = UIImage(named: "icon-transfer-out")
+            inOutLabel.text = "Withdraw"
+        }
+        if let txidString = data.txId
+        {
+            txidLabel.text = txidString
+        }else
+        {
+            txidLabel.text = "-"
         }
     }
     func setupUI()
