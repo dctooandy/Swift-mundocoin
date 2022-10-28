@@ -62,7 +62,7 @@ enum InputViewMode :Equatable {
         case .withdrawAddressToConfirm: return "Withdraw to address".localized
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .withdrawAddressFromDetail: return "From Address".localized
-        case .withdrawAddressInnerFromDetail: return "From Mundocoin Address".localized
+        case .withdrawAddressInnerFromDetail: return "From Mundocoin Member".localized
         case .txid( _ ): return "Txid".localized
         case .securityVerification: return "Security Verification".localized
         case .oldPassword: return "Old Password".localized
