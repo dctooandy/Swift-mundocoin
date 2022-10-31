@@ -188,7 +188,8 @@ class TDetailViewController: BaseViewController {
                                           txid: data.txId ?? "",
                                           id: data.id ?? "",
                                           orderId: data.orderId ?? "",
-                                          confirmBlocks: data.confirmBlocks ?? 0)
+                                          confirmBlocks: data.confirmBlocks ?? 0,
+                                          type: dto?.type ?? "")
                 if detailDataDto?.id == socketID, (detailDataDto?.detailType != statsValue || detailDataDto?.confirmBlocks != data.confirmBlocks)
                 {
                     detailDto.showMode = dataListView.detailDataDto?.showMode

@@ -594,7 +594,7 @@ class InputStyleView: UIView {
             {
                 // MC524 打開白名單
                 addAddressImageView.snp.makeConstraints { (make) in
-                    make.right.equalTo(copyAddressImageView.snp.left).offset(-10)
+                    make.right.equalTo(copyAddressImageView.snp.left).offset(-8)
                     make.centerY.equalTo(textField)
                     make.size.equalTo(24)
                 }
@@ -647,7 +647,7 @@ class InputStyleView: UIView {
                     addSubview(textLabel)
                     textLabel.snp.makeConstraints { (make) in
                         make.left.top.bottom.equalTo(textField)
-                        make.right.equalToSuperview().offset(-35)
+                        make.right.equalToSuperview().offset(-40)
                     }
                     addSubview(normalTextLabel)
                     normalTextLabel.snp.makeConstraints { (make) in
@@ -929,7 +929,7 @@ class InputStyleView: UIView {
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) ,.address, .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
             let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
-            if theSame.count > 0
+            if theSame.count > 0 || string == "" || string == "--"
             {
                 addAddressImageView.isHidden = true
             }

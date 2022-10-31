@@ -157,8 +157,8 @@ class TransactionTableViewController: BaseViewController {
                                        id: contentDto.id,
                                        orderId: contentDto.orderId,
                                        confirmBlocks: contentDto.confirmBlocks ?? 0,
-                                       showMode: showModeAtTableView)
-            
+                                       showMode: showModeAtTableView,
+                                       type: contentDto.type)
             let detailVC = TDetailViewController.instance(titleString: contentDto.showTitleString,
                                                           mode: .topViewHidden ,
                                                           buttonMode: .buttonHidden,

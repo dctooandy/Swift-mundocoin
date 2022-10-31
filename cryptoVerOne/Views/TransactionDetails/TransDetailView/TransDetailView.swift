@@ -27,6 +27,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         }
     }
     
+    @IBOutlet weak var fromHeight: NSLayoutConstraint!
     @IBOutlet weak var withdrawToHeight: NSLayoutConstraint!
     @IBOutlet weak var topSwitchViewHeight: NSLayoutConstraint!
     // MARK: -
@@ -53,6 +54,8 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var amountView: UIView!
     @IBOutlet weak var dataListView: UIStackView!
+    @IBOutlet weak var fromView: UIView!
+    @IBOutlet weak var fromWhiteView: UIView!
     @IBOutlet weak var withdrawToView: UIView!
     
     @IBOutlet weak var txidView: UIView!
@@ -93,25 +96,30 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
         processingImageView.layer.borderColor = UIColor.clear.cgColor
         processingLabel.textColor = Themes.grayE0E5F2
 
+        fromInputView = InputStyleView(inputViewMode: .withdrawAddressToDetail(true))
+        fromView.addSubview(fromInputView)
+        fromInputView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
         withdrawToInputView = InputStyleView(inputViewMode: .withdrawAddressToDetail(true))
         withdrawToView.addSubview(withdrawToInputView)
         withdrawToInputView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
         
-//        let lineViewOne = UILabel()
-//        lineViewOne.textAlignment = .center
-//        lineViewOne.backgroundColor = .clear
-//        lineViewOne.textColor = Themes.grayA3AED0
-//        lineViewOne.lineBreakMode = .byCharWrapping
-//        withdrawToInputView.tfMaskView.addSubview(lineViewOne)
-//        lineViewOne.snp.makeConstraints { make in
-//            make.top.equalToSuperview()
-//            make.leading.equalToSuperview().offset(20)
-//            make.trailing.equalToSuperview().offset(-20)
-//            make.height.equalTo(2)
-//        }
-//        lineViewOne.text = "----------------------------------------------------------"
+        let lineViewOne = UILabel()
+        lineViewOne.textAlignment = .center
+        lineViewOne.backgroundColor = .clear
+        lineViewOne.textColor = Themes.grayA3AED0
+        lineViewOne.lineBreakMode = .byCharWrapping
+        withdrawToInputView.tfMaskView.addSubview(lineViewOne)
+        lineViewOne.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20)
+            make.height.equalTo(2)
+        }
+        lineViewOne.text = "----------------------------------------------------------"
     
         txidInputView = InputStyleView(inputViewMode: .txid("---------------------------------------------------------"))
         txidView.addSubview(txidInputView)
@@ -137,24 +145,30 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     func resetAddressInputView(isAuto:Bool = true ,detailType:DetailType = .done)
     {
-        if detailDataDto?.showMode == .deposits , let trueDetailType = detailDataDto?.detailType
+        if let trueDetailType = detailDataDto?.detailType
         {
-            var typeValue:DetailType
-            if isAuto == false
+            if detailDataDto?.type == "DEPOSIT"
             {
-                typeValue = detailType
+                var typeValue:DetailType
+                if isAuto == false
+                {
+                    typeValue = detailType
+                }else
+                {
+                    typeValue = trueDetailType
+                }
+                if typeValue == .innerFailed || typeValue == .innerDone
+                {
+                    fromInputView.topLabel.text = InputViewMode.withdrawAddressInnerFromDetail.topString()
+                    txidInputView.isHidden = true
+                }else
+                {
+                    fromInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
+                    txidInputView.isHidden = false
+                }
             }else
             {
-                typeValue = trueDetailType
-            }
-            if typeValue == .innerFailed || typeValue == .innerDone
-            {
-                withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressInnerFromDetail.topString()
-                txidInputView.isHidden = true
-            }else
-            {
-                withdrawToInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
-                txidInputView.isHidden = false
+                fromInputView.topLabel.text = InputViewMode.withdrawAddressFromDetail.topString()
             }
         }
     }
@@ -185,9 +199,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             Log.v("outapp url str: \(outPutString)")
             UIApplication.shared.open((URL(string: outPutString)!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)
+        fromInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
+            fromInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
+        }.disposed(by: dpg)
         withdrawToInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToInputView.tfMaskView.changeBorderWith(isChoose:isChoose)
         }.disposed(by: dpg)
+        
         TransStyleThemes.txidViewType.bind(to: txidView.rx.isHidden).disposed(by: dpg)
         TransStyleThemes.processingImageType.bind(to: processingImageView.rx.borderColor).disposed(by: dpg)
         
@@ -208,6 +226,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
 //                confirmationsView.isHidden = true
 //            }
 //        }
+        fromInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
+            if let addressText = fromInputView.normalTextLabel.text
+            {
+                onAddAddressClick.onNext(addressText)
+            }
+        }.disposed(by: dpg)
         withdrawToInputView.rxAddAddressImagePressed().subscribeSuccess { [self](isChoose) in
             if let addressText = withdrawToInputView.normalTextLabel.text
             {
@@ -258,21 +282,32 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     }
     func setupType()
     {
-        if let dto = detailDataDto ,withdrawToInputView != nil
+        if let dto = detailDataDto ,fromInputView != nil
         {
-            var targetAddress = ""
-            if dto.showMode == .deposits
+            var fromAddress = ""
+            var withdrawToAddress = ""
+            if dto.type == "DEPOSIT"
             {
-                targetAddress = dto.fromAddress
+                fromAddress = dto.fromAddress
             }else
             {
-                targetAddress = dto.address
+                if dto.fromAddress.isEmpty == false
+                {
+                    fromAddress = dto.fromAddress
+                }else
+                {
+                    fromAddress = "--"
+                }
+                withdrawToAddress = dto.address
             }
             // MC524 暫時隱藏
-//            let stringHeight = targetAddress.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
-            let stringHeight = targetAddress.height(withConstrainedWidth: (Views.screenWidth - 115 - 34), font:  Fonts.PlusJakartaSansRegular(14))
-            withdrawToInputView.tvHeightConstraint.constant = (stringHeight + 18)
-            withdrawToInputView.setVisibleString(string: targetAddress)
+//            let fromStringHeight = fromAddress.height(withConstrainedWidth: (Views.screenWidth - 115), font:  Fonts.PlusJakartaSansRegular(14))
+            let fromStringHeight = fromAddress.height(withConstrainedWidth: (Views.screenWidth - 115 - 34), font:  Fonts.PlusJakartaSansRegular(14))
+            let withdrawToStringHeight = withdrawToAddress.height(withConstrainedWidth: (Views.screenWidth - 115 - 34), font:  Fonts.PlusJakartaSansRegular(14))
+            fromInputView.tvHeightConstraint.constant = (fromStringHeight + 18)
+            fromInputView.setVisibleString(string: fromAddress)
+            withdrawToInputView.tvHeightConstraint.constant = (withdrawToStringHeight + 18)
+            withdrawToInputView.setVisibleString(string: withdrawToAddress)
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             let flagAmount = (dto.showMode == .deposits ? "+" : "-")
             topAmountLabel.text = "\(flagAmount)\(dto.amount.numberFormatter(.decimal, 8))"
@@ -281,7 +316,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             confirmationsLabel.text = dto.confirmations
             feeLabel.text = dto.fee
             dateLabel.text = dto.date
-            if dto.showMode == .deposits
+            if dto.type == "DEPOSIT"
             {
                 if let confirmationsView = dataListViewArray.filter({ $0.tag == 3 }).first
                 {
@@ -293,7 +328,10 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
 //                }
 //                middleWhiteView.isHidden = true
 //                withdrawToInputView.isHidden = false
-//                withdrawToHeight.constant = 46 + stringHeight
+//                withdrawToHeight.constant = 46 + fromStringHeight
+                fromWhiteView.isHidden = true
+                withdrawToView.isHidden = true
+                withdrawToInputView.isHidden = true
             }else
             {
                 if let confirmationsView = dataListViewArray.filter({ $0.tag == 3 }).first
@@ -307,11 +345,15 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
 //                    TransStyleThemes.feeViewType.bind(to: feeView.rx.isHidden).disposed(by: dpg)
                 }
 //                withdrawToInputView.isHidden = false
-//                withdrawToHeight.constant = 46 + stringHeight
+//                withdrawToHeight.constant = 46 + fromStringHeight
 //                TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
+                fromWhiteView.isHidden = false
+                withdrawToView.isHidden = false
+                withdrawToInputView.isHidden = false
+                withdrawToHeight.constant = 46 + withdrawToStringHeight
             }
-            withdrawToInputView.isHidden = false
-            withdrawToHeight.constant = 46 + stringHeight
+            fromInputView.isHidden = false
+            fromHeight.constant = 46 + fromStringHeight
             TransStyleThemes.txidViewType.bind(to: middleWhiteView.rx.isHidden).disposed(by: dpg)
         }
     }

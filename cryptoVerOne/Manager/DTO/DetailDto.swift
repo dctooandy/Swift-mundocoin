@@ -21,7 +21,8 @@ class DetailDto {
     var orderId : String
     var confirmBlocks : Int
     var showMode:TransactionShowMode?
-    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" ,fromAddress:String = "", txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0 , showMode:TransactionShowMode = .deposits) {
+    var type: String
+    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" ,fromAddress:String = "", txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0 , showMode:TransactionShowMode = .deposits , type:String = "") {
         self.detailType = detailType
         self.amount = amount
         self.tether = tether
@@ -36,5 +37,6 @@ class DetailDto {
         self.orderId = orderId
         self.confirmBlocks = confirmBlocks
         self.showMode = showMode
+        self.type = type
     }
 }
