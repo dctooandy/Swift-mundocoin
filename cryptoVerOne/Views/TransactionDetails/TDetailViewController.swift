@@ -9,6 +9,8 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Toaster
+
 enum DetailType {
     case pending
     case processing
@@ -50,14 +52,15 @@ class TDetailViewController: BaseViewController {
         }
     }
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
-    @IBOutlet weak var checkButtonTopSpace: NSLayoutConstraint!
     var isPushToAddAddressBookVC = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var topView: TransTopView!
     @IBOutlet weak var dataListView: TransDetailView!
-    @IBOutlet weak var checkButton: CornerradiusButton!
-    @IBOutlet weak var tryButton: CornerradiusButton!
+//    @IBOutlet weak var checkButton: CornerradiusButton!
+//    @IBOutlet weak var tryButton: CornerradiusButton!
+    @IBOutlet weak var saveButton: SaveButton!
+    @IBOutlet weak var shareButton: CornerradiusButton!
     lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -119,34 +122,46 @@ class TDetailViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
-        checkButton.setTitle("Check History".localized, for: .normal)
-//        checkButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
-        checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        checkButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
-        tryButton.setTitle("Try Again".localized, for: .normal)
-//        tryButton.titleLabel?.font = Fonts.PlusJakartaSansMedium(16)
-        tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
-        tryButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
+//        checkButton.setTitle("Check History".localized, for: .normal)
+//        checkButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
+//        checkButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
+//        tryButton.setTitle("Try Again".localized, for: .normal)
+//        tryButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
+//        tryButton.setBackgroundImage(UIImage(color: Themes.blue6149F6) , for: .normal)
+        shareButton.rx.tap.subscribeSuccess { [self](_) in
+            shareInfo()
+        }.disposed(by: dpg)
+        saveButton.rx.tap.subscribeSuccess { [self](_) in
+            if AuthorizeService.share.authorizePhoto()
+            {
+                //            let image = codeImageView.asImage()
+                Log.v("開始使用相機相簿")
+                let image = view.screenShot()!
+                /// 将转换后的UIImage保存到相机胶卷中
+                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+                Toast.show(msg: "Saved")
+            }
+            
+        }.disposed(by: dpg)
     }
     func bindUI()
     {
-        checkButton.rx.tap.subscribeSuccess { (_) in
-            Log.i("去看金流歷史紀錄")
-            let boardVC = BoardViewController.loadNib()
-            boardVC.loadingDurarion = 1.0
-            boardVC.isFromWithdral = true
-            self.navigationController?.viewControllers = [WalletViewController.share]
-            WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
-        }.disposed(by: dpg)
-        tryButton.rx.tap.subscribeSuccess { [self] (_) in
-            Log.i("回到首頁")
-            if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
-            {
-                WithdrawViewController.share.setDataFromTryAgain(amount:amountValue , address: addressValue)
-            }
-            self.navigationController?.popToViewController(WithdrawViewController.share , animated: true)
-//            self.navigationController?.popToRootViewController(animated: true)
-        }.disposed(by: dpg)
+//        checkButton.rx.tap.subscribeSuccess { (_) in
+//            Log.i("去看金流歷史紀錄")
+//            let boardVC = BoardViewController.loadNib()
+//            boardVC.loadingDurarion = 1.0
+//            boardVC.isFromWithdral = true
+//            self.navigationController?.viewControllers = [WalletViewController.share]
+//            WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
+//        }.disposed(by: dpg)
+//        tryButton.rx.tap.subscribeSuccess { [self] (_) in
+//            Log.i("回到首頁")
+//            if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
+//            {
+//                WithdrawViewController.share.setDataFromTryAgain(amount:amountValue , address: addressValue)
+//            }
+//            self.navigationController?.popToViewController(WithdrawViewController.share , animated: true)
+//        }.disposed(by: dpg)
         dataListView.rxAddAddressClick().subscribeSuccess { [self] addressString in
             Log.i("增加錢包地址")
             let addVC = AddNewAddressViewController.loadNib()
@@ -208,13 +223,13 @@ class TDetailViewController: BaseViewController {
         }
         if buttonHiddenMode == .buttonShow
         {
-            checkButton.isHidden = false
-            tryButton.isHidden = false
-            TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
+//            checkButton.isHidden = false
+//            tryButton.isHidden = false
+//            TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
         }else
         {
-            checkButton.isHidden = true
-            tryButton.isHidden = true
+//            checkButton.isHidden = true
+//            tryButton.isHidden = true
         }
     }
     @objc func popToRootVC() {
@@ -223,4 +238,31 @@ class TDetailViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
+extension TDetailViewController
+{
+    func shareInfo() {
+        // activityItems 陣列中放入我們想要使用的元件，這邊我們放入使用者圖片、使用者名稱及個人部落格。
+        // 這邊因為我們確認裡面有值，所以使用驚嘆號強制解包。
+        let imageData = view.screenShot()!
+    //        let stringData = "MundoCoin \n Account Address"
+        let activityVC = UIActivityViewController(activityItems: [imageData], applicationActivities: nil)
+        activityVC.completionWithItemsHandler = {(activityType: UIActivity.ActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            // 如果錯誤存在，跳出錯誤視窗並顯示給使用者。
+            if error != nil {
+                self.showAlert(title: "Error", message: "Error:\(error!.localizedDescription)")
+                return
+            }
+                                                 
+            // 如果發送成功，跳出提示視窗顯示成功。
+            if completed {
+                self.showAlert(title: "Success", message: "Share MundoCoin's information.")
+            }
+
+        }
+        // 顯示出我們的 activityVC。
+        self.present(activityVC, animated: true, completion: nil)
+    }
+}
+
+
 

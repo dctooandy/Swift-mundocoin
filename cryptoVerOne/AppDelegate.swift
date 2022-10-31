@@ -149,41 +149,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         _ = KeychainManager.share.setFaceIDStatus(true)
         // 0920 註冊取消驗證碼輸入
         _ = KeychainManager.share.setRegistrationMode(false)
+        // 1006 白名單功能開關
+        _ = KeychainManager.share.setWhiteListModeEnable(true)
         Toast.bindSubject()
         ToastView.appearance().bottomOffsetPortrait = 200
         if isLaunchBefore() == false {
 #if Mundo_PRO
             _ = KeychainManager.share.setDomainMode(.Pro)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Mundo_STAGE
             _ = KeychainManager.share.setDomainMode(.Stage)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Mundo_DEV
             _ = KeychainManager.share.setDomainMode(.Dev)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Mundo_QA
             _ = KeychainManager.share.setDomainMode(.Qa)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Approval_PRO
             _ = KeychainManager.share.setDomainMode(.AuditPro)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Approval_STAGE
             _ = KeychainManager.share.setDomainMode(.AuditStage)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Approval_DEV
             _ = KeychainManager.share.setDomainMode(.AuditDev)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #elseif Approval_QA
             _ = KeychainManager.share.setDomainMode(.AuditQa)
-            // 1006 白名單功能開關
-            _ = KeychainManager.share.setWhiteListModeEnable(true)
 #endif
         }
 #if Mundo_PRO
