@@ -44,27 +44,27 @@ class BoardPagingTitleCell: PagingTitleCell {
       super.apply(layoutAttributes)
         titleLabel.layer.borderColor = UIColor.white.cgColor
         titleLabel.layer.borderWidth = 3
-        titleLabel.layer.cornerRadius = 22
+        titleLabel.layer.cornerRadius = (Views.sHeight(value: 44) / 2)
         titleLabel.layer.masksToBounds = true
         self.backgroundColor = Themes.grayE0E5F2
         self.contentView.backgroundColor = .white
 //        self.contentView.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
 //        self.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
         self.layer.cornerRadius = layoutAttributes.frame.height / 2
-        self.contentView.layer.cornerRadius = 22
+        self.contentView.layer.cornerRadius = (Views.sHeight(value: 44) / 2)
         if layoutAttributes.indexPath.last == 1
         {
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(0)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(124)
-                make.height.equalTo(46)
+                make.width.equalTo(Views.sWidth(value: 124))
+                make.height.equalTo(Views.sHeight(value: 46))
             }
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(0)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(124)
-                make.height.equalTo(44)
+                make.width.equalTo(Views.sWidth(value: 124))
+                make.height.equalTo(Views.sHeight(value: 44))
             }
             self.layer.maskedCorners = []
             self.contentView.layer.maskedCorners = []
@@ -73,14 +73,14 @@ class BoardPagingTitleCell: PagingTitleCell {
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(-1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(46)
+                make.width.equalTo(Views.sWidth(value: 123))
+                make.height.equalTo(Views.sHeight(value: 46))
             }
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(-1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(44)
+                make.width.equalTo(Views.sWidth(value: 123))
+                make.height.equalTo(Views.sHeight(value: 44))
             }
             self.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
             self.contentView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
@@ -89,14 +89,14 @@ class BoardPagingTitleCell: PagingTitleCell {
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(46)
+                make.width.equalTo(Views.sWidth(value: 123))
+                make.height.equalTo(Views.sHeight(value: 46))
             }
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(44)
+                make.width.equalTo(Views.sWidth(value: 123))
+                make.height.equalTo(Views.sHeight(value: 44))
             }
             self.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
             self.contentView.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]

@@ -141,7 +141,7 @@ class BoardViewController: BaseViewController {
 
         pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 124, height: 48)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: Views.sWidth(value: 124), height: Views.sHeight(value: 48))
         // menu text
         pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.font = Fonts.PlusJakartaSansMedium(15)

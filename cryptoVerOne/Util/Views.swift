@@ -80,6 +80,24 @@ class Views {
         return 30.0
     }
     
+    static func sHeight(value:CGFloat) -> CGFloat {
+        if isIPhoneSE() == true || isIPhone8() == true
+        {
+            return UIScreen.main.bounds.size.height * (value / 700)
+        }else
+        {
+            return UIScreen.main.bounds.size.height * (value / 896)
+        }
+    }
+    static func sWidth(value:CGFloat) -> CGFloat {
+        if isIPhoneSE() == true || isIPhone8() == true
+        {
+            return UIScreen.main.bounds.size.width * (value / 414)
+        }else
+        {
+            return UIScreen.main.bounds.size.width * (value / 414)
+        }
+    }
     static var launchImage:UIImage? {
         
         switch UIDevice.current.name {
