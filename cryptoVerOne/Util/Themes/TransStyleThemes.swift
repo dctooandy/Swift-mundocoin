@@ -45,7 +45,7 @@ class TransStyleThemes {
     }
     // 綁定取款成功頁面 下方隱藏物件
     private static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
-        return topViewMode.map({ ($0 == .pending || $0 == .innerDone || $0 == .innerFailed ) ? true : false})
+        return topViewMode.map({ ($0 == .pending || $0 == .failed || $0 == .innerDone || $0 == .innerFailed ) ? true : false})
     }
     private static func bindDetailListFeeViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
         return topViewMode.map({ ($0 == .pending ) ? true : false})
@@ -76,6 +76,9 @@ class TransStyleThemes {
     private static func bindDetailListTopViewLabelText<T>(done: T , failed : T) -> Observable<String>{
         return topViewMode.map({ (($0 == .done || $0 == .innerDone ) ? "Completed".localized : "Failed".localized)})
     }
+    private static func topViewHeight<T>(isHidden: T , isShow: T) -> Observable<CGFloat>{
+        return topViewMode.map({($0 == .pending || $0 == .processing) ? 81.0 : 65.0})
+    }
     // MARK: -
     // MARK: 步驟五 釋放可全域綁定物件腳
     static let topImageIconType : Observable<UIImage> = bindDetailViewTopIcon(success: DetailType.done, failed: DetailType.failed)
@@ -94,4 +97,6 @@ class TransStyleThemes {
     static let topViewIconType : Observable<UIImage> = bindDetailListTopViewIconName(done: true, failed: false)
     // 綁定TopViewLabel文字
     static let topViewLabelText : Observable<String> = bindDetailListTopViewLabelText(done: true, failed: false)
+    static let topViewHeightType : Observable<CGFloat> =
+    TransStyleThemes.topViewHeight(isHidden: DetailType.processing, isShow: DetailType.done)
 }
