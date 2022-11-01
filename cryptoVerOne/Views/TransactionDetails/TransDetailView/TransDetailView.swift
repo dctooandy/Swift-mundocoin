@@ -195,7 +195,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
     func bindUI()
     {
         txidInputView.rxTextLabelClick().subscribeSuccess { (string) in
-            let outPutString = "https://tronscan.org/#/transaction/\(string)"
+            var outPutString = ""
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            outPutString = "https://tronscan.org/#/transaction/\(string)"
+#else
+            outPutString = "https://shasta.tronscan.org/#/transaction/\(string)"
+#endif
             Log.v("outapp url str: \(outPutString)")
             UIApplication.shared.open((URL(string: outPutString)!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)

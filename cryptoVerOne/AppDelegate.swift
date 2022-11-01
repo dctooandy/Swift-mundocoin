@@ -11,6 +11,7 @@ import RxSwift
 import DropDown
 import JWTDecode
 import Firebase
+import BackgroundTasks
 
 public typealias CheckCompletionBlock = (Bool) -> Void
 //@main
@@ -42,6 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK:Life cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        setupAppearance()
+        registerBackgroundTasks()
         if detectIsJialbrokenDevice()
         {
             window = UIWindow(frame: UIScreen.main.bounds)
@@ -75,8 +77,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         CheckTokenService.share.stopRETimer()
 //        stopRETimer()
 //        SocketIOManager.sharedInstance.closeConnection()
+        
+        //虽然定义了后台获取的最短时间，但iOS会自行以它认定的最佳时间来唤醒程序，这个我们无法控制
+        //UIApplicationBackgroundFetchIntervalMinimum 尽可能频繁的调用我们的Fetch方法
+        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+        submitBackgroundTasks()
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
+        endBackgroundTasks(application)
         if detectIsJialbrokenDevice()
         {
             if let vc = window?.rootViewController
@@ -246,6 +254,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         CheckTokenService.share
             .stopRETimer()
+    }
+}
+// MARK: -
+// MARK: 延伸 背景執行
+extension AppDelegate {
+    func endBackgroundTasks(_ application: UIApplication)
+    {
+        
+    }
+    func submitBackgroundTasks() {
+        if #available(iOS 13.0, *) {
+            // Declared at the "Permitted background task scheduler identifiers" in info.plist
+            let backgroundAppRefreshTaskSchedulerIdentifier = "com.example.fooBackgroundAppRefreshIdentifier"
+            let timeDelay = 10.0
+            
+            do {
+                let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: backgroundAppRefreshTaskSchedulerIdentifier)
+                backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
+                try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
+                Log.i("Submitted task request")
+            } catch {
+                Log.i("Failed to submit BGTask")
+            }
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+    func registerBackgroundTasks() {
+        if #available(iOS 13.0, *) {
+            // Declared at the "Permitted background task scheduler identifiers" in info.plist
+            let backgroundAppRefreshTaskSchedulerIdentifier = "com.example.fooBackgroundAppRefreshIdentifier"
+            let backgroundProcessingTaskSchedulerIdentifier = "com.example.fooBackgroundProcessingIdentifier"
+            
+            // Use the identifier which represents your needs
+            BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier, using: nil) { (task) in
+                Log.i("BackgroundAppRefreshTaskScheduler is executed NOW!")
+                Log.i("Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
+                task.expirationHandler = {
+                    task.setTaskCompleted(success: false)
+                }
+                
+                // Do some data fetching and call setTaskCompleted(success:) asap!
+                let isFetchingSuccess = true
+                task.setTaskCompleted(success: isFetchingSuccess)
+            }
+        } else {
+            // Fallback on earlier versions
+        }
     }
 }
 // MARK: -

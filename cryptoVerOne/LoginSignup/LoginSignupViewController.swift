@@ -387,6 +387,7 @@ extension LoginSignupViewController {
                     }else if status == "404"
                     {
                         loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+                        InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
                     }else
                     {
                         ErrorHandler.show(error: error)

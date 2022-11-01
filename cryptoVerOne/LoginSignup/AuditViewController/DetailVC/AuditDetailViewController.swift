@@ -142,7 +142,12 @@ class AuditDetailViewController: BaseViewController {
     {
         txidLabel.rx.click.subscribeSuccess { [self] _ in
             let txidString = txidLabel.text ?? ""
-            let outPutString = "https://tronscan.org/#/transaction/\(txidString)"
+            var outPutString = ""
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            outPutString = "https://tronscan.org/#/transaction/\(txidString)"
+#else
+            outPutString = "https://shasta.tronscan.org/#/transaction/\(txidString)"
+#endif
             Log.v("outapp url str: \(outPutString)")
             UIApplication.shared.open((URL(string: outPutString)!), options: [:], completionHandler: nil)
         }.disposed(by: dpg)
