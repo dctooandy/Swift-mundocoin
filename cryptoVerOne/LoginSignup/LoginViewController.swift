@@ -40,6 +40,8 @@ class LoginViewController: BaseViewController {
     }()
     @IBOutlet weak private var forgetPasswordButton: UIButton!
     @IBOutlet weak var loginButton: CornerradiusButton!
+    @IBOutlet weak var checkBoxView: CheckBoxView!
+    @IBOutlet weak var rememberMeLabel: UILabel!
     var accountInputView: AccountInputView!
 
     // MARK: -
@@ -57,12 +59,61 @@ class LoginViewController: BaseViewController {
         bindAccountView()
         accountInputView?.bindTextfield()
         addKeyboardAction()
+        bindCheckBox()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if let acView = accountInputView
         {
             acView.cleanTextField()
+        }
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        detectRememberMeAction()
+    }
+    func detectRememberMeAction()
+    {
+        if KeychainManager.share.getMundoCoinRememberMeStatus() == true
+        {
+            if let loginPostDto = KeychainManager.share.getLastAccount(),
+               BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account)
+            {
+                DispatchQueue.main.async { [self] in
+                    accountInputView.accountInputView.textField.text = loginPostDto.account
+                    accountInputView.passwordInputView.textField.text = loginPostDto.password
+                    checkBoxView.isSelected = true
+                    checkBoxView.checkType = .checkType
+                    accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+                    accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+                }
+            }else
+            {
+                //暫時強制寫上
+                checkBoxView.isSelected = true
+                checkBoxView.checkType = .checkType
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            
+#else
+//                accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
+//                accountInputView.passwordInputView.textField.text = "Admin!234"
+//                accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+//                accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+#endif
+            }
+        }else
+        {
+            checkBoxView.isSelected = false
+            checkBoxView.checkType = .defaultType
+            //暫時強制寫上
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+            
+#else
+//            accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
+//            accountInputView.passwordInputView.textField.text = "Admin!234"
+//            accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+//            accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+#endif
         }
     }
     func addKeyboardAction()
@@ -177,6 +228,16 @@ class LoginViewController: BaseViewController {
             onClickForgot.onNext(())
         }.disposed(by: disposeBag)
         loginButton.setTitle("Log In".localized, for: .normal)
+        
+        checkBoxView.snp.makeConstraints { make in
+            make.top.equalTo(self.loginButton.snp.bottom).offset(40)
+            make.left.equalTo(self.loginButton.snp.left)
+            make.size.equalTo(20.0)
+        }
+        rememberMeLabel.snp.makeConstraints { make in
+            make.left.equalTo(self.checkBoxView.snp.right).offset(10)
+            make.centerY.equalTo(self.checkBoxView)
+        }
     }
     
     func showVerifyCode(_ code: String) {
@@ -202,6 +263,13 @@ class LoginViewController: BaseViewController {
             verificationID()
 #endif
             }.disposed(by: disposeBag)
+    }
+    func bindCheckBox()
+    {
+        checkBoxView.rxCheckBoxPassed().subscribeSuccess { isSelect in
+            Log.v("isselect \(isSelect)")
+            KeychainManager.share.saveMundoCoinRememberMeStatus(isSelect)
+        }.disposed(by: disposeBag)
     }
     func verificationID()
     {

@@ -25,6 +25,7 @@ class KeychainManager {
         case auditAccount = "audit_account"
         case auditAccList = "audit_acc_list"
         case auditRememberMeStatus = "audit_remember_me_status"
+        case mundocoinRememberMeStatus = "mundocoin_remember_me_status"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -340,6 +341,15 @@ class KeychainManager {
             return []
         }
     }
+    
+    func saveMundoCoinRememberMeStatus(_ isOn :Bool )
+    {
+        _ = setString(isOn == true ? "true":"false", at: .mundocoinRememberMeStatus)
+    }
+    func getMundoCoinRememberMeStatus() -> Bool {
+        return getString(from: .mundocoinRememberMeStatus) == "true" ? true:false
+    }
+    
     func saveAuditRememberMeStatus(_ isOn :Bool )
     {
         _ = setString(isOn == true ? "true":"false", at: .auditRememberMeStatus)
