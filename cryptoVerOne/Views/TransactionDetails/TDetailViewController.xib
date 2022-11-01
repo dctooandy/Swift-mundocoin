@@ -25,7 +25,7 @@
                         <rect key="frame" x="0.0" y="44" width="414" height="748"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rgi-15-sLp" userLabel="ContentView">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="875"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="1010"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W5Y-6v-m4w" customClass="TransTopView" customModule="Approval" customModuleProvider="target">
                                         <rect key="frame" x="24" y="0.0" width="366" height="70"/>
@@ -65,7 +65,7 @@
                         <constraints>
                             <constraint firstItem="rgi-15-sLp" firstAttribute="trailing" secondItem="gcz-CD-Kdh" secondAttribute="trailing" id="F9Q-41-y3U"/>
                             <constraint firstAttribute="top" secondItem="rgi-15-sLp" secondAttribute="top" id="Lwv-tC-9JV"/>
-                            <constraint firstItem="rgi-15-sLp" firstAttribute="height" secondItem="gcz-CD-Kdh" secondAttribute="height" multiplier="0.1" constant="800" id="TZe-aD-PtE"/>
+                            <constraint firstItem="rgi-15-sLp" firstAttribute="height" secondItem="gcz-CD-Kdh" secondAttribute="height" multiplier="1.35" id="TUe-R4-LvN"/>
                             <constraint firstItem="rgi-15-sLp" firstAttribute="width" secondItem="gcz-CD-Kdh" secondAttribute="width" id="Zkh-em-ip3"/>
                             <constraint firstItem="rgi-15-sLp" firstAttribute="bottom" secondItem="gcz-CD-Kdh" secondAttribute="bottom" id="cwT-PI-oh2"/>
                             <constraint firstItem="rgi-15-sLp" firstAttribute="leading" secondItem="gcz-CD-Kdh" secondAttribute="leading" id="hXg-DJ-W11"/>
