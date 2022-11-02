@@ -15,13 +15,10 @@ import BackgroundTasks
 
 public typealias CheckCompletionBlock = (Bool) -> Void
 let backgroundAppRefreshTaskSchedulerIdentifier = "com.example.fooBackgroundAppRefreshIdentifier"
-let backgroundProcessingTaskSchedulerIdentifier = "com.example.fooBackgroundProcessingIdentifier"
 //@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK:業務設定
     private var backgroundTaskIdentifier: UIBackgroundTaskIdentifier?
-    var timer: Timer?
-    var bgTimer: Timer?
     var window: UIWindow?
     var isLogin:Bool?
     {
@@ -42,7 +39,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             BuildConfig().domainSet(mode: domainMode)
         }
     }
-//    var timer: Timer?
     private let dpg = DisposeBag()
     // MARK: -
     // MARK:Life cycle
@@ -76,69 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         Log.v("遠端推播註冊失敗 \(error)")
     }
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        //虽然定义了后台获取的最短时间，但iOS会自行以它认定的最佳时间来唤醒程序，这个我们无法控制
-        //UIApplicationBackgroundFetchIntervalMinimum 尽可能频繁的调用我们的Fetch方法
-        application.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
-        application.beginBackgroundTask {
-            Log.i("背景執行 開始")
-//            self.backgroundTaskTenMins()
-        } // allows to run background tasks
-        self.submitBackgroundTasks()
-        timer?.invalidate()
-//        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true, block:
-//                                        {
-//            (timer) in
-//
-//            Log.i("背景執行 計時倒數: \(UIApplication.shared.backgroundTimeRemaining)")
-//        })
-        // 消除倒數
-        CheckTokenService.share.stopRETimer()
-//        stopRETimer()
-//        SocketIOManager.sharedInstance.closeConnection()
-    }
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        endBackgroundTasksWillEnterForeground(application)
-        if detectIsJialbrokenDevice()
-        {
-            if let vc = window?.rootViewController
-            {
-                self.showAlertForJillbreakDevice(withVC: vc)
-            }
-        }else
-        {
-            // 檢查版本
-            checkAppVersion()
-            
-            if let vc = UIApplication.topViewController() {
-                print("current top vc: \(vc)")
-                if vc.isKind(of: LaunchReciprocalViewController.self) { return }
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-                if vc.isKind(of: AuditLoginViewController.self) { return }
-#else
-                if vc.isKind(of: LoginSignupViewController.self) { return }
-#endif
-                if let vcArray = vc.navigationController?.viewControllers
-                {
-                    for vc in vcArray {
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-                        if vc is AuditLoginViewController { return }
-#else
-                        if vc is LoginSignupViewController { return }
-#endif
-                    }
-                }
-                // 檢查時間
-                checkTime()
-//                if !vc.isKind(of: TabbarViewController.self) ,
-//                   !vc.isKind(of: AuditTabbarViewController.self){
-//                } else {
-//                    print("current vc is tabbar vc finished.")
-//                }
-                
-            }
-        }
-    }
+
     // MARK: -
     // MARK:業務方法
     func launchFromNotification(options: [UIApplication.LaunchOptionsKey: Any]?) {
@@ -273,31 +207,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: -
 // MARK: 延伸 背景執行
 extension AppDelegate {
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        Log.i("背景執行 app退到背景")
+        cancelAllPandingBGTask()
+        submitBackgroundTasks()
+        // 消除倒數
+        CheckTokenService.share.stopRETimer()
+//        stopRETimer()
+//        SocketIOManager.sharedInstance.closeConnection()
+    }
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        endBackgroundTasksWillEnterForeground(application)
+        if detectIsJialbrokenDevice()
+        {
+            if let vc = window?.rootViewController
+            {
+                self.showAlertForJillbreakDevice(withVC: vc)
+            }
+        }else
+        {
+            // 檢查版本
+            checkAppVersion()
+            if let vc = UIApplication.topViewController() {
+                print("current top vc: \(vc)")
+                if vc.isKind(of: LaunchReciprocalViewController.self) { return }
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                if vc.isKind(of: AuditLoginViewController.self) { return }
+#else
+                if vc.isKind(of: LoginSignupViewController.self) { return }
+#endif
+                if let vcArray = vc.navigationController?.viewControllers
+                {
+                    for vc in vcArray {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+                        if vc is AuditLoginViewController { return }
+#else
+                        if vc is LoginSignupViewController { return }
+#endif
+                    }
+                }
+                // 檢查時間
+                checkTime()
+//                if !vc.isKind(of: TabbarViewController.self) ,
+//                   !vc.isKind(of: AuditTabbarViewController.self){
+//                } else {
+//                    print("current vc is tabbar vc finished.")
+//                }
+            }
+        }
+    }
+    func cancelAllPandingBGTask() {
+        if #available(iOS 13.0, *) {
+            BGTaskScheduler.shared.cancelAllTaskRequests()
+        } else {
+            // Fallback on earlier versions
+        }
+    }
+
     func initBackgroundTasktimer()
     {
-        self.backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler:
-                                                                                    {
-            Log.i("背景執行 計時過期: Your app will not be executing code in background anymore.")
-            
-            if let indentifier = self.backgroundTaskIdentifier
-            {
-                self.timer?.invalidate()
-                self.timer = nil
-                UIApplication.shared.endBackgroundTask(indentifier)
-            }
-        })
+        //虽然定义了后台获取的最短时间，但iOS会自行以它认定的最佳时间来唤醒程序，这个我们无法控制
+        //UIApplicationBackgroundFetchIntervalMinimum 尽可能频繁的调用我们的Fetch方法
+        UIApplication.shared.setMinimumBackgroundFetchInterval(UIApplication.backgroundFetchIntervalMinimum)
+
+//        UIApplication.shared.beginBackgroundTask {
+////            Log.i("背景執行 開始")
+////            self.submitBackgroundTasks()
+//        } // allows to run background tasks
+//        self.backgroundTaskIdentifier = UIApplication.shared.beginBackgroundTask(expirationHandler:
+//                                                                                    {
+//            Log.i("背景執行 開始")
+////            self.submitBackgroundTasks()
+//            Log.i("背景執行 計時過期: Your app will not be executing code in background anymore.")
+//        })
     }
     func endBackgroundTasksWillEnterForeground(_ application: UIApplication)
     {
         Log.i("背景執行 結束於進入前景")
-        self.timer?.invalidate()
-        self.timer = nil
-        self.bgTimer?.invalidate()
+
         if let indentifier = self.backgroundTaskIdentifier
         {
-            application.endBackgroundTask(indentifier)
             UIApplication.shared.endBackgroundTask(indentifier)
         }
+
         if #available(iOS 13.0, *) {
             BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier)
             Log.i("背景執行 part2 :Cancel task request")
@@ -305,50 +297,15 @@ extension AppDelegate {
             // Fallback on earlier versions
         }
     }
-    func backgroundTaskTenMins()
-    {
-        var countInt = 500
-        bgTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-            guard let strongSelf = self else { return }
-            countInt -= 1
-            Log.i("背景執行 自然倒數: \(countInt)")
-            DispatchQueue.main.async {
-                // 先關起來
-//                Log.e("剩餘時間 : \(countInt) 秒")
-                if countInt == 0 {
-                    timer.invalidate()
-                    Log.i("背景執行 自然倒數結束")
-                    if let indentifier = strongSelf.backgroundTaskIdentifier
-                    {
-                        UIApplication.shared.endBackgroundTask(indentifier)
-                    }
-                }
-            }
-        }
-        bgTimer?.fire()
-//        DispatchQueue.main.asyncAfter(deadline:.now() + 500)
-//        {
-//            Log.i("背景執行 自然倒數結束")
-//            if let indentifier = self.backgroundTaskIdentifier
-//            {
-//                UIApplication.shared.endBackgroundTask(indentifier)
-//            }
-//        }
-    }
+
     func submitBackgroundTasks() {
         if #available(iOS 13.0, *) {
             // Declared at the "Permitted background task scheduler identifiers" in info.plist
-
-            let timeDelay = 10.0
-            
+            let timeDelay = 0.0
             do {
-                let backgroundAppProcessingTaskRequest = BGProcessingTaskRequest(identifier: backgroundProcessingTaskSchedulerIdentifier)
-                backgroundAppProcessingTaskRequest.requiresNetworkConnectivity = true
-                backgroundAppProcessingTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
                 let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: backgroundAppRefreshTaskSchedulerIdentifier)
                 backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
                 try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
-                try BGTaskScheduler.shared.submit(backgroundAppProcessingTaskRequest)
                 Log.i("背景執行 part2 :Submitted task request")
             } catch {
                 Log.i("背景執行 part2 :Failed to submit BGTask")
@@ -364,17 +321,6 @@ extension AppDelegate {
             // Use the identifier which represents your needs
             BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier, using: nil) { (task) in
                 Log.i("背景執行 part2 :BackgroundAppRefreshTaskScheduler is executed NOW!")
-                Log.i("背景執行 part2 :Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
-                task.expirationHandler = {
-                    task.setTaskCompleted(success: false)
-                }
-                
-                // Do some data fetching and call setTaskCompleted(success:) asap!
-                let isFetchingSuccess = true
-                task.setTaskCompleted(success: isFetchingSuccess)
-            }
-            BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundProcessingTaskSchedulerIdentifier, using: nil) { (task) in
-                Log.i("背景執行 part2 :BackgroundAppProcessingTaskScheduler is executed NOW!")
                 Log.i("背景執行 part2 :Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
                 task.expirationHandler = {
                     task.setTaskCompleted(success: false)

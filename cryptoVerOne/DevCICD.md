@@ -1,3 +1,4 @@
+1101 產dev包 背景執行10分鐘
 1101 產dev包 測試Transaction History 優化
 1025 產dev包 faceID 功能獨立
 1019 產dev包 -修正新增地址輸入框邏輯
