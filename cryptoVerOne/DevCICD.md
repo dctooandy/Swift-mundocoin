@@ -1,3 +1,4 @@
+1101 產dev包 修正 MC-768/MC-764 , 調整 MC-752 -From Address "取消+號",行數改為1,LineBreak 改為 middle
 1101 產dev包 背景執行10分鐘
 1101 產dev包 測試Transaction History 優化
 1025 產dev包 faceID 功能獨立
