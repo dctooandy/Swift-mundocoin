@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="PlusJakartaSans-Bold.ttf">
+            <string>PlusJakartaSans-Bold</string>
+        </array>
+        <array key="PlusJakartaSans-Medium.ttf">
+            <string>PlusJakartaSans-Medium</string>
+        </array>
+        <array key="PlusJakartaSans-Regular.ttf">
+            <string>PlusJakartaSans-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="n03-VP-NSo" customClass="WDetailViewController" customModule="Approval" customModuleProvider="target">
+            <view key="view" contentMode="scaleToFill" id="bCY-8T-39O">
+                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="neJ-Du-jlg">
+                        <rect key="frame" x="20" y="54" width="374" height="398"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="withdraw-success" translatesAutoresizingMaskIntoConstraints="NO" id="LuV-qz-8pV">
+                                <rect key="frame" x="130" y="50" width="114" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="114" id="Htv-55-Bu9"/>
+                                    <constraint firstAttribute="height" constant="95" id="V3O-6w-E7i"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Withdrawal Processing" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZw-vk-TD4">
+                                <rect key="frame" x="68" y="145" width="238.5" height="28"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Regular" family="Plus Jakarta Sans" pointSize="22"/>
+                                <color key="textColor" red="0.050980392156862744" green="0.78431372549019607" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="April 18, 2022 14:53" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE6-TL-BYm">
+                                <rect key="frame" x="128.5" y="177" width="117" height="16.5"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Regular" family="Plus Jakarta Sans" pointSize="13"/>
+                                <color key="textColor" red="0.4392156862745098" green="0.49411764705882355" blue="0.68235294117647061" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.00 USDT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbT-bT-3Ig">
+                                <rect key="frame" x="107.5" y="229.5" width="159" height="30.5"/>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="24"/>
+                                <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nRZ-Je-Fz2">
+                                <rect key="frame" x="58" y="296" width="258" height="49.5"/>
+                                <string key="text">Your withdrawal request 
+is submitted successfully.  Check history 
+for the latest updates.</string>
+                                <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
+                                <color key="textColor" red="0.44313725490196076" green="0.50196078431372548" blue="0.58823529411764708" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nRZ-Je-Fz2" secondAttribute="trailing" constant="58" id="0Vz-Jb-giv"/>
+                            <constraint firstItem="HZw-vk-TD4" firstAttribute="centerX" secondItem="neJ-Du-jlg" secondAttribute="centerX" id="0dd-We-Nb3"/>
+                            <constraint firstItem="nRZ-Je-Fz2" firstAttribute="leading" secondItem="neJ-Du-jlg" secondAttribute="leading" constant="58" id="Dlh-BS-tGU"/>
+                            <constraint firstItem="nRZ-Je-Fz2" firstAttribute="top" secondItem="NbT-bT-3Ig" secondAttribute="bottom" constant="36" id="NNh-nZ-KKD"/>
+                            <constraint firstItem="LuV-qz-8pV" firstAttribute="top" secondItem="neJ-Du-jlg" secondAttribute="top" constant="50" id="Srs-Xu-MxQ"/>
+                            <constraint firstItem="BE6-TL-BYm" firstAttribute="top" secondItem="HZw-vk-TD4" secondAttribute="bottom" constant="4" id="VG0-Te-6kU"/>
+                            <constraint firstItem="HZw-vk-TD4" firstAttribute="top" secondItem="LuV-qz-8pV" secondAttribute="bottom" id="X6P-SP-wVh"/>
+                            <constraint firstItem="NbT-bT-3Ig" firstAttribute="top" secondItem="BE6-TL-BYm" secondAttribute="bottom" constant="36" id="aed-hV-qeX"/>
+                            <constraint firstItem="NbT-bT-3Ig" firstAttribute="centerX" secondItem="neJ-Du-jlg" secondAttribute="centerX" id="cw2-Bv-DKa"/>
+                            <constraint firstItem="LuV-qz-8pV" firstAttribute="centerX" secondItem="neJ-Du-jlg" secondAttribute="centerX" id="dQc-wx-eQI"/>
+                            <constraint firstAttribute="height" constant="398" id="pYK-O5-yCo"/>
+                            <constraint firstItem="BE6-TL-BYm" firstAttribute="centerX" secondItem="neJ-Du-jlg" secondAttribute="centerX" id="vpn-Tc-8Bf"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGn-rs-deP" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
+                        <rect key="frame" x="51" y="482" width="312" height="50"/>
+                        <color key="backgroundColor" red="0.3803921569" green="0.28627450980000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="XZt-3S-fAj"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="CheckHistory">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QBU-LV-cfc" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
+                        <rect key="frame" x="51" y="482" width="312" height="50"/>
+                        <color key="backgroundColor" red="0.3803921569" green="0.28627450980000002" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="ie5-zD-Mei"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Try Again">
+                            <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </buttonConfiguration>
+                    </button>
+                </subviews>
+                <viewLayoutGuide key="safeArea" id="QpK-F6-EHa"/>
+                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="QpK-F6-EHa" firstAttribute="trailing" secondItem="neJ-Du-jlg" secondAttribute="trailing" constant="20" id="5CO-7N-xwR"/>
+                    <constraint firstItem="fGn-rs-deP" firstAttribute="top" secondItem="neJ-Du-jlg" secondAttribute="bottom" constant="30" id="Dv1-gQ-yvg"/>
+                    <constraint firstItem="neJ-Du-jlg" firstAttribute="leading" secondItem="QpK-F6-EHa" secondAttribute="leading" constant="20" id="NqB-2a-yen"/>
+                    <constraint firstItem="QBU-LV-cfc" firstAttribute="leading" secondItem="QpK-F6-EHa" secondAttribute="leading" constant="51" id="gwh-nR-Jl8"/>
+                    <constraint firstItem="QpK-F6-EHa" firstAttribute="trailing" secondItem="QBU-LV-cfc" secondAttribute="trailing" constant="51" id="oSH-Qz-tbw"/>
+                    <constraint firstItem="fGn-rs-deP" firstAttribute="leading" secondItem="QpK-F6-EHa" secondAttribute="leading" constant="51" id="qHt-9W-Jw2"/>
+                    <constraint firstItem="neJ-Du-jlg" firstAttribute="top" secondItem="QpK-F6-EHa" secondAttribute="top" constant="10" id="set-b8-hIz"/>
+                    <constraint firstItem="QpK-F6-EHa" firstAttribute="trailing" secondItem="fGn-rs-deP" secondAttribute="trailing" constant="51" id="tjQ-2Y-voA"/>
+                    <constraint firstItem="QBU-LV-cfc" firstAttribute="top" secondItem="neJ-Du-jlg" secondAttribute="bottom" constant="30" id="zYY-IA-knV"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="subviews">
+                        <exclude reference="fGn-rs-deP"/>
+                        <exclude reference="QBU-LV-cfc"/>
+                    </mask>
+                </variation>
+            </view>
+            <connections>
+                <outlet property="amountLabel" destination="NbT-bT-3Ig" id="c5p-9t-0u3"/>
+                <outlet property="dateLabel" destination="BE6-TL-BYm" id="MUA-0t-W5d"/>
+                <outlet property="messageLabel" destination="nRZ-Je-Fz2" id="jZI-Y0-oWE"/>
+                <outlet property="statusImageView" destination="LuV-qz-8pV" id="gV3-kK-Zwy"/>
+                <outlet property="statusLabel" destination="HZw-vk-TD4" id="08c-pQ-SWR"/>
+                <outlet property="withdrawStatusView" destination="neJ-Du-jlg" id="d8m-2E-3qm"/>
+                <outlet property="withdrawStatusViewHeight" destination="pYK-O5-yCo" id="z9a-xn-tQA"/>
+            </connections>
+            <point key="canvasLocation" x="131.8840579710145" y="103.79464285714285"/>
+        </viewController>
+    </objects>
+    <resources>
+        <image name="withdraw-success" width="114" height="96"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

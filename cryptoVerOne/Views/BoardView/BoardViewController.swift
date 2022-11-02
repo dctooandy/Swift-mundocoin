@@ -111,7 +111,7 @@ class BoardViewController: BaseViewController {
         if isFromWithdral == true
         {
             isFromWithdral = false
-            self.pageViewcontroller?.select(index: 1)
+            self.pageViewcontroller?.select(index: 0)
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -303,6 +303,9 @@ class BoardViewController: BaseViewController {
             self?.clearAllVCDataSource()
             self?.setFiletrActionFlag()
             if dataDto.historyType == "WITHDRAW"
+            {
+                self?.pageViewcontroller?.select(index: 2)
+            }else if dataDto.historyType == "DEPOSIT"
             {
                 self?.pageViewcontroller?.select(index: 1)
             }else

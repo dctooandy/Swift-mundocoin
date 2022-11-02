@@ -610,10 +610,24 @@ class InputStyleView: UIView {
         else if inputViewMode == .withdrawAddressToDetail(false)
         {
             addSubview(normalTextLabel)
+            addSubview(copyAddressImageView)
             normalTextLabel.snp.makeConstraints { (make) in
                 make.left.top.bottom.equalTo(textField)
                 make.right.equalToSuperview().offset(-35)
+//                make.right.equalToSuperview().offset(-35 - 46 + 34)
             }
+            copyAddressImageView.snp.makeConstraints { (make) in
+                make.right.equalToSuperview().offset(-10)
+                make.centerY.equalTo(textField)
+                make.size.equalTo(24)
+            }
+            rightLabelWidth = 18 + 18 + 10 - 34
+//            normalTextLabel.snp.makeConstraints { (make) in
+//                make.left.top.bottom.equalTo(textField)
+//                make.right.equalToSuperview().offset(-35)
+//            }
+            normalTextLabel.lineBreakMode = .byTruncatingMiddle
+            normalTextLabel.numberOfLines = 1
             resetTopLabelAndMask()
             tfMaskView.layer.borderColor = UIColor.clear.cgColor
         }

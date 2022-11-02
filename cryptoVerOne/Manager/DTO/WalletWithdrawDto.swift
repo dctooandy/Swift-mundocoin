@@ -10,7 +10,7 @@ import RxSwift
 import SocketIO
 struct WalletWithdrawDto :Codable {
     var id : String? = ""
-    var createdDate : String? = ""
+    var createdDate : String? = Date().toString(format: "MMMM dd, yyyy HH:mm")
     var updatedDate : String? = ""
     var type : String? = ""
     var state : String? = ""

@@ -48,6 +48,7 @@ class WithdrawViewController: BaseViewController {
     var methodView : InputStyleView!
     var confirmBottomSheet : ConfirmBottomSheet!
     var securityVerifyVC : SecurityVerificationViewController!
+    var detailVC : WDetailViewController!
     // MARK: -
     // MARK:Life cycle
     init(_ : Any?) {
@@ -374,8 +375,11 @@ class WithdrawViewController: BaseViewController {
                     _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in
                         if let dataDto = dto
                         {
+                            let combineData = combineDetailData(dataDto: dataDto)
+                            // 測試錯誤
+//                            let combineData = combineDetailData(withdrawStatus: false)
                             securityVCPopAction(animated: false)
-                            showTransactionDetailView(dataDto:dataDto)
+                            showTransactionDetailView(detailData: combineData)
                         }
                     }).disposed(by: dpg)
                 }
@@ -429,7 +433,9 @@ class WithdrawViewController: BaseViewController {
                                     ErrorHandler.show(error: error)
                                 }
                             default:
+                                let combineData = combineDetailData(withdrawStatus: false)
                                 securityVCPopAction(animated: true)
+                                showTransactionDetailView(detailData: combineData)
                                 ErrorHandler.show(error: error)
                             }
                         }
@@ -448,9 +454,11 @@ class WithdrawViewController: BaseViewController {
         clearAllData()
         securityVerifyVC.navigationController?.popViewController(animated: animated)
     }
-    func showTransactionDetailView(dataDto : WalletWithdrawDto)
+    func combineDetailData(dataDto : WalletWithdrawDto = WalletWithdrawDto(),
+                           withdrawStatus:Bool = true) -> DetailDto
     {
-        if let transDto = dataDto.transaction ,
+        if withdrawStatus == true ,
+           let transDto = dataDto.transaction ,
            let amountText = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8),
            let fee = feeAmountLabel.text
         {
@@ -470,16 +478,37 @@ class WithdrawViewController: BaseViewController {
                                        confirmBlocks: transDto.confirmBlocks ?? 0,
                                        showMode: .withdrawals,
                                        type: transDto.type)
-//            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
-//                                                          mode: .topViewShow ,
-//                                                          dataDto:detailData)
-            // 0818 產品驗收 topView 隱藏
-            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
-                                                          mode: .topViewHidden ,
-                                                          buttonMode: .buttonShow,
-                                                          dataDto:detailData)
-            self.navigationController?.pushViewController(detailVC, animated: true)
+           return detailData
+        }else
+        {
+            let detailData = DetailDto(detailType: .failed,
+                                       amount: amountInputView.amountTextView.text ?? "",
+                                       tether: "" ,
+                                       network: "Tron(TRC20)",
+                                       confirmations: "",
+                                       fee: "",
+                                       date: dataDto.createdDateString,
+                                       address: "",
+                                       fromAddress: "",
+                                       txid: "",
+                                       id: "",
+                                       orderId: "",
+                                       confirmBlocks: 0,
+                                       showMode: .withdrawals,
+                                       type: "WITHDRAW")
+            return detailData
         }
+    }
+    func showTransactionDetailView(detailData : DetailDto)
+    {
+        detailVC = WDetailViewController.instance(titleString: "Withdraw",
+                                                      dataDto: detailData)
+//            // 0818 產品驗收 topView 隱藏
+//            let detailVC = TDetailViewController.instance(titleString: "Withdraw".localized,
+//                                                          mode: .topViewHidden ,
+//                                                          buttonMode: .buttonShow,
+//                                                          dataDto:detailData)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     func clearAllData ()
     {

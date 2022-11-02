@@ -1641,6 +1641,18 @@
 		A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
 		A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
 		A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A106C67F2890288D005B7EBE /* AnimatorManager.swift */; };
+		A107E0C229124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C329124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C429124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C529124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C629124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C729124005006595E4 /* WDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A107E0C129124005006595E4 /* WDetailViewController.swift */; };
+		A107E0C92912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
+		A107E0CA2912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
+		A107E0CB2912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
+		A107E0CC2912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
+		A107E0CD2912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
+		A107E0CE2912413B006595E4 /* WDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A107E0C82912413B006595E4 /* WDetailViewController.xib */; };
 		A110FBBB28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
 		A110FBBC28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
 		A110FBBD28FD2C1700472439 /* AuditDevCICD.md in Resources */ = {isa = PBXBuildFile; fileRef = A110FBBA28FD2C1700472439 /* AuditDevCICD.md */; };
@@ -2091,6 +2103,8 @@
 		A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IDVerificationViewController.xib; sourceTree = "<group>"; };
 		A1019DDF2824D0F300E6929E /* TemplateVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemplateVC.swift; sourceTree = "<group>"; };
 		A106C67F2890288D005B7EBE /* AnimatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatorManager.swift; sourceTree = "<group>"; };
+		A107E0C129124005006595E4 /* WDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WDetailViewController.swift; sourceTree = "<group>"; };
+		A107E0C82912413B006595E4 /* WDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WDetailViewController.xib; sourceTree = "<group>"; };
 		A110FBBA28FD2C1700472439 /* AuditDevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditDevCICD.md; sourceTree = "<group>"; };
 		A110FBC128FD2C2D00472439 /* AuditStagingCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditStagingCICD.md; sourceTree = "<group>"; };
 		A110FBC828FD2C3E00472439 /* AuditProCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AuditProCICD.md; sourceTree = "<group>"; };
@@ -2726,6 +2740,8 @@
 				A1559E0828375B5500755783 /* TransTopView */,
 				A16F62122831FAA100D9CCE5 /* TDetailViewController.swift */,
 				A16F62152831FACD00D9CCE5 /* TDetailViewController.xib */,
+				A107E0C129124005006595E4 /* WDetailViewController.swift */,
+				A107E0C82912413B006595E4 /* WDetailViewController.xib */,
 			);
 			path = TransactionDetails;
 			sourceTree = "<group>";
@@ -3571,6 +3587,7 @@
 				09905B152851A02B00BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2A28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9528EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0CD2912413B006595E4 /* WDetailViewController.xib in Resources */,
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3669,6 +3686,7 @@
 				09905C072851A08500BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2B28893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9628EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0CE2912413B006595E4 /* WDetailViewController.xib in Resources */,
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3767,6 +3785,7 @@
 				09905CF92851A09600BAEE78 /* mucoin_sucess.json in Resources */,
 				09954C2928893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9428EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0CC2912413B006595E4 /* WDetailViewController.xib in Resources */,
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
@@ -3865,6 +3884,7 @@
 				09CAF4EC283C77ED00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2728893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9228EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0CA2912413B006595E4 /* WDetailViewController.xib in Resources */,
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
@@ -3963,6 +3983,7 @@
 				09CAF5AD283C7BBE00D7B19B /* mucoin_sucess.json in Resources */,
 				09954C2828893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9328EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0CB2912413B006595E4 /* WDetailViewController.xib in Resources */,
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
@@ -4061,6 +4082,7 @@
 				A14E1BA72824FF5000827148 /* ForgotViewController.xib in Resources */,
 				09954C2628893C3400E5E2BE /* PlusJakartaSans-Medium.ttf in Resources */,
 				A1E72A9128EC236A006EB767 /* AddNewAddressCell.xib in Resources */,
+				A107E0C92912413B006595E4 /* WDetailViewController.xib in Resources */,
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
@@ -4489,6 +4511,7 @@
 				09905AB32851A02B00BAEE78 /* LoginService.swift in Sources */,
 				09905AB42851A02B00BAEE78 /* NoDataView.swift in Sources */,
 				09905AB52851A02B00BAEE78 /* Date+util.swift in Sources */,
+				A107E0C629124005006595E4 /* WDetailViewController.swift in Sources */,
 				09905AB62851A02B00BAEE78 /* BuildConfig.swift in Sources */,
 				09905AB72851A02B00BAEE78 /* ImageVerifyView.swift in Sources */,
 				09905AB82851A02B00BAEE78 /* SecurityVerificationViewController.swift in Sources */,
@@ -4725,6 +4748,7 @@
 				09905BA52851A08500BAEE78 /* LoginService.swift in Sources */,
 				09905BA62851A08500BAEE78 /* NoDataView.swift in Sources */,
 				09905BA72851A08500BAEE78 /* Date+util.swift in Sources */,
+				A107E0C729124005006595E4 /* WDetailViewController.swift in Sources */,
 				09905BA82851A08500BAEE78 /* BuildConfig.swift in Sources */,
 				09905BA92851A08500BAEE78 /* ImageVerifyView.swift in Sources */,
 				09905BAA2851A08500BAEE78 /* SecurityVerificationViewController.swift in Sources */,
@@ -4961,6 +4985,7 @@
 				09905C972851A09600BAEE78 /* LoginService.swift in Sources */,
 				09905C982851A09600BAEE78 /* NoDataView.swift in Sources */,
 				09905C992851A09600BAEE78 /* Date+util.swift in Sources */,
+				A107E0C529124005006595E4 /* WDetailViewController.swift in Sources */,
 				09905C9A2851A09600BAEE78 /* BuildConfig.swift in Sources */,
 				09905C9B2851A09600BAEE78 /* ImageVerifyView.swift in Sources */,
 				09905C9C2851A09600BAEE78 /* SecurityVerificationViewController.swift in Sources */,
@@ -5197,6 +5222,7 @@
 				09CAF49D283C77ED00D7B19B /* LoginService.swift in Sources */,
 				092E76102850A9D100221997 /* NoDataView.swift in Sources */,
 				09CAF49E283C77ED00D7B19B /* Date+util.swift in Sources */,
+				A107E0C329124005006595E4 /* WDetailViewController.swift in Sources */,
 				09CAF49F283C77ED00D7B19B /* BuildConfig.swift in Sources */,
 				09CAF4A0283C77ED00D7B19B /* ImageVerifyView.swift in Sources */,
 				09CAF4A1283C77ED00D7B19B /* SecurityVerificationViewController.swift in Sources */,
@@ -5433,6 +5459,7 @@
 				09CAF55E283C7BBE00D7B19B /* LoginService.swift in Sources */,
 				092E76112850A9D100221997 /* NoDataView.swift in Sources */,
 				09CAF55F283C7BBE00D7B19B /* Date+util.swift in Sources */,
+				A107E0C429124005006595E4 /* WDetailViewController.swift in Sources */,
 				09CAF560283C7BBE00D7B19B /* BuildConfig.swift in Sources */,
 				09CAF561283C7BBE00D7B19B /* ImageVerifyView.swift in Sources */,
 				09CAF562283C7BBE00D7B19B /* SecurityVerificationViewController.swift in Sources */,
@@ -5669,6 +5696,7 @@
 				09CAF439283C74D600D7B19B /* LoginService.swift in Sources */,
 				092E760F2850A9D100221997 /* NoDataView.swift in Sources */,
 				A19C70EA28224C4B000AFC3F /* Date+util.swift in Sources */,
+				A107E0C229124005006595E4 /* WDetailViewController.swift in Sources */,
 				A19C711428225542000AFC3F /* BuildConfig.swift in Sources */,
 				A19C71DD28226889000AFC3F /* ImageVerifyView.swift in Sources */,
 				A1973A88282AB37D009932D8 /* SecurityVerificationViewController.swift in Sources */,

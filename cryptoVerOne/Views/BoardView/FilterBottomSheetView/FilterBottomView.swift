@@ -99,8 +99,9 @@ class FilterBottomView: UIView {
             {
                 filterHistoryValue = "ALL"
             }
+            let showModeIndex = (showModeAtView == .deposits ? 1 : (showModeAtView == .withdrawals ? 2 : 0))
             FilterStyleThemes.share.acceptSheetHeightStyle(showModeAtView)
-            historyView.collectionView.selectItem(at: IndexPath(item: (showModeAtView == .deposits || showModeAtView == .all) ? 0 : 1, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
+            historyView.collectionView.selectItem(at: IndexPath(item: showModeIndex, section: 0), animated: true, scrollPosition: UICollectionView.ScrollPosition.left)
         }
     }
     var transPostDto :WalletTransPostDto = WalletTransPostDto()
