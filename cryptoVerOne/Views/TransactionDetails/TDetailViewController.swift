@@ -51,7 +51,10 @@ class TDetailViewController: BaseViewController {
         didSet{
         }
     }
+    // 上部 高度調整
     @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    // 下部 高度調整
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
     var isPushToAddAddressBookVC = false
     // MARK: -
     // MARK:UI 設定
@@ -227,10 +230,12 @@ class TDetailViewController: BaseViewController {
 //            checkButton.isHidden = false
 //            tryButton.isHidden = false
 //            TransStyleThemes.tryAgainBtnHiddenType.bind(to: tryButton.rx.isHidden).disposed(by: dpg)
+            bottomViewHeight.constant = 0.0
         }else
         {
 //            checkButton.isHidden = true
 //            tryButton.isHidden = true
+            bottomViewHeight.constant = 104.0
         }
     }
     @objc func popToRootVC() {
