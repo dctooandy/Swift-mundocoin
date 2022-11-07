@@ -526,7 +526,7 @@ class WithdrawViewController: BaseViewController {
     {
         amountInputView.amountTextView.text = amount
         withdrawToView.textView.text = address
-        changeWithdrawInputViewHeight(constant: 72.0)
+        changeWithdrawInputViewHeight(constant: 46.0)
         withdrawToView.textField.placeholder = ""
     }
 }
