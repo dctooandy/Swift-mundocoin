@@ -62,7 +62,7 @@ class WDetailViewController: BaseViewController {
         super.viewDidLoad()
         setupUI()
         bindUI()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: mdBackBtn)
         view.backgroundColor = Themes.grayF4F7FE
     }
     override func viewWillAppear(_ animated: Bool) {

@@ -23,7 +23,7 @@ extension DataRequest
             //            let requestURLString = response.request?.url?.absoluteString.components(separatedBy: "/").last ?? "無網址"
             if !Connectivity.isConnectedToInternet {
                 // 網路無回應
-                onError?(ApiServiceError.networkError(000, requestURLString))
+                onError?(ApiServiceError.networkError(0, "Connection error, please try again later."))
             }
             // 驗證是否有回傳資料
             guard let data = response.data else { Log.errorAndCrash("response no data") }

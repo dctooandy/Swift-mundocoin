@@ -483,7 +483,7 @@ class WithdrawViewController: BaseViewController {
         {
             let detailData = DetailDto(detailType: .failed,
                                        amount: amountInputView.amountTextView.text ?? "",
-                                       tether: "" ,
+                                       tether: "USDT" ,
                                        network: "Tron(TRC20)",
                                        confirmations: "",
                                        fee: "",

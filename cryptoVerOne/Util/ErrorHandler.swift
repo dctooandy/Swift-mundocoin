@@ -19,9 +19,9 @@ class ErrorHandler {
             case .domainError(let code ,let urlString ,let msg):
                 Log.e("\(code)"+msg)
                 showAlert(title: "错误讯息", message: "\(msg)\n\(urlString)")
-            case .networkError(let code ,let urlString):
-                Log.e("\(code)")
-                showAlert(title: "Network failed", message: "\(code)\n\(urlString)")
+            case .networkError(let code ,let message):
+                Log.e("\(code)\(message)")
+                showAlert(title: "Network failed", message: "\(message)")
             case .unknownError(_ ,let title ,let msg):
                 Log.e(msg )
                 showAlert(title: title, message: msg )
@@ -90,7 +90,9 @@ class ErrorHandler {
         } else {
             if let currentVC = UIApplication.topViewController()
             {
-                let popVC = ConfirmPopupView(iconMode: .nonIcon(["Close".localized]),
+                let stringHeight = message.height(withConstrainedWidth: (Views.screenWidth - 116), font: Fonts.PlusJakartaSansMedium(16))
+                let popVC = ConfirmPopupView(viewHeight: stringHeight,
+                                             iconMode: .nonIcon(["Close".localized]),
                                              title: title,
                                              message: message ){ _ in }
                 popVC.start(viewController: currentVC)
