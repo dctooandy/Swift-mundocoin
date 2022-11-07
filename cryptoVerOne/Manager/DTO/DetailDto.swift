@@ -13,7 +13,7 @@ class DetailDto {
     let confirmations:String
     let fee:String
     let date:String
-    let address:String
+    var address:String
     let fromAddress:String
     let txid:String
     let amount:String

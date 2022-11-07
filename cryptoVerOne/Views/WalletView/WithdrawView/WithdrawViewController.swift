@@ -378,6 +378,7 @@ class WithdrawViewController: BaseViewController {
                             let combineData = combineDetailData(dataDto: dataDto)
                             // 測試錯誤
 //                            let combineData = combineDetailData(withdrawStatus: false)
+//                            combineData.address = textString
                             securityVCPopAction(animated: false)
                             showTransactionDetailView(detailData: combineData)
                         }
@@ -434,6 +435,7 @@ class WithdrawViewController: BaseViewController {
                                 }
                             default:
                                 let combineData = combineDetailData(withdrawStatus: false)
+                                combineData.address = textString
                                 securityVCPopAction(animated: true)
                                 showTransactionDetailView(detailData: combineData)
                                 ErrorHandler.show(error: error)
@@ -526,7 +528,7 @@ class WithdrawViewController: BaseViewController {
     {
         amountInputView.amountTextView.text = amount
         withdrawToView.textView.text = address
-        changeWithdrawInputViewHeight(constant: 46.0)
+        changeWithdrawInputViewHeight(constant: 72.0)
         withdrawToView.textField.placeholder = ""
     }
 }
