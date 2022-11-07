@@ -26,6 +26,7 @@ class KeychainManager {
         case auditAccList = "audit_acc_list"
         case auditRememberMeStatus = "audit_remember_me_status"
         case mundocoinRememberMeStatus = "mundocoin_remember_me_status"
+        case mundocoinRememberMeEnable = "mundocoin_remember_me_enable"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -341,7 +342,18 @@ class KeychainManager {
             return []
         }
     }
-    
+    // 設定是否打開Remember Me功能
+    func setMundoCoinRememberMeEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .mundocoinRememberMeEnable)
+        return success
+    }
+    func getMundoCoinRememberMeEnable() -> Bool {
+        if let modeValue = getString(from: .mundocoinRememberMeEnable)
+        {
+            return (modeValue == "true" ? true : false)
+        }
+        return false
+    }
     func saveMundoCoinRememberMeStatus(_ isOn :Bool )
     {
         _ = setString(isOn == true ? "true":"false", at: .mundocoinRememberMeStatus)

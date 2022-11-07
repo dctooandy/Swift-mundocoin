@@ -74,46 +74,55 @@ class LoginViewController: BaseViewController {
     }
     func detectRememberMeAction()
     {
-        if KeychainManager.share.getMundoCoinRememberMeStatus() == true
+        if KeychainManager.share.getMundoCoinRememberMeEnable() == false
         {
-            if let loginPostDto = KeychainManager.share.getLastAccount(),
-               BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account)
+            checkBoxView.isSelected = false
+            checkBoxView.isHidden = true
+            rememberMeLabel.isHidden = true
+            KeychainManager.share.saveMundoCoinRememberMeStatus(false)
+        }else
+        { 
+            if KeychainManager.share.getMundoCoinRememberMeStatus() == true
             {
-                DispatchQueue.main.async { [self] in
-                    accountInputView.accountInputView.textField.text = loginPostDto.account
-                    accountInputView.passwordInputView.textField.text = loginPostDto.password
+                if let loginPostDto = KeychainManager.share.getLastAccount(),
+                   BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account)
+                {
+                    DispatchQueue.main.async { [self] in
+                        accountInputView.accountInputView.textField.text = loginPostDto.account
+                        accountInputView.passwordInputView.textField.text = loginPostDto.password
+                        checkBoxView.isSelected = true
+                        checkBoxView.checkType = .checkType
+                        accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+                        accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+                    }
+                }else
+                {
+                    //暫時強制寫上
                     checkBoxView.isSelected = true
                     checkBoxView.checkType = .checkType
-                    accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
-                    accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
+                    
+#else
+                    //                accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
+                    //                accountInputView.passwordInputView.textField.text = "Admin!234"
+                    //                accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+                    //                accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+#endif
                 }
             }else
             {
+                checkBoxView.isSelected = false
+                checkBoxView.checkType = .defaultType
                 //暫時強制寫上
-                checkBoxView.isSelected = true
-                checkBoxView.checkType = .checkType
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
-            
+                
 #else
-//                accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
-//                accountInputView.passwordInputView.textField.text = "Admin!234"
-//                accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
-//                accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+                //            accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
+                //            accountInputView.passwordInputView.textField.text = "Admin!234"
+                //            accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
+                //            accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
 #endif
             }
-        }else
-        {
-            checkBoxView.isSelected = false
-            checkBoxView.checkType = .defaultType
-            //暫時強制寫上
-#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
-            
-#else
-//            accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
-//            accountInputView.passwordInputView.textField.text = "Admin!234"
-//            accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
-//            accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
-#endif
         }
     }
     func addKeyboardAction()
