@@ -45,7 +45,9 @@ class TransStyleThemes {
     }
     // 綁定取款成功頁面 下方隱藏物件
     private static func bindDetailListViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
-        return topViewMode.map({ ($0 == .pending || $0 == .failed || $0 == .innerDone || $0 == .innerFailed ) ? true : false})
+        return topViewMode.map({ ($0 == .pending ) ? true : false})
+        // 內部轉換不出現txid
+//        return topViewMode.map({ ($0 == .pending || $0 == .failed || $0 == .innerDone || $0 == .innerFailed ) ? true : false})
     }
     private static func bindDetailListFeeViewHidden<T>(hidden: T , visible : T) -> Observable<Bool>{
         return topViewMode.map({ ($0 == .pending ) ? true : false})
