@@ -1,3 +1,4 @@
+1107 產dev包 修正 tryAgain 返回取款頁面時,address消失異常
 1107 產dev包 網路無回應文案修改,withdraw 返回導向目標修正,withdraw failed 幣值修正,修正 tryAgain 後withdraw輸入匡大小異常的問題,transaction history txid的顯示修正為只有pending 才隱藏,暫時停止 remember me 功能
 1101 產dev包 修正 MC-768/MC-764 , 調整 MC-752 -From Address "取消+號",行數改為1,LineBreak 改為 middle
 1101 產dev包 背景執行10分鐘
