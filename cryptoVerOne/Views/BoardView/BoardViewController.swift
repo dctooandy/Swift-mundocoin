@@ -262,11 +262,12 @@ class BoardViewController: BaseViewController {
             {
                 if self.transContentDto[currentTransIndex].state != statsValue
                 {
-                    if statsValue == "PROCESSING"
-                    {
-                        let newamount = (amount.intValue ?? 1) - 1
-                        currentTransDto.amount = JSONValue.int(newamount)
-                    }
+//                    if statsValue == "PROCESSING"
+//                    {
+//                        let newamount = (amount.intValue ?? 1) - 1
+//                        currentTransDto.amount = JSONValue.int(newamount)
+//                    }
+                    currentTransDto.amount = amount
                     currentTransDto.state = statsValue
                     self.transContentDto.remove(at: currentTransIndex)
                     self.transContentDto.insert(currentTransDto, at: currentTransIndex)

@@ -59,14 +59,24 @@ struct TXPayloadDto : Codable {
     
     var txAmountIntWithDecimal : JSONValue?
     {
+        var difValue = 1.0
+        
+        if stateValue == "FAILED" || stateValue == "PENDING" || blockHeight == nil
+        {
+            difValue = 0.0
+        }
+        if type == "DEPOSIT"
+        {
+            difValue = 0.0
+        }
         if let amountDoubleValue = amount?.doubleValue
         {
             let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
-            return JSONValue.double(doubleValue)
+            return JSONValue.double(doubleValue + difValue)
         }else if let intValue = amount?.intValue
         {
-            let doubleValue = Double(intValue) / pow(10, Double(decimal!))
-            return JSONValue.double(doubleValue)
+            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+            return JSONValue.double(doubleValue + difValue)
         }else
         {
             return JSONValue.double(0.00)
