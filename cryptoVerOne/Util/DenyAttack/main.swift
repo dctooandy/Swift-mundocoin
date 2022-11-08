@@ -16,7 +16,7 @@ class MyApplication: UIApplication {
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
 disable_gdb()
 plokij()
-UIApplicationMain(
+_ = UIApplicationMain(
     CommandLine.argc,
     UnsafeMutableRawPointer(CommandLine.unsafeArgv)
         .bindMemory(
@@ -26,7 +26,7 @@ UIApplicationMain(
     NSStringFromClass(AppDelegate.self)
 )
 #else
-UIApplicationMain(
+_ = UIApplicationMain(
     CommandLine.argc,
     UnsafeMutableRawPointer(CommandLine.unsafeArgv)
         .bindMemory(
