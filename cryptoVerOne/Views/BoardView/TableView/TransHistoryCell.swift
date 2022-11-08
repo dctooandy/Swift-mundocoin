@@ -70,21 +70,25 @@ class TransHistoryCell: UITableViewCell {
                 statusLabel.backgroundColor = Themes.blue0587FF10
             }
         }
-        if historyType == .withdrawals
-        {
-            if let amountValue = data.walletAmountIntWithDecimal
-            {
-                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
-            }
-        }else
+//        if historyType == .withdrawals || historyType == .all
+//        {
+//            if let amountValue = data.walletAmountIntWithDecimal
+//            {
+//                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+//            }
+//        }else
+//        {
+//            if let amountValue = data.walletDepositAmountIntWithDecimal
+//            {
+//                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+//            }
+//        }
+        if data.type == "DEPOSIT"
         {
             if let amountValue = data.walletDepositAmountIntWithDecimal
             {
                 amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
             }
-        }
-        if data.type == "DEPOSIT"
-        {
             amountLabel.textColor = UIColor(rgb: 0x0DC897)
             balanceFlagLabel.textColor = UIColor(rgb: 0x0DC897)
             balanceFlagLabel.text = "+"
@@ -92,6 +96,10 @@ class TransHistoryCell: UITableViewCell {
             inOutLabel.text = "Deposit"
         }else
         {
+            if let amountValue = data.walletAmountIntWithDecimal
+            {
+                amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
+            }
             amountLabel.textColor = UIColor(rgb: 0xF33828)
             balanceFlagLabel.textColor = UIColor(rgb: 0xF33828)
             balanceFlagLabel.text = "-"

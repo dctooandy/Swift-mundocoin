@@ -942,8 +942,10 @@ class InputStyleView: UIView {
                 copyAddressImageView.isHidden = true
             }
         case .withdrawAddressToConfirm, .withdrawAddressToDetail(_) ,.address, .withdrawAddressFromDetail , .withdrawAddressInnerFromDetail:
-            let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
-            if theSame.count > 0 || string == "" || string == "--"
+            // 1108 已出現在地址簿裡的地址,不出現"+"號
+//            let theSame = KeychainManager.share.getAddressBookList().filter({$0.address == string})
+//            if theSame.count > 0 || string == "" || string == "--"
+            if string == "" || string == "--"
             {
                 addAddressImageView.isHidden = true
             }

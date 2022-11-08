@@ -335,7 +335,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             withdrawToInputView.tvHeightConstraint.constant = (withdrawToStringHeight + 18)
             withdrawToInputView.setVisibleString(string: withdrawToAddress)
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
-            let flagAmount = (dto.showMode == .deposits ? "+" : "-")
+            let flagAmount = (dto.type == "DEPOSIT" ? "+" : "-")
             topAmountLabel.text = "\(flagAmount)\(dto.amount.numberFormatter(.decimal, 8))"
             tetherLabel.text = dto.tether
             networkLabel.text = dto.network

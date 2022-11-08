@@ -140,7 +140,8 @@ class TransactionTableViewController: BaseViewController {
     }
     func pushToDetailVC(contentDto:ContentDto)
     {
-        if let amountValue = (showModeAtTableView == .withdrawals ?  contentDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8) :contentDto.walletDepositAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)),
+        
+        if let amountValue = (contentDto.type != "DEPOSIT" ?  contentDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8) :contentDto.walletDepositAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)),
            let feeString = contentDto.fees != nil ? (contentDto.fees! > 0 ? "\(contentDto.fees!)": "1") : "1"
         {
             let conBlocks = contentDto.confirmBlocks ?? 0
