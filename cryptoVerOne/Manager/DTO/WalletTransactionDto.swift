@@ -232,9 +232,15 @@ struct ContentDto : Codable
     var walletAmountIntWithDecimal : JSONValue?
     {
         var difValue = 1.0
-        if stateValue == "FAILED" || stateValue == "PENDING"
+        if stateValue == "FAILED" || stateValue == "PENDING" || blockHeight == nil
         {
-            difValue = 0.0
+            if blockHeight != nil
+            {
+                difValue = 1.0
+            }else
+            {
+                difValue = 0.0
+            }
         }
         if let amountDoubleValue = amount?.doubleValue
         {

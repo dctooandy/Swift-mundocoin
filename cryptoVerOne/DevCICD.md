@@ -1,3 +1,4 @@
+1109 產dev包 修正 detail 頁面,socket接收到FAILED訊息時,金額顯示異常問題
 1108 產dev包 修正 detail 頁面,socket接收到PROCESSING訊息時,金額顯示異常問題
 1108 產dev包 修正 all tag 內容amount 加總異常,修正 deposit 內容amount 正負符號異常
 1107 產dev包 修正 tryAgain 返回取款頁面時,address消失異常

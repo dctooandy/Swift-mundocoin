@@ -60,10 +60,16 @@ struct TXPayloadDto : Codable {
     var txAmountIntWithDecimal : JSONValue?
     {
         var difValue = 1.0
-        
+        // socket 第三次回來時,blockHeight非 nil 時給fee 1
         if stateValue == "FAILED" || stateValue == "PENDING" || blockHeight == nil
         {
-            difValue = 0.0
+            if blockHeight != nil
+            {
+                difValue = 1.0
+            }else
+            {
+                difValue = 0.0
+            }
         }
         if type == "DEPOSIT"
         {
