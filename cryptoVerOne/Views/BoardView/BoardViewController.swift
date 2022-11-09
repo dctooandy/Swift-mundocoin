@@ -49,11 +49,11 @@ class BoardViewController: BaseViewController {
     var isFromWithdral = false
     var showMode : TransactionShowMode = .deposits{
         didSet{
-            self.currentFilterDto = nil
             self.currentPage = 0
             self.clearAllVCDataSource()
-            if isFilterAction != true
+            if isFilterAction == false
             {
+                self.currentFilterDto = nil
                 if loadingDurarion > 0
                 {
                     self.goFetchTableViewData(duration:loadingDurarion)
@@ -183,24 +183,23 @@ class BoardViewController: BaseViewController {
     {
         
     }
-    func goFetchTableViewData(filterDto : WalletTransPostDto = WalletTransPostDto() , duration:TimeInterval = 0.0)
+    func goFetchTableViewData(duration:TimeInterval = 0.0)
     {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + duration) {[self] in
             LoadingViewController.show()
             loadingDurarion = 0.0
-            if let data = self.currentFilterDto , let dataType = data.historyType
+            if let filterData = self.currentFilterDto , let filterDataType = filterData.historyType
             {
-                viewModel.fetchWalletTransactions(currency: data.currency, stats: data.stats,type: dataType, beginDate: data.beginDate, endDate: data.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
-                isFilterAndChangeVCAction = false
+                viewModel.fetchWalletTransactions(currency: filterData.currency, stats: filterData.stats,type: filterDataType, beginDate: filterData.beginDate, endDate: filterData.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
             }
             else
             {
-                if isFilterAndChangeVCAction == false
-                {
-                    //                LoadingViewController.show()
-                    viewModel.fetchWalletTransactions(currency: filterDto.currency, stats: filterDto.stats,type: showMode.typeValue, beginDate: filterDto.beginDate, endDate: filterDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
-                }
-                isFilterAndChangeVCAction = false
+//                if isFilterAndChangeVCAction == false
+//                {
+//                }
+                let dataDto : WalletTransPostDto = WalletTransPostDto()
+                //                LoadingViewController.show()
+                viewModel.fetchWalletTransactions(currency: dataDto.currency, stats: dataDto.stats,type: showMode.typeValue, beginDate: dataDto.beginDate, endDate: dataDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
             }
         }
     }
@@ -222,18 +221,24 @@ class BoardViewController: BaseViewController {
         
         allViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
             isFilterAction = false
+            isFilterAndChangeVCAction = false
             showMode = .all
             isRefreshAction = true
+            setFiletrActionFlag(flag: false)
         }.disposed(by: dpg)
         depositsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
             isFilterAction = false
+            isFilterAndChangeVCAction = false
             showMode = .deposits
             isRefreshAction = true
+            setFiletrActionFlag(flag: false)
         }.disposed(by: dpg)
         withdrawalsViewController.rxPullDownToRefrash().subscribeSuccess { [self] _ in
             isFilterAction = false
+            isFilterAndChangeVCAction = false
             showMode = .withdrawals
             isRefreshAction = true
+            setFiletrActionFlag(flag: false)
         }.disposed(by: dpg)
         
         allViewController.rxPullUpToAddRow().subscribeSuccess { [self] _ in
@@ -287,34 +292,45 @@ class BoardViewController: BaseViewController {
         withdrawalsViewController.data = withdrawData
         pageViewcontroller?.reloadMenu()
     }
-    func setFiletrActionFlag()
+    func setFiletrActionFlag(flag :Bool = true)
     {
-        allViewController.isFilterAction = true
-        depositsViewController.isFilterAction = true
-        withdrawalsViewController.isFilterAction = true
+        allViewController.isFilterAction = flag
+        depositsViewController.isFilterAction = flag
+        withdrawalsViewController.isFilterAction = flag
     }
     @objc func filterActionSheet() {
         Log.i("開啟過濾Sheet")
         let filterBottomSheet = FilterBottomSheet()
         filterBottomSheet.showModeAtSheet = showMode
         filterBottomSheet.rxConfirmClick().subscribeSuccess { [weak self]dataDto in
+            var pageIndex = 0
             self?.isFilterAction = true
-            self?.isFilterAndChangeVCAction = true
             self?.currentPage = 0
             self?.clearAllVCDataSource()
             self?.setFiletrActionFlag()
             if dataDto.historyType == "WITHDRAW"
             {
                 self?.pageViewcontroller?.select(index: 2)
+                pageIndex = 2
             }else if dataDto.historyType == "DEPOSIT"
             {
                 self?.pageViewcontroller?.select(index: 1)
+                pageIndex = 1
             }else
             {
                 self?.pageViewcontroller?.select(index: 0)
+                pageIndex = 0
+            }
+            let newShowMode:TransactionShowMode = (pageIndex == 0 ? .all : pageIndex == 1 ? .deposits : .withdrawals)
+            if self?.showMode != newShowMode
+            {
+                self?.isFilterAndChangeVCAction = true
+            }else
+            {
+                self?.isFilterAndChangeVCAction = false
             }
             self?.currentFilterDto = dataDto
-            self?.goFetchTableViewData(filterDto: dataDto ,duration: 0.0)
+            self?.goFetchTableViewData(duration: 0.0)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
             filterBottomSheet.start(viewController: self ,height: 508)
@@ -348,9 +364,18 @@ extension BoardViewController: PagingViewControllerDataSource, PagingViewControl
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, didScrollToItem pagingItem: T, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) where T : PagingItem, T : Comparable, T : Hashable {
         if let pageItem = pagingItem as? PagingIndexItem
         {
+            let newShowMode:TransactionShowMode = (pageItem.index == 0 ? .all : pageItem.index == 1 ? .deposits : .withdrawals)
             if isRefreshAction != true
             {
-                showMode = pageItem.index == 0 ? .deposits : .withdrawals
+                if isFilterAndChangeVCAction == false , isFilterAction == true
+                {
+                    isFilterAction = false
+                }
+                showMode = newShowMode
+            }
+            if isFilterAndChangeVCAction == true , isFilterAction == true
+            {
+                isFilterAndChangeVCAction = false
             }
             isFilterAction = false
             isRefreshAction = false
@@ -358,4 +383,3 @@ extension BoardViewController: PagingViewControllerDataSource, PagingViewControl
         }
     }
 }
-
