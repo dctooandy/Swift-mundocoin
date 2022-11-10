@@ -15,7 +15,7 @@ class TransHistoryCell: UITableViewCell {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     var cellData:ContentDto!
-    var historyType:TransactionShowMode = .deposits
+    var historyType:TransactionShowMode = .all
     @IBOutlet weak var labelWidthConstraint: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
@@ -51,25 +51,25 @@ class TransHistoryCell: UITableViewCell {
         let date = Date(timeIntervalSince1970: timeInterval)
         let currentTimeString = dateFormatter.string(from: date)
         timeLabel.text = currentTimeString
-        self.historyType = type
-        if historyType == .deposits
-        {
-            statusLabel.isHidden = true
-        }else
-        {
-            statusLabel.isHidden = data.stateValue == "COMPLETE" ? true : false
-            statusLabel.text = data.stateValue.capitalizingFirstLetter()
-            labelWidthConstraint.constant = data.stateValue.customWidth(textSize: 11, spaceWidth: 10)
-            if data.stateValue == "FAILED"
-            {
-                statusLabel.textColor = Themes.grayA3AED0
-                statusLabel.backgroundColor = Themes.grayA3AED020
-            }else
-            {
-                statusLabel.textColor = Themes.blue0587FF
-                statusLabel.backgroundColor = Themes.blue0587FF10
-            }
-        }
+//        self.historyType = type        
+//        if data.type == "DEPOSIT"
+//        {
+//            statusLabel.isHidden = true
+//        }else
+//        {
+//            statusLabel.isHidden = data.stateValue == "COMPLETE" ? true : false
+//            statusLabel.text = data.stateValue.capitalizingFirstLetter()
+//            labelWidthConstraint.constant = data.stateValue.customWidth(textSize: 11, spaceWidth: 10)
+//            if data.stateValue == "FAILED"
+//            {
+//                statusLabel.textColor = Themes.grayA3AED0
+//                statusLabel.backgroundColor = Themes.grayA3AED020
+//            }else
+//            {
+//                statusLabel.textColor = Themes.blue0587FF
+//                statusLabel.backgroundColor = Themes.blue0587FF10
+//            }
+//        }
 //        if historyType == .withdrawals || historyType == .all
 //        {
 //            if let amountValue = data.walletAmountIntWithDecimal
@@ -85,6 +85,7 @@ class TransHistoryCell: UITableViewCell {
 //        }
         if data.type == "DEPOSIT"
         {
+            statusLabel.isHidden = true
             if let amountValue = data.walletDepositAmountIntWithDecimal
             {
                 amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)
@@ -96,6 +97,18 @@ class TransHistoryCell: UITableViewCell {
             inOutLabel.text = "Deposit"
         }else
         {
+            statusLabel.isHidden = data.stateValue == "COMPLETE" ? true : false
+            statusLabel.text = data.stateValue.capitalizingFirstLetter()
+            labelWidthConstraint.constant = data.stateValue.customWidth(textSize: 11, spaceWidth: 10)
+            if data.stateValue == "FAILED"
+            {
+                statusLabel.textColor = Themes.grayA3AED0
+                statusLabel.backgroundColor = Themes.grayA3AED020
+            }else
+            {
+                statusLabel.textColor = Themes.blue0587FF
+                statusLabel.backgroundColor = Themes.blue0587FF10
+            }
             if let amountValue = data.walletAmountIntWithDecimal
             {
                 amountLabel.text = amountValue.stringValue?.numberFormatter(.decimal, 8)

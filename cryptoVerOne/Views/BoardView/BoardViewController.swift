@@ -194,9 +194,6 @@ class BoardViewController: BaseViewController {
             }
             else
             {
-//                if isFilterAndChangeVCAction == false
-//                {
-//                }
                 let dataDto : WalletTransPostDto = WalletTransPostDto()
                 //                LoadingViewController.show()
                 viewModel.fetchWalletTransactions(currency: dataDto.currency, stats: dataDto.stats,type: showMode.typeValue, beginDate: dataDto.beginDate, endDate: dataDto.endDate, pageable: PagePostDto(size: "20", page: String(currentPage)))
@@ -308,20 +305,21 @@ class BoardViewController: BaseViewController {
             self?.currentPage = 0
             self?.clearAllVCDataSource()
             self?.setFiletrActionFlag()
+            var newShowMode:TransactionShowMode
             if dataDto.historyType == "WITHDRAW"
             {
-                self?.pageViewcontroller?.select(index: 2)
                 pageIndex = 2
+                newShowMode = .withdrawals
             }else if dataDto.historyType == "DEPOSIT"
             {
-                self?.pageViewcontroller?.select(index: 1)
                 pageIndex = 1
+                newShowMode = .deposits
             }else
             {
-                self?.pageViewcontroller?.select(index: 0)
                 pageIndex = 0
+                newShowMode = .all
             }
-            let newShowMode:TransactionShowMode = (pageIndex == 0 ? .all : pageIndex == 1 ? .deposits : .withdrawals)
+
             if self?.showMode != newShowMode
             {
                 self?.isFilterAndChangeVCAction = true
@@ -329,7 +327,11 @@ class BoardViewController: BaseViewController {
             {
                 self?.isFilterAndChangeVCAction = false
             }
+            // filter資料
             self?.currentFilterDto = dataDto
+            // 先呼叫 pageController 上面的頁面 但不驅動撈資料
+            self?.pageViewcontroller?.select(index: pageIndex)
+            // 正式撈資料
             self?.goFetchTableViewData(duration: 0.0)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in

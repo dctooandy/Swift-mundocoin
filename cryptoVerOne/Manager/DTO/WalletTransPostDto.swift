@@ -15,7 +15,7 @@ struct WalletTransPostDto :Codable {
     var endDate: TimeInterval = 0
     var pageable: PagePostDto = PagePostDto()
 
-    var historyType : String? = "DEPOSIT"
+    var historyType : String? = "ALL"
     
     var beginSecondVale : Int {
         let second = Int(round(beginDate))
