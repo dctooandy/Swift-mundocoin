@@ -304,20 +304,23 @@ class BoardViewController: BaseViewController {
             self?.isFilterAction = true
             self?.currentPage = 0
             self?.clearAllVCDataSource()
-            self?.setFiletrActionFlag()
+            self?.setFiletrActionFlag(flag: false)
             var newShowMode:TransactionShowMode
             if dataDto.historyType == "WITHDRAW"
             {
                 pageIndex = 2
                 newShowMode = .withdrawals
+                self?.withdrawalsViewController.isFilterAction = true
             }else if dataDto.historyType == "DEPOSIT"
             {
                 pageIndex = 1
                 newShowMode = .deposits
+                self?.depositsViewController.isFilterAction = true
             }else
             {
                 pageIndex = 0
                 newShowMode = .all
+                self?.allViewController.isFilterAction = true
             }
 
             if self?.showMode != newShowMode

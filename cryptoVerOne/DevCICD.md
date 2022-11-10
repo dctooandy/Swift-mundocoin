@@ -1,3 +1,4 @@
+1110 : 產dev包 修正 Transaction History Filter 日期之後,切換頁面資料異常
 1110 : 產dev包 修正 Transaction History Filter 之後,deposit頁面資料異常
 1109 : 產dev包 修正 Transaction History Filter 之後,deposit頁面資料異常
 1109 : 產dev包 修正 detail 頁面,socket接收到FAILED訊息時,金額顯示異常問題
