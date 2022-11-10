@@ -1,3 +1,4 @@
+1110 : 產staging包 修正 Transaction History Filter 之後,deposit頁面資料異常
 1109 : 產staging包 修正 detail 頁面,socket接收到FAILED/PROCESSING訊息時,金額顯示異常問題
 1108 : 產staging包 For Transaction History 第二期優化
 1025 : 產staging包 For 弱掃機制,-越獄偵測,-拔除調試器(GDB),-深層混淆
