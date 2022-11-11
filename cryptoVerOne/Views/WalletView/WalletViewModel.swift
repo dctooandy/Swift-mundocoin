@@ -14,19 +14,15 @@ class WalletViewModel: BaseViewModel {
     
     override init() {
         super.init()
-        bindBalance()
+//        bindBalance()
     }
     
     func fetchBalances()
     {
-        _ = WalletAllBalancesDto.update()
-    }
-    func bindBalance()
-    {
+//        _ = WalletAllBalancesDto.update()
         if UserStatus.share.isLogin
         {
-            WalletAllBalancesDto.rxShare.subscribe { [self](balanceDto) in
-//                _ = LoadingViewController.dismiss()
+            Beans.walletServer.walletBalances().subscribe { [self](balanceDto) in
                 if let dto = balanceDto?.wallets
                 {
                     fetchWalletBalancesSuccess.onNext(dto)
@@ -36,6 +32,21 @@ class WalletViewModel: BaseViewModel {
                 ErrorHandler.show(error: error)
             }.disposed(by: disposeBag)
         }
+    }
+    func bindBalance()
+    {
+//        if UserStatus.share.isLogin
+//        {
+//            WalletAllBalancesDto.rxShare.subscribe { [self](balanceDto) in
+//                if let dto = balanceDto?.wallets
+//                {
+//                    fetchWalletBalancesSuccess.onNext(dto)
+//                }
+//            } onError: { (error) in
+//                _ = LoadingViewController.dismiss()
+//                ErrorHandler.show(error: error)
+//            }.disposed(by: disposeBag)
+//        }
     }
     func rxFetchWalletBalancesSuccess() -> Observable<[WalletBalancesDto]> {
         return fetchWalletBalancesSuccess.asObserver()
