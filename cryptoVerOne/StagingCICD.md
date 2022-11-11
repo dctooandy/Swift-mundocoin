@@ -1,3 +1,4 @@
+1111 : 產staging包 修正 權限索取導致崩潰異常問題
 1110 : 產staging包 修正 Transaction History Filter 之後,deposit頁面資料異常
 1109 : 產staging包 修正 detail 頁面,socket接收到FAILED/PROCESSING訊息時,金額顯示異常問題
 1108 : 產staging包 For Transaction History 第二期優化
