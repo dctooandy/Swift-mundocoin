@@ -22,7 +22,11 @@ extension Toast {
         subject.throttle(2.5, latest:false, scheduler: MainScheduler.instance).subscribeSuccess { (msg) in
             DispatchQueue.main.async {
                 let toast = Toast(text: msg)
+#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
                 toast.duration = 2.5
+#else
+                toast.duration = 0.5
+#endif
                 toast.show()
             }
             

@@ -112,8 +112,11 @@ class WDetailViewController: BaseViewController {
             let boardVC = BoardViewController.loadNib()
             boardVC.loadingDurarion = 1.0
             boardVC.isFromWithdral = true
-            self.navigationController?.viewControllers = [WalletViewController.share]
-            WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
+            let withdrawVC = WalletViewController.loadNib()
+            self.navigationController?.viewControllers = [withdrawVC]
+            withdrawVC.navigationController?.pushViewController(boardVC, animated: true)
+//            self.navigationController?.viewControllers = [WalletViewController.share]
+//            WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
         }.disposed(by: dpg)
         tryButton.rx.tap.subscribeSuccess { [self] (_) in
             Log.i("回到首頁")

@@ -1,3 +1,4 @@
+1111 : 產dev包 修正 重覆產生wallet VC的異常,縮短 Debug的 toast 時間為0.5秒
 1111 : 產dev包 修正 錢包首頁獲取balance api 可能造成的崩潰異常
 1110 : 產dev包 修正 Transaction History Filter 日期之後,切換頁面資料異常
 1110 : 產dev包 修正 Transaction History Filter 之後,deposit頁面資料異常
