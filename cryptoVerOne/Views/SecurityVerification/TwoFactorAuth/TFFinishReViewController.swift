@@ -111,12 +111,12 @@ class TFFinishReViewController: BaseViewController {
                     }
                     if shouldDirectToWithdrawVC == true
                     {
-                        let withdrawVC = WalletViewController.loadNib()
-                        self.navigationController?.viewControllers = [withdrawVC]
-                        withdrawVC.navigationController?.pushViewController(withdrawVC, animated: true)
-//                        let withdrawVC = WithdrawViewController.share
-//                        self.navigationController?.viewControllers = [WalletViewController.share]
-//                        WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
+//                        let withdrawVC = WalletViewController.loadNib()
+//                        self.navigationController?.viewControllers = [withdrawVC]
+//                        withdrawVC.navigationController?.pushViewController(withdrawVC, animated: true)
+                        let withdrawVC = WithdrawViewController.share
+                        self.navigationController?.viewControllers = [WalletViewController.share]
+                        WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
                     }
                 }
             case .reverify:

@@ -107,7 +107,6 @@ class BaseViewController:UIViewController,Nibloadable{
         {
             newNav.isFromLeft = fromLeft
         }
-        _ = self.navigationController?.popViewController(animated: true)
         if (self.navigationController?.viewControllers.filter{ $0 is UserMenuViewController}.count)! > 0
         {
             if let newNav = navigationController as? MDNavigationController
@@ -115,6 +114,7 @@ class BaseViewController:UIViewController,Nibloadable{
                 newNav.isFromLeft = true
             }
         }
+        _ = self.navigationController?.popViewController(animated: true)
     }
     func setupKeyboard(_ constraint:NSLayoutConstraint, height:CGFloat = 240){
         let origin = constraint.constant
