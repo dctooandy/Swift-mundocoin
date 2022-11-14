@@ -52,24 +52,28 @@ class LoginPageViewController: BaseViewController {
         pageViewcontroller?.delegate = self
         pageViewcontroller?.dataSource = self
         // menu item
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 0)
-        pageViewcontroller?.menuHorizontalAlignment = .left
-        pageViewcontroller?.menuItemSpacing = 20
-        pageViewcontroller?.menuBackgroundColor = .clear
-        pageViewcontroller?.borderColor = .clear
+        pageViewcontroller?.menuItemSource = (.class(type: LoginSignupPagingTitleCell.self))
+        pageViewcontroller?.menuInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
+        pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
+        pageViewcontroller?.backgroundColor = .white
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: Views.sWidth(value: 90), height: Views.sHeight(value: 40))
         // menu text
-        pageViewcontroller?.selectedFont = UIFont.systemFont(ofSize: 20)
-        pageViewcontroller?.font = UIFont.systemFont(ofSize: 20)
-        pageViewcontroller?.textColor = .black
-        pageViewcontroller?.selectedTextColor = .black
+        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(14)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansMedium(14)
+        pageViewcontroller?.textColor = Themes.grayA3AED0
+        pageViewcontroller?.selectedTextColor = .white
+        pageViewcontroller?.menuHorizontalAlignment = .left
+        pageViewcontroller?.menuItemSpacing = 0
+        pageViewcontroller?.menuBackgroundColor = .white
+        pageViewcontroller?.borderColor = .clear
+     
         // menu indicator
         // 欄目可動
         pageViewcontroller?.menuInteraction = .none
         // 下方VC可動
         pageViewcontroller?.contentInteraction = .none
         pageViewcontroller?.indicatorColor = .clear
-        pageViewcontroller?.indicatorClass = RoundedIndicatorView.self
-        pageViewcontroller?.indicatorOptions = .hidden
+        
         addChild(pageViewcontroller!)
         view.addSubview(pageViewcontroller!.view)
         pageViewcontroller?.view.snp.makeConstraints({ (make) in
@@ -79,13 +83,13 @@ class LoginPageViewController: BaseViewController {
     
     private func setupVC() {
         let accLogin = LoginViewController.instance(mode: .emailPage)
-//        let phoneLogin = LoginViewController.instance(mode: .phone)
+        let phoneLogin = LoginViewController.instance(mode: .phonePage)
         let accSignup = SignupViewController.instance(mode: .emailPage)
-//        let phoneSignup = SignupViewController.instance(mode: .phone)
+        let phoneSignup = SignupViewController.instance(mode: .phonePage)
 //        let accForgot = ForgotViewController.instance(mode: .emailPage)
-        loginViewControllers = [accLogin]
+        loginViewControllers = [accLogin,phoneLogin]
         //            bindVerifyCodeBtn(obs: phoneLogin.rxVerifyCodeButtonClick)
-        signupViewControllers = [accSignup]
+        signupViewControllers = [accSignup,phoneSignup]
         //            bindVerifyCodeBtn(obs: phoneSignup.rxVerifyCodeButtonClick)
 //        forgotViewControllers = [accForgot]
         bindLoginViewControllers()
@@ -154,6 +158,8 @@ class LoginPageViewController: BaseViewController {
     }
     
     func setVerifyCodeBtnToDefault() {
+        loginViewControllers.first?.setDefault()
+        signupViewControllers.first?.setDefault()
         loginViewControllers.last?.setDefault()
         signupViewControllers.last?.setDefault()
 //        forgotViewControllers.last?.setDefault()

@@ -30,20 +30,24 @@ class SignupViewController: BaseViewController {
     static func instance(mode: LoginMode) -> SignupViewController {
         let vc = SignupViewController.loadNib()
         vc.loginMode = mode
+        vc.secondViewDidLoad()
         return vc
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        bindRegisterBtn()
-        bindAccountView()
-        accountInputView?.bindTextfield()
-        addKeyboardAction()
     }
    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         checkboxView.isSelected = true
+    }
+    func secondViewDidLoad()
+    {
+        setupUI()
+        bindRegisterBtn()
+        bindAccountView()
+        accountInputView?.bindTextfield()
+        addKeyboardAction()
     }
     func addKeyboardAction()
     {
@@ -133,7 +137,7 @@ class SignupViewController: BaseViewController {
 //            make.height.equalToSuperview().multipliedBy(0.275)
 //        }
         accountInputView.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight + Themes.inputViewDefaultHeight) 
@@ -169,7 +173,7 @@ class SignupViewController: BaseViewController {
     
     func modeTitle() -> String {
         switch  loginMode {
-        case .emailPage: return "".localized
+        case .emailPage: return "E-mail".localized
         case .phonePage: return "Mobile".localized
         }
     }

@@ -151,7 +151,7 @@ class LoginSignupViewController: BaseViewController {
         addChild(loginPageVC)
         view.insertSubview(loginPageVC.view, aboveSubview: backgroundImageView)
         loginPageVC.view.snp.makeConstraints({ (make) in
-            make.top.equalTo(self.topLabel.snp.bottom).offset(35)
+            make.top.equalTo(self.topLabel.snp.bottom).offset(20)
             make.left.bottom.right.equalToSuperview()
         })
     }
@@ -896,7 +896,7 @@ extension LoginSignupViewController {
             backToButton.isHidden = true
         case .signupEmail,.signupPhone:
             switchButton.setTitle("Log In".localized, for: .normal)
-            topLabel.text = "Create Your Account".localized
+            topLabel.text = "Create your account".localized
             switchButton.isHidden = false
             backToButton.isHidden = true
         case .forgotPW:

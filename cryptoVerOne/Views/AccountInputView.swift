@@ -69,7 +69,7 @@ class AccountInputView: UIView {
                 }
                 var patternValue = RegexHelper.Pattern.phone
                 if strongSelf.inputMode == .phone {
-                    patternValue = .phone
+                    patternValue = .onlyNumber
                 }else
                 {
                     patternValue = .mail
@@ -82,7 +82,7 @@ class AccountInputView: UIView {
                 if ((strongSelf.accountInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
                     if strongSelf.inputMode == .phone {
-                        patternValue = .phone
+                        patternValue = .onlyNumber
                     }else
                     {
                         patternValue = .mail
@@ -212,9 +212,9 @@ class AccountInputView: UIView {
     }
     func bindTextfieldReturnKey()
     {
+        accountInputView.textField.keyboardType = (currentShowMode == .signupPhone || currentShowMode == .loginPhone) ? .numberPad :.emailAddress
         accountInputView.textField.returnKeyType = .next
-        accountInputView.textField.keyboardType = .emailAddress
-        accountInputView.textField.textContentType = .emailAddress
+//        accountInputView.textField.textContentType = .emailAddress
         if currentShowMode == .loginEmail || currentShowMode == .loginPhone
         {
             passwordInputView.textField.returnKeyType = .done

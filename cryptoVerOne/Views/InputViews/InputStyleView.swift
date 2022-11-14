@@ -52,9 +52,9 @@ enum InputViewMode :Equatable {
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
         case .address: return "Address".localized
-        case .email: return "E-mail".localized
-        case .phone: return "Phone Number".localized
-        case .password: return "Password".localized
+        case .email: return "E-mail*".localized
+        case .phone: return "Mobile*".localized
+        case .password: return "Password*".localized
         case .forgotPW: return "Enter your email to change your password".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
@@ -194,6 +194,20 @@ class InputStyleView: UIView {
 #endif
         return view
     }()
+    let labelMaskView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.layer.borderWidth = 1
+        view.layer.borderColor = Themes.grayE0E5F2.cgColor
+        view.isUserInteractionEnabled = false
+        view.alpha = 1.0
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        view.applyCornerRadius(radius: 4)
+#else
+        view.applyCornerRadius(radius: 10)
+#endif
+        return view
+    }()
     let topLabel: UILabel = {
         let lb = UILabel()
         lb.textAlignment = .left
@@ -314,7 +328,26 @@ class InputStyleView: UIView {
         view.backgroundColor = .clear
         return view
     }()
-    
+    let mobileCodeAnchorView : UIView = {
+       let view = UIView()
+        view.backgroundColor = .clear
+        return view
+    }()
+    let mobileDrawdownImageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "icon-chevron-down")
+        return imgView
+    }()
+    let mobileCodeLabel: UILabel = {
+        let tfLabel = UILabel()
+        tfLabel.text = "+886"
+        tfLabel.backgroundColor = .clear
+        tfLabel.font = Fonts.PlusJakartaSansRegular(14)
+        tfLabel.textColor = Themes.gray2B3674
+        tfLabel.numberOfLines = 0
+        tfLabel.lineBreakMode = .byCharWrapping
+        return tfLabel
+    }()
     // MARK: -
     // MARK:Life cycle
     override init(frame: CGRect) {
@@ -365,11 +398,16 @@ class InputStyleView: UIView {
         var isCustomLabel = false
         let tfHeight = 46.0
         var showTextView = false
+        var showMobileCodeView = false
+        var leadingDif:CGFloat = 0
         switch inputViewMode {
         case .customLabel(_) ,.auditAccount,.auditPassword:
             isCustomLabel = true
         case .withdrawToAddress , .address:
             showTextView = true
+        case .phone:
+            showMobileCodeView = true
+            leadingDif = 100
         default:
             break
         }
@@ -381,6 +419,7 @@ class InputStyleView: UIView {
             addSubview(textView)
             textView.delegate = self
         }
+
         addSubview(invalidLabel)
         textField.delegate = self
         displayRightButton.tintColor = Themes.grayA3AED0
@@ -391,9 +430,30 @@ class InputStyleView: UIView {
             make.leading.equalToSuperview().offset(7)
             make.height.equalTo(topLabelH)
         }
+        if showMobileCodeView == true
+        {
+            addSubview(mobileCodeAnchorView)
+            mobileCodeAnchorView.addSubview(mobileCodeLabel)
+            mobileCodeAnchorView.addSubview(mobileDrawdownImageView)
+            mobileCodeAnchorView.snp.makeConstraints { make in
+                make.top.equalTo(topLabel.snp.bottom).offset(9)
+                make.leading.equalToSuperview().offset(7)
+                make.height.equalTo(tfHeight)
+                make.width.equalTo(90)
+            }
+            mobileCodeLabel.snp.makeConstraints { make in
+                make.top.height.equalToSuperview()
+                make.left.equalToSuperview().offset(12)
+            }
+            mobileDrawdownImageView.snp.makeConstraints { make in
+                make.size.equalTo(20)
+                make.centerY.equalToSuperview()
+                make.right.equalToSuperview().offset(-12)
+            }
+        }
         textField.snp.makeConstraints { (make) in
             make.top.equalTo(topLabel.snp.bottom).offset(9)
-            make.leading.equalToSuperview().offset(20)
+            make.leading.equalToSuperview().offset(20 + leadingDif)
             make.trailing.equalToSuperview().offset(-20)
 //            make.height.equalTo(46)
         }
@@ -425,6 +485,16 @@ class InputStyleView: UIView {
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(1.10)
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+        }
+        if inputViewMode == .phone
+        {
+            mobileCodeAnchorView.addSubview(labelMaskView)
+            mobileCodeAnchorView.sendSubviewToBack(labelMaskView)
+            labelMaskView.snp.makeConstraints { (make) in
+                make.center.equalToSuperview()
+                make.width.equalToSuperview().multipliedBy(1.10)
+                make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+            }
         }
 //        if showTV == false
 //        {
@@ -643,6 +713,10 @@ class InputStyleView: UIView {
             rightLabelWidth = 18 + 10
             resetTopLabelAndMask()
             tfMaskView.backgroundColor = Themes.grayF4F7FE
+        }
+        else if inputViewMode == .phone
+        {
+            addDoneCancelToolbar()
         }
         else
         {
@@ -973,6 +1047,25 @@ class InputStyleView: UIView {
     {
         countTime = seconds
     }
+    
+    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
+            let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+            let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
+
+            let toolbar: UIToolbar = UIToolbar()
+            toolbar.barStyle = .default
+            toolbar.items = [
+                UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+                UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
+            ]
+            toolbar.sizeToFit()
+
+        self.textField.inputAccessoryView = toolbar
+        }
+    // Default actions:
+    @objc func nextButtonTapped() { onChooseClick.onNext(false) }
+    @objc func cancelButtonTapped() { self.textField.resignFirstResponder() }
     func rxSendVerifyAction() -> Observable<(Any)>
     {
         return onSendClick.asObserver()
@@ -1024,6 +1117,44 @@ extension InputStyleView: UITextFieldDelegate {
         }
 #endif
         switch inputViewMode {
+        case .phone:
+            guard let text = textField.text else {
+                return true
+            }
+            if string == ""
+            {
+                return true
+            }
+            var textNumber = 0
+            var stringNumber = 0
+            var shouldShow = true
+            for char in text.unicodeScalars{
+                if char.isASCII{
+                    textNumber += 1
+                }else
+                {
+                    shouldShow = false
+                }
+            }
+            for char in string.unicodeScalars{
+                if char.isASCII{
+                    stringNumber += 1
+                }else
+                {
+                    shouldShow = false
+                }
+            }
+            let isValid = RegexHelper.match(pattern: .onlyNumber, input: string)
+            
+            if shouldShow == false || isValid == false
+            {
+                return false
+            }else if textNumber >= 20 {
+                return false
+            }else if textNumber + stringNumber >= 20
+            {
+                return false
+            }
         case .customLabel(_):
             guard let text = textField.text else {
                 return true

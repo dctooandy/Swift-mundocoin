@@ -49,17 +49,13 @@ class LoginViewController: BaseViewController {
     static func instance(mode: LoginMode) -> LoginViewController {
         let vc = LoginViewController.loadNib()
         vc.loginMode = mode
+        vc.secondViewDidLoad()
         return vc
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        bindLoginBtn()
-        bindAccountView()
-        accountInputView?.bindTextfield()
-        addKeyboardAction()
-        bindCheckBox()
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,6 +67,15 @@ class LoginViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         detectRememberMeAction()
+    }
+    func secondViewDidLoad()
+    {
+        setup()
+        bindLoginBtn()
+        bindAccountView()
+        accountInputView?.bindTextfield()
+        addKeyboardAction()
+        bindCheckBox()
     }
     func detectRememberMeAction()
     {
@@ -192,21 +197,28 @@ class LoginViewController: BaseViewController {
         }
     }
     func modeTitle() -> String {
-        switch  loginMode {
-        case .emailPage: return "".localized
+        switch loginMode {
+        case .emailPage: return "E-mail".localized
         case .phonePage: return "Mobile".localized
         }
     }
     
     func setup() {
+        switch loginMode {
+        case .emailPage:
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
+                                                currentShowMode: .loginEmail,
+                                                lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        case .phonePage:
+            accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
+                                                currentShowMode: .loginPhone,
+                                                lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+        }
         
-        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode,
-                                            currentShowMode: .loginEmail,
-                                            lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
 //        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
+            make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight)

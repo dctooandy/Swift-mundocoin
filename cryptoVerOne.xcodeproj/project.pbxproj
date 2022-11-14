@@ -1895,6 +1895,12 @@
 		A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
 		A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
 		A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */; };
+		A1B59F0129220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F0229220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F0329220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F0429220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F0529220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F0629220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
 		A1BE2DD029077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD129077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD229077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
@@ -2289,6 +2295,7 @@
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
 		A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookDeleteDto.swift; sourceTree = "<group>"; };
 		A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableAddressListWhiteDto.swift; sourceTree = "<group>"; };
+		A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupPagingTitleCell.swift; sourceTree = "<group>"; };
 		A1BE2DCF29077C1B00C87B3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A1BE2DD629077C8500C87B3A /* denyptrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = denyptrace.h; sourceTree = "<group>"; };
 		A1BE2DD729077C8500C87B3A /* denyptrace.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = denyptrace.c; sourceTree = "<group>"; };
@@ -2965,6 +2972,7 @@
 				A19C6FEB28221C69000AFC3F /* LoginSignupViewController.swift */,
 				A19C719328225C56000AFC3F /* LoginSignupViewController.xib */,
 				A19C707928223729000AFC3F /* LoginPageViewController.swift */,
+				A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */,
 				A19C71AB282262EB000AFC3F /* LoginMode.swift */,
 				A19C71AF2822636E000AFC3F /* LoginViewController.swift */,
 				A19C71AE2822636E000AFC3F /* LoginViewController.xib */,
@@ -4534,6 +4542,7 @@
 				09905AC52851A02B00BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD429077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0529220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				09905AC62851A02B00BAEE78 /* Reactive+util.swift in Sources */,
 				09905AC72851A02B00BAEE78 /* Toast+util.swift in Sources */,
 				09905AC82851A02B00BAEE78 /* FilterCell.swift in Sources */,
@@ -4771,6 +4780,7 @@
 				09905BB72851A08500BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD529077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0629220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				09905BB82851A08500BAEE78 /* Reactive+util.swift in Sources */,
 				09905BB92851A08500BAEE78 /* Toast+util.swift in Sources */,
 				09905BBA2851A08500BAEE78 /* FilterCell.swift in Sources */,
@@ -5008,6 +5018,7 @@
 				09905CA92851A09600BAEE78 /* SessionManager+util.swift in Sources */,
 				A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD329077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0429220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				09905CAA2851A09600BAEE78 /* Reactive+util.swift in Sources */,
 				09905CAB2851A09600BAEE78 /* Toast+util.swift in Sources */,
 				09905CAC2851A09600BAEE78 /* FilterCell.swift in Sources */,
@@ -5245,6 +5256,7 @@
 				09CAF5CA283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6812890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD129077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0229220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
 				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5482,6 +5494,7 @@
 				09CAF5CB283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6822890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD229077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0329220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
 				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5719,6 +5732,7 @@
 				09CAF5C9283C88C700D7B19B /* SessionManager+util.swift in Sources */,
 				A106C6802890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD029077C1B00C87B3A /* main.swift in Sources */,
+				A1B59F0129220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
 				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,

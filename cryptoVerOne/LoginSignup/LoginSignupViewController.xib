@@ -23,8 +23,8 @@
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Pd-dm-SH2">
                         <rect key="frame" x="0.0" y="104" width="414" height="896"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlF-IQ-O48" userLabel="Create Your Account">
-                        <rect key="frame" x="32" y="144" width="272.5" height="35.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create your account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlF-IQ-O48" userLabel="Create Your Account">
+                        <rect key="frame" x="24" y="144" width="271" height="35.5"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <fontDescription key="fontDescription" name="PlusJakartaSans-ExtraLight" family="Plus Jakarta Sans" pointSize="28"/>
                         <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -38,7 +38,7 @@
                     <constraint firstItem="MlF-IQ-O48" firstAttribute="top" secondItem="7Pd-dm-SH2" secondAttribute="top" constant="40" id="Rby-Pt-DV2"/>
                     <constraint firstItem="7Pd-dm-SH2" firstAttribute="top" secondItem="6Tx-gK-Ysi" secondAttribute="top" constant="60" id="SGJ-jw-YFu"/>
                     <constraint firstItem="6Tx-gK-Ysi" firstAttribute="trailing" secondItem="7Pd-dm-SH2" secondAttribute="trailing" id="Seu-CQ-lg5"/>
-                    <constraint firstItem="MlF-IQ-O48" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="32" id="jXD-Af-bJ5"/>
+                    <constraint firstItem="MlF-IQ-O48" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="24" id="jXD-Af-bJ5"/>
                     <constraint firstItem="7Pd-dm-SH2" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" id="tuv-aM-a7J"/>
                 </constraints>
             </view>
