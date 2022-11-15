@@ -1901,6 +1901,30 @@
 		A1B59F0429220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
 		A1B59F0529220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
 		A1B59F0629220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */; };
+		A1B59F08292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F09292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F0A292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F0B292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F0C292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F0D292370E9005D9006 /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F07292370E9005D9006 /* countries.json */; };
+		A1B59F0F292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F10292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F11292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F12292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F13292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F14292377CF005D9006 /* CountriesDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F0E292377CF005D9006 /* CountriesDto.swift */; };
+		A1B59F1729237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1829237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1929237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1A29237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1B29237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1C29237B8B005D9006 /* SearchAreaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */; };
+		A1B59F1E29237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F1F29237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F2029237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F2129237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F2229237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F2329237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
 		A1BE2DD029077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD129077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD229077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
@@ -2296,6 +2320,10 @@
 		A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookDeleteDto.swift; sourceTree = "<group>"; };
 		A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableAddressListWhiteDto.swift; sourceTree = "<group>"; };
 		A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupPagingTitleCell.swift; sourceTree = "<group>"; };
+		A1B59F07292370E9005D9006 /* countries.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.json; };
+		A1B59F0E292377CF005D9006 /* CountriesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDto.swift; sourceTree = "<group>"; };
+		A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAreaViewController.swift; sourceTree = "<group>"; };
+		A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAreaViewController.xib; sourceTree = "<group>"; };
 		A1BE2DCF29077C1B00C87B3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A1BE2DD629077C8500C87B3A /* denyptrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = denyptrace.h; sourceTree = "<group>"; };
 		A1BE2DD729077C8500C87B3A /* denyptrace.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = denyptrace.c; sourceTree = "<group>"; };
@@ -2963,6 +2991,7 @@
 		A19C6FEA28221C2F000AFC3F /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
+				A1B59F1529237B51005D9006 /* SearchArea */,
 				0909C8DC28532DFE003E2F58 /* AuditViewController */,
 				09CAF5F4283F542800D7B19B /* ReCaptchaView */,
 				A19739C528251B65009932D8 /* ChangedPasswordView */,
@@ -3214,6 +3243,8 @@
 				09CA47E928C9BB1100CFE231 /* AddressBookListDto.swift */,
 				092E76092850998300221997 /* NotificationDto.swift */,
 				A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */,
+				A1B59F07292370E9005D9006 /* countries.json */,
+				A1B59F0E292377CF005D9006 /* CountriesDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -3296,6 +3327,15 @@
 				A1019DDB2824C5FF00E6929E /* IDVerificationViewController.xib */,
 			);
 			path = VerifyView;
+			sourceTree = "<group>";
+		};
+		A1B59F1529237B51005D9006 /* SearchArea */ = {
+			isa = PBXGroup;
+			children = (
+				A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */,
+				A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */,
+			);
+			path = SearchArea;
 			sourceTree = "<group>";
 		};
 		A1BE2DCE29077BF500C87B3A /* DenyAttack */ = {
@@ -3547,6 +3587,7 @@
 				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905AF82851A02B00BAEE78 /* AddressBookViewController.xib in Resources */,
+				A1B59F2229237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				09905AF92851A02B00BAEE78 /* WhiteListBottomView.xib in Resources */,
 				0995746828767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905AFA2851A02B00BAEE78 /* SubPageCollectionCell.xib in Resources */,
@@ -3599,6 +3640,7 @@
 				09905B162851A02B00BAEE78 /* ForgotViewController.xib in Resources */,
 				09905B172851A02B00BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905B182851A02B00BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				A1B59F0C292370E9005D9006 /* countries.json in Resources */,
 				09954C382889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905B192851A02B00BAEE78 /* SignupViewController.xib in Resources */,
 				09905B1A2851A02B00BAEE78 /* mucoin_loading.json in Resources */,
@@ -3646,6 +3688,7 @@
 				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905BEA2851A08500BAEE78 /* AddressBookViewController.xib in Resources */,
+				A1B59F2329237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				09905BEB2851A08500BAEE78 /* WhiteListBottomView.xib in Resources */,
 				0995746928767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905BEC2851A08500BAEE78 /* SubPageCollectionCell.xib in Resources */,
@@ -3698,6 +3741,7 @@
 				09905C082851A08500BAEE78 /* ForgotViewController.xib in Resources */,
 				09905C092851A08500BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905C0A2851A08500BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				A1B59F0D292370E9005D9006 /* countries.json in Resources */,
 				09954C392889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905C0B2851A08500BAEE78 /* SignupViewController.xib in Resources */,
 				09905C0C2851A08500BAEE78 /* mucoin_loading.json in Resources */,
@@ -3745,6 +3789,7 @@
 				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
 				09905CDC2851A09600BAEE78 /* AddressBookViewController.xib in Resources */,
+				A1B59F2129237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				09905CDD2851A09600BAEE78 /* WhiteListBottomView.xib in Resources */,
 				0995746728767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09905CDE2851A09600BAEE78 /* SubPageCollectionCell.xib in Resources */,
@@ -3797,6 +3842,7 @@
 				09905CFA2851A09600BAEE78 /* ForgotViewController.xib in Resources */,
 				09905CFB2851A09600BAEE78 /* TwoFAVerifyViewController.xib in Resources */,
 				09905CFC2851A09600BAEE78 /* PersonalInfoViewController.xib in Resources */,
+				A1B59F0B292370E9005D9006 /* countries.json in Resources */,
 				09954C372889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09905CFD2851A09600BAEE78 /* SignupViewController.xib in Resources */,
 				09905CFE2851A09600BAEE78 /* mucoin_loading.json in Resources */,
@@ -3844,6 +3890,7 @@
 				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA02845D87100E70654 /* AddressBookViewController.xib in Resources */,
+				A1B59F1F29237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				09C20FB92846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				0995746528767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09CAF4D6283C77ED00D7B19B /* SubPageCollectionCell.xib in Resources */,
@@ -3896,6 +3943,7 @@
 				09CAF4ED283C77ED00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF4EE283C77ED00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF4EF283C77ED00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				A1B59F09292370E9005D9006 /* countries.json in Resources */,
 				09954C352889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF4F0283C77ED00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF4F1283C77ED00D7B19B /* mucoin_loading.json in Resources */,
@@ -3943,6 +3991,7 @@
 				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
 				09C20FA12845D87100E70654 /* AddressBookViewController.xib in Resources */,
+				A1B59F2029237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				09C20FBA2846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				0995746628767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				09CAF597283C7BBE00D7B19B /* SubPageCollectionCell.xib in Resources */,
@@ -3995,6 +4044,7 @@
 				09CAF5AE283C7BBE00D7B19B /* ForgotViewController.xib in Resources */,
 				09CAF5AF283C7BBE00D7B19B /* TwoFAVerifyViewController.xib in Resources */,
 				09CAF5B0283C7BBE00D7B19B /* PersonalInfoViewController.xib in Resources */,
+				A1B59F0A292370E9005D9006 /* countries.json in Resources */,
 				09954C362889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09CAF5B1283C7BBE00D7B19B /* SignupViewController.xib in Resources */,
 				09CAF5B2283C7BBE00D7B19B /* mucoin_loading.json in Resources */,
@@ -4042,6 +4092,7 @@
 				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
 				09C20FA72845E1B800E70654 /* AddressBookViewCell.xib in Resources */,
+				A1B59F1E29237C37005D9006 /* SearchAreaViewController.xib in Resources */,
 				A1973A402829177D009932D8 /* SubPageCollectionCell.xib in Resources */,
 				0995746428767E6E005D44E2 /* AuditBindTwoFAViewController.xib in Resources */,
 				A1973A0F2828ED81009932D8 /* NotiViewController.xib in Resources */,
@@ -4094,6 +4145,7 @@
 				A1DD13A8282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib in Resources */,
 				A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */,
 				A19C71B52822636E000AFC3F /* SignupViewController.xib in Resources */,
+				A1B59F08292370E9005D9006 /* countries.json in Resources */,
 				09954C342889519E00E5E2BE /* PlusJakartaSans-Light.ttf in Resources */,
 				09C20FB82846014B00E70654 /* WhiteListBottomView.xib in Resources */,
 				A19C7144282257AB000AFC3F /* mucoin_loading.json in Resources */,
@@ -4442,6 +4494,7 @@
 				09EED317285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905A772851A02B00BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905A782851A02B00BAEE78 /* StatusImageView.swift in Sources */,
+				A1B59F13292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905A792851A02B00BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905A7A2851A02B00BAEE78 /* UITextfield+util.swift in Sources */,
 				09905A7B2851A02B00BAEE78 /* ForgetPasswordViewController.swift in Sources */,
@@ -4457,6 +4510,7 @@
 				09905A812851A02B00BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905A822851A02B00BAEE78 /* LoginMode.swift in Sources */,
 				09905A832851A02B00BAEE78 /* DepositViewController.swift in Sources */,
+				A1B59F1B29237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09905A842851A02B00BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905A852851A02B00BAEE78 /* TDetailViewController.swift in Sources */,
 				09905A862851A02B00BAEE78 /* TFFinishReViewController.swift in Sources */,
@@ -4680,6 +4734,7 @@
 				09EED318285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905B692851A08500BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905B6A2851A08500BAEE78 /* StatusImageView.swift in Sources */,
+				A1B59F14292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905B6B2851A08500BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905B6C2851A08500BAEE78 /* UITextfield+util.swift in Sources */,
 				09905B6D2851A08500BAEE78 /* ForgetPasswordViewController.swift in Sources */,
@@ -4695,6 +4750,7 @@
 				09905B732851A08500BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905B742851A08500BAEE78 /* LoginMode.swift in Sources */,
 				09905B752851A08500BAEE78 /* DepositViewController.swift in Sources */,
+				A1B59F1C29237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09905B762851A08500BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905B772851A08500BAEE78 /* TDetailViewController.swift in Sources */,
 				09905B782851A08500BAEE78 /* TFFinishReViewController.swift in Sources */,
@@ -4918,6 +4974,7 @@
 				09EED316285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905C5B2851A09600BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905C5C2851A09600BAEE78 /* StatusImageView.swift in Sources */,
+				A1B59F12292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905C5D2851A09600BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905C5E2851A09600BAEE78 /* UITextfield+util.swift in Sources */,
 				09905C5F2851A09600BAEE78 /* ForgetPasswordViewController.swift in Sources */,
@@ -4933,6 +4990,7 @@
 				09905C652851A09600BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905C662851A09600BAEE78 /* LoginMode.swift in Sources */,
 				09905C672851A09600BAEE78 /* DepositViewController.swift in Sources */,
+				A1B59F1A29237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09905C682851A09600BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905C692851A09600BAEE78 /* TDetailViewController.swift in Sources */,
 				09905C6A2851A09600BAEE78 /* TFFinishReViewController.swift in Sources */,
@@ -5156,6 +5214,7 @@
 				09EED314285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
+				A1B59F10292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF473283C77ED00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -5171,6 +5230,7 @@
 				09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF478283C77ED00D7B19B /* LoginMode.swift in Sources */,
 				09CAF479283C77ED00D7B19B /* DepositViewController.swift in Sources */,
+				A1B59F1829237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09C20FA42845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF47B283C77ED00D7B19B /* TFFinishReViewController.swift in Sources */,
@@ -5394,6 +5454,7 @@
 				09EED315285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
+				A1B59F11292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
 				09CAF534283C7BBE00D7B19B /* ForgetPasswordViewController.swift in Sources */,
@@ -5409,6 +5470,7 @@
 				09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF539283C7BBE00D7B19B /* LoginMode.swift in Sources */,
 				09CAF53A283C7BBE00D7B19B /* DepositViewController.swift in Sources */,
+				A1B59F1929237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09C20FA52845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
 				09CAF53C283C7BBE00D7B19B /* TFFinishReViewController.swift in Sources */,
@@ -5632,6 +5694,7 @@
 				09EED313285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
+				A1B59F0F292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
 				A19C71D128226584000AFC3F /* ForgetPasswordViewController.swift in Sources */,
@@ -5647,6 +5710,7 @@
 				A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
 				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
+				A1B59F1729237B8B005D9006 /* SearchAreaViewController.swift in Sources */,
 				09C20FA32845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,
 				A16F61C7282CBBD100D9CCE5 /* TFFinishReViewController.swift in Sources */,

@@ -271,6 +271,11 @@ class LoginViewController: BaseViewController {
         accountInputView!.rxCheckPassed()
             .bind(to: loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        accountInputView.rxChooseAreaPassed().subscribeSuccess { phoneCode in
+            let searchVC = SearchAreaViewController.loadNib()
+            searchVC.modalPresentationStyle = .popover
+            self.present(searchVC, animated: true)
+        }.disposed(by: disposeBag)
     }
     
     func bindLoginBtn() {

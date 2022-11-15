@@ -18,6 +18,7 @@ class AccountInputView: UIView {
     private var currentShowMode: ShowMode = .loginEmail
     private let dpg = DisposeBag()
     private let accountCheckPassed = PublishSubject<Bool>()
+    private let chooseAreaPassed = PublishSubject<String>()
     var acHeightConstraint : NSLayoutConstraint!
     var pwHeightConstraint : NSLayoutConstraint!
     // MARK: -
@@ -233,6 +234,10 @@ class AccountInputView: UIView {
     }
     func bindBorderColor()
     {
+        accountInputView.rxChoosePhoneCodeClick().subscribeSuccess { [self](phoneCode) in
+            Log.i("PhoneCode:\(phoneCode)")
+            chooseAreaPassed.onNext(phoneCode)
+        }.disposed(by: dpg)
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             resetInvalidText(account:isChoose)
             resetTFMaskView(account:isChoose)
@@ -315,7 +320,9 @@ class AccountInputView: UIView {
     func rxCheckPassed() -> Observable<Bool> {
         return accountCheckPassed.asObserver()
     }
-    
+    func rxChooseAreaPassed() -> Observable<String> {
+        return chooseAreaPassed.asObserver()
+    }
     func cleanTextField() {
         accountInputView.textField.text = ""
         passwordInputView.textField.text = ""

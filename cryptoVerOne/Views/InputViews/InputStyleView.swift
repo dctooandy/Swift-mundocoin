@@ -171,6 +171,7 @@ class InputStyleView: UIView {
     private let onAddAddressClick = PublishSubject<String>()
     private let onTextLabelClick = PublishSubject<String>()
     private let onChooseClick = PublishSubject<Bool>()
+    private let onChoosePhoneCodeClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private var timer: Timer?
     private var countTime = 60
@@ -717,6 +718,9 @@ class InputStyleView: UIView {
         else if inputViewMode == .phone
         {
             addDoneCancelToolbar()
+            mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in
+                onChoosePhoneCodeClick.onNext(mobileCodeLabel.text ?? "")
+            }.disposed(by: dpg)
         }
         else
         {
@@ -1093,6 +1097,10 @@ class InputStyleView: UIView {
     func rxChangeHeightAction() -> Observable<CGFloat>
     {
         return onChangeHeightAction.asObserver()
+    }
+    func rxChoosePhoneCodeClick() -> Observable<String>
+    {
+        return onChoosePhoneCodeClick.asObserver()
     }
 }
 // MARK: -

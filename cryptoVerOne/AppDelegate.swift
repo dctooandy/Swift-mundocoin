@@ -101,6 +101,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return }
+
+        let url = URL(fileURLWithPath: path)
+
+        do {
+
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let results = try decoder.decode(CountriesDto.self, from:data)
+
+            Log.i("results: \(results)")
+
+        } catch {
+
+            print(error)
+        }
         // 1107 remember me 功能暫停
         _ = KeychainManager.share.setMundoCoinRememberMeEnable(false)
         // 1025 FaceID 功能狀態
