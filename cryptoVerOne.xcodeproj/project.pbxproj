@@ -1925,6 +1925,18 @@
 		A1B59F2129237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
 		A1B59F2229237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
 		A1B59F2329237C37005D9006 /* SearchAreaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */; };
+		A1B59F252923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F262923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F272923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F282923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F292923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F2A2923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */; };
+		A1B59F2C29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
+		A1B59F2D29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
+		A1B59F2E29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
+		A1B59F2F29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
+		A1B59F3029238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
+		A1B59F3129238467005D9006 /* SearchAreaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */; };
 		A1BE2DD029077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD129077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
 		A1BE2DD229077C1B00C87B3A /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1BE2DCF29077C1B00C87B3A /* main.swift */; };
@@ -2324,6 +2336,8 @@
 		A1B59F0E292377CF005D9006 /* CountriesDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesDto.swift; sourceTree = "<group>"; };
 		A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAreaViewController.swift; sourceTree = "<group>"; };
 		A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAreaViewController.xib; sourceTree = "<group>"; };
+		A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAreaTableViewCell.swift; sourceTree = "<group>"; };
+		A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchAreaTableViewCell.xib; sourceTree = "<group>"; };
 		A1BE2DCF29077C1B00C87B3A /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A1BE2DD629077C8500C87B3A /* denyptrace.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = denyptrace.h; sourceTree = "<group>"; };
 		A1BE2DD729077C8500C87B3A /* denyptrace.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = denyptrace.c; sourceTree = "<group>"; };
@@ -3334,6 +3348,8 @@
 			children = (
 				A1B59F1629237B8B005D9006 /* SearchAreaViewController.swift */,
 				A1B59F1D29237C37005D9006 /* SearchAreaViewController.xib */,
+				A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */,
+				A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */,
 			);
 			path = SearchArea;
 			sourceTree = "<group>";
@@ -3617,6 +3633,7 @@
 				09EED3332857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1328562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905B0A2851A02B00BAEE78 /* Localizable.strings in Resources */,
+				A1B59F3029238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA373328F910800034333D /* ProCICD.md in Resources */,
 				09905B0B2851A02B00BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905B0C2851A02B00BAEE78 /* AddNewAddressViewController.xib in Resources */,
@@ -3718,6 +3735,7 @@
 				09EED3342857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1428562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905BFC2851A08500BAEE78 /* Localizable.strings in Resources */,
+				A1B59F3129238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA373428F910800034333D /* ProCICD.md in Resources */,
 				09905BFD2851A08500BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905BFE2851A08500BAEE78 /* AddNewAddressViewController.xib in Resources */,
@@ -3819,6 +3837,7 @@
 				09EED3322857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1228562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905CEE2851A09600BAEE78 /* Localizable.strings in Resources */,
+				A1B59F2F29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA373228F910800034333D /* ProCICD.md in Resources */,
 				09905CEF2851A09600BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905CF02851A09600BAEE78 /* AddNewAddressViewController.xib in Resources */,
@@ -3920,6 +3939,7 @@
 				09EED3302857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1028562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
+				A1B59F2D29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA373028F910800034333D /* ProCICD.md in Resources */,
 				09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA3284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
@@ -4021,6 +4041,7 @@
 				09EED3312857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE1128562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
+				A1B59F2E29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA373128F910800034333D /* ProCICD.md in Resources */,
 				09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA4284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
@@ -4122,6 +4143,7 @@
 				09EED32F2857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1ADAE0F28562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
+				A1B59F2C29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA372F28F910800034333D /* ProCICD.md in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
@@ -4456,6 +4478,7 @@
 				099574722876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905A5B2851A02B00BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905A5C2851A02B00BAEE78 /* LoginSignupViewController.swift in Sources */,
+				A1B59F292923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09905A5D2851A02B00BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905A5E2851A02B00BAEE78 /* AmountInputView.swift in Sources */,
 				09905A5F2851A02B00BAEE78 /* AddressBookDto.swift in Sources */,
@@ -4696,6 +4719,7 @@
 				099574732876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905B4D2851A08500BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905B4E2851A08500BAEE78 /* LoginSignupViewController.swift in Sources */,
+				A1B59F2A2923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09905B4F2851A08500BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905B502851A08500BAEE78 /* AmountInputView.swift in Sources */,
 				09905B512851A08500BAEE78 /* AddressBookDto.swift in Sources */,
@@ -4936,6 +4960,7 @@
 				099574712876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09905C3F2851A09600BAEE78 /* AuthenticationDto.swift in Sources */,
 				09905C402851A09600BAEE78 /* LoginSignupViewController.swift in Sources */,
+				A1B59F282923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09905C412851A09600BAEE78 /* FilterCollectionCell.swift in Sources */,
 				09905C422851A09600BAEE78 /* AmountInputView.swift in Sources */,
 				09905C432851A09600BAEE78 /* AddressBookDto.swift in Sources */,
@@ -5176,6 +5201,7 @@
 				0995746F2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5EE283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF45F283C77ED00D7B19B /* LoginSignupViewController.swift in Sources */,
+				A1B59F262923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09056D86284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF460283C77ED00D7B19B /* AmountInputView.swift in Sources */,
 				092E76032850488700221997 /* AddressBookDto.swift in Sources */,
@@ -5416,6 +5442,7 @@
 				099574702876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5EF283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				09CAF520283C7BBE00D7B19B /* LoginSignupViewController.swift in Sources */,
+				A1B59F272923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09056D87284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				09CAF521283C7BBE00D7B19B /* AmountInputView.swift in Sources */,
 				092E76042850488700221997 /* AddressBookDto.swift in Sources */,
@@ -5656,6 +5683,7 @@
 				0995746E2876D3C0005D44E2 /* AuditTwoFAFinishViewController.swift in Sources */,
 				09CAF5ED283DFF4800D7B19B /* AuthenticationDto.swift in Sources */,
 				A19C6FEC28221C69000AFC3F /* LoginSignupViewController.swift in Sources */,
+				A1B59F252923842B005D9006 /* SearchAreaTableViewCell.swift in Sources */,
 				09056D85284DBDC700038BF8 /* FilterCollectionCell.swift in Sources */,
 				A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */,
 				092E76022850488700221997 /* AddressBookDto.swift in Sources */,

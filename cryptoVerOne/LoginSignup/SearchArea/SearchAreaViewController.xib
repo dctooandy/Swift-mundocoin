@@ -69,15 +69,50 @@
                             <constraint firstAttribute="trailing" secondItem="Wcl-YI-E0E" secondAttribute="trailing" id="qA7-A9-w8O"/>
                         </constraints>
                     </view>
+                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="xLu-ZN-Wm8">
+                        <rect key="frame" x="0.0" y="64" width="414" height="50"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="kyc-od-jQb"/>
+                        </constraints>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.9137254901960784" green="0.92941176470588238" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <offsetWrapper key="searchFieldBackgroundPositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                        <textInputTraits key="textInputTraits"/>
+                        <scopeButtonTitles>
+                            <string>Title</string>
+                            <string>Title</string>
+                        </scopeButtonTitles>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="searchTextField.backgroundColor">
+                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </searchBar>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oUT-Nk-vCI">
+                        <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </tableView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="oGF-4N-mDS"/>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 <constraints>
                     <constraint firstItem="y87-at-w5w" firstAttribute="trailing" secondItem="oGF-4N-mDS" secondAttribute="trailing" id="4PF-qN-Gpa"/>
                     <constraint firstItem="y87-at-w5w" firstAttribute="leading" secondItem="oGF-4N-mDS" secondAttribute="leading" id="6Ej-s3-mk6"/>
+                    <constraint firstItem="oGF-4N-mDS" firstAttribute="trailing" secondItem="oUT-Nk-vCI" secondAttribute="trailing" id="Nsa-nz-1TZ"/>
+                    <constraint firstItem="oGF-4N-mDS" firstAttribute="bottom" secondItem="oUT-Nk-vCI" secondAttribute="bottom" id="YTx-tK-wdx"/>
+                    <constraint firstItem="xLu-ZN-Wm8" firstAttribute="top" secondItem="y87-at-w5w" secondAttribute="bottom" id="ZIP-Um-Gpb"/>
+                    <constraint firstItem="oUT-Nk-vCI" firstAttribute="top" secondItem="xLu-ZN-Wm8" secondAttribute="bottom" id="a0g-t5-9Sa"/>
+                    <constraint firstItem="oUT-Nk-vCI" firstAttribute="leading" secondItem="oGF-4N-mDS" secondAttribute="leading" id="iOQ-wQ-swC"/>
                     <constraint firstItem="y87-at-w5w" firstAttribute="top" secondItem="pyj-MM-tsQ" secondAttribute="top" id="k37-KC-OvG"/>
+                    <constraint firstItem="xLu-ZN-Wm8" firstAttribute="leading" secondItem="oGF-4N-mDS" secondAttribute="leading" id="nII-JX-eQc"/>
+                    <constraint firstItem="xLu-ZN-Wm8" firstAttribute="trailing" secondItem="oGF-4N-mDS" secondAttribute="trailing" id="zPC-cG-SWi"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="searchBar" destination="xLu-ZN-Wm8" id="89V-Ow-VL8"/>
+                <outlet property="tableView" destination="oUT-Nk-vCI" id="3Vq-H2-Tb1"/>
+            </connections>
             <point key="canvasLocation" x="132" y="104"/>
         </viewController>
     </objects>
