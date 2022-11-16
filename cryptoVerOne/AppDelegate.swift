@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func initSingleton(){
         // 1107 remember me 功能暫停
-        _ = KeychainManager.share.setMundoCoinRememberMeEnable(false)
+        _ = KeychainManager.share.setMundoCoinRememberMeEnable(true)
         // 1025 FaceID 功能狀態
         _ = KeychainManager.share.setFaceIDStatus(true)
         // 0920 註冊取消驗證碼輸入

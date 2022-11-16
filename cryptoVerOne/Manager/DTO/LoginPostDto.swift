@@ -9,19 +9,23 @@
 import Foundation
 
 struct LoginPostDto {
-    let account: String
-    let password: String
+    var account: String = ""
+    var password: String = ""
     let loginMode: LoginMode
     let timestamp = Date.timestamp()
     let finger = KeychainManager.share.getFingerID()
     let currentShowMode : ShowMode
     var resetCode:String = ""
-    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "") {
+    var phoneCode: String = ""
+    var phone: String = ""
+    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "" , phoneCode : String = "" , phone : String = "") {
         self.account = account
         self.password = password
         self.loginMode = loginMode
         self.currentShowMode = showMode
         self.resetCode = resetCode
+        self.phoneCode = phoneCode
+        self.phone = phone
     }
 }
 

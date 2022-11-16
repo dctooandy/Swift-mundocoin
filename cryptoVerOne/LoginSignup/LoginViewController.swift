@@ -28,14 +28,14 @@ class LoginViewController: BaseViewController {
         let tfLabel = UnderlinedLabel()
         tfLabel.contentMode = .center
         tfLabel.backgroundColor = .clear
-        tfLabel.font = Fonts.PlusJakartaSansBold(14)
+        tfLabel.font = Fonts.PlusJakartaSansBold(13)
         tfLabel.textColor = Themes.gray707EAE
         tfLabel.numberOfLines = 0
         tfLabel.adjustsFontSizeToFitWidth = true
         tfLabel.minimumScaleFactor = 0.8
         tfLabel.isUserInteractionEnabled = true
         tfLabel.isGrayColor = true
-        tfLabel.text = "Forgot Password?".localized
+        tfLabel.text = "Forgot Password 1?".localized
         return tfLabel
     }()
     @IBOutlet weak private var forgetPasswordButton: UIButton!
@@ -89,11 +89,13 @@ class LoginViewController: BaseViewController {
         { 
             if KeychainManager.share.getMundoCoinRememberMeStatus() == true
             {
-                if let loginPostDto = KeychainManager.share.getLastAccount(),
-                   BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account)
+                if let loginPostDto = KeychainManager.share.getLastAccount(loginMode: loginMode),
+                   (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
+                    BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
                 {
                     DispatchQueue.main.async { [self] in
-                        accountInputView.accountInputView.textField.text = loginPostDto.account
+                        let accountString = (loginMode == .phonePage ? loginPostDto.phone : loginPostDto.account)
+                        accountInputView.accountInputView.textField.text = accountString
                         accountInputView.passwordInputView.textField.text = loginPostDto.password
                         checkBoxView.isSelected = true
                         checkBoxView.checkType = .checkType
@@ -225,10 +227,12 @@ class LoginViewController: BaseViewController {
         }
         view.addSubview(forgetPasswordLabel)
         view.addSubview(loginButton)
+        view.addSubview(checkBoxView)
+        view.addSubview(rememberMeLabel)
         
         forgetPasswordLabel.snp.makeConstraints { (make) in
             make.left.equalTo(accountInputView!).offset(32)
-            make.top.equalTo(accountInputView!.passwordInputView.snp.bottom)
+            make.top.equalTo(accountInputView!.passwordInputView.snp.bottom).offset(34)
             make.height.equalTo(18)
         }
 
@@ -241,7 +245,7 @@ class LoginViewController: BaseViewController {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         forgetPasswordLabel.isHidden = true
 #else
-        forgetPasswordLabel.isHidden = loginMode == .phonePage
+        forgetPasswordLabel.isHidden = false
 // MC524 暫時隱藏
 //    forgetPasswordLabel.isHidden = true
 #endif
@@ -251,8 +255,8 @@ class LoginViewController: BaseViewController {
         loginButton.setTitle("Log In".localized, for: .normal)
         
         checkBoxView.snp.makeConstraints { make in
-            make.top.equalTo(self.loginButton.snp.bottom).offset(40)
-            make.left.equalTo(self.loginButton.snp.left)
+            make.bottom.equalTo(self.forgetPasswordLabel.snp.top).offset(-12)
+            make.left.equalTo(self.forgetPasswordLabel.snp.left)
             make.size.equalTo(20.0)
         }
         rememberMeLabel.snp.makeConstraints { make in
@@ -323,10 +327,21 @@ class LoginViewController: BaseViewController {
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let pwString = accountInputView?.passwordInputView.textField.text else {return}
+        let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
+        let phone = loginMode == .phonePage ? account : ""
         Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             login()
         } onError: { [self] error in
+            
+            //先測試
+            let account = (loginMode == .phonePage ? account : phone)
+            KeychainManager.share.setLastAccount(account)
+            KeychainManager.share.saveAccPwd(acc: account,
+                                             pwd: pwString,
+                                             phoneCode: phoneCode,
+                                             phone: phone)
+            BioVerifyManager.share.applyMemberInBIOList(account)
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):
@@ -370,7 +385,15 @@ class LoginViewController: BaseViewController {
     {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
-        let dto = LoginPostDto(account: account, password: password,loginMode: self.loginMode ,showMode: .loginEmail)
+        let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
+        let phone = (self.loginMode == .phonePage ? account : "" )
+        let showMode : ShowMode = (self.loginMode == .phonePage ? .loginPhone : .loginEmail )
+        let dto = LoginPostDto(account: account,
+                               password: password,
+                               loginMode: self.loginMode ,
+                               showMode: showMode ,
+                               phoneCode: phoneCode ,
+                               phone: phone )
         // 登入成功後
         self.onClickLogin.onNext(dto)
     }

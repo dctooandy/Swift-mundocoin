@@ -66,11 +66,17 @@ class BioVerifyManager {
     }
     
     func applyMemberInBIOList(_ account: String) {
-        bioList.append(account.lowercased())
+        if self.bioList.contains(account.lowercased()) != true
+        {
+            bioList.append(account.lowercased())
+        }
         UserDefaults.Verification.set(value: bioList, forKey: .BIOList)
     }
     func applyMemberInAuditBIOList(_ account: String) {
-        auditBioList.append(account.lowercased())
+        if self.auditBioList.contains(account.lowercased()) != true
+        {
+            auditBioList.append(account.lowercased())
+        }
         UserDefaults.Verification.set(value: auditBioList, forKey: .AuditBIOList)
     }
     

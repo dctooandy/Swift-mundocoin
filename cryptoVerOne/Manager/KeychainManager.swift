@@ -67,70 +67,90 @@ class KeychainManager {
         return success
     }
 
-    func getLastAccount() -> LoginPostDto? {
+    func getLastAccount(loginMode : LoginMode? = nil) -> LoginPostDto? {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         guard let accInKeychain = self.getString(from: .auditAccount) else { return nil }
 #else
         guard let accInKeychain = self.getString(from: .account) else { return nil }
 #endif
         let accList = getAccList()
-        guard let accPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
+        var accPwdString = ""
+        if loginMode != nil
+        {
+            if loginMode == .emailPage
+            {
+                accPwdString = accList.filter({String($0.suffix(1)) == "/"}).first ?? ""
+            }else
+            {
+                accPwdString = accList.filter({String($0.suffix(1)) != "/"}).last ?? ""
+            }
+        }else
+        {
+            guard let oldAccPwdString = accList.filter({$0.contains(accInKeychain)}).first else { return nil }
+            accPwdString = oldAccPwdString
+            
+        }
         let accArr = accPwdString.components(separatedBy: "/")
         let acc = accArr[0]
         let pwd = accArr[1]
-        let tel = accArr[2]
-        return LoginPostDto(account: acc.isEmpty ? tel : acc,
+        let phoneCode = accArr[2]
+        let phone = (accArr.count > 3 ? accArr[3] : "")
+        let loginMode:LoginMode = (phone.isEmpty ? .emailPage : .phonePage)
+        let showMode:ShowMode = (loginMode == .phonePage ? .loginPhone : .loginEmail)
+        return LoginPostDto(account: acc,
                             password: pwd,
-                            loginMode: .emailPage ,
-                            showMode: .loginEmail)
+                            loginMode: loginMode ,
+                            showMode: showMode ,
+                            phoneCode: phoneCode ,
+                            phone: phone)
     }
-    /// 儲存帳號密碼電話 格式: acc.pwd.tel
-    /// 遵循此格式： "acc.pwd.tel"
+    /// 儲存帳號密碼電話 格式: acc.pwd.phoneCode.phone
+    /// 遵循此格式： "acc.pwd.phoneCode.phone"
     /// - Parameters:
     ///   - acc: 帳號
     ///   - pwd: 密碼
-    ///   - tel: 電話
-    func saveAccPwd(acc: String, pwd: String, tel: String) {
-        let acc = acc.lowercased()
-        let arr = getAccList()
+    ///   - phoneCode: 電話區號
+    ///   - phone: 電話
+    func saveAccPwd(acc: String, pwd: String, phoneCode: String , phone:String) {
         var isNewAccount = true
+        let arr = getAccList()
+        let acc = acc.lowercased()
         var newArr = arr.map { (str) -> String in // update
             let accArr = str.components(separatedBy: "/")
-            if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
+            if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(phone) {
                 isNewAccount = false
                 let finalAcc = acc.isEmpty ? accArr[0] : acc
-                let finalTel = tel.isEmpty ? accArr[2] : tel
                 let finalPwd = pwd.isEmpty ? accArr[1] : pwd
-                return "\(finalAcc)/\(finalPwd)/\(finalTel)"
-            
+                let finalPhoneCode = phoneCode.isEmpty ? accArr[2] : phoneCode
+                let finalPhone = phone.isEmpty ? "" : phone
+                return "\(finalAcc)/\(finalPwd)/\(finalPhoneCode)/\(finalPhone)"
             } else {
                 return str
             }
         }
         
-        let accString = "\(acc)/\(pwd)/\(tel)"
+        let accString = "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
         if isNewAccount { // if false == new account
             newArr.append(accString)
         }
         saveAccList(newArr)
     }
     
-    func updateAccount(acc: String, pwd: String) {
+    func updateAccount(acc: String, pwd: String, phoneCode: String = "", phone:String = "") {
         var isNewAccount = true
         let arr = getAccList()
         let acc = acc.lowercased()
         var newArr = arr.map { (str) -> String in // update
             let accArr = str.components(separatedBy: "/")
-            if accArr.contains(acc) {
+            if accArr.contains(acc) || accArr.contains(phone) {
                 isNewAccount = false
-                let phone = accArr[2]
-                return "\(acc)/\(pwd)/\(phone)"
+                return "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
             } else {
                 return str
             }
         }
         if isNewAccount {
-            newArr.append("\(acc)/\(pwd)/")
+            newArr.append("\(acc)/\(pwd)/\(phoneCode)/\(phone)")
         }
         saveAccList(newArr)
     }

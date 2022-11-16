@@ -62,11 +62,15 @@ class LoginService {
                 return $0
             })
     }
-    func verificationIDPost(idString:String ,pwString:String) -> Single<String?>
+    func verificationIDPost(idString:String ,pwString:String,phoneCode:String = "") -> Single<String?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString]
         parameters = ["password":pwString]
+        if !phoneCode.isEmpty
+        {
+            parameters = ["phoneCode":phoneCode]
+        }
         return Beans.requestServer.singleRequestPost(
             path: ApiService.verificationID(idString).path,
             parameters: parameters,

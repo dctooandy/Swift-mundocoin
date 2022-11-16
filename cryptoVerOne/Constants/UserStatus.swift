@@ -9,7 +9,7 @@ import Foundation
 
 class UserStatus {
     static let share = UserStatus()
-    var loginUserModel:LoginDto?
+    var loginUserModel: LoginDto?
     var isLogin:Bool {
         return !KeychainManager.share.getToken().isEmpty
     }

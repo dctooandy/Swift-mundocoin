@@ -10,18 +10,22 @@ import Foundation
 
 struct SignupPostDto {
     
-    let account: String
-    let password: String
+    var account: String
+    var password: String
+    var phoneCode: String = ""
+    var phone: String = ""
     let registration:String
     let signupMode: LoginMode
     let timestamp = Date.timestamp()
     let finger = KeychainManager.share.getFingerID()
     
-    init(account: String, password: String, registration : String,signupMode: LoginMode) {
+    init(account: String, password: String, registration : String,signupMode: LoginMode ,phoneCode :String = "" , phone : String = "") {
         self.account = account
         self.password = password
         self.registration = registration
         self.signupMode = signupMode
+        self.phoneCode = phoneCode
+        self.phone = phone
     }
 }
 

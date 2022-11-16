@@ -58,6 +58,8 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
         tableView.dataSource = self
         tableView.registerXibCell(type: SearchAreaTableViewCell.self)
         tableView.separatorStyle = .none
+        tableView.sectionIndexColor = UIColor(rgb: 0x707EAE)
+//        tableView.sectionIndexBackgroundColor = .red
         searchBar.delegate = self
         if #available(iOS 15.0, *) {
             tableView.sectionHeaderTopPadding = 0
@@ -125,10 +127,6 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
 // MARK: 延伸
 extension SearchAreaViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        searchArray = citiArray.filter({ (string) -> Bool in
-//            return  string.prefix(searchText.count) == searchText
-//        })
-//        searching = true
         let countriesData = allCountriesData
         if searchText.count != 0
         {
@@ -144,11 +142,6 @@ extension SearchAreaViewController: UISearchBarDelegate {
         {
             createArray(withData: countriesData)
         }
-//        searchArray = nameArray.filter({ (string) -> Bool in
-//            let words = string
-//            let isMach = words.localizedCaseInsensitiveContains(searchText)
-//            return isMach
-//        })
         searching = searchText.count == 0 ? false : true
         tableView.reloadData()
     }
@@ -161,16 +154,6 @@ extension SearchAreaViewController {
         for (key , _) in sortedNameDataArray {
             indexArray.append(key)
         }
-//        if searching {
-//            indexArray = searchArray.map({
-//                return String($0.prefix(1))
-//            })
-//        }else
-//        {
-//            indexArray = nameArray.map({
-//                return String($0.prefix(1))
-//            })
-//        }
         return indexArray
     }
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {

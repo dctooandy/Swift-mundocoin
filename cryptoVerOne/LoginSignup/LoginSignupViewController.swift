@@ -329,7 +329,9 @@ extension LoginSignupViewController {
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
             if let loginPostDto = KeychainManager.share.getLastAccount(),
-               BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) {
+               (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
+                BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
+            {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
@@ -347,8 +349,8 @@ extension LoginSignupViewController {
                         return
                     }
                     DispatchQueue.main.async {
-                    let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
-                        self.showVerifyVCWithLoginData(dto)
+//                        let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
+                        self.showVerifyVCWithLoginData(loginPostDto)
                     }
                 }
             } else {
@@ -364,7 +366,12 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        Beans.loginServer.verificationIDPost(idString: dataDto.account , pwString: dataDto.password).subscribe { [self] dto in
+        let idString = (dataDto.loginMode == .emailPage ? dataDto.account : dataDto.phone)
+        let pwString = dataDto.password
+        let phoneCodeString = (dataDto.loginMode == .emailPage ? "" : dataDto.phoneCode)
+        Beans.loginServer.verificationIDPost(idString: idString ,
+                                             pwString: pwString ,
+                                             phoneCode: phoneCodeString).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             willShowAgainFromVerifyVC = true
             // 暫時改為直接推頁面
@@ -607,21 +614,30 @@ extension LoginSignupViewController {
             MemberAccountDto.share = MemberAccountDto(account: dto.account,
                                                       password: dto.password,
                                                       loginMode: dto.loginMode)
-            KeychainManager.share.setLastAccount(dto.account)
-            KeychainManager.share.updateAccount(acc: dto.account,
-                                                pwd: dto.password)
-            BioVerifyManager.share.applyMemberInBIOList(dto.account)
+            let account = (dto.loginMode == .phonePage ? dto.phone : dto.account)
+            KeychainManager.share.setLastAccount(account)
+//            KeychainManager.share.updateAccount(acc: dto.account,
+//                                                pwd: dto.password,
+//                                                phoneCode: dto.phoneCode,
+//                                                phone: dto.phone)
+            KeychainManager.share.saveAccPwd(acc: dto.account,
+                                             pwd: dto.password,
+                                             phoneCode: dto.phoneCode,
+                                             phone: dto.phone)
+            BioVerifyManager.share.applyMemberInBIOList(account)
         }
         if let dto = signupDto
         {
             MemberAccountDto.share = MemberAccountDto(account: dto.account,
                                                       password: dto.password,
                                                       loginMode: dto.signupMode)
+            let account = (dto.signupMode == .phonePage ? dto.phone : dto.account)
+            KeychainManager.share.setLastAccount(account)
             KeychainManager.share.saveAccPwd(acc: dto.account,
                                              pwd: dto.password,
-                                             tel: dto.signupMode == .phonePage ? dto.account: "")
-            KeychainManager.share.setLastAccount(dto.account)
-            BioVerifyManager.share.applyMemberInBIOList(dto.account)
+                                             phoneCode: dto.phoneCode,
+                                             phone: dto.phone)
+            BioVerifyManager.share.applyMemberInBIOList(account)
         }
         // 1025 FaceID 功能狀態
         var showBioView = false
