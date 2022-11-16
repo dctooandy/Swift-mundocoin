@@ -11,28 +11,37 @@ import RxSwift
 
 class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITableViewDataSource{
     // MARK:業務設定
-    private let onClick = PublishSubject<Any>()
+    private let onSelectedClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     var codeArray:[String] = []
     var nameArray:[String] = []
     var searchArray: [String] = [String]()
+    var codeDic:Dictionary<String , Array<String>> = [:]
     var nameDic:Dictionary<String , Array<String>> = [:]
+    
+    var sortedCodeDataArray : Array<(key: String, value: Array<String>)> = []
+    var sortedNameDataArray : Array<(key: String, value: Array<String>)> = []
     // 用此變數表示現在是否為搜尋模式
     var searching = false
+    var allCountriesData : [CountryDetail] = []
+    var codeNameData : CountryDetail = CountryDetail()
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var topCodeLabel: UILabel!
+    @IBOutlet weak var topNameLabel: UILabel!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        setupData()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        setupData()
+        secondSetupUI()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -48,50 +57,70 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerXibCell(type: SearchAreaTableViewCell.self)
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         searchBar.delegate = self
+        if #available(iOS 15.0, *) {
+            tableView.sectionHeaderTopPadding = 0
+        }
     }
     func setupData()
     {
-        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let results = try decoder.decode(CountriesDto.self, from:data)
-            
-            codeArray = results.countries.map({
-                return $0.code
-            })
-            nameArray = results.countries.map({
-                return $0.name
-            })
-            
-            let indexArray = nameArray.map({
-                return String($0.prefix(1))
-            })
-            var indexSet:Set<String> = []
-            for nameString in indexArray
-            {
-                indexSet.insert(nameString)
-                nameDic[nameString] = []
-            }
-            for indexString in indexSet {
-                for nameString in nameArray {
-                    if String(nameString.prefix(1)) == indexString
-                    {
-                        nameDic[indexString]?.append(nameString)
-                    }
+        let countriesData = allCountriesData
+        codeArray = countriesData.map({
+            return $0.code
+        })
+        nameArray = countriesData.map({
+            return $0.name
+        })
+        createArray(withData: countriesData)
+    }
+    func secondSetupUI()
+    {
+        topCodeLabel.text = codeNameData.code
+        topNameLabel.text = codeNameData.name
+    }
+ 
+    func createArray(withData countriesData: [CountryDetail])
+    {
+        let prepareCodeArray = countriesData.map({
+            return $0.code
+        })
+        let prepareNameArray = countriesData.map({
+            return $0.name
+        })
+        
+        let indexArray = prepareNameArray.map({
+            return String($0.prefix(1))
+        })
+        var indexSet:Set<String> = []
+        codeDic.removeAll()
+        nameDic.removeAll()
+        for nameString in indexArray
+        {
+            indexSet.insert(nameString)
+            nameDic[nameString] = []
+            codeDic[nameString] = []
+        }
+
+        for indexString in indexSet {
+            for nameString in prepareNameArray {
+                if String(nameString.prefix(1)) == indexString
+                {
+                    nameDic[indexString]?.append(nameString)
+                    guard let integer = prepareNameArray.firstIndex(of: nameString) else { return }
+                    codeDic[indexString]?.append(prepareCodeArray[integer])
                 }
             }
-            
-//            nameDic = nameDic.sorted { $0.key.0 < $1.key.0 }
-            Log.i("results: \(nameDic)")
-        } catch {
-            print(error)
         }
+        sortedCodeDataArray = codeDic.sorted(by: { $0.key < $1.key } )
+        sortedNameDataArray = nameDic.sorted(by: { $0.key < $1.key } )
+    }
+    func rxSelectedClick() -> Observable<String>
+    {
+        return onSelectedClick.asObservable()
     }
 }
+
 // MARK: -
 // MARK: 延伸
 extension SearchAreaViewController: UISearchBarDelegate {
@@ -100,11 +129,26 @@ extension SearchAreaViewController: UISearchBarDelegate {
 //            return  string.prefix(searchText.count) == searchText
 //        })
 //        searching = true
-        searchArray = nameArray.filter({ (string) -> Bool in
-            let words = string
-            let isMach = words.localizedCaseInsensitiveContains(searchText)
-            return isMach
-        })
+        let countriesData = allCountriesData
+        if searchText.count != 0
+        {
+            let newData = countriesData.filter ({ detailDto -> Bool in
+                var isCodeMach = false
+                var isNameMach = false
+                isCodeMach = detailDto.code.localizedCaseInsensitiveContains(searchText)
+                isNameMach = detailDto.name.localizedCaseInsensitiveContains(searchText)
+                return isCodeMach || isNameMach
+            })
+            createArray(withData: newData)
+        }else
+        {
+            createArray(withData: countriesData)
+        }
+//        searchArray = nameArray.filter({ (string) -> Bool in
+//            let words = string
+//            let isMach = words.localizedCaseInsensitiveContains(searchText)
+//            return isMach
+//        })
         searching = searchText.count == 0 ? false : true
         tableView.reloadData()
     }
@@ -114,42 +158,71 @@ extension SearchAreaViewController {
     // 索引设置
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexArray:[String] = []
-        if searching {
-            indexArray = searchArray.map({
-                return String($0.prefix(1))
-            })
-        }else
-        {
-            indexArray = nameArray.map({
-                return String($0.prefix(1))
-            })
+        for (key , _) in sortedNameDataArray {
+            indexArray.append(key)
         }
+//        if searching {
+//            indexArray = searchArray.map({
+//                return String($0.prefix(1))
+//            })
+//        }else
+//        {
+//            indexArray = nameArray.map({
+//                return String($0.prefix(1))
+//            })
+//        }
         return indexArray
     }
     func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
         print(title , index)
-        tableView.scrollToRow(at: IndexPath(item: index, section: 0), at: .top, animated: true)
+        tableView.scrollToRow(at: IndexPath(item: 0, section: index), at: .top, animated: true)
         return index
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            
-            if searching {
-                return searchArray.count
-            } else {
-                return nameArray.count
-            }
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return sortedNameDataArray.count
+    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 18))
+        headerView.backgroundColor = UIColor(rgb: 0xEFF4FB)
+        let headerLabel = UILabel()
+        headerView.addSubview(headerLabel)
+        headerLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview()
         }
+        headerLabel.textColor = UIColor(rgb: 0xA3AED0)
+        headerLabel.text = sortedNameDataArray[section].key
+        headerLabel.font = Fonts.SFProDisplayBold(13)
+        return headerView
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedCode = sortedCodeDataArray[indexPath.section].value[indexPath.row]
+        onSelectedClick.onNext(selectedCode)
+        self.dismiss(animated: true)
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return sortedNameDataArray[section].value.count
+        
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueCell(type: SearchAreaTableViewCell.self, indexPath: indexPath)
-        if searching {
-            cell.nameLabel.text = searchArray[indexPath.row]
-        } else {
-            cell.nameLabel.text = nameArray[indexPath.row]
+        cell.codeLabel.text = sortedCodeDataArray[indexPath.section].value[indexPath.row]
+        cell.nameLabel.text = sortedNameDataArray[indexPath.section].value[indexPath.row]
+        if sortedCodeDataArray[indexPath.section].value.count == (indexPath.row + 1)
+        {
+            cell.separatorLineView.isHidden = true
+        }else
+        {
+            cell.separatorLineView.isHidden = false
         }
-        
-        
-        
         return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 46
+    }
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 18
     }
 }

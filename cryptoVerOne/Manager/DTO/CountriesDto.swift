@@ -10,8 +10,7 @@ import Foundation
 class CountriesDto :Codable {
 
     var countries : [CountryDetail] = [CountryDetail()]
-
-    init(countries: [CountryDetail] ) {
+    init(countries: [CountryDetail] = [CountryDetail()]) {
         self.countries = countries
     }
 }

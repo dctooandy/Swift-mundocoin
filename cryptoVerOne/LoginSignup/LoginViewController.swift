@@ -271,13 +271,35 @@ class LoginViewController: BaseViewController {
         accountInputView!.rxCheckPassed()
             .bind(to: loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
-        accountInputView.rxChooseAreaPassed().subscribeSuccess { phoneCode in
+        
+        accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
             let searchVC = SearchAreaViewController.loadNib()
+            searchVC.allCountriesData = getDefaultData()
+            if let currentData = searchVC.allCountriesData.filter({ $0.code == phoneCode }).first
+            {
+                searchVC.codeNameData = currentData
+            }
+            searchVC.rxSelectedClick().subscribeSuccess { [self] selectedCode in
+                accountInputView.accountInputView.mobileCodeLabel.text = selectedCode
+            }.disposed(by: disposeBag)
             searchVC.modalPresentationStyle = .popover
             self.present(searchVC, animated: true)
         }.disposed(by: disposeBag)
     }
-    
+    func getDefaultData() -> [CountryDetail]
+    {
+        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let results = try decoder.decode(CountriesDto.self, from:data)
+            return results.countries
+        } catch {
+            print(error)
+            return CountriesDto().countries
+        }
+    }
     func bindLoginBtn() {
         loginButton.rx.tap.subscribeSuccess { [self] _ in
             loginButton.isEnabled = false

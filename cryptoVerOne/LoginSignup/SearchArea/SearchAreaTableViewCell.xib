@@ -10,6 +10,9 @@
         <array key="PlusJakartaSans-Bold.ttf">
             <string>PlusJakartaSans-Bold</string>
         </array>
+        <array key="PlusJakartaSans-Regular.ttf">
+            <string>PlusJakartaSans-Regular</string>
+        </array>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -21,29 +24,40 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="46"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+376" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrf-5n-WWl">
-                        <rect key="frame" x="20" y="14" width="33.5" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+886" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yrf-5n-WWl">
+                        <rect key="frame" x="20" y="14" width="35.5" height="18"/>
                         <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                         <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Andorra" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GE-dy-bA9">
-                        <rect key="frame" x="80" y="14" width="55.5" height="18"/>
-                        <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taiwan" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GE-dy-bA9">
+                        <rect key="frame" x="80" y="14" width="44.5" height="18"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-Regular" family="Plus Jakarta Sans" pointSize="14"/>
                         <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SX1-Ll-xwr">
+                        <rect key="frame" x="20" y="45" width="394" height="1"/>
+                        <color key="backgroundColor" red="0.91376090050000003" green="0.92758530380000004" blue="0.96811264750000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="Vbq-fe-P4b"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="0GE-dy-bA9" firstAttribute="centerY" secondItem="Eno-Zw-0al" secondAttribute="centerY" id="36r-dc-okD"/>
+                    <constraint firstAttribute="bottom" secondItem="SX1-Ll-xwr" secondAttribute="bottom" id="KkP-yM-RUe"/>
                     <constraint firstItem="Yrf-5n-WWl" firstAttribute="leading" secondItem="Eno-Zw-0al" secondAttribute="leading" constant="20" id="QD5-Dr-uvY"/>
                     <constraint firstItem="Yrf-5n-WWl" firstAttribute="centerY" secondItem="Eno-Zw-0al" secondAttribute="centerY" id="Sxt-y2-Dh8"/>
+                    <constraint firstItem="SX1-Ll-xwr" firstAttribute="leading" secondItem="Eno-Zw-0al" secondAttribute="leading" constant="20" id="oe7-2B-aHd"/>
                     <constraint firstItem="0GE-dy-bA9" firstAttribute="leading" secondItem="Yrf-5n-WWl" secondAttribute="leading" constant="60" id="pxF-tH-aW9"/>
+                    <constraint firstAttribute="trailing" secondItem="SX1-Ll-xwr" secondAttribute="trailing" id="wcV-eN-aaH"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="codeLabel" destination="Yrf-5n-WWl" id="vBL-Wh-rm4"/>
                 <outlet property="nameLabel" destination="0GE-dy-bA9" id="u8G-6r-Q4V"/>
+                <outlet property="separatorLineView" destination="SX1-Ll-xwr" id="uHV-8J-20R"/>
             </connections>
             <point key="canvasLocation" x="132" y="104"/>
         </tableViewCell>

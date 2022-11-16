@@ -19,6 +19,7 @@ class SearchAreaTableViewCell: UITableViewCell {
     // MARK:UI 設定
     @IBOutlet weak var codeLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var separatorLineView: UIView!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
