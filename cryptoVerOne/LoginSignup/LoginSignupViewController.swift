@@ -309,8 +309,8 @@ extension LoginSignupViewController {
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
                     DispatchQueue.main.async {[self] in
-                    Toast.show(msg: "验证失败，请输入帐号密码")
-                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+//                    Toast.show(msg: "Verification failed, please enter account password")
+                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                         
                     }
                         popVC.start(viewController: self)
@@ -318,7 +318,7 @@ extension LoginSignupViewController {
                     return
                 }
                 if error != nil {
-                    Toast.show(msg: "验证失败：\(error!.localizedDescription)")
+                    Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
                     return
                 }
             }
@@ -335,8 +335,8 @@ extension LoginSignupViewController {
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
                         DispatchQueue.main.async {[self] in
-                        Toast.show(msg: "验证失败，请输入帐号密码")
-                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+//                        Toast.show(msg: "验证失败，请输入帐号密码")
+                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                             
                         }
                             popVC.start(viewController: self)
@@ -344,7 +344,7 @@ extension LoginSignupViewController {
 //                        return
                     }
                     if error != nil {
-                        Toast.show(msg: "验证失败：\(error!.localizedDescription)")
+                        Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
                         return
                     }
                     DispatchQueue.main.async {
@@ -436,7 +436,7 @@ extension LoginSignupViewController {
     private func showBioConfirmView() {
         let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
                                       title: "",
-                                      message: "启用脸部辨识或指纹辨识进行登入？") { [weak self] isOK in
+                                      message: "Enable face recognition or fingerprint recognition to log in？") { [weak self] isOK in
             if isOK {
                 guard let acc = MemberAccountDto.share?.account else { return }
                 BioVerifyManager.share.applyMemberInBIOList(acc)
