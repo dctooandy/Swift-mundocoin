@@ -129,11 +129,11 @@ class BioVerifyManager {
     func didAskAuditBioLogin() -> Bool {
         return UserDefaults.Verification.optionBool(forKey: .askedAuditBioLogin) ?? false
     }
-    func setBioLoginAskStateToTrue() {
-        UserDefaults.Verification.set(value: true, forKey: .askedBioLogin)
+    func setBioLoginAskStateToTrue(_ flag : Bool = true) {
+        UserDefaults.Verification.set(value: flag, forKey: .askedBioLogin)
     }
-    func setAuditBioLoginAskStateToTrue() {
-        UserDefaults.Verification.set(value: true, forKey: .askedAuditBioLogin)
+    func setAuditBioLoginAskStateToTrue(_ flag : Bool = true) {
+        UserDefaults.Verification.set(value: flag, forKey: .askedAuditBioLogin)
     }
     
     /// 確認此帳號是否曾經登入
@@ -151,6 +151,11 @@ class BioVerifyManager {
     /// 測試用
     func testFunctionRemoveAllBioList() {
         KeychainManager.share.deleteValue(at: .account)
+        self.logedInList.removeAll()
+        self.bioList.removeAll()
+    }
+    func removeAllBioList()
+    {
         self.logedInList.removeAll()
         self.bioList.removeAll()
     }

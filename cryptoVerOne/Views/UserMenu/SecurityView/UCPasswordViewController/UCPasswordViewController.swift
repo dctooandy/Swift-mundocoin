@@ -296,11 +296,20 @@ class UCPasswordViewController: BaseViewController {
                 {
                     MemberAccountDto.share = MemberAccountDto(account: currentAcc.account,
                                                               password: newString,
-                                                              loginMode: currentAcc.loginMode)
-                    KeychainManager.share.setLastAccount(currentAcc.account)
-                    KeychainManager.share.updateAccount(acc: currentAcc.account,
-                                                        pwd: newString)
-                    BioVerifyManager.share.applyMemberInBIOList(currentAcc.account)
+                                                              loginMode: currentAcc.loginMode,
+                                                              phone: currentAcc.phone)
+                    let account = (currentAcc.loginMode == .phonePage ? currentAcc.phone : currentAcc.account)
+                    KeychainManager.share.setLastAccount(account)
+
+//                    KeychainManager.share.updateAccount(acc: currentAcc.account,
+//                                                        pwd: newString)
+                    KeychainManager.share.saveAccPwd(acc: currentAcc.account,
+                                                     pwd: newString,
+                                                     phoneCode: currentAcc.phoneCode,
+                                                     phone: currentAcc.phone)
+//                    BioVerifyManager.share.applyMemberInBIOList(currentAcc.account)
+                    BioVerifyManager.share.removeAllBioList()
+                    BioVerifyManager.share.setBioLoginAskStateToTrue(false)
                 }
                 changedPWVC.backgroundImageViewHidden()
                 changedPWVC.title = "Security Verification"
