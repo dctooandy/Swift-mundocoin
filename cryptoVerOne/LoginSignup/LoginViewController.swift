@@ -13,6 +13,8 @@ import Toaster
 
 class LoginViewController: BaseViewController {
     // MARK:業務設定
+    private var mundoCoinRememberMeStatus: Bool = false
+    var afterRMAction: Bool = false
     private var timer: Timer?
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
@@ -59,7 +61,7 @@ class LoginViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if let acView = accountInputView
+        if let acView = accountInputView , afterRMAction == false
         {
             acView.cleanTextField()
         }
@@ -86,49 +88,53 @@ class LoginViewController: BaseViewController {
             rememberMeLabel.isHidden = true
             KeychainManager.share.saveMundoCoinRememberMeStatus(false)
         }else
-        { 
+        {
+            // 取得RM功能狀態
             if KeychainManager.share.getMundoCoinRememberMeStatus() == true
             {
-                if let loginPostDto = KeychainManager.share.getLastAccount(loginMode: loginMode),
-                   (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
-                    BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
+                // 取得上次登入資料
+//                if afterRMAction == false,
+//                   let loginPostDto = KeychainManager.share.getLastAccount(),
+//                   (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
+//                    BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
+                if afterRMAction == false,
+                   let loginPostDto = KeychainManager.share.getLastAccount()
                 {
                     DispatchQueue.main.async { [self] in
-                        let accountString = (loginMode == .phonePage ? loginPostDto.phone : loginPostDto.account)
+                        var accountString = ""
+//                        var passString = ""
+                        if loginMode == .phonePage
+                        {
+                            accountString = loginPostDto.phone
+//                            passString = ( accountString.isEmpty == true ? "" : loginPostDto.password)
+                        }else
+                        {
+                            accountString = ( loginPostDto.phone.isEmpty == false ? "" : loginPostDto.account)
+//                            passString = ( accountString.isEmpty ? "" : loginPostDto.password)
+                        }
+
                         accountInputView.accountInputView.textField.text = accountString
-                        accountInputView.passwordInputView.textField.text = loginPostDto.password
+//                        accountInputView.passwordInputView.textField.text = passString
                         checkBoxView.isSelected = true
                         checkBoxView.checkType = .checkType
                         accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
                         accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
+                        // 登入資料寫入完成
+                        afterRMAction = true
                     }
-                }else
-                {
-                    //暫時強制寫上
-                    checkBoxView.isSelected = true
-                    checkBoxView.checkType = .checkType
-#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
-                    
-#else
-                    //                accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
-                    //                accountInputView.passwordInputView.textField.text = "Admin!234"
-                    //                accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
-                    //                accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
-#endif
                 }
-            }else
+                else
+                {
+                    // 去別頁面閃回或者沒拿到資料
+                    //暫時強制寫上
+//                    checkBoxView.isSelected = true
+//                    checkBoxView.checkType = .checkType
+                }
+            }
+            else
             {
                 checkBoxView.isSelected = false
                 checkBoxView.checkType = .defaultType
-                //暫時強制寫上
-#if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
-                
-#else
-                //            accountInputView.accountInputView.textField.text = "admin@mundocoin.com"
-                //            accountInputView.passwordInputView.textField.text = "Admin!234"
-                //            accountInputView.accountInputView.textField.sendActions(for: .valueChanged)
-                //            accountInputView.passwordInputView.textField.sendActions(for: .valueChanged)
-#endif
             }
         }
     }
@@ -188,7 +194,10 @@ class LoginViewController: BaseViewController {
     }
     
     func cleanTextField() {
-        self.accountInputView?.cleanTextField()
+        if afterRMAction == false
+        {
+            self.accountInputView?.cleanTextField()            
+        }
     }
     
     func setAccount(acc: String, pwd: String) {
@@ -318,9 +327,10 @@ class LoginViewController: BaseViewController {
     }
     func bindCheckBox()
     {
-        checkBoxView.rxCheckBoxPassed().subscribeSuccess { isSelect in
+        checkBoxView.rxCheckBoxPassed().subscribeSuccess { [self] isSelect in
             Log.v("isselect \(isSelect)")
-            KeychainManager.share.saveMundoCoinRememberMeStatus(isSelect)
+            mundoCoinRememberMeStatus = isSelect
+//            KeychainManager.share.saveMundoCoinRememberMeStatus(isSelect)
         }.disposed(by: disposeBag)
     }
     func verificationID()
@@ -335,13 +345,13 @@ class LoginViewController: BaseViewController {
         } onError: { [self] error in
             
             //先測試
-            let account = (loginMode == .phonePage ? account : phone)
-            KeychainManager.share.setLastAccount(account)
-            KeychainManager.share.saveAccPwd(acc: account,
-                                             pwd: pwString,
-                                             phoneCode: phoneCode,
-                                             phone: phone)
-            BioVerifyManager.share.applyMemberInBIOList(account)
+//            let account = (loginMode == .phonePage ? account : phone)
+//            KeychainManager.share.setLastAccount(account)
+//            KeychainManager.share.saveAccPwd(acc: account,
+//                                             pwd: pwString,
+//                                             phoneCode: phoneCode,
+//                                             phone: phone)
+//            BioVerifyManager.share.applyMemberInBIOList(account)
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):
@@ -393,7 +403,10 @@ class LoginViewController: BaseViewController {
                                loginMode: self.loginMode ,
                                showMode: showMode ,
                                phoneCode: phoneCode ,
-                               phone: phone )
+                               phone: phone ,
+                               rememberMeStatus: mundoCoinRememberMeStatus)
+//        // 更改RM 狀態
+//        KeychainManager.share.saveMundoCoinRememberMeStatus(mundoCoinRememberMeStatus)
         // 登入成功後
         self.onClickLogin.onNext(dto)
     }

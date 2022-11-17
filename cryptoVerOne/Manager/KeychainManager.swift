@@ -79,7 +79,7 @@ class KeychainManager {
         {
             if loginMode == .emailPage
             {
-                accPwdString = accList.filter({String($0.suffix(1)) == "/"}).first ?? ""
+                accPwdString = accList.filter({String($0.suffix(1)) == "/"}).last ?? ""
             }else
             {
                 accPwdString = accList.filter({String($0.suffix(1)) != "/"}).last ?? ""
@@ -92,8 +92,8 @@ class KeychainManager {
         }
         let accArr = accPwdString.components(separatedBy: "/")
         let acc = accArr[0]
-        let pwd = accArr[1]
-        let phoneCode = accArr[2]
+        let pwd = (accArr.count > 1 ? accArr[1] : "")
+        let phoneCode = (accArr.count > 2 ? accArr[2] : "")
         let phone = (accArr.count > 3 ? accArr[3] : "")
         let loginMode:LoginMode = (phone.isEmpty ? .emailPage : .phonePage)
         let showMode:ShowMode = (loginMode == .phonePage ? .loginPhone : .loginEmail)
@@ -115,20 +115,24 @@ class KeychainManager {
         var isNewAccount = true
         let arr = getAccList()
         let acc = acc.lowercased()
+        // 比對資料
+        // 如果有相同就更新,沒有相同就放過
         var newArr = arr.map { (str) -> String in // update
             let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(phone) {
                 isNewAccount = false
-                let finalAcc = acc.isEmpty ? accArr[0] : acc
-                let finalPwd = pwd.isEmpty ? accArr[1] : pwd
-                let finalPhoneCode = phoneCode.isEmpty ? accArr[2] : phoneCode
-                let finalPhone = phone.isEmpty ? "" : phone
-                return "\(finalAcc)/\(finalPwd)/\(finalPhoneCode)/\(finalPhone)"
+                return "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
             } else {
                 return str
             }
         }
-        
+        var newArrSet:Set<String> = []
+        for itemString in newArr
+        {
+            newArrSet.insert(itemString)
+        }
+        newArr = Array(newArrSet)
+        //從頭到尾都沒有出現,視為新帳號,加入keychain
         let accString = "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
         if isNewAccount { // if false == new account
             newArr.append(accString)

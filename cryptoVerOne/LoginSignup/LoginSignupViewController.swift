@@ -163,7 +163,6 @@ class LoginSignupViewController: BaseViewController {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             strongSelf.goApprovalViewController()
 #else
-            // 要先檢查帳號存在,API 還沒好
             // 推向传送验证码VC
             strongSelf.showVerifyVCWithLoginData(dto)
             // 圖形驗證 : 封印
@@ -328,7 +327,7 @@ extension LoginSignupViewController {
             if currentShowMode != .loginEmail &&
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
-            if let loginPostDto = KeychainManager.share.getLastAccount(),
+            if var loginPostDto = KeychainManager.share.getLastAccount(),
                (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
                 BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
             {
@@ -349,6 +348,7 @@ extension LoginSignupViewController {
                         return
                     }
                     DispatchQueue.main.async {
+                        loginPostDto.rememberMeStatus = KeychainManager.share.getMundoCoinRememberMeStatus()
 //                        let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
                         self.showVerifyVCWithLoginData(loginPostDto)
                     }
@@ -625,6 +625,11 @@ extension LoginSignupViewController {
                                              phoneCode: dto.phoneCode,
                                              phone: dto.phone)
             BioVerifyManager.share.applyMemberInBIOList(account)
+            // 更改RM 狀態
+            KeychainManager.share.saveMundoCoinRememberMeStatus(dto.rememberMeStatus)
+            for vc in loginPageVC.loginViewControllers {
+                vc.afterRMAction = false
+            }
         }
         if let dto = signupDto
         {

@@ -18,7 +18,8 @@ struct LoginPostDto {
     var resetCode:String = ""
     var phoneCode: String = ""
     var phone: String = ""
-    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "" , phoneCode : String = "" , phone : String = "") {
+    var rememberMeStatus: Bool = false
+    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "" , phoneCode : String = "" , phone : String = "" , rememberMeStatus : Bool = false) {
         self.account = account
         self.password = password
         self.loginMode = loginMode
@@ -26,6 +27,7 @@ struct LoginPostDto {
         self.resetCode = resetCode
         self.phoneCode = phoneCode
         self.phone = phone
+        self.rememberMeStatus = rememberMeStatus
     }
 }
 

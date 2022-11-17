@@ -110,9 +110,9 @@ class LoginPageViewController: BaseViewController {
 //    }
     func reloadPageMenu(currentMode: ShowMode) {
         self.currentShowMode = currentMode
-        DispatchQueue.main.async {[weak self] in
+//        DispatchQueue.main.async {[weak self] in
 //            self?.pageViewcontroller?.reloadData()
-        }
+//        }
     }
     
     func startReciprocal() {
