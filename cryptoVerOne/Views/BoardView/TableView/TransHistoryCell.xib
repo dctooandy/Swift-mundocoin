@@ -92,8 +92,8 @@
                                 <color key="textColor" red="0.63921568630000003" green="0.68235294120000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TXID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWQ-tr-PgL">
-                                <rect key="frame" x="16" y="66.5" width="24" height="14"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TRC20" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWQ-tr-PgL">
+                                <rect key="frame" x="16" y="66.5" width="36" height="14"/>
                                 <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="11"/>
                                 <color key="textColor" red="0.63921568630000003" green="0.68235294120000001" blue="0.81568627449999997" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -147,6 +147,8 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="addressLabel" destination="3Pq-De-7pZ" id="2uV-ay-2ks"/>
+                <outlet property="addressTitleLabel" destination="YWQ-tr-PgL" id="zM5-4I-zC4"/>
                 <outlet property="amountLabel" destination="p2q-4h-D3r" id="xjw-Rq-ULh"/>
                 <outlet property="balanceFlagLabel" destination="a39-8j-fB1" id="tyU-7H-srr"/>
                 <outlet property="cellBackView" destination="0Dk-AC-HaX" id="Fen-9l-wh8"/>
@@ -156,7 +158,6 @@
                 <outlet property="labelWidthConstraint" destination="4t0-8D-a0e" id="Vsd-Ee-mAO"/>
                 <outlet property="statusLabel" destination="dc6-px-yMG" id="PG5-6y-bUb"/>
                 <outlet property="timeLabel" destination="qUT-FG-864" id="FXF-ET-WX0"/>
-                <outlet property="txidLabel" destination="3Pq-De-7pZ" id="zyg-wj-8rz"/>
             </connections>
             <point key="canvasLocation" x="132" y="96"/>
         </tableViewCell>

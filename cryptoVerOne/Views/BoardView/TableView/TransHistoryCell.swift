@@ -27,7 +27,8 @@ class TransHistoryCell: UITableViewCell {
     @IBOutlet weak var cellBackView: UIView!
     @IBOutlet weak var inOutImageView: UIImageView!
     @IBOutlet weak var inOutLabel: UILabel!
-    @IBOutlet weak var txidLabel: UILabel!
+    @IBOutlet weak var addressTitleLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
     // MARK: -
     // MARK:Life cycle
     override func awakeFromNib() {
@@ -95,6 +96,13 @@ class TransHistoryCell: UITableViewCell {
             balanceFlagLabel.text = "+"
             inOutImageView.image = UIImage(named: "icon-transfer-in")
             inOutLabel.text = "Deposit"
+            if data.fromAddress.isEmpty
+            {
+                addressLabel.text = "--"
+            }else
+            {
+                addressLabel.text = data.fromAddress
+            }
         }else
         {
             statusLabel.isHidden = data.stateValue == "COMPLETE" ? true : false
@@ -118,14 +126,21 @@ class TransHistoryCell: UITableViewCell {
             balanceFlagLabel.text = "-"
             inOutImageView.image = UIImage(named: "icon-transfer-out")
             inOutLabel.text = "Withdraw"
+            if data.toAddress.isEmpty
+            {
+                addressLabel.text = "--"
+            }else
+            {
+                addressLabel.text = data.toAddress
+            }
         }
-        if let txidString = data.txId
-        {
-            txidLabel.text = txidString
-        }else
-        {
-            txidLabel.text = "-"
-        }
+//        if let txidString = data.txId
+//        {
+//            txidLabel.text = txidString
+//        }else
+//        {
+//            txidLabel.text = "-"
+//        }
     }
     func setupUI()
     {
