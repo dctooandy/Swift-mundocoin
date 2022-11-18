@@ -269,7 +269,7 @@ class AuditLoginViewController: BaseViewController {
         {
             let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
                                           title: "",
-                                          message: "启用脸部辨识或指纹辨识进行登入？") { [weak self] isOK in
+                                          message: "Enable biometric ID?") { [weak self] isOK in
                 if isOK {
                     let idString = self?.accountInputView.textField.text ?? ""
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)
@@ -307,8 +307,8 @@ class AuditLoginViewController: BaseViewController {
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
                     DispatchQueue.main.async {[self] in
-                    Toast.show(msg: "验证失败，请输入帐号密码")
-                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+//                    Toast.show(msg: "验证失败，请输入帐号密码")
+                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                         
                     }
                         popVC.start(viewController: self)
@@ -329,8 +329,8 @@ class AuditLoginViewController: BaseViewController {
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
                         DispatchQueue.main.async {[self] in
-                        Toast.show(msg: "验证失败，请输入帐号密码")
-                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "验证失败，请输入帐号密码.") { (_) in
+//                        Toast.show(msg: "验证失败，请输入帐号密码")
+                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                             
                         }
                             popVC.start(viewController: self)
