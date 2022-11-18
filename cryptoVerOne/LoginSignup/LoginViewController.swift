@@ -37,7 +37,7 @@ class LoginViewController: BaseViewController {
         tfLabel.minimumScaleFactor = 0.8
         tfLabel.isUserInteractionEnabled = true
         tfLabel.isGrayColor = true
-        tfLabel.text = "Forgot Password 1?".localized
+        tfLabel.text = "Forgot Password ?".localized
         return tfLabel
     }()
     @IBOutlet weak private var forgetPasswordButton: UIButton!
@@ -57,7 +57,6 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -281,7 +280,7 @@ class LoginViewController: BaseViewController {
     
     //MARK: Actions
     func bindAccountView() {
-        accountInputView!.rxCheckPassed()
+        accountInputView.rxCheckPassed()
             .bind(to: loginButton.rx.isEnabled)
             .disposed(by: disposeBag)
         

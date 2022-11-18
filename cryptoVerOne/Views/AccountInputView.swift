@@ -69,7 +69,7 @@ class AccountInputView: UIView {
                     strongSelf.accountInputView.invalidLabel.isHidden = true
                 }
                 var patternValue = RegexHelper.Pattern.phone
-                if strongSelf.inputMode == .phone {
+                if strongSelf.inputMode == .phone || strongSelf.inputMode == .forgotPhone {
                     patternValue = .onlyNumber
                 }else
                 {
@@ -82,7 +82,7 @@ class AccountInputView: UIView {
                 guard let strongSelf = self, let acc = str else { return .accountInvalidHidden }
                 if ((strongSelf.accountInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
-                    if strongSelf.inputMode == .phone {
+                    if strongSelf.inputMode == .phone || strongSelf.inputMode == .forgotPhone {
                         patternValue = .onlyNumber
                     }else
                     {
@@ -153,7 +153,7 @@ class AccountInputView: UIView {
         }
         isPasswordHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
 
-        if currentShowMode == .forgotPW
+        if currentShowMode == .forgotEmailPW || currentShowMode == .forgotPhonePW
         {
             isAccountValid.bind(to: accountCheckPassed).disposed(by: dpg)
         }else if currentShowMode == .signupEmail ||
@@ -402,7 +402,7 @@ class AccountInputView: UIView {
                     make.height.equalTo(Themes.inputViewDefaultHeight)
                 }
             }
-        case .forgotPW:
+        case .forgotEmailPW ,.forgotPhonePW:
             break
         }
     }

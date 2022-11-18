@@ -21,7 +21,8 @@ enum InputViewMode :Equatable {
     case email
     case phone
     case password
-    case forgotPW
+    case forgotEmail
+    case forgotPhone
     case registration
     case networkMethod(Array<String>)
     case crypto(Array<String>)
@@ -55,7 +56,8 @@ enum InputViewMode :Equatable {
         case .email: return "E-mail*".localized
         case .phone: return "Mobile*".localized
         case .password: return "Password*".localized
-        case .forgotPW: return "Enter your email to change your password".localized
+        case .forgotEmail: return "Enter your email to change your password".localized
+        case .forgotPhone: return "Enter your mobile number".localized
         case .registration: return "Registration code".localized
         case .networkMethod( _ ): return "Network Method".localized
         case .crypto( _ ): return "Crypto".localized
@@ -81,7 +83,7 @@ enum InputViewMode :Equatable {
         case .withdrawToAddress,.address: return "Long press to paste".localized
         case .email: return "...@mundocoin.com"
 //        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
-        case .forgotPW: return "...@mundocoin.com"
+        case .forgotEmail: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
         case .auditAccount : return ""
         case .auditPassword : return ""
@@ -97,7 +99,8 @@ enum InputViewMode :Equatable {
         case .email: return "...@mundocoin.com".localized
         case .phone: return "Invalid phone number.".localized
         case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
-        case .forgotPW: return "...@mundocoin.com".localized
+        case .forgotEmail: return "...@mundocoin.com".localized
+        case .forgotPhone: return "Invalid phone number.".localized
         case .registration: return "Enter the 6-digit code ".localized
         case .securityVerification: return "Enter the 6-digit code".localized
         default: return ""
@@ -406,7 +409,7 @@ class InputStyleView: UIView {
             isCustomLabel = true
         case .withdrawToAddress , .address:
             showTextView = true
-        case .phone:
+        case .phone,.forgotPhone:
             showMobileCodeView = true
             leadingDif = 100
         default:
@@ -487,7 +490,7 @@ class InputStyleView: UIView {
             make.width.equalToSuperview().multipliedBy(1.10)
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
-        if inputViewMode == .phone
+        if inputViewMode == .phone || inputViewMode == .forgotPhone
         {
             mobileCodeAnchorView.addSubview(labelMaskView)
             mobileCodeAnchorView.sendSubviewToBack(labelMaskView)
@@ -715,7 +718,7 @@ class InputStyleView: UIView {
             resetTopLabelAndMask()
             tfMaskView.backgroundColor = Themes.grayF4F7FE
         }
-        else if inputViewMode == .phone
+        else if inputViewMode == .phone || inputViewMode == .forgotPhone
         {
             addDoneCancelToolbar()
             mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in
@@ -1125,7 +1128,7 @@ extension InputStyleView: UITextFieldDelegate {
         }
 #endif
         switch inputViewMode {
-        case .phone:
+        case .phone , .forgotPhone:
             guard let text = textField.text else {
                 return true
             }

@@ -1053,6 +1053,30 @@
 		09B49383290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
 		09B49384290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
 		09B49385290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */; };
+		09B7C2032927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C2042927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C2052927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C2062927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C2072927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C2082927327700A5E2DC /* ForgotPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */; };
+		09B7C20A292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C20B292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C20C292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C20D292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C20E292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C20F292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */; };
+		09B7C211292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C212292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C213292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C214292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C215292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C216292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */; };
+		09B7C2182927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
+		09B7C2192927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
+		09B7C21A2927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
+		09B7C21B2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
+		09B7C21C2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
+		09B7C21D2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */; };
 		09C20F9B2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9C2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
 		09C20F9D2845D85D00E70654 /* AddressBookViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */; };
@@ -2071,6 +2095,10 @@
 		09AA373C28F910AD0034333D /* DevCICD.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = DevCICD.md; sourceTree = "<group>"; };
 		09B49378290BAD620024E984 /* TransCustomerDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransCustomerDto.swift; sourceTree = "<group>"; };
 		09B4937F290BB6870024E984 /* BoardPagingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardPagingTitleCell.swift; sourceTree = "<group>"; };
+		09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPageViewController.swift; sourceTree = "<group>"; };
+		09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForgotPasswordViewController.xib; sourceTree = "<group>"; };
+		09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordMode.swift; sourceTree = "<group>"; };
 		09C20F9A2845D85D00E70654 /* AddressBookViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewController.swift; sourceTree = "<group>"; };
 		09C20F9E2845D87100E70654 /* AddressBookViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddressBookViewController.xib; sourceTree = "<group>"; };
 		09C20FA22845E19900E70654 /* AddressBookViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewCell.swift; sourceTree = "<group>"; };
@@ -3021,6 +3049,10 @@
 				A19C71AE2822636E000AFC3F /* LoginViewController.xib */,
 				A19C71B02822636E000AFC3F /* SignupViewController.swift */,
 				A19C71B12822636E000AFC3F /* SignupViewController.xib */,
+				09B7C2172927528C00A5E2DC /* ForgotPasswordMode.swift */,
+				09B7C209292739B400A5E2DC /* ForgotPasswordViewController.swift */,
+				09B7C210292739DD00A5E2DC /* ForgotPasswordViewController.xib */,
+				09B7C2022927327700A5E2DC /* ForgotPageViewController.swift */,
 				A14E1BA62824FF5000827148 /* ForgotViewController.swift */,
 				A14E1BA52824FF5000827148 /* ForgotViewController.xib */,
 			);
@@ -3640,6 +3672,7 @@
 				09905B0D2851A02B00BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905B0E2851A02B00BAEE78 /* VerifyViewController.xib in Resources */,
 				09905B0F2851A02B00BAEE78 /* WalletViewController.xib in Resources */,
+				09B7C215292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1C28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905B102851A02B00BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -3742,6 +3775,7 @@
 				09905BFF2851A08500BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905C002851A08500BAEE78 /* VerifyViewController.xib in Resources */,
 				09905C012851A08500BAEE78 /* WalletViewController.xib in Resources */,
+				09B7C216292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1D28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905C022851A08500BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -3844,6 +3878,7 @@
 				09905CF12851A09600BAEE78 /* ConfirmBottomView.xib in Resources */,
 				09905CF22851A09600BAEE78 /* VerifyViewController.xib in Resources */,
 				09905CF32851A09600BAEE78 /* WalletViewController.xib in Resources */,
+				09B7C214292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1B28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09905CF42851A09600BAEE78 /* AmountInputView.xib in Resources */,
 				0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -3946,6 +3981,7 @@
 				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
+				09B7C212292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1928893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09CAF4E7283C77ED00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8ED28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -4048,6 +4084,7 @@
 				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
 				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
+				09B7C213292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1A28893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				09CAF5A8283C7BBE00D7B19B /* AmountInputView.xib in Resources */,
 				0909C8EE28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -4150,6 +4187,7 @@
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
 				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
+				09B7C211292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
 				09954C1828893B0900E5E2BE /* PlusJakartaSans-SemiBold.ttf in Resources */,
 				A19739E72828BC3A009932D8 /* SignupSuccessView.xib in Resources */,
 				0909C8EC28533270003E2F58 /* AuditLoginViewController.xib in Resources */,
@@ -4496,6 +4534,7 @@
 				A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EE28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20E292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */,
 				09905A6A2851A02B00BAEE78 /* UserStatus.swift in Sources */,
 				09905A6B2851A02B00BAEE78 /* Themes.swift in Sources */,
@@ -4509,6 +4548,7 @@
 				09905A712851A02B00BAEE78 /* ApiService.swift in Sources */,
 				0909C8CC2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905A722851A02B00BAEE78 /* BaseTabbar.swift in Sources */,
+				09B7C2072927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905A732851A02B00BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905A742851A02B00BAEE78 /* UserInfoDto.swift in Sources */,
 				09919AAF28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -4646,6 +4686,7 @@
 				09905AD72851A02B00BAEE78 /* CheckBoxView.swift in Sources */,
 				09905AD82851A02B00BAEE78 /* String+util.swift in Sources */,
 				09EED2EC2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C21C2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09905AD92851A02B00BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905ADA2851A02B00BAEE78 /* ScannerViewController.swift in Sources */,
 				09905ADB2851A02B00BAEE78 /* CancelButton.swift in Sources */,
@@ -4737,6 +4778,7 @@
 				A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EF28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20F292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */,
 				09905B5C2851A08500BAEE78 /* UserStatus.swift in Sources */,
 				09905B5D2851A08500BAEE78 /* Themes.swift in Sources */,
@@ -4750,6 +4792,7 @@
 				09905B632851A08500BAEE78 /* ApiService.swift in Sources */,
 				0909C8CD2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905B642851A08500BAEE78 /* BaseTabbar.swift in Sources */,
+				09B7C2082927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905B652851A08500BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905B662851A08500BAEE78 /* UserInfoDto.swift in Sources */,
 				09919AB028645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -4887,6 +4930,7 @@
 				09905BC92851A08500BAEE78 /* CheckBoxView.swift in Sources */,
 				09905BCA2851A08500BAEE78 /* String+util.swift in Sources */,
 				09EED2ED2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C21D2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09905BCB2851A08500BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905BCC2851A08500BAEE78 /* ScannerViewController.swift in Sources */,
 				09905BCD2851A08500BAEE78 /* CancelButton.swift in Sources */,
@@ -4978,6 +5022,7 @@
 				A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47ED28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20D292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */,
 				09905C4E2851A09600BAEE78 /* UserStatus.swift in Sources */,
 				09905C4F2851A09600BAEE78 /* Themes.swift in Sources */,
@@ -4991,6 +5036,7 @@
 				09905C552851A09600BAEE78 /* ApiService.swift in Sources */,
 				0909C8CB2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09905C562851A09600BAEE78 /* BaseTabbar.swift in Sources */,
+				09B7C2062927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905C572851A09600BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905C582851A09600BAEE78 /* UserInfoDto.swift in Sources */,
 				09919AAE28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -5128,6 +5174,7 @@
 				09905CBB2851A09600BAEE78 /* CheckBoxView.swift in Sources */,
 				09905CBC2851A09600BAEE78 /* String+util.swift in Sources */,
 				09EED2EB2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C21B2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09905CBD2851A09600BAEE78 /* WhiteListBottomView.swift in Sources */,
 				09905CBE2851A09600BAEE78 /* ScannerViewController.swift in Sources */,
 				09905CBF2851A09600BAEE78 /* CancelButton.swift in Sources */,
@@ -5219,6 +5266,7 @@
 				A1B2008428CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EB28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20B292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
 				09CAF469283C77ED00D7B19B /* Themes.swift in Sources */,
@@ -5232,6 +5280,7 @@
 				09CAF5BE283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C92851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09CAF46F283C77ED00D7B19B /* BaseTabbar.swift in Sources */,
+				09B7C2042927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09919AAC28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -5369,6 +5418,7 @@
 				09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */,
 				09EED2E92856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C2192927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09C20FAD2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF4BB283C77ED00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF4BC283C77ED00D7B19B /* CancelButton.swift in Sources */,
@@ -5460,6 +5510,7 @@
 				A1B2008528CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EC28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20C292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
 				09CAF52A283C7BBE00D7B19B /* Themes.swift in Sources */,
@@ -5473,6 +5524,7 @@
 				09CAF5BF283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8CA2851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				09CAF530283C7BBE00D7B19B /* BaseTabbar.swift in Sources */,
+				09B7C2052927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09919AAD28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -5610,6 +5662,7 @@
 				09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */,
 				09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */,
 				09EED2EA2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C21A2927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09C20FAE2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				09CAF57C283C7BBE00D7B19B /* ScannerViewController.swift in Sources */,
 				09CAF57D283C7BBE00D7B19B /* CancelButton.swift in Sources */,
@@ -5701,6 +5754,7 @@
 				A1B2008328CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EA28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				09B7C20A292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,
 				A19C7089282239DC000AFC3F /* Themes.swift in Sources */,
@@ -5714,6 +5768,7 @@
 				09CAF5BD283C823400D7B19B /* ApiService.swift in Sources */,
 				0909C8C82851F388003E2F58 /* ApprovalDetailViewController.swift in Sources */,
 				A19C70CE282246DF000AFC3F /* BaseTabbar.swift in Sources */,
+				09B7C2032927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
 				09919AAB28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
@@ -5851,6 +5906,7 @@
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
 				A1B051F22823B13F00056183 /* String+util.swift in Sources */,
 				09EED2E82856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
+				09B7C2182927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,
 				09C20FAC2845FD5200E70654 /* WhiteListBottomView.swift in Sources */,
 				A16F61E5282E2A2300D9CCE5 /* ScannerViewController.swift in Sources */,
 				A19C70C128223DC1000AFC3F /* CancelButton.swift in Sources */,

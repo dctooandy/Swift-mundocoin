@@ -1,8 +1,8 @@
 //
-//  LoginPageViewController.swift
+//  ForgotPageViewController.swift
 //  cryptoVerOne
 //
-//  Created by AndyChen on 2022/5/4.
+//  Created by BBk on 11/18/22.
 //
 
 
@@ -10,14 +10,14 @@ import UIKit
 import Parchment
 import RxSwift
 
-class LoginPageViewController: BaseViewController {
+class ForgotPageViewController: BaseViewController {
     // MARK:業務設定
     private let verifyCodeBtnClick = PublishSubject<String>()
     private let signupBtnClick = PublishSubject<SignupPostDto>()
     private let loginBtnClick = PublishSubject<LoginPostDto>()
     private let resetLinkBtnClick = PublishSubject<LoginPostDto>()
     private let forgetBtnClick = PublishSubject<Void>()
-    private var currentShowMode: ShowMode = .loginEmail {
+    private var currentShowMode: ShowMode = .forgotEmailPW {
         didSet {
             cleanTextField()
 //            if currentShowMode == .forgotPW
@@ -44,26 +44,6 @@ class LoginPageViewController: BaseViewController {
         super.viewDidLoad()
         setupVC()
         setupMenu()
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        if KeychainManager.share.getMundoCoinRememberMeEnable() == true
-        {
-            // 取得RM功能狀態
-            if KeychainManager.share.getMundoCoinRememberMeStatus() == true
-            {
-                if let loginPostDto = KeychainManager.share.getLastAccount()
-                {
-                    if loginPostDto.phone.isEmpty == false
-                    {
-                        pageViewcontroller?.select(index: 1, animated: true)
-                    }else
-                    {
-                        pageViewcontroller?.select(index: 0, animated: true)
-                    }
-                }
-            }
-        }
     }
     // MARK: -
     // MARK:業務方法
@@ -102,24 +82,21 @@ class LoginPageViewController: BaseViewController {
     }
     
     private func setupVC() {
-        let accLogin = LoginViewController.instance(mode: .emailPage)
-        let phoneLogin = LoginViewController.instance(mode: .phonePage)
-        let accSignup = SignupViewController.instance(mode: .emailPage)
-        let phoneSignup = SignupViewController.instance(mode: .phonePage)
-//        let accForgot = ForgotViewController.instance(mode: .emailPage)
-        loginViewControllers = [accLogin,phoneLogin]
+        let accForgot = ForgotViewController.instance(mode: .emailPage)
+        let phoneForgot = ForgotViewController.instance(mode: .phonePage)
+//        loginViewControllers = [accLogin,phoneLogin]
         //            bindVerifyCodeBtn(obs: phoneLogin.rxVerifyCodeButtonClick)
-        signupViewControllers = [accSignup,phoneSignup]
+//        signupViewControllers = [accSignup,phoneSignup]
         //            bindVerifyCodeBtn(obs: phoneSignup.rxVerifyCodeButtonClick)
-//        forgotViewControllers = [accForgot]
+        forgotViewControllers = [accForgot,phoneForgot]
         bindLoginViewControllers()
         bindSingupViewControllers()
         bindForgotViewControllers()
     }
     private func cleanTextField() {
-        loginViewControllers.forEach({$0.cleanTextField()})
-        signupViewControllers.forEach({$0.cleanTextField()})
-//        forgotViewControllers.forEach({$0.cleanTextField()})
+//        loginViewControllers.forEach({$0.cleanTextField()})
+//        signupViewControllers.forEach({$0.cleanTextField()})
+        forgotViewControllers.forEach({$0.cleanTextField()})
     }
     
 //    func reloadPageMenu(isLogin: Bool) {
@@ -130,25 +107,25 @@ class LoginPageViewController: BaseViewController {
 //    }
     func reloadPageMenu(currentMode: ShowMode) {
         self.currentShowMode = currentMode
-//        DispatchQueue.main.async {[weak self] in
-//            self?.pageViewcontroller?.reloadData()
-//        }
+        DispatchQueue.main.async {[weak self] in
+            self?.pageViewcontroller?.reloadData()
+        }
     }
     
     func startReciprocal() {
-        switch currentShowMode {
-        case .loginEmail:
-            loginViewControllers[1].startReciprocal()
-        case .loginPhone:
-            signupViewControllers[1].startReciprocal()
-        case .signupEmail:
-            loginViewControllers[1].startReciprocal()
-        case .signupPhone:
-            signupViewControllers[1].startReciprocal()
-        case .forgotEmailPW,.forgotPhonePW:
-            break
-//            forgotViewControllers[1].startReciprocal()
-        }
+//        switch currentShowMode {
+//        case .loginEmail:
+//            loginViewControllers[1].startReciprocal()
+//        case .loginPhone:
+//            signupViewControllers[1].startReciprocal()
+//        case .signupEmail:
+//            loginViewControllers[1].startReciprocal()
+//        case .signupPhone:
+//            signupViewControllers[1].startReciprocal()
+//        case .forgotPW:
+//            break
+////            forgotViewControllers[1].startReciprocal()
+//        }
 //        if isLogin {
 //            loginViewControllers[1].startReciprocal()
 //        } else {
@@ -157,19 +134,19 @@ class LoginPageViewController: BaseViewController {
     }
     
     func setVerifyCode(code: String) {
-        switch currentShowMode {
-        case .loginEmail:
-            loginViewControllers[1].showVerifyCode(code)
-        case .loginPhone:
-            loginViewControllers[1].showVerifyCode(code)
-        case .signupEmail:
-            signupViewControllers[1].showVerifyCode(code)
-        case .signupPhone:
-            signupViewControllers[1].showVerifyCode(code)
-        case .forgotEmailPW,.forgotPhonePW:
-            break
-//            forgotViewControllers[1].showVerifyCode(code)
-        }
+//        switch currentShowMode {
+//        case .loginEmail:
+//            loginViewControllers[1].showVerifyCode(code)
+//        case .loginPhone:
+//            loginViewControllers[1].showVerifyCode(code)
+//        case .signupEmail:
+//            signupViewControllers[1].showVerifyCode(code)
+//        case .signupPhone:
+//            signupViewControllers[1].showVerifyCode(code)
+//        case .forgotPW:
+//            break
+////            forgotViewControllers[1].showVerifyCode(code)
+//        }
 //        if isLogin {
 //            loginViewControllers[1].showVerifyCode(code)
 //        } else {
@@ -178,38 +155,38 @@ class LoginPageViewController: BaseViewController {
     }
     
     func setVerifyCodeBtnToDefault() {
-        loginViewControllers.first?.setDefault()
-        signupViewControllers.first?.setDefault()
-        loginViewControllers.last?.setDefault()
-        signupViewControllers.last?.setDefault()
-//        forgotViewControllers.last?.setDefault()
+//        loginViewControllers.first?.setDefault()
+//        signupViewControllers.first?.setDefault()
+//        loginViewControllers.last?.setDefault()
+//        signupViewControllers.last?.setDefault()
+        forgotViewControllers.last?.setDefault()
     }
     
     func setAccount(acc: String, pwd: String) {
-        loginViewControllers[0].setAccount(acc: acc, pwd: pwd)
+//        loginViewControllers[0].setAccount(acc: acc, pwd: pwd)
     }
     
     private func bindLoginViewControllers() {
-        for i in loginViewControllers {
-            i.rxLoginButtonPressed()
-                .subscribeSuccess { [weak self] dto in
-                    self?.loginBtnClick.onNext(dto)
-                }.disposed(by: disposeBag)
-            
-            i.rxForgetPassword()
-                .subscribeSuccess { [weak self] in
-                    self?.forgetBtnClick.onNext(())
-                }.disposed(by: disposeBag)
-        }
+//        for i in loginViewControllers {
+//            i.rxLoginButtonPressed()
+//                .subscribeSuccess { [weak self] dto in
+//                    self?.loginBtnClick.onNext(dto)
+//                }.disposed(by: disposeBag)
+//
+//            i.rxForgetPassword()
+//                .subscribeSuccess { [weak self] in
+//                    self?.forgetBtnClick.onNext(())
+//                }.disposed(by: disposeBag)
+//        }
     }
     
     private func bindSingupViewControllers() {
-        for i in signupViewControllers {
-            i.rxSignupButtonPressed()
-                .subscribeSuccess { [weak self] dto in
-                    self?.signupBtnClick.onNext(dto)
-                }.disposed(by: disposeBag)
-        }
+//        for i in signupViewControllers {
+//            i.rxSignupButtonPressed()
+//                .subscribeSuccess { [weak self] dto in
+//                    self?.signupBtnClick.onNext(dto)
+//                }.disposed(by: disposeBag)
+//        }
     }
     
     private func bindForgotViewControllers() {
@@ -251,14 +228,14 @@ class LoginPageViewController: BaseViewController {
 
 // MARK: -
 // MARK: 延伸
-extension LoginPageViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
+extension ForgotPageViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemForIndex index: Int) -> T where T : PagingItem, T : Comparable, T : Hashable {
         switch currentShowMode {
         case .loginEmail,.loginPhone:
             return PagingIndexItem(index: index, title: loginViewControllers[index].modeTitle()) as! T
         case .signupEmail,.signupPhone:
             return PagingIndexItem(index: index, title: signupViewControllers[index].modeTitle()) as! T
-        case .forgotEmailPW,.forgotPhonePW:
+        case .forgotPhonePW , .forgotEmailPW:
             return PagingIndexItem(index: index, title: forgotViewControllers[index].modeTitle()) as! T
         }
 //        if isLogin {
@@ -272,7 +249,7 @@ extension LoginPageViewController: PagingViewControllerDataSource, PagingViewCon
             return loginViewControllers[index]
         case .signupEmail,.signupPhone:
             return signupViewControllers[index]
-        case .forgotEmailPW,.forgotPhonePW:
+        case .forgotPhonePW , .forgotEmailPW:
             return forgotViewControllers[index]
         }
 //        return isLogin ? loginViewControllers[index] : signupViewControllers[index]
@@ -283,16 +260,9 @@ extension LoginPageViewController: PagingViewControllerDataSource, PagingViewCon
             return loginViewControllers.count
         case .signupEmail,.signupPhone:
             return signupViewControllers.count
-        case .forgotEmailPW,.forgotPhonePW:
+        case .forgotPhonePW , .forgotEmailPW:
             return forgotViewControllers.count
         }
     }
 }
 
-//MARK: - apply menu indicator ui
-class RoundedIndicatorView: PagingIndicatorView {
-    override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
-        super.apply(layoutAttributes)
-        layer.cornerRadius = layoutAttributes.frame.height / 2
-    }
-}

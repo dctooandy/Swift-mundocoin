@@ -12,46 +12,45 @@ import RxSwift
 
 class ForgotViewController: BaseViewController {
     // MARK:業務設定
-    private var timer: Timer?
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
-    private var onClickLogin = PublishSubject<LoginPostDto>()
-//    var rxVerifyCodeButtonClick: Observable<String>?
-    private var loginMode : LoginMode = .emailPage {
+    private var forgotPasswordMode : ForgotPasswordMode = .emailPage {
         didSet {
-//            self.loginModeDidChange()
         }
     }
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var backgroundImageView: UIImageView!
+//    @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var sendResetLinkButton: CornerradiusButton!
-    @IBOutlet weak var topLabel: UILabel!
-    private var accountInputView: AccountInputView?
+    private var accountInputView: AccountInputView!
     // MARK: -
     // MARK:Life cycle
-    static func instance(mode: LoginMode) -> ForgotViewController {
+    static func instance(mode: ForgotPasswordMode) -> ForgotViewController {
         let vc = ForgotViewController.loadNib()
-        vc.loginMode = mode
+        vc.forgotPasswordMode = mode
+        vc.secondViewDidLoad()
         return vc
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup()
-        bindLinkBtn()
-        bindAccountView()
-        setupBackgroundView()
-        accountInputView?.bindTextfield()
+
     }
 
     // MARK: -
     // MARK:業務方法
+    func secondViewDidLoad()
+    {
+        setup()
+        bindLinkBtn()
+        bindAccountView()
+//        setupBackgroundView()
+        accountInputView?.bindTextfield()
+    }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         resetInputView()
     }
     
     func setDefault() {
-//        stopTimer()
         accountInputView?.passwordInputView.displayRightButton.setTitle("", for: .normal)
     }
     
@@ -67,23 +66,22 @@ class ForgotViewController: BaseViewController {
         }
     }
     func modeTitle() -> String {
-        switch loginMode {
-        case .emailPage: return "".localized
+        switch forgotPasswordMode {
+        case .emailPage: return "E-mail".localized
         case .phonePage: return "Mobile".localized
         }
     }
     
     func setup() {
-        view.backgroundColor = Themes.grayF4F7FE
-        topLabel.text = "Forgot password".localized
-        accountInputView = AccountInputView(inputMode: loginMode.inputViewMode, currentShowMode: .forgotPW, lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-//        self.rxVerifyCodeButtonClick = accountInputView?.rxVerifyCodeButtonClick()
+        accountInputView = AccountInputView(inputMode: forgotPasswordMode.inputViewMode,
+                                            currentShowMode: forgotPasswordMode.forShowMode,
+                                            lineColor: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
         view.addSubview(accountInputView!)
         accountInputView?.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(36)
+            make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(Themes.inputViewDefaultHeight)
+            make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight)
         }
         view.addSubview(sendResetLinkButton)
         
@@ -93,20 +91,10 @@ class ForgotViewController: BaseViewController {
             make.width.equalToSuperview().multipliedBy(0.7)
             make.height.equalTo(50)
         }
-        // set default login mode
-        loginModeDidChange()
         sendResetLinkButton.setTitle("Send".localized, for: .normal)
         
     }
-    func setupBackgroundView()
-    {
-//        backgroundImageView.snp.updateConstraints { (make) in
-//            make.top.equalTo(topIconImageView).offset(-38)
-//        }
-        backgroundImageView.layer.cornerRadius = 20
-        backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage
-        backgroundImageView.layer.addShadow()
-    }
+
     func showVerifyCode(_ code: String) {
         self.accountInputView?.passwordInputView.textField.text = code
         self.accountInputView?.passwordInputView.textField.sendActions(for: .valueChanged)
@@ -117,8 +105,34 @@ class ForgotViewController: BaseViewController {
         accountInputView!.rxCheckPassed()
             .bind(to: sendResetLinkButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
+            let searchVC = SearchAreaViewController.loadNib()
+            searchVC.allCountriesData = getDefaultData()
+            if let currentData = searchVC.allCountriesData.filter({ $0.code == phoneCode }).first
+            {
+                searchVC.codeNameData = currentData
+            }
+            searchVC.rxSelectedClick().subscribeSuccess { [self] selectedCode in
+                accountInputView.accountInputView.mobileCodeLabel.text = selectedCode
+            }.disposed(by: disposeBag)
+            searchVC.modalPresentationStyle = .popover
+            self.present(searchVC, animated: true)
+        }.disposed(by: disposeBag)
     }
-    
+    func getDefaultData() -> [CountryDetail]
+    {
+        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
+        let url = URL(fileURLWithPath: path)
+        do {
+            let data = try Data(contentsOf: url)
+            let decoder = JSONDecoder()
+            let results = try decoder.decode(CountriesDto.self, from:data)
+            return results.countries
+        } catch {
+            print(error)
+            return CountriesDto().countries
+        }
+    }
     func bindLinkBtn() {
         sendResetLinkButton.rx.tap.subscribeSuccess { [weak self] _ in
                 self?.sendReset()
@@ -138,33 +152,12 @@ class ForgotViewController: BaseViewController {
     {
         if let account = accountInputView?.accountInputView.textField.text
         {
-            let dto = LoginPostDto(account: account, password:"",loginMode: self.loginMode ,showMode: .forgotPW)
+            let dto = LoginPostDto(account: account, password:"",loginMode: forgotPasswordMode.forLoginMode ,showMode: forgotPasswordMode.forShowMode)
             view.endEditing(true)
             showVerifyVCWithLoginData(dto)
-//            self.onClickLogin.onNext(dto)y
         }
     }
-//    func startReciprocal() {
-//        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)
-//        self.accountInputView?.setPasswordRightBtnEnable(isEnable: false)
-//    }
-    
-//    @objc private func setPwdRightBtnSecondTime() {
-//
-//        self.accountInputView?.setPasswordRightBtnTime(seconds)
-//        if seconds == 0 {
-//            stopTimer()
-//            return
-//        }
-//        seconds -= 1
-//    }
-    
-//    private func stopTimer() {
-//        self.timer?.invalidate()
-//        self.timer = nil
-//        seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
-//        self.accountInputView?.setPasswordRightBtnEnable(isEnable: true)
-//    }
+
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
         Beans.loginServer.verificationIDGet(idString: dataDto.account).subscribe { [self] dto in
@@ -197,15 +190,6 @@ class ForgotViewController: BaseViewController {
                 }
             }
         }.disposed(by: disposeBag)
-    }
-    
-    func rxResetButtonPressed() -> Observable<LoginPostDto> {
-        return onClickLogin.asObserver()
-    }
-
-    
-    private func loginModeDidChange() {
-//        accountInputView?.changeInputMode(mode: loginMode)
     }
     func changeInvalidTextWith(dtos:[ErrorsDetailDto])
     {

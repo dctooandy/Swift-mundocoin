@@ -17,14 +17,17 @@ enum ShowMode {
     case loginPhone
     case signupEmail
     case signupPhone
-    case forgotPW
+    case forgotEmailPW
+    case forgotPhonePW
     
     var accountInputMode:InputViewMode {
         switch self {
         case .loginEmail,.signupEmail:
             return .email
-        case .forgotPW:
-            return .forgotPW
+        case .forgotEmailPW:
+            return .forgotEmail
+        case .forgotPhonePW:
+            return .forgotPhone
         case .signupPhone,.loginPhone:
             return .phone
         }
@@ -33,6 +36,7 @@ enum ShowMode {
 class LoginSignupViewController: BaseViewController {
     // MARK:業務設定
     fileprivate let loginPageVC = LoginPageViewController()
+    fileprivate let forgotPageVC = ForgotPasswordViewController.share
     static let share: LoginSignupViewController = LoginSignupViewController.loadNib()
     /// 显示注册或登入页面
     private var currentShowMode: ShowMode = .loginEmail {
@@ -45,7 +49,9 @@ class LoginSignupViewController: BaseViewController {
             }){ _ in
                 UIView.animate(withDuration: 0.0, delay: 0, options: .curveEaseInOut, animations: { [self] in
                     resetUI()
-                    setNavigationLeftView(isForgotView: currentShowMode == .forgotPW ? true : false)
+                    let flag = ((currentShowMode == .forgotEmailPW
+                                 || currentShowMode == .forgotPhonePW) ? true : false)
+                    setNavigationLeftView(isForgotView: flag)
                 
                 }) { _ in
                     UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
@@ -246,7 +252,7 @@ class LoginSignupViewController: BaseViewController {
 // MARK: 延伸
 extension LoginSignupViewController {
     private func addDateSelectedButton() {
-        if currentShowMode !=  .forgotPW
+        if currentShowMode != .forgotEmailPW || currentShowMode != .forgotPhonePW
         {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchButton)
             backToButton.isHidden = true
@@ -422,13 +428,14 @@ extension LoginSignupViewController {
         // 原本方式
 //        currentShowMode = .forgotPW
         // 新改為推送
-
-        let accForgot = ForgotViewController.instance(mode: .emailPage)
-        accForgot.rxResetButtonPressed().subscribeSuccess { [self](dto) in
-            view.endEditing(true)
-            // 推向传送验证码VC
-            showVerifyVCWithLoginData(dto)
-        }.disposed(by: disposeBag)
+        
+        let accForgot = forgotPageVC
+//        let accForgot = ForgotViewController.instance(mode: .emailPage)
+//        accForgot.rxResetButtonPressed().subscribeSuccess { [self](dto) in
+//            view.endEditing(true)
+//            // 推向传送验证码VC
+//            showVerifyVCWithLoginData(dto)
+//        }.disposed(by: disposeBag)
         self.navigationController?.pushViewController(accForgot, animated: true)
     }
     
@@ -455,7 +462,7 @@ extension LoginSignupViewController {
                          loginDto : LoginPostDto? = nil,
                          signupDto : SignupPostDto? = nil)
     {
-        if let loginData = loginDto ,loginData.currentShowMode == .forgotPW
+        if let loginData = loginDto ,loginData.currentShowMode == .forgotEmailPW || loginData.currentShowMode == .forgotPhonePW
         {
             Log.v("忘記密碼驗證完畢,輸入密碼")
             verifyVC.directToResetPWVC(verificationCode)
@@ -562,7 +569,8 @@ extension LoginSignupViewController {
         // 註冊 驗證完畢跳出國碼選擇
         if let loginData = loginDto
         {
-            if loginData.currentShowMode != .forgotPW
+            if loginData.currentShowMode != .forgotEmailPW ||
+                loginData.currentShowMode != .forgotPhonePW
             {
                 Log.v("登入驗證完畢,直接登入")
                 Log.v("得到 Token 轉去 Login ")
@@ -922,7 +930,7 @@ extension LoginSignupViewController {
             topLabel.text = "Create your account".localized
             switchButton.isHidden = false
             backToButton.isHidden = true
-        case .forgotPW:
+        case .forgotPhonePW , .forgotEmailPW:
             switchButton.setTitle("".localized, for: .normal)
             topLabel.text = "Forgot password".localized
             switchButton.isHidden = true

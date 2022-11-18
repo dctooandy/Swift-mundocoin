@@ -15,21 +15,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ppp-04-45q">
-                        <rect key="frame" x="0.0" y="56" width="375" height="812"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Your Account" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICP-nW-x16" userLabel="Create Your Account">
-                        <rect key="frame" x="32" y="96" width="257" height="32"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="32" id="agd-JY-TS0"/>
-                            <constraint firstAttribute="width" constant="257" id="rev-Hu-tya"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="thin" pointSize="28"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6N0-zg-DMr" customClass="CornerradiusButton" customModule="Approval" customModuleProvider="target">
                         <rect key="frame" x="50" y="337" width="300" height="50"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -42,19 +27,9 @@
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="b3i-OL-IqJ"/>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                <constraints>
-                    <constraint firstItem="Ppp-04-45q" firstAttribute="top" secondItem="b3i-OL-IqJ" secondAttribute="top" constant="12" id="0jB-is-FuC"/>
-                    <constraint firstItem="Ppp-04-45q" firstAttribute="leading" secondItem="ZVV-1C-k6C" secondAttribute="leading" id="FBs-ty-voH"/>
-                    <constraint firstAttribute="trailing" secondItem="Ppp-04-45q" secondAttribute="trailing" id="NuR-fi-FID"/>
-                    <constraint firstItem="ICP-nW-x16" firstAttribute="top" secondItem="Ppp-04-45q" secondAttribute="top" constant="40" id="dV9-7f-1zW"/>
-                    <constraint firstItem="ICP-nW-x16" firstAttribute="leading" secondItem="b3i-OL-IqJ" secondAttribute="leading" constant="32" id="ieS-oR-fGc"/>
-                    <constraint firstItem="Ppp-04-45q" firstAttribute="height" secondItem="ZVV-1C-k6C" secondAttribute="height" id="qpM-Zn-3AM"/>
-                </constraints>
             </view>
             <connections>
-                <outlet property="backgroundImageView" destination="Ppp-04-45q" id="mDv-Uu-Shd"/>
                 <outlet property="sendResetLinkButton" destination="6N0-zg-DMr" id="B7v-Zd-lo5"/>
-                <outlet property="topLabel" destination="ICP-nW-x16" id="Se8-IB-cLk"/>
             </connections>
             <point key="canvasLocation" x="528.79999999999995" y="-319.21182266009856"/>
         </viewController>
