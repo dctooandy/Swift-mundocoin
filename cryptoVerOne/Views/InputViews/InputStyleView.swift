@@ -14,6 +14,7 @@ import DropDown
 
 enum InputViewMode :Equatable {
     case emailVerify(String)
+    case mobileVerify(String)
     case twoFAVerify
     case copy
     case withdrawToAddress // 取款頁面白名單關閉
@@ -42,8 +43,8 @@ enum InputViewMode :Equatable {
     
     func topString() -> String {
         switch self {
-//        case .emailVerify(let emailString): return "Enter the 6-digit code sent to \(emailString)".localized
         case .emailVerify(let emailString): return "Sent to \(emailString)".localized
+        case .mobileVerify(let mobileString): return "Sent to \(mobileString)".localized
         case .twoFAVerify:
 #if Approval_PRO || Approval_DEV || Approval_STAGE
             return "*Enter the 6-digit code from google 2FA".localized
@@ -79,6 +80,7 @@ enum InputViewMode :Equatable {
     func textPlacehloder() -> String {
         switch self {
         case .emailVerify(_): return "Email verification code".localized
+        case .mobileVerify(_): return "Mobile verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress,.address: return "Long press to paste".localized
         case .email: return "...@mundocoin.com"
@@ -94,6 +96,7 @@ enum InputViewMode :Equatable {
     func invalidString() -> String {
         switch self {
         case .emailVerify(_): return "Enter the 6-digit code".localized
+        case .mobileVerify(_): return "Enter the 6-digit code".localized
         case .twoFAVerify: return "Enter the 6-digit code".localized
         case .withdrawToAddress,.address: return "Please check the withdrawal address.".localized
         case .email: return "...@mundocoin.com".localized
@@ -110,6 +113,7 @@ enum InputViewMode :Equatable {
     {
         switch self {
         case .emailVerify(_): return "Send".localized
+        case .mobileVerify(_): return "Send".localized
         case .twoFAVerify: return "Paste".localized
         case .copy: return "Copy".localized
         default: return ""
@@ -760,7 +764,7 @@ class InputStyleView: UIView {
                 }
                 resetTopLabelAndMask()
                 tfMaskView.layer.borderColor = UIColor.clear.cgColor
-            case .emailVerify(_):
+            case .emailVerify(_) ,.mobileVerify(_):
                 addSubview(verifyResentLabel)
                 verifyResentLabel.text = inputViewMode.rightLabelString()
 #if Approval_PRO || Approval_DEV || Approval_STAGE
@@ -915,8 +919,8 @@ class InputStyleView: UIView {
  
     private func verifyResentPressed() {
         switch inputViewMode {
-        case .emailVerify(_):
-            emailSendVerify()
+        case .emailVerify(_) ,.mobileVerify(_):
+            sendVerifyCode()
         case .twoFAVerify:
             pasteStringToTF()
         case .copy:
@@ -927,7 +931,7 @@ class InputStyleView: UIView {
         cancelRightButton.isHidden = true
         textField.sendActions(for: .valueChanged)
     }
-    func emailSendVerify()
+    func sendVerifyCode()
     {
         Log.v("重發驗證")
         if self.timer == nil, let _ = textField.text

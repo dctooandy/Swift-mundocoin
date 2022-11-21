@@ -19,7 +19,7 @@ class UCPasswordViewController: BaseViewController {
     var confirmHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
-    let twoFAVC = SecurityVerificationViewController.loadNib()
+    let twoWayVC = SecurityVerificationViewController.loadNib()
     fileprivate let changedPWVC = CPasswordViewController.loadNib()
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
@@ -325,28 +325,28 @@ class UCPasswordViewController: BaseViewController {
                             if reason == "CODE_MISMATCH"
                             {
                                 Log.i("驗證碼錯誤 :\(reason)")
-                                if twoFAVC.securityViewMode == .onlyEmail
+                                if twoWayVC.securityViewMode == .onlyEmail
                                 {
-                                    twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                                    twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                }else if twoFAVC.securityViewMode == .onlyTwoFA
+                                    twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+                                    twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                }else if twoWayVC.securityViewMode == .onlyMobile
                                 {
-                                    twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
-                                    twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                }else if twoFAVC.securityViewMode == .selectedMode
+                                    twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
+                                    twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                }else if twoWayVC.securityViewMode == .selectedMode
                                 {
-                                    if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
+                                    if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
                                     {
                                         emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
                                         emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                    }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
+                                    }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
                                     {
-                                        twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
-                                        twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                        mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
+                                        mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                     }
-                                }else if twoFAVC.securityViewMode == .defaultMode
+                                }else if twoWayVC.securityViewMode == .defaultMode
                                 {
-                                    if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
+                                    if twoWayVC.twoWayVerifyView.twoWayViewMode == .both
                                     {
                                         ErrorHandler.show(error: error)
                                     }
@@ -367,12 +367,14 @@ class UCPasswordViewController: BaseViewController {
     func bindAction()
     {
         // MC524 暫時隱藏
-//        twoFAVC.securityViewMode = .selectedMode
-        twoFAVC.securityViewMode = .onlyEmail
-        twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
+//        twoWayVC.securityViewMode = .selectedMode
+        twoWayVC.securityViewMode = .onlyEmail
+//        twoWayVC.securityViewMode = .defaultMode
+//        twoWayVC.securityViewMode = .onlyMobile
+        twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0)
         }.disposed(by: dpg)
-        twoFAVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+        twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0,withMode: stringData.1)
         }.disposed(by: dpg)
     }
@@ -498,7 +500,7 @@ class UCPasswordViewController: BaseViewController {
     }
     func gotoTwoFAVC()
     {
-        self.navigationController?.pushViewController(twoFAVC, animated: true)
+        self.navigationController?.pushViewController(twoWayVC, animated: true)
     }
 
 }

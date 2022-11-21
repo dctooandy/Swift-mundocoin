@@ -19,7 +19,7 @@ class AddNewAddressViewController: BaseViewController {
     var isScanVCByAVCapture = false
     var isToSecurityVC = false
     let scanVC = ScannerViewController()
-    var twoFAVC = SecurityVerificationViewController.loadNib()
+    var twoWayVC = SecurityVerificationViewController.loadNib()
     @IBOutlet weak var coinLabelTopConstraint : NSLayoutConstraint!
     @IBOutlet weak var saveButtonTopConstraint : NSLayoutConstraint!
     // MARK: -
@@ -276,14 +276,14 @@ class AddNewAddressViewController: BaseViewController {
             Log.v("點到Save")
             isToSecurityVC = true
 //            let address = createAddressDto()
-            twoFAVC = SecurityVerificationViewController.loadNib()
+            twoWayVC = SecurityVerificationViewController.loadNib()
             // 暫時改為 onlyEmail
 //            twoFAVC.securityViewMode = .defaultMode
 //            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
 //                verifySuccessForChangeWhiteList()
 //            }.disposed(by: dpg)
-            twoFAVC.securityViewMode = .onlyEmail
-            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
+            twoWayVC.securityViewMode = .onlyEmail
+            twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
                 verifySuccessForCreateAddressBook(code: data.0, withMode: data.1) {
                     
                 }
@@ -292,7 +292,7 @@ class AddNewAddressViewController: BaseViewController {
 //                    self.dismiss(animated: true)
 //                }else
 //                {
-//                    twoFAVC.navigationController?.popViewController(animated: false)
+//                    twoWayVC.navigationController?.popViewController(animated: false)
 //                }
 //
 //                let group = DispatchGroup()
@@ -323,10 +323,10 @@ class AddNewAddressViewController: BaseViewController {
             }.disposed(by: dpg)
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {
-                self.present(twoFAVC, animated: true)
+                self.present(twoWayVC, animated: true)
             }else
             {
-                self.navigationController?.pushViewController(twoFAVC, animated: true)
+                self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
             
         }.disposed(by: dpg)
@@ -341,7 +341,7 @@ class AddNewAddressViewController: BaseViewController {
                 self.dismiss(animated: true)
             }else
             {
-                twoFAVC.navigationController?.popViewController(animated: false)
+                twoWayVC.navigationController?.popViewController(animated: false)
             }
             _ = AddressBookListDto.update(done: {
                 if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
@@ -386,12 +386,12 @@ class AddNewAddressViewController: BaseViewController {
     {// 需判斷是否 pusr或者 present
         if self.presentedViewController != nil
         {
-            twoFAVC.dismiss(animated: true) { [self] in
+            twoWayVC.dismiss(animated: true) { [self] in
                 errorHandlerWithReason(code:code,reason: reason)
             }
         }else
         {
-            if let navVC = twoFAVC.navigationController as? MDNavigationController
+            if let navVC = twoWayVC.navigationController as? MDNavigationController
             {
                 navVC.popViewControllerWithHandler(animated: true) { [self] in
                     errorHandlerWithReason(code:code,reason: reason)
@@ -404,28 +404,28 @@ class AddNewAddressViewController: BaseViewController {
         if reason == "CODE_MISMATCH"
         {
             Log.i("驗證碼錯誤 :\(reason)")
-            if twoFAVC.securityViewMode == .onlyEmail
+            if twoWayVC.securityViewMode == .onlyEmail
             {
-                twoFAVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                twoFAVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-            }else if twoFAVC.securityViewMode == .onlyTwoFA
+                twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+            }else if twoWayVC.securityViewMode == .onlyMobile
             {
-                twoFAVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
-                twoFAVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-            }else if twoFAVC.securityViewMode == .selectedMode
+                twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
+                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+            }else if twoWayVC.securityViewMode == .selectedMode
             {
-                if withMode == "onlyEmail" , let emailVC = twoFAVC.twoFAViewControllers.first
+                if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
                 {
                     emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
                     emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                }else if withMode == "onlyTwoFA" , let twoFAVC = twoFAVC.twoFAViewControllers.last
+                }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
                 {
-                    twoFAVC.verifyView.twoFAInputView.invalidLabel.isHidden = false
-                    twoFAVC.verifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                    mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
+                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                 }
-            }else if twoFAVC.securityViewMode == .defaultMode , let error = error
+            }else if twoWayVC.securityViewMode == .defaultMode , let error = error
             {
-                if twoFAVC.twoFAVerifyView.twoFAViewMode == .both
+                if twoWayVC.twoWayVerifyView.twoWayViewMode == .both
                 {
                     ErrorHandler.show(error: error)
                 }

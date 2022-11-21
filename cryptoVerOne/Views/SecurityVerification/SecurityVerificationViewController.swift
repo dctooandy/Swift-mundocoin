@@ -14,7 +14,8 @@ enum SecurityViewMode {
     case defaultMode
     case selectedMode
     case onlyEmail
-    case onlyTwoFA
+    case onlyMobile
+//    case onlyTwoFA
 }
 class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
@@ -36,11 +37,15 @@ class SecurityVerificationViewController: BaseViewController {
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
-    var twoFAVerifyView = TwoFAVerifyView.loadNib()
-    var onlyEmailVerifyViewController = TwoFAVerifyViewController()
-    var onlyTwoFAVerifyViewController = TwoFAVerifyViewController()
+//    var twoFAVerifyView = TwoFAVerifyView.loadNib()
+    var twoWayVerifyView = TwoWayVerifyView.loadNib()
+    var onlyEmailVerifyViewController = TwoWayVerifyViewController()
+    var onlyMobileVerifyViewController = TwoWayVerifyViewController()
+    var twoWayViewControllers = [TwoWayVerifyViewController]()
+//    var onlyEmailVerifyViewController = TwoFAVerifyViewController()
+//    var onlyTwoFAVerifyViewController = TwoFAVerifyViewController()
+//    var twoFAViewControllers = [TwoFAVerifyViewController]()
     private var pageViewcontroller: PagingViewController<PagingIndexItem>?
-    var twoFAViewControllers = [TwoFAVerifyViewController]()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -50,9 +55,9 @@ class SecurityVerificationViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        twoFAVerifyView.cleanTextField()
+        twoWayVerifyView.cleanTextField()
         onlyEmailVerifyViewController.verifyView.cleanTextField()
-        onlyTwoFAVerifyViewController.verifyView.cleanTextField()
+        onlyMobileVerifyViewController.verifyView.cleanTextField()
         resetHeightForView()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
@@ -63,7 +68,7 @@ class SecurityVerificationViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        twoFAVerifyView.cleanTimer()
+        twoWayVerifyView.cleanTimer()
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
@@ -75,8 +80,8 @@ class SecurityVerificationViewController: BaseViewController {
         switch securityViewMode {
         case .selectedMode:
             break
-        case .defaultMode,.onlyEmail,.onlyTwoFA:
-            view.addSubview(twoFAVerifyView)
+        case .defaultMode,.onlyEmail,.onlyMobile:
+            view.addSubview(twoWayVerifyView)
            
         }
         resetUI()
@@ -92,8 +97,8 @@ class SecurityVerificationViewController: BaseViewController {
                 make.trailing.equalToSuperview()
                 make.bottom.equalToSuperview()
             })
-        case .defaultMode,.onlyEmail,.onlyTwoFA:
-            twoFAVerifyView.snp.remakeConstraints { (make) in
+        case .defaultMode,.onlyEmail,.onlyMobile:
+            twoWayVerifyView.snp.remakeConstraints { (make) in
                 make.top.equalToSuperview().offset(height + 40)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
@@ -105,13 +110,13 @@ class SecurityVerificationViewController: BaseViewController {
     {
         switch securityViewMode {
         case .defaultMode:
-            self.twoFAVerifyView.twoFAViewMode = .both
+            self.twoWayVerifyView.twoWayViewMode = .both
         case .selectedMode:
             setupSelectedUI()
         case .onlyEmail:
-            self.twoFAVerifyView.twoFAViewMode = .onlyEmail
-        case .onlyTwoFA:
-            self.twoFAVerifyView.twoFAViewMode = .onlyTwoFA
+            self.twoWayVerifyView.twoWayViewMode = .onlyEmail
+        case .onlyMobile:
+            self.twoWayVerifyView.twoWayViewMode = .onlyMobile
         }
     }
     func bind()
@@ -121,26 +126,30 @@ class SecurityVerificationViewController: BaseViewController {
     func bindAction()
     {
         // 可選頁面時的驗證碼接收方法
-        self.twoFAVerifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
+        self.twoWayVerifyView.rxEmailSecondSendVerifyAction().subscribeSuccess { [self](_) in
             Log.i("發送驗證傳送請求")
-            verifyResentPressed()
+            verifyResentPressed(byEmail: true)
         }.disposed(by: dpg)
-        self.twoFAVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送submit請求 ,Email:\(stringData.0) ,2FA:\(stringData.1)")
+        self.twoWayVerifyView.rxMobileSecondSendVerifyAction().subscribeSuccess { [self](_) in
+            Log.i("發送驗證傳送請求")
+            verifyResentPressed(byEmail: false)
+        }.disposed(by: dpg)
+        self.twoWayVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送submit請求 ,Email:\(stringData.0) ,Mobile:\(stringData.1)")
             // 暫時取消推回
 //            self.navigationController?.popViewController(animated: false)
             onVerifySuccessClick.onNext((stringData.0,stringData.1))
             
         }.disposed(by: dpg)
-        self.twoFAVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
+        self.twoWayVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
             onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
-        self.twoFAVerifyView.rxSubmitOnlyTwiFAAction().subscribeSuccess {[self](stringData) in
+        self.twoWayVerifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
             onVerifySuccessClick.onNext((stringData,""))
         }.disposed(by: dpg)
-        self.twoFAVerifyView.rxLostGoogleAction().subscribeSuccess { (_) in
+        self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { (_) in
             Log.i("跳轉綁定Google Auth")
             let twoFAVC = TFFinishReViewController.loadNib()
             twoFAVC.viewMode = .reverify
@@ -151,9 +160,14 @@ class SecurityVerificationViewController: BaseViewController {
     func bindSubPageViewControllers()
     {
         // 只有Email時的驗證碼發送接收方法
-        self.onlyEmailVerifyViewController.rxThirdSendVerifyAction().subscribeSuccess { [self](_) in
+        self.onlyEmailVerifyViewController.rxEmailSendVerifyAction().subscribeSuccess { [self](_) in
             Log.i("發送驗證傳送請求")
-            verifyResentPressed( byVC: true)
+            verifyResentPressed(byEmail: true , byVC: true)
+        }.disposed(by: dpg)
+        // 只有Mobile時的驗證碼發送接收方法
+        self.onlyMobileVerifyViewController.rxMobileSendVerifyAction().subscribeSuccess { [self](_) in
+            Log.i("發送驗證傳送請求")
+            verifyResentPressed(byEmail: false , byVC: true)
         }.disposed(by: dpg)
         
         self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
@@ -161,7 +175,7 @@ class SecurityVerificationViewController: BaseViewController {
             onSelectedModeSuccessClick.onNext((stringData,"onlyEmail"))
         }.disposed(by: dpg)
         
-        self.onlyTwoFAVerifyViewController.rxSecondSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
+        self.onlyMobileVerifyViewController.rxSecondSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
             Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
             onSelectedModeSuccessClick.onNext((stringData,"onlyTwoFA"))
         }.disposed(by: dpg)
@@ -170,37 +184,76 @@ class SecurityVerificationViewController: BaseViewController {
     {
         if byMode == .selectedMode
         {
-            onlyEmailVerifyViewController.verifyView.emailInputView.emailSendVerify()
+            onlyEmailVerifyViewController.verifyView.emailInputView.sendVerifyCode()
+        }else if byMode == .defaultMode
+        {
+            twoWayVerifyView.emailInputView.sendVerifyCode()
+            twoWayVerifyView.mobileInputView.sendVerifyCode()
+        }else if byMode == .onlyEmail
+        {
+            twoWayVerifyView.emailInputView.sendVerifyCode()
         }else
         {
-            twoFAVerifyView.emailInputView.emailSendVerify()
+            twoWayVerifyView.mobileInputView.sendVerifyCode()
         }
     }
-    func verifyResentPressed(byVC:Bool = false)
+    func verifyResentPressed(byEmail:Bool = false , byVC:Bool = false)
     {
-        let loginDto = KeychainManager.share.getLastAccount()
-        if let userEmail = loginDto?.account , UserStatus.share.isLogin
+        
+        if let loginDto = KeychainManager.share.getLastAccount(), UserStatus.share.isLogin
         {
+            let idString = (byEmail == true ? loginDto.account : loginDto.phone)
             Log.v("重發驗證")
-            Beans.loginServer.verificationResend(idString: userEmail).subscribe { [self]dto in
+            Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto
                 {
                     let countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
-                    resetCountDownNumber(number: countTime,byVC: byVC)
+                    resetCountDownNumber(byEmail:byEmail ,number: countTime,byVC: byVC)
                 }
             } onError: { error in
-                ErrorHandler.show(error: error)
+                if let error = error as? ApiServiceError
+                {
+                    switch error {
+                    case .errorDto(let dto):
+                        let status = dto.httpStatus ?? ""
+                        let reason = dto.reason
+                        if status == "400"
+                        {
+                            let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
+                        }
+                    case .noData:
+                        Log.v("註冊返回沒有資料")
+                    default:
+                        ErrorHandler.show(error: error)
+                    }
+                }
             }.disposed(by: dpg)
         }
     }
-    func resetCountDownNumber(number:Int ,byVC:Bool)
+    func resetCountDownNumber(byEmail:Bool = false ,number:Int ,byVC:Bool)
     {
         if byVC == true
         {
-            onlyEmailVerifyViewController.verifyView.emailInputView.setupCountTime(seconds: number)
+            if byEmail == true
+            {
+                onlyEmailVerifyViewController.verifyView.emailInputView.setupCountTime(seconds: number)
+            }else
+            {
+                onlyMobileVerifyViewController.verifyView.mobileInputView.setupCountTime(seconds: number)
+            }
         }else
         {
-            twoFAVerifyView.emailInputView.setupCountTime(seconds: number)
+            if byEmail == true
+            {
+                twoWayVerifyView.emailInputView.setupCountTime(seconds: number)
+            }else
+            {
+                twoWayVerifyView.mobileInputView.setupCountTime(seconds: number)
+            }
         }
     }
     func setupSelectedUI()
@@ -242,12 +295,12 @@ class SecurityVerificationViewController: BaseViewController {
 
     }
     private func setupPageVC() {
-        let emailVC = TwoFAVerifyViewController.instance(mode: .onlyEmail)
-        let twoFAVC = TwoFAVerifyViewController.instance(mode: .onlyTwoFA)
+        let emailVC = TwoWayVerifyViewController.instance(mode: .onlyEmail)
+        let mobileVC = TwoWayVerifyViewController.instance(mode: .onlyMobile)
         self.onlyEmailVerifyViewController = emailVC
-        self.onlyTwoFAVerifyViewController = twoFAVC
-        twoFAViewControllers = [self.onlyEmailVerifyViewController,
-                                self.onlyTwoFAVerifyViewController]
+        self.onlyMobileVerifyViewController = mobileVC
+        twoWayViewControllers = [self.onlyEmailVerifyViewController,
+                                self.onlyMobileVerifyViewController]
         bindSubPageViewControllers()
     }
     func rxVerifySuccessClick() -> Observable<(String,String)>
@@ -264,13 +317,13 @@ class SecurityVerificationViewController: BaseViewController {
 
 extension SecurityVerificationViewController: PagingViewControllerDataSource, PagingViewControllerDelegate {
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, pagingItemForIndex index: Int) -> T where T : PagingItem, T : Comparable, T : Hashable {
-        return PagingIndexItem(index: index, title: index == 0 ? "E-mail":"2FA") as! T
+        return PagingIndexItem(index: index, title: twoWayViewControllers[index].modeTitle()) as! T
     }
     func pagingViewController<T>(_ pagingViewController: PagingViewController<T>, viewControllerForIndex index: Int) -> UIViewController where T : PagingItem, T : Comparable, T : Hashable {
-        return twoFAViewControllers[index]
+        return twoWayViewControllers[index]
     }
     func numberOfViewControllers<T>(in pagingViewController: PagingViewController<T>) -> Int where T : PagingItem, T : Comparable, T : Hashable {
-        return twoFAViewControllers.count
+        return twoWayViewControllers.count
     }
 }
 struct PagingTitleCellViewModel {

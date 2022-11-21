@@ -172,10 +172,12 @@ class ConfirmPopupView: PopupBottomSheet {
             make.bottom.equalToSuperview().offset(-20)
             make.centerX.equalToSuperview()
         }
-        let height = heightForView(text: messageLabel.text ?? "", font: messageLabel.font, width: defaultContainer.frame.width)
+        let messageString = messageLabel.text ?? ""
+        let height = messageString.height(withConstrainedWidth: (Views.screenWidth - 80), font: messageLabel.font)
+//        let height = heightForView(text: messageLabel.text ?? "", font: messageLabel.font, width: defaultContainer.frame.width)
         if (height + 120) > containerHeight
         {
-            containerHeight = (messageLabel.frame.height + 200)
+            containerHeight = (height + 150)
         }else
         {
 //            containerHeight = viewHeight

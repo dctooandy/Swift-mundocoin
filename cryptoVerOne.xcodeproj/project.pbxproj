@@ -1985,6 +1985,30 @@
 		A1C9555C28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555D28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
 		A1C9555E28A0C36600B51C98 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */; };
+		A1CC4E96292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E97292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E98292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E99292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E9A292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E9B292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */; };
+		A1CC4E9D292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4E9E292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4E9F292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4EA0292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4EA1292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4EA2292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */; };
+		A1CC4EA4292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EA5292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EA6292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EA7292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EA8292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EA9292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */; };
+		A1CC4EAB292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
+		A1CC4EAC292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
+		A1CC4EAD292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
+		A1CC4EAE292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
+		A1CC4EAF292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
+		A1CC4EB0292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */; };
 		A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
@@ -2372,6 +2396,10 @@
 		A1BE2DDE2907823700C87B3A /* arm_syscall.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = arm_syscall.h; sourceTree = "<group>"; };
 		A1BE2DDF2907823700C87B3A /* arm_syscall.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = arm_syscall.c; sourceTree = "<group>"; };
 		A1C9555828A0C36600B51C98 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayVerifyView.swift; sourceTree = "<group>"; };
+		A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayVerifyView.xib; sourceTree = "<group>"; };
+		A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoWayVerifyViewController.swift; sourceTree = "<group>"; };
+		A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoWayVerifyViewController.xib; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
@@ -2954,6 +2982,10 @@
 			children = (
 				A1973A87282AB37D009932D8 /* SecurityVerificationViewController.swift */,
 				A1973A8B282AB3B3009932D8 /* SecurityVerificationViewController.xib */,
+				A1CC4EA3292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift */,
+				A1CC4EAA292B460900BF5EB5 /* TwoWayVerifyViewController.xib */,
+				A1CC4E95292B3CBE00BF5EB5 /* TwoWayVerifyView.swift */,
+				A1CC4E9C292B3D2000BF5EB5 /* TwoWayVerifyView.xib */,
 				A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */,
 				A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */,
 				A1973A8E282AB572009932D8 /* TwoFAVerifyView.swift */,
@@ -3646,6 +3678,7 @@
 				09905AFD2851A02B00BAEE78 /* Assets.xcassets in Resources */,
 				A110FBBF28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905AFE2851A02B00BAEE78 /* MemberViewController.xib in Resources */,
+				A1CC4EA1292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555D28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905AFF2851A02B00BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905B002851A02B00BAEE78 /* BaseTabbar.xib in Resources */,
@@ -3663,6 +3696,7 @@
 				09905B092851A02B00BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0E288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3332857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EAF292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE1328562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905B0A2851A02B00BAEE78 /* Localizable.strings in Resources */,
 				A1B59F3029238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -3749,6 +3783,7 @@
 				09905BEF2851A08500BAEE78 /* Assets.xcassets in Resources */,
 				A110FBC028FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905BF02851A08500BAEE78 /* MemberViewController.xib in Resources */,
+				A1CC4EA2292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555E28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905BF12851A08500BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905BF22851A08500BAEE78 /* BaseTabbar.xib in Resources */,
@@ -3766,6 +3801,7 @@
 				09905BFB2851A08500BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0F288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3342857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EB0292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE1428562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905BFC2851A08500BAEE78 /* Localizable.strings in Resources */,
 				A1B59F3129238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -3852,6 +3888,7 @@
 				09905CE12851A09600BAEE78 /* Assets.xcassets in Resources */,
 				A110FBBE28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09905CE22851A09600BAEE78 /* MemberViewController.xib in Resources */,
+				A1CC4EA0292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555C28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09905CE32851A09600BAEE78 /* FirstLaunchViewController.xib in Resources */,
 				09905CE42851A09600BAEE78 /* BaseTabbar.xib in Resources */,
@@ -3869,6 +3906,7 @@
 				09905CED2851A09600BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0D288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3322857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EAE292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE1228562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09905CEE2851A09600BAEE78 /* Localizable.strings in Resources */,
 				A1B59F2F29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -3955,6 +3993,7 @@
 				09CAF4D9283C77ED00D7B19B /* Assets.xcassets in Resources */,
 				A110FBBC28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09CAF4DA283C77ED00D7B19B /* MemberViewController.xib in Resources */,
+				A1CC4E9E292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555A28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF4DB283C77ED00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF4DC283C77ED00D7B19B /* BaseTabbar.xib in Resources */,
@@ -3972,6 +4011,7 @@
 				09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09954C0B288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3302857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EAC292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE1028562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF4E2283C77ED00D7B19B /* Localizable.strings in Resources */,
 				A1B59F2D29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -4058,6 +4098,7 @@
 				09CAF59A283C7BBE00D7B19B /* Assets.xcassets in Resources */,
 				A110FBBD28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				09CAF59B283C7BBE00D7B19B /* MemberViewController.xib in Resources */,
+				A1CC4E9F292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555B28A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				09CAF59C283C7BBE00D7B19B /* FirstLaunchViewController.xib in Resources */,
 				09CAF59D283C7BBE00D7B19B /* BaseTabbar.xib in Resources */,
@@ -4075,6 +4116,7 @@
 				09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09954C0C288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED3312857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EAD292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE1128562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5A3283C7BBE00D7B19B /* Localizable.strings in Resources */,
 				A1B59F2E29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -4161,6 +4203,7 @@
 				A19C6FDB282218DF000AFC3F /* Assets.xcassets in Resources */,
 				A110FBBB28FD2C1700472439 /* AuditDevCICD.md in Resources */,
 				A19C719A28225D15000AFC3F /* MemberViewController.xib in Resources */,
+				A1CC4E9D292B3D2000BF5EB5 /* TwoWayVerifyView.xib in Resources */,
 				A1C9555928A0C36600B51C98 /* GoogleService-Info.plist in Resources */,
 				A19C70B028223CB7000AFC3F /* FirstLaunchViewController.xib in Resources */,
 				A19C70CD282246DF000AFC3F /* BaseTabbar.xib in Resources */,
@@ -4178,6 +4221,7 @@
 				09C20F9F2845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09954C0A288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
 				09EED32F2857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
+				A1CC4EAB292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE0F28562E2F00B07B12 /* AccountViewController.xib in Resources */,
 				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				A1B59F2C29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
@@ -4466,6 +4510,7 @@
 				09905A382851A02B00BAEE78 /* UICollectionView+util.swift in Sources */,
 				09B4937D290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABD2864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E9A292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				09905A392851A02B00BAEE78 /* LoginPostDto.swift in Sources */,
 				09905A3A2851A02B00BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905A3B2851A02B00BAEE78 /* Log.swift in Sources */,
@@ -4551,6 +4596,7 @@
 				09B7C2072927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905A732851A02B00BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905A742851A02B00BAEE78 /* UserInfoDto.swift in Sources */,
+				A1CC4EA8292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AAF28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905A752851A02B00BAEE78 /* BoardViewModel.swift in Sources */,
 				09905A762851A02B00BAEE78 /* WalletViewModel.swift in Sources */,
@@ -4710,6 +4756,7 @@
 				09905B2A2851A08500BAEE78 /* UICollectionView+util.swift in Sources */,
 				09B4937E290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABE2864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E9B292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				09905B2B2851A08500BAEE78 /* LoginPostDto.swift in Sources */,
 				09905B2C2851A08500BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905B2D2851A08500BAEE78 /* Log.swift in Sources */,
@@ -4795,6 +4842,7 @@
 				09B7C2082927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905B652851A08500BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905B662851A08500BAEE78 /* UserInfoDto.swift in Sources */,
+				A1CC4EA9292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AB028645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905B672851A08500BAEE78 /* BoardViewModel.swift in Sources */,
 				09905B682851A08500BAEE78 /* WalletViewModel.swift in Sources */,
@@ -4954,6 +5002,7 @@
 				09905C1C2851A09600BAEE78 /* UICollectionView+util.swift in Sources */,
 				09B4937C290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABC2864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E99292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				09905C1D2851A09600BAEE78 /* LoginPostDto.swift in Sources */,
 				09905C1E2851A09600BAEE78 /* PopupBottomSheet.swift in Sources */,
 				09905C1F2851A09600BAEE78 /* Log.swift in Sources */,
@@ -5039,6 +5088,7 @@
 				09B7C2062927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09905C572851A09600BAEE78 /* LoginPageViewController.swift in Sources */,
 				09905C582851A09600BAEE78 /* UserInfoDto.swift in Sources */,
+				A1CC4EA7292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AAE28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09905C592851A09600BAEE78 /* BoardViewModel.swift in Sources */,
 				09905C5A2851A09600BAEE78 /* WalletViewModel.swift in Sources */,
@@ -5198,6 +5248,7 @@
 				09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */,
 				09B4937A290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABA2864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E97292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				09CAF443283C77ED00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF444283C77ED00D7B19B /* PopupBottomSheet.swift in Sources */,
 				09CAF445283C77ED00D7B19B /* Log.swift in Sources */,
@@ -5283,6 +5334,7 @@
 				09B7C2042927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09CAF470283C77ED00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CE283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				A1CC4EA5292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AAC28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D96284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
@@ -5442,6 +5494,7 @@
 				09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */,
 				09B4937B290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919ABB2864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E98292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				09CAF504283C7BBE00D7B19B /* LoginPostDto.swift in Sources */,
 				09CAF505283C7BBE00D7B19B /* PopupBottomSheet.swift in Sources */,
 				09CAF506283C7BBE00D7B19B /* Log.swift in Sources */,
@@ -5527,6 +5580,7 @@
 				09B7C2052927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				09CAF531283C7BBE00D7B19B /* LoginPageViewController.swift in Sources */,
 				09CAF5CF283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				A1CC4EA6292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AAD28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D97284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */,
@@ -5686,6 +5740,7 @@
 				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,
 				09B49379290BAD620024E984 /* TransCustomerDto.swift in Sources */,
 				09919AB92864605300035835 /* WalletSecurityThemes.swift in Sources */,
+				A1CC4E96292B3CBE00BF5EB5 /* TwoWayVerifyView.swift in Sources */,
 				A19C71A928226279000AFC3F /* LoginPostDto.swift in Sources */,
 				A19C70BE28223D82000AFC3F /* PopupBottomSheet.swift in Sources */,
 				A19C7117282255AD000AFC3F /* Log.swift in Sources */,
@@ -5771,6 +5826,7 @@
 				09B7C2032927327700A5E2DC /* ForgotPageViewController.swift in Sources */,
 				A19C707A28223729000AFC3F /* LoginPageViewController.swift in Sources */,
 				09CAF5CD283C8B8600D7B19B /* UserInfoDto.swift in Sources */,
+				A1CC4EA4292B3E5D00BF5EB5 /* TwoWayVerifyViewController.swift in Sources */,
 				09919AAB28645D0D00035835 /* FilterStyleThemes.swift in Sources */,
 				09056D95284EF53100038BF8 /* BoardViewModel.swift in Sources */,
 				09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */,

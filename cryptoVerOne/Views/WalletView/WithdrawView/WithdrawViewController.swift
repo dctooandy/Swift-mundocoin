@@ -399,16 +399,16 @@ class WithdrawViewController: BaseViewController {
                                         Log.i("驗證碼錯誤 :\(reason)")
                                         if securityVerifyVC.securityViewMode == .onlyEmail
                                         {
-                                            securityVerifyVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                        }else if securityVerifyVC.securityViewMode == .onlyTwoFA
+                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                        }else if securityVerifyVC.securityViewMode == .onlyMobile
                                         {
-                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoFAVerifyView.twoFAInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                            securityVerifyVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                         }else if securityVerifyVC.securityViewMode == .defaultMode
                                         {
-                                            securityVerifyVC.twoFAVerifyView.emailInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoFAVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                             InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
                                         }
                                     }else if reason == "TO_ADDRESS_OWN_BY_CUSTOMER"

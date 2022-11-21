@@ -204,7 +204,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     }
     func verifyResentAutoPressed()
     {
-        emailVerifyInputView.emailSendVerify()
+        emailVerifyInputView.sendVerifyCode()
     }
     func setScrollView()
     {

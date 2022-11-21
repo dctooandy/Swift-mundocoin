@@ -1,22 +1,24 @@
 //
-//  TwoFAVerifyViewController.swift
+//  TwoWayVerifyViewController.swift
 //  cryptoVerOne
 //
-//  Created by AndyChen on 2022/5/11.
+//  Created by Andy on 2022/11/21.
 //
+
 
 import Foundation
 import RxCocoa
 import RxSwift
 
-class TwoFAVerifyViewController: BaseViewController {
+class TwoWayVerifyViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    private let onThirdSendVerifyClick = PublishSubject<Any>()
+    private let onEmailSendVerifyClick = PublishSubject<Any>()
+    private let onMobileSendVerifyClick = PublishSubject<Any>()
     private let onSubmitOnlyEmailClick = PublishSubject<String>()
-    private let onSubmitOnlyTwoFAClick = PublishSubject<String>()
-    var twoFAViewMode : TwoFAViewMode = .onlyEmail {
+    private let onSubmitOnlyMobileClick = PublishSubject<String>()
+    var twoWayViewMode : TwoWayViewMode = .onlyEmail {
         didSet{
             setup()
             bindView()
@@ -24,13 +26,13 @@ class TwoFAVerifyViewController: BaseViewController {
     }
     // MARK: -
     // MARK:UI 設定
-    var verifyView = TwoFAVerifyView()
+    var verifyView = TwoWayVerifyView()
     // MARK: -
     // MARK:Life cycle
     // MARK: instance
-    static func instance(mode: TwoFAViewMode) -> TwoFAVerifyViewController {
-        let vc = TwoFAVerifyViewController.loadNib()
-        vc.twoFAViewMode = mode
+    static func instance(mode: TwoWayViewMode) -> TwoWayVerifyViewController {
+        let vc = TwoWayVerifyViewController.loadNib()
+        vc.twoWayViewMode = mode
         return vc
     }
     override func viewDidLoad() {
@@ -53,8 +55,8 @@ class TwoFAVerifyViewController: BaseViewController {
     // MARK:業務方法
     func setup()
     {
-        let onlyView = TwoFAVerifyView.loadNib()
-        onlyView.twoFAViewMode = twoFAViewMode
+        let onlyView = TwoWayVerifyView.loadNib()
+        onlyView.twoWayViewMode = twoWayViewMode
         self.verifyView = onlyView
         self.view.addSubview(self.verifyView)
         verifyView.snp.remakeConstraints { (make) in
@@ -64,35 +66,43 @@ class TwoFAVerifyViewController: BaseViewController {
     }
     func bindView()
     {
-        self.verifyView.rxSecondSendVerifyAction().subscribeSuccess { [self](_) in
-            onThirdSendVerifyClick.onNext(())
+        self.verifyView.rxEmailSecondSendVerifyAction().subscribeSuccess { [self](_) in
+            onEmailSendVerifyClick.onNext(())
+        }.disposed(by: dpg)
+        self.verifyView.rxMobileSecondSendVerifyAction().subscribeSuccess { [self](_) in
+            onMobileSendVerifyClick.onNext(())
         }.disposed(by: dpg)
         self.verifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,onlyEmail:\(stringData)")
             onSubmitOnlyEmailClick.onNext(stringData)
         }.disposed(by: dpg)
-        self.verifyView.rxSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送submit請求 ,onlyTwoFA:\(stringData)")
-            onSubmitOnlyTwoFAClick.onNext(stringData)
+        self.verifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送submit請求 ,onlyMobile:\(stringData)")
+            onSubmitOnlyMobileClick.onNext(stringData)
         }.disposed(by: dpg)
     }
-    func rxThirdSendVerifyAction() -> Observable<(Any)>
+    func rxEmailSendVerifyAction() -> Observable<(Any)>
     {
-        return onThirdSendVerifyClick.asObserver()
+        return onEmailSendVerifyClick.asObserver()
     }
 
+    func rxMobileSendVerifyAction() -> Observable<(Any)>
+    {
+        return onMobileSendVerifyClick.asObserver()
+    }
+    
     func rxSecondSubmitOnlyEmailAction() -> Observable<(String)>
     {
         return onSubmitOnlyEmailClick.asObserver()
     }
-    func rxSecondSubmitOnlyTwoFAAction() -> Observable<(String)>
+    func rxSecondSubmitOnlyMobileAction() -> Observable<(String)>
     {
-        return onSubmitOnlyTwoFAClick.asObserver()
+        return onSubmitOnlyMobileClick.asObserver()
     }
     func modeTitle() -> String {
-        switch  twoFAViewMode {
+        switch twoWayViewMode {
         case .onlyEmail: return "E-mail".localized
-        case .onlyTwoFA: return "2FA".localized
+        case .onlyMobile: return "Mobile".localized
         case .both: return ""
         }
     }
