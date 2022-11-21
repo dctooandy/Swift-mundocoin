@@ -22,13 +22,14 @@ class LoginService {
         parameters = ["code":code,
                       "password":password,
                       "verificationCode":verificationCode]
-        if email.isEmpty
-        {
-            parameters["phone"] = phone
-        }else
-        {
-            parameters["email"] = email
-        }
+//        if email.isEmpty
+//        {
+//        }else
+//        {
+//        }
+//        parameters["phone"] = phone
+        // 註冊 API 還沒完成,暫時先寫到只有email註冊
+        parameters["email"] = email
         return Beans.requestServer.singleRequestPost(
             path: ApiService.registration.path,
             parameters: parameters,

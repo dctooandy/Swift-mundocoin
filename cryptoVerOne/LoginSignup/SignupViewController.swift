@@ -256,13 +256,39 @@ class SignupViewController: BaseViewController {
                 ErrorHandler.show(error: error)
             }else
             {
-                let dto = SignupPostDto(account: acc, password: pwd,registration: regis, signupMode: loginMode)
+                var emailAccountString = ""
+                var phoneAccountString = ""
+                if loginMode == .emailPage
+                {
+                    emailAccountString = acc
+                }else
+                {
+                    phoneAccountString = acc
+                }
+                let dto = SignupPostDto(account: emailAccountString,
+                                        password: pwd,
+                                        registration: regis ,
+                                        signupMode: loginMode,
+                                        phone: phoneAccountString)
                 self.view.endEditing(true)
                 onSignupAction.onNext(dto)
             }
         }else
         {
-            let dto = SignupPostDto(account: acc, password: pwd,registration: "220831", signupMode: loginMode)
+            var emailAccountString = ""
+            var phoneAccountString = ""
+            if loginMode == .emailPage
+            {
+                emailAccountString = acc
+            }else
+            {
+                phoneAccountString = acc
+            }
+            let dto = SignupPostDto(account: emailAccountString,
+                                    password: pwd,
+                                    registration: "220831" ,
+                                    signupMode: loginMode,
+                                    phone: phoneAccountString)
             self.view.endEditing(true)
             onSignupAction.onNext(dto)            
         }

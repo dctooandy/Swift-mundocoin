@@ -276,37 +276,46 @@ class VerifyViewController: BaseViewController {
     }
     func verifyButtonPressed()
     {
-        var idString = ""
+        var emailString = ""
+        var phoneString = ""
         var passwordString = ""
         var registrationString = ""
+        var mode : LoginMode = .emailPage
         if let loginDto = self.loginDto
         {
-            idString = loginDto.account
+            emailString = loginDto.account
+            phoneString = loginDto.phone
             passwordString = loginDto.password
+            mode = loginDto.loginMode
         }else if let signupDto = self.signupDto
         {
-            idString = signupDto.account
+            emailString = signupDto.account
+            phoneString = signupDto.phone
             passwordString = signupDto.password
             registrationString = signupDto.registration
+            mode = signupDto.signupMode
         }else if let forgotDto = self.forgotPWDto
         {
-            idString = forgotDto.account
+            emailString = forgotDto.account
+            phoneString = forgotDto.phone
+            mode = forgotDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
         switch verifificationType {
         case .loginVerity:
             // 登入驗證
-            fetchAuthenticationData(with: idString,
+            fetchAuthenticationData(with: mode == .emailPage ? emailString:phoneString,
                                     password: passwordString,
                                     verificationCode: codeString)
         case .signupVerity:
             // 註冊驗證
             fetchRegistrationData(code:registrationString,
-                                  email: idString,
+                                  email: emailString,
                                   password: passwordString,
+                                  phone: phoneString,
                                   verificationCode: codeString)
         case .forgotPWVerity:
-            fetchForgotPasswordVerify(with: idString,
+            fetchForgotPasswordVerify(with: mode == .emailPage ? emailString:phoneString,
                                       verificationCode: codeString)
         }
     }
@@ -333,13 +342,13 @@ class VerifyViewController: BaseViewController {
             var idString = ""
             if let loginDto = self.loginDto
             {
-                idString = loginDto.account
+                idString = (loginDto.loginMode == .emailPage ? loginDto.account : loginDto.phone)
             }else if let signupDto = self.signupDto
             {
-                idString = signupDto.account
+                idString = (signupDto.signupMode == .emailPage ? signupDto.account : signupDto.phone)
             }else if let forgetDto = self.forgotPWDto
             {
-                idString = forgetDto.account
+                idString = (forgetDto.loginMode == .emailPage ? forgetDto.account : forgetDto.phone)
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto
@@ -466,7 +475,7 @@ class VerifyViewController: BaseViewController {
     }
     @objc func popVC(isAnimation : Bool = true)
     {
-        _ = self.navigationController?.popToRootViewController(animated: isAnimation)
+        _ = self.navigationController?.popViewController(animated: isAnimation)
     }
 }
 // MARK: -

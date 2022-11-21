@@ -544,8 +544,15 @@ extension LoginSignupViewController {
                             verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"The Email Code is incorrect. Please re-enter.")
                         }else if reason == "PARAMETER_INVALID"
                         {
-                            verifyVC.popVC(isAnimation: true)
-                            let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                            var errorReason = ""
+                            
+                            if let error = dto.errors.first
+                            {
+                                errorReason = error.reason
+                            }
+                            verifyVC.popVC(isAnimation: false)
+                            self.currentShowMode = (signupDto.signupMode == .emailPage ? .signupEmail : .signupPhone)
+                            let results = ErrorDefaultDto(code: dto.code, reason: "\(reason)\n\(errorReason)", timestamp: 0, httpStatus: "", errors: [])
                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
                         }
                             
@@ -875,17 +882,21 @@ extension LoginSignupViewController {
         //                imageVerifyView.removeFromSuperview()
         //            }.disposed(by: disposeBag)
         // 顯示 Google Recaotcha 驗證
-        let recaptchaVC = RecaptchaViewController.loadNib()
-        recaptchaVC.rxSuccessClick().subscribeSuccess { [self]tokenString in
-            if !tokenString.isEmpty
-            {
-                if let dto = postDto as? SignupPostDto {
-                    // 開啟驗證頁面
-                    showVerifyVCWithSignUpData(dto)
-                }
-            }
-        }.disposed(by: disposeBag)
-        self.navigationController?.pushViewController(recaptchaVC, animated: true)
+//        let recaptchaVC = RecaptchaViewController.loadNib()
+//        recaptchaVC.rxSuccessClick().subscribeSuccess { [self]tokenString in
+//            if !tokenString.isEmpty
+//            {
+//                if let dto = postDto as? SignupPostDto {
+//                    // 開啟驗證頁面
+//                    showVerifyVCWithSignUpData(dto)
+//                }
+//            }
+//        }.disposed(by: disposeBag)
+//        self.navigationController?.pushViewController(recaptchaVC, animated: true)
+        if let dto = postDto as? SignupPostDto {
+            //                    // 開啟驗證頁面
+            showVerifyVCWithSignUpData(dto)
+        }
     }
     
 
