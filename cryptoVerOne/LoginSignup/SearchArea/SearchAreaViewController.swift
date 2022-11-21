@@ -31,12 +31,14 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topCodeLabel: UILabel!
     @IBOutlet weak var topNameLabel: UILabel!
+    
+    @IBOutlet weak var dismissImageView: UIImageView!
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        
+        bindImageView()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -120,6 +122,12 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
     func rxSelectedClick() -> Observable<String>
     {
         return onSelectedClick.asObservable()
+    }
+    func bindImageView()
+    {
+        dismissImageView.rx.click.subscribeSuccess { _ in
+            self.dismiss(animated: true)
+        }.disposed(by: dpg)
     }
 }
 

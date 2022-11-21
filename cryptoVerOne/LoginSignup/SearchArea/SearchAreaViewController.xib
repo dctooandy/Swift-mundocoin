@@ -149,6 +149,7 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="dismissImageView" destination="FC4-S6-zMU" id="ogf-tq-X5F"/>
                 <outlet property="searchBar" destination="xLu-ZN-Wm8" id="89V-Ow-VL8"/>
                 <outlet property="tableView" destination="oUT-Nk-vCI" id="3Vq-H2-Tb1"/>
                 <outlet property="topCodeLabel" destination="hgZ-Gl-3XI" id="ply-YP-tw2"/>
