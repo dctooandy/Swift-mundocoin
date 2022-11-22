@@ -2023,6 +2023,18 @@
 		A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
 		A1DD13BD282C0B8300AB2E0A /* PersonalInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */; };
 		A1DD13C1282C0B9E00AB2E0A /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */; };
+		A1DFBCAD292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCAE292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCAF292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCB0292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCB1292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCB2292CB71E008EE739 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */; };
+		A1DFBCB4292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
+		A1DFBCB5292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
+		A1DFBCB6292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
+		A1DFBCB7292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
+		A1DFBCB8292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
+		A1DFBCB9292CB754008EE739 /* AuthenticationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */; };
 		A1E72A8A28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
 		A1E72A8B28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
 		A1E72A8C28EC233D006EB767 /* AddNewAddressCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */; };
@@ -2409,6 +2421,8 @@
 		A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PushNotiViewController.xib; sourceTree = "<group>"; };
 		A1DD13BC282C0B8300AB2E0A /* PersonalInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInfoViewController.swift; sourceTree = "<group>"; };
 		A1DD13C0282C0B9E00AB2E0A /* PersonalInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PersonalInfoViewController.xib; sourceTree = "<group>"; };
+		A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressCell.swift; sourceTree = "<group>"; };
 		A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressCell.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2899,6 +2913,7 @@
 			children = (
 				09C20F992845D83D00E70654 /* AddressBookView */,
 				A1DD13BA282C0B3300AB2E0A /* PersonalInfoView */,
+				A1DFBCAB292CB6DD008EE739 /* AuthenticationView */,
 				A1DD13AA282BED5200AB2E0A /* SecurityView */,
 				A1DD13B3282C08A200AB2E0A /* PushNotification */,
 				A1973A7B282A95AF009932D8 /* UserMenuCell */,
@@ -3458,6 +3473,15 @@
 			path = PersonalInfoView;
 			sourceTree = "<group>";
 		};
+		A1DFBCAB292CB6DD008EE739 /* AuthenticationView */ = {
+			isa = PBXGroup;
+			children = (
+				A1DFBCAC292CB71E008EE739 /* AuthenticationViewController.swift */,
+				A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */,
+			);
+			path = AuthenticationView;
+			sourceTree = "<group>";
+		};
 		C1D87ED3CABD1D00F989E28E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3692,6 +3716,7 @@
 				09905B052851A02B00BAEE78 /* FilterCell.xib in Resources */,
 				09905B062851A02B00BAEE78 /* LoginSignupViewController.xib in Resources */,
 				09905B072851A02B00BAEE78 /* CPasswordViewController.xib in Resources */,
+				A1DFBCB8292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				09905B082851A02B00BAEE78 /* Main.storyboard in Resources */,
 				09905B092851A02B00BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0E288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -3797,6 +3822,7 @@
 				09905BF72851A08500BAEE78 /* FilterCell.xib in Resources */,
 				09905BF82851A08500BAEE78 /* LoginSignupViewController.xib in Resources */,
 				09905BF92851A08500BAEE78 /* CPasswordViewController.xib in Resources */,
+				A1DFBCB9292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				09905BFA2851A08500BAEE78 /* Main.storyboard in Resources */,
 				09905BFB2851A08500BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0F288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -3902,6 +3928,7 @@
 				09905CE92851A09600BAEE78 /* FilterCell.xib in Resources */,
 				09905CEA2851A09600BAEE78 /* LoginSignupViewController.xib in Resources */,
 				09905CEB2851A09600BAEE78 /* CPasswordViewController.xib in Resources */,
+				A1DFBCB7292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				09905CEC2851A09600BAEE78 /* Main.storyboard in Resources */,
 				09905CED2851A09600BAEE78 /* DropDownStyleView.xib in Resources */,
 				09954C0D288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -4007,6 +4034,7 @@
 				09947BB5284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				09CAF4DF283C77ED00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF4E0283C77ED00D7B19B /* CPasswordViewController.xib in Resources */,
+				A1DFBCB5292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				09CAF4E1283C77ED00D7B19B /* Main.storyboard in Resources */,
 				09056DAC284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09954C0B288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -4112,6 +4140,7 @@
 				09947BB6284DB751004F7FD7 /* FilterCell.xib in Resources */,
 				09CAF5A0283C7BBE00D7B19B /* LoginSignupViewController.xib in Resources */,
 				09CAF5A1283C7BBE00D7B19B /* CPasswordViewController.xib in Resources */,
+				A1DFBCB6292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				09CAF5A2283C7BBE00D7B19B /* Main.storyboard in Resources */,
 				09056DAD284F1AF900038BF8 /* DropDownStyleView.xib in Resources */,
 				09954C0C288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -4217,6 +4246,7 @@
 				A19739CD28251BDD009932D8 /* CPasswordViewController.xib in Resources */,
 				A19C6FD9282218D6000AFC3F /* Main.storyboard in Resources */,
 				09947B99284D9D2E004F7FD7 /* FilterBottomView.xib in Resources */,
+				A1DFBCB4292CB754008EE739 /* AuthenticationViewController.xib in Resources */,
 				A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */,
 				09C20F9F2845D87100E70654 /* AddressBookViewController.xib in Resources */,
 				09954C0A288932A900E5E2BE /* PlusJakartaSans-Bold.ttf in Resources */,
@@ -4674,6 +4704,7 @@
 				09905AAC2851A02B00BAEE78 /* NotiViewController.swift in Sources */,
 				09CA47E728C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905AAD2851A02B00BAEE78 /* UCPasswordViewController.swift in Sources */,
+				A1DFBCB1292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905AAE2851A02B00BAEE78 /* BaseViewModel.swift in Sources */,
 				09905AAF2851A02B00BAEE78 /* BaseDismissAnimationController.swift in Sources */,
 				09905AB02851A02B00BAEE78 /* Views.swift in Sources */,
@@ -4920,6 +4951,7 @@
 				09905B9E2851A08500BAEE78 /* NotiViewController.swift in Sources */,
 				09CA47E828C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905B9F2851A08500BAEE78 /* UCPasswordViewController.swift in Sources */,
+				A1DFBCB2292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905BA02851A08500BAEE78 /* BaseViewModel.swift in Sources */,
 				09905BA12851A08500BAEE78 /* BaseDismissAnimationController.swift in Sources */,
 				09905BA22851A08500BAEE78 /* Views.swift in Sources */,
@@ -5166,6 +5198,7 @@
 				09905C902851A09600BAEE78 /* NotiViewController.swift in Sources */,
 				09CA47E628C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09905C912851A09600BAEE78 /* UCPasswordViewController.swift in Sources */,
+				A1DFBCB0292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905C922851A09600BAEE78 /* BaseViewModel.swift in Sources */,
 				09905C932851A09600BAEE78 /* BaseDismissAnimationController.swift in Sources */,
 				09905C942851A09600BAEE78 /* Views.swift in Sources */,
@@ -5412,6 +5445,7 @@
 				09CAF497283C77ED00D7B19B /* NotiViewController.swift in Sources */,
 				09CA47E428C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09CAF498283C77ED00D7B19B /* UCPasswordViewController.swift in Sources */,
+				A1DFBCAE292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09CAF499283C77ED00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */,
 				09CAF49B283C77ED00D7B19B /* Views.swift in Sources */,
@@ -5658,6 +5692,7 @@
 				09CAF558283C7BBE00D7B19B /* NotiViewController.swift in Sources */,
 				09CA47E528C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				09CAF559283C7BBE00D7B19B /* UCPasswordViewController.swift in Sources */,
+				A1DFBCAF292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09CAF55A283C7BBE00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */,
 				09CAF55C283C7BBE00D7B19B /* Views.swift in Sources */,
@@ -5904,6 +5939,7 @@
 				A1973A0C2828ED59009932D8 /* NotiViewController.swift in Sources */,
 				09CA47E328C992AC00CFE231 /* AddressBookService.swift in Sources */,
 				A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */,
+				A1DFBCAD292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,

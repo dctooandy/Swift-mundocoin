@@ -14,7 +14,7 @@ import RxSwift
 class AccountInputView: UIView {
     // MARK:業務設定
     private var lineColor: UIColor = .white
-    private var inputMode: InputViewMode = .email
+    private var inputMode: InputViewMode = .email(withStar: true)
     private var currentShowMode: ShowMode = .loginEmail
     private let dpg = DisposeBag()
     private let accountCheckPassed = PublishSubject<Bool>()
@@ -69,7 +69,7 @@ class AccountInputView: UIView {
                     strongSelf.accountInputView.invalidLabel.isHidden = true
                 }
                 var patternValue = RegexHelper.Pattern.phone
-                if strongSelf.inputMode == .phone || strongSelf.inputMode == .forgotPhone {
+                if strongSelf.inputMode == .phone(withStar: true) || strongSelf.inputMode == .phone(withStar: false) || strongSelf.inputMode == .forgotPhone {
                     patternValue = .onlyNumber
                 }else
                 {
@@ -82,7 +82,7 @@ class AccountInputView: UIView {
                 guard let strongSelf = self, let acc = str else { return .accountInvalidHidden }
                 if ((strongSelf.accountInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
-                    if strongSelf.inputMode == .phone || strongSelf.inputMode == .forgotPhone {
+                    if strongSelf.inputMode == .phone(withStar: true) || strongSelf.inputMode == .phone(withStar: false) || strongSelf.inputMode == .forgotPhone {
                         patternValue = .onlyNumber
                     }else
                     {
@@ -114,12 +114,7 @@ class AccountInputView: UIView {
                     strongSelf.passwordInputView.invalidLabel.isHidden = true
                 }
                 var patternValue = RegexHelper.Pattern.phone
-                if strongSelf.inputMode == .phone {
-                    patternValue = .password
-                }else
-                {
-                    patternValue = .password
-                }
+                patternValue = .password
                 return RegexHelper.match(pattern: patternValue, input: acc)
         }
         let isPasswordHeightType = passwordInputView.textField.rx.text
@@ -127,12 +122,7 @@ class AccountInputView: UIView {
                 guard let strongSelf = self, let acc = str else { return .pwInvalidHidden }
                 if ((strongSelf.passwordInputView.textField.isFirstResponder) == true) {
                     var patternValue = RegexHelper.Pattern.phone
-                    if strongSelf.inputMode == .phone {
-                        patternValue = .password
-                    }else
-                    {
-                        patternValue = .password
-                    }
+                    patternValue = .password
                     let resultValue:InputViewHeightType = RegexHelper.match(pattern: patternValue, input: acc) == true ? .pwInvalidHidden : (acc.isEmpty == true ? .pwInvalidShow : .pwInvalidShow)
                     if resultValue == .pwInvalidShow
                     {

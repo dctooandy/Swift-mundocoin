@@ -137,7 +137,8 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
             return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
+//        let cell = tableView.dequeueCell(type: UserMenuTableViewCell.self, indexPath: indexPath)
+        let cell = tableView.cellForRow(at: indexPath) as! UserMenuTableViewCell
         switch indexPath.row {
         case 0:
             Log.i("registrationInfo")
@@ -146,13 +147,17 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
             Log.i("email")
             if cell.cellData.arrowHidden == false
             {
-                
+                let authVC = AuthenticationViewController.loadNib()
+                authVC.authenInputViewMode = .email(withStar: false)
+                self.navigationController?.pushViewController(authVC, animated: true)
             }
         case 2:
             Log.i("mobile")
             if cell.cellData.arrowHidden == false
             {
-                
+                let authVC = AuthenticationViewController.loadNib()
+                authVC.authenInputViewMode = .phone(withStar: false)
+                self.navigationController?.pushViewController(authVC, animated: true)
             }
         case 3:
             Log.i("memberSince")

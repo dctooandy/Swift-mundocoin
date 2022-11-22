@@ -10,7 +10,7 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-enum cellData {
+enum UserMenuCellData {
     // UserMenu
     case currency
     case security
@@ -262,7 +262,7 @@ class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
-    var cellData: cellData = .currency{
+    var cellData: UserMenuCellData = .currency{
         didSet {
             setupByData()
         }

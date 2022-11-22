@@ -19,8 +19,8 @@ enum InputViewMode :Equatable {
     case copy
     case withdrawToAddress // 取款頁面白名單關閉
     case address
-    case email
-    case phone
+    case email(withStar:Bool)
+    case phone(withStar:Bool)
     case password
     case forgotEmail
     case forgotPhone
@@ -54,8 +54,8 @@ enum InputViewMode :Equatable {
         case .copy: return "Copy this key to your authenticator app".localized
         case .withdrawToAddress: return "Withdraw to address".localized
         case .address: return "Address".localized
-        case .email: return "E-mail*".localized
-        case .phone: return "Mobile*".localized
+        case .email(let emailStarVaild): return (emailStarVaild ? "E-mail*".localized : "E-mail".localized)
+        case .phone(let phoneStarVaild): return (phoneStarVaild ? "Mobile*".localized : "Mobile".localized)
         case .password: return "Password*".localized
         case .forgotEmail: return "Enter your email to change your password".localized
         case .forgotPhone: return "Enter your mobile number".localized
@@ -83,7 +83,7 @@ enum InputViewMode :Equatable {
         case .mobileVerify(_): return "Mobile verification code".localized
         case .twoFAVerify: return "Google Authenticator code".localized
         case .withdrawToAddress,.address: return "Long press to paste".localized
-        case .email: return "...@mundocoin.com"
+        case .email(_): return "...@mundocoin.com"
 //        case .oldPassword,.password ,.newPassword , .confirmPassword: return "********".localized
         case .forgotEmail: return "...@mundocoin.com"
         case .securityVerification: return "Enter the 6-digit code".localized
@@ -99,8 +99,8 @@ enum InputViewMode :Equatable {
         case .mobileVerify(_): return "Enter the 6-digit code".localized
         case .twoFAVerify: return "Enter the 6-digit code".localized
         case .withdrawToAddress,.address: return "Please check the withdrawal address.".localized
-        case .email: return "...@mundocoin.com".localized
-        case .phone: return "Invalid phone number.".localized
+        case .email(_): return "...@mundocoin.com".localized
+        case .phone(_): return "Invalid phone number.".localized
         case .password ,.oldPassword ,.newPassword ,.confirmPassword: return "8-20 charaters with any combination or letters, numbers, and symbols.".localized
         case .forgotEmail: return "...@mundocoin.com".localized
         case .forgotPhone: return "Invalid phone number.".localized
@@ -166,7 +166,7 @@ enum InputViewMode :Equatable {
 }
 class InputStyleView: UIView {
     // MARK:業務設定
-    private var inputViewMode: InputViewMode = .email
+    private var inputViewMode: InputViewMode = .email(withStar: true)
     private let displayPwdImg = UIImage(named: "icon-view")
     private let undisplayPwdImg =  UIImage(named: "icon-view-hide")
     private let cancelImg = UIImage(named: "icon-close-round-fill")
@@ -366,7 +366,7 @@ class InputStyleView: UIView {
         super.init(coder: aDecoder)
     }
  
-    convenience init(inputViewMode: InputViewMode = .email) {
+    convenience init(inputViewMode: InputViewMode = .email(withStar:true)) {
         self.init(frame: .zero)
         self.inputViewMode = inputViewMode
         self.setup()
@@ -494,7 +494,7 @@ class InputStyleView: UIView {
             make.width.equalToSuperview().multipliedBy(1.10)
             make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
         }
-        if inputViewMode == .phone || inputViewMode == .forgotPhone
+        if inputViewMode == .phone(withStar:true) || inputViewMode == .phone(withStar:false) || inputViewMode == .forgotPhone
         {
             mobileCodeAnchorView.addSubview(labelMaskView)
             mobileCodeAnchorView.sendSubviewToBack(labelMaskView)
@@ -722,7 +722,7 @@ class InputStyleView: UIView {
             resetTopLabelAndMask()
             tfMaskView.backgroundColor = Themes.grayF4F7FE
         }
-        else if inputViewMode == .phone || inputViewMode == .forgotPhone
+        else if inputViewMode == .phone(withStar:true) || inputViewMode == .phone(withStar:false) || inputViewMode == .forgotPhone
         {
             addDoneCancelToolbar()
             mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in

@@ -13,8 +13,8 @@ enum LoginMode {
     
     var inputViewMode : InputViewMode {
         switch self {
-        case .emailPage: return .email
-        case .phonePage: return .phone
+        case .emailPage: return .email(withStar: true)
+        case .phonePage: return .phone(withStar: true)
         }
     }
    

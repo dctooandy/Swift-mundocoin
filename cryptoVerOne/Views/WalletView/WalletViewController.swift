@@ -260,7 +260,7 @@ class WalletViewController: BaseViewController {
             make.bottom.equalToSuperview().offset(-5)
         })
     }
-    func pushToProfile(withCellData : cellData = .currency) {
+    func pushToProfile(withCellData : UserMenuCellData = .currency) {
         Log.i("推到個人清單")
 //        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)

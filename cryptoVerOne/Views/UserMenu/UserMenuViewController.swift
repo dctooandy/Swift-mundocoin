@@ -14,7 +14,7 @@ class UserMenuViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private let viewModel = UserMenuViewModel()
-    var targetCellData :cellData?
+    var targetCellData :UserMenuCellData?
     // MARK: -
     // MARK:UI 設定
     

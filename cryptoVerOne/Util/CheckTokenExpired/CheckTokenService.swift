@@ -240,7 +240,6 @@ class CheckTokenService{
                 parseTokenToMemberAccountDto()
                 // 刷新時間
                 startToCountDown()
-                checkAddressBookWhiteListEnabled()
             }
         }.disposed(by: dpg)
         #endif

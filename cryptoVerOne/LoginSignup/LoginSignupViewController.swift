@@ -23,13 +23,13 @@ enum ShowMode {
     var accountInputMode:InputViewMode {
         switch self {
         case .loginEmail,.signupEmail:
-            return .email
+            return .email(withStar: true)
         case .forgotEmailPW:
             return .forgotEmail
         case .forgotPhonePW:
             return .forgotPhone
         case .signupPhone,.loginPhone:
-            return .phone
+            return .phone(withStar: true)
         }
     }
 }
@@ -474,6 +474,8 @@ extension LoginSignupViewController {
 //                    verifyVC.timer?.invalidate()
                     if let data = authDto
                     {
+                        KeychainManager.share.setToken(data.token)
+                        CheckTokenService.share.parseTokenToMemberAccountDto()
                         if let loginData = loginDto
                         {
                             directToNextPage(authDto: data ,loginDto: loginData)
