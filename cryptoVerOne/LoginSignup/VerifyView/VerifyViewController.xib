@@ -34,14 +34,14 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We have sent an email to" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SQV-BU-xq1">
-                        <rect key="frame" x="51" y="194" width="312" height="33"/>
-                        <fontDescription key="fontDescription" name="PlusJakartaSans-ExtraLight" family="Plus Jakarta Sans" pointSize="26"/>
+                        <rect key="frame" x="50" y="194" width="314" height="28"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-ExtraLight" family="Plus Jakarta Sans" pointSize="22"/>
                         <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lena@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bHQ-eQ-b2R">
-                        <rect key="frame" x="133.5" y="237" width="147.5" height="23"/>
-                        <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="18"/>
+                        <rect key="frame" x="141.5" y="232" width="131" height="20.5"/>
+                        <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="16"/>
                         <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -54,9 +54,9 @@
                     <constraint firstItem="xfc-vI-0u5" firstAttribute="centerX" secondItem="GEJ-Sc-tbN" secondAttribute="centerX" id="Im8-xd-Uz7"/>
                     <constraint firstItem="xfc-vI-0u5" firstAttribute="top" secondItem="6Tx-gK-Ysi" secondAttribute="top" constant="50" id="JgJ-hQ-z6z"/>
                     <constraint firstItem="SQV-BU-xq1" firstAttribute="top" secondItem="xfc-vI-0u5" secondAttribute="bottom" constant="20" id="NC2-R0-lg8"/>
-                    <constraint firstItem="SQV-BU-xq1" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="51" id="Rsa-sR-VDC"/>
+                    <constraint firstItem="SQV-BU-xq1" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" constant="50" id="Rsa-sR-VDC"/>
                     <constraint firstItem="LNn-0d-hiw" firstAttribute="trailing" secondItem="6Tx-gK-Ysi" secondAttribute="trailing" id="akk-D9-xlH"/>
-                    <constraint firstItem="6Tx-gK-Ysi" firstAttribute="trailing" secondItem="SQV-BU-xq1" secondAttribute="trailing" constant="51" id="cxw-1H-JRK"/>
+                    <constraint firstItem="6Tx-gK-Ysi" firstAttribute="trailing" secondItem="SQV-BU-xq1" secondAttribute="trailing" constant="50" id="cxw-1H-JRK"/>
                     <constraint firstItem="LNn-0d-hiw" firstAttribute="leading" secondItem="6Tx-gK-Ysi" secondAttribute="leading" id="jM7-qA-XO0"/>
                     <constraint firstItem="bHQ-eQ-b2R" firstAttribute="centerX" secondItem="GEJ-Sc-tbN" secondAttribute="centerX" id="kdg-QQ-lbm"/>
                     <constraint firstItem="bHQ-eQ-b2R" firstAttribute="top" secondItem="SQV-BU-xq1" secondAttribute="bottom" constant="10" id="tuT-Uf-ILQ"/>

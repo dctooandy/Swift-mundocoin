@@ -11,11 +11,13 @@ import RxCocoa
 import Toaster
 import AVFoundation
 import AVKit
-enum VerifificationType
+enum VerificationType
 {
     case loginVerity
     case signupVerity
     case forgotPWVerity
+    case emailAuthentication
+    case mobileAuthentication
 }
 class VerifyViewController: BaseViewController {
     // MARK:業務設定
@@ -23,7 +25,7 @@ class VerifyViewController: BaseViewController {
     private let cancelImg = UIImage(named: "icon-close")!
     private let onClick = PublishSubject<String>()
     private let dpg = DisposeBag()
-    var verifificationType : VerifificationType = .loginVerity
+    var verificationType : VerificationType = .loginVerity
     private var inputMode: LoginMode = .emailPage
     var isAlreadySetBackView = false
     var timer: Timer?
@@ -33,14 +35,19 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let loginDto = self.loginDto
             {
-                verifificationType = .loginVerity
+                verificationType = .loginVerity
                 switch loginDto.loginMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
+                    self.verifyResentLabel.text = "Resend Email".localized
+                    self.isMobileMode = false
                 case .phonePage:
                     self.sentToLabel.text = "We have sent messages to".localized
+                    self.verifyResentLabel.text = "Resend".localized
+                    self.isMobileMode = true
                 }
                 self.userAccountLabel.text = loginDto.account
+                
             }
         }
     }
@@ -48,12 +55,16 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let forgotDto = self.forgotPWDto
             {
-                verifificationType = .forgotPWVerity
+                verificationType = .forgotPWVerity
                 switch forgotDto.loginMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
+                    self.verifyResentLabel.text = "Resend Email".localized
+                    self.isMobileMode = false
                 case .phonePage:
                     self.sentToLabel.text = "We have sent messages to".localized
+                    self.verifyResentLabel.text = "Resend".localized
+                    self.isMobileMode = true
                 }
                 self.userAccountLabel.text = forgotDto.account
             }
@@ -63,14 +74,42 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let signupDto = self.signupDto
             {
-                verifificationType = .signupVerity
+                verificationType = .signupVerity
                 switch signupDto.signupMode {
                 case .emailPage:
                     self.sentToLabel.text = "We have sent an email to".localized
+                    self.verifyResentLabel.text = "Resend Email".localized
+                    self.isMobileMode = false
                 case .phonePage:
                     self.sentToLabel.text = "We have sent messages to".localized
+                    self.verifyResentLabel.text = "Resend".localized
+                    self.isMobileMode = true
                 }
                 self.userAccountLabel.text = signupDto.account
+            }
+        }
+    }
+    var emailAuthenDto : LoginPostDto?  {
+        didSet {
+            if let loginDto = self.emailAuthenDto
+            {
+                verificationType = .emailAuthentication
+                self.sentToLabel.text = "We have sent an email to".localized
+                self.verifyResentLabel.text = "Resend Email".localized
+                self.userAccountLabel.text = loginDto.account
+                self.isMobileMode = false
+            }
+        }
+    }
+    var mobileAuthenDto : LoginPostDto?  {
+        didSet {
+            if let loginDto = self.mobileAuthenDto
+            {
+                verificationType = .mobileAuthentication
+                self.sentToLabel.text = "We have sent messages to".localized
+                self.verifyResentLabel.text = "Resend".localized
+                self.userAccountLabel.text = loginDto.phone
+                self.isMobileMode = true
             }
         }
     }
@@ -83,6 +122,7 @@ class VerifyViewController: BaseViewController {
     lazy var idVerifiVC = IDVerificationViewController.loadNib()
     lazy var resetPWVC = ResetPasswordViewController.loadNib()
     var verifyInputView : InputStyleView!
+    var isMobileMode : Bool = false
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton()
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
@@ -302,7 +342,7 @@ class VerifyViewController: BaseViewController {
             mode = forgotDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
-        switch verifificationType {
+        switch verificationType {
         case .loginVerity:
             // 登入驗證
             fetchAuthenticationData(with: mode == .emailPage ? emailString:phoneString,
@@ -318,13 +358,17 @@ class VerifyViewController: BaseViewController {
         case .forgotPWVerity:
             fetchForgotPasswordVerify(with: mode == .emailPage ? emailString:phoneString,
                                       verificationCode: codeString)
+        case .emailAuthentication:
+            Log.i("要去打 email authentication API")
+        case .mobileAuthentication:
+            Log.i("要去打 mobile authentication API")
         }
     }
     func verifyResentLabelVisable(With enable:Bool)
     {
         if enable == true
         {
-            verifyResentLabel.text = "Resend Email".localized
+            verifyResentLabel.text = (isMobileMode ? "Resend".localized : "Resend Email".localized)
             verifyResentLabel.textColor = Themes.gray707EAE
             underLineView.isHidden = false
             verifyResentLabel.isUserInteractionEnabled = true
@@ -350,6 +394,12 @@ class VerifyViewController: BaseViewController {
             }else if let forgetDto = self.forgotPWDto
             {
                 idString = (forgetDto.loginMode == .emailPage ? forgetDto.account : forgetDto.phone)
+            }else if let emailAuthenDto = self.emailAuthenDto
+            {
+                idString = emailAuthenDto.account
+            }else if let mobileAuthenDto = self.mobileAuthenDto
+            {
+                idString = mobileAuthenDto.phone
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto

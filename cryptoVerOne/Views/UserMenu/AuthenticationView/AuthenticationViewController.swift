@@ -22,6 +22,7 @@ class AuthenticationViewController: BaseViewController {
         didSet{
             setupUI()
             bindStyle()
+            bindButton()
             bindTextfield()
             bindTextfieldReturnKey()
             bindTextfieldAction()
@@ -29,6 +30,7 @@ class AuthenticationViewController: BaseViewController {
     }
     // MARK: -
     // MARK:UI 設定
+    var verifyVC : VerifyViewController!
     var authenInputView: InputStyleView!
     @IBOutlet weak var nextButton: CornerradiusButton!
     // MARK: -
@@ -86,6 +88,21 @@ class AuthenticationViewController: BaseViewController {
     func bindStyle()
     {
         InputViewStyleThemes.normalInputHeightType.bind(to: authenHeightConstraint.rx.constant).disposed(by: dpg)
+    }
+    func bindButton()
+    {
+        nextButton.rx.tap.subscribeSuccess { [self] _ in
+            let dataDto = KeychainManager.share.getLastAccount()
+            verifyVC = VerifyViewController.loadNib()
+            if authenInputViewMode == .email(withStar: false)
+            {
+                verifyVC.emailAuthenDto = dataDto
+            }else
+            {
+                verifyVC.mobileAuthenDto = dataDto
+            }
+            navigationController?.pushViewController(verifyVC, animated: true)
+        }.disposed(by: dpg)
     }
     func bindTextfield() {
         let isAccountValid = authenInputView.textField.rx.text
