@@ -60,7 +60,7 @@ class TwoWayVerifyViewController: BaseViewController {
         self.verifyView = onlyView
         self.view.addSubview(self.verifyView)
         verifyView.snp.remakeConstraints { (make) in
-            make.top.equalToSuperview().offset(42)
+            make.top.equalToSuperview().offset(28)
             make.leading.trailing.bottom.equalToSuperview()
         }
     }

@@ -92,7 +92,7 @@ class SecurityVerificationViewController: BaseViewController {
         switch securityViewMode {
         case .selectedMode:
             pageViewcontroller?.view.snp.remakeConstraints({ (make) in
-                make.top.equalToSuperview().offset(height + 40)
+                make.top.equalToSuperview().offset(height + 20)
                 make.leading.equalToSuperview()
                 make.trailing.equalToSuperview()
                 make.bottom.equalToSuperview()

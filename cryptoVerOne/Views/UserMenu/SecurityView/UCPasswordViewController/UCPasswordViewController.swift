@@ -363,9 +363,15 @@ class UCPasswordViewController: BaseViewController {
     }
     func bindAction()
     {
+        let loginDto = KeychainManager.share.getLastAccount()
+        if let phoneString = loginDto?.phone , !phoneString.isEmpty
+        {
+            twoWayVC.securityViewMode = .selectedMode
+        }else
+        {
+            twoWayVC.securityViewMode = .onlyEmail
+        }
         // MC524 暫時隱藏
-//        twoWayVC.securityViewMode = .selectedMode
-        twoWayVC.securityViewMode = .onlyEmail
 //        twoWayVC.securityViewMode = .defaultMode
 //        twoWayVC.securityViewMode = .onlyMobile
         twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
