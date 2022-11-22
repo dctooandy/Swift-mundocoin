@@ -294,10 +294,7 @@ class UCPasswordViewController: BaseViewController {
                 Log.v("更改成功")
                 if let currentAcc = KeychainManager.share.getLastAccount()
                 {
-                    MemberAccountDto.share = MemberAccountDto(account: currentAcc.account,
-                                                              password: newString,
-                                                              loginMode: currentAcc.loginMode,
-                                                              phone: currentAcc.phone)
+                    MemberAccountDto.share?.password = newString
                     let account = (currentAcc.loginMode == .phonePage ? currentAcc.phone : currentAcc.account)
                     KeychainManager.share.setLastAccount(account)
 

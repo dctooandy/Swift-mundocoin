@@ -37,6 +37,7 @@ class ResetPasswordViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Forgot password"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
         setupUI()
         bindPwdButton()

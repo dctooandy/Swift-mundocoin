@@ -77,6 +77,46 @@ class CheckTokenService{
             }
         }
     }
+    // 儲存Token到 MemberAccountDto
+    func parseTokenToMemberAccountDto(complete:CheckCompletionBlock? = nil)
+    {
+        let token = KeychainManager.share.getToken()
+        // 準備好 id 資料
+        var jwtValue :JWT!
+        do {
+            jwtValue = try decode(jwt: token)
+        } catch {
+            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            if let successBlock = complete
+            {
+                successBlock(false)
+            }else
+            {
+                //過期去登入頁面
+                goToLoginVC()
+            }
+        }
+        if jwtValue != nil ,
+            let isAccountLocked = jwtValue.body["isAccountLocked"] as? Bool,
+           let registrationDate = jwtValue.body["registrationDate"] as? Int,
+           let Id = jwtValue.body["Id"] as? String,
+           let isAccountEnabled = jwtValue.body["isAccountEnabled"] as? Bool,
+           let isAddressBookWhiteListEnabled = jwtValue.body["isAddressBookWhiteListEnabled"] as? Bool,
+           let isPasswordExpired = jwtValue.body["isPasswordExpired"] as? Bool
+            ,
+            let sub = jwtValue.body["sub"] as? String,
+           let isAccountExpired = jwtValue.body["isAccountExpired"] as? Bool
+        {
+            MemberAccountDto.share = MemberAccountDto(isAccountLocked: isAccountLocked,
+                                                      registrationDate: registrationDate,
+                                                      Id: Id,
+                                                      isAccountEnabled: isAccountEnabled,
+                                                      isAddressBookWhiteListEnabled: isAddressBookWhiteListEnabled,
+                                                      isPasswordExpired: isPasswordExpired,
+                                                      sub: sub,
+                                                      isAccountExpired: isAccountExpired)
+        }
+    }
     // 檢查 白名單 isAddressBookWhiteListEnabled
     func checkAddressBookWhiteListEnabled(complete:CheckCompletionBlock? = nil)
     {
@@ -196,6 +236,8 @@ class CheckTokenService{
             if let dataDto = dto
             {
                 KeychainManager.share.setToken(dataDto.token)
+                // 刷新MemberAccount
+                parseTokenToMemberAccountDto()
                 // 刷新時間
                 startToCountDown()
                 checkAddressBookWhiteListEnabled()

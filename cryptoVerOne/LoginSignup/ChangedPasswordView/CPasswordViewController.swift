@@ -27,6 +27,7 @@ class CPasswordViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Verification"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
         setupUI()
         bindButton()

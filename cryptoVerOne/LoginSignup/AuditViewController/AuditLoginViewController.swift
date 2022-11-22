@@ -245,9 +245,9 @@ class AuditLoginViewController: BaseViewController {
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
-                    MemberAccountDto.share = MemberAccountDto(account: idString,
-                                                              password: password,
-                                                              loginMode: .emailPage)
+                    MemberAccountDto.share?.account = idString
+                    MemberAccountDto.share?.password = password
+                    MemberAccountDto.share?.loginMode = .emailPage
                     _ = KeychainManager.share.setLastAccount(idString)
                     KeychainManager.share.updateAccount(acc: idString,
                                                         pwd: password)

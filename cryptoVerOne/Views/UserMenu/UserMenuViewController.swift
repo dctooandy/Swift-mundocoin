@@ -45,7 +45,7 @@ class UserMenuViewController: BaseViewController {
 //        LoadingViewController.show()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
-
+        resetUI()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -81,8 +81,8 @@ class UserMenuViewController: BaseViewController {
             // Fallback on earlier versions
         }
         // MC524 暫時隱藏
-        rightArrowImage.isHidden = true
-//        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
+//        rightArrowImage.isHidden = true
+//        let image = UIImage(named:"icon-chevron-right")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
 //        rightArrowImage.image = image
 //        rightArrowImage.tintColor = .black
 //        rightArrowImage.transform = rightArrowImage.transform.rotated(by: .pi)
@@ -93,10 +93,17 @@ class UserMenuViewController: BaseViewController {
         tableView.registerXibCell(type: UserMenuWhiteLineCell.self)
         tableView.separatorStyle = .none
         
-        let loginDto = KeychainManager.share.getLastAccount()
-        if let userEmail = loginDto?.account , UserStatus.share.isLogin
+//        let loginDto = KeychainManager.share.getLastAccount()
+//        if let userEmail = loginDto?.account , UserStatus.share.isLogin
+//        {
+//            userAccountLabel.text = userEmail
+//        }
+    }
+    func resetUI()
+    {
+        if let nickName = MemberAccountDto.share?.nickName
         {
-            userAccountLabel.text = userEmail
+            userAccountLabel.text = nickName
         }
     }
     func fetchData()
@@ -112,10 +119,10 @@ class UserMenuViewController: BaseViewController {
 //        }.disposed(by: dpg)
         // MC524 暫時隱藏
         // 人物訊息
-//        topButton.rx.tap.subscribeSuccess { [self](_) in
-//            let personalVC = PersonalInfoViewController.loadNib()
-//            self.navigationController?.pushViewController(personalVC, animated: true)
-//        }.disposed(by: dpg)
+        topButton.rx.tap.subscribeSuccess { [self](_) in
+            let personalVC = PersonalInfoViewController.loadNib()
+            self.navigationController?.pushViewController(personalVC, animated: true)
+        }.disposed(by: dpg)
     }
     func bindViewModel()
     {

@@ -34,6 +34,8 @@ enum cellData {
     
     // Personal info
     case registrationInfo
+    case email
+    case mobile
     case memberSince
     
     var cellTitle:String? {
@@ -70,6 +72,10 @@ enum cellData {
             return "Transaction Notifications".localized
         case .registrationInfo:
             return "Registration info".localized
+        case .email:
+            return "Email".localized
+        case .mobile:
+            return "Mobile".localized
         case .memberSince:
             return "Member since".localized
         }
@@ -77,8 +83,12 @@ enum cellData {
     var subTitleLabel:String? {
         switch self {
         case .registrationInfo:
-            let name = KeychainManager.share.getLastAccount()?.account
-            return name
+            var infoString = ""
+            if let mode = KeychainManager.share.getLastAccount()?.loginMode
+            {
+                infoString = (mode == .emailPage ? "E-mail":"Mobile")
+            }
+            return infoString
         case .currency:
             return "USD"
         case .security:
@@ -110,9 +120,28 @@ enum cellData {
              .emailAuthemtication,
              .changePassword,
              .systemNotifications,
-             .transactionNotifications,
-             .memberSince:
+             .transactionNotifications:
             return ""
+        case .email:
+            var emailString = ""
+            if let account = KeychainManager.share.getLastAccount()?.account , !account.isEmpty
+            {
+                emailString = account
+            }
+            return emailString
+        case .mobile:
+            var mobileString = ""
+            if let mobile = KeychainManager.share.getLastAccount()?.phone
+            {
+                mobileString = mobile
+            }
+            return mobileString
+        case .memberSince:
+            if let time = MemberAccountDto.share?.memberSinceDate()
+            {
+                return time
+            }
+            return "111"
         }
     }
     var arrowAlpha:CGFloat {
@@ -121,6 +150,22 @@ enum cellData {
             return 0.0
         case .emailAuthemtication:
             return 0.3
+        case .email:
+            if self.subTitleLabel != ""
+            {
+                return 0.0
+            }else
+            {
+                return 1.0
+            }
+        case .mobile:
+            if self.subTitleLabel != ""
+            {
+                return 0.0
+            }else
+            {
+                return 1.0
+            }
         default :
             return 1.0
         }
@@ -129,6 +174,22 @@ enum cellData {
         switch self {
         case .currency,.language,.faceID,.about,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
             return true
+        case .email:
+            if self.subTitleLabel != ""
+            {
+                return true
+            }else
+            {
+                return false
+            }
+        case .mobile:
+            if self.subTitleLabel != ""
+            {
+                return true
+            }else
+            {
+                return false
+            }
         default :
             return false
         }
@@ -152,7 +213,9 @@ enum cellData {
              .systemNotifications,
              .transactionNotifications,
              .registrationInfo,
-             .memberSince:
+             .memberSince,
+             .email,
+             .mobile:
             return true
         default :
             return false
@@ -225,10 +288,7 @@ class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務方法
     func setupUI()
     {
-//        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
-//        arrowImageView.image = image
-//        arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
-   
+
     }
     func setupByData()
     {
@@ -243,7 +303,6 @@ class UserMenuTableViewCell: UITableViewCell {
             cellImageView.isHidden = cellData.imageHidden
             checkBoxImageView.isHidden = cellData.checkBoxHidden
             cellImageView.image = UIImage(named: cellData.cellIconImageName)
-
             arrowImageView.alpha = cellData.arrowAlpha
             arrowImageView.isHidden = cellData.arrowHidden
             

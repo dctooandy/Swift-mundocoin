@@ -626,10 +626,11 @@ extension LoginSignupViewController {
         }
         if let dto = loginDto
         {
-            MemberAccountDto.share = MemberAccountDto(account: dto.account,
-                                                      password: dto.password,
-                                                      loginMode: dto.loginMode,
-                                                      phone: dto.phone)
+            MemberAccountDto.share?.account = dto.account
+            MemberAccountDto.share?.password = dto.password
+            MemberAccountDto.share?.loginMode = dto.loginMode
+            MemberAccountDto.share?.phone = dto.phone
+            MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.loginMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
 //            KeychainManager.share.updateAccount(acc: dto.account,
@@ -649,10 +650,11 @@ extension LoginSignupViewController {
         }
         if let dto = signupDto
         {
-            MemberAccountDto.share = MemberAccountDto(account: dto.account,
-                                                      password: dto.password,
-                                                      loginMode: dto.signupMode,
-                                                      phone: dto.phone)
+            MemberAccountDto.share?.account = dto.account
+            MemberAccountDto.share?.password = dto.password
+            MemberAccountDto.share?.loginMode = dto.signupMode
+            MemberAccountDto.share?.phone = dto.phone
+            MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.signupMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
             KeychainManager.share.saveAccPwd(acc: dto.account,
