@@ -51,7 +51,7 @@ enum UserMenuCellData {
         case .language:
             return "Language".localized
         case .faceID:
-            return "Face ID".localized
+            return "Face ID/Biometric".localized
         case .helpSupport:
             return "Help & Support".localized
         case .termPolicies:
@@ -100,7 +100,7 @@ enum UserMenuCellData {
         case .language:
             return "English"
         case .faceID:
-            return "Unlock the app"
+            return ""
         case .helpSupport:
             return ""
         case .termPolicies:

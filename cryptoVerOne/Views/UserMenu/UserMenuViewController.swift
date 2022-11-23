@@ -358,7 +358,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             return 20
         }else if indexPath.section == 1 && indexPath.row == (3 + faceIDRowDiff)
         {
-            return 92
+            return 70
         }else
         {
             return 52

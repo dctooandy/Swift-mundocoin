@@ -223,10 +223,10 @@ class InputStyleView: UIView {
         lb.text = "Email".localized
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         lb.textColor = #colorLiteral(red: 0, green: 0.1254901961, blue: 0.2, alpha: 1)
-        lb.font = Fonts.SFProDisplayBold(14)
+        lb.font = Fonts.SFProDisplayBold(13)
 #else
         lb.textColor = #colorLiteral(red: 0.106, green: 0.145, blue: 0.349, alpha: 1.0)
-        lb.font = Fonts.PlusJakartaSansBold(14)
+        lb.font = Fonts.PlusJakartaSansBold(13)
 #endif
         return lb
     }()

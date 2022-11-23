@@ -3348,8 +3348,8 @@
 				A1973A272828F5F2009932D8 /* PagingView */,
 				A1973A202828F3B7009932D8 /* WithdrawView */,
 				A1973A182828F314009932D8 /* DepositView */,
-				A19C70DD28224A62000AFC3F /* WalletViewController.swift */,
 				09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */,
+				A19C70DD28224A62000AFC3F /* WalletViewController.swift */,
 				A19739E92828C5B5009932D8 /* WalletViewController.xib */,
 			);
 			path = WalletView;
