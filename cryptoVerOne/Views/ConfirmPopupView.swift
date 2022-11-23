@@ -62,12 +62,13 @@ class ConfirmPopupView: PopupBottomSheet {
     typealias DoneHandler = (Bool) -> ()
     var doneHandler: DoneHandler?
     
-    init(viewHeight:CGFloat = 155.0 ,iconMode:ConfirmIconMode = .nonIcon(["Cancel".localized,"Logout".localized]), title: String = "", message: String ,  _ done: DoneHandler?) {
+    init(viewHeight:CGFloat = 155.0 ,iconMode:ConfirmIconMode = .nonIcon(["Cancel".localized,"Logout".localized]), title: String = "", message: String ,fonSize : CGFloat = 16,  _ done: DoneHandler?) {
         super.init()
         containerHeight = viewHeight
         self.iconMode = iconMode
         titleLabel.text = title
         messageLabel.text = message
+        messageLabel.font = Fonts.PlusJakartaSansMedium(fonSize)
         doneHandler = done
     }
     func heightForView(text:String, font:UIFont, width:CGFloat) -> CGFloat{
@@ -160,7 +161,7 @@ class ConfirmPopupView: PopupBottomSheet {
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(10)
+            make.top.equalTo(titleLabel.snp.bottom).offset(15)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
         }
@@ -183,7 +184,8 @@ class ConfirmPopupView: PopupBottomSheet {
 //            containerHeight = viewHeight
         }
         defaultContainer.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
+            make.centerX.equalToSuperview()
+            make.centerY.equalToSuperview().offset(-33)
 //            make.width.equalToSuperview().multipliedBy(0.75)
             make.left.equalToSuperview().offset(32)
             make.right.equalToSuperview().offset(-32)
