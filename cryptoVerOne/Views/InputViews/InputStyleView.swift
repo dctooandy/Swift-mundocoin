@@ -368,24 +368,24 @@ class InputStyleView: UIView {
  
     convenience init(inputViewMode: InputViewMode = .email(withStar:true)) {
         self.init(frame: .zero)
-        self.inputViewMode = inputViewMode
         self.setup()
+        self.inputViewMode = inputViewMode
+        self.setupUIByMode()
+        self.resetUI()
         self.bindPwdButton()
         self.bindImageView()
-        self.bindTextfield()
         self.bindLabel()
-        self.bindCancelButton()
         timer?.invalidate()
     }
     func setMode(mode:InputViewMode)
     {
-        self.inputViewMode = mode
         self.setup()
+        self.inputViewMode = mode
+        self.setupUIByMode()
+        self.resetUI()
         self.bindPwdButton()
         self.bindImageView()
-        self.bindTextfield()
         self.bindLabel()
-        self.bindCancelButton()
         timer?.invalidate()
     }
 
@@ -396,20 +396,193 @@ class InputStyleView: UIView {
     }
     // MARK: -
     // MARK:業務方法
+    func addSubviews()
+    {
+        addSubview(topLabel)
+        addSubview(textField)
+        addSubview(invalidLabel)
+        textField.addSubview(tfMaskView)
+        textField.delegate = self
+        textField.isUserInteractionEnabled = false
+        addSubview(textView)
+        textView.delegate = self
+        addSubview(mobileCodeAnchorView)
+        mobileCodeAnchorView.addSubview(mobileCodeLabel)
+        mobileCodeAnchorView.addSubview(mobileDrawdownImageView)
+        mobileCodeAnchorView.addSubview(labelMaskView)
+        mobileCodeAnchorView.sendSubviewToBack(labelMaskView)
+        
+        addSubview(verifyResentLabel)
+        addSubview(scanImageView)
+        addSubview(addressBookImageView)
+        
+        addSubview(dropDownImageView)
+        addSubview(chooseButton)
+        addSubview(anchorView)
+        
+        addSubview(normalTextLabel)
+        addSubview(copyAddressImageView)
+        // MC524 打開白名單
+        addSubview(addAddressImageView)
+        
+        addSubview(textLabel)
+        
+        addSubview(displayRightButton)
+        addSubview(cancelRightButton)
+    }
+    func addConstraints()
+    {
+        textView.snp.makeConstraints { make in
+            make.top.equalTo(textField).offset(5)
+            make.leading.equalToSuperview().offset(20)
+            make.trailing.equalToSuperview().offset(-20-(24 + 20 + 10))
+            make.bottom.equalTo(textField).offset(-5)
+        }
+        topLabel.snp.makeConstraints { (make) in
+            make.top.equalToSuperview()
+            make.leading.equalToSuperview().offset(7)
+            make.height.equalTo(Views.inputStyleTopLabelHeight)
+        }
+        // mobile 相關物件
+        mobileCodeAnchorView.snp.makeConstraints { make in
+            make.top.equalTo(topLabel.snp.bottom).offset(9)
+            make.leading.equalToSuperview().offset(7)
+            make.height.equalTo(Views.inputStyleTextFieldHeight)
+            make.width.equalTo(90)
+        }
+        mobileCodeLabel.snp.makeConstraints { make in
+            make.top.height.equalToSuperview()
+            make.left.equalToSuperview().offset(12)
+        }
+        mobileDrawdownImageView.snp.makeConstraints { make in
+            make.size.equalTo(20)
+            make.centerY.equalToSuperview()
+            make.right.equalToSuperview().offset(-12)
+        }
+        labelMaskView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(1.10)
+            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+        }
+
+        textField.snp.makeConstraints { (make) in
+            make.top.equalTo(topLabel.snp.bottom).offset(9)
+            make.leading.equalToSuperview().offset(20 + 100)
+            make.trailing.equalToSuperview().offset(-20)
+        }
+        invalidLabel.snp.makeConstraints { (make) in
+            make.top.equalTo(textField.snp.bottom).offset(2)
+            make.left.equalTo(topLabel)
+            make.trailing.equalTo(textField)
+            make.height.equalTo(22.0)
+        }
+        tfMaskView.snp.makeConstraints { (make) in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(1.10)
+            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+        }
+
+        verifyResentLabel.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-17)
+            make.centerY.equalTo(textField)
+        }
+        scanImageView.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-20)
+            make.centerY.equalTo(textField)
+            make.size.equalTo(20)
+        }
+        addressBookImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(scanImageView.snp.left).offset(-10)
+            make.centerY.equalTo(textField)
+            make.size.equalTo(24)
+        }
+        let textFieldMulH = height(48/812)
+        let tfWidth = width(361.0/414.0) - 40
+        dropDownImageView.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-20)
+            make.centerY.equalTo(textField)
+            make.size.equalTo(20)
+        }
+        anchorView.snp.makeConstraints { (make) in
+            make.top.equalTo(textField.snp.bottom)
+            make.height.equalTo(textFieldMulH)
+            make.centerX.equalToSuperview()
+            make.width.equalTo(tfWidth)
+        }
+        chooseButton.snp.makeConstraints { (make) in
+            make.edges.equalTo(textField)
+        }
+        normalTextLabel.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalTo(textField)
+            make.right.equalToSuperview().offset(-35 - 46)
+//                make.right.equalToSuperview().offset(-35 - 46 + 34)
+        }
+        copyAddressImageView.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-10)
+            make.centerY.equalTo(textField)
+            make.size.equalTo(24)
+        }
+        // MC524 打開白名單
+        addAddressImageView.snp.makeConstraints { (make) in
+            make.right.equalTo(copyAddressImageView.snp.left).offset(-8)
+            make.centerY.equalTo(textField)
+            make.size.equalTo(24)
+        }
+        textLabel.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalTo(textField)
+            make.right.equalToSuperview().offset(-40)
+        }
+        displayRightButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview().offset(-12 - 10)
+            make.centerY.equalTo(textField)
+            make.height.equalTo(24)
+            make.width.equalTo(displayOffetWidth)
+        }
+        cancelRightButton.snp.remakeConstraints { (make) in
+            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
+            make.centerY.equalTo(textField)
+            make.height.equalTo(24)
+            make.width.equalTo(cancelOffetWidth)
+        }
+    }
+
     func setup()
+    {
+        addSubviews()
+        tvHeightConstraint = NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Views.inputStyleTextFieldHeight))
+        textField.addConstraint(tvHeightConstraint)
+        
+        addConstraints()
+       
+        invalidLabel.isHidden = true
+//        displayRightButton.tintColor = Themes.grayA3AED0
+       
+        displayRightButton.tintColor = Themes.gray707EAE
+        cancelRightButton.tintColor = Themes.gray707EAE
+        
+        verifyResentLabel.text = inputViewMode.rightLabelString()
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        verifyResentLabel.textColor = Themes.green13BBB1
+        verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
+#else
+        verifyResentLabel.textColor = Themes.purple6149F6
+        verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
+#endif
+    }
+    func setupUIByMode()
     {
         let isPasswordType = (inputViewMode == .password ||
                               inputViewMode == .newPassword ||
                               inputViewMode == .confirmPassword ||
                               inputViewMode == .oldPassword ||
                               inputViewMode == .auditPassword)
+
         var isCustomLabel = false
-        let tfHeight = 46.0
         var showTextView = false
         var showMobileCodeView = false
         var leadingDif:CGFloat = 0
         switch inputViewMode {
-        case .customLabel(_) ,.auditAccount,.auditPassword:
+        case .customLabel ,.auditAccount,.auditPassword:
             isCustomLabel = true
         case .withdrawToAddress , .address:
             showTextView = true
@@ -419,102 +592,203 @@ class InputStyleView: UIView {
         default:
             break
         }
-        addSubview(topLabel)
-        addSubview(textField)
-        tvHeightConstraint = NSLayoutConstraint(item: textField, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(tfHeight))
-        if showTextView == true
-        {
-            addSubview(textView)
-            textView.delegate = self
-        }
-
-        addSubview(invalidLabel)
-        textField.delegate = self
-        displayRightButton.tintColor = Themes.grayA3AED0
-        let topLabelH = 17
         let invalidH = (isPasswordType ? 39.0 : (isCustomLabel  ? 0.0 : 22.0))
-        topLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(7)
-            make.height.equalTo(topLabelH)
+        
+        if showTextView == false
+        {
+            textView.removeFromSuperview()
+            textField.isUserInteractionEnabled = true
+            invalidLabel.isHidden = false
         }
+        
         if showMobileCodeView == true
         {
-            addSubview(mobileCodeAnchorView)
-            mobileCodeAnchorView.addSubview(mobileCodeLabel)
-            mobileCodeAnchorView.addSubview(mobileDrawdownImageView)
-            mobileCodeAnchorView.snp.makeConstraints { make in
-                make.top.equalTo(topLabel.snp.bottom).offset(9)
-                make.leading.equalToSuperview().offset(7)
-                make.height.equalTo(tfHeight)
-                make.width.equalTo(90)
-            }
-            mobileCodeLabel.snp.makeConstraints { make in
-                make.top.height.equalToSuperview()
-                make.left.equalToSuperview().offset(12)
-            }
-            mobileDrawdownImageView.snp.makeConstraints { make in
-                make.size.equalTo(20)
-                make.centerY.equalToSuperview()
-                make.right.equalToSuperview().offset(-12)
-            }
-        }
-        textField.snp.makeConstraints { (make) in
-            make.top.equalTo(topLabel.snp.bottom).offset(9)
-            make.leading.equalToSuperview().offset(20 + leadingDif)
-            make.trailing.equalToSuperview().offset(-20)
-//            make.height.equalTo(46)
-        }
-        textField.addConstraint(tvHeightConstraint)
-        if showTextView == true
+            bindMobileTypeAction()
+        }else
         {
-//            textField.isHidden = true
-            textField.isUserInteractionEnabled = false
-            textView.snp.makeConstraints { make in
-                make.top.equalTo(textField).offset(5)
-                make.leading.equalToSuperview().offset(20)
-                make.trailing.equalToSuperview().offset(-20-(24 + 20 + 10))
-                make.bottom.equalTo(textField).offset(-5)
-            }
-            invalidLabel.isHidden = true
+            mobileCodeAnchorView.removeFromSuperview()
         }
-        invalidLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(textField.snp.bottom).offset(2)
-            make.left.equalTo(topLabel)
-            make.trailing.equalTo(textField)
+        textField.snp.updateConstraints { (make) in
+            make.leading.equalToSuperview().offset(20 + leadingDif)
+        }
+        invalidLabel.snp.updateConstraints { (make) in
             make.height.equalTo(invalidH)
         }
-        setMaskView(showTV: showTextView)
-        resetUI()
+        displayOffetWidth = (isPasswordType ? 24.0:0.0)
+        textField.isSecureTextEntry = isPasswordType
     }
-    func setMaskView(showTV:Bool = false) {
-        textField.addSubview(tfMaskView)
-        tfMaskView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(1.10)
-            make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
-        }
-        if inputViewMode == .phone(withStar:true) || inputViewMode == .phone(withStar:false) || inputViewMode == .forgotPhone
-        {
-            mobileCodeAnchorView.addSubview(labelMaskView)
-            mobileCodeAnchorView.sendSubviewToBack(labelMaskView)
-            labelMaskView.snp.makeConstraints { (make) in
-                make.center.equalToSuperview()
-                make.width.equalToSuperview().multipliedBy(1.10)
-                make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
+    func resetUI()
+    {
+        var rightLabelWidth : CGFloat = 10.0
+        var isTxidString:Bool = false
+        var txidStringLessThenThree:Bool = false
+        var isEmailMobileVerify : Bool = false
+        switch self.inputViewMode {
+        case .txid(let tString):
+            isTxidString = true
+            if tString.count < 3
+            {
+                txidStringLessThenThree = true
             }
+        case .emailVerify(_) ,.mobileVerify(_):
+            isEmailMobileVerify = true
+        default:
+           break
         }
-//        if showTV == false
-//        {
-//        }else
-//        {
-//            textView.addSubview(tfMaskView)
-//            tfMaskView.snp.makeConstraints { (make) in
-//                make.center.equalToSuperview()
-//                make.width.equalToSuperview().multipliedBy(1.10)
-//                make.height.equalToSuperview().multipliedBy(Views.isIPhoneWithNotch() ? 1.0 : 1.1)
-//            }
-//        }
+        switch self.inputViewMode {
+        case .copy ,.withdrawToAddress,.address ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
+            cancelOffetWidth = 0.0
+            textField.isUserInteractionEnabled = false
+        default:
+            cancelOffetWidth = 24.0
+            textField.isUserInteractionEnabled = true
+        }
+     
+        if inputViewMode == .twoFAVerify ||
+            inputViewMode == .copy ||
+            isEmailMobileVerify == true
+        {
+            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
+        }else
+        {
+            verifyResentLabel.removeFromSuperview()
+        }
+        
+        if inputViewMode == .withdrawToAddress || inputViewMode == .address
+        {
+            rightLabelWidth = 24 + 20
+            if inputViewMode == .withdrawToAddress
+            {
+                // 1006 白名單功能開關
+                if KeychainManager.share.getWhiteListModeEnable() == true
+                {
+                    // MC524 打開白名單
+                    rightLabelWidth = 24 + 24 + 20
+                }else
+                {
+                    addressBookImageView.removeFromSuperview()
+                }
+            }else
+            {
+                addressBookImageView.removeFromSuperview()
+            }
+        }else
+        {
+            scanImageView.removeFromSuperview()
+            addressBookImageView.removeFromSuperview()
+        }
+        if inputViewMode.isDropDownStyle()
+        {
+            textField.text = inputViewMode.dropDownStylePlaceHolder()
+            rightLabelWidth = 18 + 20
+            if inputViewMode.isDropDownStyleEnable()
+            {
+                setupChooseDropdown()
+                bindChooseButton()
+                dropDownImageView.isHidden = false
+            }else
+            {
+                textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+                tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
+                dropDownImageView.isHidden = true
+            }
+        }else
+        {
+            dropDownImageView.removeFromSuperview()
+            chooseButton.removeFromSuperview()
+            anchorView.removeFromSuperview()
+        }
+        if inputViewMode == .withdrawAddressToDetail(true) || inputViewMode == .withdrawAddressFromDetail || inputViewMode == .withdrawAddressInnerFromDetail
+        {
+            // 1006 白名單功能開關
+            if KeychainManager.share.getWhiteListModeEnable() == true
+            {
+                // MC524 打開白名單
+                rightLabelWidth = 18 + 18 + 10
+            }else
+            {
+                addAddressImageView.removeFromSuperview()
+                rightLabelWidth = 18 + 18 + 10 - 34
+            }
+            resetTopLabelAndMask()
+            tfMaskView.layer.borderColor = UIColor.clear.cgColor
+        }else if inputViewMode == .withdrawAddressToDetail(false)
+        {
+            addAddressImageView.removeFromSuperview()
+            
+            rightLabelWidth = 18 + 18 + 10 - 34
+            normalTextLabel.lineBreakMode = .byTruncatingMiddle
+            normalTextLabel.numberOfLines = 1
+            resetTopLabelAndMask()
+            tfMaskView.layer.borderColor = UIColor.clear.cgColor
+            normalTextLabel.snp.updateConstraints { (make) in
+                make.right.equalToSuperview().offset(-35)
+            }
+        }else if inputViewMode == .withdrawAddressToConfirm
+        {
+            copyAddressImageView.removeFromSuperview()
+            addAddressImageView.removeFromSuperview()
+            
+            normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+            normalTextLabel.font = Fonts.PlusJakartaSansRegular(16)
+            rightLabelWidth = 18 + 10
+            resetTopLabelAndMask()
+            tfMaskView.backgroundColor = Themes.grayF4F7FE
+            normalTextLabel.snp.updateConstraints { (make) in
+                make.right.equalToSuperview().offset(-20)
+            }
+        }else if isTxidString == true
+        {
+            addAddressImageView.removeFromSuperview()
+            if txidStringLessThenThree == true
+            {
+                textLabel.removeFromSuperview()
+                copyAddressImageView.removeFromSuperview()
+                normalTextLabel.snp.updateConstraints { (make) in
+                    make.right.equalToSuperview().offset(-20)
+                }
+                normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+            }else
+            {
+                normalTextLabel.snp.updateConstraints { (make) in
+                    make.right.equalToSuperview().offset(-20)
+                }
+                normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
+                rightLabelWidth = 18 + 10
+            }
+            resetTopLabelAndMask()
+            tfMaskView.layer.borderColor = UIColor.clear.cgColor
+        }else
+        {
+            textLabel.removeFromSuperview()
+            normalTextLabel.removeFromSuperview()
+            copyAddressImageView.removeFromSuperview()
+            addAddressImageView.removeFromSuperview()
+        }
+        
+        topLabel.text = inputViewMode.topString()
+        textField.setPlaceholder(inputViewMode.textPlacehloder(), with: Themes.grayA3AED0)
+        invalidLabel.text = inputViewMode.invalidString()
+        
+        displayRightButton.setTitle(nil, for: .normal)
+        displayRightButton.setImage(displayPwdImg, for: .normal)
+        displayRightButton.snp.updateConstraints { (make) in
+            make.right.equalToSuperview().offset(-12 - rightLabelWidth)
+            make.width.equalTo(displayOffetWidth)
+        }
+        displayRightButton.imageView?.contentMode = .scaleAspectFill
+        //設定文字刪除
+        cancelRightButton.setTitle(nil, for: .normal)
+        cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
+        cancelRightButton.snp.updateConstraints { (make) in
+            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
+            make.width.equalTo(cancelOffetWidth)
+        }
+        cancelRightButton.isHidden = true
+        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 12 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
+        textField.rightViewMode = .always
+        textField.rightView = rightView
+        bringSubviewToFront(topLabel)
     }
     func resetTopLabelAndMask() {
         topLabel.snp.updateConstraints { (make) in
@@ -529,291 +803,12 @@ class InputStyleView: UIView {
         }
         self.sendSubviewToBack(textField)
     }
-    func resetConfirmTopLabelAndMask() {
-        topLabel.snp.updateConstraints { (make) in
-            make.top.equalToSuperview()
-            make.leading.equalToSuperview().offset(20)
-        }
-        tfMaskView.snp.remakeConstraints { (make) in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(topLabel).offset(-15)
-            make.bottom.equalTo(normalTextLabel).offset(15)
-            make.left.right.equalTo(self)
-        }
-        self.sendSubviewToBack(textField)
-    }
-    func resetUI()
+    func bindMobileTypeAction()
     {
-        displayRightButton.tintColor = Themes.gray707EAE
-        cancelRightButton.tintColor = Themes.gray707EAE
-        let isPasswordType = (inputViewMode == .password ||
-                              inputViewMode == .newPassword ||
-                              inputViewMode == .confirmPassword ||
-                              inputViewMode == .oldPassword ||
-                              inputViewMode == .auditPassword)
-        var topLabelString = ""
-        var placeHolderString = ""
-        var invalidLabelString = ""
-        var rightLabelWidth : CGFloat = 0.0
-        displayOffetWidth = (isPasswordType ? 24.0:0.0)
-        switch self.inputViewMode {
-        case .copy ,.withdrawToAddress,.address ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
-            cancelOffetWidth = 0.0
-            textField.isUserInteractionEnabled = false
-        default:
-            cancelOffetWidth = 24.0
-            textField.isUserInteractionEnabled = true
-        }
-        textField.isSecureTextEntry = isPasswordType
-        topLabelString = inputViewMode.topString()
-        placeHolderString = inputViewMode.textPlacehloder()
-        invalidLabelString = inputViewMode.invalidString()
-     
-        if inputViewMode == .twoFAVerify ||
-            inputViewMode == .copy
-        {
-            addSubview(verifyResentLabel)
-            verifyResentLabel.text = inputViewMode.rightLabelString()
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-            verifyResentLabel.textColor = Themes.green13BBB1
-            verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
-#else
-            verifyResentLabel.textColor = Themes.purple6149F6
-            verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
-#endif
-            verifyResentLabel.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-17)
-                make.centerY.equalTo(textField)
-            }
-            rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
-        }
-        else if inputViewMode == .withdrawToAddress || inputViewMode == .address
-        {
-            addSubview(scanImageView)
-            scanImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-20)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(20)
-            }
-            rightLabelWidth = 24 + 20
-            if inputViewMode == .withdrawToAddress
-            {
-                // 1006 白名單功能開關
-                if KeychainManager.share.getWhiteListModeEnable() == true
-                {
-                    // MC524 打開白名單
-                    addSubview(addressBookImageView)
-                    addressBookImageView.snp.makeConstraints { (make) in
-                        make.right.equalTo(scanImageView.snp.left).offset(-10)
-                        make.centerY.equalTo(textField)
-                        make.size.equalTo(24)
-                    }
-                    rightLabelWidth = 24 + 24 + 20
-                }
-            }
-        }
-        else if inputViewMode.isDropDownStyle()
-        {
-            textField.text = inputViewMode.dropDownStylePlaceHolder()
-            let textFieldMulH = height(48/812)
-            let tfWidth = width(361.0/414.0) - 40
-            addSubview(dropDownImageView)
-            addSubview(chooseButton)
-            addSubview(anchorView)
-            dropDownImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-20)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(20)
-            }
-            anchorView.snp.makeConstraints { (make) in
-                make.top.equalTo(textField.snp.bottom)
-                make.height.equalTo(textFieldMulH)
-                make.centerX.equalToSuperview()
-                make.width.equalTo(tfWidth)
-            }
-            chooseButton.snp.makeConstraints { (make) in
-                make.edges.equalTo(textField)
-            }
-            rightLabelWidth = 18 + 20
-            if inputViewMode.isDropDownStyleEnable()
-            {
-                setupChooseDropdown()
-                bindChooseButton()
-                dropDownImageView.isHidden = false
-            }else
-            {
-                textField.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-                tfMaskView.backgroundColor = #colorLiteral(red: 0.8788456917, green: 0.8972983956, blue: 0.9480333924, alpha: 1)
-                dropDownImageView.isHidden = true
-            }
-        }
-        else if inputViewMode == .withdrawAddressToDetail(true) || inputViewMode == .withdrawAddressFromDetail || inputViewMode == .withdrawAddressInnerFromDetail
-        {
-            addSubview(normalTextLabel)
-            // 1006 白名單功能開關
-            if KeychainManager.share.getWhiteListModeEnable() == true
-            {
-                // MC524 打開白名單
-                addSubview(addAddressImageView)
-            }
-            addSubview(copyAddressImageView)
-            normalTextLabel.snp.makeConstraints { (make) in
-                make.left.top.bottom.equalTo(textField)
-                make.right.equalToSuperview().offset(-35 - 46)
-//                make.right.equalToSuperview().offset(-35 - 46 + 34)
-            }
-            copyAddressImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(24)
-            }
-            // 1006 白名單功能開關
-            if KeychainManager.share.getWhiteListModeEnable() == true
-            {
-                // MC524 打開白名單
-                addAddressImageView.snp.makeConstraints { (make) in
-                    make.right.equalTo(copyAddressImageView.snp.left).offset(-8)
-                    make.centerY.equalTo(textField)
-                    make.size.equalTo(24)
-                }
-                // MC524 打開白名單
-                rightLabelWidth = 18 + 18 + 10
-            }else
-            {
-                rightLabelWidth = 18 + 18 + 10 - 34
-            }
-            resetTopLabelAndMask()
-            tfMaskView.layer.borderColor = UIColor.clear.cgColor
-        }
-        else if inputViewMode == .withdrawAddressToDetail(false)
-        {
-            addSubview(normalTextLabel)
-            addSubview(copyAddressImageView)
-            normalTextLabel.snp.makeConstraints { (make) in
-                make.left.top.bottom.equalTo(textField)
-                make.right.equalToSuperview().offset(-35)
-//                make.right.equalToSuperview().offset(-35 - 46 + 34)
-            }
-            copyAddressImageView.snp.makeConstraints { (make) in
-                make.right.equalToSuperview().offset(-10)
-                make.centerY.equalTo(textField)
-                make.size.equalTo(24)
-            }
-            rightLabelWidth = 18 + 18 + 10 - 34
-//            normalTextLabel.snp.makeConstraints { (make) in
-//                make.left.top.bottom.equalTo(textField)
-//                make.right.equalToSuperview().offset(-35)
-//            }
-            normalTextLabel.lineBreakMode = .byTruncatingMiddle
-            normalTextLabel.numberOfLines = 1
-            resetTopLabelAndMask()
-            tfMaskView.layer.borderColor = UIColor.clear.cgColor
-        }
-        else if inputViewMode == .withdrawAddressToConfirm
-        {
-            addSubview(normalTextLabel)
-            normalTextLabel.snp.makeConstraints { (make) in
-                make.left.top.bottom.equalTo(textField)
-                make.right.equalToSuperview().offset(-20)
-            }
-            normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-            normalTextLabel.font = Fonts.PlusJakartaSansRegular(16)
-            rightLabelWidth = 18 + 10
-            resetTopLabelAndMask()
-            tfMaskView.backgroundColor = Themes.grayF4F7FE
-        }
-        else if inputViewMode == .phone(withStar:true) || inputViewMode == .phone(withStar:false) || inputViewMode == .forgotPhone
-        {
-            addDoneCancelToolbar()
-            mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in
-                onChoosePhoneCodeClick.onNext(mobileCodeLabel.text ?? "")
-            }.disposed(by: dpg)
-        }
-        else
-        {
-            switch self.inputViewMode {
-            case .txid(let tString):
-                if tString.count < 3
-                {
-                    addSubview(normalTextLabel)
-                    normalTextLabel.snp.makeConstraints { (make) in
-                        make.left.top.bottom.equalTo(textField)
-                        make.right.equalToSuperview().offset(-20)
-                    }
-                    normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-                }else
-                {
-                    addSubview(textLabel)
-                    textLabel.snp.makeConstraints { (make) in
-                        make.left.top.bottom.equalTo(textField)
-                        make.right.equalToSuperview().offset(-40)
-                    }
-                    addSubview(normalTextLabel)
-                    normalTextLabel.snp.makeConstraints { (make) in
-                        make.left.top.bottom.equalTo(textField)
-                        make.right.equalToSuperview().offset(-20)
-                    }
-                    normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-                    addSubview(copyAddressImageView)
-                    copyAddressImageView.snp.makeConstraints { (make) in
-                        make.right.equalToSuperview().offset(-10)
-                        make.centerY.equalTo(textField)
-                        make.size.equalTo(24)
-                    }
-                    rightLabelWidth = 18 + 10
-                }
-                resetTopLabelAndMask()
-                tfMaskView.layer.borderColor = UIColor.clear.cgColor
-            case .emailVerify(_) ,.mobileVerify(_):
-                addSubview(verifyResentLabel)
-                verifyResentLabel.text = inputViewMode.rightLabelString()
-#if Approval_PRO || Approval_DEV || Approval_STAGE
-                verifyResentLabel.textColor = Themes.green13BBB1
-                verifyResentLabel.font = Fonts.PlusJakartaSansRegular(14)
-#else
-                verifyResentLabel.textColor = Themes.purple6149F6
-                verifyResentLabel.font = Fonts.PlusJakartaSansBold(15)
-#endif
-                verifyResentLabel.snp.makeConstraints { (make) in
-                    make.right.equalToSuperview().offset(-17)
-                    make.centerY.equalTo(textField)
-                }
-                rightLabelWidth = verifyResentLabel.intrinsicContentSize.width + 12
-            default:
-                rightLabelWidth = 10
-            }
-        }
-        
-        topLabel.text = topLabelString
-        invalidLabel.text = invalidLabelString
-        textField.setPlaceholder(placeHolderString, with: Themes.grayA3AED0)
-        
-        addSubview(displayRightButton)
-        displayRightButton.setTitle(nil, for: .normal)
-        displayRightButton.setImage(displayPwdImg, for: .normal)
-//        displayRightButton.setBackgroundImage(displayPwdImg, for: .normal)
-        displayRightButton.snp.remakeConstraints { (make) in
-            make.right.equalToSuperview().offset(-12 - rightLabelWidth)
-            make.centerY.equalTo(textField)
-            make.height.equalTo(24)
-            make.width.equalTo(displayOffetWidth)
-        }
-        displayRightButton.imageView?.contentMode = .scaleAspectFill
-        addSubview(cancelRightButton)
-        //設定文字刪除
-        cancelRightButton.setTitle(nil, for: .normal)
-        cancelRightButton.setBackgroundImage(cancelImg, for: .normal)
-        cancelRightButton.snp.remakeConstraints { (make) in
-            make.right.equalTo(displayRightButton.snp.left).offset((displayOffetWidth > 0) ? -12:0)
-            make.centerY.equalTo(textField)
-            make.height.equalTo(24)
-            make.width.equalTo(cancelOffetWidth)
-        }
-        cancelRightButton.isHidden = true
-        let rightView: UIView = UIView(frame: CGRect(x: 0, y: 0, width: 12 + rightLabelWidth + displayOffetWidth + cancelOffetWidth , height: 10))
-        textField.rightViewMode = .always
-        textField.rightView = rightView
-        bringSubviewToFront(topLabel)
+        addDoneCancelToolbar()
+        mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in
+            onChoosePhoneCodeClick.onNext(mobileCodeLabel.text ?? "")
+        }.disposed(by: dpg)
     }
     func bindPwdButton()
     {
@@ -858,14 +853,6 @@ class InputStyleView: UIView {
         textLabel.rx.click.subscribeSuccess { [self](_) in
             onTextLabelClick.onNext(textLabel.text!)
         }.disposed(by: dpg)
-    }
-    func bindTextfield()
-    {
-        
-    }
-    func bindCancelButton()
-    {
-        
     }
     func bindChooseButton()
     {
@@ -1060,20 +1047,20 @@ class InputStyleView: UIView {
     }
     
     func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
-            let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
-            let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
-
-            let toolbar: UIToolbar = UIToolbar()
-            toolbar.barStyle = .default
-            toolbar.items = [
-                UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
-                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-                UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
-            ]
-            toolbar.sizeToFit()
-
+        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+        let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
+        
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
+        ]
+        toolbar.sizeToFit()
+        
         self.textField.inputAccessoryView = toolbar
-        }
+    }
     // Default actions:
     @objc func nextButtonTapped() { onChooseClick.onNext(false) }
     @objc func cancelButtonTapped() { self.textField.resignFirstResponder() }

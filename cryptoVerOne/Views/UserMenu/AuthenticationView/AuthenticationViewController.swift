@@ -93,13 +93,14 @@ class AuthenticationViewController: BaseViewController {
     {
         nextButton.rx.tap.subscribeSuccess { [self] _ in
             let dataDto = KeychainManager.share.getLastAccount()
-            verifyVC = VerifyViewController.loadNib()
             if authenInputViewMode == .email(withStar: false)
             {
-                verifyVC.emailAuthenDto = dataDto
+                verifyVC = VerifyViewController.instance( emailAuthenDto: dataDto)
+//                verifyVC.emailAuthenDto = dataDto
             }else
             {
-                verifyVC.mobileAuthenDto = dataDto
+                verifyVC = VerifyViewController.instance( mobileAuthenDto: dataDto)
+//                verifyVC.mobileAuthenDto = dataDto
             }
             navigationController?.pushViewController(verifyVC, animated: true)
         }.disposed(by: dpg)

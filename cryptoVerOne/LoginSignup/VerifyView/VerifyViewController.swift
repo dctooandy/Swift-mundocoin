@@ -145,6 +145,34 @@ class VerifyViewController: BaseViewController {
     lazy var verifyButton = CornerradiusButton()
     // MARK: -
     // MARK:Life cycle
+    static func instance(loginDto : LoginPostDto? = nil,
+                         forgotPWDto : LoginPostDto? = nil,
+                         signupDto : SignupPostDto? = nil,
+                         emailAuthenDto : LoginPostDto? = nil,
+                         mobileAuthenDto : LoginPostDto? = nil) -> VerifyViewController {
+        let vc = VerifyViewController.loadNib()
+        if let loginData = loginDto
+        {
+            vc.loginDto = loginData
+        }
+        if let forgotData = forgotPWDto
+        {
+            vc.forgotPWDto = forgotData
+        }
+        if let signupData = signupDto
+        {
+            vc.signupDto = signupData
+        }
+        if let emailAuthenData = emailAuthenDto
+        {
+            vc.emailAuthenDto = emailAuthenData
+        }
+        if let mobileAuthenData = mobileAuthenDto
+        {
+            vc.mobileAuthenDto = mobileAuthenData
+        }
+        return vc
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Verification"
@@ -175,6 +203,7 @@ class VerifyViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer?.invalidate()
+        timer = nil
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
