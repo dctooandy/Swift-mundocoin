@@ -21,17 +21,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="60"/>
+            <rect key="frame" x="0.0" y="0.0" width="414" height="51"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XY-u9-JKy">
-                    <rect key="frame" x="24" y="0.0" width="49.5" height="18"/>
-                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                    <rect key="frame" x="24" y="0.0" width="46" height="16.5"/>
+                    <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="13"/>
                     <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="XWV-fo-bKj">
-                    <rect key="frame" x="24" y="18" width="366" height="42"/>
+                    <rect key="frame" x="24" y="20.5" width="366" height="30.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="NYA-6j-CMF">
                         <size key="itemSize" width="128" height="33"/>
@@ -48,13 +48,12 @@
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="XWV-fo-bKj" firstAttribute="top" secondItem="3XY-u9-JKy" secondAttribute="bottom" id="MWJ-UZ-biE"/>
                 <constraint firstAttribute="bottom" secondItem="XWV-fo-bKj" secondAttribute="bottom" id="OiF-qR-AdH"/>
                 <constraint firstItem="3XY-u9-JKy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="UFM-DC-mtP"/>
                 <constraint firstItem="3XY-u9-JKy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="pI1-Pe-Tt6"/>
                 <constraint firstItem="XWV-fo-bKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="24" id="pzc-XT-WK7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="XWV-fo-bKj" secondAttribute="trailing" constant="24" id="rnW-XK-9Dz"/>
-                <constraint firstItem="XWV-fo-bKj" firstAttribute="top" secondItem="3XY-u9-JKy" secondAttribute="bottom" id="vAg-SV-sx7"/>
+                <constraint firstItem="XWV-fo-bKj" firstAttribute="top" secondItem="3XY-u9-JKy" secondAttribute="bottom" constant="4" id="vAg-SV-sx7"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="132" y="96"/>

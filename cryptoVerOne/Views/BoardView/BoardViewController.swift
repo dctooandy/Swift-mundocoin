@@ -338,7 +338,7 @@ class BoardViewController: BaseViewController {
             self?.goFetchTableViewData(duration: 0.0)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
-            filterBottomSheet.start(viewController: self ,height: 508)
+            filterBottomSheet.start(viewController: self ,height: 533.0 + Views.bottomOffset)
         }
     }
 }

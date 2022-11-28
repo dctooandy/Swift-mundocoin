@@ -12,13 +12,6 @@ import RxSwift
 import UIKit
 
 enum FilterLabelType {
-//    case deposits
-//    case withdrawals
-//    case all
-//    case pending
-//    case processing
-//    case completed
-
     case history
     case status
     case networkMethod
@@ -31,7 +24,7 @@ enum FilterLabelType {
         case .status:
             return 5
         case .networkMethod:
-            return 1
+            return 3
         }
     }
     var topLabelString : String{
@@ -57,7 +50,9 @@ enum FilterLabelType {
                     "Completed".localized,
                     "Failed".localized]
         case .networkMethod:
-            return ["TRC 20".localized]
+            return ["All".localized,
+                    "TRC20".localized,
+                    "ERC20".localized]
         }
     }
     var widths:[CGFloat] {
@@ -73,7 +68,9 @@ enum FilterLabelType {
                     "Completed".localized.customWidth(),
                     "Failed".localized.customWidth()]
         case .networkMethod:
-            return ["TRC20".localized.customWidth()]
+            return ["All".localized.customWidth(),
+                    "TRC20".localized.customWidth(),
+                    "ERC20".localized.customWidth()]
         }
     }
 }
@@ -106,6 +103,7 @@ class FilterBottomView: UIView {
     }
     var transPostDto :WalletTransPostDto = WalletTransPostDto()
     var filterHistoryValue:String = "ALL"
+    var filterNetworkMethodValue:String = "ALL"
     var filterStateValue:String = "ALL"
     
     // MARK: -
@@ -119,6 +117,7 @@ class FilterBottomView: UIView {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var historyView:DynamicCollectionView!
+    @IBOutlet weak var networkMethodView:DynamicCollectionView!
     @IBOutlet weak var statusView:DynamicCollectionView!
     @IBOutlet weak var cryptoInputView: InputStyleView!
     private lazy var confirmButton: OKButton = {
@@ -189,6 +188,13 @@ class FilterBottomView: UIView {
             make.width.equalToSuperview().multipliedBy(0.39)
         }
         historyView.setData(type: .history)
+        if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+        {
+            networkMethodView.setData(type: .networkMethod)
+        }else
+        {
+            networkMethodView.isHidden = true
+        }
         statusView.setData(type: .status)
         cryptoInputView.setMode(mode: .crypto(["USDT"]))
     }
@@ -266,26 +272,49 @@ class FilterBottomView: UIView {
             if String(data.1) == "Deposits".localized
             {
                 filterHistoryValue = "DEPOSIT"
+                filterNetworkMethodValue = "ALL"
                 filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.deposits)
             }else if String(data.1) == "Withdrawals".localized
             {
                 filterHistoryValue = "WITHDRAW"
+                filterNetworkMethodValue = "ALL"
                 filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.withdrawals)
             }else
             {
                 filterHistoryValue = "ALL"
+                filterNetworkMethodValue = "ALL"
                 filterStateValue = "ALL"
                 FilterStyleThemes.share.acceptSheetHeightStyle(.all)
             }
         }.disposed(by: dpg)
+        networkMethodView.rxCellClick().subscribeSuccess { [self] data in
+            Log.v("NetWotk Method 點到 \(data.1)")
+            filterNetworkMethodValue = changeNetworkMethodString(dataString: data.1)
+        }.disposed(by: dpg)
         statusView.rxCellClick().subscribeSuccess { [self] data in
             Log.v("Status 點到 \(data.1)")
-            filterStateValue = changeString(dataString: data.1)
+            filterStateValue = changeStateString(dataString: data.1)
         }.disposed(by: dpg)
     }
-    func changeString(dataString:String) -> String
+    func changeNetworkMethodString(dataString:String) -> String
+    {
+        if dataString == "All"
+        {
+            return "ALL"
+        }else if dataString == "TRC20"
+        {
+            return "TRC20"
+        }else if dataString == "ERC20"
+        {
+            return "ERC20"
+        }else
+        {
+            return "ALL"
+        }
+    }
+    func changeStateString(dataString:String) -> String
     {
         if dataString == "All"
         {
@@ -357,8 +386,12 @@ class FilterBottomView: UIView {
             transPostDto.beginDate = beginTime! * 1000
             transPostDto.endDate = endTime * 1000
             transPostDto.currency = cryptoString
-            transPostDto.stats = filterStateValue
             transPostDto.historyType = filterHistoryValue
+            if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+            {
+                transPostDto.networkType = filterNetworkMethodValue
+            }
+            transPostDto.stats = filterStateValue
             onConfirmTrigger.onNext(transPostDto)
         } else {
             Log.v("Reset")

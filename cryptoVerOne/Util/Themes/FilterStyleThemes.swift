@@ -32,8 +32,8 @@ class FilterStyleThemes {
     // MARK: 步驟四 內部宣告可綁定參數
     private static func bindSheetHeight<T>(isDeposits: T , isWithdrawals: T) -> Observable<CGFloat>{
         return FilterStyleThemes.heightForFilterMode.map({($0 == .deposits || $0 == .all) ?
-            401 + Views.bottomOffset :
-            478 + Views.bottomOffset})
+            466.0 + Views.bottomOffset :
+            533.0 + Views.bottomOffset})
     }
     private static func bindStatusHidden<T>(isDeposits: T , isWithdrawals: T) -> Observable<Bool>{
         return FilterStyleThemes.heightForFilterMode.map({($0 == .deposits || $0 == .all) ?

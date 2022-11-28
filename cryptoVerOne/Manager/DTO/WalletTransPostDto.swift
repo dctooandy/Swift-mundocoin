@@ -10,12 +10,13 @@ import RxSwift
 struct WalletTransPostDto :Codable {
 
     var currency: String = "ALL"
+    var historyType : String? = "ALL"
+    var networkType : String? = "ALL"
     var stats: String = "ALL"
     var beginDate: TimeInterval = 0
     var endDate: TimeInterval = 0
     var pageable: PagePostDto = PagePostDto()
 
-    var historyType : String? = "ALL"
     
     var beginSecondVale : Int {
         let second = Int(round(beginDate))

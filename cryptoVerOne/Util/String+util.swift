@@ -201,7 +201,7 @@ extension String {
         formatter.dateFormat = format
         return formatter.date(from: self)
     }
-    func customWidth(textSize:CGFloat = 14 , spaceWidth:CGFloat = 40) -> CGFloat {
+    func customWidth(textSize:CGFloat = 14 , spaceWidth:CGFloat = 24) -> CGFloat {
         return NSString(string: self).size(withAttributes: [NSAttributedString.Key.font:Fonts.PlusJakartaSansMedium(textSize)]).width + spaceWidth
     }
     func capitalizingFirstLetter() -> String {
