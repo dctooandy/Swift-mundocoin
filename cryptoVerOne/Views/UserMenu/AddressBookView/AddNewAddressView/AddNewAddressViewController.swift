@@ -212,7 +212,7 @@ class AddNewAddressViewController: BaseViewController {
         dropdownView?.layer.borderWidth = 1
         dropdownView.topLabel.font = Fonts.PlusJakartaSansBold(16)
         addressStyleView.setMode(mode: .address)
-        networkView.setData(type: .networkMethod)
+        networkView.setData(type: .addNewAddressNetworkMethod)
         nameStyleView.setMode(mode: .customLabel("Name"))
         walletLabelStyleView.setMode(mode: .customLabel("Wallet label (Optional)"))
         checkBox.checkType = .checkType

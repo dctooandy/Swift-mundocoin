@@ -15,6 +15,7 @@ enum FilterLabelType {
     case history
     case status
     case networkMethod
+    case addNewAddressNetworkMethod
     
     var numberOfRow : Int {
         switch self
@@ -25,6 +26,8 @@ enum FilterLabelType {
             return 5
         case .networkMethod:
             return 3
+        case .addNewAddressNetworkMethod:
+            return KeychainManager.share.getMundoCoinNetworkMethodEnable() ? 2 : 1
         }
     }
     var topLabelString : String{
@@ -34,6 +37,8 @@ enum FilterLabelType {
         case .status:
             return "Status".localized
         case .networkMethod:
+            return "NetWork Method".localized
+        case .addNewAddressNetworkMethod:
             return "NetWork Method".localized
         }
     }
@@ -53,6 +58,10 @@ enum FilterLabelType {
             return ["All".localized,
                     "TRC20".localized,
                     "ERC20".localized]
+        case .addNewAddressNetworkMethod:
+            return KeychainManager.share.getMundoCoinNetworkMethodEnable() ?
+            ["TRC 20".localized,"ERC 20".localized] :
+            ["TRC 20".localized]
         }
     }
     var widths:[CGFloat] {
@@ -71,6 +80,10 @@ enum FilterLabelType {
             return ["All".localized.customWidth(),
                     "TRC20".localized.customWidth(),
                     "ERC20".localized.customWidth()]
+        case .addNewAddressNetworkMethod:
+            return KeychainManager.share.getMundoCoinNetworkMethodEnable() ?
+            ["TRC 20".localized.customWidth(),"ERC 20".localized.customWidth()] :
+            ["TRC 20".localized.customWidth()]
         }
     }
 }
