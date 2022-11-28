@@ -338,7 +338,13 @@ class BoardViewController: BaseViewController {
             self?.goFetchTableViewData(duration: 0.0)
         }.disposed(by: dpg)
         DispatchQueue.main.async { [self] in
-            filterBottomSheet.start(viewController: self ,height: 533.0 + Views.bottomOffset)
+            if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+            {
+                filterBottomSheet.start(viewController: self ,height: 533.0 + Views.bottomOffset)
+            }else
+            {
+                filterBottomSheet.start(viewController: self ,height: 467.0 + Views.bottomOffset)
+            }
         }
     }
 }

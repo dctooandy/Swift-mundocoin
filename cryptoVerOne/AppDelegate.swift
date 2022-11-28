@@ -102,7 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func initSingleton(){
         // 1128 network method 功能暫停
-        _ = KeychainManager.share.setMundoCoinNetworkMethodEnable(false)
+        _ = KeychainManager.share.setMundoCoinNetworkMethodEnable(true)
         // 1107 remember me 功能暫停
         _ = KeychainManager.share.setMundoCoinRememberMeEnable(true)
         // 1025 FaceID 功能狀態

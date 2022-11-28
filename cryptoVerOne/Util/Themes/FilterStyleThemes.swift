@@ -31,9 +31,15 @@ class FilterStyleThemes {
     // MARK: -
     // MARK: 步驟四 內部宣告可綁定參數
     private static func bindSheetHeight<T>(isDeposits: T , isWithdrawals: T) -> Observable<CGFloat>{
+        var disHeight = 0.0
+        if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+        {
+            disHeight = 66.0
+        }
         return FilterStyleThemes.heightForFilterMode.map({($0 == .deposits || $0 == .all) ?
-            466.0 + Views.bottomOffset :
-            533.0 + Views.bottomOffset})
+            400.0 + disHeight + Views.bottomOffset :
+            467.0 + disHeight + Views.bottomOffset})
+
     }
     private static func bindStatusHidden<T>(isDeposits: T , isWithdrawals: T) -> Observable<Bool>{
         return FilterStyleThemes.heightForFilterMode.map({($0 == .deposits || $0 == .all) ?
