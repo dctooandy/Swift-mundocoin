@@ -20,12 +20,7 @@ class AuthenticationViewController: BaseViewController {
     var authenInputViewMode : InputViewMode = .email(withStar: false)
     {
         didSet{
-            setupUI()
-            bindStyle()
-            bindButton()
-            bindTextfield()
-            bindTextfieldReturnKey()
-            bindTextfieldAction()
+            setupInputViewMode(mode: authenInputViewMode)
         }
     }
     // MARK: -
@@ -37,7 +32,12 @@ class AuthenticationViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setupUI()
+        bindStyle()
+        bindButton()
+        bindTextfield()
+        bindTextfieldReturnKey()
+        bindTextfieldAction()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -58,6 +58,10 @@ class AuthenticationViewController: BaseViewController {
         view.endEditing(true)
         authenInputView.tfMaskView.changeBorderWith(isChoose:false)
     }
+    func setupInputViewMode(mode: InputViewMode)
+    {
+        authenInputView.onlySetupMode(mode: mode)
+    }
     func setupUI()
     {
         if authenInputViewMode == .phone(withStar: false)
@@ -67,7 +71,7 @@ class AuthenticationViewController: BaseViewController {
         {
             title = "Email Authentication"
         }
-        let accountView = InputStyleView(inputViewMode: authenInputViewMode)
+        let accountView = InputStyleView(inputViewMode: nil)
         authenInputView = accountView
         self.view.addSubview(authenInputView)
         authenHeightConstraint = NSLayoutConstraint(item: authenInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewDefaultHeight))

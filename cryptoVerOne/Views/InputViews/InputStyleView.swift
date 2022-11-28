@@ -365,13 +365,21 @@ class InputStyleView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
- 
-    convenience init(inputViewMode: InputViewMode = .email(withStar:true)) {
-        self.init(frame: .zero)
-        self.setup()
-        self.inputViewMode = inputViewMode
+    func onlySetupMode(mode:InputViewMode)
+    {
+        self.inputViewMode = mode
         self.setupUIByMode()
         self.resetUI()
+    }
+    convenience init(inputViewMode: InputViewMode? = nil) {
+        self.init(frame: .zero)
+        self.setup()
+        if let mode = inputViewMode
+        {
+            self.inputViewMode = mode
+            self.setupUIByMode()
+            self.resetUI()
+        }
         self.bindPwdButton()
         self.bindImageView()
         self.bindLabel()

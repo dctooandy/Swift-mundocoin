@@ -20,6 +20,7 @@ class PersonalInfoViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
+    var authVC : AuthenticationViewController!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
@@ -148,14 +149,14 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
             if cell.cellData.arrowHidden == false
             {
             }
-            let authVC = AuthenticationViewController.loadNib()
+            authVC = AuthenticationViewController.loadNib()
             authVC.authenInputViewMode = .email(withStar: false)
             self.navigationController?.pushViewController(authVC, animated: true)
         case 2:
             Log.i("mobile")
             if cell.cellData.arrowHidden == false
             {
-                let authVC = AuthenticationViewController.loadNib()
+                authVC = AuthenticationViewController.loadNib()
                 authVC.authenInputViewMode = .phone(withStar: false)
                 self.navigationController?.pushViewController(authVC, animated: true)
             }
