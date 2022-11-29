@@ -9,14 +9,20 @@ import Foundation
 import UIKit
 class MyApplication: UIApplication {
     override func sendEvent(_ event: UIEvent) {
+        // 處理統一的邏輯
+//        print("來自UIApplication 的 Event:\(event)")
         super.sendEvent(event)
-//        print("Event sent:\(event)")
+    }
+    override func sendAction(_ action: Selector, to target: Any?, from sender: Any?, for event: UIEvent?) -> Bool {
+        // 處理統一的邏輯
+//        print("來自UIApplication 的 Action:\(String(describing: event))")
+        return super.sendAction(action, to: target, from: sender, for: event)
     }
 }
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
 disable_gdb()
 plokij()
-_ = UIApplicationMain(
+UIApplicationMain(
     CommandLine.argc,
     UnsafeMutableRawPointer(CommandLine.unsafeArgv)
         .bindMemory(
@@ -26,12 +32,9 @@ _ = UIApplicationMain(
     NSStringFromClass(AppDelegate.self)
 )
 #else
-_ = UIApplicationMain(
+UIApplicationMain(
     CommandLine.argc,
-    UnsafeMutableRawPointer(CommandLine.unsafeArgv)
-        .bindMemory(
-            to: UnsafeMutablePointer<Int8>.self,
-            capacity: Int(CommandLine.argc)),
+    CommandLine.unsafeArgv,
     nil,
     NSStringFromClass(AppDelegate.self)
 )

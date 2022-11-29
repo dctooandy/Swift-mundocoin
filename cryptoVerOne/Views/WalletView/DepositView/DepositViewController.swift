@@ -36,7 +36,11 @@ class DepositViewController: BaseViewController {
     @IBOutlet weak var saveButton: SaveButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
     @IBOutlet weak var boardView: UIView!
-
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
@@ -49,6 +53,7 @@ class DepositViewController: BaseViewController {
         bind()
         bindViewModel()
         fetchDepositData()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +67,10 @@ class DepositViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    @objc override func popVC() {
+//        clearAllData()
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     func fetchDepositData()
     {
         viewModel.fetchWalletForDeposit()

@@ -29,6 +29,14 @@ struct LoginPostDto {
         self.phone = phone
         self.rememberMeStatus = rememberMeStatus
     }
+    var toVerifyAccountString: String {
+        switch loginMode {
+        case .emailPage:
+            return account.hideEmailAccount()
+        case .phonePage:
+            return String(phoneCode + phone.hidePhoneAccount())
+        }
+    }
 }
 
 class LoginDto: Codable {

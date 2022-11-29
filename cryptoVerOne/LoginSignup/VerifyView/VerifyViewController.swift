@@ -46,7 +46,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = loginDto.account
+                self.userAccountLabel.text = loginDto.toVerifyAccountString
                 
             }
         }
@@ -66,7 +66,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = forgotDto.account
+                self.userAccountLabel.text = forgotDto.toVerifyAccountString
             }
         }
     }
@@ -85,7 +85,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = signupDto.account
+                self.userAccountLabel.text = signupDto.toVerifyAccountString
             }
         }
     }
@@ -96,7 +96,7 @@ class VerifyViewController: BaseViewController {
                 verificationType = .emailAuthentication
                 self.sentToLabel.text = "We have sent an email to".localized
                 self.verifyResentLabel.text = "Resend Email".localized
-                self.userAccountLabel.text = loginDto.account
+                self.userAccountLabel.text = loginDto.toVerifyAccountString
                 self.isMobileMode = false
             }
         }
@@ -108,7 +108,7 @@ class VerifyViewController: BaseViewController {
                 verificationType = .mobileAuthentication
                 self.sentToLabel.text = "We have sent messages to".localized
                 self.verifyResentLabel.text = "Resend".localized
-                self.userAccountLabel.text = loginDto.phone
+                self.userAccountLabel.text = loginDto.toVerifyAccountString
                 self.isMobileMode = true
             }
         }

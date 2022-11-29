@@ -17,6 +17,7 @@ class LoginPageViewController: BaseViewController {
     private let loginBtnClick = PublishSubject<LoginPostDto>()
     private let resetLinkBtnClick = PublishSubject<LoginPostDto>()
     private let forgetBtnClick = PublishSubject<Void>()
+    private var isPushToVerifyVC = false
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
             cleanTextField()
@@ -54,16 +55,31 @@ class LoginPageViewController: BaseViewController {
             {
                 if let loginPostDto = KeychainManager.share.getLastAccount()
                 {
-                    if loginPostDto.phone.isEmpty == false
+                    if isPushToVerifyVC == true
                     {
-                        pageViewcontroller?.select(index: 1, animated: true)
+                        if currentShowMode == .loginPhone ||
+                            currentShowMode == .signupPhone ||
+                            currentShowMode == .forgotPhonePW
+                        {
+                            pageViewcontroller?.select(index: 1, animated: true)
+                        }else
+                        {
+                            pageViewcontroller?.select(index: 0, animated: true)
+                        }
                     }else
                     {
-                        pageViewcontroller?.select(index: 0, animated: true)
+                        if loginPostDto.phone.isEmpty == false
+                        {
+                            pageViewcontroller?.select(index: 1, animated: true)
+                        }else
+                        {
+                            pageViewcontroller?.select(index: 0, animated: true)
+                        }
                     }
                 }
             }
         }
+        isPushToVerifyVC = false
     }
     // MARK: -
     // MARK:業務方法
@@ -207,6 +223,7 @@ class LoginPageViewController: BaseViewController {
         for i in signupViewControllers {
             i.rxSignupButtonPressed()
                 .subscribeSuccess { [weak self] dto in
+                    self?.isPushToVerifyVC = true
                     self?.signupBtnClick.onNext(dto)
                 }.disposed(by: disposeBag)
         }

@@ -416,6 +416,19 @@ extension LoginSignupViewController {
     {
         willShowAgainFromVerifyVC = true
         // 暫時改為直接推頁面
+        if dataDto.signupMode == .phonePage
+        {
+            if currentShowMode == .forgotEmailPW
+            {
+                currentShowMode = .forgotPhonePW
+            }else if currentShowMode == .signupEmail
+            {
+                currentShowMode = .signupPhone
+            }else if currentShowMode == .loginEmail
+            {
+                currentShowMode = .loginPhone
+            }
+        }
         verifyVC = VerifyViewController.loadNib()
         verifyVC.signupDto = dataDto
         navigationController?.pushViewController(verifyVC, animated: true)

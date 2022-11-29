@@ -13,7 +13,7 @@ import SnapKit
 class TopBackButton:UIButton {
     var imageName : String!
     var titleString : String!
-    init(iconName :String = "icon-arrow-lef2" , title:String = "") {
+    init(iconName :String = "icon-chevron-left" , title:String = "") {
         super.init(frame: .zero)
         self.imageName = iconName
         self.titleString = title
