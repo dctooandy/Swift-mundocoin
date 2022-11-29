@@ -258,17 +258,23 @@ class SignupViewController: BaseViewController {
             {
                 var emailAccountString = ""
                 var phoneAccountString = ""
+                var phoneCodeString = ""
                 if loginMode == .emailPage
                 {
                     emailAccountString = acc
                 }else
                 {
+                    if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
+                    {
+                        phoneCodeString = phoneCode
+                    }
                     phoneAccountString = acc
                 }
                 let dto = SignupPostDto(account: emailAccountString,
                                         password: pwd,
                                         registration: regis ,
                                         signupMode: loginMode,
+                                        phoneCode: phoneCodeString,
                                         phone: phoneAccountString)
                 self.view.endEditing(true)
                 onSignupAction.onNext(dto)
@@ -277,17 +283,23 @@ class SignupViewController: BaseViewController {
         {
             var emailAccountString = ""
             var phoneAccountString = ""
+            var phoneCodeString = ""
             if loginMode == .emailPage
             {
                 emailAccountString = acc
             }else
             {
+                if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
+                {
+                    phoneCodeString = phoneCode
+                }
                 phoneAccountString = acc
             }
             let dto = SignupPostDto(account: emailAccountString,
                                     password: pwd,
                                     registration: "220831" ,
                                     signupMode: loginMode,
+                                    phoneCode: phoneCodeString,
                                     phone: phoneAccountString)
             self.view.endEditing(true)
             onSignupAction.onNext(dto)            
