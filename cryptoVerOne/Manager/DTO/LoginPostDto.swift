@@ -11,7 +11,7 @@ import Foundation
 struct LoginPostDto {
     var account: String = ""
     var password: String = ""
-    let loginMode: LoginMode
+    var loginMode: LoginMode
     let timestamp = Date.timestamp()
     let finger = KeychainManager.share.getFingerID()
     let currentShowMode : ShowMode

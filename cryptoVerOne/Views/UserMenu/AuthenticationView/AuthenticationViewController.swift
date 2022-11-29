@@ -96,13 +96,25 @@ class AuthenticationViewController: BaseViewController {
     func bindButton()
     {
         nextButton.rx.tap.subscribeSuccess { [self] _ in
-            let dataDto = KeychainManager.share.getLastAccount()
+            var dataDto = KeychainManager.share.getLastAccount()
             if authenInputViewMode == .email(withStar: false)
             {
-                verifyVC = VerifyViewController.instance( emailAuthenDto: dataDto)
 //                verifyVC.emailAuthenDto = dataDto
+                if let accountString = authenInputView.textField.text
+                {
+                    dataDto?.account = accountString
+                }
+                dataDto?.loginMode = .emailPage
+                verifyVC = VerifyViewController.instance( emailAuthenDto: dataDto)
             }else
             {
+                if let phoneString = authenInputView.textField.text ,
+                   let phoneCodeString = authenInputView.mobileCodeLabel.text
+                {
+                    dataDto?.phone = phoneString
+                    dataDto?.phoneCode = phoneCodeString
+                }
+                dataDto?.loginMode = .phonePage
                 verifyVC = VerifyViewController.instance( mobileAuthenDto: dataDto)
 //                verifyVC.mobileAuthenDto = dataDto
             }
