@@ -1,3 +1,4 @@
+1130 : 產dev包 測試 SMS新版UI
 1111 : 產dev包 測試 權限索取導致崩潰異常問題
 1111 : 產dev包 修正 BaseViewController popVC 方法異常導致崩潰問題
 1111 : 產dev包 修正 重覆產生wallet VC的異常,縮短 Debug的 toast 時間為0.5秒
