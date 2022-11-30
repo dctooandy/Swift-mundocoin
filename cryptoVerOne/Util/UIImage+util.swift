@@ -179,4 +179,27 @@ extension UIImage {
         let reSize = CGSize(width: self.size.width * scaleSize, height: self.size.height * scaleSize)
         return reSizeImage(reSize: reSize)
     }
+    func imageWithColor(color: UIColor, size: CGSize=CGSize(width: 1, height: 1)) -> UIImage {
+        var image: UIImage?
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        color.setFill()
+        UIRectFill(CGRect(origin: CGPoint.zero, size: size))
+        image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image ?? UIImage()
+    }
+    func withBackground(color: UIColor,size: CGSize=CGSize(width: 1, height: 1)) -> UIImage? {
+        var image: UIImage?
+        UIGraphicsBeginImageContextWithOptions(size, false, 0)
+        let imageRect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        if let context = UIGraphicsGetCurrentContext() {
+            context.setFillColor(color.cgColor)
+            context.fill(imageRect)
+            draw(in: imageRect, blendMode: .normal, alpha: 0.3)
+            image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return image
+        }
+        return nil
+    }
 }
