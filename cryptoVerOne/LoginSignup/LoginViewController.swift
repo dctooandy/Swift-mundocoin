@@ -285,7 +285,7 @@ class LoginViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
-            let searchVC = SearchAreaViewController.loadNib()
+            let searchVC = SelectViewController.loadNib()
             searchVC.allCountriesData = getDefaultData()
             if let currentData = searchVC.allCountriesData.filter({ $0.code == phoneCode }).first
             {

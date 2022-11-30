@@ -179,7 +179,7 @@ class AuthenticationViewController: BaseViewController {
     {
         authenInputView.rxChoosePhoneCodeClick().subscribeSuccess { [self](phoneCode) in
             Log.i("PhoneCode:\(phoneCode)")
-            let searchVC = SearchAreaViewController.loadNib()
+            let searchVC = SelectViewController.loadNib()
             searchVC.allCountriesData = getDefaultData()
             if let currentData = searchVC.allCountriesData.filter({ $0.code == phoneCode }).first
             {

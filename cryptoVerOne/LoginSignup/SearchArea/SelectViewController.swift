@@ -1,5 +1,5 @@
 //
-//  SearchAreaViewController.swift
+//  SelectViewController.swift
 //  cryptoVerOne
 //
 //  Created by Andy on 2022/11/15.
@@ -9,7 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITableViewDataSource{
+class SelectViewController: BaseViewController , UITableViewDelegate, UITableViewDataSource{
     // MARK:業務設定
     private let onSelectedClick = PublishSubject<String>()
     private let dpg = DisposeBag()
@@ -131,7 +131,7 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
 
 // MARK: -
 // MARK: 延伸
-extension SearchAreaViewController: UISearchBarDelegate {
+extension SelectViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let countriesData = allCountriesData
         if searchText.count != 0
@@ -153,7 +153,7 @@ extension SearchAreaViewController: UISearchBarDelegate {
     }
     
 }
-extension SearchAreaViewController {
+extension SelectViewController {
     // 索引设置
     func sectionIndexTitles(for tableView: UITableView) -> [String]? {
         var indexArray:[String] = []

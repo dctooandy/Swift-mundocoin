@@ -19,7 +19,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <viewController id="VAO-Si-iGG" customClass="SearchAreaViewController" customModule="Approval" customModuleProvider="target">
+        <viewController id="VAO-Si-iGG" customClass="SelectViewController" customModule="Approval" customModuleProvider="target">
             <view key="view" contentMode="scaleToFill" id="pyj-MM-tsQ">
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
