@@ -60,6 +60,10 @@ class WithdrawViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+        {
+            dropDataSource = ["TRC20","ERC20"]
+        }
         title = "Withdraw"
         setupUI()
         bindAction()
@@ -69,6 +73,7 @@ class WithdrawViewController: BaseViewController {
         recognizer.numberOfTouchesRequired = 1
         scrollView.addGestureRecognizer(recognizer)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
+
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -215,6 +220,11 @@ class WithdrawViewController: BaseViewController {
         withdrawToView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
             changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
+        
+        methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
+            Log.i("點到選network sheet")
+            self.showNetWorkBottomSheet()
+        }.disposed(by: dpg)
     }
     func showAddressBottomSheet()
     {
@@ -242,6 +252,18 @@ class WithdrawViewController: BaseViewController {
             addressBottomSheet.start(viewController: self, height: addressViewSheetHeight())
         }
     }
+    func showNetWorkBottomSheet()
+    {
+        let networkBottomSheet = NetworkBottomSheet()
+        networkBottomSheet.dataArray = transDataSourceToNetworkDto()
+        networkBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
+            methodView.textField.text = dataDto.name
+        }.disposed(by: dpg)
+    
+        DispatchQueue.main.async { [self] in
+            networkBottomSheet.start(viewController: self, height: networkViewSheetHeight())
+        }
+    }
     func addressViewSheetHeight() -> CGFloat
     {
         var sheetHeight = 251.0
@@ -259,6 +281,25 @@ class WithdrawViewController: BaseViewController {
         cellCount = (allAddressList.count >= 3 ? 3 :(allAddressList.count == 2 ? 2:1))
         sheetHeight += 92.0 * (cellCount - 1)
         return sheetHeight
+    }
+    func networkViewSheetHeight() -> CGFloat
+    {
+        var sheetHeight = 251.0
+        var cellCount = 0
+        
+        cellCount = dropDataSource.count
+        sheetHeight += 92.0 * Double((cellCount - 1))
+        return sheetHeight
+    }
+    func transDataSourceToNetworkDto() -> [SelectNetworkMethodDetailDto]
+    {
+        var newData : [SelectNetworkMethodDetailDto] = []
+        for data in dropDataSource
+        {
+            let subData = SelectNetworkMethodDetailDto(name: data)
+            newData.append(subData)
+        }
+        return newData
     }
     func changeWithdrawInputViewHeight(constant:CGFloat)
     {

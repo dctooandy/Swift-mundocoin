@@ -17,7 +17,7 @@ class DepositViewController: BaseViewController {
     fileprivate let viewModel = DepositViewModel()
     var qrCodeString : String!
     // 如果是一個 就灰色不給選,多個才會有下拉選單
-    var dropDataSource = ["TRC20","ERC20"]
+    var dropDataSource = ["TRC20"]
     var walletDto :WalletAddressDto = WalletAddressDto(){
         didSet{
             resetUI()
@@ -48,6 +48,10 @@ class DepositViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Deposit USDT"
+        if KeychainManager.share.getMundoCoinNetworkMethodEnable() == true
+        {
+            dropDataSource = ["TRC20","ERC20"]
+        }
         setupUI()
     }
     override func viewWillAppear(_ animated: Bool) {
