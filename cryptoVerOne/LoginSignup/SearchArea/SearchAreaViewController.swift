@@ -18,7 +18,6 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
     var searchArray: [String] = [String]()
     var codeDic:Dictionary<String , Array<String>> = [:]
     var nameDic:Dictionary<String , Array<String>> = [:]
-    
     var sortedCodeDataArray : Array<(key: String, value: Array<String>)> = []
     var sortedNameDataArray : Array<(key: String, value: Array<String>)> = []
     // 用此變數表示現在是否為搜尋模式
@@ -31,7 +30,6 @@ class SearchAreaViewController: BaseViewController , UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var topCodeLabel: UILabel!
     @IBOutlet weak var topNameLabel: UILabel!
-    
     @IBOutlet weak var dismissImageView: UIImageView!
     // MARK: -
     // MARK:Life cycle

@@ -101,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        // 1130 select crypto 功能暫停
+        _ = KeychainManager.share.setMundoCoinSelectCryptoEnable(true)
         // 1128 network method 功能暫停
         _ = KeychainManager.share.setMundoCoinNetworkMethodEnable(true)
         // 1107 remember me 功能暫停

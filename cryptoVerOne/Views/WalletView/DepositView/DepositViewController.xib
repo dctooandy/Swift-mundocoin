@@ -30,7 +30,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7" customClass="DropDownStyleView" customModule="Approval" customModuleProvider="target">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7" customClass="SelectCryptoCellView" customModule="Approval" customModuleProvider="target">
                         <rect key="frame" x="24" y="54" width="366" height="52"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <userDefinedRuntimeAttributes>
@@ -284,7 +284,7 @@ Please confirm the method must match the network.</string>
                 <outlet property="protocolLabel" destination="7u5-ro-xv0" id="8ZJ-4W-fO3"/>
                 <outlet property="saveButton" destination="WSu-fQ-jnD" id="FJf-EQ-GF1"/>
                 <outlet property="shareButton" destination="3gv-v9-FsN" id="zta-px-Dgt"/>
-                <outlet property="topCurrencyView" destination="j3C-Kw-xe7" id="0au-cc-YqP"/>
+                <outlet property="topCurrencyView" destination="j3C-Kw-xe7" id="5gx-cM-wpn"/>
                 <outlet property="walletAddressLabel" destination="Jiu-of-UhZ" id="W7p-Xz-NEm"/>
                 <outlet property="walletAddressTitle" destination="IHI-9h-f1L" id="2xe-iF-cf3"/>
             </connections>

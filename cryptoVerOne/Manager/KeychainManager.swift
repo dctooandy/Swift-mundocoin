@@ -28,6 +28,7 @@ class KeychainManager {
         case mundocoinRememberMeStatus = "mundocoin_remember_me_status"
         case mundocoinRememberMeEnable = "mundocoin_remember_me_enable"
         case mundocoinNetworkMethodEnable = "mundocoin_network_method_enable"
+        case mundoCoinSelectCryptoEnable = "mundocoin_select_crypto_enable"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -366,6 +367,18 @@ class KeychainManager {
         {
             return []
         }
+    }
+    // 設定是否打開 Select Crypto View功能
+    func setMundoCoinSelectCryptoEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .mundoCoinSelectCryptoEnable)
+        return success
+    }
+    func getMundoCoinSelectCryptoEnable() -> Bool {
+        if let modeValue = getString(from: .mundoCoinSelectCryptoEnable)
+        {
+            return (modeValue == "true" ? true : false)
+        }
+        return false
     }
     // 設定是否打開 Filter NetWork Method功能
     func setMundoCoinNetworkMethodEnable(_ isOn: Bool) -> Bool {

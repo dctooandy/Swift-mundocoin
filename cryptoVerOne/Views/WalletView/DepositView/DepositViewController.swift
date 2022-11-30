@@ -24,8 +24,8 @@ class DepositViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
     
-    @IBOutlet weak var topCurrencyView: DropDownStyleView!
-
+//    @IBOutlet weak var topCurrencyView: DropDownStyleView!
+    @IBOutlet weak var topCurrencyView: SelectCryptoCellView!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var copyImageView: UIImageView!
     @IBOutlet weak var walletAddressTitle: UILabel!
@@ -84,7 +84,7 @@ class DepositViewController: BaseViewController {
 //        codeImageView.image = image
         topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
         topCurrencyView?.layer.borderWidth = 1
-        topCurrencyView.config(showDropdown: false, dropDataSource: ["USDT"])
+//        topCurrencyView.config(showDropdown: false, dropDataSource: ["USDT"])
         boardView.applyCornerAndShadow(radius: 16)
     }
     func resetUI()
@@ -96,6 +96,9 @@ class DepositViewController: BaseViewController {
     }
     func bind()
     {
+        topCurrencyView.rxSelectCryptoClick().subscribeSuccess { _ in
+            Log.i("Open Select Crypto")
+        }.disposed(by: dpg)
         copyImageView.rx.click.subscribeSuccess { [self](_) in
             // write to clipboard
             UIPasteboard.general.string = qrCodeString
