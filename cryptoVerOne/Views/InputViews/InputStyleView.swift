@@ -12,6 +12,13 @@ import RxSwift
 import Toaster
 import DropDown
 
+enum NetworkShowMode
+{
+    case sheet
+    case drop
+}
+
+
 enum InputViewMode :Equatable {
     case emailVerify(String)
     case mobileVerify(String)
@@ -25,8 +32,8 @@ enum InputViewMode :Equatable {
     case forgotEmail
     case forgotPhone
     case registration
-    case networkMethod(Array<String>)
-    case crypto(Array<String>)
+    case networkMethod(Array<String>,NetworkShowMode)
+    case crypto(Array<String>,NetworkShowMode)
     case withdrawAddressToConfirm
     case withdrawAddressToDetail(Bool)
     case withdrawAddressFromDetail
@@ -60,8 +67,8 @@ enum InputViewMode :Equatable {
         case .forgotEmail: return "Enter your email to change your password".localized
         case .forgotPhone: return "Enter your mobile number".localized
         case .registration: return "Registration code".localized
-        case .networkMethod( _ ): return "Network Method".localized
-        case .crypto( _ ): return "Crypto".localized
+        case .networkMethod( _,_ ): return "Network Method".localized
+        case .crypto( _,_ ): return "Crypto".localized
         case .withdrawAddressToConfirm: return "Withdraw to address".localized
         case .withdrawAddressToDetail(_): return "Withdraw to address".localized
         case .withdrawAddressFromDetail: return "From Address".localized
@@ -122,27 +129,27 @@ enum InputViewMode :Equatable {
     func dropDataSource() -> Array<String>
     {
         switch self {
-        case .networkMethod(let array),.crypto(let array):
+        case .networkMethod(let array ,_),.crypto(let array ,_):
             return array
         default:
             return []
         }
     }
-    func isDropDownStyle() -> Bool
+    func isNetworkDropDownOrSheetStyle() -> Bool
     {
         switch self {
-        case .networkMethod( _ ),.crypto( _ ):
+        case .networkMethod( _ , _) , .crypto( _ , _):
             return true
         default:
             return false
         }
     }
-    func dropDownStylePlaceHolder() -> String
+    func networkPlaceHolder() -> String
     {
         switch self {
-        case .networkMethod( _ ):
+        case .networkMethod( _ , _):
             return "TRC20"
-        case .crypto( _ ):
+        case .crypto( _ , _ ):
             return "USDT"
         default:
             return ""
@@ -151,8 +158,23 @@ enum InputViewMode :Equatable {
     func isDropDownStyleEnable() -> Bool
     {
         switch self {
-        case .networkMethod( let array ),.crypto( let array ):
-            if array.count > 1
+        case .networkMethod( let array , let mode ),.crypto( let array , let mode):
+            if array.count > 1 , mode == .drop
+            {
+                return true
+            }else
+            {
+                return false
+            }
+        default:
+            return true
+        }
+    }
+    func isSheetStyleEnable() -> Bool
+    {
+        switch self {
+        case .networkMethod( let array , let mode ),.crypto( let array , let mode):
+            if array.count > 1 , mode == .sheet
             {
                 return true
             }else
@@ -179,6 +201,7 @@ class InputStyleView: UIView {
     private let onTextLabelClick = PublishSubject<String>()
     private let onChooseClick = PublishSubject<Bool>()
     private let onChoosePhoneCodeClick = PublishSubject<String>()
+    private let onSelectNetworkMethodSheetClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var timer: Timer?
     private var countTime = 60
@@ -644,7 +667,7 @@ class InputStyleView: UIView {
            break
         }
         switch self.inputViewMode {
-        case .copy ,.withdrawToAddress,.address ,.networkMethod(_), .crypto(_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
+        case .copy ,.withdrawToAddress,.address ,.networkMethod(_,_), .crypto(_,_), .withdrawAddressToConfirm , .withdrawAddressToDetail(_) , .withdrawAddressFromDetail, .withdrawAddressInnerFromDetail ,.txid(_):
             cancelOffetWidth = 0.0
             textField.isUserInteractionEnabled = false
         default:
@@ -685,14 +708,20 @@ class InputStyleView: UIView {
             scanImageView.removeFromSuperview()
             addressBookImageView.removeFromSuperview()
         }
-        if inputViewMode.isDropDownStyle()
+        if inputViewMode.isNetworkDropDownOrSheetStyle()
         {
-            textField.text = inputViewMode.dropDownStylePlaceHolder()
+            textField.text = inputViewMode.networkPlaceHolder()
             rightLabelWidth = 18 + 20
             if inputViewMode.isDropDownStyleEnable()
-            {
+            {// drop Style
                 setupChooseDropdown()
-                bindChooseButton()
+                bindChooseButton(withSheetMode: false)
+                dropDownImageView.isHidden = false
+            }else if inputViewMode.isSheetStyleEnable()
+            {// sheet Style
+                textField.textColor = Themes.grayA3AED0
+                textField.font = Fonts.PlusJakartaSansRegular(14)
+                bindChooseButton(withSheetMode: true)
                 dropDownImageView.isHidden = false
             }else
             {
@@ -862,10 +891,16 @@ class InputStyleView: UIView {
             onTextLabelClick.onNext(textLabel.text!)
         }.disposed(by: dpg)
     }
-    func bindChooseButton()
+    func bindChooseButton(withSheetMode isSheet:Bool)
     {
         chooseButton.rx.tap.subscribeSuccess { (_) in
-            self.chooseDropDown.show()
+            if isSheet == false
+            {
+                self.chooseDropDown.show()
+            }else
+            {
+                self.onSelectNetworkMethodSheetClick.onNext(())
+            }
         }.disposed(by: dpg)
     }
     func setupChooseDropdown()
@@ -881,7 +916,7 @@ class InputStyleView: UIView {
         // You can also use localizationKeysDataSource instead. Check the docs.
         chooseDropDown.direction = .bottom
         switch inputViewMode {
-        case .networkMethod(let array),.crypto(let array):
+        case .networkMethod(let array , _),.crypto(let array , _):
             chooseDropDown.dataSource = array
         default:
             break
@@ -1103,6 +1138,10 @@ class InputStyleView: UIView {
     func rxChoosePhoneCodeClick() -> Observable<String>
     {
         return onChoosePhoneCodeClick.asObserver()
+    }
+    func rxSelectNetworkMethodSheetClick() -> Observable<Any>
+    {
+        return onSelectNetworkMethodSheetClick.asObserver()
     }
 }
 // MARK: -

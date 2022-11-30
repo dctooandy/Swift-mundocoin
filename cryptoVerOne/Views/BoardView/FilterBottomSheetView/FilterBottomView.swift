@@ -209,7 +209,7 @@ class FilterBottomView: UIView {
             networkMethodView.isHidden = true
         }
         statusView.setData(type: .status)
-        cryptoInputView.setMode(mode: .crypto(["USDT"]))
+        cryptoInputView.setMode(mode: .crypto(["USDT"] , .drop))
     }
     func setupDatePackerLabel()
     {

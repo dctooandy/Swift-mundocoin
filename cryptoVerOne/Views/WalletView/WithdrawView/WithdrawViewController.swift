@@ -134,7 +134,7 @@ class WithdrawViewController: BaseViewController {
         let isOn = KeychainManager.share.getWhiteListOnOff()
         withdrawToView = InputStyleView(inputViewMode: .withdrawToAddress)
         withdrawToView.scanImageView.image = UIImage(named:isOn ? "icon-unscan" : "icon-scan")
-        methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource))
+        methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource,.sheet))
         
         withdrawToInputView.addSubview(withdrawToView)
         methodInputView.addSubview(methodView)
@@ -238,7 +238,6 @@ class WithdrawViewController: BaseViewController {
                 self.present(addVC, animated: true)
             }.disposed(by: dpg)
        
-
         DispatchQueue.main.async { [self] in
             addressBottomSheet.start(viewController: self, height: addressViewSheetHeight())
         }

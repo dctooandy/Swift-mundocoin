@@ -16,6 +16,8 @@ class DepositViewController: BaseViewController {
     private var dpg = DisposeBag()
     fileprivate let viewModel = DepositViewModel()
     var qrCodeString : String!
+    // 如果是一個 就灰色不給選,多個才會有下拉選單
+    var dropDataSource = ["TRC20","ERC20"]
     var walletDto :WalletAddressDto = WalletAddressDto(){
         didSet{
             resetUI()
@@ -30,12 +32,11 @@ class DepositViewController: BaseViewController {
     @IBOutlet weak var copyImageView: UIImageView!
     @IBOutlet weak var walletAddressTitle: UILabel!
     @IBOutlet weak var walletAddressLabel: UILabel!
-    @IBOutlet weak var methodTitleLabel: UILabel!
-    @IBOutlet weak var protocolLabel: UILabel!
     @IBOutlet weak var discritpionLabel: UILabel!
     @IBOutlet weak var saveButton: SaveButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
     @IBOutlet weak var boardView: UIView!
+    @IBOutlet weak var methodView : InputStyleView!
     var searchVC = SelectViewController.loadNib()
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
@@ -88,6 +89,7 @@ class DepositViewController: BaseViewController {
         topCurrencyView.layer.borderWidth = 1
 //        topCurrencyView.config(showDropdown: false, dropDataSource: ["USDT"])
         boardView.applyCornerAndShadow(radius: 16)
+        methodView.setMode(mode: .networkMethod(dropDataSource,.sheet))
     }
     func resetUI()
     {
@@ -122,6 +124,10 @@ class DepositViewController: BaseViewController {
         }.disposed(by: dpg)
         shareButton.rx.tap.subscribeSuccess { [self](_) in
             shareInfo()
+        }.disposed(by: dpg)
+        methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
+            Log.i("點到選network sheet")
+            self.showNetWorkBottomSheet()
         }.disposed(by: dpg)
     }
     func bindSelectVC()
@@ -171,7 +177,37 @@ class DepositViewController: BaseViewController {
         // 顯示出我們的 activityVC。
         self.present(activityVC, animated: true, completion: nil)
     }
-
+    func showNetWorkBottomSheet()
+    {
+        let networkBottomSheet = NetworkBottomSheet()
+        networkBottomSheet.dataArray = transDataSourceToNetworkDto()
+        networkBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
+            methodView.textField.text = dataDto.name
+        }.disposed(by: dpg)
+    
+        DispatchQueue.main.async { [self] in
+            networkBottomSheet.start(viewController: self, height: networkViewSheetHeight())
+        }
+    }
+    func transDataSourceToNetworkDto() -> [SelectNetworkMethodDetailDto]
+    {
+        var newData : [SelectNetworkMethodDetailDto] = []
+        for data in dropDataSource
+        {
+            let subData = SelectNetworkMethodDetailDto(name: data)
+            newData.append(subData)
+        }
+        return newData
+    }
+    func networkViewSheetHeight() -> CGFloat
+    {
+        var sheetHeight = 251.0
+        var cellCount = 0
+        
+        cellCount = dropDataSource.count
+        sheetHeight += 92.0 * Double((cellCount - 1))
+        return sheetHeight
+    }
 }
 // MARK: -
 // MARK: 延伸
