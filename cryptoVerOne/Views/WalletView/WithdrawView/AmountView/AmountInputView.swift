@@ -54,7 +54,27 @@ class AmountInputView: UIView ,NibOwnerLoadable{
         currencyLabel.text = currency
         amountTextView.text = "0"
         amountTextView.tintColor = .clear
+        addDoneCancelToolbar()
     }
+    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
+//        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+        let onDone = onDone ?? (target: self, action: #selector(cancelButtonTapped))
+        let doneItem = UIBarButtonItem(image: UIImage(named: "icon-chevron-down"), style: .done, target: onDone.target, action: onDone.action)
+        doneItem.tintColor = .white
+        let toolbar: UIToolbar = UIToolbar()
+        toolbar.barStyle = .default
+        toolbar.items = [
+//            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+            doneItem
+        ]
+        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
+        toolbar.sizeToFit()
+        
+        self.amountTextView.inputAccessoryView = toolbar
+    }
+    // Default actions:
+    @objc func cancelButtonTapped() { self.amountTextView.resignFirstResponder() }
     func bindUI()
     {
         maxBalanceLabel.rx.click.subscribeSuccess { [self](_) in

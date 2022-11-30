@@ -1094,12 +1094,17 @@ class InputStyleView: UIView {
         let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
         
         let toolbar: UIToolbar = UIToolbar()
+        let cancelItem = UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action)
+        let nextItem = UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
+        cancelItem.tintColor = .white
+        nextItem.tintColor = .white
         toolbar.barStyle = .default
         toolbar.items = [
-            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+            cancelItem,
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
+            nextItem
         ]
+        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
         toolbar.sizeToFit()
         
         self.textField.inputAccessoryView = toolbar
