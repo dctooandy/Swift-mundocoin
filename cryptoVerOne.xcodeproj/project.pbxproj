@@ -2021,6 +2021,24 @@
 		A1D0574029370FB700DCFB0B /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0573629370FB700DCFB0B /* SelectViewController.xib */; };
 		A1D0574129370FB700DCFB0B /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0573629370FB700DCFB0B /* SelectViewController.xib */; };
 		A1D0574229370FB700DCFB0B /* SelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0573629370FB700DCFB0B /* SelectViewController.xib */; };
+		A1D05744293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D05745293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D05746293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D05747293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D05748293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D05749293723C500DCFB0B /* SelectCryptoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */; };
+		A1D0574B293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D0574C293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D0574D293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D0574E293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D0574F293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D05750293723D500DCFB0B /* SelectCryptoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */; };
+		A1D057522937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
+		A1D057532937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
+		A1D057542937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
+		A1D057552937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
+		A1D057562937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
+		A1D057572937315A00DCFB0B /* SelectCryptoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */; };
 		A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
@@ -2426,6 +2444,9 @@
 		A1D0572E2937054D00DCFB0B /* SelectCryptoCellView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCryptoCellView.xib; sourceTree = "<group>"; };
 		A1D0573529370FB700DCFB0B /* SelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectViewController.swift; sourceTree = "<group>"; };
 		A1D0573629370FB700DCFB0B /* SelectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectViewController.xib; sourceTree = "<group>"; };
+		A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptoCell.swift; sourceTree = "<group>"; };
+		A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectCryptoCell.xib; sourceTree = "<group>"; };
+		A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectCryptoDto.swift; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
@@ -3094,7 +3115,7 @@
 		A19C6FEA28221C2F000AFC3F /* LoginSignup */ = {
 			isa = PBXGroup;
 			children = (
-				A1B59F1529237B51005D9006 /* SearchArea */,
+				A1B59F1529237B51005D9006 /* SelectViewController */,
 				0909C8DC28532DFE003E2F58 /* AuditViewController */,
 				09CAF5F4283F542800D7B19B /* ReCaptchaView */,
 				A19739C528251B65009932D8 /* ChangedPasswordView */,
@@ -3353,6 +3374,7 @@
 				A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */,
 				A1B59F07292370E9005D9006 /* countries.json */,
 				A1B59F0E292377CF005D9006 /* CountriesDto.swift */,
+				A1D057512937315A00DCFB0B /* SelectCryptoDto.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -3437,15 +3459,17 @@
 			path = VerifyView;
 			sourceTree = "<group>";
 		};
-		A1B59F1529237B51005D9006 /* SearchArea */ = {
+		A1B59F1529237B51005D9006 /* SelectViewController */ = {
 			isa = PBXGroup;
 			children = (
 				A1D0573529370FB700DCFB0B /* SelectViewController.swift */,
 				A1D0573629370FB700DCFB0B /* SelectViewController.xib */,
 				A1B59F242923842B005D9006 /* SearchAreaTableViewCell.swift */,
 				A1B59F2B29238467005D9006 /* SearchAreaTableViewCell.xib */,
+				A1D05743293723C500DCFB0B /* SelectCryptoCell.swift */,
+				A1D0574A293723D500DCFB0B /* SelectCryptoCell.xib */,
 			);
-			path = SearchArea;
+			path = SelectViewController;
 			sourceTree = "<group>";
 		};
 		A1BE2DCE29077BF500C87B3A /* DenyAttack */ = {
@@ -3712,6 +3736,7 @@
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D0574F293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057332937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -3819,6 +3844,7 @@
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D05750293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057342937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -3926,6 +3952,7 @@
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D0574E293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057322937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -4033,6 +4060,7 @@
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D0574C293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057302937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
@@ -4140,6 +4168,7 @@
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D0574D293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057312937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
@@ -4247,6 +4276,7 @@
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
 				099B5F0D288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
+				A1D0574B293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D0572F2937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
@@ -4663,6 +4693,7 @@
 				09EED317285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905A772851A02B00BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905A782851A02B00BAEE78 /* StatusImageView.swift in Sources */,
+				A1D057562937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F13292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905A792851A02B00BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905A7A2851A02B00BAEE78 /* UITextfield+util.swift in Sources */,
@@ -4782,6 +4813,7 @@
 				09905ACF2851A02B00BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905AD02851A02B00BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD928562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05748293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49384290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905AD12851A02B00BAEE78 /* TransTopView.swift in Sources */,
 				09905AD22851A02B00BAEE78 /* AddressBottomSheet.swift in Sources */,
@@ -4911,6 +4943,7 @@
 				09EED318285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905B692851A08500BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905B6A2851A08500BAEE78 /* StatusImageView.swift in Sources */,
+				A1D057572937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F14292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905B6B2851A08500BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905B6C2851A08500BAEE78 /* UITextfield+util.swift in Sources */,
@@ -5030,6 +5063,7 @@
 				09905BC12851A08500BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905BC22851A08500BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADDA28562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05749293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49385290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905BC32851A08500BAEE78 /* TransTopView.swift in Sources */,
 				09905BC42851A08500BAEE78 /* AddressBottomSheet.swift in Sources */,
@@ -5159,6 +5193,7 @@
 				09EED316285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09905C5B2851A09600BAEE78 /* MemberAccountDto.swift in Sources */,
 				09905C5C2851A09600BAEE78 /* StatusImageView.swift in Sources */,
+				A1D057552937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F12292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09905C5D2851A09600BAEE78 /* DropDownStyleView.swift in Sources */,
 				09905C5E2851A09600BAEE78 /* UITextfield+util.swift in Sources */,
@@ -5278,6 +5313,7 @@
 				09905CB32851A09600BAEE78 /* ConfirmWithdrawDto.swift in Sources */,
 				09905CB42851A09600BAEE78 /* CornerradiusButton.swift in Sources */,
 				A1ADADD828562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05747293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49383290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09905CB52851A09600BAEE78 /* TransTopView.swift in Sources */,
 				09905CB62851A09600BAEE78 /* AddressBottomSheet.swift in Sources */,
@@ -5407,6 +5443,7 @@
 				09EED314285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8328409A8D00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF471283C77ED00D7B19B /* StatusImageView.swift in Sources */,
+				A1D057532937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F10292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA8284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF472283C77ED00D7B19B /* UITextfield+util.swift in Sources */,
@@ -5526,6 +5563,7 @@
 				09CAF4B1283C77ED00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF4B2283C77ED00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD628562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05745293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49381290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09CAF4B3283C77ED00D7B19B /* TransTopView.swift in Sources */,
 				09CAF4B4283C77ED00D7B19B /* AddressBottomSheet.swift in Sources */,
@@ -5655,6 +5693,7 @@
 				09EED315285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8428409A8E00164B27 /* MemberAccountDto.swift in Sources */,
 				09CAF532283C7BBE00D7B19B /* StatusImageView.swift in Sources */,
+				A1D057542937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F11292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA9284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				09CAF533283C7BBE00D7B19B /* UITextfield+util.swift in Sources */,
@@ -5774,6 +5813,7 @@
 				09CAF572283C7BBE00D7B19B /* ConfirmWithdrawDto.swift in Sources */,
 				09CAF573283C7BBE00D7B19B /* CornerradiusButton.swift in Sources */,
 				A1ADADD728562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05746293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49382290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				09CAF574283C7BBE00D7B19B /* TransTopView.swift in Sources */,
 				09CAF575283C7BBE00D7B19B /* AddressBottomSheet.swift in Sources */,
@@ -5903,6 +5943,7 @@
 				09EED313285718DF00CB4A64 /* AuditService.swift in Sources */,
 				09A54F8228409A8A00164B27 /* MemberAccountDto.swift in Sources */,
 				A19C71A028225DCB000AFC3F /* StatusImageView.swift in Sources */,
+				A1D057522937315A00DCFB0B /* SelectCryptoDto.swift in Sources */,
 				A1B59F0F292377CF005D9006 /* CountriesDto.swift in Sources */,
 				09056DA7284F1AD200038BF8 /* DropDownStyleView.swift in Sources */,
 				A19C71CD2822651E000AFC3F /* UITextfield+util.swift in Sources */,
@@ -6022,6 +6063,7 @@
 				A1559E03283646AD00755783 /* ConfirmWithdrawDto.swift in Sources */,
 				A19C71BB282263DE000AFC3F /* CornerradiusButton.swift in Sources */,
 				A1ADADD528562CEC00B07B12 /* AuditTabbarViewController.swift in Sources */,
+				A1D05744293723C500DCFB0B /* SelectCryptoCell.swift in Sources */,
 				09B49380290BB6870024E984 /* BoardPagingTitleCell.swift in Sources */,
 				A1559E0B28375B9B00755783 /* TransTopView.swift in Sources */,
 				A16F61EA282E30F900D9CCE5 /* AddressBottomSheet.swift in Sources */,

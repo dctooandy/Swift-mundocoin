@@ -107,12 +107,8 @@ class ForgotViewController: BaseViewController {
             .disposed(by: disposeBag)
         accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
             let searchVC = SelectViewController.loadNib()
-            searchVC.allCountriesData = getDefaultData()
-            if let currentData = searchVC.allCountriesData.filter({ $0.code == phoneCode }).first
-            {
-                searchVC.codeNameData = currentData
-            }
-            searchVC.rxSelectedClick().subscribeSuccess { [self] selectedCode in
+            searchVC.currentSelectMode = .selectArea(phoneCode)
+            searchVC.rxSelectedAreaCodeClick().subscribeSuccess { [self] selectedCode in
                 accountInputView.accountInputView.mobileCodeLabel.text = selectedCode
             }.disposed(by: disposeBag)
             searchVC.modalPresentationStyle = .popover

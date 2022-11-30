@@ -91,10 +91,10 @@
                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                        <connections>
+                            <outlet property="delegate" destination="VAO-Si-iGG" id="cGT-gg-K4u"/>
+                        </connections>
                     </searchBar>
-                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="46" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oUT-Nk-vCI">
-                        <rect key="frame" x="0.0" y="160" width="414" height="702"/>
-                    </tableView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="juc-eu-QmL">
                         <rect key="frame" x="0.0" y="114" width="414" height="46"/>
                         <subviews>
@@ -129,6 +129,9 @@
                             <constraint firstItem="xgT-mn-ldK" firstAttribute="centerY" secondItem="juc-eu-QmL" secondAttribute="centerY" id="o9y-nA-sQG"/>
                         </constraints>
                     </view>
+                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="46" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oUT-Nk-vCI">
+                        <rect key="frame" x="0.0" y="160" width="414" height="702"/>
+                    </tableView>
                 </subviews>
                 <viewLayoutGuide key="safeArea" id="oGF-4N-mDS"/>
                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -149,9 +152,12 @@
                 </constraints>
             </view>
             <connections>
+                <outlet property="currentCodeView" destination="juc-eu-QmL" id="tf2-4O-2Zt"/>
+                <outlet property="currentCodeViewHeight" destination="nwR-qC-AKS" id="KuY-h2-EK3"/>
                 <outlet property="dismissImageView" destination="FC4-S6-zMU" id="ogf-tq-X5F"/>
                 <outlet property="searchBar" destination="xLu-ZN-Wm8" id="89V-Ow-VL8"/>
                 <outlet property="tableView" destination="oUT-Nk-vCI" id="3Vq-H2-Tb1"/>
+                <outlet property="titleLabel" destination="PHs-qw-25K" id="o5o-u2-Ql9"/>
                 <outlet property="topCodeLabel" destination="hgZ-Gl-3XI" id="ply-YP-tw2"/>
                 <outlet property="topNameLabel" destination="nFU-5A-zCD" id="Yi7-tU-ZJr"/>
             </connections>

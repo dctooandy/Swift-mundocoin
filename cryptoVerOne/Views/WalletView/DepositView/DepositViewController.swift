@@ -36,6 +36,7 @@ class DepositViewController: BaseViewController {
     @IBOutlet weak var saveButton: SaveButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
     @IBOutlet weak var boardView: UIView!
+    var searchVC = SelectViewController.loadNib()
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
@@ -50,14 +51,15 @@ class DepositViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        bind()
-        bindViewModel()
         fetchDepositData()
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        bind()
+        bindSelectVC()
+        bindViewModel()
         bindWhenAppear()
     }
     
@@ -82,8 +84,8 @@ class DepositViewController: BaseViewController {
 //        qrCodeString = "THFfxoxMtMJGnjar...cXUNbHzry3"
 //        let image = generateQRCode(from: qrCodeString)
 //        codeImageView.image = image
-        topCurrencyView?.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
-        topCurrencyView?.layer.borderWidth = 1
+        topCurrencyView.layer.borderColor = #colorLiteral(red: 0.9058823529, green: 0.9254901961, blue: 0.968627451, alpha: 1)
+        topCurrencyView.layer.borderWidth = 1
 //        topCurrencyView.config(showDropdown: false, dropDataSource: ["USDT"])
         boardView.applyCornerAndShadow(radius: 16)
     }
@@ -96,8 +98,10 @@ class DepositViewController: BaseViewController {
     }
     func bind()
     {
-        topCurrencyView.rxSelectCryptoClick().subscribeSuccess { _ in
-            Log.i("Open Select Crypto")
+        topCurrencyView.rxSelectCryptoClick().subscribeSuccess { [self] _ in
+            searchVC.currentSelectMode = .selectCrypto
+            searchVC.modalPresentationStyle = .popover
+            present(searchVC, animated: true)
         }.disposed(by: dpg)
         copyImageView.rx.click.subscribeSuccess { [self](_) in
             // write to clipboard
@@ -118,6 +122,14 @@ class DepositViewController: BaseViewController {
         }.disposed(by: dpg)
         shareButton.rx.tap.subscribeSuccess { [self](_) in
             shareInfo()
+        }.disposed(by: dpg)
+    }
+    func bindSelectVC()
+    {
+        searchVC.rxSelectedCryptoClick().subscribeSuccess { [self] selectedCrypto in
+            Log.i("Open Select Crypto: \(selectedCrypto)")
+            topCurrencyView.cryptoLabel.text = selectedCrypto.cryptoName
+            topCurrencyView.cryptoImageView.image = UIImage(named: selectedCrypto.cryptoIconName)
         }.disposed(by: dpg)
     }
     func bindViewModel()
