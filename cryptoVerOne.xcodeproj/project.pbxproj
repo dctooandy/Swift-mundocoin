@@ -2075,6 +2075,12 @@
 		A1D0578029374B8500DCFB0B /* SelectNetworkMethodDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0577C29374B8500DCFB0B /* SelectNetworkMethodDto.swift */; };
 		A1D0578129374B8500DCFB0B /* SelectNetworkMethodDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0577C29374B8500DCFB0B /* SelectNetworkMethodDto.swift */; };
 		A1D0578229374B8500DCFB0B /* SelectNetworkMethodDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0577C29374B8500DCFB0B /* SelectNetworkMethodDto.swift */; };
+		A1D0578429384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
+		A1D0578529384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
+		A1D0578629384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
+		A1D0578729384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
+		A1D0578829384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
+		A1D0578929384D5900DCFB0B /* UIScrollView+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */; };
 		A1D5C71B289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71C289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
 		A1D5C71D289A5478005117AC /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1D5C71A289A5478005117AC /* BaseTransition.swift */; };
@@ -2489,6 +2495,7 @@
 		A1D0575C293748EB00DCFB0B /* NetworkBottomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBottomCell.swift; sourceTree = "<group>"; };
 		A1D0575D293748EB00DCFB0B /* NetworkBottomSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkBottomSheet.swift; sourceTree = "<group>"; };
 		A1D0577C29374B8500DCFB0B /* SelectNetworkMethodDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNetworkMethodDto.swift; sourceTree = "<group>"; };
+		A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+util.swift"; sourceTree = "<group>"; };
 		A1D5C71A289A5478005117AC /* BaseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		A1DD13A4282B94BB00AB2E0A /* TwoFAVerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TwoFAVerifyViewController.swift; sourceTree = "<group>"; };
 		A1DD13A7282B9AFF00AB2E0A /* TwoFAVerifyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TwoFAVerifyViewController.xib; sourceTree = "<group>"; };
@@ -3234,6 +3241,7 @@
 				A19C70BD28223D82000AFC3F /* PopupBottomSheet.swift */,
 				A19C70D02822475B000AFC3F /* Views.swift */,
 				A19C70D32822479B000AFC3F /* UIView+util.swift */,
+				A1D0578329384D5900DCFB0B /* UIScrollView+util.swift */,
 				A19C70D628224819000AFC3F /* UIImage+util.swift */,
 				A19C70E628224BF5000AFC3F /* UserDefaults+util.swift */,
 				A19C70E928224C4B000AFC3F /* Date+util.swift */,
@@ -4895,6 +4903,7 @@
 				0909C8C42851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905AD62851A02B00BAEE78 /* PromotionViewController.swift in Sources */,
 				09905AD72851A02B00BAEE78 /* CheckBoxView.swift in Sources */,
+				A1D0578829384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				09905AD82851A02B00BAEE78 /* String+util.swift in Sources */,
 				09EED2EC2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C21C2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
@@ -5149,6 +5158,7 @@
 				0909C8C52851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905BC82851A08500BAEE78 /* PromotionViewController.swift in Sources */,
 				09905BC92851A08500BAEE78 /* CheckBoxView.swift in Sources */,
+				A1D0578929384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				09905BCA2851A08500BAEE78 /* String+util.swift in Sources */,
 				09EED2ED2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C21D2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
@@ -5403,6 +5413,7 @@
 				0909C8C32851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09905CBA2851A09600BAEE78 /* PromotionViewController.swift in Sources */,
 				09905CBB2851A09600BAEE78 /* CheckBoxView.swift in Sources */,
+				A1D0578729384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				09905CBC2851A09600BAEE78 /* String+util.swift in Sources */,
 				09EED2EB2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C21B2927528D00A5E2DC /* ForgotPasswordMode.swift in Sources */,
@@ -5657,6 +5668,7 @@
 				0909C8C12851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09CAF4B8283C77ED00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF4B9283C77ED00D7B19B /* CheckBoxView.swift in Sources */,
+				A1D0578529384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				09CAF4BA283C77ED00D7B19B /* String+util.swift in Sources */,
 				09EED2E92856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C2192927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,
@@ -5911,6 +5923,7 @@
 				0909C8C22851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				09CAF579283C7BBE00D7B19B /* PromotionViewController.swift in Sources */,
 				09CAF57A283C7BBE00D7B19B /* CheckBoxView.swift in Sources */,
+				A1D0578629384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				09CAF57B283C7BBE00D7B19B /* String+util.swift in Sources */,
 				09EED2EA2856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C21A2927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,
@@ -6165,6 +6178,7 @@
 				0909C8C02851F0E3003E2F58 /* ApprovalMainViewModel.swift in Sources */,
 				A19C70E328224AE8000AFC3F /* PromotionViewController.swift in Sources */,
 				A19C71C328226469000AFC3F /* CheckBoxView.swift in Sources */,
+				A1D0578429384D5900DCFB0B /* UIScrollView+util.swift in Sources */,
 				A1B051F22823B13F00056183 /* String+util.swift in Sources */,
 				09EED2E82856DB5B00CB4A64 /* SubListViewcontroller.swift in Sources */,
 				09B7C2182927528C00A5E2DC /* ForgotPasswordMode.swift in Sources */,

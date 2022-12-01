@@ -20,6 +20,12 @@ class AuthenticationViewController: BaseViewController {
     var authenInputViewMode : InputViewMode = .email(withStar: false)
     {
         didSet{
+            setupUI()
+            bindStyle()
+            bindButton()
+            bindTextfield()
+            bindTextfieldReturnKey()
+            bindTextfieldAction()
             setupInputViewMode(mode: authenInputViewMode)
         }
     }
@@ -32,12 +38,7 @@ class AuthenticationViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupUI()
-        bindStyle()
-        bindButton()
-        bindTextfield()
-        bindTextfieldReturnKey()
-        bindTextfieldAction()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -129,9 +130,9 @@ class AuthenticationViewController: BaseViewController {
                 if ((strongSelf.authenInputView.textField.isFirstResponder) != true) {
                     strongSelf.authenInputView.invalidLabel.isHidden = true
                 }
-                var patternValue = RegexHelper.Pattern.phone
+                var patternValue = RegexHelper.Pattern.onlyMobile
                 if strongSelf.authenInputViewMode == .phone(withStar: false) {
-                    patternValue = .onlyNumber
+                    patternValue = .onlyMobile
                 }else
                 {
                     patternValue = .mail
@@ -142,9 +143,9 @@ class AuthenticationViewController: BaseViewController {
             .map { [weak self] (str) -> InputViewHeightType in
                 guard let strongSelf = self, let acc = str else { return .accountInvalidHidden }
                 if ((strongSelf.authenInputView.textField.isFirstResponder) == true) {
-                    var patternValue = RegexHelper.Pattern.phone
+                    var patternValue = RegexHelper.Pattern.onlyMobile
                     if strongSelf.authenInputViewMode == .phone(withStar: false) {
-                        patternValue = .onlyNumber
+                        patternValue = .onlyMobile
                     }else
                     {
                         patternValue = .mail

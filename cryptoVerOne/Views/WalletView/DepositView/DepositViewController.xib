@@ -30,6 +30,9 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j3C-Kw-xe7" customClass="SelectCryptoCellView" customModule="Approval" customModuleProvider="target">
                         <rect key="frame" x="24" y="54" width="366" height="52"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="52" id="xtL-B5-ktp"/>
+                        </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                 <integer key="value" value="10"/>
@@ -38,7 +41,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cvz-5Q-Z0V">
-                        <rect key="frame" x="24" y="126" width="366" height="510"/>
+                        <rect key="frame" x="24" y="116" width="366" height="510"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nm0-vB-xPB">
                                 <rect key="frame" x="60" y="24" width="246" height="246"/>
@@ -134,9 +137,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0xc-O6-fo4" customClass="InputStyleView" customModule="Approval" customModuleProvider="target">
                                 <rect key="frame" x="12" y="404.5" width="342" height="70"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="QQw-DR-IRl"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -168,6 +168,7 @@
                             <constraint firstAttribute="trailing" secondItem="dDy-x4-GND" secondAttribute="trailing" id="iWs-V6-jHt"/>
                             <constraint firstItem="3BH-Ii-s5N" firstAttribute="leading" secondItem="nm0-vB-xPB" secondAttribute="leading" id="mn6-ia-UZe"/>
                             <constraint firstItem="nm0-vB-xPB" firstAttribute="top" secondItem="cvz-5Q-Z0V" secondAttribute="top" constant="24" id="oS9-jZ-akc"/>
+                            <constraint firstItem="0xc-O6-fo4" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.137255" id="sdg-oG-HAR"/>
                             <constraint firstItem="Jiu-of-UhZ" firstAttribute="leading" secondItem="cvz-5Q-Z0V" secondAttribute="leading" constant="18" id="tkR-fe-dcr"/>
                             <constraint firstItem="dDy-x4-GND" firstAttribute="top" secondItem="3BH-Ii-s5N" secondAttribute="bottom" id="uTJ-aR-RS1"/>
                             <constraint firstItem="IHI-9h-f1L" firstAttribute="height" secondItem="cvz-5Q-Z0V" secondAttribute="height" multiplier="0.0333333" id="vdo-uO-RMA"/>
@@ -186,7 +187,7 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oli-XG-RwX">
-                        <rect key="frame" x="45.5" y="652" width="323" height="33"/>
+                        <rect key="frame" x="45.5" y="642" width="323" height="33"/>
                         <string key="text">Any Assets sent to the wrong address will be lost.
 Please confirm the method must match the network.</string>
                         <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="13"/>
@@ -229,7 +230,7 @@ Please confirm the method must match the network.</string>
                 <constraints>
                     <constraint firstItem="ZCY-DL-skw" firstAttribute="bottom" secondItem="3gv-v9-FsN" secondAttribute="bottom" constant="38" id="4tb-ya-dqX"/>
                     <constraint firstItem="j3C-Kw-xe7" firstAttribute="leading" secondItem="ZCY-DL-skw" secondAttribute="leading" constant="24" id="9Tr-W3-FJ1"/>
-                    <constraint firstItem="cvz-5Q-Z0V" firstAttribute="top" secondItem="j3C-Kw-xe7" secondAttribute="bottom" constant="20" id="BT3-wO-cKn"/>
+                    <constraint firstItem="cvz-5Q-Z0V" firstAttribute="top" secondItem="j3C-Kw-xe7" secondAttribute="bottom" constant="10" id="BT3-wO-cKn"/>
                     <constraint firstItem="WSu-fQ-jnD" firstAttribute="trailing" secondItem="CEs-ui-zuy" secondAttribute="leading" id="E85-6N-7MB"/>
                     <constraint firstItem="cvz-5Q-Z0V" firstAttribute="leading" secondItem="ZCY-DL-skw" secondAttribute="leading" constant="24" id="PVM-Th-9e2"/>
                     <constraint firstItem="3gv-v9-FsN" firstAttribute="width" secondItem="jAl-Ku-Qfi" secondAttribute="width" multiplier="0.386473" id="Txd-kV-xzg"/>
@@ -238,7 +239,6 @@ Please confirm the method must match the network.</string>
                     <constraint firstItem="3gv-v9-FsN" firstAttribute="leading" secondItem="CEs-ui-zuy" secondAttribute="trailing" id="al8-Fa-6XD"/>
                     <constraint firstItem="j3C-Kw-xe7" firstAttribute="top" secondItem="ZCY-DL-skw" secondAttribute="top" constant="10" id="bER-8D-f34"/>
                     <constraint firstItem="WSu-fQ-jnD" firstAttribute="width" secondItem="jAl-Ku-Qfi" secondAttribute="width" multiplier="0.386473" id="bea-rq-iwZ"/>
-                    <constraint firstItem="j3C-Kw-xe7" firstAttribute="height" secondItem="jAl-Ku-Qfi" secondAttribute="height" multiplier="0.0625" constant="-4" id="d1x-6b-BBG"/>
                     <constraint firstAttribute="bottom" secondItem="CEs-ui-zuy" secondAttribute="bottom" id="eJw-JM-3r1"/>
                     <constraint firstItem="ZCY-DL-skw" firstAttribute="trailing" secondItem="cvz-5Q-Z0V" secondAttribute="trailing" constant="24" id="iwS-Qn-uG4"/>
                     <constraint firstItem="ZCY-DL-skw" firstAttribute="trailing" secondItem="j3C-Kw-xe7" secondAttribute="trailing" constant="24" id="npg-4P-4nh"/>

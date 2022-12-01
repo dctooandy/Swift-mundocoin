@@ -29,8 +29,8 @@ func width(_ mul: CGFloat) -> CGFloat {
 }
 
 class Views {
-    static let inputStyleTopLabelHeight:CGFloat = 17
-    static let inputStyleTextFieldHeight:CGFloat = 46
+    static let inputStyleTopLabelHeight:CGFloat = height(17.0 / 812.0)
+    static let inputStyleTextFieldHeight:CGFloat = height(46.0 / 812.0)
     static let screenWidth:CGFloat = UIScreen.main.bounds.size.width
     static let screenHeight:CGFloat = UIScreen.main.bounds.size.height
     static let baseTabbarHeight:CGFloat = Views.isIPhoneWithNotch() ? 88 : 60

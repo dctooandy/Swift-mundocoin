@@ -153,6 +153,7 @@
             </view>
             <connections>
                 <outlet property="bottomViewHeight" destination="4IJ-L4-jh3" id="Zxs-UJ-K4p"/>
+                <outlet property="contentScrollView" destination="gcz-CD-Kdh" id="cqQ-Cp-2bH"/>
                 <outlet property="dataListView" destination="Sgr-sV-VZP" id="PVm-Kq-Mgp"/>
                 <outlet property="saveButton" destination="C7t-lc-FY4" id="14X-dc-Te6"/>
                 <outlet property="shareButton" destination="ANb-sc-bGe" id="rb0-1h-sZd"/>

@@ -23,6 +23,7 @@ struct RegexHelper {
         case otp
         case coinAddress
         case moneyAmount
+        case onlyMobile
         case onlyNumber
         
         var valid:String {
@@ -51,6 +52,8 @@ struct RegexHelper {
 //                return "^[0-9a-zA-Z_\\.-]{1,50}+$"
             case .moneyAmount:
                 return "^[0-9\\.]{1,15}+$"
+            case .onlyMobile:
+                return "^[0-9]{5,15}+$"
             case .onlyNumber:
                 return "^[0-9]"
             }

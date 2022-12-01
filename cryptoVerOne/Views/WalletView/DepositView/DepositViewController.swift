@@ -28,6 +28,7 @@ class DepositViewController: BaseViewController {
     
 //    @IBOutlet weak var topCurrencyView: DropDownStyleView!
     @IBOutlet weak var topCurrencyView: SelectCryptoCellView!
+    @IBOutlet weak var topCurrencyViewHeight : NSLayoutConstraint!
     @IBOutlet weak var codeImageView: UIImageView!
     @IBOutlet weak var copyImageView: UIImageView!
     @IBOutlet weak var walletAddressTitle: UILabel!

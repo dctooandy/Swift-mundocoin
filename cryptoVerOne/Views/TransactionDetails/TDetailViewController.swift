@@ -64,6 +64,7 @@ class TDetailViewController: BaseViewController {
 //    @IBOutlet weak var tryButton: CornerradiusButton!
     @IBOutlet weak var saveButton: SaveButton!
     @IBOutlet weak var shareButton: CornerradiusButton!
+    @IBOutlet weak var contentScrollView: UIScrollView!
     lazy var mdBackBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.frame = CGRect(x: 0, y: 0, width: 26, height: 26)
@@ -139,8 +140,14 @@ class TDetailViewController: BaseViewController {
             {
                 //            let image = codeImageView.asImage()
                 Log.v("開始使用相機相簿")
-                let image = view.screenShot()!
-                /// 将转换后的UIImage保存到相机胶卷中
+//                if let image = contentScrollView.captrue
+//                {
+////                    let image = UIApplication.shared.keyWindow!.asImage()
+////                    let image = view.screenShot()!
+//                    // 将转换后的UIImage保存到相机胶卷中
+//                    UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
+//                }
+                let image = contentScrollView.getLongImage()!
                 UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
                 Toast.show(msg: "Saved")
             }
