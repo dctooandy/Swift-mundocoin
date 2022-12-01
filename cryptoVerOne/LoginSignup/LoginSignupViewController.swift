@@ -347,8 +347,9 @@ extension LoginSignupViewController {
                         return
                     }
                     DispatchQueue.main.async {
-                    let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
-                        self.showVerifyVCWithLoginData(dto)
+                        let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
+                        
+                        self.gotoLoginAction(with: dto.account, password: dto.password,loginDto: dto)
                     }
                 }
             } else {
