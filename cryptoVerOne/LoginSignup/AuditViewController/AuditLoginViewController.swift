@@ -269,7 +269,7 @@ class AuditLoginViewController: BaseViewController {
         {
             let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
                                           title: "",
-                                          message: "Enable face recognition or fingerprint recognition to log in？") { [weak self] isOK in
+                                          message: "Enable biometric ID?") { [weak self] isOK in
                 if isOK {
                     let idString = self?.accountInputView.textField.text ?? ""
                     BioVerifyManager.share.applyMemberInAuditBIOList(idString)

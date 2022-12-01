@@ -315,7 +315,6 @@ extension LoginSignupViewController {
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
                     DispatchQueue.main.async {[self] in
-//                    Toast.show(msg: "Verification failed, please enter account password")
                     let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                         
                     }
@@ -340,7 +339,7 @@ extension LoginSignupViewController {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
                     if !success {
-                        DispatchQueue.main.async {[self] in
+                        DispatchQueue.main.async { [self] in
 //                        Toast.show(msg: "验证失败，请输入帐号密码")
                         let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
                             
@@ -355,8 +354,18 @@ extension LoginSignupViewController {
                     }
                     DispatchQueue.main.async {
                         loginPostDto.rememberMeStatus = KeychainManager.share.getMundoCoinRememberMeStatus()
-//                        let dto = LoginPostDto(account: loginPostDto.account, password: loginPostDto.password,loginMode: loginPostDto.loginMode ,showMode: .loginEmail)
-                        self.showVerifyVCWithLoginData(loginPostDto)
+                        // FaceID 之後 進行驗證碼驗證
+//                        self.showVerifyVCWithLoginData(loginPostDto)
+                        // FaceID 之後 不進行驗證碼驗證
+                        var idString = ""
+                        if loginPostDto.phone.isEmpty
+                        {
+                            idString = loginPostDto.account
+                        }else
+                        {
+                            idString = loginPostDto.phone
+                        }
+                        self.gotoLoginAction(with: idString, password: loginPostDto.password,loginDto: loginPostDto)
                     }
                 }
             } else {
@@ -456,7 +465,7 @@ extension LoginSignupViewController {
     private func showBioConfirmView() {
         let popVC =  ConfirmPopupView(iconMode: .nonIcon(["Cancel".localized,"Confirm".localized]),
                                       title: "",
-                                      message: "Enable face recognition or fingerprint recognition to log in？") { [weak self] isOK in
+                                      message: "Enable biometric ID?") { [weak self] isOK in
             if isOK {
                 guard let acc = MemberAccountDto.share?.account else { return }
                 BioVerifyManager.share.applyMemberInBIOList(acc)
