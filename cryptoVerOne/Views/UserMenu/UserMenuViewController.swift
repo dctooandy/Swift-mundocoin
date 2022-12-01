@@ -339,8 +339,8 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 // MC524 暫時隱藏
 //        if indexPath.section == 1 && indexPath.row == 5
         if indexPath.section == 1 && indexPath.row == (5 + faceIDRowDiff)
-        {
-            return 80
+        { // Logout
+            return height(80.0/812.0)
 // MC524 暫時隱藏
 //        }else if indexPath.section == 1 && (indexPath.row == 2 || indexPath.row == 4)
         }else if indexPath.section == 1 && (indexPath.row == (2 + faceIDRowDiff) || indexPath.row == (4 + faceIDRowDiff))
@@ -351,9 +351,9 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
             return 20
         }else if indexPath.section == 1 && indexPath.row == (3 + faceIDRowDiff)
         {
-            return 92
+            return height(66.0/812.0)
         }else
-        {
+        { // 一般普通 Cell
             return 52
         }
     }
