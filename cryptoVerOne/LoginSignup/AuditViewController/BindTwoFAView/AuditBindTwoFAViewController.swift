@@ -148,7 +148,11 @@ class AuditBindTwoFAViewController: BaseViewController {
             Beans.loginServer.verificationResend(idString: userEmail).subscribe { [self]dto in
                 if let dataDto = dto
                 {
-                    let countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    var countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    if countTime <= 600
+                    {
+                        countTime = 600
+                    }
                     resetCountDownNumber(number: countTime,byVC: byVC)
                 }
             } onError: { error in

@@ -207,7 +207,11 @@ class SecurityVerificationViewController: BaseViewController {
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto
                 {
-                    let countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    var countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
+                    if countTime <= 600
+                    {
+                        countTime = 600
+                    }
                     resetCountDownNumber(byEmail:byEmail ,number: countTime,byVC: byVC)
                 }
             } onError: { error in
