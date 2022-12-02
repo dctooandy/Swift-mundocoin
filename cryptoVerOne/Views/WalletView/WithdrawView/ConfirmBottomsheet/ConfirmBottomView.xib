@@ -14,8 +14,8 @@
         <array key="PlusJakartaSans-Medium.ttf">
             <string>PlusJakartaSans-Medium</string>
         </array>
-        <array key="SF-Pro-Display-Medium.ttf">
-            <string>SFProDisplay-Medium</string>
+        <array key="PlusJakartaSans-SemiBold.ttf">
+            <string>PlusJakartaSans-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -54,46 +54,52 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VZ6-w7-BsH">
                                     <rect key="frame" x="20" y="59" width="374" height="253"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Receive amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-T6-ztC">
-                                            <rect key="frame" x="132.5" y="20" width="109.5" height="18"/>
-                                            <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total receive amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uZY-T6-ztC">
+                                            <rect key="frame" x="121.5" y="20" width="131.5" height="16.5"/>
+                                            <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="13"/>
                                             <color key="textColor" red="0.63979864119999996" green="0.68253517149999998" blue="0.81610256430000006" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="499.00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fsH-y0-7bB">
-                                            <rect key="frame" x="158" y="48" width="98" height="37.5"/>
-                                            <fontDescription key="fontDescription" name="SFProDisplay-Medium" family="SF Pro Display" pointSize="32"/>
+                                            <rect key="frame" x="144" y="46.5" width="86.5" height="30.5"/>
+                                            <fontDescription key="fontDescription" name="PlusJakartaSans-SemiBold" family="Plus Jakarta Sans" pointSize="24"/>
                                             <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8f-or-VeZ">
+                                            <rect key="frame" x="240.5" y="54" width="31.5" height="15.5"/>
+                                            <fontDescription key="fontDescription" name="PlusJakartaSans-SemiBold" family="Plus Jakarta Sans" pointSize="12"/>
+                                            <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-usdt" translatesAutoresizingMaskIntoConstraints="NO" id="r75-SD-lWW">
-                                            <rect key="frame" x="120" y="53" width="28" height="28"/>
+                                            <rect key="frame" x="112" y="51" width="22" height="22"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="28" id="489-DW-owE"/>
-                                                <constraint firstAttribute="height" constant="28" id="Uzn-a5-2w1"/>
+                                                <constraint firstAttribute="width" constant="22" id="489-DW-owE"/>
+                                                <constraint firstAttribute="height" constant="22" id="Uzn-a5-2w1"/>
                                             </constraints>
                                         </imageView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OwV-4v-sa3">
-                                            <rect key="frame" x="0.0" y="105.5" width="374" height="1"/>
+                                            <rect key="frame" x="0.0" y="97" width="374" height="1"/>
                                             <color key="backgroundColor" red="0.8784313725490196" green="0.89803921568627454" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="a2q-5b-nGU"/>
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tether" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fnv-Jr-h7X">
-                                            <rect key="frame" x="20" y="115.5" width="42.5" height="18"/>
+                                            <rect key="frame" x="20" y="107" width="42.5" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USDT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ayC-eV-nSG">
-                                            <rect key="frame" x="317" y="115.5" width="37" height="18"/>
+                                            <rect key="frame" x="317" y="107" width="37" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zcM-0S-kL4">
-                                            <rect key="frame" x="20" y="139.5" width="334" height="1"/>
+                                            <rect key="frame" x="20" y="131" width="334" height="1"/>
                                             <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="4go-1C-yA7"/>
@@ -101,19 +107,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Network" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6I-nn-4xO">
-                                            <rect key="frame" x="20" y="146.5" width="58" height="18"/>
+                                            <rect key="frame" x="20" y="138" width="58" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tron(TRC20)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ACH-VF-6xo">
-                                            <rect key="frame" x="268" y="149.5" width="86" height="18"/>
+                                            <rect key="frame" x="268" y="141" width="86" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKI-cc-Q5A">
-                                            <rect key="frame" x="20" y="170.5" width="334" height="1"/>
+                                            <rect key="frame" x="20" y="162" width="334" height="1"/>
                                             <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="1Em-Hv-VgW"/>
@@ -122,19 +128,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3B2-pH-TwQ">
-                                            <rect key="frame" x="20" y="177.5" width="25.5" height="18"/>
+                                            <rect key="frame" x="20" y="169" width="25.5" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dcO-4l-zTR">
-                                            <rect key="frame" x="323" y="180.5" width="31" height="18"/>
+                                            <rect key="frame" x="323" y="172" width="31" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jl2-Is-SGk">
-                                            <rect key="frame" x="20" y="201.5" width="334" height="1"/>
+                                            <rect key="frame" x="20" y="193" width="334" height="1"/>
                                             <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="lessThanOrEqual" constant="1" id="crX-hg-Gc3"/>
@@ -144,19 +150,19 @@
                                             </constraints>
                                         </view>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total amount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1lZ-dD-uvu">
-                                            <rect key="frame" x="20" y="208.5" width="86.5" height="18"/>
+                                            <rect key="frame" x="20" y="200" width="86.5" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Medium" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.63921568627450975" green="0.68235294117647061" blue="0.81568627450980391" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bKK-dE-FpN">
-                                            <rect key="frame" x="300" y="211.5" width="54" height="18"/>
+                                            <rect key="frame" x="300" y="203" width="54" height="18"/>
                                             <fontDescription key="fontDescription" name="PlusJakartaSans-Bold" family="Plus Jakarta Sans" pointSize="14"/>
                                             <color key="textColor" red="0.16862745098039217" green="0.21176470588235294" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NPT-zP-PZS">
-                                            <rect key="frame" x="20" y="235.5" width="334" height="1"/>
+                                            <rect key="frame" x="20" y="227" width="334" height="1"/>
                                             <color key="backgroundColor" red="0.87843137250000003" green="0.87843137250000003" blue="0.87843137250000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="1" id="8gg-fC-w6S"/>
@@ -179,9 +185,10 @@
                                         <constraint firstItem="Fnv-Jr-h7X" firstAttribute="top" secondItem="OwV-4v-sa3" secondAttribute="bottom" constant="9" id="9wX-E1-gD1"/>
                                         <constraint firstItem="1lZ-dD-uvu" firstAttribute="top" secondItem="jl2-Is-SGk" secondAttribute="bottom" constant="6" id="Bl3-hC-jHz"/>
                                         <constraint firstItem="OwV-4v-sa3" firstAttribute="top" secondItem="fsH-y0-7bB" secondAttribute="bottom" constant="20" id="CPD-zZ-9zl"/>
+                                        <constraint firstItem="H8f-or-VeZ" firstAttribute="centerY" secondItem="fsH-y0-7bB" secondAttribute="centerY" id="EYL-j7-kTC"/>
                                         <constraint firstAttribute="trailing" secondItem="OwV-4v-sa3" secondAttribute="trailing" id="FBi-Q6-1sx"/>
                                         <constraint firstItem="ACH-VF-6xo" firstAttribute="trailing" secondItem="ayC-eV-nSG" secondAttribute="trailing" id="GY7-1k-pcn"/>
-                                        <constraint firstItem="fsH-y0-7bB" firstAttribute="centerX" secondItem="VZ6-w7-BsH" secondAttribute="centerX" constant="20" id="Jfs-vp-HKQ"/>
+                                        <constraint firstItem="fsH-y0-7bB" firstAttribute="centerX" secondItem="VZ6-w7-BsH" secondAttribute="centerX" id="Jfs-vp-HKQ"/>
                                         <constraint firstItem="jl2-Is-SGk" firstAttribute="trailing" secondItem="eKI-cc-Q5A" secondAttribute="trailing" id="Mx0-Ou-3gF"/>
                                         <constraint firstItem="bKK-dE-FpN" firstAttribute="top" secondItem="jl2-Is-SGk" secondAttribute="bottom" constant="9" id="NOr-Fd-LXf"/>
                                         <constraint firstItem="3B2-pH-TwQ" firstAttribute="leading" secondItem="a6I-nn-4xO" secondAttribute="leading" id="OOe-tg-hpY"/>
@@ -195,6 +202,7 @@
                                         <constraint firstItem="eKI-cc-Q5A" firstAttribute="trailing" secondItem="zcM-0S-kL4" secondAttribute="trailing" id="ZGm-7y-uNX"/>
                                         <constraint firstItem="1lZ-dD-uvu" firstAttribute="leading" secondItem="3B2-pH-TwQ" secondAttribute="leading" id="cNg-Ig-rBs"/>
                                         <constraint firstAttribute="height" constant="253" id="esw-3a-Poj"/>
+                                        <constraint firstItem="H8f-or-VeZ" firstAttribute="leading" secondItem="fsH-y0-7bB" secondAttribute="trailing" constant="10" id="f6F-V3-vxo"/>
                                         <constraint firstItem="eKI-cc-Q5A" firstAttribute="top" secondItem="a6I-nn-4xO" secondAttribute="bottom" constant="6" id="fZm-69-rdi"/>
                                         <constraint firstItem="Fnv-Jr-h7X" firstAttribute="leading" secondItem="VZ6-w7-BsH" secondAttribute="leading" constant="20" id="hec-s7-oL2"/>
                                         <constraint firstItem="OwV-4v-sa3" firstAttribute="leading" secondItem="VZ6-w7-BsH" secondAttribute="leading" id="igJ-sr-kXf"/>
@@ -313,6 +321,6 @@
     </objects>
     <resources>
         <image name="icon-alert" width="24" height="24"/>
-        <image name="icon-usdt" width="24" height="24"/>
+        <image name="icon-usdt" width="26" height="26"/>
     </resources>
 </document>
