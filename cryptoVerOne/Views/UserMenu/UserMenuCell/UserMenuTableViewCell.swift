@@ -228,7 +228,7 @@ class UserMenuTableViewCell: UITableViewCell {
 //        let image = UIImage(named:"back")?.reSizeImage(reSize: CGSize(width: Views.backImageHeight(), height: Views.backImageHeight())).withRenderingMode(.alwaysTemplate)
 //        arrowImageView.image = image
 //        arrowImageView.transform = arrowImageView.transform.rotated(by: .pi)
-        logoutLabel.layer.cornerRadius = height(21.0/812.0)
+        logoutLabel.layer.cornerRadius = height(37.0/812.0/2.0)
         logoutLabel.layer.masksToBounds = true
     }
     func setupByData()
