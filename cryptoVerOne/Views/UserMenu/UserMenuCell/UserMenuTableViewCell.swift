@@ -314,7 +314,7 @@ class UserMenuTableViewCell: UITableViewCell {
             {
                 switchButton.isOn = false
             }
-            switchButton.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+            switchButton.transform = CGAffineTransform(scaleX: 0.8, y: 0.75)
             switchButton.isHidden = cellData.switchHidden
         }
         bindUI()
