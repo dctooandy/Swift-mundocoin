@@ -1711,6 +1711,18 @@
 		A16F621B2832277D00D9CCE5 /* AmountInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F621A2832277C00D9CCE5 /* AmountInputView.swift */; };
 		A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F621D2832279F00D9CCE5 /* AmountInputView.xib */; };
 		A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
+		A1702D9F2939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA02939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA12939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA22939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA32939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA42939D48A004B09A7 /* AmountInputStyleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */; };
+		A1702DA62939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
+		A1702DA72939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
+		A1702DA82939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
+		A1702DA92939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
+		A1702DAA2939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
+		A1702DAB2939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */; };
 		A19040E928240DFF00AC97E6 /* MuLoginNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */; };
 		A1913E44283BDB6900F9EBDB /* UCPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */; };
 		A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19739C228251B33009932D8 /* ResetPasswordViewController.swift */; };
@@ -2143,6 +2155,8 @@
 		A16F621A2832277C00D9CCE5 /* AmountInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputView.swift; sourceTree = "<group>"; };
 		A16F621D2832279F00D9CCE5 /* AmountInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputView.xib; sourceTree = "<group>"; };
 		A16F622028323EE900D9CCE5 /* UserAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAddressDto.swift; sourceTree = "<group>"; };
+		A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmountInputStyleView.swift; sourceTree = "<group>"; };
+		A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmountInputStyleView.xib; sourceTree = "<group>"; };
 		A19040E828240DFF00AC97E6 /* MuLoginNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuLoginNavigationController.swift; sourceTree = "<group>"; };
 		A1913E43283BDB6900F9EBDB /* UCPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UCPasswordViewController.swift; sourceTree = "<group>"; };
 		A19739C228251B33009932D8 /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
@@ -2751,6 +2765,8 @@
 			children = (
 				A16F621A2832277C00D9CCE5 /* AmountInputView.swift */,
 				A16F621D2832279F00D9CCE5 /* AmountInputView.xib */,
+				A1702D9E2939D48A004B09A7 /* AmountInputStyleView.swift */,
+				A1702DA52939D4B2004B09A7 /* AmountInputStyleView.xib */,
 			);
 			path = AmountView;
 			sourceTree = "<group>";
@@ -3530,6 +3546,7 @@
 				09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */,
 				09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574802876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DAA2939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */,
 				09954C2328893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -3629,6 +3646,7 @@
 				09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */,
 				09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */,
 				099574812876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DAB2939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */,
 				09954C2428893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -3728,6 +3746,7 @@
 				09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */,
 				09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */,
 				0995747F2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DA92939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */,
 				09954C2228893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -3827,6 +3846,7 @@
 				09CAF4D2283C77ED00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF4D3283C77ED00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747D2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DA72939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				09CAF4D4283C77ED00D7B19B /* AddressBottomCell.xib in Resources */,
 				09954C2028893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -3926,6 +3946,7 @@
 				09CAF593283C7BBE00D7B19B /* DepositViewController.xib in Resources */,
 				09CAF594283C7BBE00D7B19B /* PushNotiViewController.xib in Resources */,
 				0995747E2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DA82939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				09CAF595283C7BBE00D7B19B /* AddressBottomCell.xib in Resources */,
 				09954C2128893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -4025,6 +4046,7 @@
 				A16F61FB282E389400D9CCE5 /* AddressBottomView.xib in Resources */,
 				A1973A1E2828F35E009932D8 /* DepositViewController.xib in Resources */,
 				0995747C2876D4C6005D44E2 /* AuditTwoFAFinishViewController.xib in Resources */,
+				A1702DA62939D4B2004B09A7 /* AmountInputStyleView.xib in Resources */,
 				A1DD13B8282C090400AB2E0A /* PushNotiViewController.xib in Resources */,
 				09954C1F28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
@@ -4444,6 +4466,7 @@
 				0995745A287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8DA2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905A7E2851A02B00BAEE78 /* SignupPostDto.swift in Sources */,
+				A1702DA32939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				09905A7F2851A02B00BAEE78 /* IDVerificationViewController.swift in Sources */,
 				09905A802851A02B00BAEE78 /* TemplateView.swift in Sources */,
 				09905A812851A02B00BAEE78 /* TwoSideStyle.swift in Sources */,
@@ -4681,6 +4704,7 @@
 				0995745B287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8DB2852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905B702851A08500BAEE78 /* SignupPostDto.swift in Sources */,
+				A1702DA42939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				09905B712851A08500BAEE78 /* IDVerificationViewController.swift in Sources */,
 				09905B722851A08500BAEE78 /* TemplateView.swift in Sources */,
 				09905B732851A08500BAEE78 /* TwoSideStyle.swift in Sources */,
@@ -4918,6 +4942,7 @@
 				09957459287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D92852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09905C622851A09600BAEE78 /* SignupPostDto.swift in Sources */,
+				A1702DA22939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				09905C632851A09600BAEE78 /* IDVerificationViewController.swift in Sources */,
 				09905C642851A09600BAEE78 /* TemplateView.swift in Sources */,
 				09905C652851A09600BAEE78 /* TwoSideStyle.swift in Sources */,
@@ -5155,6 +5180,7 @@
 				09957457287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D72852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF474283C77ED00D7B19B /* SignupPostDto.swift in Sources */,
+				A1702DA02939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				09CAF475283C77ED00D7B19B /* IDVerificationViewController.swift in Sources */,
 				09CAF476283C77ED00D7B19B /* TemplateView.swift in Sources */,
 				09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */,
@@ -5392,6 +5418,7 @@
 				09957458287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D82852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				09CAF535283C7BBE00D7B19B /* SignupPostDto.swift in Sources */,
+				A1702DA12939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				09CAF536283C7BBE00D7B19B /* IDVerificationViewController.swift in Sources */,
 				09CAF537283C7BBE00D7B19B /* TemplateView.swift in Sources */,
 				09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */,
@@ -5629,6 +5656,7 @@
 				09957456287679A7005D44E2 /* AuditBindTwoFAViewController.swift in Sources */,
 				0909C8D62852EA31003E2F58 /* SocketIOManager.swift in Sources */,
 				A19C71B8282263A1000AFC3F /* SignupPostDto.swift in Sources */,
+				A1702D9F2939D48A004B09A7 /* AmountInputStyleView.swift in Sources */,
 				A1019DD92824C5BE00E6929E /* IDVerificationViewController.swift in Sources */,
 				A16F61F8282E383300D9CCE5 /* TemplateView.swift in Sources */,
 				A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */,
