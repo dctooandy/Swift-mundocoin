@@ -17,7 +17,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JEr-T5-IBb" customClass="UserMenuTableViewCell" customModule="Approval" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="80" id="JEr-T5-IBb" customClass="UserMenuTableViewCell" customModule="Approval" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JEr-T5-IBb" id="vhl-MJ-9w6">
@@ -90,25 +90,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="80"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PUt-Zk-DFr">
-                                <rect key="frame" x="37" y="19" width="340" height="42"/>
+                                <rect key="frame" x="37" y="21.5" width="340" height="37"/>
                                 <color key="backgroundColor" red="0.38039215686274508" green="0.28627450980392155" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="21"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="0.99999994039999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="PUt-Zk-DFr" secondAttribute="trailing" constant="37" id="Fha-Tz-O6L"/>
-                            <constraint firstAttribute="bottom" secondItem="PUt-Zk-DFr" secondAttribute="bottom" constant="19" id="TVF-iM-7Je"/>
+                            <constraint firstItem="PUt-Zk-DFr" firstAttribute="height" secondItem="5Ok-Xb-Idh" secondAttribute="height" multiplier="0.4625" id="Qar-rJ-ULX"/>
                             <constraint firstItem="PUt-Zk-DFr" firstAttribute="leading" secondItem="5Ok-Xb-Idh" secondAttribute="leading" constant="37" id="lqc-XF-8Qy"/>
-                            <constraint firstItem="PUt-Zk-DFr" firstAttribute="top" secondItem="5Ok-Xb-Idh" secondAttribute="top" constant="19" id="nTH-VQ-erW"/>
+                            <constraint firstItem="PUt-Zk-DFr" firstAttribute="centerY" secondItem="5Ok-Xb-Idh" secondAttribute="centerY" id="mCs-gm-oIQ"/>
                         </constraints>
                     </view>
                 </subviews>

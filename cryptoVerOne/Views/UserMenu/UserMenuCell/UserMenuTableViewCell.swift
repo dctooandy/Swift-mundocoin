@@ -288,7 +288,7 @@ class UserMenuTableViewCell: UITableViewCell {
     // MARK:業務方法
     func setupUI()
     {
-        logoutLabel.layer.cornerRadius = height(21.0/812.0)
+        logoutLabel.layer.cornerRadius = height(37.0/812.0/2.0)
         logoutLabel.layer.masksToBounds = true
     }
     func setupByData()
