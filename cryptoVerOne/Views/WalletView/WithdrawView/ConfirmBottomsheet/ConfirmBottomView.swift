@@ -66,8 +66,8 @@ class ConfirmBottomView: UIView {
         feeValueLabel.text = confirmData.fee
         networkValueLabel.text = confirmData.network
         tetherValueLabel.text = confirmData.tether
-        withdrawToInputView.setVisibleString(string: confirmData.address)
-        let stringHeight = confirmData.address.height(withConstrainedWidth: (Views.screenWidth - 80), font: Fonts.PlusJakartaSansRegular(16))
+        withdrawToInputView.setVisibleString(string: confirmData.address.transToFour())
+        let stringHeight = confirmData.address.transToFour().height(withConstrainedWidth: (Views.screenWidth - 80), font: Fonts.PlusJakartaSansRegular(16))
         withdrawToInputView.tvHeightConstraint.constant = (stringHeight + 13)
         
 //        introduceLabel.snp.updateConstraints { (make) in

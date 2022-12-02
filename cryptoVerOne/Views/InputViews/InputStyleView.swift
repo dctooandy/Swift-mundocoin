@@ -638,8 +638,8 @@ class InputStyleView: UIView {
                 make.left.top.bottom.equalTo(textField)
                 make.right.equalToSuperview().offset(-20)
             }
-            normalTextLabel.textColor = #colorLiteral(red: 0.6397986412, green: 0.6825351715, blue: 0.8161025643, alpha: 1)
-            normalTextLabel.font = Fonts.PlusJakartaSansRegular(16)
+            normalTextLabel.textColor = #colorLiteral(red: 0.168627451, green: 0.2117647059, blue: 0.4549019608, alpha: 1)
+            normalTextLabel.font = Fonts.PlusJakartaSansRegular(14)
             rightLabelWidth = 18 + 10
             resetTopLabelAndMask()
             tfMaskView.backgroundColor = Themes.grayF4F7FE

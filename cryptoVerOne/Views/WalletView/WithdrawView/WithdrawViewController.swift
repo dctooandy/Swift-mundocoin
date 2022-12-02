@@ -194,7 +194,7 @@ class WithdrawViewController: BaseViewController {
 //                    withdrawToView.textField.text = stringCode
 //                    withdrawToView.textField.sendActions(for: .valueChanged)
                     withdrawToView.textField.placeholder = ""
-                    withdrawToView.textView.text = stringCode
+                    withdrawToView.textView.text = stringCode.transToFour()
                     changeWithdrawInputViewHeight(constant: 72.0)
                 }.disposed(by: dpg)
                 isScanPopAction = true
@@ -211,6 +211,8 @@ class WithdrawViewController: BaseViewController {
         }.disposed(by: dpg)
         withdrawToView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             withdrawToView.tfMaskView.changeBorderWith(isChoose:isChoose)
+            let oldString = withdrawToView.textView.text.transWithoutSpace()
+            withdrawToView.textView.text = oldString?.transToFour()
         }.disposed(by: dpg)
         withdrawToView.rxChangeHeightAction().subscribeSuccess { [self] heightValue in
             changeWithdrawInputViewHeight(constant: heightValue)
@@ -225,7 +227,7 @@ class WithdrawViewController: BaseViewController {
         addressBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
 //                withdrawToView.textView.text = dataDto.address
             withdrawToView.textField.placeholder = ""
-            withdrawToView.textView.text = dataDto.address
+            withdrawToView.textView.text = dataDto.address.transToFour()
             changeWithdrawInputViewHeight(constant: 72.0)
         }.disposed(by: dpg)
         addressBottomSheet.rxAddNewAddressClick()
@@ -283,7 +285,7 @@ class WithdrawViewController: BaseViewController {
 //        let isAddressValid = withdrawToView.textField.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
-                return RegexHelper.match(pattern: .coinAddress, input: acc)
+                return RegexHelper.match(pattern: .coinAddress, input: acc.transWithoutSpace() ?? "")
         }
 //        isAddressValid.skip(1).bind(to: withdrawToView.invalidLabel.rx.isHidden).disposed(by: dpg)
         let isProtocolValid = methodView.textField.rx.text
@@ -320,7 +322,7 @@ class WithdrawViewController: BaseViewController {
             let tetherText = currencyLabel.text  ?? ""
             let networkText = methodView.textField.text ?? ""
             let feeText = feeAmountLabel.text ?? ""
-            let addressText = withdrawToView.textView.text ?? ""
+            let addressText = withdrawToView.textView.text.transWithoutSpace() ?? ""
             let confirmData = ConfirmWithdrawDto(totalAmount: totleAmountText,
                                                  tether: tetherText,
                                                  network: networkText,
@@ -356,7 +358,7 @@ class WithdrawViewController: BaseViewController {
     {
         // 目前API並沒有驗證 驗證碼,等API更新
 //        if let textString = withdrawToView.textField.text,
-        if let textString = withdrawToView.textView.text,
+        if let textString = withdrawToView.textView.text.transWithoutSpace(),
             let amountText = amountInputView.amountTextView.text,
            let _ = feeAmountLabel.text
         {
@@ -527,7 +529,7 @@ class WithdrawViewController: BaseViewController {
     func setDataFromTryAgain(amount:String , address:String)
     {
         amountInputView.amountTextView.text = amount
-        withdrawToView.textView.text = address
+        withdrawToView.textView.text = address.transWithoutSpace() ?? ""
         changeWithdrawInputViewHeight(constant: 72.0)
         withdrawToView.textField.placeholder = ""
     }
