@@ -23,6 +23,7 @@ class WDetailViewController: BaseViewController {
         }
     }
     @IBOutlet weak var withdrawStatusViewHeight: NSLayoutConstraint!
+    let withdrawVC = WithdrawViewController.share
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var withdrawStatusView: UIView!
@@ -122,9 +123,9 @@ class WDetailViewController: BaseViewController {
             Log.i("回到首頁")
             if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
             {
-                WithdrawViewController.share.setDataFromTryAgain(amount:amountValue , address: addressValue)
+                self.withdrawVC.setDataFromTryAgain(amount:amountValue , address: addressValue)
             }
-            self.navigationController?.popToViewController(WithdrawViewController.share , animated: true)
+            self.navigationController?.popToViewController(withdrawVC , animated: true)
         }.disposed(by: dpg)
     }
     func setupData()
