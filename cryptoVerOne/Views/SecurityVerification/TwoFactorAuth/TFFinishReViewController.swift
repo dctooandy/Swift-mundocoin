@@ -22,6 +22,7 @@ class TFFinishReViewController: BaseViewController {
             resetUI()
         }
     }
+    let withdrawVC = WithdrawViewController.share
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var iconImageView: UIImageView!
@@ -114,8 +115,8 @@ class TFFinishReViewController: BaseViewController {
 //                        let withdrawVC = WalletViewController.loadNib()
 //                        self.navigationController?.viewControllers = [withdrawVC]
 //                        withdrawVC.navigationController?.pushViewController(withdrawVC, animated: true)
-                        let withdrawVC = WithdrawViewController.share
-                        self.navigationController?.viewControllers = [WalletViewController.share]
+//                        let withdrawVC = WithdrawViewController.share
+                        self.navigationController?.viewControllers = [withdrawVC]
                         WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
                     }
                 }
