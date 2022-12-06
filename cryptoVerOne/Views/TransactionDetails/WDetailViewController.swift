@@ -122,7 +122,7 @@ class WDetailViewController: BaseViewController {
         }.disposed(by: dpg)
         tryButton.rx.tap.subscribeSuccess { [self] (_) in
             Log.i("回到首頁")
-            if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
+            if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
             {
                 if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
                 {

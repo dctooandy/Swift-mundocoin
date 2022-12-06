@@ -117,7 +117,7 @@ class TFFinishReViewController: BaseViewController {
 //                        self.navigationController?.viewControllers = [withdrawVC]
 //                        withdrawVC.navigationController?.pushViewController(withdrawVC, animated: true)
 //                        let withdrawVC = WithdrawViewController.share
-                        if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
+                        if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
                         {
                             self.navigationController?.viewControllers = [withdrawNewVC]
                             WalletViewController.share.navigationController?.pushViewController(withdrawNewVC, animated: true)

@@ -153,7 +153,7 @@ class WalletViewController: BaseViewController {
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
             // 測試
 //            self.navigationController?.pushViewController(twoFAVC, animated: true)
-            if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
+            if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
             {
                 withdrawNewVC.setUPData(withdrawDatas: walletsDto)
                 self.navigationController?.pushViewController(withdrawNewVC, animated: true)

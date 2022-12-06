@@ -240,24 +240,30 @@ extension String {
     func transToFour() -> String
     {
         var newValueString = ""
-        let stringSount = self.count
-        if stringSount <= 4
+        if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
         {
-            newValueString = self
+            let stringSount = self.count
+            if stringSount <= 4
+            {
+                newValueString = self
+            }else
+            {
+    //            let mod = stringSount % 5
+    //            let spaceDiff = Int(stringSount / 4)
+    //            var spaceCount = (mod > 0 ? spaceDiff : (spaceDiff - 1))
+                for charIndex in 0...(stringSount - 1) {
+                    if (charIndex % 4) == 0 ,charIndex != 0
+                    {
+                        newValueString.append(" ")
+                    }
+                    let stringArray = Array(self)
+                    let subChar = stringArray[charIndex]
+                    newValueString.append("\(subChar)")
+                }
+            }
         }else
         {
-//            let mod = stringSount % 5
-//            let spaceDiff = Int(stringSount / 4)
-//            var spaceCount = (mod > 0 ? spaceDiff : (spaceDiff - 1))
-            for charIndex in 0...(stringSount - 1) {
-                if (charIndex % 4) == 0 ,charIndex != 0
-                {
-                    newValueString.append(" ")
-                }
-                let stringArray = Array(self)
-                let subChar = stringArray[charIndex]
-                newValueString.append("\(subChar)")
-            }
+            newValueString = self
         }
         return newValueString
     }

@@ -29,7 +29,7 @@ class KeychainManager {
         case mundocoinRememberMeEnable = "mundocoin_remember_me_enable"
         case mundocoinNetworkMethodEnable = "mundocoin_network_method_enable"
         case mundoCoinSelectCryptoEnable = "mundocoin_select_crypto_enable"
-        case mundoCoinNewWithdrawVCEnable = "mundocoin_newWithdrawVC_enable"
+        case mundoCoinSioFeedbackEnable = "mundocoin_sio_feedback_enable"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -397,12 +397,12 @@ class KeychainManager {
         }
     }
     // 設定是否打開 新版Withdraw 功能
-    func setMundoCoinNewWithdrawVCEnable(_ isOn: Bool) -> Bool {
-        let success = setString(isOn == true ? "true":"false", at: .mundoCoinNewWithdrawVCEnable)
+    func setMundoCoinSioFeedbackEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .mundoCoinSioFeedbackEnable)
         return success
     }
-    func getMundoCoinNewWithdrawVCEnable() -> Bool {
-        if let modeValue = getString(from: .mundoCoinNewWithdrawVCEnable)
+    func getMundoCoinSioFeedbackEnable() -> Bool {
+        if let modeValue = getString(from: .mundoCoinSioFeedbackEnable)
         {
             return (modeValue == "true" ? true : false)
         }
