@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
-        // 1206 新版本withdraw 功能暫停
+        // 1206 新版本 sio反饋的 功能暫停
         _ = KeychainManager.share.setMundoCoinSioFeedbackEnable(false)
         // 1130 select crypto 功能暫停
         _ = KeychainManager.share.setMundoCoinSelectCryptoEnable(false)

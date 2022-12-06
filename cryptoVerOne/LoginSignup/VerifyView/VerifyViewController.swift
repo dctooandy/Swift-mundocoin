@@ -29,7 +29,7 @@ class VerifyViewController: BaseViewController {
     private var inputMode: LoginMode = .emailPage
     var isAlreadySetBackView = false
     var timer: Timer?
-    private var countTime = 600
+    private var countTime = Themes.verifyCountTime
     private var verifyCodeString = ""
     var loginDto : LoginPostDto?  {
         didSet {
@@ -446,9 +446,9 @@ class VerifyViewController: BaseViewController {
                 if let dataDto = dto
                 {
                     countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
-                    if countTime <= 600
+                    if countTime <= Themes.verifyCountTime
                     {
-                        countTime = 600
+                        countTime = Themes.verifyCountTime
                     }
                     defaultSetup()
                 }
@@ -591,7 +591,7 @@ class VerifyViewController: BaseViewController {
             verifyResentLabelVisable(With: true)
             timer?.invalidate()
             timer = nil
-            countTime = 600
+            countTime = Themes.verifyCountTime
             return
         }
         verifyResentLabel.text = "Resend in ".localized + "\(countTime) s"

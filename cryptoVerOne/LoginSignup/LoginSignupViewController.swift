@@ -354,18 +354,23 @@ extension LoginSignupViewController {
                     }
                     DispatchQueue.main.async {
                         loginPostDto.rememberMeStatus = KeychainManager.share.getMundoCoinRememberMeStatus()
-                        // FaceID 之後 進行驗證碼驗證
-//                        self.showVerifyVCWithLoginData(loginPostDto)
-                        // FaceID 之後 不進行驗證碼驗證
-                        var idString = ""
-                        if loginPostDto.phone.isEmpty
+                        if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
                         {
-                            idString = loginPostDto.account
+                            // FaceID 之後 不進行驗證碼驗證
+                            var idString = ""
+                            if loginPostDto.phone.isEmpty
+                            {
+                                idString = loginPostDto.account
+                            }else
+                            {
+                                idString = loginPostDto.phone
+                            }
+                            self.gotoLoginAction(with: idString, password: loginPostDto.password,loginDto: loginPostDto)
                         }else
                         {
-                            idString = loginPostDto.phone
+                            // FaceID 之後 進行驗證碼驗證
+                            self.showVerifyVCWithLoginData(loginPostDto)
                         }
-                        self.gotoLoginAction(with: idString, password: loginPostDto.password,loginDto: loginPostDto)
                     }
                 }
             } else {

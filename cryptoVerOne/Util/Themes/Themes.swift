@@ -21,6 +21,7 @@ class Themes {
     static let chooseOrNotChoose: Observable<UIColor> = Themes.bindChooseOrNotStyle(
         light: Themes.grayA3AED0, dark: Themes.grayE0E5F2)
     
+    static let verifyCountTime = (KeychainManager.share.getMundoCoinSioFeedbackEnable() ? 600 : 60)
     static let passwordInvalidLabelHeight = 32.0
     static let defaultInvalidLabelHeight = 15.0
     static let inputViewDefaultHeight = 85.0 + Themes.defaultInvalidLabelHeight

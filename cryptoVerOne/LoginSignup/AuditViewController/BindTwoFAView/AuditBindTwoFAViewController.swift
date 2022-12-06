@@ -149,9 +149,9 @@ class AuditBindTwoFAViewController: BaseViewController {
                 if let dataDto = dto
                 {
                     var countTime = (dataDto.nextTimestamp - dataDto.currentTimestamp)/1000
-                    if countTime <= 600
+                    if countTime <= Themes.verifyCountTime
                     {
-                        countTime = 600
+                        countTime = Themes.verifyCountTime
                     }
                     resetCountDownNumber(number: countTime,byVC: byVC)
                 }

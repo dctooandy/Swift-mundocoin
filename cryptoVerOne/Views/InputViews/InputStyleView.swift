@@ -204,7 +204,7 @@ class InputStyleView: UIView {
     private let onSelectNetworkMethodSheetClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var timer: Timer?
-    private var countTime = 600
+    private var countTime = Themes.verifyCountTime
     var displayOffetWidth : CGFloat = 0.0
     var cancelOffetWidth : CGFloat = 0.0
     var tvHeightConstraint : NSLayoutConstraint!
@@ -1037,7 +1037,7 @@ class InputStyleView: UIView {
         resetDisplayBtnUI()
         timer?.invalidate()
         timer = nil
-        countTime = 600
+        countTime = Themes.verifyCountTime
         verifyResentLabel.isUserInteractionEnabled = true
     }
     func setVisibleString(string : String)
