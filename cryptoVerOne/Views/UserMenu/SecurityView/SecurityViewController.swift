@@ -14,6 +14,7 @@ class SecurityViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     static let share: SecurityViewController = SecurityViewController.loadNib()
+    var authVC : AuthenticationViewController!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var tableView: UITableView!
@@ -62,8 +63,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // MC524 暫時隱藏
-//        return 3
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -73,12 +73,14 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
 //        case 0:
 //            cell.cellData = .twoFactorAuthentication
 //        case 1:
-//            cell.cellData = .emailAuthemtication
+//            cell.cellData = .emailAuthenVerity
 //        case 2:
 //            cell.cellData = .changePassword
         case 0:
-            cell.cellData = .emailAuthemtication
+            cell.cellData = .smsAuthentication
         case 1:
+            cell.cellData = .emailAuthentication
+        case 2:
             cell.cellData = .changePassword
         default:
             break
@@ -98,15 +100,29 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
 ////            twoFactorVC.viewMode = .reverify
 ////            self.navigationController?.pushViewController(twoFactorVC, animated: true )
 //        case 1:
-//            Log.i("emailAuthemtication")
+//            Log.i("emailAuthentication")
 //        case 2:
 //            Log.i("changePassword")
 //            let ucPasswordVC = UCPasswordViewController()
 //            self.navigationController?.pushViewController(ucPasswordVC, animated: true )
 
         case 0:
-            Log.i("emailAuthemtication")
+            Log.i("smsAuthentication")
+            if MemberAccountDto.share?.loginMode != .phonePage
+            {
+                authVC = AuthenticationViewController.loadNib()
+                authVC.authenInputViewMode = .phone(withStar: false)
+                self.navigationController?.pushViewController(authVC, animated: true)
+            }
         case 1:
+            Log.i("emailAuthentication")
+            if MemberAccountDto.share?.loginMode != .emailPage
+            {
+                authVC = AuthenticationViewController.loadNib()
+                authVC.authenInputViewMode = .email(withStar: false)
+                self.navigationController?.pushViewController(authVC, animated: true)                
+            }
+        case 2:
             Log.i("changePassword")
             let ucPasswordVC = UCPasswordViewController()
             self.navigationController?.pushViewController(ucPasswordVC, animated: true )

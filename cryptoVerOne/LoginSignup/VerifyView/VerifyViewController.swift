@@ -16,8 +16,8 @@ enum VerificationType
     case loginVerity
     case signupVerity
     case forgotPWVerity
-    case emailAuthentication
-    case mobileAuthentication
+    case emailAuthenVerity
+    case mobileAuthenVerity
 }
 class VerifyViewController: BaseViewController {
     // MARK:業務設定
@@ -93,7 +93,7 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let loginDto = self.emailAuthenDto
             {
-                verificationType = .emailAuthentication
+                verificationType = .emailAuthenVerity
                 self.sentToLabel.text = "We have sent an email to".localized
                 self.verifyResentLabel.text = "Resend Email".localized
                 self.userAccountLabel.text = loginDto.toVerifyAccountString
@@ -105,7 +105,7 @@ class VerifyViewController: BaseViewController {
         didSet {
             if let loginDto = self.mobileAuthenDto
             {
-                verificationType = .mobileAuthentication
+                verificationType = .mobileAuthenVerity
                 self.sentToLabel.text = "We have sent messages to".localized
                 self.verifyResentLabel.text = "Resend".localized
                 self.userAccountLabel.text = loginDto.toVerifyAccountString
@@ -347,6 +347,7 @@ class VerifyViewController: BaseViewController {
     func verifyButtonPressed()
     {
         var emailString = ""
+        var phoneCodeString = ""
         var phoneString = ""
         var passwordString = ""
         var registrationString = ""
@@ -369,6 +370,15 @@ class VerifyViewController: BaseViewController {
             emailString = forgotDto.account
             phoneString = forgotDto.phone
             mode = forgotDto.loginMode
+        }else if let smsAuthenDto = self.mobileAuthenDto
+        {
+            phoneString = smsAuthenDto.phone
+            phoneCodeString = smsAuthenDto.phoneCode
+            mode = smsAuthenDto.loginMode
+        }else if let emailAuthenDto = self.emailAuthenDto
+        {
+            emailString = emailAuthenDto.account
+            mode = emailAuthenDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
         switch verificationType {
@@ -387,10 +397,12 @@ class VerifyViewController: BaseViewController {
         case .forgotPWVerity:
             fetchForgotPasswordVerify(with: mode == .emailPage ? emailString:phoneString,
                                       verificationCode: codeString)
-        case .emailAuthentication:
+        case .emailAuthenVerity:
             Log.i("要去打 email authentication API")
-        case .mobileAuthentication:
+            fetchEmailAuthenticationData(withEmail: emailString, verificationCode: codeString)
+        case .mobileAuthenVerity:
             Log.i("要去打 mobile authentication API")
+            fetchSMSAuthenticationData(withPhoneCode: phoneCodeString, phone: phoneString, verificationCode: codeString)
         }
     }
     func verifyResentLabelVisable(With enable:Bool)
@@ -521,7 +533,35 @@ class VerifyViewController: BaseViewController {
             }
         }.disposed(by: disposeBag)
     }
-    
+    // SMS Authentication
+    func fetchSMSAuthenticationData(withPhoneCode phoneCode:String ,
+                                 phone:String ,
+                                 verificationCode:String)
+    {
+        Log.i("執行SMS Authen")
+        let controllers = self.navigationController?.viewControllers
+        for vc in controllers! {
+            if vc is SecurityViewController {
+                _ = self.navigationController?.popToViewController(vc as! SecurityViewController, animated: true)
+            }else if vc is PersonalInfoViewController {
+                _ = self.navigationController?.popToViewController(vc as! PersonalInfoViewController, animated: true)
+            }
+        }
+    }
+    // Email Authentication
+    func fetchEmailAuthenticationData(withEmail emailString:String ,
+                                 verificationCode:String)
+    {
+        Log.i("執行Email Authen")
+        let controllers = self.navigationController?.viewControllers
+        for vc in controllers! {
+            if vc is SecurityViewController {
+                _ = self.navigationController?.popToViewController(vc as! SecurityViewController, animated: true)
+            }else if vc is PersonalInfoViewController {
+                _ = self.navigationController?.popToViewController(vc as! PersonalInfoViewController, animated: true)
+            }
+        }
+    }
     func directToResetPWVC(_ verifyString : String)
     {
         verifyCodeString = verifyString

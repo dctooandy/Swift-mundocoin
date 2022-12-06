@@ -25,7 +25,8 @@ enum UserMenuCellData {
     
     // Security
     case twoFactorAuthentication
-    case emailAuthemtication
+    case smsAuthentication
+    case emailAuthentication
     case changePassword
     
     // Push notifications
@@ -62,7 +63,9 @@ enum UserMenuCellData {
             return ""
         case .twoFactorAuthentication:
             return "Two-Factor Authentication".localized
-        case .emailAuthemtication:
+        case .smsAuthentication:
+            return "SMS Authentication".localized
+        case .emailAuthentication:
             return "E-Mail Authentication".localized
         case .changePassword:
             return "Change Password".localized
@@ -117,10 +120,11 @@ enum UserMenuCellData {
         case .logout:
             return ""
         case .twoFactorAuthentication,
-             .emailAuthemtication,
-             .changePassword,
-             .systemNotifications,
-             .transactionNotifications:
+                .smsAuthentication,
+                .emailAuthentication,
+                .changePassword,
+                .systemNotifications,
+                .transactionNotifications:
             return ""
         case .email:
             var emailString = ""
@@ -148,8 +152,22 @@ enum UserMenuCellData {
         switch self {
         case .currency,.language,.faceID,.about,.logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
             return 0.0
-        case .emailAuthemtication:
-            return 0.3
+        case .smsAuthentication:
+            if MemberAccountDto.share?.loginMode == .phonePage
+            {
+                return 0.3
+            }else
+            {
+                return 1.0
+            }
+        case .emailAuthentication:
+            if MemberAccountDto.share?.loginMode == .emailPage
+            {
+                return 0.3
+            }else
+            {
+                return 1.0
+            }
         case .email:
             if self.subTitleLabel != ""
             {
@@ -208,14 +226,15 @@ enum UserMenuCellData {
     var imageHidden:Bool {
         switch self {
         case .twoFactorAuthentication,
-             .emailAuthemtication,
-             .changePassword,
-             .systemNotifications,
-             .transactionNotifications,
-             .registrationInfo,
-             .memberSince,
-             .email,
-             .mobile:
+                .smsAuthentication,
+                .emailAuthentication,
+                .changePassword,
+                .systemNotifications,
+                .transactionNotifications,
+                .registrationInfo,
+                .memberSince,
+                .email,
+                .mobile:
             return true
         default :
             return false
@@ -224,7 +243,8 @@ enum UserMenuCellData {
     var checkBoxHidden:Bool {
         switch self {
         case .twoFactorAuthentication,
-             .emailAuthemtication:
+                .smsAuthentication,
+                .emailAuthentication:
             return false
         default :
             return true
@@ -304,8 +324,16 @@ class UserMenuTableViewCell: UITableViewCell {
             cellImageView.isHidden = cellData.imageHidden
             checkBoxImageView.isHidden = cellData.checkBoxHidden
             cellImageView.image = UIImage(named: cellData.cellIconImageName)
-            arrowImageView.alpha = cellData.arrowAlpha
             arrowImageView.isHidden = cellData.arrowHidden
+            arrowImageView.alpha = cellData.arrowAlpha
+            if MemberAccountDto.share?.loginMode == .emailPage && cellData == .emailAuthentication ||
+                MemberAccountDto.share?.loginMode == .phonePage && cellData == .smsAuthentication
+            {
+                checkBoxImageView.image = UIImage(named: "icon-check-fill")
+            }else
+            {
+                checkBoxImageView.image = UIImage(named: "icon-check-empty")
+            }
             
             if BioVerifyManager.share.bioLoginSwitchState() == true
             {
