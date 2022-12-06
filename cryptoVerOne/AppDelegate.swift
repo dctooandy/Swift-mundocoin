@@ -101,10 +101,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        // 1206 新版本withdraw 功能暫停
+        _ = KeychainManager.share.setMundoCoinNewWithdrawVCEnable(false)
         // 1130 select crypto 功能暫停
-        _ = KeychainManager.share.setMundoCoinSelectCryptoEnable(true)
+        _ = KeychainManager.share.setMundoCoinSelectCryptoEnable(false)
         // 1128 network method 功能暫停
-        _ = KeychainManager.share.setMundoCoinNetworkMethodEnable(true)
+        _ = KeychainManager.share.setMundoCoinNetworkMethodEnable(false)
         // 1107 remember me 功能暫停
         _ = KeychainManager.share.setMundoCoinRememberMeEnable(true)
         // 1025 FaceID 功能狀態

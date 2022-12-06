@@ -1,5 +1,5 @@
 //
-//  WithdrawViewController.swift
+//  WithdrawNewViewController.swift
 //  cryptoVerOne
 //
 //  Created by AndyChen on 2022/5/9.
@@ -10,42 +10,43 @@ import RxCocoa
 import RxSwift
 import DropDown
 
-class WithdrawViewController: BaseViewController {
+class WithdrawNewViewController: BaseViewController {
     // MARK:業務設定
-    static let share: WithdrawViewController = WithdrawViewController.loadNib()
+    static let share: WithdrawNewViewController = WithdrawNewViewController.loadNib()
     private let onClick = PublishSubject<Any>()
     private var dpg = DisposeBag()
     private var sacnerDpg = DisposeBag()
     // 如果是一個 就灰色不給選,多個才會有下拉選單
-    var dropDataSource = ["TRC20"]
+    var defaultCurrency:[String]! = ["USDT"]
+    var dropDataSource:[String]! = ["TRC20"]
     var isScanPopAction = false
     var isScanVCByAVCapture = false
     let scanVC = ScannerViewController()
     @IBOutlet weak var middleHeight: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
-    @IBOutlet weak var availableBalanceAmountLabel: UILabel!
+    
     @IBOutlet weak var currencyLabel: UILabel!
     @IBOutlet weak var currencyIconImageView: UIImageView!
     @IBOutlet weak var withdrawToInputView: UIView!
-    @IBOutlet weak var methodInputView: UIView!
+//    @IBOutlet weak var methodInputView: UIView!
     @IBOutlet weak var feeTitle: UILabel!
     @IBOutlet weak var receiveTitle: UILabel!
-    @IBOutlet weak var rangeLabel: UILabel!
     @IBOutlet weak var feeAmountLabel: UILabel!
     @IBOutlet weak var receiveAmountLabel: UILabel!
     @IBOutlet weak var continueButton: CornerradiusButton!
     @IBOutlet weak var noticeLabel: UILabel!
-    @IBOutlet weak var amountInputView: AmountInputView!
+
+    @IBOutlet weak var amountInputStyleView: AmountInputStyleView!
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var topAmountView: UIView!
+    @IBOutlet weak var topCryptoView: UIView!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-chevron-left")
         btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
         return btn
     }()
     var withdrawToView : InputStyleView!
-    var methodView : InputStyleView!
+//    var methodView : InputStyleView!
     var confirmBottomSheet : ConfirmBottomSheet!
     var securityVerifyVC : SecurityVerificationViewController!
     var detailVC : WDetailViewController!
@@ -91,7 +92,7 @@ class WithdrawViewController: BaseViewController {
             bindWhenAppear()
         }
         isScanVCByAVCapture = false
-        amountInputView.amountTextView.becomeFirstResponder()
+        amountInputStyleView.amountTextView.becomeFirstResponder()
         if withdrawToView.textView.text.isEmpty == true
         {
             withdrawToView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
@@ -123,32 +124,35 @@ class WithdrawViewController: BaseViewController {
         clearAllData()
         _ = self.navigationController?.popViewController(animated: true)
     }
+    func setupAmountInputData()
+    {
+        
+    }
     func setupUI()
     {
         view.backgroundColor = Themes.grayF4F7FE
-        let minString = "10"
-        let maxString = "1000000"
         // 設定幣種
-        amountInputView.setData(data: currencyLabel.text ?? "USDT")
+        let totalCryptoNetworkString = "\(defaultCurrency.first!)-\(dropDataSource.first!)"
+        currencyLabel.text = totalCryptoNetworkString
+        amountInputStyleView.setData(data: defaultCurrency.first!)
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
-        rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
         feeAmountLabel.text = "1.00"
         receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
         let isOn = KeychainManager.share.getWhiteListOnOff()
         withdrawToView = InputStyleView(inputViewMode: .withdrawToAddress)
         withdrawToView.scanImageView.image = UIImage(named:isOn ? "icon-unscan" : "icon-scan")
-        methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource, .sheet))
+//        methodView = InputStyleView(inputViewMode: .networkMethod(dropDataSource))
         
         withdrawToInputView.addSubview(withdrawToView)
-        methodInputView.addSubview(methodView)
+//        methodInputView.addSubview(methodView)
         withdrawToView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        methodView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+//        methodView.snp.makeConstraints { (make) in
+//            make.edges.equalToSuperview()
+//        }
 //        methodInputView.snp.makeConstraints { make in
 //            make.height.equalTo(100)
 //            make.leading.trailing.equalTo(withdrawToInputView)
@@ -158,28 +162,31 @@ class WithdrawViewController: BaseViewController {
         continueButton.setTitle("Continue".localized, for: .normal)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0xD9D9D9)) , for: .disabled)
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
-        topAmountView.applyCornerAndShadow(radius: 16)
+//        topAmountView.applyCornerAndShadow(radius: 16)
+        topCryptoView.applyBorder(color: Themes.grayE0E5F2, borderWidth: 1)
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
+        let minString = "10"
         let maxString = "1000000"
+        amountInputStyleView.rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
         if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
         {
             let amountValue = data.amount.doubleValue ?? 0.0
-            availableBalanceAmountLabel.text = "\(String(describing: amountValue))"
+            amountInputStyleView.availableBalanceAmountLabel.text = "\(String(describing: amountValue))"
             // 設定最高額度
-            let availableString = availableBalanceAmountLabel.text ?? "0"
-            amountInputView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
+            let availableString = amountInputStyleView.availableBalanceAmountLabel.text ?? "0"
+            amountInputStyleView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         }else
         {
-            availableBalanceAmountLabel.text = "0.00"
-            amountInputView.maxAmount = "0"
+            amountInputStyleView.availableBalanceAmountLabel.text = "0.00"
+            amountInputStyleView.maxAmount = "0"
         }
     }
     func bindWhenAppear()
     {
         AuthorizeService.share.rxShowAlert().subscribeSuccess { alertVC in
-            if let _ = UIApplication.topViewController() as? WithdrawViewController
+            if let _ = UIApplication.topViewController() as? WithdrawNewViewController
             {
                 UIApplication.topViewController()?.present(alertVC, animated: true, completion: nil)
             }
@@ -223,10 +230,10 @@ class WithdrawViewController: BaseViewController {
             changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
         
-        methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
-            Log.i("點到選network sheet")
-            self.showNetWorkBottomSheet()
-        }.disposed(by: dpg)
+//        methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
+//            Log.i("點到選network sheet")
+//            self.showNetWorkBottomSheet()
+//        }.disposed(by: dpg)
     }
     func showAddressBottomSheet()
     {
@@ -259,7 +266,7 @@ class WithdrawViewController: BaseViewController {
         let networkBottomSheet = NetworkBottomSheet()
         networkBottomSheet.dataArray = transDataSourceToNetworkDto()
         networkBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
-            methodView.textField.text = dataDto.name
+//            methodView.textField.text = dataDto.name
         }.disposed(by: dpg)
     
         DispatchQueue.main.async { [self] in
@@ -315,7 +322,7 @@ class WithdrawViewController: BaseViewController {
     }
     func bindTextField()
     {
-        let isAmountValid = amountInputView.amountTextView.rx.text
+        let isAmountValid = amountInputStyleView.amountTextView.rx.text
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
@@ -328,13 +335,15 @@ class WithdrawViewController: BaseViewController {
                 return RegexHelper.match(pattern: .coinAddress, input: acc.transWithoutSpace() ?? "")
         }
 //        isAddressValid.skip(1).bind(to: withdrawToView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        let isProtocolValid = methodView.textField.rx.text
-            .map { [weak self] (str) -> Bool in
-                guard let _ = self, let acc = str else { return false  }
-                return !acc.isEmpty
-        }
-        Observable.combineLatest(isAmountValid,isAddressValid, isProtocolValid)
-            .map { return $0.0 && $0.1 && $0.2 } //reget match result
+        
+        let currencyArray = currencyLabel.text?.split(separator: "-") ?? [""]
+//        let isProtocolValid = methodView.textField.rx.text
+//            .map { [weak self] (str) -> Bool in
+//                guard let _ = self, let acc = str else { return false  }
+//                return !acc.isEmpty
+//        }
+        Observable.combineLatest(isAmountValid,isAddressValid)
+            .map { return $0.0 && $0.1 && !currencyArray.last!.isEmpty } //reget match result
             .bind(to: continueButton.rx.isEnabled)
             .disposed(by: dpg)
         
@@ -342,8 +351,8 @@ class WithdrawViewController: BaseViewController {
 //            .map({$0.isEmpty})
 //            .bind(to: withdrawToView.cancelRightButton.rx.isHidden)
 //            .disposed(by: dpg)
-        amountInputView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
-            if let amount = Double(amountInputView.amountTextView.text!),
+        amountInputStyleView.amountTextView.rx.text.changed.subscribeSuccess { [self](_) in
+            if let amount = Double(amountInputStyleView.amountTextView.text!),
                let fee = Double(feeAmountLabel.text!)
             {
                 let result = (amount > fee ?  amount - fee : 0.0)
@@ -356,15 +365,17 @@ class WithdrawViewController: BaseViewController {
     func continueAction()
     {
 //        if let _ = withdrawToView.textField.text
-        if let _ = withdrawToView.textView.text
+        if let _ = withdrawToView.textView.text ,
+           let cryptoString = currencyLabel.text?.split(separator: "-").first ,
+           let networkString = currencyLabel.text?.split(separator: "-").last
         {
-            let totleAmountText = amountInputView.amountTextView.text ?? ""
-            let tetherText = currencyLabel.text  ?? ""
-            let networkText = methodView.textField.text ?? ""
+            let totleAmountText = amountInputStyleView.amountTextView.text ?? ""
+            let tetherText = "\(cryptoString)"
+            let networkText = "\(networkString)"
             let feeText = feeAmountLabel.text ?? ""
             let addressText = withdrawToView.textView.text.transWithoutSpace() ?? ""
             let confirmData = ConfirmWithdrawDto(totalAmount: totleAmountText,
-                                                 tether: tetherText,
+                                                 tether: String(tetherText),
                                                  network: networkText,
                                                  fee: feeText,
                                                  address: addressText)
@@ -399,7 +410,7 @@ class WithdrawViewController: BaseViewController {
         // 目前API並沒有驗證 驗證碼,等API更新
 //        if let textString = withdrawToView.textField.text,
         if let textString = withdrawToView.textView.text.transWithoutSpace(),
-            let amountText = amountInputView.amountTextView.text,
+            let amountText = amountInputStyleView.amountTextView.text,
            let _ = feeAmountLabel.text
         {
             LoadingViewController.show()
@@ -526,7 +537,7 @@ class WithdrawViewController: BaseViewController {
         }else
         {
             let detailData = DetailDto(detailType: .failed,
-                                       amount: amountInputView.amountTextView.text ?? "",
+                                       amount: amountInputStyleView.amountTextView.text ?? "",
                                        tether: "USDT" ,
                                        network: "Tron(TRC20)",
                                        confirmations: "",
@@ -558,7 +569,7 @@ class WithdrawViewController: BaseViewController {
     {
         if isScanPopAction == false
         {
-            amountInputView.amountTextView.text = "0"
+            amountInputStyleView.amountTextView.text = "0"
 //            withdrawToView.textField.text = ""
 //            withdrawToView.textField.sendActions(for: .valueChanged)
             withdrawToView.textField.placeholder = InputViewMode.withdrawToAddress.textPlacehloder()
@@ -568,7 +579,7 @@ class WithdrawViewController: BaseViewController {
     }
     func setDataFromTryAgain(amount:String , address:String)
     {
-        amountInputView.amountTextView.text = amount
+        amountInputStyleView.amountTextView.text = amount
         withdrawToView.textView.text = address.transWithoutSpace() ?? ""
         changeWithdrawInputViewHeight(constant: 72.0)
         withdrawToView.textField.placeholder = ""
@@ -576,7 +587,7 @@ class WithdrawViewController: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
-extension WithdrawViewController: UITextFieldDelegate {
+extension WithdrawNewViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

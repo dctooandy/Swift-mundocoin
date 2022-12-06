@@ -1919,6 +1919,18 @@
 		A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B051CD2823782E00056183 /* VerifyViewController.xib */; };
 		A1B051EC2823B0FF00056183 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A1B051EE2823B0FF00056183 /* Localizable.strings */; };
 		A1B051F22823B13F00056183 /* String+util.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B051F12823B13F00056183 /* String+util.swift */; };
+		A1B15060293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15061293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15062293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15063293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15064293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15065293EF107008AD911 /* WithdrawNewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */; };
+		A1B15066293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
+		A1B15067293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
+		A1B15068293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
+		A1B15069293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
+		A1B1506A293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
+		A1B1506B293EF107008AD911 /* WithdrawNewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */; };
 		A1B2007C28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
 		A1B2007D28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
 		A1B2007E28CF0F5F00AC4795 /* AddressbookDeleteDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */; };
@@ -2479,6 +2491,8 @@
 		A1B051ED2823B0FF00056183 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A1B051F02823B10300056183 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A1B051F12823B13F00056183 /* String+util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+util.swift"; sourceTree = "<group>"; };
+		A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawNewViewController.xib; sourceTree = "<group>"; };
+		A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WithdrawNewViewController.swift; sourceTree = "<group>"; };
 		A1B2007B28CF0F5F00AC4795 /* AddressbookDeleteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressbookDeleteDto.swift; sourceTree = "<group>"; };
 		A1B2008228CF158C00AC4795 /* EnableAddressListWhiteDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableAddressListWhiteDto.swift; sourceTree = "<group>"; };
 		A1B59F0029220157005D9006 /* LoginSignupPagingTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSignupPagingTitleCell.swift; sourceTree = "<group>"; };
@@ -3065,6 +3079,8 @@
 				A16F61E8282E30DF00D9CCE5 /* AddressBottomSheet */,
 				A1973A212828F3D3009932D8 /* WithdrawViewController.swift */,
 				A1973A242828F3E7009932D8 /* WithdrawViewController.xib */,
+				A1B1505F293EF107008AD911 /* WithdrawNewViewController.swift */,
+				A1B1505E293EF107008AD911 /* WithdrawNewViewController.xib */,
 			);
 			path = WithdrawView;
 			sourceTree = "<group>";
@@ -3818,6 +3834,7 @@
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574F293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15064293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8B72851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057332937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -3929,6 +3946,7 @@
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D05750293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15065293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8B82851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057342937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -4040,6 +4058,7 @@
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574E293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15063293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8B62851EABA003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057322937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */,
@@ -4151,6 +4170,7 @@
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574C293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15061293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8BD2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057302937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09CAF4D5283C77ED00D7B19B /* TFFinishReViewController.xib in Resources */,
@@ -4262,6 +4282,7 @@
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574D293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15062293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8BC2851EB2C003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D057312937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				09CAF596283C7BBE00D7B19B /* TFFinishReViewController.xib in Resources */,
@@ -4373,6 +4394,7 @@
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
 				099B5F0D288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574B293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
+				A1B15060293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
 				0909C8BE2851EB2D003E2F58 /* ApprovalMainViewController.xib in Resources */,
 				A1D0572F2937054D00DCFB0B /* SelectCryptoCellView.xib in Resources */,
 				A16F61CA282CBC2E00D9CCE5 /* TFFinishReViewController.xib in Resources */,
@@ -4901,6 +4923,7 @@
 				A106C6842890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD429077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0529220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B1506A293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				09905AC62851A02B00BAEE78 /* Reactive+util.swift in Sources */,
 				09905AC72851A02B00BAEE78 /* Toast+util.swift in Sources */,
 				09905AC82851A02B00BAEE78 /* FilterCell.swift in Sources */,
@@ -5157,6 +5180,7 @@
 				A106C6852890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD529077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0629220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B1506B293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				09905BB82851A08500BAEE78 /* Reactive+util.swift in Sources */,
 				09905BB92851A08500BAEE78 /* Toast+util.swift in Sources */,
 				09905BBA2851A08500BAEE78 /* FilterCell.swift in Sources */,
@@ -5413,6 +5437,7 @@
 				A106C6832890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD329077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0429220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B15069293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				09905CAA2851A09600BAEE78 /* Reactive+util.swift in Sources */,
 				09905CAB2851A09600BAEE78 /* Toast+util.swift in Sources */,
 				09905CAC2851A09600BAEE78 /* FilterCell.swift in Sources */,
@@ -5669,6 +5694,7 @@
 				A106C6812890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD129077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0229220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B15067293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				09CAF4AA283C77ED00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF4AB283C77ED00D7B19B /* Toast+util.swift in Sources */,
 				09947BB1284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -5925,6 +5951,7 @@
 				A106C6822890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD229077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0329220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B15068293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				09CAF56B283C7BBE00D7B19B /* Reactive+util.swift in Sources */,
 				09CAF56C283C7BBE00D7B19B /* Toast+util.swift in Sources */,
 				09947BB2284DB433004F7FD7 /* FilterCell.swift in Sources */,
@@ -6181,6 +6208,7 @@
 				A106C6802890288D005B7EBE /* AnimatorManager.swift in Sources */,
 				A1BE2DD029077C1B00C87B3A /* main.swift in Sources */,
 				A1B59F0129220157005D9006 /* LoginSignupPagingTitleCell.swift in Sources */,
+				A1B15066293EF107008AD911 /* WithdrawNewViewController.swift in Sources */,
 				A19C71FD282286C1000AFC3F /* Reactive+util.swift in Sources */,
 				A19C712728225625000AFC3F /* Toast+util.swift in Sources */,
 				09947BB0284DB433004F7FD7 /* FilterCell.swift in Sources */,

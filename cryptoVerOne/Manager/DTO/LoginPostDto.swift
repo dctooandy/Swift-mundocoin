@@ -19,14 +19,14 @@ struct LoginPostDto {
     var phoneCode: String = ""
     var phone: String = ""
     var rememberMeStatus: Bool = false
-    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "" , phoneCode : String = "" , phone : String = "" , rememberMeStatus : Bool = false) {
+    init(account: String, password: String, loginMode: LoginMode , showMode : ShowMode , resetCode:String = "" , phoneCode : String? = "" , phone : String? = "" , rememberMeStatus : Bool = false) {
         self.account = account
         self.password = password
         self.loginMode = loginMode
         self.currentShowMode = showMode
         self.resetCode = resetCode
-        self.phoneCode = phoneCode
-        self.phone = phone
+        self.phoneCode = phoneCode ?? ""
+        self.phone = phone ?? ""
         self.rememberMeStatus = rememberMeStatus
     }
     var toVerifyAccountString: String {
@@ -34,7 +34,7 @@ struct LoginPostDto {
         case .emailPage:
             return account.hideEmailAccount()
         case .phonePage:
-            return String(phoneCode + phone.hidePhoneAccount())
+            return String((phoneCode ) + (phone.hidePhoneAccount() ?? ""))
         }
     }
 }

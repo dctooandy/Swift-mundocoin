@@ -23,6 +23,7 @@ class TFFinishReViewController: BaseViewController {
         }
     }
     let withdrawVC = WithdrawViewController.share
+    let withdrawNewVC = WithdrawNewViewController.share
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var iconImageView: UIImageView!
@@ -116,8 +117,15 @@ class TFFinishReViewController: BaseViewController {
 //                        self.navigationController?.viewControllers = [withdrawVC]
 //                        withdrawVC.navigationController?.pushViewController(withdrawVC, animated: true)
 //                        let withdrawVC = WithdrawViewController.share
-                        self.navigationController?.viewControllers = [withdrawVC]
-                        WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
+                        if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
+                        {
+                            self.navigationController?.viewControllers = [withdrawNewVC]
+                            WalletViewController.share.navigationController?.pushViewController(withdrawNewVC, animated: true)
+                        }else
+                        {
+                            self.navigationController?.viewControllers = [withdrawVC]
+                            WalletViewController.share.navigationController?.pushViewController(withdrawVC, animated: true)
+                        }
                     }
                 }
             case .reverify:

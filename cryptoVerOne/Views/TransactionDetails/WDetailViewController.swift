@@ -24,6 +24,7 @@ class WDetailViewController: BaseViewController {
     }
     @IBOutlet weak var withdrawStatusViewHeight: NSLayoutConstraint!
     let withdrawVC = WithdrawViewController.share
+    let withdrawNewVC = WithdrawNewViewController.share
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var withdrawStatusView: UIView!
@@ -121,11 +122,21 @@ class WDetailViewController: BaseViewController {
         }.disposed(by: dpg)
         tryButton.rx.tap.subscribeSuccess { [self] (_) in
             Log.i("回到首頁")
-            if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
+            if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
             {
-                self.withdrawVC.setDataFromTryAgain(amount:amountValue , address: addressValue)
+                if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
+                {
+                    self.withdrawNewVC.setDataFromTryAgain(amount:amountValue , address: addressValue)
+                }
+                self.navigationController?.popToViewController(withdrawNewVC , animated: true)
+            }else
+            {
+                if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address
+                {
+                    self.withdrawVC.setDataFromTryAgain(amount:amountValue , address: addressValue)
+                }
+                self.navigationController?.popToViewController(withdrawVC , animated: true)
             }
-            self.navigationController?.popToViewController(withdrawVC , animated: true)
         }.disposed(by: dpg)
     }
     func setupData()

@@ -20,6 +20,7 @@ class WalletViewController: BaseViewController {
     static let share: WalletViewController = WalletViewController.loadNib()
     let depositVC = DepositViewController.loadNib()
     let withdrawVC = WithdrawViewController.share
+    let withdrawNewVC = WithdrawNewViewController.share
     let twoFAVC = SecurityVerificationViewController.loadNib()
     fileprivate let pageVC = WalletPageViewController()
     let userVC = UserMenuViewController.loadNib()
@@ -152,8 +153,15 @@ class WalletViewController: BaseViewController {
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
             // 測試
 //            self.navigationController?.pushViewController(twoFAVC, animated: true)
-            withdrawVC.setUPData(withdrawDatas: walletsDto)
-            self.navigationController?.pushViewController(withdrawVC, animated: true)
+            if KeychainManager.share.getMundoCoinNewWithdrawVCEnable() == true
+            {
+                withdrawNewVC.setUPData(withdrawDatas: walletsDto)
+                self.navigationController?.pushViewController(withdrawNewVC, animated: true)
+            }else
+            {
+                withdrawVC.setUPData(withdrawDatas: walletsDto)
+                self.navigationController?.pushViewController(withdrawVC, animated: true)
+            }
         }.disposed(by: dpg)
     }
     func bindViewModel()

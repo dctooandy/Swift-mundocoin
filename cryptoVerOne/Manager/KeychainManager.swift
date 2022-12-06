@@ -29,6 +29,7 @@ class KeychainManager {
         case mundocoinRememberMeEnable = "mundocoin_remember_me_enable"
         case mundocoinNetworkMethodEnable = "mundocoin_network_method_enable"
         case mundoCoinSelectCryptoEnable = "mundocoin_select_crypto_enable"
+        case mundoCoinNewWithdrawVCEnable = "mundocoin_newWithdrawVC_enable"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -141,7 +142,34 @@ class KeychainManager {
         }
         saveAccList(newArr)
     }
-    
+    /// - Parameters:
+    ///   - acc: 帳號
+    ///   - pwd: 密碼
+    ///   - tel: 電話
+    func saveAccPwd(acc: String, pwd: String, tel: String) {
+        let acc = acc.lowercased()
+        let arr = getAccList()
+        var isNewAccount = true
+        var newArr = arr.map { (str) -> String in // update
+            let accArr = str.components(separatedBy: "/")
+            if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(tel) {
+                isNewAccount = false
+                let finalAcc = acc.isEmpty ? accArr[0] : acc
+                let finalTel = tel.isEmpty ? accArr[2] : tel
+                let finalPwd = pwd.isEmpty ? accArr[1] : pwd
+                return "\(finalAcc)/\(finalPwd)/\(finalTel)"
+            
+            } else {
+                return str
+            }
+        }
+        
+        let accString = "\(acc)/\(pwd)/\(tel)"
+        if isNewAccount { // if false == new account
+            newArr.append(accString)
+        }
+        saveAccList(newArr)
+    }
     func updateAccount(acc: String, pwd: String, phoneCode: String = "", phone:String = "") {
         var isNewAccount = true
         let arr = getAccList()
@@ -367,6 +395,18 @@ class KeychainManager {
         {
             return []
         }
+    }
+    // 設定是否打開 新版Withdraw 功能
+    func setMundoCoinNewWithdrawVCEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .mundoCoinNewWithdrawVCEnable)
+        return success
+    }
+    func getMundoCoinNewWithdrawVCEnable() -> Bool {
+        if let modeValue = getString(from: .mundoCoinNewWithdrawVCEnable)
+        {
+            return (modeValue == "true" ? true : false)
+        }
+        return false
     }
     // 設定是否打開 Select Crypto View功能
     func setMundoCoinSelectCryptoEnable(_ isOn: Bool) -> Bool {
