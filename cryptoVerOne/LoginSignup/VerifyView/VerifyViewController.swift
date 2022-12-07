@@ -434,19 +434,19 @@ class VerifyViewController: BaseViewController {
             var idString = ""
             if let loginDto = self.loginDto
             {
-                idString = (loginDto.loginMode == .emailPage ? loginDto.account : (loginDto.phoneCode + loginDto.phone))
+                idString = loginDto.toAccountString
             }else if let signupDto = self.signupDto
             {
-                idString = (signupDto.signupMode == .emailPage ? signupDto.account : (signupDto.phoneCode + signupDto.phone))
+                idString = signupDto.toAccountString
             }else if let forgetDto = self.forgotPWDto
             {
-                idString = (forgetDto.loginMode == .emailPage ? forgetDto.account : (forgetDto.phoneCode + forgetDto.phone))
+                idString = forgetDto.toAccountString
             }else if let emailAuthenDto = self.emailAuthenDto
             {
-                idString = emailAuthenDto.account
+                idString = emailAuthenDto.toAccountString
             }else if let mobileAuthenDto = self.mobileAuthenDto
             {
-                idString = (mobileAuthenDto.phoneCode + mobileAuthenDto.phone)
+                idString = mobileAuthenDto.toAccountString
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto

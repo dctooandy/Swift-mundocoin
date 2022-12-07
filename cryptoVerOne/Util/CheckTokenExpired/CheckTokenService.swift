@@ -115,6 +115,13 @@ class CheckTokenService{
                                                       isPasswordExpired: isPasswordExpired,
                                                       sub: sub,
                                                       isAccountExpired: isAccountExpired)
+            if sub.contains("+")
+            {
+                MemberAccountDto.share?.phone = sub
+            }else
+            {
+                MemberAccountDto.share?.email = sub
+            }
         }
     }
     // 檢查 白名單 isAddressBookWhiteListEnabled

@@ -391,14 +391,15 @@ class LoginViewController: BaseViewController {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
         let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
-        let phone = (self.loginMode == .phonePage ? account : "" )
+        let phoneString = (self.loginMode == .phonePage ? account : "")
+        let accountString = account
         let showMode : ShowMode = (self.loginMode == .phonePage ? .loginPhone : .loginEmail )
-        let dto = LoginPostDto(account: account,
+        let dto = LoginPostDto(account: accountString,
                                password: password,
                                loginMode: self.loginMode ,
                                showMode: showMode ,
                                phoneCode: phoneCode ,
-                               phone: phone ,
+                               phone: phoneString ,
                                rememberMeStatus: mundoCoinRememberMeStatus)
 //        // 更改RM 狀態
 //        KeychainManager.share.saveMundoCoinRememberMeStatus(mundoCoinRememberMeStatus)

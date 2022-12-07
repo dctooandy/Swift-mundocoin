@@ -128,16 +128,17 @@ enum UserMenuCellData {
             return ""
         case .email:
             var emailString = ""
-            if let account = KeychainManager.share.getLastAccount()?.account , !account.isEmpty
+            if let account = MemberAccountDto.share?.email
             {
                 emailString = account
             }
+            
             return emailString
         case .mobile:
             var mobileString = ""
-            if let mobile = KeychainManager.share.getLastAccount()?.phone
+            if let account = MemberAccountDto.share?.phone
             {
-                mobileString = mobile
+                mobileString = account
             }
             return mobileString
         case .memberSince:

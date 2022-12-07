@@ -357,14 +357,7 @@ extension LoginSignupViewController {
                         if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
                         {
                             // FaceID 之後 不進行驗證碼驗證
-                            var idString = ""
-                            if loginPostDto.phone.isEmpty
-                            {
-                                idString = loginPostDto.account
-                            }else
-                            {
-                                idString = loginPostDto.phone
-                            }
+                            let idString = loginPostDto.toAccountString
                             self.gotoLoginAction(with: idString, password: loginPostDto.password,loginDto: loginPostDto)
                         }else
                         {
@@ -386,7 +379,7 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        let idString = (dataDto.loginMode == .emailPage ? dataDto.account : (dataDto.phoneCode + dataDto.phone))
+        let idString = dataDto.toAccountString
         let pwString = dataDto.password
         Beans.loginServer.verificationIDPost(idString: idString ,
                                              pwString: pwString ).subscribe { [self] dto in

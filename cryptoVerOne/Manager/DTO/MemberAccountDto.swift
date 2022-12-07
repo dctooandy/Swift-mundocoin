@@ -58,4 +58,14 @@ class MemberAccountDto {
         let strDate = newDateFormatter.string(from: date)
         return strDate
     }
+    var currentMode:LoginMode
+    {
+        if sub.contains("+")
+        {
+            return .phonePage
+        }else
+        {
+            return .emailPage
+        }
+    }
 }

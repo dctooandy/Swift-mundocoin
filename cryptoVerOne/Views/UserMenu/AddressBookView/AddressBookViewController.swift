@@ -123,7 +123,13 @@ class AddressBookViewController: BaseViewController {
 //            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
 //                verifySuccessForChangeWhiteList()
 //            }.disposed(by: dpg)
-            twoWayVC.securityViewMode = .onlyEmail
+            if let currentMode = MemberAccountDto.share?.currentMode
+            {
+                twoWayVC.securityViewMode = (currentMode == .emailPage ? .onlyEmail : . onlyMobile)
+            }else
+            {
+                twoWayVC.securityViewMode = .onlyEmail
+            }
             twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] data in
                 verifySuccessForChangeWhiteList(code: data.0,withMode: data.1, done: {
                     self.twoWayVC.navigationController?.popViewController(animated: true)
