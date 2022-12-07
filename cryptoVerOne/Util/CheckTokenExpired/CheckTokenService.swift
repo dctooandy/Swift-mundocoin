@@ -123,6 +123,24 @@ class CheckTokenService{
                 MemberAccountDto.share?.email = sub
             }
         }
+        if let email = jwtValue.body["email"] as? String
+        {
+            MemberAccountDto.share?.email = email
+        }
+        if let phone = jwtValue.body["phone"] as? String
+        {
+            MemberAccountDto.share?.phone = phone
+        }
+        if let nickname = jwtValue.body["nickname"] as? String
+        {
+            MemberAccountDto.share?.nickName = nickname
+        }
+        if let isPhoneRegistry = jwtValue.body["isPhoneRegistry"] as? Bool,
+           let isEmailRegistry = jwtValue.body["isEmailRegistry"] as? Bool
+        {
+            MemberAccountDto.share?.isPhoneRegistry = isPhoneRegistry
+            MemberAccountDto.share?.isEmailRegistry = isEmailRegistry
+        }
     }
     // 檢查 白名單 isAddressBookWhiteListEnabled
     func checkAddressBookWhiteListEnabled(complete:CheckCompletionBlock? = nil)

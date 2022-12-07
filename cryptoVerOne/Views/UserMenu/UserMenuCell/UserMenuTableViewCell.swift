@@ -87,9 +87,9 @@ enum UserMenuCellData {
         switch self {
         case .registrationInfo:
             var infoString = ""
-            if let mode = KeychainManager.share.getLastAccount()?.loginMode
+            if let mode = MemberAccountDto.share?.isEmailRegistry
             {
-                infoString = (mode == .emailPage ? "E-mail":"Mobile")
+                infoString = (mode ? "E-mail":"Mobile")
             }
             return infoString
         case .currency:
@@ -132,7 +132,6 @@ enum UserMenuCellData {
             {
                 emailString = account
             }
-            
             return emailString
         case .mobile:
             var mobileString = ""

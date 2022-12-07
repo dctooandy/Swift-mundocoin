@@ -148,10 +148,10 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
             Log.i("email")
             if cell.cellData.arrowHidden == false
             {
+                authVC = AuthenticationViewController.loadNib()
+                authVC.authenInputViewMode = .email(withStar: false)
+                self.navigationController?.pushViewController(authVC, animated: true)
             }
-            authVC = AuthenticationViewController.loadNib()
-            authVC.authenInputViewMode = .email(withStar: false)
-            self.navigationController?.pushViewController(authVC, animated: true)
         case 2:
             Log.i("mobile")
             if cell.cellData.arrowHidden == false

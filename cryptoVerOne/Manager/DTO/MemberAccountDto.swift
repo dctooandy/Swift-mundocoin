@@ -20,6 +20,9 @@ class MemberAccountDto {
 //    private var _nickName:String = "Mundocoin-User"
     var nickName:String = "Mundocoin-User"
     
+    var isPhoneRegistry:Bool = false
+    var isEmailRegistry:Bool = false
+
     var isAccountLocked:Bool = false
     var registrationDate:Int = 0
     var Id:String = ""
