@@ -333,8 +333,8 @@ class LoginViewController: BaseViewController {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let pwString = accountInputView?.passwordInputView.textField.text else {return}
         let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
-        let phone = loginMode == .phonePage ? account : ""
-        Beans.loginServer.verificationIDPost(idString: account , pwString: pwString).subscribe { [self] dto in
+        let accountString = loginMode == .phonePage ? (phoneCode + account) : account
+        Beans.loginServer.verificationIDPost(idString: accountString , pwString: pwString).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             login()
         } onError: { [self] error in

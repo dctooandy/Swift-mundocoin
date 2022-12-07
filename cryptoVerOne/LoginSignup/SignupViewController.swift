@@ -172,7 +172,7 @@ class SignupViewController: BaseViewController {
     }
     
     func modeTitle() -> String {
-        switch  loginMode {
+        switch loginMode {
         case .emailPage: return "E-mail".localized
         case .phonePage: return "Mobile".localized
         }
@@ -205,8 +205,15 @@ class SignupViewController: BaseViewController {
     func verificationID()
     {
         guard let account = accountInputView.accountInputView.textField.text?.lowercased() else {return}
-
-        Beans.loginServer.verificationIDGet(idString: account).subscribe { [self] stringValue in
+        var accountString = ""
+        if loginMode == .phonePage , let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
+        {
+            accountString = (phoneCode + account)
+        }else
+        {
+            accountString = account
+        }
+        Beans.loginServer.verificationIDGet(idString: accountString).subscribe { [self] stringValue in
             Log.v("帳號沒註冊過")
             signup()
         } onError: { [self] error in

@@ -12,24 +12,24 @@ import RxSwift
 import Alamofire
 
 class LoginService {
-    func signUPRegistration(code:String ,
-                            email:String = "" ,
+    func signUPRegistration(mode:LoginMode ,
+                            code:String ,
+                            account:String ,
                             password:String ,
-                            phone:String = "",
                             verificationCode : String) -> Single<RegistrationDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters = ["code":code,
                       "password":password,
                       "verificationCode":verificationCode]
-//        if email.isEmpty
-//        {
-//        }else
-//        {
-//        }
-//        parameters["phone"] = phone
+        if mode == .phonePage
+        {
+            parameters["phone"] = account
+        }else
+        {
+            parameters["email"] = account
+        }
         // 註冊 API 還沒完成,暫時先寫到只有email註冊
-        parameters["email"] = email
         return Beans.requestServer.singleRequestPost(
             path: ApiService.registration.path,
             parameters: parameters,
@@ -68,10 +68,10 @@ class LoginService {
         var parameters: Parameters = [String: Any]()
         parameters = ["id":idString]
         parameters = ["password":pwString]
-        if !phoneCode.isEmpty
-        {
-            parameters = ["phoneCode":phoneCode]
-        }
+//        if !phoneCode.isEmpty
+//        {
+//            parameters = ["phoneCode":phoneCode]
+//        }
         return Beans.requestServer.singleRequestPost(
             path: ApiService.verificationID(idString).path,
             parameters: parameters,
@@ -153,10 +153,18 @@ class LoginService {
             })
     }
     // 忘記密碼驗證
-    func customerForgotPasswordVerify(accountString:String , verificationCode:String) -> Single<ForgotPWVerifyDto?>
+    func customerForgotPasswordVerify(mode:LoginMode,
+                                      accountString:String ,
+                                      verificationCode:String) -> Single<ForgotPWVerifyDto?>
     {
         var parameters: Parameters = [String: Any]()
-        parameters["email"] = accountString
+        if mode == .phonePage
+        {
+            parameters["phone"] = accountString
+        }else
+        {
+            parameters["email"] = accountString
+        }
         parameters["code"] = verificationCode
         
         return Beans.requestServer.singleRequestPost(
@@ -168,10 +176,19 @@ class LoginService {
             })
     }
     // 忘記密碼
-    func customerForgotPassword(accountString:String , verificationCode:String , newPassword:String) -> Single<String?>
+    func customerForgotPassword(mode:LoginMode ,
+                                accountString:String ,
+                                verificationCode:String ,
+                                newPassword:String) -> Single<String?>
     {
         var parameters: Parameters = [String: Any]()
-        parameters["email"] = accountString
+        if mode == .phonePage
+        {
+            parameters["phone"] = accountString
+        }else
+        {
+            parameters["email"] = accountString
+        }
         parameters["code"] = verificationCode
         parameters["newPassword"] = newPassword
         

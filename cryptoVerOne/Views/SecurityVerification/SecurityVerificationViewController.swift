@@ -202,7 +202,7 @@ class SecurityVerificationViewController: BaseViewController {
         
         if let loginDto = KeychainManager.share.getLastAccount(), UserStatus.share.isLogin
         {
-            let idString = (byEmail == true ? loginDto.account : loginDto.phone)
+            let idString = (byEmail == true ? loginDto.account : (loginDto.phoneCode + loginDto.phone))
             Log.v("重發驗證")
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto

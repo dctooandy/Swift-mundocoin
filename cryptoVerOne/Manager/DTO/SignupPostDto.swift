@@ -35,6 +35,14 @@ struct SignupPostDto {
             return String(phoneCode + phone.hidePhoneAccount())
         }
     }
+    var toAccountString: String {
+        switch signupMode {
+        case .emailPage:
+            return account
+        case .phonePage:
+            return String(phoneCode + phone)
+        }
+    }
 }
 
 class SignupDto: Codable {

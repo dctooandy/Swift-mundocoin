@@ -39,7 +39,7 @@ class RegistrationDto :Codable{
             var id : String = ""
             var createdDate : String = ""
             var updatedDate : String = ""
-            var email : String = ""
+            var email : String? = ""
             var phone : String?
             var registrationCode : String = ""
             var firstName : String?

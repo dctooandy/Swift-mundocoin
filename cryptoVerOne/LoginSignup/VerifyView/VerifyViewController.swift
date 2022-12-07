@@ -46,7 +46,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = loginDto.toVerifyAccountString
+                self.userAccountLabel.text = loginDto.toAccountString
                 
             }
         }
@@ -66,7 +66,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = forgotDto.toVerifyAccountString
+                self.userAccountLabel.text = forgotDto.toAccountString
             }
         }
     }
@@ -85,7 +85,7 @@ class VerifyViewController: BaseViewController {
                     self.verifyResentLabel.text = "Resend".localized
                     self.isMobileMode = true
                 }
-                self.userAccountLabel.text = signupDto.toVerifyAccountString
+                self.userAccountLabel.text = signupDto.toAccountString
             }
         }
     }
@@ -96,7 +96,7 @@ class VerifyViewController: BaseViewController {
                 verificationType = .emailAuthenVerity
                 self.sentToLabel.text = "We have sent an email to".localized
                 self.verifyResentLabel.text = "Resend Email".localized
-                self.userAccountLabel.text = loginDto.toVerifyAccountString
+                self.userAccountLabel.text = loginDto.toAccountString
                 self.isMobileMode = false
             }
         }
@@ -108,7 +108,7 @@ class VerifyViewController: BaseViewController {
                 verificationType = .mobileAuthenVerity
                 self.sentToLabel.text = "We have sent messages to".localized
                 self.verifyResentLabel.text = "Resend".localized
-                self.userAccountLabel.text = loginDto.toVerifyAccountString
+                self.userAccountLabel.text = loginDto.toAccountString
                 self.isMobileMode = true
             }
         }
@@ -346,63 +346,69 @@ class VerifyViewController: BaseViewController {
     }
     func verifyButtonPressed()
     {
-        var emailString = ""
-        var phoneCodeString = ""
-        var phoneString = ""
+        var accountString = ""
+//        var emailString = ""
+//        var phoneCodeString = ""
+//        var phoneString = ""
         var passwordString = ""
         var registrationString = ""
         var mode : LoginMode = .emailPage
         if let loginDto = self.loginDto
         {
-            emailString = loginDto.account
-            phoneString = loginDto.phone
+            accountString = loginDto.toAccountString
+//            emailString = loginDto.account
+//            phoneString = (loginDto.phoneCode + loginDto.phone)
             passwordString = loginDto.password
             mode = loginDto.loginMode
         }else if let signupDto = self.signupDto
         {
-            emailString = signupDto.account
-            phoneString = signupDto.phone
+            accountString = signupDto.toAccountString
+//            emailString = signupDto.account
+//            phoneString = (signupDto.phoneCode + signupDto.phone)
             passwordString = signupDto.password
             registrationString = signupDto.registration
             mode = signupDto.signupMode
         }else if let forgotDto = self.forgotPWDto
         {
-            emailString = forgotDto.account
-            phoneString = forgotDto.phone
+            accountString = forgotDto.toAccountString
+//            emailString = forgotDto.account
+//            phoneString = (forgotDto.phoneCode + forgotDto.phone)
             mode = forgotDto.loginMode
         }else if let smsAuthenDto = self.mobileAuthenDto
         {
-            phoneString = smsAuthenDto.phone
-            phoneCodeString = smsAuthenDto.phoneCode
+            accountString = smsAuthenDto.toAccountString
+//            phoneString = smsAuthenDto.phone
+//            phoneCodeString = smsAuthenDto.phoneCode
             mode = smsAuthenDto.loginMode
         }else if let emailAuthenDto = self.emailAuthenDto
         {
-            emailString = emailAuthenDto.account
+            accountString = emailAuthenDto.toAccountString
+//            emailString = emailAuthenDto.account
             mode = emailAuthenDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
         switch verificationType {
         case .loginVerity:
             // 登入驗證
-            fetchAuthenticationData(with: mode == .emailPage ? emailString:phoneString,
+            fetchAuthenticationData(with: accountString,
                                     password: passwordString,
                                     verificationCode: codeString)
         case .signupVerity:
             // 註冊驗證
             fetchRegistrationData(code:registrationString,
-                                  email: emailString,
+                                  account:accountString,
                                   password: passwordString,
-                                  phone: phoneString,
                                   verificationCode: codeString)
         case .forgotPWVerity:
-            fetchForgotPasswordVerify(with: mode == .emailPage ? emailString:phoneString,
+            fetchForgotPasswordVerify(mode:mode ,
+                                      account: accountString,
                                       verificationCode: codeString)
         case .emailAuthenVerity:
             Log.i("要去打 email authentication API")
-            fetchEmailAuthenticationData(withEmail: emailString, verificationCode: codeString)
+            fetchEmailAuthenticationData(withEmail: accountString, verificationCode: codeString)
         case .mobileAuthenVerity:
             Log.i("要去打 mobile authentication API")
-            fetchSMSAuthenticationData(withPhoneCode: phoneCodeString, phone: phoneString, verificationCode: codeString)
+            fetchSMSAuthenticationData(phone: accountString, verificationCode: codeString)
         }
     }
     func verifyResentLabelVisable(With enable:Bool)
@@ -428,19 +434,19 @@ class VerifyViewController: BaseViewController {
             var idString = ""
             if let loginDto = self.loginDto
             {
-                idString = (loginDto.loginMode == .emailPage ? loginDto.account : loginDto.phone)
+                idString = (loginDto.loginMode == .emailPage ? loginDto.account : (loginDto.phoneCode + loginDto.phone))
             }else if let signupDto = self.signupDto
             {
-                idString = (signupDto.signupMode == .emailPage ? signupDto.account : signupDto.phone)
+                idString = (signupDto.signupMode == .emailPage ? signupDto.account : (signupDto.phoneCode + signupDto.phone))
             }else if let forgetDto = self.forgotPWDto
             {
-                idString = (forgetDto.loginMode == .emailPage ? forgetDto.account : forgetDto.phone)
+                idString = (forgetDto.loginMode == .emailPage ? forgetDto.account : (forgetDto.phoneCode + forgetDto.phone))
             }else if let emailAuthenDto = self.emailAuthenDto
             {
                 idString = emailAuthenDto.account
             }else if let mobileAuthenDto = self.mobileAuthenDto
             {
-                idString = mobileAuthenDto.phone
+                idString = (mobileAuthenDto.phoneCode + mobileAuthenDto.phone)
             }
             Beans.loginServer.verificationResend(idString: idString).subscribe { [self]dto in
                 if let dataDto = dto
@@ -480,26 +486,25 @@ class VerifyViewController: BaseViewController {
     }
     // 註冊
     func fetchRegistrationData(code:String ,
-                          email:String = "" ,
-                          password:String ,
-                          phone:String = "",
-                          verificationCode : String)
+                               account:String ,
+                               password:String ,
+                               verificationCode : String)
     {
         if let signupDto = self.signupDto
         {
             LoginSignupViewController.share.gotoSignupAction(code: code,
-                                                             email: email,
+                                                             account: account,
                                                              password: password,
-                                                             phone: phone,
                                                              verificationCode: verificationCode ,
                                                              signupDto: signupDto)
         }
     }
     // 忘記密碼
-    func fetchForgotPasswordVerify(with idString:String ,
+    func fetchForgotPasswordVerify(mode:LoginMode ,
+                                   account:String ,
                                    verificationCode:String)
     {
-        Beans.loginServer.customerForgotPasswordVerify(accountString: idString.localizedLowercase, verificationCode: verificationCode).subscribe { [self] dto in
+        Beans.loginServer.customerForgotPasswordVerify(mode:mode ,accountString: account.localizedLowercase, verificationCode: verificationCode).subscribe { [self] dto in
             if let currentData = dto
             {
                 Log.i("成功回傳 \(currentData)")
@@ -534,9 +539,8 @@ class VerifyViewController: BaseViewController {
         }.disposed(by: disposeBag)
     }
     // SMS Authentication
-    func fetchSMSAuthenticationData(withPhoneCode phoneCode:String ,
-                                 phone:String ,
-                                 verificationCode:String)
+    func fetchSMSAuthenticationData(phone:String ,
+                                    verificationCode:String)
     {
         Log.i("執行SMS Authen")
         let controllers = self.navigationController?.viewControllers

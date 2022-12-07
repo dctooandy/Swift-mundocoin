@@ -386,12 +386,10 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        let idString = (dataDto.loginMode == .emailPage ? dataDto.account : dataDto.phone)
+        let idString = (dataDto.loginMode == .emailPage ? dataDto.account : (dataDto.phoneCode + dataDto.phone))
         let pwString = dataDto.password
-        let phoneCodeString = (dataDto.loginMode == .emailPage ? "" : dataDto.phoneCode)
         Beans.loginServer.verificationIDPost(idString: idString ,
-                                             pwString: pwString ,
-                                             phoneCode: phoneCodeString).subscribe { [self] dto in
+                                             pwString: pwString ).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             willShowAgainFromVerifyVC = true
             // 暫時改為直接推頁面
@@ -536,27 +534,19 @@ extension LoginSignupViewController {
         }
     }
     func gotoSignupAction(code:String ,
-                          email:String = "" ,
+                          account:String ,
                           password:String ,
-                          phone:String = "",
                           verificationCode : String,
                           signupDto : SignupPostDto)
     {
-        Beans.loginServer.signUPRegistration(code: code, email: email, password: password, phone: phone, verificationCode: verificationCode).subscribe { [self]dto in
+        Beans.loginServer.signUPRegistration(mode:signupDto.signupMode , code: code, account: account, password: password, verificationCode: verificationCode).subscribe { [self]dto in
             // 消除Loading
             _ = LoadingViewController.dismiss()
-            if let regisDto = dto{
+            if let regisDto = dto
+            {
                 RegistrationDto.share = regisDto
-                var idString = ""
-                if email.isEmpty
-                {
-                    idString = phone
-                }else
-                {
-                    idString = email
-                }
                 // 去登入
-                gotoLoginAction(with: idString, password: password,signupDto: signupDto)
+                gotoLoginAction(with: account, password: password,signupDto: signupDto)
             }
         } onError: { [self] error in
             _ = LoadingViewController.dismiss()

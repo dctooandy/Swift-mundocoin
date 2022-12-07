@@ -148,7 +148,14 @@ class ForgotViewController: BaseViewController {
     {
         if let account = accountInputView?.accountInputView.textField.text
         {
-            let dto = LoginPostDto(account: account, password:"",loginMode: forgotPasswordMode.forLoginMode ,showMode: forgotPasswordMode.forShowMode)
+            let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text ?? ""
+            let phone = account
+            let dto = LoginPostDto(account: account,
+                                   password:"",
+                                   loginMode: forgotPasswordMode.forLoginMode ,
+                                   showMode: forgotPasswordMode.forShowMode,
+                                   phoneCode: phoneCode,
+                                   phone: phone)
             view.endEditing(true)
             showVerifyVCWithLoginData(dto)
         }
@@ -156,7 +163,16 @@ class ForgotViewController: BaseViewController {
 
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        Beans.loginServer.verificationIDGet(idString: dataDto.account).subscribe { [self] dto in
+        guard let account = accountInputView.accountInputView.textField.text?.lowercased() else {return}
+        var accountString = ""
+        if dataDto.loginMode == .phonePage , let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
+        {
+            accountString = (phoneCode + account)
+        }else
+        {
+            accountString = account
+        }
+        Beans.loginServer.verificationIDGet(idString: accountString).subscribe { [self] dto in
             Log.v("帳號沒註冊過")
             accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is not exist")
 //            willShowAgainFromVerifyVC = true

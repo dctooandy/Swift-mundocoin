@@ -34,7 +34,15 @@ struct LoginPostDto {
         case .emailPage:
             return account.hideEmailAccount()
         case .phonePage:
-            return String((phoneCode ) + (phone.hidePhoneAccount() ?? ""))
+            return String(phoneCode + phone.hidePhoneAccount())
+        }
+    }
+    var toAccountString: String {
+        switch loginMode {
+        case .emailPage:
+            return account
+        case .phonePage:
+            return String(phoneCode + phone)
         }
     }
 }

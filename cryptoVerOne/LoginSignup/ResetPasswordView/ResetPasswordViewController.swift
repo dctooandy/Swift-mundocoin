@@ -271,7 +271,7 @@ class ResetPasswordViewController: BaseViewController {
             resignAllResponder()
             if let resetData = self.resetPWDto
             {
-                Beans.loginServer.customerForgotPassword(accountString: resetData.account.lowercased(), verificationCode: resetData.resetCode, newPassword: passwordString).subscribe { [self] (data) in
+                Beans.loginServer.customerForgotPassword(mode:resetData.loginMode , accountString: resetData.toAccountString.lowercased(), verificationCode: resetData.resetCode, newPassword: passwordString).subscribe { [self] (data) in
                     gotoFinalVC()
                 } onError: { [self](error) in
                     if let errorData = error as? ApiServiceError
