@@ -8,6 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Alamofire
 
 class AddNewAddressViewController: BaseViewController {
     // MARK:業務設定
@@ -303,7 +304,23 @@ class AddNewAddressViewController: BaseViewController {
     func verifySuccessForCreateAddressBook(code:String, withMode:String = "",done: @escaping () -> Void)
     {
         let address = createAddressDto()
-        _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: code,
+        var codePara : [Parameters] = []
+        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+           accountArray.first != nil
+        {
+            var parameters: Parameters = [String: Any]()
+            parameters["id"] = accountArray.first ?? ""
+            parameters["code"] = code
+            codePara.append(parameters)
+            if !withMode.isEmpty , accountArray.last != nil
+            {
+                var parameters: Parameters = [String: Any]()
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
+                codePara.append(parameters)
+            }
+        }
+        _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCodes: codePara,
                                              done: { [self] in
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {

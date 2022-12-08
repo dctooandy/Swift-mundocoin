@@ -9,6 +9,7 @@ import Foundation
 import Foundation
 import RxSwift
 import UIKit
+import Alamofire
 
 class AddressBookListDto :Codable {
     static var share:AddressBookListDto?
@@ -49,11 +50,11 @@ class AddressBookListDto :Codable {
                                 name:String ,
                                 label:String ,
                               enabled:Bool ,
-                              verificationCode:String ,
+                              verificationCodes:[Parameters] ,
                                 done: @escaping () -> Void,
                               field: @escaping (ApiServiceError) -> Void) -> Observable<()>{
         let subject = PublishSubject<Void>()
-        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label ,enabled:enabled , verificationCode:verificationCode).subscribe { _ in
+        Beans.addressBookServer.createAddressBook(address: address, name: name, label: label ,enabled:enabled , verificationCodes:verificationCodes).subscribe { _ in
             done()
             subject.onNext(())
         } onError: { error in

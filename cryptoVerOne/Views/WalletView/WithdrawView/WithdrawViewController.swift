@@ -9,6 +9,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 import DropDown
+import Alamofire
 
 class WithdrawViewController: BaseViewController {
     // MARK:業務設定
@@ -389,15 +390,15 @@ class WithdrawViewController: BaseViewController {
             securityVerifyVC = SecurityVerificationViewController.loadNib()
             //        securityVerifyVC.securityViewMode = .defaultMode
             securityVerifyVC.securityViewMode = type
-            securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
+            securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](verifyStringOne,verifyStringTwo) in
                 // 開啟驗證流程
                 Log.i("驗證成功,開取款單")
-                toCreateWithdrawal(emailVerifyValue: emailVerifyString)
+                toCreateWithdrawal(verifyValueOne: verifyStringOne , verifyValueTwo:verifyStringTwo)
             }.disposed(by: dpg)
             self.navigationController?.pushViewController(securityVerifyVC, animated: true)            
         }
     }
-    func toCreateWithdrawal(emailVerifyValue : String , twoFAValue:String = "")
+    func toCreateWithdrawal(verifyValueOne : String , verifyValueTwo:String = "")
     {
         // 目前API並沒有驗證 驗證碼,等API更新
 //        if let textString = withdrawToView.textField.text,
@@ -411,10 +412,26 @@ class WithdrawViewController: BaseViewController {
             {
                 fAddressString = fAddress
             }
+            var codePara : [Parameters] = []
+            if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+               accountArray.first != nil
+            {
+                var parameters: Parameters = [String: Any]()
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = verifyValueOne
+                codePara.append(parameters)
+                if !verifyValueTwo.isEmpty , accountArray.last != nil
+                {
+                    var parameters: Parameters = [String: Any]()
+                    parameters["id"] = accountArray.first ?? ""
+                    parameters["code"] = verifyValueTwo
+                    codePara.append(parameters)
+                }
+            }
             Beans.walletServer.walletWithdraw(amount: amountText,
                                               fAddress: fAddressString,
                                               tAddress: textString ,
-                                              verificationCode: emailVerifyValue)
+                                              verificationCodes: codePara)
             .subscribe { [self] dto in
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss().subscribeSuccess({ [self] _ in

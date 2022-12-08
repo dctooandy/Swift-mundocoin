@@ -14,7 +14,7 @@ import Alamofire
 class AddressBookService {
 
     //Create Customer Address Book
-    func createAddressBook(address : String , name : String , label : String ,enabled:Bool , verificationCode:String) -> Single<AddressBookDto?>
+    func createAddressBook(address : String , name : String , label : String ,enabled:Bool , verificationCodes:[Parameters]) -> Single<AddressBookDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["currency"] = "USDT"
@@ -24,7 +24,7 @@ class AddressBookService {
         parameters["label"] = label
         
         parameters["enabled"] = enabled
-        parameters["verificationCode"] = verificationCode
+        parameters["verificationCodes"] = verificationCodes
         
         return Beans.requestServer.singleRequestPost(
             path: ApiService.customerCreateAddressBook.path,
