@@ -97,4 +97,30 @@ class MemberAccountDto {
             return .onlyMobile
         }
     }
+    var withdrawWhitelistAccountArray:[String]
+    {
+        if !phone.isEmpty , !email.isEmpty
+        {
+            return [phone,email]
+        }else if phone.isEmpty
+        {
+            return [email]
+        }else
+        {
+            return [phone]
+        }
+    }
+    var defaultAccountArray:[String]
+    {
+        if !phone.isEmpty , !email.isEmpty
+        {
+            return [email,phone]
+        }else if phone.isEmpty
+        {
+            return [email]
+        }else
+        {
+            return [phone]
+        }
+    }
 }

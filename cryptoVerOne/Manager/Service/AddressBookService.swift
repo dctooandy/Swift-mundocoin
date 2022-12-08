@@ -49,11 +49,11 @@ class AddressBookService {
             })
     }
     //Enable Customer Address Book White List
-    func enableAddressBookWhiteList(enabled:Bool, verificationCode:String) -> Single<EnableAddressListWhiteDto?>
+    func enableAddressBookWhiteList(enabled:Bool, verificationCodes:[Parameters]) -> Single<EnableAddressListWhiteDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["enabled"] = enabled
-        parameters["verificationCode"] = verificationCode
+        parameters["verificationCodes"] = verificationCodes
         return Beans.requestServer.singleRequestPut(
             path: ApiService.customerEnableAddressBookWhiteList.path,
             parameters: parameters,
@@ -64,11 +64,11 @@ class AddressBookService {
     }
     
     //Update Customer Address Book Status
-    func updateAddressBookStatus(addressBookID:String , enabled:Bool , verificationCode:String = "") -> Single<AddressBookDto?>
+    func updateAddressBookStatus(addressBookID:String , enabled:Bool , verificationCodes:[Parameters]) -> Single<AddressBookDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["enabled"] = enabled
-        parameters["verificationCode"] = verificationCode
+        parameters["verificationCodes"] = verificationCodes
         return Beans.requestServer.singleRequestPut(
             path: ApiService.customerUpdateAddressBookStatus(addressBookID).path,
             parameters: parameters,

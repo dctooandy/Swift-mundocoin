@@ -239,7 +239,14 @@ extension PersonalInfoViewController: UITextFieldDelegate
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
         turnOnImageView(editFlag: false)
-        MemberAccountDto.share?.nickName = textField.text ?? ""
         calculateTextWidth()
+        Beans.loginServer.customerSettingsNickname(nickname: textField.text ?? "").subscribeSuccess { feedback in
+            if let dto = feedback , let nickname = dto.nickName
+            {
+                MemberAccountDto.share?.nickName = nickname
+                Log.i("feedback : \(dto)")
+                
+            }
+        }.disposed(by: dpg)
     }
 }

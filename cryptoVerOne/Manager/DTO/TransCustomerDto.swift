@@ -27,8 +27,8 @@ class TransCustomerDto :Codable {
     var isPhoneRegistry:Bool = false
     var lastLoginDate: JSONValue? = JSONValue.string("")
     var lastLoginIP: String = ""
-    
-    init(id: String = "",createdDate: String = "", updatedDate: String = "" , email: String = "", firstName:JSONValue? = JSONValue.string(""), middleName: JSONValue? = JSONValue.string("") , lastName: JSONValue? = JSONValue.string(""), phone: JSONValue? = JSONValue.string(""), registrationCode: String? = "", registrationIP: String? = "", roles: String? = "", status: String? = "", isAddressBookWhiteListEnabled: Bool = false , isEmailRegistry: Bool = false, isPhoneRegistry: Bool = false ,lastLoginDate: JSONValue? = JSONValue.string(""),lastLoginIP: String = "") {
+    var nickName:String? = ""
+    init(id: String = "",createdDate: String = "", updatedDate: String = "" , email: String = "", firstName:JSONValue? = JSONValue.string(""), middleName: JSONValue? = JSONValue.string("") , lastName: JSONValue? = JSONValue.string(""), phone: JSONValue? = JSONValue.string(""), registrationCode: String? = "", registrationIP: String? = "", roles: String? = "", status: String? = "", isAddressBookWhiteListEnabled: Bool = false , isEmailRegistry: Bool = false, isPhoneRegistry: Bool = false ,lastLoginDate: JSONValue? = JSONValue.string(""),lastLoginIP: String = "" , nickName:String = "") {
         
         self.id = id
         self.createdDate = createdDate
@@ -47,5 +47,6 @@ class TransCustomerDto :Codable {
         self.isPhoneRegistry = isPhoneRegistry
         self.lastLoginDate = lastLoginDate
         self.lastLoginIP = lastLoginIP
+        self.nickName = nickName
     }
 }

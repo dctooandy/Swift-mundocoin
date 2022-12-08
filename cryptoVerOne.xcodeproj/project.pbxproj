@@ -88,6 +88,12 @@
 		0909C8EF28533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
 		0909C8F028533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
 		0909C8F128533270003E2F58 /* AuditLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */; };
+		091FB985294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
+		091FB986294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
+		091FB987294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
+		091FB988294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
+		091FB989294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
+		091FB98A294192380026A3F4 /* VerificationCodeDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 091FB984294192380026A3F4 /* VerificationCodeDto.swift */; };
 		092E75FA284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FB284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
 		092E75FC284F589400221997 /* DynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E75F9284F589400221997 /* DynamicCollectionView.swift */; };
@@ -2165,6 +2171,7 @@
 		0909C8D52852EA31003E2F58 /* SocketIOManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketIOManager.swift; sourceTree = "<group>"; };
 		0909C8DD28532E51003E2F58 /* AuditLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditLoginViewController.swift; sourceTree = "<group>"; };
 		0909C8EB28533270003E2F58 /* AuditLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuditLoginViewController.xib; sourceTree = "<group>"; };
+		091FB984294192380026A3F4 /* VerificationCodeDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCodeDto.swift; sourceTree = "<group>"; };
 		092E75F9284F589400221997 /* DynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicCollectionView.swift; sourceTree = "<group>"; };
 		092E75FD284F590900221997 /* DynamicCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DynamicCollectionView.xib; sourceTree = "<group>"; };
 		092E76012850488700221997 /* AddressBookDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookDto.swift; sourceTree = "<group>"; };
@@ -3436,6 +3443,7 @@
 				A16F622028323EE900D9CCE5 /* UserAddressDto.swift */,
 				A1559DFB2835EFDE00755783 /* WalletCellDto.swift */,
 				A1559E02283646AC00755783 /* ConfirmWithdrawDto.swift */,
+				091FB984294192380026A3F4 /* VerificationCodeDto.swift */,
 				A1559E05283739D700755783 /* DetailDto.swift */,
 				09CAF5C0283C85AE00D7B19B /* DefaultDto.swift */,
 				09919ABF2865567B00035835 /* EmptyDto.swift */,
@@ -4832,6 +4840,7 @@
 				09905A802851A02B00BAEE78 /* TemplateView.swift in Sources */,
 				09905A812851A02B00BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905A822851A02B00BAEE78 /* LoginMode.swift in Sources */,
+				091FB989294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				09905A832851A02B00BAEE78 /* DepositViewController.swift in Sources */,
 				09905A842851A02B00BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905A852851A02B00BAEE78 /* TDetailViewController.swift in Sources */,
@@ -5089,6 +5098,7 @@
 				09905B722851A08500BAEE78 /* TemplateView.swift in Sources */,
 				09905B732851A08500BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905B742851A08500BAEE78 /* LoginMode.swift in Sources */,
+				091FB98A294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				09905B752851A08500BAEE78 /* DepositViewController.swift in Sources */,
 				09905B762851A08500BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905B772851A08500BAEE78 /* TDetailViewController.swift in Sources */,
@@ -5346,6 +5356,7 @@
 				09905C642851A09600BAEE78 /* TemplateView.swift in Sources */,
 				09905C652851A09600BAEE78 /* TwoSideStyle.swift in Sources */,
 				09905C662851A09600BAEE78 /* LoginMode.swift in Sources */,
+				091FB988294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				09905C672851A09600BAEE78 /* DepositViewController.swift in Sources */,
 				09905C682851A09600BAEE78 /* AddressBookViewCell.swift in Sources */,
 				09905C692851A09600BAEE78 /* TDetailViewController.swift in Sources */,
@@ -5603,6 +5614,7 @@
 				09CAF476283C77ED00D7B19B /* TemplateView.swift in Sources */,
 				09CAF477283C77ED00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF478283C77ED00D7B19B /* LoginMode.swift in Sources */,
+				091FB986294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				09CAF479283C77ED00D7B19B /* DepositViewController.swift in Sources */,
 				09C20FA42845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF47A283C77ED00D7B19B /* TDetailViewController.swift in Sources */,
@@ -5860,6 +5872,7 @@
 				09CAF537283C7BBE00D7B19B /* TemplateView.swift in Sources */,
 				09CAF538283C7BBE00D7B19B /* TwoSideStyle.swift in Sources */,
 				09CAF539283C7BBE00D7B19B /* LoginMode.swift in Sources */,
+				091FB987294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				09CAF53A283C7BBE00D7B19B /* DepositViewController.swift in Sources */,
 				09C20FA52845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				09CAF53B283C7BBE00D7B19B /* TDetailViewController.swift in Sources */,
@@ -6117,6 +6130,7 @@
 				A16F61F8282E383300D9CCE5 /* TemplateView.swift in Sources */,
 				A1559DE32833AB2200755783 /* TwoSideStyle.swift in Sources */,
 				A19C71AC282262EB000AFC3F /* LoginMode.swift in Sources */,
+				091FB985294192380026A3F4 /* VerificationCodeDto.swift in Sources */,
 				A1973A1A2828F32E009932D8 /* DepositViewController.swift in Sources */,
 				09C20FA32845E19900E70654 /* AddressBookViewCell.swift in Sources */,
 				A16F62132831FAA100D9CCE5 /* TDetailViewController.swift in Sources */,

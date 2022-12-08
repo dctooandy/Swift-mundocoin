@@ -10,6 +10,7 @@ import RxCocoa
 import RxSwift
 import DropDown
 import UIKit
+import Alamofire
 
 class AddressBookViewController: BaseViewController {
     // MARK:業務設定
@@ -135,8 +136,24 @@ class AddressBookViewController: BaseViewController {
     }
     func verifySuccessForChangeWhiteList(code:String, withMode:String = "",done: @escaping () -> Void)
     {
+        var codePara : [Parameters] = []
+        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+           accountArray.first != nil
+        {
+            var parameters: Parameters = [String: Any]()
+            parameters["id"] = accountArray.first ?? ""
+            parameters["code"] = code
+            codePara.append(parameters)
+            if !withMode.isEmpty , accountArray.last != nil
+            {
+                var parameters: Parameters = [String: Any]()
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
+                codePara.append(parameters)
+            }
+        }
         let isOn = KeychainManager.share.getWhiteListOnOff()
-        Beans.addressBookServer.enableAddressBookWhiteList(enabled: !isOn, verificationCode: code).subscribe { _ in
+        Beans.addressBookServer.enableAddressBookWhiteList(enabled: !isOn, verificationCodes:codePara ).subscribe { _ in
             KeychainManager.share.saveWhiteListOnOff(!isOn)
             WhiteListThemes.share.acceptWhiteListTopImageStyle(!isOn == true ? .whiteListOn : .whiteListOff)
             done()
@@ -231,7 +248,7 @@ class AddressBookViewController: BaseViewController {
                     //            twoFAVC.navigationController?.popViewController(animated: true)
                     Log.i("返回Security並打API")
                     // 需要填入修改白名單API
-                    changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: {
+                    changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: { isOnValue in
                         if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
                         {
                             self.twoWayVC.navigationController?.popViewController(animated: true)
@@ -251,10 +268,26 @@ class AddressBookViewController: BaseViewController {
 //            isShowSecurityVC = false
         }
     }
-    func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping () -> Void)
+    func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping (Bool) -> Void)
     {
-        Beans.addressBookServer.updateAddressBookStatus(addressBookID: addressData.id , enabled: addressData.enabled , verificationCode: code).subscribe { _ in
-            done()
+        var codePara : [Parameters] = []
+        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+           accountArray.first != nil , addressData.enabled == true
+        {
+            var parameters: Parameters = [String: Any]()
+            parameters["id"] = accountArray.first ?? ""
+            parameters["code"] = code
+            codePara.append(parameters)
+            if !withMode.isEmpty , accountArray.last != nil
+            {
+                var parameters: Parameters = [String: Any]()
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
+                codePara.append(parameters)
+            }
+        }
+        Beans.addressBookServer.updateAddressBookStatus(addressBookID: addressData.id , enabled: addressData.enabled , verificationCodes: codePara).subscribe { _ in
+            done(true)
         } onError: { [self] error in
             if let error = error as? ApiServiceError
             {
@@ -262,37 +295,46 @@ class AddressBookViewController: BaseViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
+                    var redBorderMessage = ""
+                    done(false)
                     if status == "400"
                     {
                         if reason == "CODE_MISMATCH"
                         {
                             Log.i("驗證碼錯誤 :\(reason)")
+                            var showAlert = true
                             if twoWayVC.securityViewMode == .onlyEmail
                             {
-                                twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-                                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                redBorderMessage = "The Email Code is incorrect. Please re-enter."
                             }else if twoWayVC.securityViewMode == .onlyMobile
                             {
-                                twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                redBorderMessage = "The Mobile Code is incorrect. Please re-enter."
                             }else if twoWayVC.securityViewMode == .selectedMode
                             {
-                                if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
+                                if withMode == "onlyEmail"
                                 {
-                                    emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
-                                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                }else if withMode == "onlyTwoFA" , let mobileVC = twoWayVC.twoWayViewControllers.last
+                                    redBorderMessage = "The Email Code is incorrect. Please re-enter."
+                                }else if withMode == "onlyTwoFA"
                                 {
-                                    mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
-                                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                    redBorderMessage = "The Mobile Code is incorrect. Please re-enter."
                                 }
                             }else if twoWayVC.securityViewMode == .defaultMode
                             {
                                 if twoWayVC.twoWayVerifyView.twoWayViewMode == .both
                                 {
+                                    showAlert = false
                                     ErrorHandler.show(error: error)
                                 }
                             }
+                            if showAlert == true
+                            {
+                                showRedMessage(redBorderMessage: redBorderMessage ,withMode:withMode)
+                            }
+                        }else if reason == "PARAMETER_INVALID"
+                        {
+                            Log.i("參數錯誤 :\(reason)")
+                            let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: dto.errors)
+                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
                         }
                     }else
                     {
@@ -304,6 +346,29 @@ class AddressBookViewController: BaseViewController {
             }
         }.disposed(by: disposeBag)
 
+    }
+    func showRedMessage(redBorderMessage : String ,withMode:String)
+    {
+        if twoWayVC.securityViewMode == .onlyEmail
+        {
+            twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+            twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)
+        }else if twoWayVC.securityViewMode == .onlyMobile
+        {
+            twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
+            twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)
+        }else if twoWayVC.securityViewMode == .selectedMode
+        {
+            if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
+            {
+                emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
+                emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)
+            }else if withMode == "onlyTwoFA" , let mobileVC = twoWayVC.twoWayViewControllers.last
+            {
+                mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
+                mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)
+            }
+        }
     }
 }
 // MARK: -
@@ -328,7 +393,12 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         }.disposed(by: cellDpg)
         cell.rxChangeWhiteListClickWhenClose().subscribeSuccess {[self] cellData in
             Log.i("呼叫修改API")
-            changeCellWhiteListType(addressData: cellData, done: {})
+            changeCellWhiteListType(addressData: cellData) { isOnValue in
+                if isOnValue == false
+                {
+                    cell.whiteListSwitch.isOn = true
+                }
+            }
         }.disposed(by: cellDpg)
 //        cell.setAccountData(data: dataArray[indexPath.item])
         return cell

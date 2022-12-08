@@ -200,5 +200,17 @@ class LoginService {
                 return $0
             })
     }
-
+    func customerSettingsNickname(nickname:String) -> Single<TransCustomerDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["nickName"] = nickname
+        
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.customerSettingsNickname.path,
+            parameters: parameters,
+            modify: false,
+            resultType: TransCustomerDto.self).map({
+                return $0
+            })
+    }
 }
