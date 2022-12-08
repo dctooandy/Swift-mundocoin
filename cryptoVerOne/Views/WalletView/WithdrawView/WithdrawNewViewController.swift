@@ -395,15 +395,18 @@ class WithdrawNewViewController: BaseViewController {
     }
     func showSecurityVC()
     {
-        securityVerifyVC = SecurityVerificationViewController.loadNib()
-//        securityVerifyVC.securityViewMode = .defaultMode
-        securityVerifyVC.securityViewMode = .onlyEmail
-        securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
-            // 開啟驗證流程
-            Log.i("驗證成功,開取款單")
-            toCreateWithdrawal(emailVerifyValue: emailVerifyString)
-        }.disposed(by: dpg)
-        self.navigationController?.pushViewController(securityVerifyVC, animated: true)
+        if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
+        {
+            securityVerifyVC = SecurityVerificationViewController.loadNib()
+            //        securityVerifyVC.securityViewMode = .defaultMode
+            securityVerifyVC.securityViewMode = type
+            securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](emailVerifyString,_) in
+                // 開啟驗證流程
+                Log.i("驗證成功,開取款單")
+                toCreateWithdrawal(emailVerifyValue: emailVerifyString)
+            }.disposed(by: dpg)
+            self.navigationController?.pushViewController(securityVerifyVC, animated: true)
+        }
     }
     func toCreateWithdrawal(emailVerifyValue : String , twoFAValue:String = "")
     {

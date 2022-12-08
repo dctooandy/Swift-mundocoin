@@ -372,9 +372,10 @@ class TwoWayVerifyView: UIView {
         switch self.twoWayViewMode {
         case .both:
             if let emailString = self.emailInputView.textField.text,
+               let mobileCode = self.mobileInputView.mobileCodeLabel.text,
                let mobileString = self.mobileInputView.textField.text
             {
-                onSubmitBothClick.onNext((emailString,mobileString))
+                onSubmitBothClick.onNext((emailString,mobileCode + mobileString))
             }
         case .onlyEmail:
             if let emailString = self.emailInputView.textField.text
@@ -382,9 +383,10 @@ class TwoWayVerifyView: UIView {
                 onSubmitOnlyEmailClick.onNext((emailString))
             }
         case .onlyMobile:
-            if let mobileString = self.mobileInputView.textField.text
+            if let mobileCode = self.mobileInputView.mobileCodeLabel.text,
+               let mobileString = self.mobileInputView.textField.text
             {
-                onSubmitOnlyMobileClick.onNext((mobileString))
+                onSubmitOnlyMobileClick.onNext((mobileCode + mobileString))
             }
         }
     }

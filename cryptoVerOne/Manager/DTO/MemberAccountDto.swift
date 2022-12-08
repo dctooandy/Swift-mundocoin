@@ -71,4 +71,30 @@ class MemberAccountDto {
             return .emailPage
         }
     }
+    var withdrawWhitelistSecurityType:SecurityViewMode
+    {
+        if !phone.isEmpty , !email.isEmpty
+        {
+            return .defaultMode
+        }else if phone.isEmpty
+        {
+            return .onlyEmail
+        }else
+        {
+            return .onlyMobile
+        }
+    }
+    var defaultSecurityType:SecurityViewMode
+    {
+        if !phone.isEmpty , !email.isEmpty
+        {
+            return .selectedMode
+        }else if phone.isEmpty
+        {
+            return .onlyEmail
+        }else
+        {
+            return .onlyMobile
+        }
+    }
 }

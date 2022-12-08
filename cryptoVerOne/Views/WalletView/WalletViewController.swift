@@ -21,7 +21,6 @@ class WalletViewController: BaseViewController {
     let depositVC = DepositViewController.loadNib()
     let withdrawVC = WithdrawViewController.share
     let withdrawNewVC = WithdrawNewViewController.share
-    let twoFAVC = SecurityVerificationViewController.loadNib()
     fileprivate let pageVC = WalletPageViewController()
     let userVC = UserMenuViewController.loadNib()
     private let onClick = PublishSubject<Any>()
@@ -121,10 +120,6 @@ class WalletViewController: BaseViewController {
     }
     func bindAction()
     {
-        twoFAVC.securityViewMode = .defaultMode
-        twoFAVC.rxVerifySuccessClick().subscribeSuccess { (_) in
-            Log.i("Submit成功")
-        }.disposed(by: dpg)
         eyeIconImageView.rx.click.subscribeSuccess { [self](_) in
             changeEyeMode()
         }.disposed(by: dpg)
@@ -151,8 +146,6 @@ class WalletViewController: BaseViewController {
             self.navigationController?.pushViewController(depositVC, animated: true)
         }.disposed(by: dpg)
         withdrawImg.rx.click.subscribeSuccess { [self] (_) in
-            // 測試
-//            self.navigationController?.pushViewController(twoFAVC, animated: true)
             if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
             {
                 withdrawNewVC.setUPData(withdrawDatas: walletsDto)

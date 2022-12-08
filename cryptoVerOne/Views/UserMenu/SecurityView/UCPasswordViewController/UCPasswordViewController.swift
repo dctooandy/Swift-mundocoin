@@ -363,17 +363,10 @@ class UCPasswordViewController: BaseViewController {
     }
     func bindAction()
     {
-        let loginDto = KeychainManager.share.getLastAccount()
-        if let phoneString = loginDto?.phone , !phoneString.isEmpty
+        if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
         {
-            twoWayVC.securityViewMode = .selectedMode
-        }else
-        {
-            twoWayVC.securityViewMode = .onlyEmail
+            twoWayVC.securityViewMode = type
         }
-        // MC524 暫時隱藏
-//        twoWayVC.securityViewMode = .defaultMode
-//        twoWayVC.securityViewMode = .onlyMobile
         twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0)
         }.disposed(by: dpg)
@@ -472,7 +465,7 @@ class UCPasswordViewController: BaseViewController {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
                     Log.v("帳號有註冊過")
-                    gotoTwoFAVC()
+                    gotoTwoWayVC()
                 }
             } onError: { [self] error in
                 if let error = error as? ApiServiceError {
@@ -501,7 +494,7 @@ class UCPasswordViewController: BaseViewController {
             }.disposed(by: disposeBag)
         }
     }
-    func gotoTwoFAVC()
+    func gotoTwoWayVC()
     {
         self.navigationController?.pushViewController(twoWayVC, animated: true)
     }

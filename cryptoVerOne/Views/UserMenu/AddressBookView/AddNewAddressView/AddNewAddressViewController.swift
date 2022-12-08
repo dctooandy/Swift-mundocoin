@@ -275,52 +275,21 @@ class AddNewAddressViewController: BaseViewController {
         saveButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("點到Save")
             isToSecurityVC = true
-//            let address = createAddressDto()
-            twoWayVC = SecurityVerificationViewController.loadNib()
-            // 暫時改為 onlyEmail
-//            twoFAVC.securityViewMode = .defaultMode
-//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
-//                verifySuccessForChangeWhiteList()
-//            }.disposed(by: dpg)
-            twoWayVC.securityViewMode = .onlyEmail
-            twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
-                verifySuccessForCreateAddressBook(code: data.0, withMode: data.1) {
-                    
-                }
-//                if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
-//                {
-//                    self.dismiss(animated: true)
-//                }else
-//                {
-//                    twoWayVC.navigationController?.popViewController(animated: false)
-//                }
-//
-//                let group = DispatchGroup()
-//                let dispatchQueue = DispatchQueue.global(qos: .background)
-//                group.enter()
-//                dispatchQueue.async {
-//                    _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCode: data.0, done: {
-//                        group.leave()
-//                    })
-//                }
-//
-//                group.notify(queue: DispatchQueue.main) {
-//                    print("jobs done by group")
-//                    dispatchQueue.async {
-//                        _ = AddressBookListDto.update(done: {
-//                            if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
-//                            {
-//                                self.dismiss(animated: true) {
-//                                    self.onDismissClick.onNext(())
-//                                }
-//                            }else
-//                            {
-//                                self.navigationController?.popViewController(animated: true)
-//                            }
-//                        })
-//                    }
-//                }
-            }.disposed(by: dpg)
+            if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
+            {
+//                twoWayVC = SecurityVerificationViewController.loadNib()
+                // 暫時改為 onlyEmail
+//                twoFAVC.securityViewMode = .defaultMode
+//                twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
+//                    verifySuccessForChangeWhiteList()
+//                }.disposed(by: dpg)
+                twoWayVC.securityViewMode = type
+                twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (data) in
+                    verifySuccessForCreateAddressBook(code: data.0, withMode: data.1) {
+                        
+                    }
+                }.disposed(by: dpg)
+            }
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {
                 self.present(twoWayVC, animated: true)

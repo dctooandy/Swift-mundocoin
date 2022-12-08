@@ -117,26 +117,17 @@ class AddressBookViewController: BaseViewController {
         Log.i("開啟白名單警告Sheet")
         let whiteListBottomSheet = WhiteListBottomSheet()
         whiteListBottomSheet.rxChangeWhiteListMode().subscribeSuccess { [self] _ in
-            twoWayVC = SecurityVerificationViewController.loadNib()
-            // 暫時改為 onlyEmail
-//            twoFAVC.securityViewMode = .defaultMode
-//            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
-//                verifySuccessForChangeWhiteList()
-//            }.disposed(by: dpg)
-            if let currentMode = MemberAccountDto.share?.currentMode
+            if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
             {
-                twoWayVC.securityViewMode = (currentMode == .emailPage ? .onlyEmail : . onlyMobile)
-            }else
-            {
-                twoWayVC.securityViewMode = .onlyEmail
+                twoWayVC.securityViewMode = type
+                twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] data in
+                    verifySuccessForChangeWhiteList(code: data.0,withMode: data.1, done: {
+                        self.twoWayVC.navigationController?.popViewController(animated: true)
+                        
+                    })
+                }.disposed(by: disposeBag)
+                self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
-            twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] data in
-                verifySuccessForChangeWhiteList(code: data.0,withMode: data.1, done: {
-                    self.twoWayVC.navigationController?.popViewController(animated: true)
-                    
-                })
-            }.disposed(by: disposeBag)
-            self.navigationController?.pushViewController(twoWayVC, animated: true)
         }.disposed(by: disposeBag)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 283)
@@ -233,31 +224,28 @@ class AddressBookViewController: BaseViewController {
     {
         if isShowSecurityVC == false
         {
-            twoWayVC = SecurityVerificationViewController.loadNib()
-            // 暫時改為 onlyEmail
-            //            twoFAVC.securityViewMode = .defaultMode
-            //            twoFAVC.rxVerifySuccessClick().subscribeSuccess { [self] (_) in
-            //                verifySuccessForChangeWhiteList()
-            //            }.disposed(by: dpg)
-            twoWayVC.securityViewMode = .onlyEmail
-            twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
-                //            twoFAVC.navigationController?.popViewController(animated: true)
-                Log.i("返回Security並打API")
-                // 需要填入修改白名單API
-                changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: {
-                    if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
-                    {
-                        self.twoWayVC.navigationController?.popViewController(animated: true)
-                    }
-                    _ = AddressBookListDto.update { [self] in
-                        addresBookDtos = KeychainManager.share.getAddressBookList()
-                        cellDpg = DisposeBag()
-                        tableView.reloadData()
-                    }
-                })
-            }.disposed(by: disposeBag)
-            isShowSecurityVC = true
-            self.navigationController?.pushViewController(twoWayVC, animated: true)
+            if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
+            {
+                twoWayVC.securityViewMode = type
+                twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
+                    //            twoFAVC.navigationController?.popViewController(animated: true)
+                    Log.i("返回Security並打API")
+                    // 需要填入修改白名單API
+                    changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: {
+                        if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                        {
+                            self.twoWayVC.navigationController?.popViewController(animated: true)
+                        }
+                        _ = AddressBookListDto.update { [self] in
+                            addresBookDtos = KeychainManager.share.getAddressBookList()
+                            cellDpg = DisposeBag()
+                            tableView.reloadData()
+                        }
+                    })
+                }.disposed(by: disposeBag)
+                isShowSecurityVC = true
+                self.navigationController?.pushViewController(twoWayVC, animated: true)
+            }
         }else
         {
 //            isShowSecurityVC = false
