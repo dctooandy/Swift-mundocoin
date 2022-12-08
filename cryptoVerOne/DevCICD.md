@@ -1,3 +1,4 @@
+1208 : 產dev包 測試 SMS新版API
 1206 : 產dev包 測試 SMS新版UI 已切換sio feedback 
 1130 : 產dev包 測試 SMS新版UI
 1118 : 產dev包 修正 生物驗證文案,交易紀錄地址顯示

@@ -434,7 +434,7 @@ class WithdrawNewViewController: BaseViewController {
                 if !verifyValueTwo.isEmpty , accountArray.last != nil
                 {
                     var parameters: Parameters = [String: Any]()
-                    parameters["id"] = accountArray.first ?? ""
+                    parameters["id"] = accountArray.last ?? ""
                     parameters["code"] = verifyValueTwo
                     codePara.append(parameters)
                 }

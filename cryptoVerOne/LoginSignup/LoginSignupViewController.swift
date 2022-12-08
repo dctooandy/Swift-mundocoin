@@ -333,8 +333,9 @@ extension LoginSignupViewController {
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
             if var loginPostDto = KeychainManager.share.getLastAccount(),
-               (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
-                BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
+               let memberDto = MemberAccountDto.share,
+               (BioVerifyManager.share.usedBIOVeritfy(memberDto.email) ||
+                BioVerifyManager.share.usedBIOVeritfy(memberDto.phone))
             {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
@@ -641,7 +642,7 @@ extension LoginSignupViewController {
             MemberAccountDto.share?.account = dto.account
             MemberAccountDto.share?.password = dto.password
             MemberAccountDto.share?.loginMode = dto.loginMode
-            MemberAccountDto.share?.phone = dto.phone
+            MemberAccountDto.share?.phone = dto.phoneCode + dto.phone
             MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.loginMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
@@ -665,7 +666,7 @@ extension LoginSignupViewController {
             MemberAccountDto.share?.account = dto.account
             MemberAccountDto.share?.password = dto.password
             MemberAccountDto.share?.loginMode = dto.signupMode
-            MemberAccountDto.share?.phone = dto.phone
+            MemberAccountDto.share?.phone = dto.phoneCode + dto.phone
             MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.signupMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)

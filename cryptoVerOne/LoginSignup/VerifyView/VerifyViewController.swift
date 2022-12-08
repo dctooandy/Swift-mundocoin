@@ -515,26 +515,7 @@ class VerifyViewController: BaseViewController {
             _ = LoadingViewController.dismiss()
             if let error = error as? ApiServiceError
             {
-                switch error {
-                case .errorDto(let dto):
-                    let status = dto.httpStatus ?? ""
-                    let reason = dto.reason
-                    if status == "400"
-                    {
-                        if reason == "CODE_MISMATCH"
-                        {
-                            verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                        }
-                    }else if status == "404"
-                    {
-                        verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                    }else
-                    {
-                        ErrorHandler.show(error: error)
-                    }
-                default:
-                    ErrorHandler.show(error: error)
-                }
+                showAlertByMessage(error: error , withEmail: mode == .emailPage ? true:false)
             }
         }.disposed(by: disposeBag)
     }
@@ -543,6 +524,39 @@ class VerifyViewController: BaseViewController {
                                     verificationCode:String)
     {
         Log.i("執行SMS Authen")
+        gotoVerifyCodeWithNewBindAccount(idString: phone, codeString: verificationCode ,withEmail: false)
+    }
+    // Email Authentication
+    func fetchEmailAuthenticationData(withEmail emailString:String ,
+                                 verificationCode:String)
+    {
+        Log.i("執行Email Authen")
+        gotoVerifyCodeWithNewBindAccount(idString: emailString, codeString: verificationCode,withEmail: true)
+    }
+    
+    func gotoVerifyCodeWithNewBindAccount(idString: String, codeString: String, withEmail:Bool = false)
+    {
+        Beans.loginServer.customerSettingsAuthentication(idString: idString, codeString: codeString).subscribe { [self] dataDto in
+            Log.i("data : \(dataDto)")
+            if let email = dataDto?.email as? String
+            {
+                MemberAccountDto.share?.email = email
+            }
+            if let phone = dataDto?.phone?.stringValue
+            {
+                MemberAccountDto.share?.phone = phone
+            }
+            popToCorrectVC()
+        } onError: { [self] error in
+            _ = LoadingViewController.dismiss()
+            if let error = error as? ApiServiceError
+            {
+                showAlertByMessage(error: error, withEmail: withEmail)
+            }
+        }.disposed(by: disposeBag)
+    }
+    func popToCorrectVC()
+    {
         let controllers = self.navigationController?.viewControllers
         for vc in controllers! {
             if vc is SecurityViewController {
@@ -552,18 +566,34 @@ class VerifyViewController: BaseViewController {
             }
         }
     }
-    // Email Authentication
-    func fetchEmailAuthenticationData(withEmail emailString:String ,
-                                 verificationCode:String)
+    func showAlertByMessage(error:ApiServiceError , withEmail:Bool = false)
     {
-        Log.i("執行Email Authen")
-        let controllers = self.navigationController?.viewControllers
-        for vc in controllers! {
-            if vc is SecurityViewController {
-                _ = self.navigationController?.popToViewController(vc as! SecurityViewController, animated: true)
-            }else if vc is PersonalInfoViewController {
-                _ = self.navigationController?.popToViewController(vc as! PersonalInfoViewController, animated: true)
+        switch error {
+        case .errorDto(let dto):
+            let status = dto.httpStatus ?? ""
+            let reason = dto.reason
+            let emailMessage = "The Email Code is incorrect. Please re-enter."
+            let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
+            if status == "400"
+            {
+                if reason == "CODE_MISMATCH"
+                {
+                    verifyInputView.changeInvalidLabelAndMaskBorderColor(with: withEmail ? emailMessage : mobileMessage)
+                }
+                if reason == "CUSTOMER_EMAIL_OR_PHONE_EXISTS"
+                {
+                    popToCorrectVC()
+                    ErrorHandler.show(error: error)
+                }
+            }else if status == "404"
+            {
+                verifyInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
+            }else
+            {
+                ErrorHandler.show(error: error)
             }
+        default:
+            ErrorHandler.show(error: error)
         }
     }
     func directToResetPWVC(_ verifyString : String)

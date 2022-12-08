@@ -315,8 +315,8 @@ class AddNewAddressViewController: BaseViewController {
             if !withMode.isEmpty , accountArray.last != nil
             {
                 var parameters: Parameters = [String: Any]()
-                parameters["id"] = accountArray.first ?? ""
-                parameters["code"] = code
+                parameters["id"] = accountArray.last ?? ""
+                parameters["code"] = withMode
                 codePara.append(parameters)
             }
         }

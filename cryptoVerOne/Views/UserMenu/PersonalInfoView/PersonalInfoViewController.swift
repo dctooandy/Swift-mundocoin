@@ -42,6 +42,7 @@ class PersonalInfoViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         textIsEditing = false
+        tableView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

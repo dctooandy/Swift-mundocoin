@@ -39,8 +39,8 @@ class TwoWayVerifyView: UIView {
 //    var twoFAHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
-    var emailInputView = InputStyleView(inputViewMode: .emailVerify(KeychainManager.share.getLastAccount()?.toVerifyAccountString ?? ""))
-    var mobileInputView = InputStyleView(inputViewMode: .mobileVerify(KeychainManager.share.getLastAccount()?.toVerifyAccountString ?? ""))
+    var emailInputView = InputStyleView(inputViewMode: .emailVerify(MemberAccountDto.share?.email ?? ""))
+    var mobileInputView = InputStyleView(inputViewMode: .mobileVerify(MemberAccountDto.share?.phone ?? ""))
 //    var twoFAInputView = InputStyleView(inputViewMode: .twoFAVerify)
 //    @IBOutlet weak var lostTwoFALabel: UILabel!
     let submitButton : CornerradiusButton = {
@@ -372,10 +372,9 @@ class TwoWayVerifyView: UIView {
         switch self.twoWayViewMode {
         case .both:
             if let emailString = self.emailInputView.textField.text,
-               let mobileCode = self.mobileInputView.mobileCodeLabel.text,
                let mobileString = self.mobileInputView.textField.text
             {
-                onSubmitBothClick.onNext((emailString,mobileCode + mobileString))
+                onSubmitBothClick.onNext((emailString,mobileString))
             }
         case .onlyEmail:
             if let emailString = self.emailInputView.textField.text
@@ -383,10 +382,9 @@ class TwoWayVerifyView: UIView {
                 onSubmitOnlyEmailClick.onNext((emailString))
             }
         case .onlyMobile:
-            if let mobileCode = self.mobileInputView.mobileCodeLabel.text,
-               let mobileString = self.mobileInputView.textField.text
+            if let mobileString = self.mobileInputView.textField.text
             {
-                onSubmitOnlyMobileClick.onNext((mobileCode + mobileString))
+                onSubmitOnlyMobileClick.onNext((mobileString))
             }
         }
     }

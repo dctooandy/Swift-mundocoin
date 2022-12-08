@@ -115,13 +115,6 @@ class CheckTokenService{
                                                       isPasswordExpired: isPasswordExpired,
                                                       sub: sub,
                                                       isAccountExpired: isAccountExpired)
-            if sub.contains("+")
-            {
-                MemberAccountDto.share?.phone = sub
-            }else
-            {
-                MemberAccountDto.share?.email = sub
-            }
         }
         if let email = jwtValue.body["email"] as? String
         {

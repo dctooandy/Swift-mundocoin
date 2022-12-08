@@ -200,6 +200,7 @@ class LoginService {
                 return $0
             })
     }
+    // 修改暱稱
     func customerSettingsNickname(nickname:String) -> Single<TransCustomerDto?>
     {
         var parameters: Parameters = [String: Any]()
@@ -213,4 +214,20 @@ class LoginService {
                 return $0
             })
     }
+    // 加綁email 或者 mobile
+    func customerSettingsAuthentication(idString:String , codeString:String) -> Single<TransCustomerDto?>
+    {
+        var parameters: Parameters = [String: Any]()
+        parameters["id"] = idString
+        parameters["code"] = codeString
+        
+        return Beans.requestServer.singleRequestPost(
+            path: ApiService.customerSettingsAuthentication.path,
+            parameters: parameters,
+            modify: false,
+            resultType: TransCustomerDto.self).map({
+                return $0
+            })
+    }
+    
 }

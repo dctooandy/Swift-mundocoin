@@ -193,6 +193,15 @@ class SignupViewController: BaseViewController {
             } //reget match result
             .bind(to: registerButton.rx.isEnabled)
             .disposed(by: disposeBag)
+        accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
+            let searchVC = SelectViewController.loadNib()
+            searchVC.currentSelectMode = .selectArea(phoneCode)
+            searchVC.rxSelectedAreaCodeClick().subscribeSuccess { [self] selectedCode in
+                accountInputView.accountInputView.mobileCodeLabel.text = selectedCode
+            }.disposed(by: disposeBag)
+            searchVC.modalPresentationStyle = .popover
+            self.present(searchVC, animated: true)
+        }.disposed(by: disposeBag)
     }
 
     
