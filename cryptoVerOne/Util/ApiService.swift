@@ -114,6 +114,7 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/customer/forgotPassword")
         case .customerSettingsNickname:
             return URL(string:ApiService.host + "/v1/customer/settings/nickname")
+            // 加綁功能
         case .customerSettingsAuthentication:
             return URL(string:ApiService.host + "/v1/customer/settings/authentication")
         // 白名單功能

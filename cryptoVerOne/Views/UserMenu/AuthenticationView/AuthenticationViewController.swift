@@ -193,20 +193,7 @@ class AuthenticationViewController: BaseViewController {
             resetTFMaskView(authen:isChoose)
         }.disposed(by: dpg)
     }
-    func getDefaultData() -> [CountryDetail]
-    {
-        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let results = try decoder.decode(CountriesDto.self, from:data)
-            return results.countries
-        } catch {
-            print(error)
-            return CountriesDto().countries
-        }
-    }
+
     func resetInvalidText(textFieldChoose:Bool = false )
     {
         if textFieldChoose == true

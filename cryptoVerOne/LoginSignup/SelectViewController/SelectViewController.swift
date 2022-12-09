@@ -173,20 +173,7 @@ class SelectViewController: BaseViewController , UITableViewDelegate, UITableVie
         let cryptosDto = SelectCryptoDto(cryptos: [usdt,usdc])
         return cryptosDto.cryptos
     }
-    func getDefaultData() -> [CountryDetail]
-    {
-        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let results = try decoder.decode(CountriesDto.self, from:data)
-            return results.countries
-        } catch {
-            print(error)
-            return CountriesDto().countries
-        }
-    }
+
     func createDataByMode(mode:SelectViewMode)
     {
         if mode == .selectCrypto
@@ -200,7 +187,7 @@ class SelectViewController: BaseViewController , UITableViewDelegate, UITableVie
             setupCryptosData()
         }else
         {
-            self.allCountriesData = getDefaultData()
+            self.allCountriesData = KeychainManager.share.getDefaultData()
             if let currentData = self.allCountriesData.filter({ $0.code == currentSelectMode.phoneCode }).first
             {
                 self.codeNameData = currentData

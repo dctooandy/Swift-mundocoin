@@ -396,17 +396,27 @@ extension LoginSignupViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
-                    
+                    var errorMessage = ""
                     if status == "400"
                     {
                         if reason == "CODE_MISMATCH"
                         {
-                            loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")                            
+                            errorMessage = "The Email Code is incorrect. Please re-enter."
+                            if dataDto.loginMode == .emailPage , let vc = loginPageVC.loginViewControllers.first
+                            {
+                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: errorMessage)
+                            }else if dataDto.loginMode == .phonePage , let vc = loginPageVC.loginViewControllers.last
+                            {
+                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: errorMessage)
+                            }
+                            InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else if status == "404"
                     {
-                        loginPageVC.loginViewControllers.first!.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: reason)
-                        InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
+                        ErrorHandler.show(error: error)
                     }else
                     {
                         ErrorHandler.show(error: error)

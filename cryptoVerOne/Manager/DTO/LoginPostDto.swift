@@ -40,7 +40,7 @@ struct LoginPostDto {
     var toAccountString: String {
         switch loginMode {
         case .emailPage:
-            return account
+            return account.localizedLowercase
         case .phonePage:
             return String(phone)
         }
@@ -50,6 +50,25 @@ struct LoginPostDto {
         let index = phone.index(phone.startIndex, offsetBy: phoneCode.count)
         let mySubstring = phone[index...] // Hello
         return String(mySubstring)
+    }
+    var phoneCodeWithoutPhone: String
+    {
+        var currentCode = ""
+        let mobileData = KeychainManager.share.getDefaultData()
+        var codeArray:[String] = []
+        for subData in mobileData
+        {
+            codeArray.append(subData.code)
+        }
+        for codeString in codeArray
+        {
+            if String(phone).contains(codeString)
+            {
+                currentCode = codeString
+                break
+            }
+        }
+        return currentCode
     }
 }
 

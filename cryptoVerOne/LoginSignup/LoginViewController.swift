@@ -106,7 +106,7 @@ class LoginViewController: BaseViewController {
                         if loginMode == .phonePage
                         {
                             accountString = loginPostDto.phoneWithoutCode
-                            phoneCodeString = loginPostDto.phoneCode
+                            phoneCodeString = loginPostDto.phoneCodeWithoutPhone
 //                            passString = ( accountString.isEmpty == true ? "" : loginPostDto.password)
                         }else
                         {
@@ -297,20 +297,7 @@ class LoginViewController: BaseViewController {
             self.present(searchVC, animated: true)
         }.disposed(by: disposeBag)
     }
-    func getDefaultData() -> [CountryDetail]
-    {
-        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let results = try decoder.decode(CountriesDto.self, from:data)
-            return results.countries
-        } catch {
-            print(error)
-            return CountriesDto().countries
-        }
-    }
+
     func bindLoginBtn() {
         loginButton.rx.tap.subscribeSuccess { [self] _ in
             loginButton.isEnabled = false
@@ -394,7 +381,7 @@ class LoginViewController: BaseViewController {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
         let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
-        let phoneString = (self.loginMode == .phonePage ? account : "")
+        let phoneString = (self.loginMode == .phonePage ? (phoneCode + account) : "")
         let accountString = account
         let showMode : ShowMode = (self.loginMode == .phonePage ? .loginPhone : .loginEmail )
         let dto = LoginPostDto(account: accountString,

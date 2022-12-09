@@ -115,20 +115,7 @@ class ForgotViewController: BaseViewController {
             self.present(searchVC, animated: true)
         }.disposed(by: disposeBag)
     }
-    func getDefaultData() -> [CountryDetail]
-    {
-        guard let path = Bundle.main.path(forResource: "countries", ofType: "json") else { return CountriesDto().countries}
-        let url = URL(fileURLWithPath: path)
-        do {
-            let data = try Data(contentsOf: url)
-            let decoder = JSONDecoder()
-            let results = try decoder.decode(CountriesDto.self, from:data)
-            return results.countries
-        } catch {
-            print(error)
-            return CountriesDto().countries
-        }
-    }
+ 
     func bindLinkBtn() {
         sendResetLinkButton.rx.tap.subscribeSuccess { [weak self] _ in
                 self?.sendReset()
