@@ -296,7 +296,7 @@ class UCPasswordViewController: BaseViewController {
                 {
                     MemberAccountDto.share?.password = newString
                     let account = (currentAcc.loginMode == .phonePage ? currentAcc.phone : currentAcc.account)
-                    KeychainManager.share.setLastAccount(account)
+//                    KeychainManager.share.setLastAccount(account)
                     KeychainManager.share.saveAccPwd(acc: currentAcc.account,
                                                      pwd: newString,
                                                      phoneCode: currentAcc.phoneCode,
@@ -359,7 +359,7 @@ class UCPasswordViewController: BaseViewController {
     }
     func bindAction()
     {
-        if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
+        if let type = MemberAccountDto.share?.defaultSecurityType
         {
             twoWayVC.securityViewMode = type
         }

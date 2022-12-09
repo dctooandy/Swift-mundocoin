@@ -34,6 +34,7 @@ class SecurityViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        tableView.reloadData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -108,7 +109,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
 
         case 0:
             Log.i("smsAuthentication")
-            if MemberAccountDto.share?.loginMode != .phonePage
+            if let mobile = MemberAccountDto.share?.phone , mobile.isEmpty
             {
                 authVC = AuthenticationViewController.loadNib()
                 authVC.authenInputViewMode = .phone(withStar: false)
@@ -116,7 +117,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
             }
         case 1:
             Log.i("emailAuthentication")
-            if MemberAccountDto.share?.loginMode != .emailPage
+            if let email = MemberAccountDto.share?.email , email.isEmpty
             {
                 authVC = AuthenticationViewController.loadNib()
                 authVC.authenInputViewMode = .email(withStar: false)

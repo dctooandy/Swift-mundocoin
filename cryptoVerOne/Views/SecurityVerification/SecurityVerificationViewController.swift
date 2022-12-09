@@ -185,6 +185,7 @@ class SecurityVerificationViewController: BaseViewController {
         if byMode == .selectedMode
         {
             onlyEmailVerifyViewController.verifyView.emailInputView.sendVerifyCode()
+            onlyMobileVerifyViewController.verifyView.mobileInputView.sendVerifyCode()
         }else if byMode == .defaultMode
         {
             twoWayVerifyView.emailInputView.sendVerifyCode()

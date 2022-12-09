@@ -416,6 +416,7 @@ class TwoWayVerifyView: UIView {
     func cleanTimer()
     {
         emailInputView.resetTimerAndAll()
+        mobileInputView.resetTimerAndAll()
     }
 }
 // MARK: -

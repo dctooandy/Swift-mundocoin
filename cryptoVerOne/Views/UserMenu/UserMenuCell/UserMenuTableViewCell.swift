@@ -128,16 +128,16 @@ enum UserMenuCellData {
             return ""
         case .email:
             var emailString = ""
-            if let account = MemberAccountDto.share?.email
+            if let email = MemberAccountDto.share?.email , !email.isEmpty
             {
-                emailString = account
+                emailString = email
             }
             return emailString
         case .mobile:
             var mobileString = ""
-            if let account = MemberAccountDto.share?.phone
+            if let mobile = MemberAccountDto.share?.phone , !mobile.isEmpty
             {
-                mobileString = account
+                mobileString = mobile
             }
             return mobileString
         case .memberSince:
@@ -153,7 +153,7 @@ enum UserMenuCellData {
         case .currency,.language,.faceID,.about,.logout,.systemNotifications,.transactionNotifications,.registrationInfo,.memberSince:
             return 0.0
         case .smsAuthentication:
-            if MemberAccountDto.share?.loginMode == .phonePage
+            if let mobile = MemberAccountDto.share?.phone , !mobile.isEmpty
             {
                 return 0.3
             }else
@@ -161,7 +161,7 @@ enum UserMenuCellData {
                 return 1.0
             }
         case .emailAuthentication:
-            if MemberAccountDto.share?.loginMode == .emailPage
+            if let email = MemberAccountDto.share?.email , !email.isEmpty
             {
                 return 0.3
             }else
@@ -326,8 +326,10 @@ class UserMenuTableViewCell: UITableViewCell {
             cellImageView.image = UIImage(named: cellData.cellIconImageName)
             arrowImageView.isHidden = cellData.arrowHidden
             arrowImageView.alpha = cellData.arrowAlpha
-            if MemberAccountDto.share?.loginMode == .emailPage && cellData == .emailAuthentication ||
-                MemberAccountDto.share?.loginMode == .phonePage && cellData == .smsAuthentication
+            if let email = MemberAccountDto.share?.email , !email.isEmpty , cellData == .emailAuthentication
+            {
+                checkBoxImageView.image = UIImage(named: "icon-check-fill")
+            }else if let phone = MemberAccountDto.share?.phone , !phone.isEmpty , cellData == .smsAuthentication
             {
                 checkBoxImageView.image = UIImage(named: "icon-check-fill")
             }else
