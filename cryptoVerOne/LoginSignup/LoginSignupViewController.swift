@@ -332,7 +332,7 @@ extension LoginSignupViewController {
             if currentShowMode != .loginEmail &&
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
-            if var loginPostDto = KeychainManager.share.getLastAccount(),
+            if var loginPostDto = KeychainManager.share.getLastAccountDto(),
                let memberDto = MemberAccountDto.share,
                (BioVerifyManager.share.usedBIOVeritfy(memberDto.email) ||
                 BioVerifyManager.share.usedBIOVeritfy(memberDto.phone))
@@ -380,15 +380,17 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        let idString = dataDto.toAccountString
+        let idString = dataDto.lastAccountString
         let pwString = dataDto.password
+        var newDto = dataDto
+        newDto.loginMode = dataDto.lastLoginMode
         Beans.loginServer.verificationIDPost(idString: idString ,
                                              pwString: pwString ).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             willShowAgainFromVerifyVC = true
             // 暫時改為直接推頁面
             verifyVC = VerifyViewController.loadNib()
-            verifyVC.loginDto = dataDto
+            verifyVC.loginDto = newDto
             navigationController?.pushViewController(verifyVC, animated: true)
         } onError: { [self] error in
             if let error = error as? ApiServiceError {

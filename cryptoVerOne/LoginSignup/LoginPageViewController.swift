@@ -53,7 +53,7 @@ class LoginPageViewController: BaseViewController {
             // 取得RM功能狀態
             if KeychainManager.share.getMundoCoinRememberMeStatus() == true
             {
-                if let loginPostDto = KeychainManager.share.getLastAccount()
+                if let loginPostDto = KeychainManager.share.getLastAccountDto()
                 {
                     if isPushToVerifyVC == true
                     {

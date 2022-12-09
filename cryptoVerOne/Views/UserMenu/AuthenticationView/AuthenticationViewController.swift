@@ -97,7 +97,7 @@ class AuthenticationViewController: BaseViewController {
     func bindButton()
     {
         nextButton.rx.tap.subscribeSuccess { [self] _ in
-            var dataDto = KeychainManager.share.getLastAccount()
+            var dataDto = KeychainManager.share.getLastAccountDto()
             if authenInputViewMode == .email(withStar: false)
             {
 //                verifyVC.emailAuthenDto = dataDto

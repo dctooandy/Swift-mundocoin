@@ -35,7 +35,7 @@ class TwoFAVerifyView: UIView {
     var twoFAHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
-    var emailInputView = InputStyleView(inputViewMode: .emailVerify(KeychainManager.share.getLastAccount()?.account ?? ""))
+    var emailInputView = InputStyleView(inputViewMode: .emailVerify(KeychainManager.share.getLastAccountDto()?.account ?? ""))
     var twoFAInputView = InputStyleView(inputViewMode: .twoFAVerify)
     @IBOutlet weak var lostTwoFALabel: UILabel!
     let submitButton : CornerradiusButton = {

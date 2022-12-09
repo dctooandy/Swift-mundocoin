@@ -69,8 +69,15 @@ class KeychainManager {
 #endif
         return success
     }
-
-    func getLastAccount(loginMode : LoginMode? = nil) -> LoginPostDto? {
+    func getLastAccount() -> String? {
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        guard let accInKeychain = self.getString(from: .auditAccount) else { return "" }
+#else
+        guard let accInKeychain = self.getString(from: .account) else { return "" }
+#endif
+        return accInKeychain
+    }
+    func getLastAccountDto(loginMode : LoginMode? = nil) -> LoginPostDto? {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         guard let accInKeychain = self.getString(from: .auditAccount) else { return nil }
 #else

@@ -57,7 +57,7 @@ class AuditLoginViewController: BaseViewController {
         isPopBySubVC = false
         if KeychainManager.share.getAuditRememberMeStatus() == true
         {
-            if let loginPostDto = KeychainManager.share.getLastAccount(),
+            if let loginPostDto = KeychainManager.share.getLastAccountDto(),
                BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account)
             {
                 DispatchQueue.main.async { [self] in
@@ -323,7 +323,7 @@ class AuditLoginViewController: BaseViewController {
         }else
         {
             if !BioVerifyManager.share.auditBioLoginSwitchState() { return }
-            if let loginPostDto = KeychainManager.share.getLastAccount(),
+            if let loginPostDto = KeychainManager.share.getLastAccountDto(),
                BioVerifyManager.share.usedAuditBIOVeritfy(loginPostDto.account) {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in

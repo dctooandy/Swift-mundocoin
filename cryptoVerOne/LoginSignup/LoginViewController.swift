@@ -93,11 +93,11 @@ class LoginViewController: BaseViewController {
             {
                 // 取得上次登入資料
 //                if afterRMAction == false,
-//                   let loginPostDto = KeychainManager.share.getLastAccount(),
+//                   let loginPostDto = KeychainManager.share.getLastAccountDto(),
 //                   (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
 //                    BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
                 if afterRMAction == false,
-                   let loginPostDto = KeychainManager.share.getLastAccount()
+                   let loginPostDto = KeychainManager.share.getLastAccountDto()
                 {
                     DispatchQueue.main.async { [self] in
                         var accountString = ""

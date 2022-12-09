@@ -201,7 +201,7 @@ class SecurityVerificationViewController: BaseViewController {
     func verifyResentPressed(byEmail:Bool = false , byVC:Bool = false)
     {
         
-        if let loginDto = KeychainManager.share.getLastAccount(), UserStatus.share.isLogin
+        if let loginDto = KeychainManager.share.getLastAccountDto(), UserStatus.share.isLogin
         {
             let idString = (byEmail == true ? loginDto.account : loginDto.phone)
             Log.v("重發驗證")

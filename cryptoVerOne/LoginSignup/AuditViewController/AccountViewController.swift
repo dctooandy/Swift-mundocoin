@@ -124,7 +124,7 @@ class AccountViewController: BaseViewController {
         }
         let appVersionString = "A \(version).\(build)"
         appVersionLabel.text = appVersionString
-        emailLabel.text = KeychainManager.share.getLastAccount()?.account
+        emailLabel.text = KeychainManager.share.getLastAccountDto()?.account
         detailView.applyCornerAndShadow(radius: 12)
     }
   

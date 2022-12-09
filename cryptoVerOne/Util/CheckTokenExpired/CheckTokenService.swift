@@ -133,15 +133,15 @@ class CheckTokenService{
         {
             MemberAccountDto.share?.isPhoneRegistry = isPhoneRegistry
             MemberAccountDto.share?.isEmailRegistry = isEmailRegistry
-            if isPhoneRegistry
-            {
-                let phoneAccountString = MemberAccountDto.share?.phone ?? ""
-                KeychainManager.share.setLastAccount(phoneAccountString)
-            }else
-            {
-                let emailAccountString = MemberAccountDto.share?.email ?? ""
-                KeychainManager.share.setLastAccount(emailAccountString)
-            }
+//            if isPhoneRegistry
+//            {
+//                let phoneAccountString = MemberAccountDto.share?.phone ?? ""
+//                KeychainManager.share.setLastAccount(phoneAccountString)
+//            }else
+//            {
+//                let emailAccountString = MemberAccountDto.share?.email ?? ""
+//                KeychainManager.share.setLastAccount(emailAccountString)
+//            }
         }
         KeychainManager.share.saveAccPwd(acc: MemberAccountDto.share?.email ?? "",
                                          phone: MemberAccountDto.share?.phone ?? "")

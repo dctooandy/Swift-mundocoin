@@ -141,7 +141,7 @@ class AuditBindTwoFAViewController: BaseViewController {
     
     func verifyResentPressed(byVC:Bool = false)
     {
-        let loginDto = KeychainManager.share.getLastAccount()
+        let loginDto = KeychainManager.share.getLastAccountDto()
         if let userEmail = loginDto?.account
         {
             Log.v("重發驗證")

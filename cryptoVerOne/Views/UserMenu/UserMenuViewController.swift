@@ -93,7 +93,7 @@ class UserMenuViewController: BaseViewController {
         tableView.registerXibCell(type: UserMenuWhiteLineCell.self)
         tableView.separatorStyle = .none
         
-//        let loginDto = KeychainManager.share.getLastAccount()
+//        let loginDto = KeychainManager.share.getLastAccountDto()
 //        if let userEmail = loginDto?.account , UserStatus.share.isLogin
 //        {
 //            userAccountLabel.text = userEmail

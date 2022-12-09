@@ -292,7 +292,7 @@ class UCPasswordViewController: BaseViewController {
         {
             Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribe { [self] data in
                 Log.v("更改成功")
-                if let currentAcc = KeychainManager.share.getLastAccount()
+                if let currentAcc = KeychainManager.share.getLastAccountDto()
                 {
                     MemberAccountDto.share?.password = newString
                     let account = (currentAcc.loginMode == .phonePage ? currentAcc.phone : currentAcc.account)
@@ -453,7 +453,7 @@ class UCPasswordViewController: BaseViewController {
     }
     func verificationID()
     {
-        guard let account = KeychainManager.share.getLastAccount()?.account else {return}
+        guard let account = KeychainManager.share.getLastAccountDto()?.account else {return}
         guard let pwString = oldInputView.textField.text else {return}
         LoadingViewController.show()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in

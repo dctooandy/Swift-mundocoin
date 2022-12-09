@@ -526,7 +526,7 @@ class VerifyViewController: BaseViewController {
     {
         Beans.loginServer.customerSettingsAuthentication(idString: idString, codeString: codeString).subscribe { [self] dataDto in
             Log.i("已將帳號綁定")
-            if let lastDto = KeychainManager.share.getLastAccount()
+            if let lastDto = KeychainManager.share.getLastAccountDto()
             {
                 if let email = dataDto?.email as? String
                 {

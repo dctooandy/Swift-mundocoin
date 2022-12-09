@@ -45,6 +45,31 @@ struct LoginPostDto {
             return String(phone)
         }
     }
+    var lastAccountString: String
+    {
+        var finalAccount = ""
+        if let accountString = KeychainManager.share.getLastAccount()
+        {
+            if account == accountString
+            {
+                finalAccount = account
+            }else
+            {
+                finalAccount = phone
+            }
+        }
+        return finalAccount
+    }
+    var lastLoginMode:LoginMode
+    {
+        if lastAccountString == account
+        {
+            return .emailPage
+        }else
+        {
+            return .phonePage
+        }
+    }
     var phoneWithoutCode: String
     {
         let index = phone.index(phone.startIndex, offsetBy: phoneCode.count)
