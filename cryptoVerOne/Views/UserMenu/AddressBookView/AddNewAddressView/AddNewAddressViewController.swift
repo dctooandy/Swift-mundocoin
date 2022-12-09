@@ -397,7 +397,7 @@ class AddNewAddressViewController: BaseViewController {
             }else if twoWayVC.securityViewMode == .onlyMobile
             {
                 twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
             }else if twoWayVC.securityViewMode == .selectedMode
             {
                 if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
@@ -407,7 +407,7 @@ class AddNewAddressViewController: BaseViewController {
                 }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
                 {
                     mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
-                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
                 }
             }else if twoWayVC.securityViewMode == .defaultMode , let error = error
             {

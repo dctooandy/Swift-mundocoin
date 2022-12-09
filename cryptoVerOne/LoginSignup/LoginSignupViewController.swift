@@ -398,18 +398,20 @@ extension LoginSignupViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
-                    var errorMessage = ""
+                    var emailErrorMessage = ""
+                    var mobileErrorMessage = ""
                     if status == "400"
                     {
                         if reason == "CODE_MISMATCH"
                         {
-                            errorMessage = "The Email Code is incorrect. Please re-enter."
+                            emailErrorMessage = "The Email Code is incorrect. Please re-enter."
+                            mobileErrorMessage = "The Mobile Code is incorrect. Please re-enter."
                             if dataDto.loginMode == .emailPage , let vc = loginPageVC.loginViewControllers.first
                             {
-                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: errorMessage)
+                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: emailErrorMessage)
                             }else if dataDto.loginMode == .phonePage , let vc = loginPageVC.loginViewControllers.last
                             {
-                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: errorMessage)
+                                vc.accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: mobileErrorMessage)
                             }
                             InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
                         }else
@@ -525,9 +527,17 @@ extension LoginSignupViewController {
                         switch error {
                         case .errorDto(let dto):
                             let reason = dto.reason
+                            var verifyString = "Email"
                             if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                             {
-                                verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                if let loginData = loginDto
+                                {
+                                    verifyString = loginData.loginMode == .emailPage ? "Email" : "Mobile"
+                                }else if let signupData = signupDto
+                                {
+                                    verifyString = signupData.signupMode == .emailPage ? "Email" : "Mobile"
+                                }
+                                verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
                             }
                         case .noData:
                             Log.v("登入返回沒有資料")

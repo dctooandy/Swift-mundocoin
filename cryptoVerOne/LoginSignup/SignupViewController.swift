@@ -283,8 +283,8 @@ class SignupViewController: BaseViewController {
                     if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
                     {
                         phoneCodeString = phoneCode
+                        phoneAccountString = (phoneCode + acc)
                     }
-                    phoneAccountString = acc
                 }
                 let dto = SignupPostDto(account: emailAccountString,
                                         password: pwd,
@@ -308,8 +308,8 @@ class SignupViewController: BaseViewController {
                 if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
                 {
                     phoneCodeString = phoneCode
+                    phoneAccountString = (phoneCode + acc)
                 }
-                phoneAccountString = acc
             }
             let dto = SignupPostDto(account: emailAccountString,
                                     password: pwd,

@@ -466,7 +466,7 @@ class WithdrawViewController: BaseViewController {
                                         }else if securityVerifyVC.securityViewMode == .onlyMobile
                                         {
                                             securityVerifyVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                            securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
                                         }else if securityVerifyVC.securityViewMode == .defaultMode
                                         {
 //                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
