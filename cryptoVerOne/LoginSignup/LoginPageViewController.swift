@@ -70,7 +70,7 @@ class LoginPageViewController: BaseViewController {
                     {
                         if loginPostDto.phone.isEmpty == false
                         {
-                            pageViewcontroller?.select(index: 1, animated: true)
+                            pageViewcontroller?.select(index: 0, animated: true)
                         }else
                         {
                             pageViewcontroller?.select(index: 0, animated: true)
@@ -214,6 +214,7 @@ class LoginPageViewController: BaseViewController {
             
             i.rxForgetPassword()
                 .subscribeSuccess { [weak self] in
+                    self?.pageViewcontroller?.select(index: 0)
                     self?.forgetBtnClick.onNext(())
                 }.disposed(by: disposeBag)
         }

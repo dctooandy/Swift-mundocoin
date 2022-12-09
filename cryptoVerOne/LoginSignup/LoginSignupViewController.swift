@@ -129,7 +129,7 @@ class LoginSignupViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        addDateSelectedButton()
+        addSelectButton()
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -251,7 +251,7 @@ class LoginSignupViewController: BaseViewController {
 // MARK: -
 // MARK: 延伸
 extension LoginSignupViewController {
-    private func addDateSelectedButton() {
+    private func addSelectButton() {
         if currentShowMode != .forgotEmailPW || currentShowMode != .forgotPhonePW
         {
             self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: switchButton)
