@@ -110,7 +110,7 @@ class LoginViewController: BaseViewController {
 //                            passString = ( accountString.isEmpty == true ? "" : loginPostDto.password)
                         }else
                         {
-                            accountString = ( loginPostDto.phone.isEmpty == false ? "" : loginPostDto.account)
+                            accountString = ( loginPostDto.account)
 //                            passString = ( accountString.isEmpty ? "" : loginPostDto.password)
                         }
 
