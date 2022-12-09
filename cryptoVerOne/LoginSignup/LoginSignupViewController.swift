@@ -384,6 +384,7 @@ extension LoginSignupViewController {
         let pwString = dataDto.password
         var newDto = dataDto
         newDto.loginMode = dataDto.lastLoginMode
+        let pageIndex = 0
         Beans.loginServer.verificationIDPost(idString: idString ,
                                              pwString: pwString ).subscribe { [self] dto in
             Log.v("帳號有註冊過")
@@ -391,6 +392,7 @@ extension LoginSignupViewController {
             // 暫時改為直接推頁面
             verifyVC = VerifyViewController.loadNib()
             verifyVC.loginDto = newDto
+            loginPageVC.selectPageVC(index: pageIndex)
             navigationController?.pushViewController(verifyVC, animated: true)
         } onError: { [self] error in
             if let error = error as? ApiServiceError {

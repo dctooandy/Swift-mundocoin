@@ -58,13 +58,13 @@ struct LoginPostDto {
                 finalAccount = phone
             }else
             {
-                if !account.isEmpty
+                if loginMode == .emailPage
                 {
                     finalAccount = account
                 }else
                 {
                     finalAccount = phone
-                }
+                }                
             }
         }
         return finalAccount

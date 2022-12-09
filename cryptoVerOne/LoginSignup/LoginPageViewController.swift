@@ -83,6 +83,10 @@ class LoginPageViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func selectPageVC(index:Int)
+    {
+        pageViewcontroller?.select(index: index, animated: false)
+    }
     private func setupMenu() {
         pageViewcontroller = PagingViewController<PagingIndexItem>()
         pageViewcontroller?.delegate = self
@@ -171,28 +175,7 @@ class LoginPageViewController: BaseViewController {
 //            signupViewControllers[1].startReciprocal()
 //        }
     }
-    
-    func setVerifyCode(code: String) {
-        switch currentShowMode {
-        case .loginEmail:
-            loginViewControllers[1].showVerifyCode(code)
-        case .loginPhone:
-            loginViewControllers[1].showVerifyCode(code)
-        case .signupEmail:
-            signupViewControllers[1].showVerifyCode(code)
-        case .signupPhone:
-            signupViewControllers[1].showVerifyCode(code)
-        case .forgotEmailPW,.forgotPhonePW:
-            break
-//            forgotViewControllers[1].showVerifyCode(code)
-        }
-//        if isLogin {
-//            loginViewControllers[1].showVerifyCode(code)
-//        } else {
-//            signupViewControllers[1].showVerifyCode(code)
-//        }
-    }
-    
+        
     func setVerifyCodeBtnToDefault() {
         loginViewControllers.first?.setDefault()
         signupViewControllers.first?.setDefault()

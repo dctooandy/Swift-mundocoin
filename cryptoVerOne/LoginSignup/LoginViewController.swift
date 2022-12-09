@@ -397,7 +397,7 @@ class LoginViewController: BaseViewController {
         self.onClickLogin.onNext(dto)
     }
     func startReciprocal() {
-        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)
+//        self.timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(setPwdRightBtnSecondTime), userInfo: nil, repeats: true)
 //        self.accountInputView?.setPasswordRightBtnEnable(isEnable: false)
     }
     
