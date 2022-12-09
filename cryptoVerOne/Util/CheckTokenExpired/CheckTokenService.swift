@@ -134,6 +134,8 @@ class CheckTokenService{
             MemberAccountDto.share?.isPhoneRegistry = isPhoneRegistry
             MemberAccountDto.share?.isEmailRegistry = isEmailRegistry
         }
+        KeychainManager.share.saveAccPwd(acc: MemberAccountDto.share?.email ?? "",
+                                         phone: MemberAccountDto.share?.phone ?? "")
     }
     // 檢查 白名單 isAddressBookWhiteListEnabled
     func checkAddressBookWhiteListEnabled(complete:CheckCompletionBlock? = nil)

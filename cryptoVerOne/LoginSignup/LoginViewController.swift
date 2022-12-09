@@ -101,10 +101,12 @@ class LoginViewController: BaseViewController {
                 {
                     DispatchQueue.main.async { [self] in
                         var accountString = ""
+                        var phoneCodeString = ""
 //                        var passString = ""
                         if loginMode == .phonePage
                         {
-                            accountString = loginPostDto.phone
+                            accountString = loginPostDto.phoneWithoutCode
+                            phoneCodeString = loginPostDto.phoneCode
 //                            passString = ( accountString.isEmpty == true ? "" : loginPostDto.password)
                         }else
                         {
@@ -113,6 +115,7 @@ class LoginViewController: BaseViewController {
                         }
 
                         accountInputView.accountInputView.textField.text = accountString
+                        accountInputView.accountInputView.mobileCodeLabel.text = phoneCodeString
 //                        accountInputView.passwordInputView.textField.text = passString
                         checkBoxView.isSelected = true
                         checkBoxView.checkType = .checkType

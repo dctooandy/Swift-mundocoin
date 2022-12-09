@@ -114,7 +114,7 @@ class KeychainManager {
     ///   - pwd: 密碼
     ///   - phoneCode: 電話區號
     ///   - phone: 電話
-    func saveAccPwd(acc: String, pwd: String, phoneCode: String , phone:String) {
+    func saveAccPwd(acc: String, pwd: String = "", phoneCode: String = "" , phone:String) {
         var isNewAccount = true
         let arr = getAccList()
         let acc = acc.lowercased()
@@ -124,7 +124,11 @@ class KeychainManager {
             let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(phone) {
                 isNewAccount = false
-                return "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
+                let accString = acc.isEmpty ? accArr[0] : acc
+                let passwordString = pwd.isEmpty ? accArr[1] : pwd
+                let phoneCodeString = phoneCode.isEmpty ? accArr[2] : phoneCode
+                let phoneString = phone.isEmpty ? accArr[3] : phone
+                return "\(accString)/\(passwordString)/\(phoneCodeString)/\(phoneString)"
             } else {
                 return str
             }
@@ -135,10 +139,14 @@ class KeychainManager {
             newArrSet.insert(itemString)
         }
         newArr = Array(newArrSet)
-        //從頭到尾都沒有出現,視為新帳號,加入keychain
-        let accString = "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
-        if isNewAccount { // if false == new account
-            newArr.append(accString)
+        // 密碼如果不傳的時候,表示是舊帳號,直接回傳
+        if !pwd.isEmpty
+        {
+            //從頭到尾都沒有出現,視為新帳號,加入keychain
+            let accString = "\(acc)/\(pwd)/\(phoneCode)/\(phone)"
+            if isNewAccount { // if false == new account
+                newArr.append(accString)
+            }
         }
         saveAccList(newArr)
     }

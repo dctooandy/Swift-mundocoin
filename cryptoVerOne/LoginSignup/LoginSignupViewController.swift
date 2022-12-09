@@ -639,11 +639,13 @@ extension LoginSignupViewController {
         }
         if let dto = loginDto
         {
-            MemberAccountDto.share?.account = dto.account
+            // CheckTokenService 已經做過保存memberAccountDto 所以這裡不用做
+//            MemberAccountDto.share?.account = dto.account
+//            let fullPhone = dto.phone.isEmpty ? "" : (dto.phoneCode + dto.phone)
+//            MemberAccountDto.share?.phone = fullPhone
+//            MemberAccountDto.share?.timestamp = dto.timestamp
             MemberAccountDto.share?.password = dto.password
             MemberAccountDto.share?.loginMode = dto.loginMode
-            MemberAccountDto.share?.phone = dto.phoneCode + dto.phone
-            MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.loginMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
 //            KeychainManager.share.updateAccount(acc: dto.account,
@@ -653,7 +655,7 @@ extension LoginSignupViewController {
             KeychainManager.share.saveAccPwd(acc: dto.account,
                                              pwd: dto.password,
                                              phoneCode: dto.phoneCode,
-                                             phone: dto.phone)
+                                             phone: MemberAccountDto.share?.phone ?? "")
             BioVerifyManager.share.applyMemberInBIOList(account)
             // 更改RM 狀態
             KeychainManager.share.saveMundoCoinRememberMeStatus(dto.rememberMeStatus)
@@ -663,17 +665,19 @@ extension LoginSignupViewController {
         }
         if let dto = signupDto
         {
-            MemberAccountDto.share?.account = dto.account
+            // CheckTokenService 已經做過保存memberAccountDto 所以這裡不用做
+//            MemberAccountDto.share?.account = dto.account
+//            let fullPhone = dto.phone.isEmpty ? "" : (dto.phoneCode + dto.phone)
+//            MemberAccountDto.share?.phone = fullPhone
+//            MemberAccountDto.share?.timestamp = dto.timestamp
             MemberAccountDto.share?.password = dto.password
             MemberAccountDto.share?.loginMode = dto.signupMode
-            MemberAccountDto.share?.phone = dto.phoneCode + dto.phone
-            MemberAccountDto.share?.timestamp = dto.timestamp
             let account = (dto.signupMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
             KeychainManager.share.saveAccPwd(acc: dto.account,
                                              pwd: dto.password,
                                              phoneCode: dto.phoneCode,
-                                             phone: dto.phone)
+                                             phone: MemberAccountDto.share?.phone ?? "")
             BioVerifyManager.share.applyMemberInBIOList(account)
         }
         // 1025 FaceID 功能狀態

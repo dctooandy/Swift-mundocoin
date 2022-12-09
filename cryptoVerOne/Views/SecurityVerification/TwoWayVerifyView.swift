@@ -374,7 +374,7 @@ class TwoWayVerifyView: UIView {
             if let emailString = self.emailInputView.textField.text,
                let mobileString = self.mobileInputView.textField.text
             {
-                onSubmitBothClick.onNext((emailString,mobileString))
+                onSubmitBothClick.onNext((mobileString,emailString))
             }
         case .onlyEmail:
             if let emailString = self.emailInputView.textField.text

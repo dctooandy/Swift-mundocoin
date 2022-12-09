@@ -469,9 +469,11 @@ class WithdrawViewController: BaseViewController {
                                             securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
                                         }else if securityVerifyVC.securityViewMode == .defaultMode
                                         {
-                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-                                            InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
+//                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
+//                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+//                                            InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
+                                            let results = ErrorDefaultDto(code: dto.code, reason: "The Email or Mobile Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: dto.errors)
+                                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                         }
                                     }else if reason == "TO_ADDRESS_OWN_BY_CUSTOMER"
                                     { // 取款address是 自己的address

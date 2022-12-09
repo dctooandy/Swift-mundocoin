@@ -297,14 +297,10 @@ class UCPasswordViewController: BaseViewController {
                     MemberAccountDto.share?.password = newString
                     let account = (currentAcc.loginMode == .phonePage ? currentAcc.phone : currentAcc.account)
                     KeychainManager.share.setLastAccount(account)
-
-//                    KeychainManager.share.updateAccount(acc: currentAcc.account,
-//                                                        pwd: newString)
                     KeychainManager.share.saveAccPwd(acc: currentAcc.account,
                                                      pwd: newString,
                                                      phoneCode: currentAcc.phoneCode,
                                                      phone: currentAcc.phone)
-//                    BioVerifyManager.share.applyMemberInBIOList(currentAcc.account)
                     BioVerifyManager.share.removeAllBioList()
                     BioVerifyManager.share.setBioLoginAskStateToTrue(false)
                 }

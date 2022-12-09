@@ -101,7 +101,7 @@ class AuthenticationViewController: BaseViewController {
             if authenInputViewMode == .email(withStar: false)
             {
 //                verifyVC.emailAuthenDto = dataDto
-                if let accountString = authenInputView.textField.text
+                if let accountString = authenInputView.textField.text?.localizedLowercase
                 {
                     dataDto?.account = accountString
                 }
@@ -112,7 +112,7 @@ class AuthenticationViewController: BaseViewController {
                 if let phoneString = authenInputView.textField.text ,
                    let phoneCodeString = authenInputView.mobileCodeLabel.text
                 {
-                    dataDto?.phone = phoneString
+                    dataDto?.phone = (phoneCodeString + phoneString)
                     dataDto?.phoneCode = phoneCodeString
                 }
                 dataDto?.loginMode = .phonePage

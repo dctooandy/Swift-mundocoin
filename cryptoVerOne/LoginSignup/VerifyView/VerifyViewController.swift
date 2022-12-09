@@ -347,43 +347,31 @@ class VerifyViewController: BaseViewController {
     func verifyButtonPressed()
     {
         var accountString = ""
-//        var emailString = ""
-//        var phoneCodeString = ""
-//        var phoneString = ""
         var passwordString = ""
         var registrationString = ""
         var mode : LoginMode = .emailPage
         if let loginDto = self.loginDto
         {
             accountString = loginDto.toAccountString
-//            emailString = loginDto.account
-//            phoneString = (loginDto.phoneCode + loginDto.phone)
             passwordString = loginDto.password
             mode = loginDto.loginMode
         }else if let signupDto = self.signupDto
         {
             accountString = signupDto.toAccountString
-//            emailString = signupDto.account
-//            phoneString = (signupDto.phoneCode + signupDto.phone)
             passwordString = signupDto.password
             registrationString = signupDto.registration
             mode = signupDto.signupMode
         }else if let forgotDto = self.forgotPWDto
         {
             accountString = forgotDto.toAccountString
-//            emailString = forgotDto.account
-//            phoneString = (forgotDto.phoneCode + forgotDto.phone)
             mode = forgotDto.loginMode
         }else if let smsAuthenDto = self.mobileAuthenDto
         {
             accountString = smsAuthenDto.toAccountString
-//            phoneString = smsAuthenDto.phone
-//            phoneCodeString = smsAuthenDto.phoneCode
             mode = smsAuthenDto.loginMode
         }else if let emailAuthenDto = self.emailAuthenDto
         {
             accountString = emailAuthenDto.toAccountString
-//            emailString = emailAuthenDto.account
             mode = emailAuthenDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
@@ -537,14 +525,25 @@ class VerifyViewController: BaseViewController {
     func gotoVerifyCodeWithNewBindAccount(idString: String, codeString: String, withEmail:Bool = false)
     {
         Beans.loginServer.customerSettingsAuthentication(idString: idString, codeString: codeString).subscribe { [self] dataDto in
-            Log.i("data : \(dataDto)")
-            if let email = dataDto?.email as? String
+            Log.i("已將帳號綁定")
+            if let lastDto = KeychainManager.share.getLastAccount()
             {
-                MemberAccountDto.share?.email = email
-            }
-            if let phone = dataDto?.phone?.stringValue
-            {
-                MemberAccountDto.share?.phone = phone
+                if let email = dataDto?.email as? String
+                {
+                    MemberAccountDto.share?.email = email
+                    KeychainManager.share.saveAccPwd(acc: email,
+                                                     pwd: lastDto.password,
+                                                     phoneCode: lastDto.phoneCode,
+                                                     phone: MemberAccountDto.share?.phone ?? "")
+                }
+                if let phone = dataDto?.phone?.stringValue
+                {
+                    MemberAccountDto.share?.phone = phone
+                    KeychainManager.share.saveAccPwd(acc: lastDto.account,
+                                                     pwd: lastDto.password,
+                                                     phoneCode: lastDto.phoneCode,
+                                                     phone: phone)
+                }
             }
             popToCorrectVC()
         } onError: { [self] error in

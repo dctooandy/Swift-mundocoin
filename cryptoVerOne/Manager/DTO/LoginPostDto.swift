@@ -34,7 +34,7 @@ struct LoginPostDto {
         case .emailPage:
             return account.hideEmailAccount()
         case .phonePage:
-            return String(phoneCode + phone.hidePhoneAccount())
+            return String(phone.hidePhoneAccount())
         }
     }
     var toAccountString: String {
@@ -42,8 +42,14 @@ struct LoginPostDto {
         case .emailPage:
             return account
         case .phonePage:
-            return String(phoneCode + phone)
+            return String(phone)
         }
+    }
+    var phoneWithoutCode: String
+    {
+        let index = phone.index(phone.startIndex, offsetBy: phoneCode.count)
+        let mySubstring = phone[index...] // Hello
+        return String(mySubstring)
     }
 }
 
