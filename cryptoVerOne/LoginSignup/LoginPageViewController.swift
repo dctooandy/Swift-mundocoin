@@ -61,19 +61,19 @@ class LoginPageViewController: BaseViewController {
                             currentShowMode == .signupPhone ||
                             currentShowMode == .forgotPhonePW
                         {
-                            pageViewcontroller?.select(index: 1, animated: true)
+                            pageViewcontroller?.select(index: 0, animated: false)
                         }else
                         {
-                            pageViewcontroller?.select(index: 0, animated: true)
+                            pageViewcontroller?.select(index: 0, animated: false)
                         }
                     }else
                     {
                         if loginPostDto.phone.isEmpty == false
                         {
-                            pageViewcontroller?.select(index: 0, animated: true)
+                            pageViewcontroller?.select(index: 0, animated: false)
                         }else
                         {
-                            pageViewcontroller?.select(index: 0, animated: true)
+                            pageViewcontroller?.select(index: 0, animated: false)
                         }
                     }
                 }

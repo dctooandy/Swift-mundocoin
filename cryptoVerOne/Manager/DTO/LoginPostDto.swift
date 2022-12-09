@@ -53,9 +53,18 @@ struct LoginPostDto {
             if account == accountString
             {
                 finalAccount = account
-            }else
+            }else if phone == accountString
             {
                 finalAccount = phone
+            }else
+            {
+                if !account.isEmpty
+                {
+                    finalAccount = account
+                }else
+                {
+                    finalAccount = phone
+                }
             }
         }
         return finalAccount
