@@ -136,7 +136,7 @@ class ForgotViewController: BaseViewController {
         if let account = accountInputView?.accountInputView.textField.text
         {
             let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text ?? ""
-            let phoneString = (self.forgotPasswordMode == .phonePage ? account : "")
+            let phoneString = (self.forgotPasswordMode == .phonePage ? (phoneCode + account) : "")
             let accountString = account
             let dto = LoginPostDto(account: accountString,
                                    password:"",

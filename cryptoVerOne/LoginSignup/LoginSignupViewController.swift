@@ -658,7 +658,7 @@ extension LoginSignupViewController {
             MemberAccountDto.share?.loginMode = dto.loginMode
             let account = (dto.loginMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
-            KeychainManager.share.saveAccPwd(acc: dto.account,
+            KeychainManager.share.saveAccPwd(acc: MemberAccountDto.share?.email ?? MemberAccountDto.share?.phone ?? "",
                                              pwd: dto.password,
                                              phoneCode: dto.phoneCode,
                                              phone: MemberAccountDto.share?.phone ?? "")
@@ -680,7 +680,7 @@ extension LoginSignupViewController {
             MemberAccountDto.share?.loginMode = dto.signupMode
             let account = (dto.signupMode == .phonePage ? dto.phone : dto.account)
             KeychainManager.share.setLastAccount(account)
-            KeychainManager.share.saveAccPwd(acc: dto.account,
+            KeychainManager.share.saveAccPwd(acc: MemberAccountDto.share?.email ?? MemberAccountDto.share?.phone ?? "",
                                              pwd: dto.password,
                                              phoneCode: dto.phoneCode,
                                              phone: MemberAccountDto.share?.phone ?? "")

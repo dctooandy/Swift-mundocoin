@@ -160,10 +160,10 @@ class LoginService {
         var parameters: Parameters = [String: Any]()
         if mode == .phonePage
         {
-            parameters["phone"] = accountString
+            parameters["id"] = accountString
         }else
         {
-            parameters["email"] = accountString
+            parameters["id"] = accountString
         }
         parameters["code"] = verificationCode
         
@@ -184,10 +184,10 @@ class LoginService {
         var parameters: Parameters = [String: Any]()
         if mode == .phonePage
         {
-            parameters["phone"] = accountString
+            parameters["id"] = accountString
         }else
         {
-            parameters["email"] = accountString
+            parameters["id"] = accountString
         }
         parameters["code"] = verificationCode
         parameters["newPassword"] = newPassword

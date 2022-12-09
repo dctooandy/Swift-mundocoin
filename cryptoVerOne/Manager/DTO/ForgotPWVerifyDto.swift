@@ -7,6 +7,6 @@
 
 import Foundation
 class ForgotPWVerifyDto:Codable {
-    let email:String
+    let id:String
     let code:String
 }
