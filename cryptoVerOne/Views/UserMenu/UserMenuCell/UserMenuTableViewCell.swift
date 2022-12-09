@@ -369,7 +369,7 @@ class UserMenuTableViewCell: UITableViewCell {
         switch cellData {
         case .faceID:
             switchButton.rx.isOn.subscribeSuccess { [self] switchFlag in
-                if let account = KeychainManager.share.getLastAccountDto()?.account
+                if let account = KeychainManager.share.getLastAccount()
                 {
                     managerBioList(isOn: switchFlag, acc: account)                    
                 }
