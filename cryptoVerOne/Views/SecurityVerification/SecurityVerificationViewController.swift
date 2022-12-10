@@ -21,10 +21,11 @@ class SecurityVerificationViewController: BaseViewController {
     // MARK:業務設定
     private let onVerifySuccessClick = PublishSubject<(String,String)>()
     private let onSelectedModeSuccessClick = PublishSubject<(String,String)>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     static let share: SecurityVerificationViewController = SecurityVerificationViewController.loadNib()
     var securityViewMode : SecurityViewMode = .defaultMode {
         didSet{
+            dpg = DisposeBag()
             setupUI()
             bind()
         }
@@ -77,14 +78,61 @@ class SecurityVerificationViewController: BaseViewController {
     // MARK:業務方法
     func setupUI()
     {
+        twoWayVerifyView.removeFromSuperview()
+        pageViewcontroller?.removeFromParent()
+        pageViewcontroller?.view.removeFromSuperview()
+        twoWayVerifyView = TwoWayVerifyView.loadNib()
         switch securityViewMode {
         case .selectedMode:
-            break
-        case .defaultMode,.onlyEmail,.onlyMobile:
+            setupSelectedUI()
+        case .defaultMode:
+            self.twoWayVerifyView.twoWayViewMode = .both
             view.addSubview(twoWayVerifyView)
-           
+        case .onlyEmail:
+            self.twoWayVerifyView.twoWayViewMode = .onlyEmail
+            view.addSubview(twoWayVerifyView)
+        case .onlyMobile:
+            self.twoWayVerifyView.twoWayViewMode = .onlyMobile
+            view.addSubview(twoWayVerifyView)
         }
-        resetUI()
+    }
+    func setupSelectedUI()
+    {
+        setupPageVC()
+        pageViewcontroller = PagingViewController<PagingIndexItem>()
+        
+        pageViewcontroller?.delegate = self
+        pageViewcontroller?.dataSource = self
+        // menu item
+        pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
+
+        pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
+        pageViewcontroller?.backgroundColor = .white
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
+        // menu text
+        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
+        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
+        pageViewcontroller?.textColor = Themes.grayA3AED0
+        pageViewcontroller?.selectedTextColor = .white
+        
+        pageViewcontroller?.menuHorizontalAlignment = .center
+        pageViewcontroller?.menuItemSpacing = 0
+        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 38), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
+
+        let bgImage = UIColor(patternImage: image!)
+        pageViewcontroller?.menuBackgroundColor = bgImage
+        pageViewcontroller?.borderColor = .clear
+     
+        // menu indicator
+        // 欄目可動
+        pageViewcontroller?.menuInteraction = .none
+        // 下方VC可動
+        pageViewcontroller?.contentInteraction = .none
+        pageViewcontroller?.indicatorColor = .clear
+
+        addChild(pageViewcontroller!)
+        view.addSubview(pageViewcontroller!.view)
+
     }
     func resetHeightForView()
     {
@@ -106,22 +154,34 @@ class SecurityVerificationViewController: BaseViewController {
             }
         }
     }
-    func resetUI()
-    {
-        switch securityViewMode {
-        case .defaultMode:
-            self.twoWayVerifyView.twoWayViewMode = .both
-        case .selectedMode:
-            setupSelectedUI()
-        case .onlyEmail:
-            self.twoWayVerifyView.twoWayViewMode = .onlyEmail
-        case .onlyMobile:
-            self.twoWayVerifyView.twoWayViewMode = .onlyMobile
-        }
-    }
+    
     func bind()
     {
+        bindSubPageViewControllers()
         bindAction()
+    }
+    func bindSubPageViewControllers()
+    {
+        // 只有Email時的驗證碼發送接收方法
+        self.onlyEmailVerifyViewController.rxEmailSendVerifyAction().subscribeSuccess { [self](_) in
+            Log.i("發送驗證傳送請求")
+            verifyResentPressed(byEmail: true , byVC: true)
+        }.disposed(by: dpg)
+        // 只有Mobile時的驗證碼發送接收方法
+        self.onlyMobileVerifyViewController.rxMobileSendVerifyAction().subscribeSuccess { [self](_) in
+            Log.i("發送驗證傳送請求")
+            verifyResentPressed(byEmail: false , byVC: true)
+        }.disposed(by: dpg)
+        
+        self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
+            onSelectedModeSuccessClick.onNext((stringData,"onlyEmail"))
+        }.disposed(by: dpg)
+        
+        self.onlyMobileVerifyViewController.rxSecondSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
+            Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
+            onSelectedModeSuccessClick.onNext((stringData,"onlyTwoFA"))
+        }.disposed(by: dpg)
     }
     func bindAction()
     {
@@ -155,31 +215,8 @@ class SecurityVerificationViewController: BaseViewController {
             twoFAVC.viewMode = .reverify
             self.navigationController?.pushViewController(twoFAVC, animated: true)
         }.disposed(by: dpg)
-        
     }
-    func bindSubPageViewControllers()
-    {
-        // 只有Email時的驗證碼發送接收方法
-        self.onlyEmailVerifyViewController.rxEmailSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
-            verifyResentPressed(byEmail: true , byVC: true)
-        }.disposed(by: dpg)
-        // 只有Mobile時的驗證碼發送接收方法
-        self.onlyMobileVerifyViewController.rxMobileSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
-            verifyResentPressed(byEmail: false , byVC: true)
-        }.disposed(by: dpg)
-        
-        self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
-            onSelectedModeSuccessClick.onNext((stringData,"onlyEmail"))
-        }.disposed(by: dpg)
-        
-        self.onlyMobileVerifyViewController.rxSecondSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
-            onSelectedModeSuccessClick.onNext((stringData,"onlyTwoFA"))
-        }.disposed(by: dpg)
-    }
+
     func verifyResentAutoPressed(byMode: SecurityViewMode)
     {
         if byMode == .selectedMode
@@ -261,44 +298,7 @@ class SecurityVerificationViewController: BaseViewController {
             }
         }
     }
-    func setupSelectedUI()
-    {
-        setupPageVC()
-        pageViewcontroller = PagingViewController<PagingIndexItem>()
-        
-        pageViewcontroller?.delegate = self
-        pageViewcontroller?.dataSource = self
-        // menu item
-        pageViewcontroller?.menuItemSource = (.class(type: SecurityPagingTitleCell.self))
 
-        pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
-        pageViewcontroller?.backgroundColor = .white
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
-        // menu text
-        pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
-        pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
-        pageViewcontroller?.textColor = Themes.grayA3AED0
-        pageViewcontroller?.selectedTextColor = .white
-        
-        pageViewcontroller?.menuHorizontalAlignment = .center
-        pageViewcontroller?.menuItemSpacing = 0
-        let image = UIImage().gradientImage(with: CGRect(x: 0, y: 0, width: Views.screenWidth, height: 38), colors: [Themes.grayF4F7FE.cgColor ,Themes.grayF4F7FE.cgColor, Themes.whiteFFFFFF.cgColor, Themes.whiteFFFFFF.cgColor ,Themes.grayF4F7FE.cgColor, Themes.grayF4F7FE.cgColor], locations: nil)
-
-        let bgImage = UIColor(patternImage: image!)
-        pageViewcontroller?.menuBackgroundColor = bgImage
-        pageViewcontroller?.borderColor = .clear
-     
-        // menu indicator
-        // 欄目可動
-        pageViewcontroller?.menuInteraction = .none
-        // 下方VC可動
-        pageViewcontroller?.contentInteraction = .none
-        pageViewcontroller?.indicatorColor = .clear
-
-        addChild(pageViewcontroller!)
-        view.addSubview(pageViewcontroller!.view)
-
-    }
     private func setupPageVC() {
         let emailVC = TwoWayVerifyViewController.instance(mode: .onlyEmail)
         let mobileVC = TwoWayVerifyViewController.instance(mode: .onlyMobile)
@@ -306,7 +306,6 @@ class SecurityVerificationViewController: BaseViewController {
         self.onlyMobileVerifyViewController = mobileVC
         twoWayViewControllers = [self.onlyEmailVerifyViewController,
                                 self.onlyMobileVerifyViewController]
-        bindSubPageViewControllers()
     }
     func rxVerifySuccessClick() -> Observable<(String,String)>
     {

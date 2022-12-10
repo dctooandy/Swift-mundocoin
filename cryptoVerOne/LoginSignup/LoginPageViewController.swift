@@ -18,6 +18,7 @@ class LoginPageViewController: BaseViewController {
     private let resetLinkBtnClick = PublishSubject<LoginPostDto>()
     private let forgetBtnClick = PublishSubject<Void>()
     private var isPushToVerifyVC = false
+    private var isFirstOpenVC = true
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
             cleanTextField()
@@ -43,6 +44,7 @@ class LoginPageViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        isFirstOpenVC = true
         setupVC()
         setupMenu()
     }
@@ -61,7 +63,7 @@ class LoginPageViewController: BaseViewController {
                             currentShowMode == .signupPhone ||
                             currentShowMode == .forgotPhonePW
                         {
-                            pageViewcontroller?.select(index: 0, animated: false)
+                            pageViewcontroller?.select(index: (isFirstOpenVC ? 1 : 0), animated: false)
                         }else
                         {
                             pageViewcontroller?.select(index: 0, animated: false)
@@ -70,13 +72,14 @@ class LoginPageViewController: BaseViewController {
                     {
                         if loginPostDto.phone.isEmpty == false
                         {
-                            pageViewcontroller?.select(index: 0, animated: false)
+                            pageViewcontroller?.select(index: (isFirstOpenVC ? 1 : 0), animated: false)
                         }else
                         {
                             pageViewcontroller?.select(index: 0, animated: false)
                         }
                     }
                 }
+                isFirstOpenVC = false
             }
         }
         isPushToVerifyVC = false

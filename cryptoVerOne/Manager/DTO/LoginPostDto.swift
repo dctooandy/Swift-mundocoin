@@ -81,13 +81,19 @@ struct LoginPostDto {
     }
     var phoneWithoutCode: String
     {
-        let index = phone.index(phone.startIndex, offsetBy: phoneCode.count)
-        let mySubstring = phone[index...] // Hello
-        return String(mySubstring)
+        if !phone.isEmpty
+        {
+            let index = phone.index(phone.startIndex, offsetBy: phoneCode.count)
+            let mySubstring = phone[index...] // Hello
+            return String(mySubstring)
+        }else
+        {
+            return ""
+        }
     }
     var phoneCodeWithoutPhone: String
     {
-        var currentCode = ""
+        var currentCode = "+886"
         let mobileData = KeychainManager.share.getDefaultData()
         var codeArray:[String] = []
         for subData in mobileData

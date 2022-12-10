@@ -134,7 +134,7 @@ class KeychainManager {
                 let accString = acc.isEmpty ? accArr[0] : acc
                 let passwordString = pwd.isEmpty ? accArr[1] : pwd
                 let phoneCodeString = phoneCode.isEmpty ? accArr[2] : phoneCode
-                let phoneString = phone.isEmpty ? accArr[3] : phone
+                let phoneString = phone
                 return "\(accString)/\(passwordString)/\(phoneCodeString)/\(phoneString)"
             } else {
                 return str
