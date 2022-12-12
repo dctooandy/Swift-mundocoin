@@ -540,7 +540,7 @@ extension LoginSignupViewController {
                         case .errorDto(let dto):
                             let reason = dto.reason
                             var verifyString = "Email"
-                            if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
+                            if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" )
                             {
                                 if let loginData = loginDto
                                 {
@@ -549,7 +549,14 @@ extension LoginSignupViewController {
                                 {
                                     verifyString = signupData.signupMode == .emailPage ? "Email" : "Mobile"
                                 }
-                                verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
+                                if verifyVC != nil
+                                {
+                                    verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
+                                }else
+                                {
+                                    let results = ErrorDefaultDto(code: dto.code, reason: "The \(verifyString) Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: [])
+                                    ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                                }
                             }
                         case .noData:
                             Log.v("登入返回沒有資料")
@@ -588,7 +595,14 @@ extension LoginSignupViewController {
                     {
                         if reason == "CODE_MISMATCH"
                         {
-                            verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"The Email Code is incorrect. Please re-enter.")
+                            if verifyVC != nil
+                            {
+                                verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with:"The Email Code is incorrect. Please re-enter.")
+                            }else
+                            {
+                                let results = ErrorDefaultDto(code: dto.code, reason: "The Email Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: [])
+                                ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                            }
                         }else if reason == "PARAMETER_INVALID"
                         {
                             var errorReason = ""
@@ -597,12 +611,14 @@ extension LoginSignupViewController {
                             {
                                 errorReason = error.reason
                             }
-                            verifyVC.popVC(isAnimation: false)
+                            if verifyVC != nil
+                            {
+                                verifyVC.popVC(isAnimation: false)
+                            }
                             self.currentShowMode = (signupDto.signupMode == .emailPage ? .signupEmail : .signupPhone)
                             let results = ErrorDefaultDto(code: dto.code, reason: "\(reason)\n\(errorReason)", timestamp: 0, httpStatus: "", errors: [])
                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
                         }
-                            
                     }else
                     {
                         ErrorHandler.show(error: error)

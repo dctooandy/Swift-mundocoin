@@ -99,7 +99,6 @@ class AuthenticationViewController: BaseViewController {
             var dataDto = KeychainManager.share.getLastAccountDto()
             if authenInputViewMode == .email(withStar: false)
             {
-//                verifyVC.emailAuthenDto = dataDto
                 if let accountString = authenInputView.textField.text?.localizedLowercase
                 {
                     dataDto?.account = accountString
@@ -116,7 +115,6 @@ class AuthenticationViewController: BaseViewController {
                 }
                 dataDto?.loginMode = .phonePage
                 verifyVC = VerifyViewController.instance( mobileAuthenDto: dataDto)
-//                verifyVC.mobileAuthenDto = dataDto
             }
             navigationController?.pushViewController(verifyVC, animated: true)
         }.disposed(by: dpg)
