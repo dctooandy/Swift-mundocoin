@@ -85,6 +85,7 @@ class LoginSignupViewController: BaseViewController {
     private var route: SuccessViewAction.Route? = nil
     private var backGroundVideoUrl: URL? = nil
     var willShowAgainFromVerifyVC = false
+    var didShowBioCheck = false
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -135,12 +136,13 @@ class LoginSignupViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-        if didAskBioLogin == true , willShowAgainFromVerifyVC == false
+        if didAskBioLogin == true , willShowAgainFromVerifyVC == false , didShowBioCheck == false
         {
             // 1025 FaceID 功能狀態
             if KeychainManager.share.getFaceIDStatus() == true
             {
                 bioVerifyCheck()
+                didShowBioCheck = true
             }
         }
         willShowAgainFromVerifyVC = false
@@ -149,7 +151,14 @@ class LoginSignupViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        LoginSignupViewController.share = LoginSignupViewController.loadNib()
+        if willShowAgainFromVerifyVC == false
+        {
+            LoginSignupViewController.share = LoginSignupViewController.loadNib()
+        }else
+        {
+            didShowBioCheck = true
+        }
+        willShowAgainFromVerifyVC = false
 //        VideoManager.share.pause()
     }
     // MARK: -

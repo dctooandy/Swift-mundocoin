@@ -1,3 +1,4 @@
+1212 : 產dev包 測試 SMS新版API 最終版
 1208 : 產dev包 測試 SMS新版API
 1206 : 產dev包 測試 SMS新版UI 已切換sio feedback 
 1130 : 產dev包 測試 SMS新版UI
