@@ -375,6 +375,7 @@ class VerifyViewController: BaseViewController {
             mode = emailAuthenDto.loginMode
         }
         let codeString = verifyInputView.textField.text ?? ""
+        verifyButton.isEnabled = false
         switch verificationType {
         case .loginVerity:
             // 登入驗證

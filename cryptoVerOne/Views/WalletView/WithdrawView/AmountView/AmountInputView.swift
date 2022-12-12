@@ -60,7 +60,7 @@ class AmountInputView: UIView ,NibOwnerLoadable{
 //        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
         let onDone = onDone ?? (target: self, action: #selector(cancelButtonTapped))
         let doneItem = UIBarButtonItem(image: UIImage(named: "icon-chevron-down"), style: .done, target: onDone.target, action: onDone.action)
-        doneItem.tintColor = .white
+//        doneItem.tintColor = .white
         let toolbar: UIToolbar = UIToolbar()
         toolbar.barStyle = .default
         toolbar.items = [
@@ -68,7 +68,7 @@ class AmountInputView: UIView ,NibOwnerLoadable{
             UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
             doneItem
         ]
-        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
+//        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
         toolbar.sizeToFit()
         
         self.amountTextView.inputAccessoryView = toolbar

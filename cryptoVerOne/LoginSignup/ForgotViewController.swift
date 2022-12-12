@@ -81,17 +81,18 @@ class ForgotViewController: BaseViewController {
             make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight)
+            make.height.equalTo(Themes.inputViewDefaultHeight)
         }
         view.addSubview(sendResetLinkButton)
         
         sendResetLinkButton.snp.makeConstraints { (make) in
-            make.top.equalTo(accountInputView!.snp.bottom).offset(65)
+            make.top.equalTo(accountInputView!.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.7)
+            make.left.equalToSuperview().offset(37)
+            make.right.equalToSuperview().offset(-37)
             make.height.equalTo(50)
         }
-        sendResetLinkButton.setTitle("Send".localized, for: .normal)
+        sendResetLinkButton.setTitle("Next".localized, for: .normal)
         
     }
 
