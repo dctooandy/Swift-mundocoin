@@ -314,7 +314,7 @@ class AddressBookViewController: BaseViewController {
                                 if withMode == "onlyEmail"
                                 {
                                     redBorderMessage = "The Email Code is incorrect. Please re-enter."
-                                }else if withMode == "onlyTwoFA"
+                                }else if withMode == "onlyMobile"
                                 {
                                     redBorderMessage = "The Mobile Code is incorrect. Please re-enter."
                                 }
@@ -363,7 +363,7 @@ class AddressBookViewController: BaseViewController {
             {
                 emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
                 emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)
-            }else if withMode == "onlyTwoFA" , let mobileVC = twoWayVC.twoWayViewControllers.last
+            }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
             {
                 mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
                 mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: redBorderMessage)

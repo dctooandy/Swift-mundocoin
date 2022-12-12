@@ -179,8 +179,8 @@ class SecurityVerificationViewController: BaseViewController {
         }.disposed(by: dpg)
         
         self.onlyMobileVerifyViewController.rxSecondSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送Second submit請求 ,onlyTwoFA:\(stringData)")
-            onSelectedModeSuccessClick.onNext((stringData,"onlyTwoFA"))
+            Log.i("發送Second submit請求 ,onlyMobile:\(stringData)")
+            onSelectedModeSuccessClick.onNext((stringData,"onlyMobile"))
         }.disposed(by: dpg)
     }
     func bindAction()

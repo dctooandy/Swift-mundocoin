@@ -17,11 +17,11 @@ class LoginPageViewController: BaseViewController {
     private let loginBtnClick = PublishSubject<LoginPostDto>()
     private let resetLinkBtnClick = PublishSubject<LoginPostDto>()
     private let forgetBtnClick = PublishSubject<Void>()
-    private var isPushToVerifyVC = false
+    private var isSignupPushToVerifyVC = false
     private var isFirstOpenVC = true
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
-            cleanTextField()
+//            cleanTextField()
 //            if currentShowMode == .forgotPW
 //            {
 //                pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 50)
@@ -31,7 +31,8 @@ class LoginPageViewController: BaseViewController {
 //                pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 110, height: 0)
 //                pageViewcontroller?.indicatorColor = .clear
 //            }
-            pageViewcontroller?.reloadData()
+//            pageViewcontroller?.reloadData()
+            cleanAndReload()
         }
     }
     // MARK: -
@@ -58,13 +59,32 @@ class LoginPageViewController: BaseViewController {
                 if let loginPostDto = KeychainManager.share.getLastAccountDto()
                 {
                     var selectPageIndex = 0
-                    if isPushToVerifyVC == true
+                    if isSignupPushToVerifyVC == true
                     {
                         if currentShowMode == .loginPhone ||
                             currentShowMode == .signupPhone ||
                             currentShowMode == .forgotPhonePW
                         {
-                            selectPageIndex = (isFirstOpenVC ? 1 : 0)
+                            if isFirstOpenVC == false
+                            {
+                                if currentShowMode == .loginPhone
+                                {
+                                    currentShowMode = .loginPhone
+                                }
+                                if currentShowMode == .signupPhone
+                                {
+                                    currentShowMode = .signupPhone
+                                }
+                                if currentShowMode == .forgotPhonePW
+                                {
+                                    currentShowMode = .forgotPhonePW
+                                }
+//                                selectPageIndex = 1
+                            }else
+                            {
+//                                selectPageIndex = 1
+                            }
+                            
                         }
                     }else
                     {
@@ -72,15 +92,20 @@ class LoginPageViewController: BaseViewController {
                         let dtoPhoneAccount = loginPostDto.phone
                         if dtoPhoneAccount.isEmpty == false , dtoPhoneAccount == lastAccount
                         {
+                            currentShowMode = .loginPhone
                             selectPageIndex = (isFirstOpenVC ? 1 : 0)
+                            selectPageVC(index:selectPageIndex)
+                            cleanAndReload()
+                        }else
+                        {
+                            cleanAndReload()
                         }
                     }
-                    selectPageVC(index:selectPageIndex)
                 }
                 isFirstOpenVC = false
             }
         }
-        isPushToVerifyVC = false
+        isSignupPushToVerifyVC = false
     }
     // MARK: -
     // MARK:業務方法
@@ -142,7 +167,11 @@ class LoginPageViewController: BaseViewController {
         signupViewControllers.forEach({$0.cleanTextField()})
 //        forgotViewControllers.forEach({$0.cleanTextField()})
     }
-    
+    func cleanAndReload()
+    {
+        cleanTextField()
+        pageViewcontroller?.reloadData()
+    }
 //    func reloadPageMenu(isLogin: Bool) {
 //        self.isLogin = isLogin
 //        DispatchQueue.main.async {[weak self] in
@@ -208,7 +237,7 @@ class LoginPageViewController: BaseViewController {
         for i in signupViewControllers {
             i.rxSignupButtonPressed()
                 .subscribeSuccess { [weak self] dto in
-                    self?.isPushToVerifyVC = true
+                    self?.isSignupPushToVerifyVC = true
                     self?.signupBtnClick.onNext(dto)
                 }.disposed(by: disposeBag)
         }
