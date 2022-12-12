@@ -57,27 +57,25 @@ class LoginPageViewController: BaseViewController {
             {
                 if let loginPostDto = KeychainManager.share.getLastAccountDto()
                 {
+                    var selectPageIndex = 0
                     if isPushToVerifyVC == true
                     {
                         if currentShowMode == .loginPhone ||
                             currentShowMode == .signupPhone ||
                             currentShowMode == .forgotPhonePW
                         {
-                            pageViewcontroller?.select(index: (isFirstOpenVC ? 1 : 0), animated: false)
-                        }else
-                        {
-                            pageViewcontroller?.select(index: 0, animated: false)
+                            selectPageIndex = (isFirstOpenVC ? 1 : 0)
                         }
                     }else
                     {
-                        if loginPostDto.phone.isEmpty == false
+                        let lastAccount = KeychainManager.share.getLastAccount()
+                        let dtoPhoneAccount = loginPostDto.phone
+                        if dtoPhoneAccount.isEmpty == false , dtoPhoneAccount == lastAccount
                         {
-                            pageViewcontroller?.select(index: (isFirstOpenVC ? 1 : 0), animated: false)
-                        }else
-                        {
-                            pageViewcontroller?.select(index: 0, animated: false)
+                            selectPageIndex = (isFirstOpenVC ? 1 : 0)
                         }
                     }
+                    selectPageVC(index:selectPageIndex)
                 }
                 isFirstOpenVC = false
             }

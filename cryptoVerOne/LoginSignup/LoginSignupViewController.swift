@@ -37,7 +37,7 @@ class LoginSignupViewController: BaseViewController {
     // MARK:業務設定
     fileprivate let loginPageVC = LoginPageViewController()
     fileprivate let forgotPageVC = ForgotPasswordViewController.share
-    static let share: LoginSignupViewController = LoginSignupViewController.loadNib()
+    static var share: LoginSignupViewController = LoginSignupViewController.loadNib()
     /// 显示注册或登入页面
     private var currentShowMode: ShowMode = .loginEmail {
         didSet {
@@ -149,6 +149,7 @@ class LoginSignupViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        LoginSignupViewController.share = LoginSignupViewController.loadNib()
 //        VideoManager.share.pause()
     }
     // MARK: -
