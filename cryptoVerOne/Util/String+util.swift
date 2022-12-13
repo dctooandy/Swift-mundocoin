@@ -277,4 +277,9 @@ extension String {
         }
         return newString
     }
+    //通过裁剪字符串中的空格和换行符，将得到的结果进行isEmpty
+    var isReBlank:Bool{
+         let str = self.trimmingCharacters(in: .whitespacesAndNewlines)
+         return str.isEmpty
+   }
 }

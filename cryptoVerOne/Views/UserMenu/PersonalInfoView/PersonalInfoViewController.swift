@@ -245,8 +245,9 @@ extension PersonalInfoViewController: UITextFieldDelegate
             calculateTextWidth()
             if let string = textField.text
             {
-                let spaceCount = string.reduce(0) { $1.isWhitespace && !$1.isNewline ? $0 + 1 : $0 }
-                if textField.text?.count != spaceCount
+//                let spaceCount = string.reduce(0) { $1.isWhitespace && !$1.isNewline ? $0 + 1 : $0 }
+//                if textField.text?.count != spaceCount
+                if string.isReBlank == false
                 {
                     LoadingViewController.show()
                     Beans.loginServer.customerSettingsNickname(nickname: textField.text ?? "").subscribe { feedback in
@@ -265,7 +266,7 @@ extension PersonalInfoViewController: UITextFieldDelegate
                 {
                     textField.text = MemberAccountDto.share?.nickName ?? ""
                 }
-            }            
+            }
         }
     }
 }
