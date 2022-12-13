@@ -18,6 +18,7 @@ class AddressBookViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
 //    private let dpg = DisposeBag()
     private var cellDpg = DisposeBag()
+    var sheetDpg = DisposeBag()
     var addresBookDtos : [AddressBookDto] = []
     var twoWayVC = SecurityVerificationViewController.loadNib()
     var isShowSecurityVC : Bool = false
@@ -116,6 +117,7 @@ class AddressBookViewController: BaseViewController {
     }
     @objc func whiteListAction() {
         Log.i("開啟白名單警告Sheet")
+        sheetDpg = DisposeBag()
         let whiteListBottomSheet = WhiteListBottomSheet()
         whiteListBottomSheet.rxChangeWhiteListMode().subscribeSuccess { [self] _ in
             if let type = MemberAccountDto.share?.withdrawWhitelistSecurityType
@@ -126,10 +128,10 @@ class AddressBookViewController: BaseViewController {
                         self.twoWayVC.navigationController?.popViewController(animated: true)
                         
                     })
-                }.disposed(by: disposeBag)
+                }.disposed(by: sheetDpg)
                 self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
-        }.disposed(by: disposeBag)
+        }.disposed(by: sheetDpg)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 283)
         }
