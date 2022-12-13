@@ -351,6 +351,7 @@ class UserMenuTableViewCell: UITableViewCell {
     }
     func managerBioList(isOn: Bool, acc: String) {
         BioVerifyManager.share.setBioLoginSwitch(to: isOn)
+        BioVerifyManager.share.setBioLoginAskStateToTrue(isOn)
         if !BioVerifyManager.share.didAskBioLogin() {
             BioVerifyManager.share.setBioLoginAskStateToTrue()
         }

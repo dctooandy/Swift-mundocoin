@@ -38,23 +38,29 @@ class BioVerifyManager {
     }
    
     func bioVerify(_ done: @escaping (Bool, Error?) -> ())  {
+        // 創建 LAContext 實例
         let context = LAContext()
-        context.localizedCancelTitle = "取消"
-        context.localizedFallbackTitle = ""
+        // 設置取消按鈕標題
+        context.localizedCancelTitle = "Cancel"
+        context.localizedFallbackTitle = "Auth ID"
+        // 宣告一個變數接收 canEvaluatePolicy 返回的錯誤
         var err: NSError?
+        // 評估是否可以針對給定方案進行身份驗證
+        // deviceOwnerAuthentication 支援 Face ID 、 Touch ID 驗證
+        // deviceOwnerAuthenticationWithBiometrics 支援 Face ID 、 Touch ID 、 裝置密碼 驗證
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &err) { // face id
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
-                                   localizedReason: "通过FaceID/TouchID验证",
+                                   localizedReason: "Enable biometric ID",
                                    reply: done)
             
         } else if context.canEvaluatePolicy(.deviceOwnerAuthentication,error: &err) { // touch id
             
             context.evaluatePolicy(.deviceOwnerAuthentication,
-                                   localizedReason: "通过密码鉴验证",
+                                   localizedReason: "Enable Auth ID",
                                    reply: done)
         } else {
-            done(false, nil)
+            done(false, err)
         }
     }
     

@@ -318,6 +318,21 @@ extension LoginSignupViewController {
         ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
         #endif
     }
+    func showBioAlert(error:NSError)
+    {
+        print("unset Face ID")
+        let alertController = UIAlertController(title: "Biometrics can't used", message: "please add Face ID", preferredStyle: .alert)
+        let confirmAction = UIAlertAction(title: "ok", style: .default) { action in
+            guard let url = URL(string: "App-prefs:PASSCODE") else { return }
+            if (UIApplication.shared.canOpenURL(url)) {
+                UIApplication.shared.open(url) { success in
+                    print(success)
+                }
+            }
+        }
+        alertController.addAction(confirmAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
     private func bioVerifyCheck(isDev : Bool = false) {
         if isDev
         {
@@ -325,15 +340,24 @@ extension LoginSignupViewController {
             BioVerifyManager.share.bioVerify { [self] (success, error) in
                 if !success {
                     DispatchQueue.main.async {[self] in
-                    let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "Verification failed, please enter account password.") { (_) in
-                        
-                    }
+                        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"),
+                                                     title: "Warning",
+                                                     message: "Verification failed, please enter account password.") { (_) in
+                            
+                        }
                         popVC.start(viewController: self)
                     }
                     return
                 }
-                if error != nil {
-                    Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
+                if let err = error , error != nil {
+                    if err.localizedDescription == "Biometry is not enrolled."
+                    {
+                        // 若使用者沒有設置生物辨識，會自動導向 設定 -> Face/Touch ID & Passcode
+                        showBioAlert(error:err as NSError)
+                    }else if err.localizedDescription == "Authentication canceled."
+                    {
+                        Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
+                    }
                     return
                 }
             }
@@ -343,9 +367,8 @@ extension LoginSignupViewController {
                 currentShowMode != .loginPhone { return }
             if !BioVerifyManager.share.bioLoginSwitchState() { return }
             if var loginPostDto = KeychainManager.share.getLastAccountDto(),
-               let memberDto = MemberAccountDto.share,
-               (BioVerifyManager.share.usedBIOVeritfy(memberDto.email) ||
-                BioVerifyManager.share.usedBIOVeritfy(memberDto.phone))
+               (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
+                BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
             {
                 // 進行臉部或指紋驗證
                 BioVerifyManager.share.bioVerify { [self] (success, error) in
@@ -359,8 +382,15 @@ extension LoginSignupViewController {
                         }
 //                        return
                     }
-                    if error != nil {
-                        Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
+                    if let err = error , error != nil {
+                        if err.localizedDescription == "Biometry is not enrolled."
+                        {
+                            // 若使用者沒有設置生物辨識，會自動導向 設定 -> Face/Touch ID & Passcode
+                            showBioAlert(error:err as NSError)
+                        }else if err.localizedDescription == "Authentication canceled."
+                        {
+                            Toast.show(msg: "Verification failed：\(error!.localizedDescription)")
+                        }
                         return
                     }
                     DispatchQueue.main.async {
