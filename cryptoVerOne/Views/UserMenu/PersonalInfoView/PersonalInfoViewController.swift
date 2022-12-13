@@ -71,7 +71,7 @@ class PersonalInfoViewController: BaseViewController {
         if let testString = userNameTextField.text
         {
             let textWidth = testString.width(withConstrainedHeight: 20, font:  Fonts.PlusJakartaSansMedium(17))
-            topTextWidthConstraint.constant = textWidth + 10
+            topTextWidthConstraint.constant = textWidth + 15
         }
     }
     func bindUI()
@@ -226,9 +226,9 @@ extension PersonalInfoViewController: UITextFieldDelegate
                 stringNumber += 2
             }
         }
-        if textNumber >= 20 {
+        if textNumber >= 21 {
             returnTag = false
-        }else if textNumber + stringNumber >= 20
+        }else if textNumber + stringNumber >= 21
         {
             returnTag = false
         }
@@ -239,15 +239,33 @@ extension PersonalInfoViewController: UITextFieldDelegate
         return textIsEditing
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        turnOnImageView(editFlag: false)
-        calculateTextWidth()
-        Beans.loginServer.customerSettingsNickname(nickname: textField.text ?? "").subscribeSuccess { feedback in
-            if let dto = feedback , let nickname = dto.nickName
+        if textIsEditing == false
+        {
+            turnOnImageView(editFlag: false)
+            calculateTextWidth()
+            if let string = textField.text
             {
-                MemberAccountDto.share?.nickName = nickname
-                Log.i("feedback : \(dto)")
-                
-            }
-        }.disposed(by: dpg)
+                let spaceCount = string.reduce(0) { $1.isWhitespace && !$1.isNewline ? $0 + 1 : $0 }
+                if textField.text?.count != spaceCount
+                {
+                    LoadingViewController.show()
+                    Beans.loginServer.customerSettingsNickname(nickname: textField.text ?? "").subscribe { feedback in
+                        _ = LoadingViewController.dismiss()
+                        if let dto = feedback , let nickname = dto.nickName
+                        {
+                            MemberAccountDto.share?.nickName = nickname
+                            Log.i("feedback : \(dto)")
+                        }
+                    } onError: { error in
+                        _ = LoadingViewController.dismiss().subscribeSuccess { _ in
+                            ErrorHandler.show(error: error)
+                        }.disposed(by: self.disposeBag)
+                    }.disposed(by: dpg)
+                }else
+                {
+                    textField.text = MemberAccountDto.share?.nickName ?? ""
+                }
+            }            
+        }
     }
 }
