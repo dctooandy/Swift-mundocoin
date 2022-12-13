@@ -19,6 +19,7 @@ class LoginViewController: BaseViewController {
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onClickLogin = PublishSubject<LoginPostDto>()
     private var onClickForgot = PublishSubject<Void>()
+    private var isNetWorkConnectIng = false
     private var loginMode : LoginMode = .emailPage {
         didSet {
 //            self.loginModeDidChange()
@@ -306,7 +307,11 @@ class LoginViewController: BaseViewController {
             Log.v("帳號不驗證")
             login()
 #else
-            verificationID()
+            if isNetWorkConnectIng != true
+            {
+                isNetWorkConnectIng = true
+                verificationID()
+            }
 #endif
             }.disposed(by: disposeBag)
     }
@@ -328,7 +333,7 @@ class LoginViewController: BaseViewController {
             Log.v("帳號有註冊過")
             login()
         } onError: { [self] error in
-            
+            isNetWorkConnectIng = false
             //先測試
 //            let account = (loginMode == .phonePage ? account : phone)
 //            KeychainManager.share.setLastAccount(account)
@@ -394,6 +399,7 @@ class LoginViewController: BaseViewController {
 //        // 更改RM 狀態
 //        KeychainManager.share.saveMundoCoinRememberMeStatus(mundoCoinRememberMeStatus)
         // 登入成功後
+        self.isNetWorkConnectIng = false
         self.onClickLogin.onNext(dto)
     }
     func startReciprocal() {

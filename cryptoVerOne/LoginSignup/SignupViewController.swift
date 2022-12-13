@@ -14,6 +14,7 @@ class SignupViewController: BaseViewController {
     private var timer: Timer? = nil
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var onSignupAction = PublishSubject<SignupPostDto>()
+    private var isNetWorkConnectIng = false
     var loginMode : LoginMode = .emailPage {
         didSet {
             //            loginModeDidChange()
@@ -206,9 +207,14 @@ class SignupViewController: BaseViewController {
 
     
     func bindRegisterBtn() {
-        registerButton.rx.tap.subscribeSuccess { [weak self] in
-            self?.accountInputView.resignAllResponder()
-            self?.verificationID()
+        registerButton.rx.tap.subscribeSuccess { [self] in
+            registerButton.isEnabled = false
+            if isNetWorkConnectIng != true
+            {
+                isNetWorkConnectIng = true
+                accountInputView.resignAllResponder()
+                verificationID()
+            }
         }.disposed(by: disposeBag)
     }
     func verificationID()
@@ -226,6 +232,7 @@ class SignupViewController: BaseViewController {
             Log.v("帳號沒註冊過")
             signup()
         } onError: { [self] error in
+            isNetWorkConnectIng = false
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):
@@ -320,6 +327,7 @@ class SignupViewController: BaseViewController {
             self.view.endEditing(true)
             onSignupAction.onNext(dto)            
         }
+        isNetWorkConnectIng = false
     }
     func rxSignupButtonPressed() -> Observable<SignupPostDto> {
         return onSignupAction.asObserver()
