@@ -587,6 +587,10 @@ extension LoginSignupViewController {
                                     let results = ErrorDefaultDto(code: dto.code, reason: "The \(verifyString) Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: [])
                                     ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                 }
+                            }else
+                            {
+                                let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                                ErrorHandler.show(error: ApiServiceError.errorDto(results))
                             }
                         case .noData:
                             Log.v("登入返回沒有資料")
