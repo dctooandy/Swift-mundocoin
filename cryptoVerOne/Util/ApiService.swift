@@ -105,7 +105,7 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
         case .refreshToken:
             return URL(string:ApiService.host + "/v1/refresh/token")
         case .customerUpdatePassword:
-            return URL(string:ApiService.host + "/v1/customer/updatePassword")
+            return URL(string:ApiService.host + "/v1/customer/update-password")
         case .customerLoginHistory:
             return URL(string:ApiService.host + "/v1/customer/loginHistory")
         case .customerForgotPasswordVerify:

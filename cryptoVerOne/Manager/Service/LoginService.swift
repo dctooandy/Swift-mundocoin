@@ -123,7 +123,7 @@ class LoginService {
             })
     }
     
-    func customerUpdatePassword(current:String , updated:String , verificationCode:String) -> Single<UpdatePasswordDto?>
+    func customerUpdatePassword(current:String , updated:String , verificationCode:Parameters) -> Single<UpdatePasswordDto?>
     {
         var parameters: Parameters = [String: Any]()
         parameters["current"] = current

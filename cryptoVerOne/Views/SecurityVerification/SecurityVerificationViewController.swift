@@ -70,6 +70,10 @@ class SecurityVerificationViewController: BaseViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         twoWayVerifyView.cleanTimer()
+        for vc in twoWayViewControllers
+        {
+            vc.verifyView.cleanTimer()
+        }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)

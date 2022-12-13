@@ -49,7 +49,7 @@ class TwoWayVerifyViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        verifyView.cleanTimer()
+//        verifyView.cleanTimer()
     }
     // MARK: -
     // MARK:業務方法

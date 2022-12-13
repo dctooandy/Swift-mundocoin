@@ -9,6 +9,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Alamofire
 
 class UCPasswordViewController: BaseViewController {
     // MARK:業務設定
@@ -290,7 +291,13 @@ class UCPasswordViewController: BaseViewController {
         if let currentString = oldInputView.textField.text,
         let newString = newInputView.textField.text
         {
-            Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: Withcode).subscribe { [self] data in
+            let emailString = MemberAccountDto.share?.email ?? ""
+            let phoneString = MemberAccountDto.share?.phone ?? ""
+            let idString = (withMode == "onlyEmail" ? emailString : phoneString)
+            var parameters: Parameters = [String: Any]()
+            parameters = ["id":idString,
+                          "code":Withcode]
+            Beans.loginServer.customerUpdatePassword(current: currentString, updated: newString, verificationCode: parameters).subscribe { [self] data in
                 Log.v("更改成功")
                 if let currentAcc = KeychainManager.share.getLastAccountDto()
                 {
@@ -302,7 +309,7 @@ class UCPasswordViewController: BaseViewController {
                                                      phoneCode: currentAcc.phoneCode,
                                                      phone: currentAcc.phone)
                     BioVerifyManager.share.removeAllBioList()
-                    BioVerifyManager.share.setBioLoginAskStateToTrue(false)
+//                    BioVerifyManager.share.setBioLoginAskStateToTrue(false)
                 }
                 changedPWVC.backgroundImageViewHidden()
                 changedPWVC.title = "Security Verification"
@@ -344,8 +351,11 @@ class UCPasswordViewController: BaseViewController {
                                         ErrorHandler.show(error: error)
                                     }
                                 }
+                            }else
+                            {
+                                let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                                ErrorHandler.show(error: ApiServiceError.errorDto(results))
                             }
-                          
                         }else
                         {
                             ErrorHandler.show(error: error)
