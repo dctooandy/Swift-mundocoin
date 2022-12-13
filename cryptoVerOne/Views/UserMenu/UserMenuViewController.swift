@@ -33,7 +33,7 @@ class UserMenuViewController: BaseViewController {
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "User Menu"
+        title = "Account"
         setupUI()
         fetchData()
         bindViewModel()
