@@ -130,7 +130,7 @@ class ConfirmPopupView: PopupBottomSheet {
         case .none: break
             
         }
-        if let titleString = titleLabel.text , titleString.isReBlank == true
+        if let titleString = titleLabel.text , titleString.isReBlank == true , titleString.spaceCount != 0
         {
             titleLabelHeight = 25.0
         }
@@ -187,10 +187,7 @@ class ConfirmPopupView: PopupBottomSheet {
         {
 //            containerHeight = viewHeight
         }
-        if let textString = titleLabel.text , textString.isReBlank == true
-        {
-            containerHeight = containerHeight - titleLabelHeight
-        }
+        containerHeight = containerHeight - titleLabelHeight
         defaultContainer.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.centerY.equalToSuperview().offset(-33)

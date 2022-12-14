@@ -24,7 +24,7 @@ class ErrorHandler {
                 showAlert(title: "Network failed", message: "\(message)")
             case .unknownError(_ ,let title ,let msg):
                 Log.e(msg )
-                showAlert(title: " ", message: msg )
+                showAlert(title: "", message: msg )
             case .tokenError:
                 Log.e("tokenExpireError")
                 Toast.show(msg:"tokenExpireError")
@@ -44,10 +44,10 @@ class ErrorHandler {
                     break
                 }
             case .showKnownError(let statusInt , let urlString , let errorMessage ):
-                showAlert(title: " ", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
+                showAlert(title: "", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
             case .errorDto(let dto):
                 let status = dto.httpStatus ?? ""
-                let code = dto.code
+//                let code = dto.code
                 let reason = dto.reason
                 let errors = dto.errors
                 if status == "403" , dto.reason == "AUTH_REQUIRED"
@@ -67,13 +67,7 @@ class ErrorHandler {
                     {
                         message = "\(reason)"
                     }
-                    if code.isEmpty == true
-                    {
-                        showAlert(title: " ", message: message)
-                    }else
-                    {
-                        showAlert(title: " ", message: message)
-                    }
+                    showAlert(title: "", message: message)
                 }
             case .noData:
                 break

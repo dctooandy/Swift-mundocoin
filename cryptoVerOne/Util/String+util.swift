@@ -279,7 +279,10 @@ extension String {
     }
     //通过裁剪字符串中的空格和换行符，将得到的结果进行isEmpty
     var isReBlank:Bool{
-         let str = self.trimmingCharacters(in: .whitespacesAndNewlines)
-         return str.isEmpty
-   }
+        let str = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        return str.isEmpty
+    }
+    var spaceCount:Int{
+        return self.reduce(0) { $1.isWhitespace && !$1.isNewline ? $0 + 1 : $0 }
+    }
 }
