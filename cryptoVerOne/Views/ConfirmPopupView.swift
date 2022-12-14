@@ -98,6 +98,7 @@ class ConfirmPopupView: PopupBottomSheet {
     private func setupUI() {
         
         var iconHeight = 40.0
+        var titleLabelHeight:CGFloat = 0.0
         var titleViewHeight = 96.0
         var stackView :UIStackView!
         var buttonViewMultiplied = 0.45
@@ -129,7 +130,10 @@ class ConfirmPopupView: PopupBottomSheet {
         case .none: break
             
         }
-  
+        if let titleString = titleLabel.text , titleString.isReBlank == true
+        {
+            titleLabelHeight = 25.0
+        }
        // title 背景漸層
 //        let titleView = GradientView()
 //        defaultContainer.addSubview(titleView)
@@ -161,7 +165,7 @@ class ConfirmPopupView: PopupBottomSheet {
         
         defaultContainer.addSubview(messageLabel)
         messageLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(15)
+            make.top.equalTo(titleLabel.snp.bottom).offset(15 - titleLabelHeight)
             make.left.equalToSuperview().offset(26)
             make.right.equalToSuperview().offset(-26)
         }
@@ -182,6 +186,10 @@ class ConfirmPopupView: PopupBottomSheet {
         }else
         {
 //            containerHeight = viewHeight
+        }
+        if let textString = titleLabel.text , textString.isReBlank == true
+        {
+            containerHeight = containerHeight - titleLabelHeight
         }
         defaultContainer.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()

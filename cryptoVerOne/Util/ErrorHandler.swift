@@ -24,7 +24,7 @@ class ErrorHandler {
                 showAlert(title: "Network failed", message: "\(message)")
             case .unknownError(_ ,let title ,let msg):
                 Log.e(msg )
-                showAlert(title: title, message: msg )
+                showAlert(title: " ", message: msg )
             case .tokenError:
                 Log.e("tokenExpireError")
                 Toast.show(msg:"tokenExpireError")
@@ -44,7 +44,7 @@ class ErrorHandler {
                     break
                 }
             case .showKnownError(let statusInt , let urlString , let errorMessage ):
-                showAlert(title: "httpStatus:\(statusInt)", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
+                showAlert(title: " ", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
             case .errorDto(let dto):
                 let status = dto.httpStatus ?? ""
                 let code = dto.code
@@ -72,7 +72,7 @@ class ErrorHandler {
                         showAlert(title: " ", message: message)
                     }else
                     {
-                        showAlert(title: "\(status) \(code)", message: message)
+                        showAlert(title: " ", message: message)
                     }
                 }
             case .noData:
