@@ -347,12 +347,13 @@ class LoginViewController: BaseViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
-                    
+                    var verifyString = "Email"
                     if status == "400"
                     {
                         if reason == "ID_OR_PASSWORD_NOT_MATCH"
                         {
-                            accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "Email or password error")
+                            verifyString = loginMode == .emailPage ? "Email" : "Mobile"
+                            accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) or password error")
                             InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
                         }
                     }else if status == "404"

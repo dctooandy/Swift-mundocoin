@@ -75,11 +75,11 @@ class PersonalInfoViewController: BaseViewController {
         }
         calculateTextWidth()
     }
-    func calculateTextWidth()
+    func calculateTextWidth(addString :String = "" )
     {
         if let testString = userNameTextField.text
         {
-            let textWidth = testString.width(withConstrainedHeight: 20, font:  Fonts.PlusJakartaSansMedium(17))
+            let textWidth = (testString + addString).width(withConstrainedHeight: 20, font:  Fonts.PlusJakartaSansMedium(17))
             topTextWidthConstraint.constant = textWidth + 15
         }
     }
@@ -249,7 +249,7 @@ extension PersonalInfoViewController: UITextFieldDelegate
         {
             returnTag = false
         }
-        calculateTextWidth()
+        calculateTextWidth(addString: string)
         return returnTag
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -285,7 +285,7 @@ extension PersonalInfoViewController: UITextFieldDelegate
                     textField.text = MemberAccountDto.share?.nickName ?? ""
                 }
             }
-        }else if textIsEditing == true , editIsEndBySaveNameImageView == true 
+        }else if textIsEditing == true , editIsEndBySaveNameImageView == true
         {
             editIsEndBySaveNameImageView = false
             turnOnImageView(editFlag: false)
