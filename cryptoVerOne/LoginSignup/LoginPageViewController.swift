@@ -32,7 +32,8 @@ class LoginPageViewController: BaseViewController {
 //                pageViewcontroller?.indicatorColor = .clear
 //            }
 //            pageViewcontroller?.reloadData()
-            cleanAndReload()
+//            cleanAndReload()
+            pageViewcontroller?.reloadData()
         }
     }
     // MARK: -
