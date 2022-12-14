@@ -16,6 +16,7 @@ class PersonalInfoViewController: BaseViewController {
     private let dpg = DisposeBag()
     static let share: PersonalInfoViewController = PersonalInfoViewController.loadNib()
     private var textIsEditing:Bool = false
+    private var editIsEndBySaveNameImageView:Bool = false
     @IBOutlet weak var topTextWidthConstraint: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
@@ -50,7 +51,15 @@ class PersonalInfoViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch:UITouch = touches.first!
+        if touch.view == saveNameImageView {
+            print("image touched")
+        }else
+        {
+            view.endEditing(true)
+        }
     }
     // MARK: -
     // MARK:業務方法
@@ -77,22 +86,28 @@ class PersonalInfoViewController: BaseViewController {
     func bindUI()
     {
         editNameImageView.rx.click.subscribeSuccess { [self] _ in
-            if textIsEditing == false
-            {
-                turnOnImageView(editFlag: true)
-                userNameTextField.isUserInteractionEnabled = true
-                userNameTextField.becomeFirstResponder()
-            }
+            editIsEndBySaveNameImageView = true
+            turnImageViewAndRespond(editFlag: false)
         }.disposed(by: dpg)
         saveNameImageView.rx.click.subscribeSuccess { [self] _ in
-            if textIsEditing == true
-            {
-                turnOnImageView(editFlag: false)
-                userNameTextField.resignFirstResponder()
-                userNameTextField.isUserInteractionEnabled = false
-                calculateTextWidth()
-            }
+            editIsEndBySaveNameImageView = true
+            turnImageViewAndRespond(editFlag: true)
         }.disposed(by: dpg)
+    }
+    func turnImageViewAndRespond(editFlag:Bool)
+    {
+        if editFlag == false
+        {
+            turnOnImageView(editFlag: true)
+            userNameTextField.isUserInteractionEnabled = true
+            userNameTextField.becomeFirstResponder()
+        }else
+        {
+            turnOnImageView(editFlag: false)
+            userNameTextField.resignFirstResponder()
+            userNameTextField.isUserInteractionEnabled = false
+            calculateTextWidth()
+        }
     }
     func turnOnImageView(editFlag:Bool)
     {
@@ -194,10 +209,12 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
 extension PersonalInfoViewController: UITextFieldDelegate
 {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        turnImageViewAndRespond(editFlag: true)
         textField.resignFirstResponder()
         return true
     }
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        editIsEndBySaveNameImageView = true
         var returnTag = true
         guard let text = textField.text else {
             calculateTextWidth()
@@ -239,8 +256,9 @@ extension PersonalInfoViewController: UITextFieldDelegate
         return textIsEditing
     }
     func textFieldDidEndEditing(_ textField: UITextField) {
-        if textIsEditing == false
+        if textIsEditing == false , editIsEndBySaveNameImageView == true
         {
+            editIsEndBySaveNameImageView = false
             turnOnImageView(editFlag: false)
             calculateTextWidth()
             if let string = textField.text
@@ -267,6 +285,19 @@ extension PersonalInfoViewController: UITextFieldDelegate
                     textField.text = MemberAccountDto.share?.nickName ?? ""
                 }
             }
+        }else if textIsEditing == true , editIsEndBySaveNameImageView == true 
+        {
+            editIsEndBySaveNameImageView = false
+            turnOnImageView(editFlag: false)
+            if let nickName = MemberAccountDto.share?.nickName
+            {
+                Log.i("nickName:\(nickName)")
+                userNameTextField.text = nickName
+            }
+            calculateTextWidth()
+        }else
+        {
+            editIsEndBySaveNameImageView = false
         }
     }
 }
