@@ -30,6 +30,10 @@ class ForgotViewController: BaseViewController {
         vc.secondViewDidLoad()
         return vc
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        cleanTextField()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
