@@ -236,13 +236,16 @@ class SignupViewController: BaseViewController {
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):
+                    var verifyString = "Email"
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
                     if status == "400"
                     {
                         if reason == "ID_NOT_EXISTS"
                         {
-                            accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Email already registered.")
+                            verifyString = loginMode == .emailPage ? "Email" : "Mobile"
+                           
+                            accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) already registered.")
                             InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
                         }  
                     }else
