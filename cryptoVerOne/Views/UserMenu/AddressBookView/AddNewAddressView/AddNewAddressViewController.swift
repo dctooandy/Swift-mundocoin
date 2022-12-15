@@ -290,6 +290,14 @@ class AddNewAddressViewController: BaseViewController {
                         
                     }
                 }.disposed(by: dpg)
+                if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+                {
+                    twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+                        verifySuccessForCreateAddressBook(code: stringData.0, withMode: stringData.1) {
+                            
+                        }
+                    }.disposed(by: dpg)
+                }
             }
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {
@@ -305,19 +313,31 @@ class AddNewAddressViewController: BaseViewController {
     {
         let address = createAddressDto()
         var codePara : [Parameters] = []
-        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
-           accountArray.first != nil
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
         {
+            let emailString = MemberAccountDto.share?.email ?? ""
+            let phoneString = MemberAccountDto.share?.phone ?? ""
+            let idString = (withMode == "onlyEmail" ? emailString : phoneString)
             var parameters: Parameters = [String: Any]()
-            parameters["id"] = accountArray.first ?? ""
-            parameters["code"] = code
+            parameters = ["id":idString,
+                          "code":code]
             codePara.append(parameters)
-            if !withMode.isEmpty , accountArray.last != nil
+        }else
+        {
+            if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+               accountArray.first != nil
             {
                 var parameters: Parameters = [String: Any]()
-                parameters["id"] = accountArray.last ?? ""
-                parameters["code"] = withMode
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
                 codePara.append(parameters)
+                if !withMode.isEmpty , accountArray.last != nil
+                {
+                    var parameters: Parameters = [String: Any]()
+                    parameters["id"] = accountArray.last ?? ""
+                    parameters["code"] = withMode
+                    codePara.append(parameters)
+                }
             }
         }
         _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCodes: codePara,
@@ -387,27 +407,29 @@ class AddNewAddressViewController: BaseViewController {
     }
     func errorHandlerWithReason(code:String = "",reason:String , withMode : String? = nil , error : Error? = nil)
     {
+        let emailMessage = "The Email Code is incorrect. Please re-enter."
+        let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
         if reason == "CODE_MISMATCH"
         {
             Log.i("驗證碼錯誤 :\(reason)")
             if twoWayVC.securityViewMode == .onlyEmail
             {
                 twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
             }else if twoWayVC.securityViewMode == .onlyMobile
             {
                 twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
+                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
             }else if twoWayVC.securityViewMode == .selectedMode
             {
                 if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
                 {
                     emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
-                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
                 }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
                 {
                     mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
-                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
+                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
                 }
             }else if twoWayVC.securityViewMode == .defaultMode , let error = error
             {

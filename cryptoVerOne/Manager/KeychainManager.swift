@@ -30,6 +30,7 @@ class KeychainManager {
         case mundocoinNetworkMethodEnable = "mundocoin_network_method_enable"
         case mundoCoinSelectCryptoEnable = "mundocoin_select_crypto_enable"
         case mundoCoinSioFeedbackEnable = "mundocoin_sio_feedback_enable"
+        case mundoCoinTwoWaySecurityEnable = "mundocoin_TwoWay_Security_enable"
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
@@ -418,6 +419,18 @@ class KeychainManager {
     }
     func getMundoCoinSioFeedbackEnable() -> Bool {
         if let modeValue = getString(from: .mundoCoinSioFeedbackEnable)
+        {
+            return (modeValue == "true" ? true : false)
+        }
+        return false
+    }
+    // 設定是否打開 兩種驗證碼同時啟用 功能
+    func setMundoCoinTwoWaySecurityEnable(_ isOn: Bool) -> Bool {
+        let success = setString(isOn == true ? "true":"false", at: .mundoCoinTwoWaySecurityEnable)
+        return success
+    }
+    func getMundoCoinTwoWaySecurityEnable() -> Bool {
+        if let modeValue = getString(from: .mundoCoinTwoWaySecurityEnable)
         {
             return (modeValue == "true" ? true : false)
         }

@@ -406,6 +406,12 @@ class WithdrawNewViewController: BaseViewController {
                 Log.i("驗證成功,開取款單")
                 toCreateWithdrawal(verifyValueOne: verifyStringOne , verifyValueTwo:verifyStringTwo)
             }.disposed(by: dpg)
+            if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+            {
+                securityVerifyVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+                    toCreateWithdrawal(verifyValueOne: stringData.0 , verifyValueTwo:stringData.1)
+                }.disposed(by: dpg)
+            }
             self.navigationController?.pushViewController(securityVerifyVC, animated: true)
         }
     }
@@ -424,19 +430,31 @@ class WithdrawNewViewController: BaseViewController {
                 fAddressString = fAddress
             }
             var codePara : [Parameters] = []
-            if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
-               accountArray.first != nil
+            if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
             {
+                let emailString = MemberAccountDto.share?.email ?? ""
+                let phoneString = MemberAccountDto.share?.phone ?? ""
+                let idString = (verifyValueTwo == "onlyEmail" ? emailString : phoneString)
                 var parameters: Parameters = [String: Any]()
-                parameters["id"] = accountArray.first ?? ""
-                parameters["code"] = verifyValueOne
+                parameters = ["id":idString,
+                              "code":verifyValueOne]
                 codePara.append(parameters)
-                if !verifyValueTwo.isEmpty , accountArray.last != nil
+            }else
+            {
+                if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+                   accountArray.first != nil
                 {
                     var parameters: Parameters = [String: Any]()
-                    parameters["id"] = accountArray.last ?? ""
-                    parameters["code"] = verifyValueTwo
+                    parameters["id"] = accountArray.first ?? ""
+                    parameters["code"] = verifyValueOne
                     codePara.append(parameters)
+                    if !verifyValueTwo.isEmpty , accountArray.last != nil
+                    {
+                        var parameters: Parameters = [String: Any]()
+                        parameters["id"] = accountArray.last ?? ""
+                        parameters["code"] = verifyValueTwo
+                        codePara.append(parameters)
+                    }
                 }
             }
             Beans.walletServer.walletWithdraw(amount: amountText,
@@ -465,6 +483,8 @@ class WithdrawNewViewController: BaseViewController {
                             case .errorDto(let dto):
                                 let status = dto.httpStatus ?? ""
                                 let reason = dto.reason
+                                let emailMessage = "The Email Code is incorrect. Please re-enter."
+                                let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                                 if status == "400"
                                 {
                                     if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
@@ -473,16 +493,24 @@ class WithdrawNewViewController: BaseViewController {
                                         if securityVerifyVC.securityViewMode == .onlyEmail
                                         {
                                             securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with:emailMessage)
                                         }else if securityVerifyVC.securityViewMode == .onlyMobile
                                         {
                                             securityVerifyVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                                            securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
+                                            securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
+                                        }else if securityVerifyVC.securityViewMode == .selectedMode
+                                        {
+                                            if verifyValueTwo == "onlyEmail" , let emailVC = securityVerifyVC.twoWayViewControllers.first
+                                            {
+                                                emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
+                                                emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
+                                            }else if verifyValueTwo == "onlyMobile" , let mobileVC = securityVerifyVC.twoWayViewControllers.last
+                                            {
+                                                mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
+                                                mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
+                                            }
                                         }else if securityVerifyVC.securityViewMode == .defaultMode
                                         {
-//                                            securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-//                                            securityVerifyVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
-//                                            InputViewStyleThemes.share.emailAcceptInputHeightStyle(.emailInvalidShow)
                                             let results = ErrorDefaultDto(code: dto.code, reason: "The Email or Mobile Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: dto.errors)
                                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                         }

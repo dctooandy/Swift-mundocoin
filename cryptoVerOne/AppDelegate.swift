@@ -101,6 +101,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        // 1215 可同時輸入兩種驗證碼的模式 暫停
+        _ = KeychainManager.share.setMundoCoinTwoWaySecurityEnable(false)
         // 1206 新版本 sio反饋的 功能暫停
         _ = KeychainManager.share.setMundoCoinSioFeedbackEnable(false)
         // 1130 select crypto 功能暫停

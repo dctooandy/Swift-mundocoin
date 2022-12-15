@@ -126,9 +126,16 @@ class AddressBookViewController: BaseViewController {
                 twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] data in
                     verifySuccessForChangeWhiteList(code: data.0,withMode: data.1, done: {
                         self.twoWayVC.navigationController?.popViewController(animated: true)
-                        
                     })
                 }.disposed(by: sheetDpg)
+                if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+                {
+                    twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+                        verifySuccessForChangeWhiteList(code: stringData.0,withMode: stringData.1, done: {
+                            self.twoWayVC.navigationController?.popViewController(animated: true)
+                        })
+                    }.disposed(by: sheetDpg)
+                }
                 self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
         }.disposed(by: sheetDpg)
@@ -139,19 +146,31 @@ class AddressBookViewController: BaseViewController {
     func verifySuccessForChangeWhiteList(code:String, withMode:String = "",done: @escaping () -> Void)
     {
         var codePara : [Parameters] = []
-        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
-           accountArray.first != nil
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
         {
+            let emailString = MemberAccountDto.share?.email ?? ""
+            let phoneString = MemberAccountDto.share?.phone ?? ""
+            let idString = (withMode == "onlyEmail" ? emailString : phoneString)
             var parameters: Parameters = [String: Any]()
-            parameters["id"] = accountArray.first ?? ""
-            parameters["code"] = code
+            parameters = ["id":idString,
+                          "code":code]
             codePara.append(parameters)
-            if !withMode.isEmpty , accountArray.last != nil
+        }else
+        {
+            if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+               accountArray.first != nil
             {
                 var parameters: Parameters = [String: Any]()
-                parameters["id"] = accountArray.last ?? ""
-                parameters["code"] = withMode
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
                 codePara.append(parameters)
+                if !withMode.isEmpty , accountArray.last != nil
+                {
+                    var parameters: Parameters = [String: Any]()
+                    parameters["id"] = accountArray.last ?? ""
+                    parameters["code"] = withMode
+                    codePara.append(parameters)
+                }
             }
         }
         let isOn = KeychainManager.share.getWhiteListOnOff()
@@ -166,6 +185,8 @@ class AddressBookViewController: BaseViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
+                    let emailMessage = "The Email Code is incorrect. Please re-enter."
+                    let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                     if status == "400"
                     {
                         if reason == "CODE_MISMATCH"
@@ -174,21 +195,21 @@ class AddressBookViewController: BaseViewController {
                             if twoWayVC.securityViewMode == .onlyEmail
                             {
                                 twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
-                                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                twoWayVC.twoWayVerifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
                             }else if twoWayVC.securityViewMode == .onlyMobile
                             {
                                 twoWayVC.twoWayVerifyView.mobileInputView.invalidLabel.isHidden = false
-                                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
+                                twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
                             }else if twoWayVC.securityViewMode == .selectedMode
                             {
                                 if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
                                 {
                                     emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
-                                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: "The Email Code is incorrect. Please re-enter.")
+                                    emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
                                 }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
                                 {
                                     mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
-                                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: "The Mobile Code is incorrect. Please re-enter.")
+                                    mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
                                 }
                             }else if twoWayVC.securityViewMode == .defaultMode
                             {
@@ -247,7 +268,6 @@ class AddressBookViewController: BaseViewController {
             {
                 twoWayVC.securityViewMode = type
                 twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
-                    //            twoFAVC.navigationController?.popViewController(animated: true)
                     Log.i("返回Security並打API")
                     // 需要填入修改白名單API
                     changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: { isOnValue in
@@ -262,6 +282,24 @@ class AddressBookViewController: BaseViewController {
                         }
                     })
                 }.disposed(by: disposeBag)
+                if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+                {
+                    twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
+                        Log.i("返回Security並打API")
+                        // 需要填入修改白名單API
+                        changeCellWhiteListType(addressData: data , code: stringData.0,withMode: stringData.1, done: { isOnValue in
+                            if stringData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                            {
+                                self.twoWayVC.navigationController?.popViewController(animated: true)
+                            }
+                            _ = AddressBookListDto.update { [self] in
+                                addresBookDtos = KeychainManager.share.getAddressBookList()
+                                cellDpg = DisposeBag()
+                                tableView.reloadData()
+                            }
+                        })
+                    }.disposed(by: sheetDpg)
+                }
                 isShowSecurityVC = true
                 self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
@@ -273,19 +311,34 @@ class AddressBookViewController: BaseViewController {
     func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping (Bool) -> Void)
     {
         var codePara : [Parameters] = []
-        if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
-           accountArray.first != nil , addressData.enabled == true
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
         {
-            var parameters: Parameters = [String: Any]()
-            parameters["id"] = accountArray.first ?? ""
-            parameters["code"] = code
-            codePara.append(parameters)
-            if !withMode.isEmpty , accountArray.last != nil
+            if addressData.enabled == true
+            {
+                let emailString = MemberAccountDto.share?.email ?? ""
+                let phoneString = MemberAccountDto.share?.phone ?? ""
+                let idString = (withMode == "onlyEmail" ? emailString : phoneString)
+                var parameters: Parameters = [String: Any]()
+                parameters = ["id":idString,
+                              "code":code]
+                codePara.append(parameters)
+            }
+        }else
+        {
+            if let accountArray = MemberAccountDto.share?.withdrawWhitelistAccountArray ,
+               accountArray.first != nil , addressData.enabled == true
             {
                 var parameters: Parameters = [String: Any]()
-                parameters["id"] = accountArray.last ?? ""
-                parameters["code"] = withMode
+                parameters["id"] = accountArray.first ?? ""
+                parameters["code"] = code
                 codePara.append(parameters)
+                if !withMode.isEmpty , accountArray.last != nil
+                {
+                    var parameters: Parameters = [String: Any]()
+                    parameters["id"] = accountArray.last ?? ""
+                    parameters["code"] = withMode
+                    codePara.append(parameters)
+                }
             }
         }
         Beans.addressBookServer.updateAddressBookStatus(addressBookID: addressData.id , enabled: addressData.enabled , verificationCodes: codePara).subscribe { _ in
@@ -297,6 +350,8 @@ class AddressBookViewController: BaseViewController {
                 case .errorDto(let dto):
                     let status = dto.httpStatus ?? ""
                     let reason = dto.reason
+                    let emailMessage = "The Email Code is incorrect. Please re-enter."
+                    let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                     var redBorderMessage = ""
                     done(false)
                     if status == "400"
@@ -307,18 +362,18 @@ class AddressBookViewController: BaseViewController {
                             var showAlert = true
                             if twoWayVC.securityViewMode == .onlyEmail
                             {
-                                redBorderMessage = "The Email Code is incorrect. Please re-enter."
+                                redBorderMessage = emailMessage
                             }else if twoWayVC.securityViewMode == .onlyMobile
                             {
-                                redBorderMessage = "The Mobile Code is incorrect. Please re-enter."
+                                redBorderMessage = mobileMessage
                             }else if twoWayVC.securityViewMode == .selectedMode
                             {
                                 if withMode == "onlyEmail"
                                 {
-                                    redBorderMessage = "The Email Code is incorrect. Please re-enter."
+                                    redBorderMessage = emailMessage
                                 }else if withMode == "onlyMobile"
                                 {
-                                    redBorderMessage = "The Mobile Code is incorrect. Please re-enter."
+                                    redBorderMessage = mobileMessage
                                 }
                             }else if twoWayVC.securityViewMode == .defaultMode
                             {

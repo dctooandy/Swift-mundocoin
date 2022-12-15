@@ -75,7 +75,13 @@ class MemberAccountDto {
     {
         if !phone.isEmpty , !email.isEmpty
         {
-            return .defaultMode
+            if KeychainManager.share.getMundoCoinTwoWaySecurityEnable()
+            {
+                return .defaultMode
+            }else
+            {
+                return .selectedMode
+            }
         }else if phone.isEmpty
         {
             return .onlyEmail
