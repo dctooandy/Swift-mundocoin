@@ -129,7 +129,7 @@ struct IssuerDto : Codable {
     var id : String = ""
     var createdDate : String? = ""
     var updatedDate : String? = ""
-    var email : String = ""
+    var email : String? = ""
     var phone : String? = ""
     var registrationCode : String? = ""
     var firstName : String? = ""
@@ -147,7 +147,7 @@ struct IssuerSocketDto : Codable {
     var id : String = ""
     var createdDate : TimeInterval = 0
     var updatedDate : TimeInterval = 0
-    var email : String = ""
+    var email : String? = ""
     var phone : String? = ""
     var registrationCode : String = ""
     var firstName : String? = ""

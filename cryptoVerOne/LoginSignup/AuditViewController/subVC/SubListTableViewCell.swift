@@ -52,7 +52,10 @@ class SubListTableViewCell: UITableViewCell {
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
             topTitleLabel.text = "Withdraw Request"
 #else
-            topTitleLabel.text = "Withdraw Request \(userDto.email)"
+            if let emailString = userDto.email
+            {
+                topTitleLabel.text = "Withdraw Request \(emailString)"
+            }
 #endif
             timeLabel.text = self.showMode == .pending ? transDto.createdDateString : transDto.updatedDateString
             let iconImage = UIImage(named: data.detailType == .failed ? "icon-red-close-round-fill":"icon-check-round-fill")

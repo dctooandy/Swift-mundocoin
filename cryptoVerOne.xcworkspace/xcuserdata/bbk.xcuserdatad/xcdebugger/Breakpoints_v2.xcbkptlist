@@ -224,24 +224,40 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "696"
             endingLineNumber = "696"
-            landmarkName = "directToSaveDataAndLogin(authDto:loginDto:signupDto:)"
+            landmarkName = "directToNextPage(authDto:loginDto:signupDto:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "15F9ADE8-9E68-487D-8678-DAFE7CE4190F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "267"
-            endingLineNumber = "267"
-            landmarkName = "backToLoginView(isAnimation:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E75110B5-9280-4712-B5D6-401D5EA5A36B - f984b85af0bb14b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Approval_dev.LoginSignupViewController.directToNextPage(authDto: Approval_dev.AuthenticationDto, loginDto: Swift.Optional&lt;Approval_dev.LoginPostDto&gt;, signupDto: Swift.Optional&lt;Approval_dev.SignupPostDto&gt;) -&gt; ()"
+                  moduleName = "Approval_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "714"
+                  endingLineNumber = "714"
+                  offsetFromSymbolStart = "3084">
+               </Location>
+               <Location
+                  uuid = "E75110B5-9280-4712-B5D6-401D5EA5A36B - f984b85af0bb14b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Approval_dev.LoginSignupViewController.directToNextPage(authDto: Approval_dev.AuthenticationDto, loginDto: Swift.Optional&lt;Approval_dev.LoginPostDto&gt;, signupDto: Swift.Optional&lt;Approval_dev.SignupPostDto&gt;) -&gt; ()"
+                  moduleName = "Approval_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "714"
+                  endingLineNumber = "714"
+                  offsetFromSymbolStart = "3200">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -304,7 +320,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "455"
             endingLineNumber = "455"
-            landmarkName = "showVerifyVCWithSignUpData(_:)"
+            landmarkName = "showVerifyVCWithLoginData(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -391,23 +407,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F52E32E9-AD32-4188-BF50-F90539B55E6B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "739"
-            endingLineNumber = "739"
-            landmarkName = "navigateToRouter(showBioView:route:isDev:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "C6AEAB63-8185-4849-8BD3-293C35635669"
+            uuid = "5321AD91-2D2D-4521-8DB9-77388BA1663A"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -417,6 +417,22 @@
             startingLineNumber = "119"
             endingLineNumber = "119"
             landmarkName = "parseTokenToMemberAccountDto(complete:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4734DC56-F184-432C-AC8F-6E413B7417F1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/ErrorHandler.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
+            landmarkName = "show(error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
