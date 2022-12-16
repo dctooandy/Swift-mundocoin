@@ -1,3 +1,4 @@
+1216 : 產dev包 新增 加綁時剔除帳號已存在功能
 1212 : 產dev包 測試 SMS新版API 最終版
 1208 : 產dev包 測試 SMS新版API
 1206 : 產dev包 測試 SMS新版UI 已切換sio feedback 

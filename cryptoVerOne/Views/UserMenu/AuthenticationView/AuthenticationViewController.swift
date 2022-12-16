@@ -102,12 +102,20 @@ class AuthenticationViewController: BaseViewController {
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):
+                    var verifyString = "Email"
                     let status = dto.httpStatus ?? ""
 //                    let reason = dto.reason
                     if status == "400"
                     {
                         Log.v("帳號已存在")
-                        authenInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is Exist")
+                        if authenInputViewMode == .email(withStar: false)
+                        {
+                            verifyString = "Email"
+                        }else
+                        {
+                            verifyString = "Mobile"
+                        }
+                        authenInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) already registered.")
                     }else
                     {
                         ErrorHandler.show(error: error)
