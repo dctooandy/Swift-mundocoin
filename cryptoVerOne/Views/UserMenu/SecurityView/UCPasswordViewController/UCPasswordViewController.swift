@@ -465,7 +465,7 @@ class UCPasswordViewController: BaseViewController {
     }
     func verificationID()
     {
-        guard let account = KeychainManager.share.getLastAccountDto()?.account else {return}
+        guard let account = KeychainManager.share.getLastAccountDto()?.toAccountString else {return}
         guard let pwString = oldInputView.textField.text else {return}
         LoadingViewController.show()
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in

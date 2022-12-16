@@ -132,7 +132,7 @@ class KeychainManager {
             let accArr = str.components(separatedBy: "/")
             if accArr.contains(acc) || !accArr.last!.isEmpty && accArr.contains(phone) {
                 isNewAccount = false
-                let accString = acc.isEmpty ? accArr[0] : acc
+                let accString = acc
                 let passwordString = pwd.isEmpty ? accArr[1] : pwd
                 let phoneCodeString = phoneCode.isEmpty ? accArr[2] : phoneCode
                 let phoneString = phone
