@@ -39,8 +39,11 @@ class AccessTokenAdapter: RequestAdapter {
                 urlString.pathComponents.contains("address") ||
                 urlString.pathComponents.contains("address-book") ||
                 urlString.pathComponents.contains("address-books") ||
-                urlString.pathComponents.contains("nickname") ||
-                urlString.pathComponents.contains("authentication")
+                urlString.pathComponents.contains("nickname")
+            {
+                
+                urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            }else if urlString.pathComponents.contains("settings") ,urlString.pathComponents.contains("authentication")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }

@@ -57,18 +57,17 @@ class ErrorHandler {
                     #else
                     DeepLinkManager.share.handleDeeplink(navigation: .login)
                     #endif
+                }
+                var message = ""
+                if errors.count > 0
+                {
+                    message = "\(reason)\n\(errors)"
                 }else
                 {
-                    var message = ""
-                    if errors.count > 0
-                    {
-                        message = "\(reason)\n\(errors)"
-                    }else
-                    {
-                        message = "\(reason)"
-                    }
-                    showAlert(title: "", message: message)
+                    message = "\(reason)"
                 }
+                showAlert(title: "", message: message)
+                
             case .noData:
                 break
             default: break
