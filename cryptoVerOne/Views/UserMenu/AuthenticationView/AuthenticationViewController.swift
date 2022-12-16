@@ -104,18 +104,25 @@ class AuthenticationViewController: BaseViewController {
                 case .errorDto(let dto):
                     var verifyString = "Email"
                     let status = dto.httpStatus ?? ""
-//                    let reason = dto.reason
+                    let reason = dto.reason
                     if status == "400"
                     {
                         Log.v("帳號已存在")
-                        if authenInputViewMode == .email(withStar: false)
+                        if reason == "ID_NOT_EXISTS"
                         {
-                            verifyString = "Email"
+                            if authenInputViewMode == .email(withStar: false)
+                            {
+                                verifyString = "Email"
+                            }else
+                            {
+                                verifyString = "Mobile"
+                            }
+                            authenInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) already registered.")
+
                         }else
                         {
-                            verifyString = "Mobile"
-                        }
-                        authenInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) already registered.")
+                            ErrorHandler.show(error: error)
+                        }                        
                     }else
                     {
                         ErrorHandler.show(error: error)
