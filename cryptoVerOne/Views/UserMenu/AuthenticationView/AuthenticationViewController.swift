@@ -93,18 +93,67 @@ class AuthenticationViewController: BaseViewController {
     {
         InputViewStyleThemes.normalInputHeightType.bind(to: authenHeightConstraint.rx.constant).disposed(by: dpg)
     }
+    func checkAccoutExist(account :String )
+    {
+        Beans.loginServer.verificationIDGet(idString: account).subscribe { [self] dto in
+            Log.v("帳號沒有註冊過")
+            addBindAction()
+        } onError: { [self] error in
+            if let error = error as? ApiServiceError {
+                switch error {
+                case .errorDto(let dto):
+                    let status = dto.httpStatus ?? ""
+//                    let reason = dto.reason
+                    if status == "400"
+                    {
+                        Log.v("帳號已存在")
+                        authenInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is Exist")
+                    }else
+                    {
+                        ErrorHandler.show(error: error)
+                    }
+                default:
+                    ErrorHandler.show(error: error)
+                }
+            }
+        }.disposed(by: disposeBag)
+    }
+    func addBindAction()
+    {
+        var dataDto = KeychainManager.share.getLastAccountDto()
+        if authenInputViewMode == .email(withStar: false)
+        {
+            if let accountString = authenInputView.textField.text?.localizedLowercase
+            {
+                dataDto?.account = accountString
+            }
+            dataDto?.loginMode = .emailPage
+            verifyVC = VerifyViewController.instance( emailAuthenDto: dataDto)
+        }else
+        {
+            if let phoneString = authenInputView.textField.text ,
+               let phoneCodeString = authenInputView.mobileCodeLabel.text
+            {
+                let phoneInt :Int = Int(phoneString) ?? 0
+                let phoneIntString :String = String(phoneInt)
+                dataDto?.phone = (phoneCodeString + phoneIntString)
+                dataDto?.phoneCode = phoneCodeString
+            }
+            dataDto?.loginMode = .phonePage
+            verifyVC = VerifyViewController.instance( mobileAuthenDto: dataDto)
+        }
+        navigationController?.pushViewController(verifyVC, animated: true)
+
+    }
     func bindButton()
     {
         nextButton.rx.tap.subscribeSuccess { [self] _ in
-            var dataDto = KeychainManager.share.getLastAccountDto()
             if authenInputViewMode == .email(withStar: false)
             {
                 if let accountString = authenInputView.textField.text?.localizedLowercase
                 {
-                    dataDto?.account = accountString
+                    checkAccoutExist(account: accountString)
                 }
-                dataDto?.loginMode = .emailPage
-                verifyVC = VerifyViewController.instance( emailAuthenDto: dataDto)
             }else
             {
                 if let phoneString = authenInputView.textField.text ,
@@ -112,13 +161,9 @@ class AuthenticationViewController: BaseViewController {
                 {
                     let phoneInt :Int = Int(phoneString) ?? 0
                     let phoneIntString :String = String(phoneInt)
-                    dataDto?.phone = (phoneCodeString + phoneIntString)
-                    dataDto?.phoneCode = phoneCodeString
+                    checkAccoutExist(account: (phoneCodeString + phoneIntString))
                 }
-                dataDto?.loginMode = .phonePage
-                verifyVC = VerifyViewController.instance( mobileAuthenDto: dataDto)
             }
-            navigationController?.pushViewController(verifyVC, animated: true)
         }.disposed(by: dpg)
     }
     func bindTextfield() {
