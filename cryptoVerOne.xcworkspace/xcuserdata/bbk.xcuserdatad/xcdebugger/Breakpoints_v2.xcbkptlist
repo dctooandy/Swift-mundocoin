@@ -183,54 +183,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "E75110B5-9280-4712-B5D6-401D5EA5A36B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "696"
-            endingLineNumber = "696"
-            landmarkName = "directToNextPage(authDto:loginDto:signupDto:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "E75110B5-9280-4712-B5D6-401D5EA5A36B - ab53c097590b96ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cryptoVerOne_dev.LoginSignupViewController.directToNextPage(authDto: cryptoVerOne_dev.AuthenticationDto, loginDto: Swift.Optional&lt;cryptoVerOne_dev.LoginPostDto&gt;, signupDto: Swift.Optional&lt;cryptoVerOne_dev.SignupPostDto&gt;) -&gt; ()"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "714"
-                  endingLineNumber = "714"
-                  offsetFromSymbolStart = "3084">
-               </Location>
-               <Location
-                  uuid = "E75110B5-9280-4712-B5D6-401D5EA5A36B - ab53c097590b96ab"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "cryptoVerOne_dev.LoginSignupViewController.directToNextPage(authDto: cryptoVerOne_dev.AuthenticationDto, loginDto: Swift.Optional&lt;cryptoVerOne_dev.LoginPostDto&gt;, signupDto: Swift.Optional&lt;cryptoVerOne_dev.SignupPostDto&gt;) -&gt; ()"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/LoginSignup/LoginSignupViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "714"
-                  endingLineNumber = "714"
-                  offsetFromSymbolStart = "3200">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "02BBFD1F-32D6-46C4-B33C-3A842BF5BA21"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -311,16 +263,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "A68173CD-1D8F-4373-9D12-6C934A7986F2"
+            uuid = "160E631C-B48D-4819-BD88-895AC456D1B8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/LoginSignup/VerifyView/VerifyViewController.swift"
+            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "483"
-            endingLineNumber = "483"
-            landmarkName = "fetchRegistrationData(code:account:password:verificationCode:)"
+            startingLineNumber = "318"
+            endingLineNumber = "318"
+            landmarkName = "verifySuccessForCreateAddressBook(code:withMode:done:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B040C197-AC56-4CC6-9371-536864A5EF9A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/SecurityVerification/SecurityVerificationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "181"
+            endingLineNumber = "181"
+            landmarkName = "bindSubPageViewControllers()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5C4D9C06-85B3-4AE7-A128-08D8DDB23940"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/SecurityVerification/SecurityVerificationViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "bindSubPageViewControllers()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

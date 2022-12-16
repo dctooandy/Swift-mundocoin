@@ -313,7 +313,7 @@ class AddNewAddressViewController: BaseViewController {
     {
         let address = createAddressDto()
         var codePara : [Parameters] = []
-        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false , withMode != ""
         {
             let emailString = MemberAccountDto.share?.email ?? ""
             let phoneString = MemberAccountDto.share?.phone ?? ""

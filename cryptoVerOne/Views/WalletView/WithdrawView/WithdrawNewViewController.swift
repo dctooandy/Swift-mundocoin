@@ -430,7 +430,7 @@ class WithdrawNewViewController: BaseViewController {
                 fAddressString = fAddress
             }
             var codePara : [Parameters] = []
-            if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+            if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false, verifyValueTwo != ""
             {
                 let emailString = MemberAccountDto.share?.email ?? ""
                 let phoneString = MemberAccountDto.share?.phone ?? ""

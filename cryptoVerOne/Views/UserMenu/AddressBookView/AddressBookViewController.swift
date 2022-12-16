@@ -146,7 +146,7 @@ class AddressBookViewController: BaseViewController {
     func verifySuccessForChangeWhiteList(code:String, withMode:String = "",done: @escaping () -> Void)
     {
         var codePara : [Parameters] = []
-        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false, withMode != ""
         {
             let emailString = MemberAccountDto.share?.email ?? ""
             let phoneString = MemberAccountDto.share?.phone ?? ""
@@ -311,7 +311,7 @@ class AddressBookViewController: BaseViewController {
     func changeCellWhiteListType(addressData:AddressBookDto , code:String = "" , withMode:String = "",done: @escaping (Bool) -> Void)
     {
         var codePara : [Parameters] = []
-        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
+        if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false, withMode != ""
         {
             if addressData.enabled == true
             {
