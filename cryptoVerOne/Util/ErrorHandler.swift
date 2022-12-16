@@ -61,7 +61,14 @@ class ErrorHandler {
                 var message = ""
                 if errors.count > 0
                 {
-                    message = "\(reason)\n\(errors)"
+                    message = "\(reason)"
+                    for subdata in errors
+                    {
+                        if subdata.rejectValue != "n/a"
+                        {
+                            message.append("\n" + subdata.field + "\n" + subdata.reason + "\n" + subdata.rejectValue)                            
+                        }
+                    }
                 }else
                 {
                     message = "\(reason)"

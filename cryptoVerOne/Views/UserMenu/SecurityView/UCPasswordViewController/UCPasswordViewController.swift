@@ -489,6 +489,9 @@ class UCPasswordViewController: BaseViewController {
                                 {
                                     oldInputView.changeInvalidLabelAndMaskBorderColor(with: "Password incorrect")
                                     InputViewStyleThemes.share.oldAcceptInputHeightStyle(.oldPWInvalidShow)
+                                }else
+                                {
+                                    ErrorHandler.show(error: error)
                                 }
                             }else
                             {

@@ -223,7 +223,9 @@ class SignupViewController: BaseViewController {
         var accountString = ""
         if loginMode == .phonePage , let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
         {
-            accountString = (phoneCode + account)
+            let accInt:Int = Int(account) ?? 0
+            let accString = String(accInt)
+            accountString = (phoneCode + accString)
         }else
         {
             accountString = account
@@ -247,7 +249,10 @@ class SignupViewController: BaseViewController {
                            
                             accountInputView.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) already registered.")
                             InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
-                        }  
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
+                        }
                     }else
                     {
                         ErrorHandler.show(error: error)
@@ -292,8 +297,10 @@ class SignupViewController: BaseViewController {
                 {
                     if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
                     {
+                        let accInt:Int = Int(acc) ?? 0
+                        let accString = String(accInt)
                         phoneCodeString = phoneCode
-                        phoneAccountString = (phoneCode + acc)
+                        phoneAccountString = (phoneCode + accString)
                     }
                 }
                 let dto = SignupPostDto(account: emailAccountString,
@@ -317,8 +324,10 @@ class SignupViewController: BaseViewController {
             {
                 if let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text
                 {
+                    let accInt:Int = Int(acc) ?? 0
+                    let accString = String(accInt)
                     phoneCodeString = phoneCode
-                    phoneAccountString = (phoneCode + acc)
+                    phoneAccountString = (phoneCode + accString)
                 }
             }
             let dto = SignupPostDto(account: emailAccountString,

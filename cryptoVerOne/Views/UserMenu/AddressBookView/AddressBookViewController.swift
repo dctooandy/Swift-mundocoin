@@ -218,6 +218,9 @@ class AddressBookViewController: BaseViewController {
                                     ErrorHandler.show(error: error)
                                 }
                             }
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else
                     {
@@ -392,6 +395,9 @@ class AddressBookViewController: BaseViewController {
                             Log.i("參數錯誤 :\(reason)")
                             let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: dto.errors)
                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else
                     {

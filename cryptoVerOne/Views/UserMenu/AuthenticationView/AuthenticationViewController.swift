@@ -110,7 +110,9 @@ class AuthenticationViewController: BaseViewController {
                 if let phoneString = authenInputView.textField.text ,
                    let phoneCodeString = authenInputView.mobileCodeLabel.text
                 {
-                    dataDto?.phone = (phoneCodeString + phoneString)
+                    let phoneInt :Int = Int(phoneString) ?? 0
+                    let phoneIntString :String = String(phoneInt)
+                    dataDto?.phone = (phoneCodeString + phoneIntString)
                     dataDto?.phoneCode = phoneCodeString
                 }
                 dataDto?.loginMode = .phonePage

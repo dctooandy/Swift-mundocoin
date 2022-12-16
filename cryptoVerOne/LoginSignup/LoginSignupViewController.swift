@@ -652,6 +652,9 @@ extension LoginSignupViewController {
                             self.currentShowMode = (signupDto.signupMode == .emailPage ? .signupEmail : .signupPhone)
                             let results = ErrorDefaultDto(code: dto.code, reason: "\(reason)\n\(errorReason)", timestamp: 0, httpStatus: "", errors: [])
                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else
                     {

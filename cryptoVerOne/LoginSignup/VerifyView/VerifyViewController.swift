@@ -579,8 +579,14 @@ class VerifyViewController: BaseViewController {
                 if reason == "CODE_MISMATCH"
                 {
                     verifyInputView.changeInvalidLabelAndMaskBorderColor(with: withEmail ? emailMessage : mobileMessage)
-                }
-                if reason == "CUSTOMER_EMAIL_OR_PHONE_EXISTS"
+                }else if reason == "CUSTOMER_EMAIL_OR_PHONE_EXISTS"
+                {
+                    popToCorrectVC()
+                    ErrorHandler.show(error: error)
+                }else if reason == "PARAMETER_INVALID"
+                {
+                    ErrorHandler.show(error: error)
+                }else
                 {
                     popToCorrectVC()
                     ErrorHandler.show(error: error)

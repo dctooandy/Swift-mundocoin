@@ -328,7 +328,16 @@ class LoginViewController: BaseViewController {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let pwString = accountInputView?.passwordInputView.textField.text else {return}
         let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
-        let accountString = loginMode == .phonePage ? (phoneCode + account) : account
+        var accountString = ""
+        if loginMode == .phonePage
+        {
+            let accInt:Int = Int(account) ?? 0
+            let accString = String(accInt)
+            accountString = (phoneCode + accString)
+        }else
+        {
+            accountString = account
+        }
         Beans.loginServer.verificationIDPost(idString: accountString , pwString: pwString).subscribe { [self] dto in
             Log.v("帳號有註冊過")
             login()
@@ -355,6 +364,9 @@ class LoginViewController: BaseViewController {
                             verifyString = loginMode == .emailPage ? "Email" : "Mobile"
                             accountInputView?.passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "\(verifyString) or password error")
                             InputViewStyleThemes.share.pwAcceptInputHeightStyle(.pwInvalidShow)
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else if status == "404"
                     {
@@ -362,6 +374,9 @@ class LoginViewController: BaseViewController {
                         {
                             accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is not exist")
                             InputViewStyleThemes.share.accountAcceptInputHeightStyle(.accountInvalidShow)
+                        }else
+                        {
+                            ErrorHandler.show(error: error)
                         }
                     }else
                     {
@@ -387,8 +402,14 @@ class LoginViewController: BaseViewController {
         guard let account = accountInputView?.accountInputView.textField.text?.lowercased() else {return}
         guard let password = accountInputView?.passwordInputView.textField.text else {return}
         let phoneCode = accountInputView?.accountInputView.mobileCodeLabel.text ?? ""
-        let phoneString = (self.loginMode == .phonePage ? (phoneCode + account) : "")
+        var phoneString = ""
         let accountString = account
+        if self.loginMode == .phonePage
+        {
+            let accInt:Int = Int(account) ?? 0
+            let accString = String(accInt)
+            phoneString = (phoneCode + accString)
+        }
         let showMode : ShowMode = (self.loginMode == .phonePage ? .loginPhone : .loginEmail )
         let dto = LoginPostDto(account: accountString,
                                password: password,
