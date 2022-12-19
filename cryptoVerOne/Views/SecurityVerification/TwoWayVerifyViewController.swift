@@ -18,6 +18,8 @@ class TwoWayVerifyViewController: BaseViewController {
     private let onMobileSendVerifyClick = PublishSubject<Any>()
     private let onSubmitOnlyEmailClick = PublishSubject<String>()
     private let onSubmitOnlyMobileClick = PublishSubject<String>()
+    private var isSendEmailVerifyCode : Bool = false
+    private var isSendMobileVerifyCode : Bool = false
     var twoWayViewMode : TwoWayViewMode = .onlyEmail {
         didSet{
             setup()
@@ -41,7 +43,15 @@ class TwoWayVerifyViewController: BaseViewController {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        if twoWayViewMode == .onlyEmail , isSendEmailVerifyCode == false
+        {
+            isSendEmailVerifyCode = true
+            verifyView.emailInputView.sendVerifyCode()
+        }else if twoWayViewMode == .onlyMobile , isSendMobileVerifyCode == false
+        {
+            isSendMobileVerifyCode = true
+            verifyView.mobileInputView.sendVerifyCode()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -80,6 +90,12 @@ class TwoWayVerifyViewController: BaseViewController {
             Log.i("發送submit請求 ,onlyMobile:\(stringData)")
             onSubmitOnlyMobileClick.onNext(stringData)
         }.disposed(by: dpg)
+    }
+    func cleanTimerAndResetProperty()
+    {
+        isSendEmailVerifyCode = false
+        isSendMobileVerifyCode = false
+        verifyView.cleanTimer()
     }
     func rxEmailSendVerifyAction() -> Observable<(Any)>
     {
