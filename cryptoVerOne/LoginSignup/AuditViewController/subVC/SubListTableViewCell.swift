@@ -52,9 +52,20 @@ class SubListTableViewCell: UITableViewCell {
 #if Mundo_PRO || Mundo_STAGE || Approval_PRO || Approval_STAGE
             topTitleLabel.text = "Withdraw Request"
 #else
-            if let emailString = userDto.email
+            var showEmail : Bool = false
+            switch KeychainManager.share.getDomainMode()
+            {
+            case .AuditStage,.AuditPro,.AuditQa,.Stage,.Pro,.Qa:
+                showEmail = false
+            default :
+                showEmail = true
+            }
+            if showEmail == true ,let emailString = userDto.email
             {
                 topTitleLabel.text = "Withdraw Request \(emailString)"
+            }else
+            {
+                topTitleLabel.text = "Withdraw Request"
             }
 #endif
             timeLabel.text = self.showMode == .pending ? transDto.createdDateString : transDto.updatedDateString

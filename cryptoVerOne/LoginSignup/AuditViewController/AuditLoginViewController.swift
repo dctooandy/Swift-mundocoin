@@ -353,8 +353,7 @@ class AuditLoginViewController: BaseViewController {
         }
     }
     @IBAction func changeDomain(_ sender: Any) {
-        #if Mundo_PRO
-        #elseif Approval_PRO
+        #if Mundo_PRO || Approval_PRO || Approval_STAGE || Mundo_STAGE
         #else
         let versionString = Bundle.main.releaseVersionNumber ?? ""
         let buildString = Bundle.main.buildVersionNumber ?? ""
