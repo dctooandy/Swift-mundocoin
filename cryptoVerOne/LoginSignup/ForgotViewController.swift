@@ -20,7 +20,7 @@ class ForgotViewController: BaseViewController {
     // MARK: -
     // MARK:UI 設定
 //    @IBOutlet weak var backgroundImageView: UIImageView!
-    @IBOutlet weak var sendResetLinkButton: CornerradiusButton!
+    @IBOutlet weak var nextButton: CornerradiusButton!
     private var accountInputView: AccountInputView!
     // MARK: -
     // MARK:Life cycle
@@ -87,16 +87,16 @@ class ForgotViewController: BaseViewController {
             make.width.equalToSuperview()
             make.height.equalTo(Themes.inputViewDefaultHeight)
         }
-        view.addSubview(sendResetLinkButton)
+        view.addSubview(nextButton)
         
-        sendResetLinkButton.snp.makeConstraints { (make) in
+        nextButton.snp.makeConstraints { (make) in
             make.top.equalTo(accountInputView!.snp.bottom).offset(15)
             make.centerX.equalToSuperview()
             make.left.equalToSuperview().offset(37)
             make.right.equalToSuperview().offset(-37)
             make.height.equalTo(50)
         }
-        sendResetLinkButton.setTitle("Next".localized, for: .normal)
+        nextButton.setTitle("Next".localized, for: .normal)
         
     }
 
@@ -108,7 +108,7 @@ class ForgotViewController: BaseViewController {
     //MARK: Actions
     func bindAccountView() {
         accountInputView!.rxCheckPassed()
-            .bind(to: sendResetLinkButton.rx.isEnabled)
+            .bind(to: nextButton.rx.isEnabled)
             .disposed(by: disposeBag)
         accountInputView.rxChooseAreaPassed().subscribeSuccess { [self] phoneCode in
             let searchVC = SelectViewController.loadNib()
@@ -122,7 +122,7 @@ class ForgotViewController: BaseViewController {
     }
  
     func bindLinkBtn() {
-        sendResetLinkButton.rx.tap.subscribeSuccess { [weak self] _ in
+        nextButton.rx.tap.subscribeSuccess { [weak self] _ in
                 self?.sendReset()
             }.disposed(by: disposeBag)
     }

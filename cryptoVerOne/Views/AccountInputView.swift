@@ -429,6 +429,13 @@ class AccountInputView: UIView {
             registrationInputView.textField.resignFirstResponder()
         }
     }
+    func resetInvalidMessage()
+    {
+        accountInputView.textField.sendActions(for: .valueChanged)
+        passwordInputView.textField.sendActions(for: .valueChanged)
+        accountInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+        passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+    }
 //    func changeInputMode(mode: LoginMode) {
 //        inputMode = mode
 //        accountInputView.resetUI()

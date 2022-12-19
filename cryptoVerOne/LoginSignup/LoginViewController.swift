@@ -262,6 +262,7 @@ class LoginViewController: BaseViewController {
 //    forgetPasswordLabel.isHidden = true
 #endif
         forgetPasswordLabel.rx.click.subscribeSuccess { [self] _ in
+            accountInputView.resetInvalidMessage()
             onClickForgot.onNext(())
         }.disposed(by: disposeBag)
         loginButton.setTitle("Log In".localized, for: .normal)
