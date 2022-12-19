@@ -888,7 +888,7 @@ class InputStyleView: UIView {
     func bindLabel()
     {
         textLabel.rx.click.subscribeSuccess { [self](_) in
-            onTextLabelClick.onNext(textLabel.text!)
+            onTextLabelClick.onNext(textLabel.text ?? "")
         }.disposed(by: dpg)
     }
     func bindChooseButton(withSheetMode isSheet:Bool)
@@ -1065,6 +1065,7 @@ class InputStyleView: UIView {
                 addAddressImageView.isHidden = true
             }
             normalTextLabel.text = string
+            textLabel.isHidden = true
         default:
             break
         }
