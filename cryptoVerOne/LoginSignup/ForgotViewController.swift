@@ -140,6 +140,7 @@ class ForgotViewController: BaseViewController {
     {
         if let account = accountInputView?.accountInputView.textField.text
         {
+            let accountString = account
             let accountInt :Int = Int(account) ?? 0
             let accountIntString : String = String(accountInt)
             let phoneCode = accountInputView.accountInputView.mobileCodeLabel.text ?? ""
@@ -148,7 +149,6 @@ class ForgotViewController: BaseViewController {
             {
                 phoneString = (phoneCode + accountIntString)
             }
-            let accountString = accountIntString
             let dto = LoginPostDto(account: accountString,
                                    password:"",
                                    loginMode: forgotPasswordMode.forLoginMode ,
@@ -171,7 +171,7 @@ class ForgotViewController: BaseViewController {
             accountString = (phoneCode + accountIntString)
         }else
         {
-            accountString = accountIntString
+            accountString = account
         }
         Beans.loginServer.verificationIDGet(idString: accountString).subscribe { [self] dto in
             Log.v("帳號沒註冊過")

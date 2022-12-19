@@ -134,7 +134,7 @@ class KeychainManager {
                 isNewAccount = false
                 let accString = acc
                 let passwordString = pwd.isEmpty ? accArr[1] : pwd
-                let phoneCodeString = phoneCode.isEmpty ? accArr[2] : phoneCode
+                let phoneCodeString = phoneCode.isEmpty ? phoneCodeWithoutPhone(phone: phone) : phoneCode
                 let phoneString = phone
                 return "\(accString)/\(passwordString)/\(phoneCodeString)/\(phoneString)"
             } else {
@@ -157,6 +157,25 @@ class KeychainManager {
             }
         }
         saveAccList(newArr)
+    }
+    func phoneCodeWithoutPhone(phone:String) -> String
+    {
+        var currentCode = "+886"
+        let mobileData = KeychainManager.share.getDefaultData()
+        var codeArray:[String] = []
+        for subData in mobileData
+        {
+            codeArray.append(subData.code)
+        }
+        for codeString in codeArray
+        {
+            if String(phone).contains(codeString)
+            {
+                currentCode = codeString
+                break
+            }
+        }
+        return currentCode
     }
     /// - Parameters:
     ///   - acc: 帳號

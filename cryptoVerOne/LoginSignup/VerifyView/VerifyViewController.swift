@@ -467,10 +467,18 @@ class VerifyViewController: BaseViewController {
     {
         if let loginDto = self.loginDto
         {
-            LoginSignupViewController.share.gotoLoginAction(with: idString,
-                                                            password: password,
-                                                            verificationCode: verificationCode,
-                                                            loginDto: loginDto)
+            if let vc = self.navigationController?.viewControllers.first , vc is LoginSignupViewController
+            {
+                let newVC: LoginSignupViewController = vc as! LoginSignupViewController
+                newVC.gotoLoginAction(with: idString,
+                                   password: password,
+                                   verificationCode: verificationCode,
+                                   loginDto: loginDto)
+            }
+//            LoginSignupViewController.share.gotoLoginAction(with: idString,
+//                                                            password: password,
+//                                                            verificationCode: verificationCode,
+//                                                            loginDto: loginDto)
         }
     }
     // 註冊
