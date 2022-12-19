@@ -27,6 +27,7 @@ class TwoWayVerifyView: UIView {
     private let onSubmitOnlyMobileClick = PublishSubject<String>()
     private let onLostGoogleClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    private var isNetWorkConnectIng = false
     var twoWayViewMode : TwoWayViewMode = .both {
         didSet{
             resetUI()
@@ -363,10 +364,18 @@ class TwoWayVerifyView: UIView {
             self?.onMobileSecondSendVerifyClick.onNext(())
         }.disposed(by: dpg)
         submitButton.rx.tap.subscribeSuccess { [self](_) in
-            submitAction()
+            if isNetWorkConnectIng != true
+            {
+                isNetWorkConnectIng = true
+                submitAction()
+            }
+            submitButton.isEnabled = false
         }.disposed(by: dpg)
     }
-    
+    func resetProperty()
+    {
+        isNetWorkConnectIng = false
+    }
     func submitAction()
     {
         switch self.twoWayViewMode {

@@ -12,6 +12,7 @@ import RxSwift
 
 class ForgotViewController: BaseViewController {
     // MARK:業務設定
+    private var isNetWorkConnectIng = false
     private var seconds = BuildConfig.HG_NORMAL_COUNT_SECONDS
     private var forgotPasswordMode : ForgotPasswordMode = .emailPage {
         didSet {
@@ -122,8 +123,13 @@ class ForgotViewController: BaseViewController {
     }
  
     func bindLinkBtn() {
-        nextButton.rx.tap.subscribeSuccess { [weak self] _ in
-                self?.sendReset()
+        nextButton.rx.tap.subscribeSuccess { [self] _ in
+            if isNetWorkConnectIng != true
+            {
+                isNetWorkConnectIng = true
+                sendReset()
+            }
+            nextButton.isEnabled = false
             }.disposed(by: disposeBag)
     }
     
@@ -157,12 +163,18 @@ class ForgotViewController: BaseViewController {
                                    phone: phoneString)
             view.endEditing(true)
             showVerifyVCWithLoginData(dto)
+        }else
+        {
+            isNetWorkConnectIng = false
         }
     }
 
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        guard let account = accountInputView.accountInputView.textField.text?.lowercased() else {return}
+        guard let account = accountInputView.accountInputView.textField.text?.lowercased() else
+        {
+            self.isNetWorkConnectIng = false
+            return}
         let accountInt :Int = Int(account) ?? 0
         let accountIntString : String = String(accountInt)
         var accountString = ""
@@ -175,6 +187,7 @@ class ForgotViewController: BaseViewController {
         }
         Beans.loginServer.verificationIDGet(idString: accountString).subscribe { [self] dto in
             Log.v("帳號沒註冊過")
+            isNetWorkConnectIng = false
             accountInputView?.accountInputView.changeInvalidLabelAndMaskBorderColor(with: "Account is not exist")
 //            willShowAgainFromVerifyVC = true
             // 暫時改為直接推頁面
@@ -182,6 +195,7 @@ class ForgotViewController: BaseViewController {
 //            verifyVC.loginDto = dataDto
 //            navigationController?.pushViewController(verifyVC, animated: true)
         } onError: { [self] error in
+            isNetWorkConnectIng = false
             if let error = error as? ApiServiceError {
                 switch error {
                 case .errorDto(let dto):

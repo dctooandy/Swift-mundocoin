@@ -203,21 +203,24 @@ class SecurityVerificationViewController: BaseViewController {
             // 暫時取消推回
 //            self.navigationController?.popViewController(animated: false)
             onVerifySuccessClick.onNext((stringData.0,stringData.1))
-            
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
             onVerifySuccessClick.onNext((stringData,""))
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
             onVerifySuccessClick.onNext((stringData,""))
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
-        self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { (_) in
+        self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { [self](_) in
             Log.i("跳轉綁定Google Auth")
             let twoFAVC = TFFinishReViewController.loadNib()
             twoFAVC.viewMode = .reverify
-            self.navigationController?.pushViewController(twoFAVC, animated: true)
+            navigationController?.pushViewController(twoFAVC, animated: true)
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
     }
 
