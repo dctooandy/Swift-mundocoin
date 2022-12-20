@@ -291,9 +291,12 @@ class AddressBookViewController: BaseViewController {
                         Log.i("返回Security並打API")
                         // 需要填入修改白名單API
                         changeCellWhiteListType(addressData: data , code: stringData.0,withMode: stringData.1, done: { isOnValue in
-                            if stringData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                            if isOnValue == true
                             {
-                                self.twoWayVC.navigationController?.popViewController(animated: true)
+                                if stringData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                                {
+                                    self.twoWayVC.navigationController?.popViewController(animated: true)
+                                }
                             }
                             _ = AddressBookListDto.update { [self] in
                                 addresBookDtos = KeychainManager.share.getAddressBookList()

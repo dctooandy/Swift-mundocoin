@@ -75,10 +75,12 @@ class TwoWayVerifyViewController: BaseViewController {
         self.verifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,onlyEmail:\(stringData)")
             onSubmitOnlyEmailClick.onNext(stringData)
+            verifyView.resetProperty()
         }.disposed(by: dpg)
         self.verifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,onlyMobile:\(stringData)")
             onSubmitOnlyMobileClick.onNext(stringData)
+            verifyView.resetProperty()
         }.disposed(by: dpg)
     }
     func rxEmailSendVerifyAction() -> Observable<(Any)>
