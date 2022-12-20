@@ -18,6 +18,7 @@ class AddressBookViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
 //    private let dpg = DisposeBag()
     private var cellDpg = DisposeBag()
+    private var vcDpg = DisposeBag()
     var sheetDpg = DisposeBag()
     var addresBookDtos : [AddressBookDto] = []
     var twoWayVC = SecurityVerificationViewController.loadNib()
@@ -53,13 +54,15 @@ class AddressBookViewController: BaseViewController {
         super.viewDidLoad()
         title = "Address book".localized
         setupUI()
-        bindUI()
-        bindViewModel()
+
         setLongPressGesture()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         cellDpg = DisposeBag()
+        vcDpg = DisposeBag()
+        bindUI()
+        bindViewModel()
         isShowSecurityVC = false
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
         fetchDatas()
@@ -93,7 +96,7 @@ class AddressBookViewController: BaseViewController {
     }
     func bindUI()
     {
-        WhiteListThemes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: disposeBag)
+        WhiteListThemes.topWhiteListImageIconType.bind(to: whiteListButton.rx.image(for: .normal)).disposed(by: vcDpg)
         let style: WhiteListStyle = KeychainManager.share.getWhiteListOnOff() ? .whiteListOn:.whiteListOff
         WhiteListThemes.share.acceptWhiteListTopImageStyle(style)
     }
@@ -103,7 +106,7 @@ class AddressBookViewController: BaseViewController {
             Log.v("取得地址簿")
             self.addresBookDtos = dtos
             self.tableView.reloadData()
-        }.disposed(by: disposeBag)
+        }.disposed(by: vcDpg)
     }
     func setLongPressGesture()
     {
@@ -230,7 +233,7 @@ class AddressBookViewController: BaseViewController {
                     ErrorHandler.show(error: error)
                 }
             }
-        }.disposed(by: disposeBag)
+        }.disposed(by: vcDpg)
 
        
     }
@@ -274,9 +277,13 @@ class AddressBookViewController: BaseViewController {
                     Log.i("返回Security並打API")
                     // 需要填入修改白名單API
                     changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: { isOnValue in
-                        if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                        if isOnValue == true
                         {
-                            self.twoWayVC.navigationController?.popViewController(animated: true)
+                            if codeData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
+                            {
+                                self.twoWayVC.navigationController?.popViewController(animated: true)
+                                self.twoWayVC.twoWayVerifyView.resetProperty()
+                            }
                         }
                         _ = AddressBookListDto.update { [self] in
                             addresBookDtos = KeychainManager.share.getAddressBookList()
@@ -284,7 +291,7 @@ class AddressBookViewController: BaseViewController {
                             tableView.reloadData()
                         }
                     })
-                }.disposed(by: disposeBag)
+                }.disposed(by: sheetDpg)
                 if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
                 {
                     twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
@@ -296,6 +303,7 @@ class AddressBookViewController: BaseViewController {
                                 if stringData.0 != "" // 如果codeData.0 不是 "" ,即為開啟,會帶驗證碼
                                 {
                                     self.twoWayVC.navigationController?.popViewController(animated: true)
+                                    self.twoWayVC.twoWayVerifyView.resetProperty()
                                 }
                             }
                             _ = AddressBookListDto.update { [self] in
@@ -350,6 +358,7 @@ class AddressBookViewController: BaseViewController {
         Beans.addressBookServer.updateAddressBookStatus(addressBookID: addressData.id , enabled: addressData.enabled , verificationCodes: codePara).subscribe { _ in
             done(true)
         } onError: { [self] error in
+            self.twoWayVC.twoWayVerifyView.resetProperty()
             if let error = error as? ApiServiceError
             {
                 switch error {
@@ -410,7 +419,7 @@ class AddressBookViewController: BaseViewController {
                     ErrorHandler.show(error: error)
                 }
             }
-        }.disposed(by: disposeBag)
+        }.disposed(by: vcDpg)
 
     }
     func showRedMessage(redBorderMessage : String ,withMode:String)
