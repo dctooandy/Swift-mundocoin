@@ -78,9 +78,11 @@ class TwoWayVerifyViewController: BaseViewController {
     {
         self.verifyView.rxEmailSecondSendVerifyAction().subscribeSuccess { [self](_) in
             onEmailSendVerifyClick.onNext(())
+            verifyView.resetProperty()
         }.disposed(by: dpg)
         self.verifyView.rxMobileSecondSendVerifyAction().subscribeSuccess { [self](_) in
             onMobileSendVerifyClick.onNext(())
+            verifyView.resetProperty()
         }.disposed(by: dpg)
         self.verifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送submit請求 ,onlyEmail:\(stringData)")

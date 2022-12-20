@@ -141,7 +141,7 @@ class AddressBookViewController: BaseViewController {
                 }
                 self.navigationController?.pushViewController(twoWayVC, animated: true)
             }
-        }.disposed(by: sheetDpg)
+        }.disposed(by: vcDpg)
         DispatchQueue.main.async {
             whiteListBottomSheet.start(viewController: self ,height: 283)
         }

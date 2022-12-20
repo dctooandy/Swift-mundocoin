@@ -208,12 +208,12 @@ class SecurityVerificationViewController: BaseViewController {
         self.twoWayVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
             onVerifySuccessClick.onNext((stringData,"onlyEmail"))
-//            twoWayVerifyView.resetProperty()
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyMobile:\(stringData)")
             onVerifySuccessClick.onNext((stringData,"onlyMobile"))
-//            twoWayVerifyView.resetProperty()
+            twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { [self](_) in
             Log.i("跳轉綁定Google Auth")
