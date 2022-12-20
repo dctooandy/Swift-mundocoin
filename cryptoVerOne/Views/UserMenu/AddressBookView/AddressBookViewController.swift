@@ -234,8 +234,6 @@ class AddressBookViewController: BaseViewController {
                 }
             }
         }.disposed(by: vcDpg)
-
-       
     }
     @objc func addAddressBookAction() {
         Log.i("增加錢包地址")
@@ -291,7 +289,7 @@ class AddressBookViewController: BaseViewController {
                             tableView.reloadData()
                         }
                     })
-                }.disposed(by: sheetDpg)
+                }.disposed(by: vcDpg)
                 if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
                 {
                     twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
@@ -312,7 +310,7 @@ class AddressBookViewController: BaseViewController {
                                 tableView.reloadData()
                             }
                         })
-                    }.disposed(by: sheetDpg)
+                    }.disposed(by: vcDpg)
                 }
                 isShowSecurityVC = true
                 self.navigationController?.pushViewController(twoWayVC, animated: true)

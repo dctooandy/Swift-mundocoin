@@ -13,7 +13,7 @@ class ResetPasswordViewController: BaseViewController {
     // MARK:業務設定
     private var isNetWorkConnectIng = false
     private let onSubmitClick = PublishSubject<String>()
-    private let dpg = DisposeBag()
+    private var dpg = DisposeBag()
     private let cancelImg = UIImage(named: "icon-close")!
     fileprivate let changedPWVC = CPasswordViewController.loadNib()
     var newPasswordHeightConstraint : NSLayoutConstraint!
@@ -41,15 +41,16 @@ class ResetPasswordViewController: BaseViewController {
         title = "Forgot password"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView:backBtn)
         setupUI()
-        bindPwdButton()
         bindTextfield()
-        bindBorderColor()
-        bindTextfieldReturnKey()
-        bindStyle()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         _ = LoadingViewController.dismiss()
+        dpg = DisposeBag()
+        bindPwdButton()
+        bindBorderColor()
+        bindTextfieldReturnKey()
+        bindStyle()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -136,12 +137,12 @@ class ResetPasswordViewController: BaseViewController {
     {
         submitButton.rx.tap
             .subscribeSuccess { [self] in
+                submitButton.isEnabled = false
                 if isNetWorkConnectIng != true
                 {
                     isNetWorkConnectIng = true
                     submitButtonPressed()
                 }
-                submitButton.isEnabled = false
             }.disposed(by: dpg)
     }
     func bindTextfield()
@@ -217,12 +218,12 @@ class ResetPasswordViewController: BaseViewController {
                     return .confirmPWInvalidHidden
                 }
         }
-        isNewPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
-        isConfirmPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: dpg)
+        isNewPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: disposeBag)
+        isConfirmPWHeightType.bind(to: InputViewStyleThemes.share.rx.isShowInvalid).disposed(by: disposeBag)
         Observable.combineLatest(isNewPWValid, isConPWValid)
             .map { return $0.0 && $0.1 } //reget match result
             .bind(to: submitButton.rx.isEnabled)
-            .disposed(by: dpg)
+            .disposed(by: disposeBag)
     }
     func bindBorderColor()
     {
@@ -298,7 +299,7 @@ class ResetPasswordViewController: BaseViewController {
                             ErrorHandler.show(error: error)
                         }
                     }
-                }.disposed(by: disposeBag)
+                }.disposed(by: dpg)
             }
         }
     }
@@ -325,8 +326,8 @@ class ResetPasswordViewController: BaseViewController {
     }
     func gotoFinalVC()
     {
-        isNetWorkConnectIng = false
         self.navigationController?.pushViewController(changedPWVC, animated: true)
+        isNetWorkConnectIng = false
     }
     func rxSubmitClick() -> Observable<String>
     {
