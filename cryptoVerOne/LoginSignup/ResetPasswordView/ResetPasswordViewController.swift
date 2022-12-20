@@ -11,6 +11,7 @@ import RxSwift
 
 class ResetPasswordViewController: BaseViewController {
     // MARK:業務設定
+    private var isNetWorkConnectIng = false
     private let onSubmitClick = PublishSubject<String>()
     private let dpg = DisposeBag()
     private let cancelImg = UIImage(named: "icon-close")!
@@ -134,8 +135,13 @@ class ResetPasswordViewController: BaseViewController {
     func bindPwdButton()
     {
         submitButton.rx.tap
-            .subscribeSuccess { [weak self] in
-                self?.submitButtonPressed()
+            .subscribeSuccess { [self] in
+                if isNetWorkConnectIng != true
+                {
+                    isNetWorkConnectIng = true
+                    submitButtonPressed()
+                }
+                submitButton.isEnabled = false
             }.disposed(by: dpg)
     }
     func bindTextfield()
@@ -274,6 +280,7 @@ class ResetPasswordViewController: BaseViewController {
                 Beans.loginServer.customerForgotPassword(mode:resetData.loginMode , accountString: resetData.toAccountString.lowercased(), verificationCode: resetData.resetCode, newPassword: passwordString).subscribe { [self] (data) in
                     gotoFinalVC()
                 } onError: { [self](error) in
+                    isNetWorkConnectIng = false
                     if let errorData = error as? ApiServiceError
                     {
                         switch errorData {
@@ -318,6 +325,7 @@ class ResetPasswordViewController: BaseViewController {
     }
     func gotoFinalVC()
     {
+        isNetWorkConnectIng = false
         self.navigationController?.pushViewController(changedPWVC, animated: true)
     }
     func rxSubmitClick() -> Observable<String>
