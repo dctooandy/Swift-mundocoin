@@ -207,12 +207,12 @@ class SecurityVerificationViewController: BaseViewController {
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
             Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
-            onVerifySuccessClick.onNext((stringData,""))
+            onVerifySuccessClick.onNext((stringData,"onlyEmail"))
             twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送View submit請求 ,onlyTwoFA:\(stringData)")
-            onVerifySuccessClick.onNext((stringData,""))
+            Log.i("發送View submit請求 ,onlyMobile:\(stringData)")
+            onVerifySuccessClick.onNext((stringData,"onlyMobile"))
             twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { [self](_) in

@@ -376,7 +376,7 @@ class UCPasswordViewController: BaseViewController {
             twoWayVC.securityViewMode = type
         }
         twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self](stringData) in
-            customerUpdatePassword(Withcode: stringData.0)
+            customerUpdatePassword(Withcode: stringData.0 ,withMode: stringData.1)
         }.disposed(by: dpg)
         twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
             customerUpdatePassword(Withcode: stringData.0,withMode: stringData.1)
