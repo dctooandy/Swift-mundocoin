@@ -130,9 +130,6 @@ class UserMenuViewController: BaseViewController {
     }
     func showLogotConfirmAlert()
     {
-//        let popVC = ConfirmPopupView(iconMode: .showIcon("Close"), title: "Warning", message: "The verification code is incorrect or has expired, you could try 5 more times a day.") { [self](_) in
-//
-//        }
         let popVC = ConfirmPopupView(viewHeight:148.0 ,
                                      iconMode: .nonIcon(["Cancel".localized,"Logout".localized]),
                                      title: "",

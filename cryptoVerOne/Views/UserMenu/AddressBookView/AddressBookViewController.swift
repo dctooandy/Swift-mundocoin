@@ -130,14 +130,14 @@ class AddressBookViewController: BaseViewController {
                     verifySuccessForChangeWhiteList(code: data.0,withMode: data.1, done: {
                         self.twoWayVC.navigationController?.popViewController(animated: true)
                     })
-                }.disposed(by: sheetDpg)
+                }.disposed(by: vcDpg)
                 if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
                 {
                     twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
                         verifySuccessForChangeWhiteList(code: stringData.0,withMode: stringData.1, done: {
                             self.twoWayVC.navigationController?.popViewController(animated: true)
                         })
-                    }.disposed(by: sheetDpg)
+                    }.disposed(by: vcDpg)
                 }
                 self.navigationController?.pushViewController(twoWayVC, animated: true)
             }

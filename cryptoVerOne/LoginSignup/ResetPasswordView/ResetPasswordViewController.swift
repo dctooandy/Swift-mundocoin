@@ -46,6 +46,7 @@ class ResetPasswordViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         _ = LoadingViewController.dismiss()
+        isNetWorkConnectIng = false
         dpg = DisposeBag()
         bindPwdButton()
         bindBorderColor()
@@ -281,7 +282,7 @@ class ResetPasswordViewController: BaseViewController {
                 Beans.loginServer.customerForgotPassword(mode:resetData.loginMode , accountString: resetData.toAccountString.lowercased(), verificationCode: resetData.resetCode, newPassword: passwordString).subscribe { [self] (data) in
                     gotoFinalVC()
                 } onError: { [self](error) in
-                    isNetWorkConnectIng = false
+                    
                     if let errorData = error as? ApiServiceError
                     {
                         switch errorData {
@@ -294,9 +295,11 @@ class ResetPasswordViewController: BaseViewController {
                             }else
                             {
                                 ErrorHandler.show(error: error)
+                                isNetWorkConnectIng = false
                             }
                         default:
                             ErrorHandler.show(error: error)
+                            isNetWorkConnectIng = false
                         }
                     }
                 }.disposed(by: dpg)
@@ -311,6 +314,7 @@ class ResetPasswordViewController: BaseViewController {
 
             if isOK {
                 Log.i("返回")
+                isNetWorkConnectIng = false
                 self.popVC()
             }
         }
@@ -327,7 +331,7 @@ class ResetPasswordViewController: BaseViewController {
     func gotoFinalVC()
     {
         self.navigationController?.pushViewController(changedPWVC, animated: true)
-        isNetWorkConnectIng = false
+//        isNetWorkConnectIng = false
     }
     func rxSubmitClick() -> Observable<String>
     {

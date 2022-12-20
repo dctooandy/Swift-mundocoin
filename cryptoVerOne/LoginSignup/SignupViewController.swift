@@ -141,7 +141,7 @@ class SignupViewController: BaseViewController {
             make.top.equalToSuperview().offset(30)
             make.centerX.equalToSuperview()
             make.width.equalToSuperview()
-            make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight + Themes.inputViewDefaultHeight) 
+            make.height.equalTo(Themes.inputViewDefaultHeight + Themes.inputViewPasswordHeight ) 
         }
         bottomMessageLabel.snp.makeConstraints { make in
             make.leading.equalTo(accountInputView).offset(60)
