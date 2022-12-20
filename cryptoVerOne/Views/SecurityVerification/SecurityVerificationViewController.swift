@@ -72,7 +72,7 @@ class SecurityVerificationViewController: BaseViewController {
         twoWayVerifyView.cleanTimer()
         for vc in twoWayViewControllers
         {
-            vc.verifyView.cleanTimer()
+            vc.cleanTimerAndResetProperty()
         }
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -228,8 +228,8 @@ class SecurityVerificationViewController: BaseViewController {
     {
         if byMode == .selectedMode
         {
-            onlyEmailVerifyViewController.verifyView.emailInputView.sendVerifyCode()
-            onlyMobileVerifyViewController.verifyView.mobileInputView.sendVerifyCode()
+//            onlyEmailVerifyViewController.verifyView.emailInputView.sendVerifyCode()
+//            onlyMobileVerifyViewController.verifyView.mobileInputView.sendVerifyCode()
         }else if byMode == .defaultMode
         {
             twoWayVerifyView.emailInputView.sendVerifyCode()

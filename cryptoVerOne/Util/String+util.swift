@@ -225,16 +225,28 @@ extension String {
          return ceil(boundingBox.width)
      }
     func hidePhoneAccount() -> String {
-        let middleStringCount = (self.count - 4)
-        var xString = ""
-        for _ in 1...middleStringCount {
-            xString.append(contentsOf: "*")
+        if !self.isEmpty
+        {
+            let middleStringCount = (self.count - 4)
+            var xString = ""
+            for _ in 1...middleStringCount {
+                xString.append(contentsOf: "*")
+            }
+            return String(prefix(2) + "\(xString)" + suffix(2))
+        }else
+        {
+            return ""
         }
-        return String(prefix(2) + "\(xString)" + suffix(2))
     }
     func hideEmailAccount() -> String {
-        let lastString = self.components(separatedBy: ".").last
-        return String(prefix(2) + "***@***." + suffix(lastString?.count ?? 2))
+        if !self.isEmpty
+        {
+            let lastString = self.components(separatedBy: ".").last
+            return String(prefix(2) + "***@***." + suffix(lastString?.count ?? 2))
+        }else
+        {
+            return ""
+        }
     }
 
     func transToFour() -> String
