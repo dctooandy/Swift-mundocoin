@@ -277,7 +277,7 @@ extension SocketIOManager
                     self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
                 }else if results.type == "APPROVAL_INIT"
                 {
-                    self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData)
+                    self.createTypeDto(valueToFind: SocketApprovalDoneDto.self, resultData: resultData,initFlag: true)
                 }else if results.type == "TX_CALLBACK"
                 {
                     self.createTypeDto(valueToFind: SocketTxCallBackDto.self, resultData: resultData)
@@ -305,7 +305,7 @@ extension SocketIOManager
             Log.e("Socket.io -回傳Null ,innerData: \(innerData)")
         }
     }
-    func createTypeDto<T : Codable>(valueToFind: T.Type, resultData: Data)
+    func createTypeDto<T : Codable>(valueToFind: T.Type, resultData: Data , initFlag:Bool = false)
     {
         let decoder = JSONDecoder()
         decoder.keyDecodingStrategy = .convertFromSnakeCase
@@ -320,10 +320,13 @@ extension SocketIOManager
                 {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
-                    Log.i("TriggerLocalNotification:\n\(userData.email),\(bodyArray)")
-//                    self.onTriggerLocalNotification(subtitle: userData.email, body: bodyArray)
+                    Log.i("TriggerLocalNotification:\n\(userData.email ?? ""),\(bodyArray)")
                     _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
                     _ = AuditApprovalDto.finishUpdate() // 更新清單列表
+                    if initFlag == true
+                    {
+                        self.onTriggerLocalNotification(subtitle: userData.email ?? "", body: bodyArray)
+                    }
 #else
 
 #endif
@@ -336,11 +339,10 @@ extension SocketIOManager
                    let amountValue = txDto.txAmountIntWithDecimal?.stringValue,
                    let cryptotype = txDto.currency
                 {
+                    var titleString = ""
+                    var bodyString = ""
                     if statsValue == "COMPLETE"
                     {
-                        var titleString = ""
-                        var bodyString = ""
-                        
                         if typeValue == "WITHDRAW"
                         {
                             titleString = "Withdraw Succesful"
@@ -356,6 +358,12 @@ extension SocketIOManager
                             self.onTriggerLocalNotification(subtitle: titleString, body: [bodyString])
                         }
                     }
+//                    else if statsValue == "FAILED"
+//                    {
+//                        titleString = statsValue
+//                        bodyString = statsValue
+//                        self.onTriggerLocalNotification(subtitle: titleString, body: [bodyString])
+//                    }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     
 #else
