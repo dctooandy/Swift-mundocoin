@@ -18,7 +18,7 @@ class ErrorHandler {
             switch error {
             case .domainError(let code ,let urlString ,let msg):
                 Log.e("\(code)"+msg)
-                showAlert(title: "错误讯息", message: "\(msg)\n\(urlString)")
+                showAlert(title: "Error", message: "\(msg)\n\(urlString)")
             case .networkError(let code ,let message):
                 Log.e("\(code)\(message)")
                 showAlert(title: "Network failed", message: "\(message)")
@@ -30,12 +30,12 @@ class ErrorHandler {
                 Toast.show(msg:"tokenExpireError")
             case .tokenExpire:
                 LoginSignupViewController.share.setMemberViewControllerDefault()
-                Toast.show(msg: "连线逾时请重新登入")
+                Toast.show(msg: "Connection timed out, please log in again")
                 DeepLinkManager.share.handleDeeplink(navigation: .login)
             case .notLogin:
                 showRedictToLoginAlert()
             case .failThrice:
-                showAlert(title: "错误讯息", message: "錯誤超過三次")
+                showAlert(title: "Error", message: "錯誤超過三次")
             case .systemMaintenance(let code ,_, _):
                 switch code {
                 case ErrorCode.MAINTAIN_B_PLATFORM_EXCEPTION: break
@@ -99,7 +99,7 @@ class ErrorHandler {
             }else
             {
                 let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "确定", style: .default, handler: {(action) in
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: {(action) in
                 })
                 alert.addAction(okAction)
                 UIApplication.topViewController()?.present(alert, animated: true, completion: nil)

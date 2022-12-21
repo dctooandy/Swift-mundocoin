@@ -75,7 +75,7 @@ extension DataRequest
                         }else
                         {
                             // 無法編成資料
-                            errorMsg = "資料無法編成"
+                            errorMsg = "Data could not be compiled"
                             apiError = ApiServiceError.noData
                             self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (errorMsg as AnyObject))
                             onError?(apiError)
@@ -97,7 +97,7 @@ extension DataRequest
                         self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                     }
                 case 422,502,503:
-                    self.decodeForData(type:"參數錯誤",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                    self.decodeForData(type:"Parameter error",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 400:
                     self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 401:
@@ -117,17 +117,17 @@ extension DataRequest
 //                    _ = LoadingViewController.dismiss()
                     switch error.code {
                     case -1001:
-                        errorMsg = "網路發生錯誤，請稍後再試".localized
+                        errorMsg = "A network error occurred, please try again later".localized
                     case -999:
-                        errorMsg = "網路發生錯誤，請稍後再試".localized
+                        errorMsg = "A network error occurred, please try again later".localized
                     default:
-                        errorMsg = "網路發生錯誤，請稍後再試".localized
+                        errorMsg = "A network error occurred, please try again later".localized
                     }
                     apiError = ApiServiceError.showKnownError(error.code,requestURLString,errorMsg)
                     onError?(apiError)
                 }else
                 {
-                    errorMsg = "參數錯誤"
+                    errorMsg = "Parameter error"
                     apiError = ApiServiceError.showKnownError(-0,requestURLString,errorMsg)
                     onError?(apiError)
                 }
@@ -146,15 +146,15 @@ extension DataRequest
                 let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
             {
                 var results = try decoder.decode(ErrorDefaultDto.self, from:data)
-                let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(dict as AnyObject)"
+                let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue\n          :\(dict as AnyObject)"
                 Log.e("\(message)")
                 results.httpStatus = "\(statusCode)"
                 apiError = ApiServiceError.errorDto(results)
                 onError?(apiError)
             }else
             {
-                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"無法解析-\(keyContext.0)-:-\(keyContext.1)-")
-                let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :可能是空值,無法解析"
+                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"cannot be parsed-\(keyContext.0)-:-\(keyContext.1)-")
+                let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue\n          :May be null, cannot be parsed"
                 Log.e("\(message)")
                 onError?(apiError)
             }
@@ -162,7 +162,7 @@ extension DataRequest
         catch {
             let errorMsg = "-\(keyContext.0)-:-\(keyContext.1)-"
             apiError = ApiServiceError.showKnownError(statusCode,requestURLString,errorMsg)
-            let message = "異常Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n編號Status   :\(statusCode)\(type)\n回傳值\n          :\(errorMsg)"
+            let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue\n          :\(errorMsg)"
             Log.e("\(message)")
             onError?(apiError)
         }
