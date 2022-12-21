@@ -71,12 +71,17 @@ struct LoginPostDto {
     }
     var lastLoginMode:LoginMode
     {
-        if lastAccountString == account
+        if !lastAccountString.isEmpty
         {
+            if lastAccountString == account
+            {
+                return .emailPage
+            }else
+            {
+                return .phonePage
+            }
+        }else {
             return .emailPage
-        }else
-        {
-            return .phonePage
         }
     }
     var phoneWithoutCode: String

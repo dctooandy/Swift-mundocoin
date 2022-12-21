@@ -420,7 +420,7 @@ extension LoginSignupViewController {
     
     func showVerifyVCWithLoginData(_ dataDto: LoginPostDto)
     {
-        let idString = dataDto.lastAccountString
+        let idString = dataDto.lastAccountString.isEmpty ? dataDto.account : dataDto.lastAccountString
         let pwString = dataDto.password
         var newDto = dataDto
         newDto.loginMode = dataDto.lastLoginMode

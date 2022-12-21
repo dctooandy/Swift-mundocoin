@@ -44,7 +44,8 @@ class CheckTokenService{
                 goToLoginVC()
             }
         }
-        if jwtValue != nil , let isExpired = jwtValue?.expired
+        if jwtValue != nil , let isExpired = jwtValue?.expired,
+            let isExpiredDate = jwtValue?.expiresAt
         {
             if isExpired == false
             {
