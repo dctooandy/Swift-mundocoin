@@ -6733,7 +6733,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
@@ -6765,7 +6765,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/cryptoVerOne.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 190;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = cryptoVerOne/Info.plist;
