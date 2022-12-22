@@ -489,11 +489,12 @@ class WithdrawViewController: BaseViewController {
                                             securityVerifyVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
                                         }else if securityVerifyVC.securityViewMode == .selectedMode
                                         {
-                                            if verifyValueTwo == "onlyEmail" , let emailVC = securityVerifyVC.twoWayViewControllers.first
+                                            if verifyValueTwo == "onlyEmail" , let emailVC = securityVerifyVC.twoWayViewControllers.filter({$0.twoWayViewMode == .onlyEmail}).first
+                                                
                                             {
                                                 emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
                                                 emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
-                                            }else if verifyValueTwo == "onlyMobile" , let mobileVC = securityVerifyVC.twoWayViewControllers.last
+                                            }else if verifyValueTwo == "onlyMobile" , let mobileVC = securityVerifyVC.twoWayViewControllers.filter({$0.twoWayViewMode == .onlyMobile}).first
                                             {
                                                 mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
                                                 mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)

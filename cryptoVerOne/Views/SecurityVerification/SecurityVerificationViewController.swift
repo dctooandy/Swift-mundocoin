@@ -112,7 +112,7 @@ class SecurityVerificationViewController: BaseViewController {
 
         pageViewcontroller?.selectedBackgroundColor = Themes.gray2B3674
         pageViewcontroller?.backgroundColor = .white
-        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 120, height: 38)
+        pageViewcontroller?.menuItemSize = PagingMenuItemSize.fixed(width: 95, height: 38)
         // menu text
         pageViewcontroller?.selectedFont = Fonts.PlusJakartaSansBold(15)
         pageViewcontroller?.font = Fonts.PlusJakartaSansBold(15)
@@ -313,8 +313,8 @@ class SecurityVerificationViewController: BaseViewController {
         let mobileVC = TwoWayVerifyViewController.instance(mode: .onlyMobile)
         self.onlyEmailVerifyViewController = emailVC
         self.onlyMobileVerifyViewController = mobileVC
-        twoWayViewControllers = [self.onlyEmailVerifyViewController,
-                                self.onlyMobileVerifyViewController]
+        twoWayViewControllers = [self.onlyMobileVerifyViewController,
+                                self.onlyEmailVerifyViewController]
     }
     func rxVerifySuccessClick() -> Observable<(String,String)>
     {
@@ -393,28 +393,28 @@ class SecurityPagingTitleCell: PagingTitleCell {
     open override func apply(_ layoutAttributes: UICollectionViewLayoutAttributes) {
       super.apply(layoutAttributes)
         titleLabel.layer.borderColor = UIColor.white.cgColor
-        titleLabel.layer.borderWidth = 3
-        titleLabel.layer.cornerRadius = 22
+        titleLabel.layer.borderWidth = 1.5
+        titleLabel.layer.cornerRadius = 18.25
         titleLabel.layer.masksToBounds = true
         self.backgroundColor = Themes.grayE0E5F2
         self.contentView.backgroundColor = .white
 //        self.contentView.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
 //        self.applyCornerAndShadow(radius: layoutAttributes.frame.height / 2)
         self.layer.cornerRadius = layoutAttributes.frame.height / 2
-        self.contentView.layer.cornerRadius = 22
+        self.contentView.layer.cornerRadius = 19
         if layoutAttributes.indexPath.last == 1
         {
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(-1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(46)
+                make.width.equalTo(96)
+                make.height.equalTo(38)
             }
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(-1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(44)
+                make.width.equalTo(94.5)
+                make.height.equalTo(36.5)
             }
             self.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
             self.contentView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMaxXMinYCorner]
@@ -423,14 +423,14 @@ class SecurityPagingTitleCell: PagingTitleCell {
             contentView.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(46)
+                make.width.equalTo(96)
+                make.height.equalTo(38)
             }
             titleLabel.snp.remakeConstraints { (make) in
                 make.centerX.equalToSuperview().offset(1)
                 make.centerY.equalToSuperview()
-                make.width.equalTo(123)
-                make.height.equalTo(44)
+                make.width.equalTo(94.5)
+                make.height.equalTo(36.5)
             }
             self.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]
             self.contentView.layer.maskedCorners = [.layerMinXMinYCorner , .layerMinXMaxYCorner]

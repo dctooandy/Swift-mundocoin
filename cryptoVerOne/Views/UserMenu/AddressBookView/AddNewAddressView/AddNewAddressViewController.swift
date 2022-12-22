@@ -422,11 +422,11 @@ class AddNewAddressViewController: BaseViewController {
                 twoWayVC.twoWayVerifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
             }else if twoWayVC.securityViewMode == .selectedMode
             {
-                if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.first
+                if withMode == "onlyEmail" , let emailVC = twoWayVC.twoWayViewControllers.filter({$0.twoWayViewMode == .onlyEmail}).first
                 {
                     emailVC.verifyView.emailInputView.invalidLabel.isHidden = false
                     emailVC.verifyView.emailInputView.changeInvalidLabelAndMaskBorderColor(with: emailMessage)
-                }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.last
+                }else if withMode == "onlyMobile" , let mobileVC = twoWayVC.twoWayViewControllers.filter({$0.twoWayViewMode == .onlyMobile}).first
                 {
                     mobileVC.verifyView.mobileInputView.invalidLabel.isHidden = false
                     mobileVC.verifyView.mobileInputView.changeInvalidLabelAndMaskBorderColor(with: mobileMessage)
