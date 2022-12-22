@@ -481,7 +481,7 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
 //        onCellClick.onNext(data)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 145
+        return 116
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()

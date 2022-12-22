@@ -21,7 +21,7 @@ class AddressBookViewCell: UITableViewCell {
     
     @IBOutlet weak var whiteListSwitch: UISwitch!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var walletLabel: UILabel!
+//    @IBOutlet weak var walletLabel: UILabel!
     @IBOutlet weak var networkMethodLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     // MARK: -
@@ -46,7 +46,7 @@ class AddressBookViewCell: UITableViewCell {
         whiteListSwitch.tintColor = offColor
         whiteListSwitch.backgroundColor = offColor
         nameLabel.text = cellData.name
-        walletLabel.text = cellData.label
+//        walletLabel.text = cellData.label
         networkMethodLabel.text = cellData.network ?? "TRC20"
         addressLabel.text = cellData.address
     }
