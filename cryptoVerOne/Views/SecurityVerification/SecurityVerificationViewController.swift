@@ -232,14 +232,16 @@ class SecurityVerificationViewController: BaseViewController {
 //            onlyMobileVerifyViewController.verifyView.mobileInputView.sendVerifyCode()
         }else if byMode == .defaultMode
         {
-            twoWayVerifyView.emailInputView.sendVerifyCode()
-            twoWayVerifyView.mobileInputView.sendVerifyCode()
+            twoWayVerifyView.emailInputView.resetTimerAndAll()
+            twoWayVerifyView.mobileInputView.resetTimerAndAll()
         }else if byMode == .onlyEmail
         {
-            twoWayVerifyView.emailInputView.sendVerifyCode()
+//            twoWayVerifyView.emailInputView.sendVerifyCode()
+            twoWayVerifyView.emailInputView.resetTimerAndAll()
         }else
         {
-            twoWayVerifyView.mobileInputView.sendVerifyCode()
+//            twoWayVerifyView.mobileInputView.sendVerifyCode()
+            twoWayVerifyView.mobileInputView.resetTimerAndAll()
         }
     }
     func verifyResentPressed(byEmail:Bool = false , byVC:Bool = false)

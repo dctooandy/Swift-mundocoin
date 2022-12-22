@@ -46,11 +46,13 @@ class TwoWayVerifyViewController: BaseViewController {
         if twoWayViewMode == .onlyEmail , isSendEmailVerifyCode == false
         {
             isSendEmailVerifyCode = true
-            verifyView.emailInputView.sendVerifyCode()
+            verifyView.emailInputView.resetTimerAndAll()
+//            verifyView.emailInputView.sendVerifyCode()
         }else if twoWayViewMode == .onlyMobile , isSendMobileVerifyCode == false
         {
             isSendMobileVerifyCode = true
-            verifyView.mobileInputView.sendVerifyCode()
+            verifyView.mobileInputView.resetTimerAndAll()
+//            verifyView.mobileInputView.sendVerifyCode()
         }
     }
     override func viewDidAppear(_ animated: Bool) {
