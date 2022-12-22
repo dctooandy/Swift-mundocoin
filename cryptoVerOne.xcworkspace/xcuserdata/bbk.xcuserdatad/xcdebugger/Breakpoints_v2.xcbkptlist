@@ -292,5 +292,101 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "13386748-BD78-4978-97C5-250AB5D6F0B8"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/DataRequest+util.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "responseCustomModel(_:onData:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7BADAB0B-FE4C-428F-93A3-85854720DF7F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/CheckTokenExpired/CheckTokenService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "fetchCurrencyInfo()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7BADAB0B-FE4C-428F-93A3-85854720DF7F - 8f03e25e905ac1e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoVerOne_dev.CheckTokenService.fetchCurrencyInfo() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Util/CheckTokenExpired/CheckTokenService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "34">
+               </Location>
+               <Location
+                  uuid = "7BADAB0B-FE4C-428F-93A3-85854720DF7F - 459710049e6201b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Swift.Array&lt;cryptoVerOne_dev.InfoDto&gt;&gt;) -&gt; () in cryptoVerOne_dev.CheckTokenService.fetchCurrencyInfo() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Util/CheckTokenExpired/CheckTokenService.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "86"
+                  endingLineNumber = "86"
+                  offsetFromSymbolStart = "33">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "779DBEDE-21E4-4254-ABAD-35AE9C0D96DB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/CheckTokenExpired/CheckTokenService.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "fetchCurrencyInfo()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "071CDA69-7E02-4495-82E5-4EDEE55C1477"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Util/DataRequest+util.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "responseCustomModel(_:onData:onError:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

@@ -46,6 +46,9 @@ class AccessTokenAdapter: RequestAdapter {
             }else if urlString.pathComponents.contains("settings") ,urlString.pathComponents.contains("authentication")
             {
                 urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
+            }else if urlString.pathComponents.contains("currency") ,urlString.pathComponents.contains("settings")
+            {
+                urlRequest.setValue("Bearer " + accessToken, forHTTPHeaderField: "Authorization")
             }
             
             if urlString.pathComponents.contains("resend")

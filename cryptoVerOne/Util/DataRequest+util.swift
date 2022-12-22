@@ -81,8 +81,8 @@ extension DataRequest
                             onError?(apiError)
                         }
                     }
-                    catch DecodingError.dataCorrupted(_) {
-                        self.decodeForData(type:"dataCorrupted",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                    catch DecodingError.dataCorrupted(let context) {
+                        self.decodeForData(type:"dataCorrupted",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode,keyContext:("key","\(context)"), onError: onError)
                     }
                     catch DecodingError.keyNotFound(let key, let context) {
                         self.decodeForData(type:"keyNotFound",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode,keyContext:("\(key)","\(context)"), onError: onError)
@@ -200,11 +200,11 @@ extension DataRequest
         }
         return nil
     }
-    func convertToArray(urlString : String = "" , text: String) -> [[String: Any]]?
+    func convertToArray(urlString : String = "" , text: String) -> [AnyObject]?
     {
         if let data = text.data(using: .utf8) {
             do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [[String: Any]]
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
             } catch {
                 //                Log.e("API: \(urlString)\n=====================\n無法解析的字串: \(text.isEmpty == true ? "無" : text)\n=====================\n字串數 : \(text.count)\n=====================\nError : \(error.localizedDescription)")
                 //                if urlString.isEmpty != true

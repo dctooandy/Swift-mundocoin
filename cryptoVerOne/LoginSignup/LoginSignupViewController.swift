@@ -549,6 +549,7 @@ extension LoginSignupViewController {
                     {
                         KeychainManager.share.setToken(data.token)
                         CheckTokenService.share.parseTokenToMemberAccountDto()
+                        CheckTokenService.share.fetchCurrencyInfo()
                         if let loginData = loginDto
                         {
                             directToNextPage(authDto: data ,loginDto: loginData)

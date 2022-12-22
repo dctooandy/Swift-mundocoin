@@ -14,6 +14,7 @@ class Beans {
     static let walletServer = WalletService()
     static let auditServer = AuditService()
     static let addressBookServer = AddressBookService()
+    static let infoServer = InfoService()
 //    static let bannerServer = BannerService()
 //    static let newsServer = NewsService()
 //    static let memberServer = MemberService()

@@ -112,6 +112,18 @@
 		092E760F2850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
 		092E76102850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
 		092E76112850A9D100221997 /* NoDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 092E760E2850A9D100221997 /* NoDataView.swift */; };
+		0951B81B2954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B81C2954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B81D2954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B81E2954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B81F2954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B8202954537C000D5A4A /* InfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B81A2954537C000D5A4A /* InfoService.swift */; };
+		0951B822295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
+		0951B823295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
+		0951B824295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
+		0951B825295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
+		0951B826295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
+		0951B827295453D4000D5A4A /* InfoDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0951B821295453D4000D5A4A /* InfoDto.swift */; };
 		095F680928473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680A28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
 		095F680B28473BE3009AFEBB /* UpdatePasswordDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */; };
@@ -2178,6 +2190,8 @@
 		092E760528504A8600221997 /* AddressBookViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressBookViewModel.swift; sourceTree = "<group>"; };
 		092E76092850998300221997 /* NotificationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDto.swift; sourceTree = "<group>"; };
 		092E760E2850A9D100221997 /* NoDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoDataView.swift; sourceTree = "<group>"; };
+		0951B81A2954537C000D5A4A /* InfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoService.swift; sourceTree = "<group>"; };
+		0951B821295453D4000D5A4A /* InfoDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDto.swift; sourceTree = "<group>"; };
 		095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatePasswordDto.swift; sourceTree = "<group>"; };
 		096BD768285B38CA009D3191 /* WalletWithdrawDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletWithdrawDto.swift; sourceTree = "<group>"; };
 		09905B202851A02B00BAEE78 /* Approval_dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Approval_dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2819,6 +2833,7 @@
 				09CAF5F0283E048B00D7B19B /* WalletService.swift */,
 				09EED312285718DF00CB4A64 /* AuditService.swift */,
 				09CA47E228C992AC00CFE231 /* AddressBookService.swift */,
+				0951B81A2954537C000D5A4A /* InfoService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -3431,6 +3446,7 @@
 				A19C70C828224614000AFC3F /* ValueDto.swift */,
 				A19C718A28225B25000AFC3F /* ResponseDto.swift */,
 				A19C71A828226279000AFC3F /* LoginPostDto.swift */,
+				0951B821295453D4000D5A4A /* InfoDto.swift */,
 				09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */,
 				099371B128445DDD00D55E55 /* WalletBalancesDto.swift */,
 				09056D8C284EF15700038BF8 /* WalletTransactionDto.swift */,
@@ -4721,8 +4737,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905A332851A02B00BAEE78 /* WalletPageViewController.swift in Sources */,
+				0951B81F2954537C000D5A4A /* InfoService.swift in Sources */,
 				09905A342851A02B00BAEE78 /* TemplateVC.swift in Sources */,
 				09905A352851A02B00BAEE78 /* SaveButton.swift in Sources */,
+				0951B826295453D4000D5A4A /* InfoDto.swift in Sources */,
 				09905A362851A02B00BAEE78 /* Extension.swift in Sources */,
 				09905A372851A02B00BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905A382851A02B00BAEE78 /* UICollectionView+util.swift in Sources */,
@@ -4979,8 +4997,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905B252851A08500BAEE78 /* WalletPageViewController.swift in Sources */,
+				0951B8202954537C000D5A4A /* InfoService.swift in Sources */,
 				09905B262851A08500BAEE78 /* TemplateVC.swift in Sources */,
 				09905B272851A08500BAEE78 /* SaveButton.swift in Sources */,
+				0951B827295453D4000D5A4A /* InfoDto.swift in Sources */,
 				09905B282851A08500BAEE78 /* Extension.swift in Sources */,
 				09905B292851A08500BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905B2A2851A08500BAEE78 /* UICollectionView+util.swift in Sources */,
@@ -5237,8 +5257,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09905C172851A09600BAEE78 /* WalletPageViewController.swift in Sources */,
+				0951B81E2954537C000D5A4A /* InfoService.swift in Sources */,
 				09905C182851A09600BAEE78 /* TemplateVC.swift in Sources */,
 				09905C192851A09600BAEE78 /* SaveButton.swift in Sources */,
+				0951B825295453D4000D5A4A /* InfoDto.swift in Sources */,
 				09905C1A2851A09600BAEE78 /* Extension.swift in Sources */,
 				09905C1B2851A09600BAEE78 /* ResetPasswordViewController.swift in Sources */,
 				09905C1C2851A09600BAEE78 /* UICollectionView+util.swift in Sources */,
@@ -5495,8 +5517,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09CAF43D283C77ED00D7B19B /* WalletPageViewController.swift in Sources */,
+				0951B81C2954537C000D5A4A /* InfoService.swift in Sources */,
 				09CAF43E283C77ED00D7B19B /* TemplateVC.swift in Sources */,
 				09CAF43F283C77ED00D7B19B /* SaveButton.swift in Sources */,
+				0951B823295453D4000D5A4A /* InfoDto.swift in Sources */,
 				09CAF440283C77ED00D7B19B /* Extension.swift in Sources */,
 				09CAF441283C77ED00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF442283C77ED00D7B19B /* UICollectionView+util.swift in Sources */,
@@ -5753,8 +5777,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				09CAF4FE283C7BBE00D7B19B /* WalletPageViewController.swift in Sources */,
+				0951B81D2954537C000D5A4A /* InfoService.swift in Sources */,
 				09CAF4FF283C7BBE00D7B19B /* TemplateVC.swift in Sources */,
 				09CAF500283C7BBE00D7B19B /* SaveButton.swift in Sources */,
+				0951B824295453D4000D5A4A /* InfoDto.swift in Sources */,
 				09CAF501283C7BBE00D7B19B /* Extension.swift in Sources */,
 				09CAF502283C7BBE00D7B19B /* ResetPasswordViewController.swift in Sources */,
 				09CAF503283C7BBE00D7B19B /* UICollectionView+util.swift in Sources */,
@@ -6011,8 +6037,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1973A2E2828F63B009932D8 /* WalletPageViewController.swift in Sources */,
+				0951B81B2954537C000D5A4A /* InfoService.swift in Sources */,
 				A1019DE02824D0F300E6929E /* TemplateVC.swift in Sources */,
 				A1559E0028360DBE00755783 /* SaveButton.swift in Sources */,
+				0951B822295453D4000D5A4A /* InfoDto.swift in Sources */,
 				A19C702C28222D97000AFC3F /* Extension.swift in Sources */,
 				A19739C328251B33009932D8 /* ResetPasswordViewController.swift in Sources */,
 				A1973A3A2829126D009932D8 /* UICollectionView+util.swift in Sources */,

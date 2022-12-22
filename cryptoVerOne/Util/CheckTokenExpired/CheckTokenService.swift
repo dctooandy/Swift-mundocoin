@@ -8,6 +8,7 @@
 import UIKit
 import Toaster
 import RxSwift
+import RxCocoa
 import DropDown
 import JWTDecode
 
@@ -77,6 +78,13 @@ class CheckTokenService{
                 }
             }
         }
+    }
+    // 下載資料
+    func fetchCurrencyInfo()
+    {
+        Beans.infoServer.fetchCurrencySettings().subscribeSuccess { dataDto in
+            Log.i("data : \(dataDto)")
+        }.disposed(by: dpg)
     }
     // 儲存Token到 MemberAccountDto
     func parseTokenToMemberAccountDto(complete:CheckCompletionBlock? = nil)
@@ -270,6 +278,8 @@ class CheckTokenService{
                 parseTokenToMemberAccountDto()
                 // 刷新時間
                 startToCountDown()
+                // 刷新InfoData
+                fetchCurrencyInfo()
             }
         }.disposed(by: dpg)
         #endif

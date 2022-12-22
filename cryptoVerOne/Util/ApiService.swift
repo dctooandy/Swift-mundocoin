@@ -81,6 +81,8 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
     case promotion(String)
     case gaming(String)
     case base(String)
+    // 獲取相對資料
+    case currencySettings
     
     var path:URL? {
         switch self {
@@ -142,6 +144,8 @@ static var host = BuildConfig.MUNDO_SITE_API_HOST
             return URL(string:ApiService.host + "/v1/admin/approvals")
         case .adminApproval(let approvalId , let approvalNodeId):
             return URL(string:ApiService.host + "/v1/admin/approval/\(approvalId)/node/\(approvalNodeId)")
+        case .currencySettings:
+            return URL(string:ApiService.host + "/v1/currency/settings")
         default :
             return URL(string:ApiService.host)
         }
