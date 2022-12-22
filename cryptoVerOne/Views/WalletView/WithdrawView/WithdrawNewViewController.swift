@@ -168,7 +168,7 @@ class WithdrawNewViewController: BaseViewController {
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
-        let minString = "10"
+        let minString = "1"
         let maxString = "1000000"
         amountInputStyleView.rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
         if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
@@ -327,7 +327,7 @@ class WithdrawNewViewController: BaseViewController {
             .map { [weak self] (str) -> Bool in
                 guard let _ = self, let acc = str else { return false  }
                 return RegexHelper.match(pattern: .moneyAmount, input: acc)
-                    && acc.toDouble() >= 10.0
+                    && acc.toDouble() >= 1.0
             }
         let isAddressValid = withdrawToView.textView.rx.text
 //        let isAddressValid = withdrawToView.textField.rx.text
