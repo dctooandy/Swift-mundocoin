@@ -215,38 +215,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "160E631C-B48D-4819-BD88-895AC456D1B8"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "verifySuccessForCreateAddressBook(code:withMode:done:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5C4D9C06-85B3-4AE7-A128-08D8DDB23940"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/SecurityVerification/SecurityVerificationViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
-            landmarkName = "bindSubPageViewControllers()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "183E8377-E013-4A90-B66F-4F1791585E1B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -263,54 +231,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "BC6F40E0-2AF3-4106-B87E-F7E8C221DB57"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddressBookViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "137"
-            endingLineNumber = "137"
-            landmarkName = "whiteListAction()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "BC6F40E0-2AF3-4106-B87E-F7E8C221DB57 - 379804bb381a6f98"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 ((Swift.String, Swift.String)) -&gt; () in closure #1 (Any) -&gt; () in cryptoVerOne_dev.AddressBookViewController.whiteListAction() -&gt; ()"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/UserMenu/AddressBookView/AddressBookViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "129">
-               </Location>
-               <Location
-                  uuid = "BC6F40E0-2AF3-4106-B87E-F7E8C221DB57 - 83cf6cff9f6eccda"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 ((Swift.String, Swift.String)) -&gt; () in closure #1 (Any) -&gt; () in cryptoVerOne_dev.AddressBookViewController.whiteListAction() -&gt; ()"
-                  moduleName = "cryptoVerOne_dev"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/UserMenu/AddressBookView/AddressBookViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "138"
-                  endingLineNumber = "138"
-                  offsetFromSymbolStart = "33">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "FACFFFFE-F239-4639-880C-BEAC58C610EF"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -321,6 +241,54 @@
             startingLineNumber = "188"
             endingLineNumber = "188"
             landmarkName = "verifySuccessForChangeWhiteList(code:withMode:done:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D2940C0A-05A0-4A48-9537-172A66D32E77"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
+            landmarkName = "vcDetector(code:reason:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "50BC319B-8FD9-488E-B0D1-5AFA812980C7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "419"
+            endingLineNumber = "419"
+            landmarkName = "errorHandlerWithReason(code:reason:withMode:error:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DBB86EA5-B4E7-40DB-A312-32ECA7565898"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/UserMenu/AddressBookView/AddNewAddressView/AddNewAddressViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "423"
+            endingLineNumber = "423"
+            landmarkName = "errorHandlerWithReason(code:reason:withMode:error:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

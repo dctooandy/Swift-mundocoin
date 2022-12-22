@@ -584,7 +584,7 @@ class VerifyViewController: BaseViewController {
             let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
             if status == "400"
             {
-                if reason == "CODE_MISMATCH"
+                if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                 {
                     verifyInputView.changeInvalidLabelAndMaskBorderColor(with: withEmail ? emailMessage : mobileMessage)
                 }else if reason == "CUSTOMER_EMAIL_OR_PHONE_EXISTS"

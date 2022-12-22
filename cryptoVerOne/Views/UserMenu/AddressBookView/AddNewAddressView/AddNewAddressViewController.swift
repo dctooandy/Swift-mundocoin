@@ -29,8 +29,8 @@ class AddNewAddressViewController: BaseViewController {
     @IBOutlet weak var dropdownView: DropDownStyleView!
     @IBOutlet weak var addressStyleView: InputStyleView!
     @IBOutlet weak var networkView: DynamicCollectionView!
-    @IBOutlet weak var nameStyleView: InputStyleView!
     @IBOutlet weak var walletLabelStyleView: InputStyleView!
+//    @IBOutlet weak var walletLabelStyleView: InputStyleView!
     @IBOutlet weak var checkBox: CheckBoxView!
     @IBOutlet weak var saveButton: CornerradiusButton!
     @IBOutlet weak var backgroundView: UIView!
@@ -89,16 +89,13 @@ class AddNewAddressViewController: BaseViewController {
 //            topBorderView.layer.borderColor = UIColor(rgb: 0xF1F1F1).cgColor
         }
         addressStyleView.textField.sendActions(for: .valueChanged)
-        nameStyleView.textField.sendActions(for: .valueChanged)
         walletLabelStyleView.textField.sendActions(for: .valueChanged)
-        let navHeight = (self.navigationController == nil) ? 80.0 : 0.0
-        let diffHeight = Views.screenHeight - saveButton.frame.maxY - navHeight
-        if diffHeight < 100
+        if addToWhitelistView.isHidden == false
         {
-            saveButtonTopConstraint.constant = 15
+            saveButtonTopConstraint.constant = 60
         }else
         {
-            saveButtonTopConstraint.constant = 44
+            saveButtonTopConstraint.constant = 30
         }
     }
     override func viewDidAppear(_ animated: Bool) {
@@ -125,7 +122,6 @@ class AddNewAddressViewController: BaseViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
         addressStyleView.tfMaskView.changeBorderWith(isChoose:false)
-        nameStyleView.tfMaskView.changeBorderWith(isChoose:false)
         walletLabelStyleView.tfMaskView.changeBorderWith(isChoose:false)
     }
     // MARK: -
@@ -147,9 +143,9 @@ class AddNewAddressViewController: BaseViewController {
             let keyboardRectangle = keyboardFrame.cgRectValue
             let keyboardHeight = keyboardRectangle.height
             let navHeight = (self.navigationController == nil) ? 80.0 : 0.0
-            if ((nameStyleView?.textField.isFirstResponder) == true)
+            if ((walletLabelStyleView?.textField.isFirstResponder) == true)
             {
-                let diffHeight = Views.screenHeight - nameStyleView.frame.maxY - navHeight
+                let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
                 if diffHeight < (keyboardHeight + 120 )
                 {
                     UIView.animate(withDuration: 0.3, delay: 0) { [self] in
@@ -160,26 +156,6 @@ class AddNewAddressViewController: BaseViewController {
                         {
                             coinLabel.alpha = 0.0
                             dropdownView.alpha = 0.0
-                        }
-                    }
-                }
-            }
-            if ((walletLabelStyleView?.textField.isFirstResponder) == true)
-            {
-                let diffHeight = Views.screenHeight - walletLabelStyleView.frame.maxY - navHeight
-                if diffHeight < (keyboardHeight + 135 )
-                {
-                    UIView.animate(withDuration: 0.3, delay: 0) { [self] in
-                        let upHeight = (keyboardHeight + 135 ) - diffHeight
-                        backgroundView.frame.origin.y = Views.navigationBarHeight - ((upHeight > 135) ? 200 : upHeight)
-                        if upHeight > 50
-                        {
-                            coinLabel.alpha = 0.0
-                            dropdownView.alpha = 0.0
-                            if upHeight > 135
-                            {
-                                addressStyleView.alpha = 0.0
-                            }
                         }
                     }
                 }
@@ -214,8 +190,7 @@ class AddNewAddressViewController: BaseViewController {
         dropdownView.topLabel.font = Fonts.PlusJakartaSansBold(16)
         addressStyleView.setMode(mode: .address)
         networkView.setData(type: .addNewAddressNetworkMethod)
-        nameStyleView.setMode(mode: .customLabel("Name"))
-        walletLabelStyleView.setMode(mode: .customLabel("Wallet label (Optional)"))
+        walletLabelStyleView.setMode(mode: .customLabel("Wallet label"))
         checkBox.checkType = .checkType
         checkBox.isSelected = true
         saveButton.setTitle("Save".localized, for: .normal)
@@ -231,37 +206,28 @@ class AddNewAddressViewController: BaseViewController {
             changeWithdrawInputViewHeight(constant: heightValue)
         }.disposed(by: dpg)
         
-        nameStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
-            nameStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
-            nameStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
-            nameStyleView.invalidLabel.isHidden = true
-            if isChoose == false
-            {
-                walletLabelStyleView.textField.becomeFirstResponder()
-            }
-        }.disposed(by: dpg)
         walletLabelStyleView.rxChooseClick().subscribeSuccess { [self](isChoose) in
             walletLabelStyleView.tfMaskView.changeBorderWith(isChoose:isChoose)
             walletLabelStyleView.changeInvalidLabelAndMaskBorderColor(with:"")
             walletLabelStyleView.invalidLabel.isHidden = true
         }.disposed(by: dpg)
+
         let isAddressValid = addressStyleView.textView.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. coinAddress, input: acc)
         }
 //        isAddressValid.skip(1).bind(to: addressStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
-        let isNameValid = nameStyleView.textField.rx.text
+        let isNameValid = walletLabelStyleView.textField.rx.text
             .map {  (str) -> Bool in
                 guard  let acc = str else { return false  }
                 return RegexHelper.match(pattern:. delegateName, input: acc)
         }
-        isNameValid.skip(1).bind(to: nameStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
+        isNameValid.skip(1).bind(to: walletLabelStyleView.invalidLabel.rx.isHidden).disposed(by: dpg)
         Observable.combineLatest(isAddressValid,isNameValid)
             .map { return $0.0 && $0.1 } //reget match result
             .bind(to: saveButton.rx.isEnabled)
             .disposed(by: dpg)
-        nameStyleView.textField.returnKeyType = .next
         walletLabelStyleView.textField.returnKeyType = .done
     }
     func bindDynamicView()
@@ -369,12 +335,12 @@ class AddNewAddressViewController: BaseViewController {
                 let reason = dto.reason
                 if status == "400"
                 {
-                    if reason == "CODE_MISMATCH"
+                    if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                     {
                         errorHandlerWithReason(code: dto.code, reason: reason, withMode: withMode, error: error)
-                    } else
+                    }else
                     {
-                        vcDetector(code:dto.code,reason: reason)
+                        vcDetector(code:dto.code,reason: reason, error: error)
                     }
                 }else if status == "404"
                 {
@@ -388,19 +354,19 @@ class AddNewAddressViewController: BaseViewController {
             }
         })
     }
-    func vcDetector(code:String = "",reason:String)
+    func vcDetector(code:String = "",reason:String, error : Error? = nil)
     {// 需判斷是否 pusr或者 present
         if self.presentedViewController != nil
         {
             twoWayVC.dismiss(animated: true) { [self] in
-                errorHandlerWithReason(code:code,reason: reason)
+                errorHandlerWithReason(code:code,reason: reason , error: error)
             }
         }else
         {
             if let navVC = twoWayVC.navigationController as? MDNavigationController
             {
                 navVC.popViewControllerWithHandler(animated: true) { [self] in
-                    errorHandlerWithReason(code:code,reason: reason)
+                    errorHandlerWithReason(code:code,reason: reason, error: error)
                 }
             }
         }
@@ -409,7 +375,7 @@ class AddNewAddressViewController: BaseViewController {
     {
         let emailMessage = "The Email Code is incorrect. Please re-enter."
         let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
-        if reason == "CODE_MISMATCH"
+        if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
         {
             Log.i("驗證碼錯誤 :\(reason)")
             if twoWayVC.securityViewMode == .onlyEmail
@@ -446,16 +412,25 @@ class AddNewAddressViewController: BaseViewController {
         { // 新增了自己的address
             let results = ErrorDefaultDto(code: "", reason: "Unable to add own address", timestamp: 0, httpStatus: "", errors: [])
             ErrorHandler.show(error: ApiServiceError.errorDto(results))
+        }else
+        {
+            if let errorData = error
+            {
+                ErrorHandler.show(error:errorData)
+            }else
+            {
+                let results = ErrorDefaultDto(code: "", reason: "Unknow Error", timestamp: 0, httpStatus: "", errors: [])
+                ErrorHandler.show(error:ApiServiceError.errorDto(results))
+            }
         }
     }
     func createAddressDto() -> AddressBookDto
     {
         let currencyString = dropdownView.topLabel.text ?? ""
         let addressString = addressStyleView.textView.text ?? ""
-        let nameString = nameStyleView.textField.text ?? ""
-        let walletLabelString = walletLabelStyleView.textField.text ?? ""
+        let nameString = walletLabelStyleView.textField.text ?? ""
         let isAddToWhiteList = checkBox.isSelected
-        let address = AddressBookDto(currency: currencyString, address: addressString, name: nameString, label: walletLabelString, enabled: isAddToWhiteList, network: currentNetwotkMethod)
+        let address = AddressBookDto(currency: currencyString, address: addressString, name: nameString, label: "", enabled: isAddToWhiteList, network: currentNetwotkMethod)
         return address
     }
     func bindSacnVC()

@@ -39,7 +39,7 @@ enum FilterLabelType {
         case .networkMethod:
             return "NetWork Method".localized
         case .addNewAddressNetworkMethod:
-            return "NetWork Method".localized
+            return "Network".localized
         }
     }
     var titles:[String] {

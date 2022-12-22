@@ -324,7 +324,7 @@ class UCPasswordViewController: BaseViewController {
                         let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                         if status == "400"
                         {
-                            if reason == "CODE_MISMATCH"
+                            if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                             {
                                 Log.i("驗證碼錯誤 :\(reason)")
                                 if twoWayVC.securityViewMode == .onlyEmail

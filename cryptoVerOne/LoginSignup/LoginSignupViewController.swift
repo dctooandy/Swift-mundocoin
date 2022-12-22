@@ -444,7 +444,7 @@ extension LoginSignupViewController {
                     let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                     if status == "400"
                     {
-                        if reason == "CODE_MISMATCH"
+                        if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                         {
                             if dataDto.loginMode == .emailPage , let vc = loginPageVC.loginViewControllers.first
                             {
@@ -627,7 +627,7 @@ extension LoginSignupViewController {
                     let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
                     if status == "400"
                     {
-                        if reason == "CODE_MISMATCH"
+                        if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                         {
                             if verifyVC != nil
                             {
