@@ -348,6 +348,12 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
                 {
                     confirmationsView.isHidden = true
                 }
+                if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
+                {
+                    //1223 Eddie說 要隱藏
+                    feeView.isHidden = true
+                }
+
 //                if let feeView = dataListViewArray.filter({ $0.tag == 4 }).first
 //                {
 //                    feeView.isHidden = true

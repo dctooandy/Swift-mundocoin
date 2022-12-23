@@ -541,7 +541,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "parseTokenToMemberAccountDto(complete:)"
+            landmarkName = "fetchCurrencyInfo()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -573,7 +573,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "2476">
+                  offsetFromSymbolStart = "2896">
                </Location>
                <Location
                   uuid = "E985DE6E-A029-4EE9-BE6A-F2DB003F11F3 - 2be699016be74409"
@@ -588,7 +588,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "2636">
+                  offsetFromSymbolStart = "3056">
                </Location>
             </Locations>
          </BreakpointContent>
