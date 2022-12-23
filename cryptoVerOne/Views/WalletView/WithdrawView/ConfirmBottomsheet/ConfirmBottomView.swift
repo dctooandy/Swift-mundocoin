@@ -73,7 +73,7 @@ class ConfirmBottomView: UIView {
 //        introduceLabel.snp.updateConstraints { (make) in
 //            make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
 //        }
-        let feeD = MemberAccountDto.share?.fee ?? 1.0
+        let feeD = MemberAccountDto.share?.currentFee(withCurrency: confirmData.tether) ?? 1.0
         if let totalAmount = Double(confirmData.totalAmount)
         {
             let result = (totalAmount > feeD ?  totalAmount - feeD : 0.0)

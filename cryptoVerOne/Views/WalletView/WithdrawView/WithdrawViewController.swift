@@ -135,7 +135,7 @@ class WithdrawViewController: BaseViewController {
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
         rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
-        feeAmountLabel.text = "\(MemberAccountDto.share?.fee ?? 1.0)"
+        feeAmountLabel.text = "\(MemberAccountDto.share?.currentFee(withCurrency: currencyLabel.text ?? "USDT") ?? 1.0)"
         receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
         let isOn = KeychainManager.share.getWhiteListOnOff()
@@ -164,7 +164,7 @@ class WithdrawViewController: BaseViewController {
     }
     func setupFee()
     {
-        feeAmountLabel.text = "\(MemberAccountDto.share?.fee ?? 1.0)"
+        feeAmountLabel.text = "\(MemberAccountDto.share?.currentFee(withCurrency: currencyLabel.text ?? "USDT") ?? 1.0)"
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {

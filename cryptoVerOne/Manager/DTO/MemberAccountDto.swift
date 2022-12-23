@@ -33,12 +33,7 @@ class MemberAccountDto {
     var isAccountExpired:Bool = false
     // Currency Settings
     // 製作成dto 要裝起來變成array
-    var network: String = ""
-    var currency: String = ""
-    var fee: Double = 0.0
-    var depositLimit: Int = 0
-    var withdrawLimit: Int = 0
-    
+    var currencySettings:[InfoDto] = [InfoDto()]    
     
     init(isAccountLocked : Bool = false,
          registrationDate : Int = 0,
@@ -135,6 +130,17 @@ class MemberAccountDto {
         }else
         {
             return [phone]
+        }
+    }
+    func currentFee(withCurrency currency:String) -> Double
+    {
+        if self.currencySettings.count > 0
+        {
+            let currentSetting = self.currencySettings.filter({ $0.currency == currency}).first
+            return currentSetting?.fee ?? 0.0
+        }else
+        {
+            return 0.0
         }
     }
 }

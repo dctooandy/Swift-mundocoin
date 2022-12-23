@@ -83,13 +83,9 @@ class CheckTokenService{
     func fetchCurrencyInfo()
     {
         Beans.infoServer.fetchCurrencySettings().subscribeSuccess { dataDto in
-            if let dto = dataDto.first
+            if let _ = dataDto.first
             {
-                MemberAccountDto.share?.currency = dto.currency ?? ""
-                MemberAccountDto.share?.depositLimit = dto.depositLimit ?? 0
-                MemberAccountDto.share?.fee = dto.fee ?? 0.0
-                MemberAccountDto.share?.network = dto.network ?? ""
-                MemberAccountDto.share?.withdrawLimit = dto.withdrawLimit ?? 0
+                MemberAccountDto.share?.currencySettings = dataDto
             }
         }.disposed(by: dpg)
     }
