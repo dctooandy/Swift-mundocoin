@@ -84,6 +84,7 @@ class WithdrawNewViewController: BaseViewController {
         let isOn = KeychainManager.share.getWhiteListOnOff()
         withdrawToView.scanImageView.image = UIImage(named:isOn ? "icon-unscan" : "icon-scan")
         withdrawToView.withdrawInputViewFullHeight = false
+        setupFee()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -138,7 +139,7 @@ class WithdrawNewViewController: BaseViewController {
         amountInputStyleView.setData(data: defaultCurrency.first!)
         feeTitle.text = "Fee (USDT)".localized
         receiveTitle.text = "Receive amount (USDT)".localized
-        feeAmountLabel.text = "1.00"
+        feeAmountLabel.text = "\(MemberAccountDto.share?.fee ?? 1.0)"
         receiveAmountLabel.text = "0.00"
         noticeLabel.text = "Please ensure that the address is correct and on the same network.".localized
         let isOn = KeychainManager.share.getWhiteListOnOff()
@@ -165,6 +166,10 @@ class WithdrawNewViewController: BaseViewController {
         continueButton.setBackgroundImage(UIImage(color: UIColor(rgb: 0x656565)) , for: .normal)
 //        topAmountView.applyCornerAndShadow(radius: 16)
         topCryptoView.applyBorder(color: Themes.grayE0E5F2, borderWidth: 1)
+    }
+    func setupFee()
+    {
+        feeAmountLabel.text = "\(MemberAccountDto.share?.fee ?? 1.0)"
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {

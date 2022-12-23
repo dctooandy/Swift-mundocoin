@@ -308,5 +308,306 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3CD91711-01B6-4E23-8E08-56AD4A216338"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
+            landmarkName = "bindUI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3CD91711-01B6-4E23-8E08-56AD4A216338 - e5dcc0f4d799d882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;cryptoVerOne_dev.TXPayloadDto&gt;) -&gt; () in cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "748">
+               </Location>
+               <Location
+                  uuid = "3CD91711-01B6-4E23-8E08-56AD4A216338 - e5dcc0f4d799d882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;cryptoVerOne_dev.TXPayloadDto&gt;) -&gt; () in cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "1002">
+               </Location>
+               <Location
+                  uuid = "3CD91711-01B6-4E23-8E08-56AD4A216338 - e5dcc0f4d799d882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;cryptoVerOne_dev.TXPayloadDto&gt;) -&gt; () in cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "1014">
+               </Location>
+               <Location
+                  uuid = "3CD91711-01B6-4E23-8E08-56AD4A216338 - e5dcc0f4d799d882"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;cryptoVerOne_dev.TXPayloadDto&gt;) -&gt; () in cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "186"
+                  endingLineNumber = "186"
+                  offsetFromSymbolStart = "1888">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A2695DAF-4435-4C5F-BB36-D77B5241476D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "bindUI()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A2695DAF-4435-4C5F-BB36-D77B5241476D - 35d943d755e2b34b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "619">
+               </Location>
+               <Location
+                  uuid = "A2695DAF-4435-4C5F-BB36-D77B5241476D - 35d943d755e2b34b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "710">
+               </Location>
+               <Location
+                  uuid = "A2695DAF-4435-4C5F-BB36-D77B5241476D - e5dcc0f4d799d927"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 (Swift.Optional&lt;cryptoVerOne_dev.TXPayloadDto&gt;) -&gt; () in cryptoVerOne_dev.TDetailViewController.bindUI() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/TransactionDetails/TDetailViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "183"
+                  endingLineNumber = "183"
+                  offsetFromSymbolStart = "214">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "93F60C98-805C-4A66-9A57-6AB794FC0DAC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/WalletView/WithdrawView/WithdrawViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
+            landmarkName = "toCreateWithdrawal(verifyValueOne:verifyValueTwo:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1341EA77-FBC3-4C5C-9633-E061769D9C6B"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/BoardView/TableView/TransactionTableViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
+            landmarkName = "pushToDetailVC(contentDto:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1341EA77-FBC3-4C5C-9633-E061769D9C6B - 769c236879cdb428"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoVerOne_dev.TransactionTableViewController.pushToDetailVC(contentDto: cryptoVerOne_dev.ContentDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/TableView/TransactionTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "1408">
+               </Location>
+               <Location
+                  uuid = "1341EA77-FBC3-4C5C-9633-E061769D9C6B - 769c236879cdb428"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "cryptoVerOne_dev.TransactionTableViewController.pushToDetailVC(contentDto: cryptoVerOne_dev.ContentDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/TableView/TransactionTableViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "2762">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DF965B06-FF0A-44FB-9EBE-113258A0D104"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/BoardView/BoardViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
+            landmarkName = "bind()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DF965B06-FF0A-44FB-9EBE-113258A0D104 - 12cf3bbd51e6971c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (cryptoVerOne_dev.WalletTransactionDto) -&gt; () in cryptoVerOne_dev.BoardViewController.bind() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/BoardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "707">
+               </Location>
+               <Location
+                  uuid = "DF965B06-FF0A-44FB-9EBE-113258A0D104 - fca6094f4f94a2ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (cryptoVerOne_dev.ContentDto) -&gt; Swift.Bool in closure #1 (cryptoVerOne_dev.WalletTransactionDto) -&gt; () in cryptoVerOne_dev.BoardViewController.bind() -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/BoardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "215"
+                  endingLineNumber = "215"
+                  offsetFromSymbolStart = "28">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98E83FA6-A282-49C4-A6A2-7CEE5F42C765"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/BoardView/BoardViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "26"
+            endingLineNumber = "26"
+            landmarkName = "fetchWalletTransactions(currency:stats:type:beginDate:endDate:pageable:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "98E83FA6-A282-49C4-A6A2-7CEE5F42C765 - b07aae207f4cad34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Optional&lt;cryptoVerOne_dev.WalletTransactionDto&gt;) -&gt; () in cryptoVerOne_dev.BoardViewModel.fetchWalletTransactions(currency: Swift.String, stats: Swift.String, type: Swift.String, beginDate: Swift.Double, endDate: Swift.Double, pageable: cryptoVerOne_dev.PagePostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/BoardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "125">
+               </Location>
+               <Location
+                  uuid = "98E83FA6-A282-49C4-A6A2-7CEE5F42C765 - b07aae207f4cad34"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Swift.MainActor () -&gt; () in closure #1 (Swift.Optional&lt;cryptoVerOne_dev.WalletTransactionDto&gt;) -&gt; () in cryptoVerOne_dev.BoardViewModel.fetchWalletTransactions(currency: Swift.String, stats: Swift.String, type: Swift.String, beginDate: Swift.Double, endDate: Swift.Double, pageable: cryptoVerOne_dev.PagePostDto) -&gt; ()"
+                  moduleName = "cryptoVerOne_dev"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bbk/WorkSpace/001Company/ios/cryptoVerOne/Views/BoardView/BoardViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "159">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

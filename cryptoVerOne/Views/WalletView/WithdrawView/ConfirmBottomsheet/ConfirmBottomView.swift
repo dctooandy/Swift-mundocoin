@@ -73,10 +73,10 @@ class ConfirmBottomView: UIView {
 //        introduceLabel.snp.updateConstraints { (make) in
 //            make.top.equalTo(withdrawToInputView.tfMaskView.snp.bottom).offset(10)
 //        }
-
+        let feeD = MemberAccountDto.share?.fee ?? 1.0
         if let totalAmount = Double(confirmData.totalAmount)
         {
-            let result = (totalAmount > 1.0 ?  totalAmount - 1.0 : 0.0)
+            let result = (totalAmount > feeD ?  totalAmount - feeD : 0.0)
             // 小數點兩位的寫法
 //                receiveAmountLabel.text = String(format: "%.2f", result)
             amountLabel.text = String(format: "%.8f", result).numberFormatter(.decimal, 8)
