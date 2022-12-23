@@ -49,6 +49,7 @@ class UCPasswordViewController: BaseViewController {
         super.viewWillAppear(animated)
         clearTextField()
         self.navigationController?.navigationBar.titleTextAttributes = [.font: Fonts.PlusJakartaSansBold(20),.foregroundColor: UIColor(rgb: 0x1B2559)]
+        submitButton.isEnabled = false
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

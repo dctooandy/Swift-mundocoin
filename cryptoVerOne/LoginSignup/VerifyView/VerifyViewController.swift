@@ -540,6 +540,7 @@ class VerifyViewController: BaseViewController {
                 if let email = dataDto?.email as? String , let phone = dataDto?.phone?.stringValue
                 {
                     MemberAccountDto.share?.email = email
+                    MemberAccountDto.share?.phone = phone
                     KeychainManager.share.saveAccPwd(acc: email,
                                                      pwd: lastDto.password,
                                                      phoneCode: lastDto.phoneCode,

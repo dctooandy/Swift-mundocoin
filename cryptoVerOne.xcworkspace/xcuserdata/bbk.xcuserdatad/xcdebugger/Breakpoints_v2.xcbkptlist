@@ -523,8 +523,8 @@
             filePath = "cryptoVerOne/Views/UserMenu/SecurityView/UCPasswordViewController/UCPasswordViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "327"
-            endingLineNumber = "327"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
             landmarkName = "customerUpdatePassword(Withcode:withMode:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -533,7 +533,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "A51887FF-9E5F-40ED-A9D0-4EEE6B7310E4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "cryptoVerOne/Util/CheckTokenExpired/CheckTokenService.swift"
@@ -541,7 +541,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "86"
             endingLineNumber = "86"
-            landmarkName = "fetchCurrencyInfo()"
+            landmarkName = "parseTokenToMemberAccountDto(complete:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -573,7 +573,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "2896">
+                  offsetFromSymbolStart = "2476">
                </Location>
                <Location
                   uuid = "E985DE6E-A029-4EE9-BE6A-F2DB003F11F3 - 2be699016be74409"
@@ -588,7 +588,7 @@
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "77"
                   endingLineNumber = "77"
-                  offsetFromSymbolStart = "3056">
+                  offsetFromSymbolStart = "2636">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -606,6 +606,22 @@
             startingLineNumber = "147"
             endingLineNumber = "147"
             landmarkName = "pushToDetailVC(contentDto:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "DAE8A600-D4A3-4B68-883B-211F3219288C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "cryptoVerOne/Views/UserMenu/SecurityView/UCPasswordViewController/UCPasswordViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "260"
+            endingLineNumber = "260"
+            landmarkName = "bindTextfield()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
