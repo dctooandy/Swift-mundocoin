@@ -336,7 +336,13 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             withdrawToInputView.setVisibleString(string: withdrawToAddress)
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             let flagAmount = (dto.type == "DEPOSIT" ? "+" : "-")
-            topAmountLabel.text = "\(flagAmount)\(dto.amount.numberFormatter(.decimal, 8))"
+            let withdrawAmountString = dto.amount.numberFormatter(.decimal, dto.decimal)
+            let depositAmountString = dto.actualAmount.numberFormatter(.decimal, dto.decimal)
+            // 原本是要分deposit 用actualAmount,但此處api返回0
+//            let amountString = (dto.type == "DEPOSIT" ? depositAmountString : withdrawAmountString)
+            let amountString = (dto.type == "DEPOSIT" ? withdrawAmountString : withdrawAmountString)
+            topAmountLabel.text = "\(flagAmount)\(amountString)"
+//            topAmountLabel.text = "\(flagAmount)\(dto.amount.numberFormatter(.decimal, 8))"
             tetherLabel.text = dto.tether
             networkLabel.text = dto.network
             confirmationsLabel.text = dto.confirmations

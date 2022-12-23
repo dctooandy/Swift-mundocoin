@@ -143,7 +143,8 @@ class TransactionTableViewController: BaseViewController {
         
         if let amountValue = (contentDto.type != "DEPOSIT" ?  contentDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8) :contentDto.walletDepositAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8))
         {
-            let feeString = "\(MemberAccountDto.share?.currentFee(withCurrency: contentDto.currency) ?? 1.0)"
+//            let feeString = "\(MemberAccountDto.share?.currentFee(withCurrency: contentDto.currency) ?? 1.0)"
+            let feeString = "\(contentDto.serviceFee ?? 0.0)"
             let conBlocks = contentDto.confirmBlocks ?? 0
             let detailData = DetailDto(detailType: contentDto.detailType,
                                        amount:amountValue,
@@ -159,7 +160,10 @@ class TransactionTableViewController: BaseViewController {
                                        orderId: contentDto.orderId,
                                        confirmBlocks: contentDto.confirmBlocks ?? 0,
                                        showMode: showModeAtTableView,
-                                       type: contentDto.type)
+                                       type: contentDto.type,
+                                       decimal: contentDto.decimal ?? 0,
+                                       feeDecimal: contentDto.feeDecimal ?? 0,
+                                       actualAmount: "\(contentDto.actualAmount ?? 0.0)")
             let detailVC = TDetailViewController.instance(titleString: contentDto.showTitleString,
                                                           mode: .topViewHidden ,
                                                           buttonMode: .buttonHidden,

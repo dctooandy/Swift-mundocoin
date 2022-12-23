@@ -577,7 +577,10 @@ class WithdrawViewController: BaseViewController {
                                        orderId: transDto.orderId,
                                        confirmBlocks: transDto.confirmBlocks ?? 0,
                                        showMode: .withdrawals,
-                                       type: transDto.type)
+                                       type: transDto.type,
+                                       decimal: transDto.decimal ?? 0,
+                                       feeDecimal: transDto.feeDecimal ?? 0,
+                                       actualAmount: "\(transDto.actualAmount ?? 0.0)")
            return detailData
         }else
         {
@@ -595,7 +598,10 @@ class WithdrawViewController: BaseViewController {
                                        orderId: "",
                                        confirmBlocks: 0,
                                        showMode: .withdrawals,
-                                       type: "WITHDRAW")
+                                       type: "WITHDRAW",
+                                       decimal:  0,
+                                       feeDecimal:  0,
+                                       actualAmount: "0.0")
             return detailData
         }
     }

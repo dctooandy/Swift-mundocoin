@@ -22,7 +22,11 @@ class DetailDto {
     var confirmBlocks : Int
     var showMode:TransactionShowMode?
     var type: String
-    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" ,fromAddress:String = "", txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0 , showMode:TransactionShowMode = .deposits , type:String = "") {
+    var decimal:Int
+    var feeDecimal:Int
+    var actualAmount:String
+    
+    init(detailType : DetailType = .done ,amount:String = "", tether:String = "", network:String = "",confirmations:String = "",fee:String = "", date:String = "", address:String = "" ,fromAddress:String = "", txid:String = "" ,id:String = "" , orderId:String = "" , confirmBlocks : Int = 0 , showMode:TransactionShowMode = .deposits , type:String = "" ,decimal:Int = 0 , feeDecimal :Int = 0 , actualAmount:String = "") {
         self.detailType = detailType
         self.amount = amount
         self.tether = tether
@@ -38,5 +42,8 @@ class DetailDto {
         self.confirmBlocks = confirmBlocks
         self.showMode = showMode
         self.type = type
+        self.decimal = decimal
+        self.feeDecimal = feeDecimal
+        self.actualAmount = actualAmount
     }
 }

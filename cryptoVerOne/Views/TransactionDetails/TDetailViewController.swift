@@ -183,8 +183,10 @@ class TDetailViewController: BaseViewController {
             if let data = dto,
                let statsValue = dto?.detailType,
                let socketID = dto?.id,
-               let feeString = dto?.fees != nil ? ((dto?.fees)! > 0 ? "\(String(describing: dto?.fees))" : "1") : "1"
+//               let feeString = dto?.fees != nil ? ((dto?.fees)! > 0 ? "\(String(describing: dto?.fees))" : "1") : "1"
+               let feeDouble = dto?.serviceFee
             {
+                let feeString = "\(feeDouble)"
                 let detailDto = DetailDto(detailType: data.detailType,
                                           amount: data.txAmountIntWithDecimal?.stringValue ?? "",
                                           tether: data.currency ?? "",
@@ -199,7 +201,10 @@ class TDetailViewController: BaseViewController {
                                           id: data.id ?? "",
                                           orderId: data.orderId ?? "",
                                           confirmBlocks: data.confirmBlocks ?? 0,
-                                          type: dto?.type ?? "")
+                                          type: dto?.type ?? "",
+                                          decimal: dto?.decimal ?? 0,
+                                          feeDecimal: dto?.feeDecimal ?? 0,
+                                          actualAmount: "\(dto?.actualAmount ?? 0.0)")
                 if detailDataDto?.id == socketID, (detailDataDto?.detailType != statsValue || detailDataDto?.confirmBlocks != data.confirmBlocks)
                 {
                     detailDto.showMode = dataListView.detailDataDto?.showMode
