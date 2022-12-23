@@ -537,18 +537,10 @@ class VerifyViewController: BaseViewController {
             Log.i("已將帳號綁定")
             if let lastDto = KeychainManager.share.getLastAccountDto()
             {
-                if let email = dataDto?.email as? String
+                if let email = dataDto?.email as? String , let phone = dataDto?.phone?.stringValue
                 {
                     MemberAccountDto.share?.email = email
                     KeychainManager.share.saveAccPwd(acc: email,
-                                                     pwd: lastDto.password,
-                                                     phoneCode: lastDto.phoneCode,
-                                                     phone: MemberAccountDto.share?.phone ?? "")
-                }
-                if let phone = dataDto?.phone?.stringValue
-                {
-                    MemberAccountDto.share?.phone = phone
-                    KeychainManager.share.saveAccPwd(acc: lastDto.account,
                                                      pwd: lastDto.password,
                                                      phoneCode: lastDto.phoneCode,
                                                      phone: phone)
