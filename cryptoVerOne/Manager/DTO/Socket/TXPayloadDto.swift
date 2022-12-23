@@ -56,6 +56,9 @@ struct TXPayloadDto : Codable {
     var feeDecimal : Int? = 0
 //    var tindex : String? = ""
 //    var voutIndex : String? = ""
+    // 實裝 Fee
+    var actualAmount: Double? = 0.0
+    var serviceFee: Double? = 0.0
     
     var txAmountIntWithDecimal : JSONValue?
     {
@@ -88,6 +91,10 @@ struct TXPayloadDto : Codable {
             return JSONValue.double(0.00)
         }
     }
+//    var txFeeIntWithDecimal : JSONValue?
+//    {
+//        
+//    }
     var detailType:DetailType {
         if self.state == "PENDING" || self.state == "Pending" || self.processingState == "PENDING"
         {

@@ -142,7 +142,7 @@ class TransactionTableViewController: BaseViewController {
     {
         
         if let amountValue = (contentDto.type != "DEPOSIT" ?  contentDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8) :contentDto.walletDepositAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal , 8)),
-           let feeString = contentDto.fees != nil ? (contentDto.fees! > 0 ? "\(contentDto.fees!)": "1")  : "\(MemberAccountDto.share?.fee ?? 1.0)"
+           let feeString = contentDto.fees != nil ? (contentDto.fees! > 0 ? "\(contentDto.fees!)": "\(MemberAccountDto.share?.fee ?? 1.0)")  : "\(MemberAccountDto.share?.fee ?? 1.0)"
         {
             let conBlocks = contentDto.confirmBlocks ?? 0
             let detailData = DetailDto(detailType: contentDto.detailType,

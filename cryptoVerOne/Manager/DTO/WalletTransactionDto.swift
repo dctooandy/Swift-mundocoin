@@ -298,6 +298,9 @@ struct ContentDto : Codable
     var tindex : String? = ""
     var voutIndex : String? = ""
     var customer : TransCustomerDto? = TransCustomerDto()
+    // 實裝 Fee
+    var actualAmount: Double? = 0.0
+    var serviceFee: Double? = 0.0
 }
 struct ContentSocketDto : Codable
 {
@@ -328,4 +331,7 @@ struct ContentSocketDto : Codable
     var feeDecimal : Int? = 0
     var tindex : String? = ""
     var voutIndex : String? = ""
+    // 實裝 Fee
+    var actualAmount: Double? = 0.0
+    var serviceFee: Double? = 0.0
 }

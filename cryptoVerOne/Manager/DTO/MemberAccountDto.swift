@@ -32,6 +32,7 @@ class MemberAccountDto {
     var sub:String = ""
     var isAccountExpired:Bool = false
     // Currency Settings
+    // 製作成dto 要裝起來變成array
     var network: String = ""
     var currency: String = ""
     var fee: Double = 0.0
