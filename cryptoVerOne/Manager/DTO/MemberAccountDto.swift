@@ -31,6 +31,13 @@ class MemberAccountDto {
     var isPasswordExpired:Bool = false
     var sub:String = ""
     var isAccountExpired:Bool = false
+    // Currency Settings
+    var network: String = ""
+    var currency: String = ""
+    var fee: Double = 0.0
+    var depositLimit: Int = 0
+    var withdrawLimit: Int = 0
+    
     
     init(isAccountLocked : Bool = false,
          registrationDate : Int = 0,

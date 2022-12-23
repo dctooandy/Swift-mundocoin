@@ -38,38 +38,22 @@ extension DataRequest
                     do {
                         // 驗證是否 ret 200
                         let domainString = "\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)"
-                        if let responseString = String(data: data, encoding: .utf8),
-                           let dict = self.convertToDictionary(urlString:requestURLString , text: responseString)
+                        if let responseString = String(data: data, encoding: .utf8)
                         {
-                            // 是 Dict
-                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (dict as AnyObject))
-                            if self.isNeedSaveToken(url:response.request?.url) {
-                                if  let innerData = dict["token"] as? String
-                                {
-                                    // Login 回來的
-                                    Log.v("Login token : \(innerData)")
-                                    KeychainManager.share.setToken(innerData)
-                                }
-                            }
-                            let results = try decoder.decode(T.self, from:data)
-                            onData?(results)
-                        }else if let responseString = String(data: data, encoding: .utf8),
-                                 let array = self.convertToArray(urlString:requestURLString , text: responseString)
-                        {
-                            // 是 Array
-                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (array as AnyObject))
-                            let results = try decoder.decode(T.self, from:data)
-                            onData?(results)
-                        }else if let responseString = String(data: data, encoding: .utf8)
-                        {
-                            // 是 空值或者String
-                            if statusCode == 202
+                            let dict = self.convertToDictionary(urlString:requestURLString , text: responseString , apiString: "\(domainString)" , statusCode: "\(statusCode)", dtoType: "\(type)")
+                            let array = self.convertToArray(urlString:requestURLString , text: responseString, apiString: "\(domainString)" , statusCode: "\(statusCode)", dtoType: "\(type)")
+                            if dict != nil || array != nil
                             {
+                                let results = try decoder.decode(T.self, from:data)
+                                onData?(results)
+                            }else if statusCode == 202
+                            {
+                                // 是 空值或者String
                                 onData?("" as! T)
                             }else
                             {
-                                self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue:(responseString as AnyObject))
-                            let results = try decoder.decode(T.self, from:data.jsonData())
+                                self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", dtoType: ":\(type)", dataValue:(responseString as AnyObject))
+                                let results = try decoder.decode(T.self, from:data.jsonData())
                                 onData?(results)
                             }
                         }else
@@ -77,7 +61,7 @@ extension DataRequest
                             // 無法編成資料
                             errorMsg = "Data could not be compiled"
                             apiError = ApiServiceError.noData
-                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", status: ":\(type)", dataValue: (errorMsg as AnyObject))
+                            self.logByAPI(apiString: "\(domainString)" , statusCode: "\(statusCode)", dtoType: ":\(type)", dataValue: (errorMsg as AnyObject))
                             onError?(apiError)
                         }
                     }
@@ -134,9 +118,9 @@ extension DataRequest
             }
         }
     }
-    func logByAPI(apiString:String,statusCode:String,status:String,dataValue:AnyObject)
+    func logByAPI(apiString:String,statusCode:String,dtoType:String,dataValue:AnyObject)
     {
-        Log.v("正常Response API:\n\(apiString)\n編號:\(statusCode) \nStatus:\(status)\n回傳值             :\n\(dataValue)")
+        Log.v("正常Response API:\n\(apiString)\n編號:\(statusCode) \nDtoType:\(dtoType)\n回傳值             :\n\(dataValue)")
     }
     func decodeForData(type:String = "",requestURLString : String ,data : Data , decoder :JSONDecoder , statusCode:Int,keyContext:(String,String) = ("","") ,onError:((ApiServiceError) -> Void)? = nil)
     {
@@ -184,11 +168,19 @@ extension DataRequest
         print("'\(value)' of type '\(t)'")
         return t
     }
-    func convertToDictionary(urlString : String = "" , text: String) -> [String: Any]?
+    func convertToDictionary(urlString : String = "" , text: String = "",apiString:String = "",statusCode:String = "",dtoType:String = "") -> [String: Any]?
     {
         if let data = text.data(using: .utf8) {
             do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                if let dict = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+                {
+                    // 是 Dict
+                    self.logByAPI(apiString: "\(apiString)" , statusCode: "\(statusCode)", dtoType: "\(dtoType)", dataValue: (dict as AnyObject))
+                    return dict
+                }else
+                {
+                    return nil
+                }
             } catch {
                 //                Log.e("API: \(urlString)\n=====================\n無法解析的字串: \(text.isEmpty == true ? "無" : text)\n=====================\n字串數 : \(text.count)\n=====================\nError : \(error.localizedDescription)")
                 //                if urlString.isEmpty != true
@@ -200,11 +192,19 @@ extension DataRequest
         }
         return nil
     }
-    func convertToArray(urlString : String = "" , text: String) -> [AnyObject]?
+    func convertToArray(urlString : String = "" , text: String,apiString:String = "",statusCode:String = "",dtoType:String = "") -> [AnyObject]?
     {
         if let data = text.data(using: .utf8) {
             do {
-                return try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
+                if let array = try JSONSerialization.jsonObject(with: data, options: []) as? [AnyObject]
+                {
+                    // 是 Array
+                    self.logByAPI(apiString: "\(apiString)" , statusCode: "\(statusCode)", dtoType: "\(dtoType)", dataValue: (array as AnyObject))
+                    return array
+                }else
+                {
+                    return nil
+                }
             } catch {
                 //                Log.e("API: \(urlString)\n=====================\n無法解析的字串: \(text.isEmpty == true ? "無" : text)\n=====================\n字串數 : \(text.count)\n=====================\nError : \(error.localizedDescription)")
                 //                if urlString.isEmpty != true

@@ -12,7 +12,7 @@ import RxSwift
 import Alamofire
 
 class InfoService {
-    func fetchCurrencySettings() -> Single<[InfoDto]?>
+    func fetchCurrencySettings() -> Single<[InfoDto]>
     {
         let parameters: Parameters = [String: Any]()
         return Beans.requestServer.singleRequestGet(
