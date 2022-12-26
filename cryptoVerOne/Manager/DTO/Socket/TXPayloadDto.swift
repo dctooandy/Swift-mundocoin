@@ -38,6 +38,7 @@ struct TXPayloadDto : Codable {
     var txId : String? = ""
     var blockHeight : Int? = 0
     var amount : JSONValue? = JSONValue.int(0)
+    var rawAmount : JSONValue? = JSONValue.int(0)
     var fees : Int? = 0
     var broadcastTimestamp : TimeInterval? = 0.0
     var chainTimestamp : TimeInterval? = 0.0

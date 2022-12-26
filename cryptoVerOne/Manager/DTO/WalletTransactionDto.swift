@@ -244,11 +244,13 @@ struct ContentDto : Codable
         }
         if let amountDoubleValue = amount?.doubleValue
         {
-            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+//            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+            let doubleValue = amountDoubleValue
             return JSONValue.double(doubleValue + difValue)
         }else if let intValue = amount?.intValue
         {
-            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+//            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+            let doubleValue = Double(intValue)
             return JSONValue.double(doubleValue + difValue)
         }else 
         {
@@ -259,11 +261,13 @@ struct ContentDto : Codable
     {
         if let amountDoubleValue = amount?.doubleValue
         {
-            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+//            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+            let doubleValue = amountDoubleValue
             return JSONValue.double(doubleValue)
         }else if let intValue = amount?.intValue
         {
-            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+//            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+            let doubleValue = Double(intValue)
             return JSONValue.double(doubleValue)
         }else
         {
@@ -271,6 +275,7 @@ struct ContentDto : Codable
         }
     }
     var amount : JSONValue? = JSONValue.int(0)
+    var rawAmount : JSONValue? = JSONValue.int(0)
     var id : String = ""
     var createdDate : String = ""
     var updatedDate : String = ""
@@ -305,6 +310,7 @@ struct ContentDto : Codable
 struct ContentSocketDto : Codable
 {
     var amount : JSONValue? = JSONValue.int(0)
+    var rawAmount : JSONValue? = JSONValue.int(0)
     var id : String = ""
     var createdDate : TimeInterval = 0
     var updatedDate : TimeInterval = 0
