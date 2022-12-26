@@ -186,9 +186,11 @@ class AuditDetailViewController: BaseViewController {
 //            if let transAmountString = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             if let withdrawAmountString = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             {
-                let feesValue = (transDto.fees ?? 1) < 1 ? 1 : (transDto.fees ?? 1)
+                let feesValue = "\(transDto.serviceFee ?? 0.0)"
+                let actualAmountValue = transDto.actualAmount ?? 0.0
+//                let feesValue = (transDto.fees ?? 1) < 1 ? 1 : (transDto.fees ?? 1)
+//                let actualAmountValue = (Double(withdrawAmountString.filterDecimal()) ?? 0.00) - Double((feesValue))
                 feeLabel.text = "\(feesValue)".numberFormatter(.decimal,2)
-                let actualAmountValue = (Double(withdrawAmountString.filterDecimal()) ?? 0.00) - Double((feesValue))
                 withdrawAmountLabel.text = "\(withdrawAmountString)".numberFormatter(.decimal,8)
                 actualAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
             }
