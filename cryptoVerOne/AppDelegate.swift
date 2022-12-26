@@ -13,6 +13,7 @@ import JWTDecode
 import Firebase
 import BackgroundTasks
 
+public typealias CheckScetionCompletionBlock = (sectionExpired) -> Void
 public typealias CheckCompletionBlock = (Bool) -> Void
 let backgroundAppRefreshTaskSchedulerIdentifier = "com.example.fooBackgroundAppRefreshIdentifier"
 //@main
@@ -102,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func initSingleton(){
         // 閒置時間 分
-        _ = KeychainManager.share.setSectionMin("10")
+        _ = KeychainManager.share.setSectionMin("1")
         // 閒置時間 天
         _ = KeychainManager.share.setSectionDay("7")
         // 1215 可同時輸入兩種驗證碼的模式 暫停
@@ -177,7 +178,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //            
 //        }
 //    }
-    func checkTime(complete:CheckCompletionBlock? = nil)
+    func checkTime(complete:CheckScetionCompletionBlock? = nil)
     {
         // 打API 檢查是否過期
 #if Approval_PRO || Approval_DEV || Approval_STAGE
@@ -190,13 +191,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     {
         Log.v("刷新AuditToken")
     }
-    func checkAuditToken(complete:CheckCompletionBlock? = nil)
+    func checkAuditToken(complete:CheckScetionCompletionBlock? = nil)
     {
         // 確定有否過期,再導去登入頁面
         CheckTokenService.share
             .checkTokenExpired(complete: complete)
     }
-    func checkMundocoinAPIToken(complete:CheckCompletionBlock? = nil)
+    func checkMundocoinAPIToken(complete:CheckScetionCompletionBlock? = nil)
     {
         // 確定有否過期,再導去登入頁面
         CheckTokenService.share

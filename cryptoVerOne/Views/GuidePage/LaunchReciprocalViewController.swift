@@ -14,7 +14,7 @@ class LaunchReciprocalViewController: BaseViewController {
     // MARK:業務設定
     private var count = 1
     private var firstStart = false
-    private var waitForGotoWallet = false
+    private var waitForGotoWallet:sectionExpired = .forceLogout
     // MARK: -
     // MARK:UI 設定
     
@@ -58,16 +58,20 @@ class LaunchReciprocalViewController: BaseViewController {
                         strongSelf.checkForDirectAndWait(immediately: true)
                     }else
                     {
-                        if strongSelf.waitForGotoWallet == true
+                        if strongSelf.waitForGotoWallet == .inSection
                         {
                             #if Approval_PRO || Approval_DEV || Approval_STAGE
                             strongSelf.goToAuditMainVC()
                             #else
                             strongSelf.goToWallet()
                             #endif
-                        }else
+                        }else if strongSelf.waitForGotoWallet == .forceLogout
                         {
                             strongSelf.goToLogin()
+                        }else
+                        {
+                            // 淺登出
+                            Log.v("淺登出")
                         }
                     }
                 }
@@ -93,16 +97,20 @@ class LaunchReciprocalViewController: BaseViewController {
                             waitForGotoWallet = flag
                             if immediately == true
                             {
-                                if waitForGotoWallet == true
+                                if waitForGotoWallet == .inSection
                                 {
                                     #if Approval_PRO || Approval_DEV || Approval_STAGE
                                     goToAuditMainVC()
                                     #else
                                     goToWallet()
                                     #endif
-                                }else
+                                }else if waitForGotoWallet == .forceLogout
                                 {
                                     goToLogin()
+                                }else
+                                {
+                                    // 淺登出
+                                    Log.v("淺登出")
                                 }
                             }
                         })

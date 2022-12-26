@@ -12,6 +12,11 @@ import RxCocoa
 import DropDown
 import JWTDecode
 
+public enum sectionExpired {
+    case inSection
+    case lightLogout
+    case forceLogout
+}
 class CheckTokenService{
     // MARK:業務設定
     var timer: Timer?
@@ -27,7 +32,7 @@ class CheckTokenService{
     // MARK: -
     // MARK:業務方法
     // 檢查 token 是否過期
-    func checkTokenExpired(complete:CheckCompletionBlock? = nil)
+    func checkTokenExpired(complete:CheckScetionCompletionBlock? = nil)
     {
         let token = KeychainManager.share.getToken()
         // 準備好 id 資料
@@ -38,21 +43,81 @@ class CheckTokenService{
             Log.v("AppDelegate - Failed to decode JWT: \(error)")
             if let successBlock = complete
             {
-                successBlock(false)
+                successBlock(.forceLogout)
             }else
             {
                 //過期去登入頁面
                 goToLoginVC()
             }
         }
-        let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0")
-        let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0")
-        if jwtValue != nil , let isExpired = jwtValue?.expired,
-           let isExpiredInMins = jwtValue?.expiresAt?.isInMins(min: sectionMin!),
-           let isExpiredInDays = jwtValue?.expiresAt?.isInDays(day: sectionDay!)
+#if Approval_PRO || Approval_DEV || Approval_STAGE
+        if isExpired == false
         {
-            if isExpired == false
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                // 沒過期,打refresh API, 時間加30分鐘
+                //            SocketIOManager.sharedInstance.establishConnection()
+                SocketIOManager.sharedInstance.reConnection()
+                Log.v("Token 沒過期")
+                if let successBlock = complete
+                {
+                    successBlock(.inSection)
+                }else
+                {
+                    freshToken()
+                }
+            }
+        }else
+        {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                Log.v("Token 過期")
+                if let successBlock = complete
+                {
+                    successBlock(.forceLogout)
+                }else
+                {
+                    //過期去登入頁面
+                    goToLoginVC()
+                }
+            }
+        }
+#else
+        let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0") ?? 0
+        let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0") ?? 0
+        if jwtValue != nil , let isExpired = jwtValue?.expired,
+           let isExpiredInMins = jwtValue?.expiresAt?.isInMins(min: sectionMin),
+           let isExpiredInDays = jwtValue?.expiresAt?.isInDays(day: sectionDay)
+        {
+            if isExpiredInMins == false , isExpiredInDays == true
             {
+                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內")
+                if let accountString = KeychainManager.share.getLastAccount()
+                {
+                    Log.v("上次帳號 : \(accountString)")
+                    if let successBlock = complete
+                    {
+                        successBlock(.lightLogout)
+                    }else
+                    {
+                        // 去淺登入
+                    }
+                }
+            }else if isExpiredInDays == false
+            {
+                Log.v("在 \(sectionDay) 天後")
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    Log.v("Token 過期")
+                    if let successBlock = complete
+                    {
+                        successBlock(.forceLogout)
+                    }else
+                    {
+                        //過期去登入頁面
+                        goToLoginVC()
+                    }
+                }
+            }else
+            {
+                Log.v("在 \(sectionMin) 分內")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     // 沒過期,打refresh API, 時間加30分鐘
                     //            SocketIOManager.sharedInstance.establishConnection()
@@ -60,27 +125,15 @@ class CheckTokenService{
                     Log.v("Token 沒過期")
                     if let successBlock = complete
                     {
-                        successBlock(true)
+                        successBlock(.inSection)
                     }else
                     {
                         freshToken()
                     }
                 }
-            }else
-            {
-                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                    Log.v("Token 過期")
-                    if let successBlock = complete
-                    {
-                        successBlock(false)
-                    }else
-                    {
-                        //過期去登入頁面
-                        goToLoginVC()
-                    }
-                }
             }
         }
+#endif
     }
     // 下載資料
     func fetchCurrencyInfo()
