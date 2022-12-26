@@ -101,6 +101,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
+        // 閒置時間 分
+        _ = KeychainManager.share.setSectionMin("10")
+        // 閒置時間 天
+        _ = KeychainManager.share.setSectionDay("7")
         // 1215 可同時輸入兩種驗證碼的模式 暫停
         _ = KeychainManager.share.setMundoCoinTwoWaySecurityEnable(false)
         // 1206 新版本 sio反饋的 功能暫停

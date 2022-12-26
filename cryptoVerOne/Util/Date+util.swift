@@ -71,6 +71,19 @@ extension Date {
         let d = Calendar.current.date(byAdding: .day, value: day, to: self)!
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: d)!
     }
+    func isInMins(min:Int) -> Bool {
+        let soon = Calendar.current.date(byAdding: .minute, value: (-30 + min), to: self)!
+        let now = Date()
+        Log.v("是否在 \(min) 分時限內 : \(now < soon ? "是":"否")")
+        return now < soon
+    }
+    func isInDays(day: Int) -> Bool {
+        let last = Calendar.current.date(byAdding: .minute, value: -30, to: self)!
+        let d = Calendar.current.date(byAdding: .day, value: day, to: last)!
+        let now = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
+        Log.v("是否在 \(day) 天時限內 : \(now < d ? "是":"否")")
+        return now < d
+    }
     func addEndOfDay() -> Date {
         let d = Calendar.current.date(byAdding: .day, value: 0, to: self)!
         return Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: d)!

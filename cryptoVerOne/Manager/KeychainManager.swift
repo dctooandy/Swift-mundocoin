@@ -34,6 +34,10 @@ class KeychainManager {
         case registrationMode = "registration_Mode"
         case whiteListModeEnable = "whiteListMode_Enable"
         case faceIDModeStatus = "faceID_Mode_Status"
+        // 閒置時間 分
+        case sectionMinSetting = "section_Min_Setting"
+        // 閒置時間 天
+        case sectionDaySetting = "section_Day_Setting"
     }
     
     static let share = KeychainManager()
@@ -363,7 +367,6 @@ class KeychainManager {
 #endif
     }
     
-
     // 存取白名單狀態
     func saveWhiteListOnOff(_ isOn :Bool ) {
         _ = setString(isOn == true ? "true":"false", at: .whiteListOnoff)
@@ -571,5 +574,21 @@ class KeychainManager {
             print(error)
             return CountriesDto().countries
         }
+    }
+    func setSectionMin(_ value: String) -> Bool {
+        let success = self.setString(value.lowercased(), at: .sectionMinSetting)
+        return success
+    }
+    func getSectionMin() -> String? {
+        guard let accInKeychain = self.getString(from: .sectionMinSetting) else { return "" }
+        return accInKeychain
+    }
+    func setSectionDay(_ value: String) -> Bool {
+        let success = self.setString(value.lowercased(), at: .sectionDaySetting)
+        return success
+    }
+    func getSectionDay() -> String? {
+        guard let accInKeychain = self.getString(from: .sectionDaySetting) else { return "" }
+        return accInKeychain
     }
 }

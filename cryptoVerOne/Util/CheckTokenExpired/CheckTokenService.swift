@@ -45,8 +45,11 @@ class CheckTokenService{
                 goToLoginVC()
             }
         }
+        let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0")
+        let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0")
         if jwtValue != nil , let isExpired = jwtValue?.expired,
-            let isExpiredDate = jwtValue?.expiresAt
+           let isExpiredInMins = jwtValue?.expiresAt?.isInMins(min: sectionMin!),
+           let isExpiredInDays = jwtValue?.expiresAt?.isInDays(day: sectionDay!)
         {
             if isExpired == false
             {
