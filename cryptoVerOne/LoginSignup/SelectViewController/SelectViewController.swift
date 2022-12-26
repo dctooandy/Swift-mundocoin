@@ -114,7 +114,7 @@ class SelectViewController: BaseViewController , UITableViewDelegate, UITableVie
     }
     func createCryptoArray(withData cryptosDto: [SelectCryptoDetailDto])
     {
-        Log.i("目前沒有做特殊處理")
+        Log.v("目前沒有做特殊處理")
         sortedCryptosDataArray = cryptosDto
     }
     func createArray(withData countriesData: [CountryDetail])

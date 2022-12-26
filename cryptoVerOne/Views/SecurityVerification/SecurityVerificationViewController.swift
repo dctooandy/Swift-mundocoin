@@ -168,22 +168,22 @@ class SecurityVerificationViewController: BaseViewController {
     {
         // 只有Email時的驗證碼發送接收方法
         self.onlyEmailVerifyViewController.rxEmailSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
+            Log.v("發送驗證傳送請求")
             verifyResentPressed(byEmail: true , byVC: true)
         }.disposed(by: dpg)
         // 只有Mobile時的驗證碼發送接收方法
         self.onlyMobileVerifyViewController.rxMobileSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
+            Log.v("發送驗證傳送請求")
             verifyResentPressed(byEmail: false , byVC: true)
         }.disposed(by: dpg)
         
         self.onlyEmailVerifyViewController.rxSecondSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送Second submit請求 ,onlyEmail:\(stringData)")
+            Log.v("發送Second submit請求 ,onlyEmail:\(stringData)")
             onSelectedModeSuccessClick.onNext((stringData,"onlyEmail"))
         }.disposed(by: dpg)
         
         self.onlyMobileVerifyViewController.rxSecondSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送Second submit請求 ,onlyMobile:\(stringData)")
+            Log.v("發送Second submit請求 ,onlyMobile:\(stringData)")
             onSelectedModeSuccessClick.onNext((stringData,"onlyMobile"))
         }.disposed(by: dpg)
     }
@@ -191,32 +191,32 @@ class SecurityVerificationViewController: BaseViewController {
     {
         // 可選頁面時的驗證碼接收方法
         self.twoWayVerifyView.rxEmailSecondSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
+            Log.v("發送驗證傳送請求")
             verifyResentPressed(byEmail: true)
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxMobileSecondSendVerifyAction().subscribeSuccess { [self](_) in
-            Log.i("發送驗證傳送請求")
+            Log.v("發送驗證傳送請求")
             verifyResentPressed(byEmail: false)
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitBothAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送submit請求 ,Email:\(stringData.0) ,Mobile:\(stringData.1)")
+            Log.v("發送submit請求 ,Email:\(stringData.0) ,Mobile:\(stringData.1)")
             // 暫時取消推回
 //            self.navigationController?.popViewController(animated: false)
             onVerifySuccessClick.onNext((stringData.0,stringData.1))
             twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送View submit請求 ,onlyEmail:\(stringData)")
+            Log.v("發送View submit請求 ,onlyEmail:\(stringData)")
             onVerifySuccessClick.onNext((stringData,"onlyEmail"))
             twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxSubmitOnlyMobileAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送View submit請求 ,onlyMobile:\(stringData)")
+            Log.v("發送View submit請求 ,onlyMobile:\(stringData)")
             onVerifySuccessClick.onNext((stringData,"onlyMobile"))
             twoWayVerifyView.resetProperty()
         }.disposed(by: dpg)
         self.twoWayVerifyView.rxLostGoogleAction().subscribeSuccess { [self](_) in
-            Log.i("跳轉綁定Google Auth")
+            Log.v("跳轉綁定Google Auth")
             let twoFAVC = TFFinishReViewController.loadNib()
             twoFAVC.viewMode = .reverify
             navigationController?.pushViewController(twoFAVC, animated: true)

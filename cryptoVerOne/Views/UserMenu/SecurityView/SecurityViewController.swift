@@ -108,7 +108,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
 //            self.navigationController?.pushViewController(ucPasswordVC, animated: true )
 
         case 0:
-            Log.i("smsAuthentication")
+            Log.v("smsAuthentication")
             if let mobile = MemberAccountDto.share?.phone , mobile.isEmpty
             {
                 authVC = AuthenticationViewController.loadNib()
@@ -116,7 +116,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
                 self.navigationController?.pushViewController(authVC, animated: true)
             }
         case 1:
-            Log.i("emailAuthentication")
+            Log.v("emailAuthentication")
             if let email = MemberAccountDto.share?.email , email.isEmpty
             {
                 authVC = AuthenticationViewController.loadNib()
@@ -124,7 +124,7 @@ extension SecurityViewController:UITableViewDelegate,UITableViewDataSource
                 self.navigationController?.pushViewController(authVC, animated: true)                
             }
         case 2:
-            Log.i("changePassword")
+            Log.v("changePassword")
             let ucPasswordVC = UCPasswordViewController()
             self.navigationController?.pushViewController(ucPasswordVC, animated: true )
         default:

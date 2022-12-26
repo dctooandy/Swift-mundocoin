@@ -77,10 +77,10 @@ extension PushNotiViewController:UITableViewDelegate,UITableViewDataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            Log.i("systemNotifications")
+            Log.v("systemNotifications")
         //systemNotifications
         case 1:
-            Log.i("transactionNotifications")
+            Log.v("transactionNotifications")
         //transactionNotifications
         default:
             break

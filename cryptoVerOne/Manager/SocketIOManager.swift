@@ -258,7 +258,7 @@ extension SocketIOManager
     private func receiveMessage(data: Any?) {
         
         guard let innerData = data else {return }
-        Log.i("InnerData : \(innerData)")
+        Log.v("InnerData : \(innerData)")
         let jsonData = try? JSONSerialization.data(withJSONObject:innerData)
         let responseJSON = try? JSONSerialization.jsonObject(with: jsonData!, options: [])
         let firstArray = (responseJSON as? Array<Any>)?.first
@@ -320,7 +320,7 @@ extension SocketIOManager
                 {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
-                    Log.i("TriggerLocalNotification:\n\(userData.email ?? ""),\(bodyArray)")
+                    Log.v("TriggerLocalNotification:\n\(userData.email ?? ""),\(bodyArray)")
                     _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
                     _ = AuditApprovalDto.finishUpdate() // 更新清單列表
                     if initFlag == true

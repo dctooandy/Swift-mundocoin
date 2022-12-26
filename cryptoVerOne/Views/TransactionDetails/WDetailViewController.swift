@@ -110,7 +110,7 @@ class WDetailViewController: BaseViewController {
     func bindUI()
     {
         checkButton.rx.tap.subscribeSuccess { (_) in
-            Log.i("去看金流歷史紀錄")
+            Log.v("去看金流歷史紀錄")
             let boardVC = BoardViewController.loadNib()
             boardVC.loadingDurarion = 1.0
             boardVC.isFromWithdral = true
@@ -121,7 +121,7 @@ class WDetailViewController: BaseViewController {
             WalletViewController.share.navigationController?.pushViewController(boardVC, animated: true)
         }.disposed(by: dpg)
         tryButton.rx.tap.subscribeSuccess { [self] (_) in
-            Log.i("回到首頁")
+            Log.v("回到首頁")
             if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
             {
                 if let amountValue = detailDataDto?.amount ,let addressValue = detailDataDto?.address

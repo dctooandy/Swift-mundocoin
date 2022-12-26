@@ -35,7 +35,7 @@ class CheckTokenService{
         do {
             jwtValue = try decode(jwt: token)
         } catch {
-            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            Log.v("AppDelegate - Failed to decode JWT: \(error)")
             if let successBlock = complete
             {
                 successBlock(false)
@@ -98,7 +98,7 @@ class CheckTokenService{
         do {
             jwtValue = try decode(jwt: token)
         } catch {
-            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            Log.v("AppDelegate - Failed to decode JWT: \(error)")
             if let successBlock = complete
             {
                 successBlock(false)
@@ -167,7 +167,7 @@ class CheckTokenService{
         do {
             jwtValue = try decode(jwt: token)
         } catch {
-            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            Log.v("AppDelegate - Failed to decode JWT: \(error)")
             if let successBlock = complete
             {
                 successBlock(false)
@@ -206,7 +206,7 @@ class CheckTokenService{
         do {
             jwtValue = try decode(jwt: token)
         } catch {
-            Log.i("AppDelegate - Failed to decode JWT: \(error)")
+            Log.v("AppDelegate - Failed to decode JWT: \(error)")
             if let successBlock = complete
             {
                 successBlock(false)

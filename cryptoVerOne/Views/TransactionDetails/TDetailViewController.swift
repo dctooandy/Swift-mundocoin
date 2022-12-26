@@ -115,7 +115,7 @@ class TDetailViewController: BaseViewController {
         super.viewWillDisappear(animated)
         if isPushToAddAddressBookVC == true
         {
-            Log.i("此為測試內容")
+            Log.v("此為測試內容")
         }else
         {
             dpg = DisposeBag()
@@ -173,7 +173,7 @@ class TDetailViewController: BaseViewController {
 //            self.navigationController?.popToViewController(WithdrawViewController.share , animated: true)
 //        }.disposed(by: dpg)
         dataListView.rxAddAddressClick().subscribeSuccess { [self] addressString in
-            Log.i("增加錢包地址")
+            Log.v("增加錢包地址")
             let addVC = AddNewAddressViewController.loadNib()
             addVC.newAddressString = addressString
             isPushToAddAddressBookVC = true

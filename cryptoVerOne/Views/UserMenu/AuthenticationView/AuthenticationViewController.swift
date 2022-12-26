@@ -238,7 +238,7 @@ class AuthenticationViewController: BaseViewController {
     func bindTextfieldAction()
     {
         authenInputView.rxChoosePhoneCodeClick().subscribeSuccess { [self](phoneCode) in
-            Log.i("PhoneCode:\(phoneCode)")
+            Log.v("PhoneCode:\(phoneCode)")
             let searchVC = SelectViewController.loadNib()
             searchVC.currentSelectMode = .selectArea(phoneCode)
             searchVC.rxSelectedAreaCodeClick().subscribeSuccess { [self] selectedCode in

@@ -70,11 +70,11 @@ class AddressBookViewCell: UITableViewCell {
                 {
                     if isOn == true
                     {
-                        Log.i("開啟單獨WhiteList")
+                        Log.v("開啟單獨WhiteList")
                         onChangeWhiteListClickWhenOpen.onNext(cellData)
                     }else
                     {
-                        Log.i("關閉單獨WhiteList")
+                        Log.v("關閉單獨WhiteList")
                         onChangeWhiteListClickWhenClose.onNext(cellData)
                     }
                 }else

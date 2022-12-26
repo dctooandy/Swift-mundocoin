@@ -327,7 +327,7 @@ class UCPasswordViewController: BaseViewController {
                         {
                             if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                             {
-                                Log.i("驗證碼錯誤 :\(reason)")
+                                Log.e("驗證碼錯誤 :\(reason)")
                                 if twoWayVC.securityViewMode == .onlyEmail
                                 {
                                     twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false

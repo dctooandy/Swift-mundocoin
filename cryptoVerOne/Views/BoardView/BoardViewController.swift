@@ -296,7 +296,7 @@ class BoardViewController: BaseViewController {
         withdrawalsViewController.isFilterAction = flag
     }
     @objc func filterActionSheet() {
-        Log.i("開啟過濾Sheet")
+        Log.v("開啟過濾Sheet")
         let filterBottomSheet = FilterBottomSheet()
         filterBottomSheet.showModeAtSheet = showMode
         filterBottomSheet.rxConfirmClick().subscribeSuccess { [weak self]dataDto in

@@ -225,7 +225,7 @@ class AccountInputView: UIView {
     func bindBorderColor()
     {
         accountInputView.rxChoosePhoneCodeClick().subscribeSuccess { [self](phoneCode) in
-            Log.i("PhoneCode:\(phoneCode)")
+            Log.v("PhoneCode:\(phoneCode)")
             chooseAreaPassed.onNext(phoneCode)
         }.disposed(by: dpg)
         accountInputView.rxChooseClick().subscribeSuccess { [self](isChoose) in

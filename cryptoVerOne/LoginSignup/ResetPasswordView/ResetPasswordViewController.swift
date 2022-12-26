@@ -313,7 +313,7 @@ class ResetPasswordViewController: BaseViewController {
                                       message: "The verification code is timeout, you could try it again.") { [self] isOK in
 
             if isOK {
-                Log.i("返回")
+                Log.v("返回")
                 isNetWorkConnectIng = false
                 self.popVC()
             }

@@ -56,7 +56,7 @@ class UserMenuViewController: BaseViewController {
         {
             switch cellDAta {
             case .addressBook:
-                Log.i("addressBook")
+                Log.v("addressBook")
                 let addressBookVC = AddressBookViewController.loadNib()
                 self.navigationController?.pushViewController(addressBookVC, animated: true)
             default:
@@ -136,11 +136,11 @@ class UserMenuViewController: BaseViewController {
                                      message: "Are you sure you want to logout?") { [self] isOK in
 
             if isOK {
-                Log.i("登出")
+                Log.v("登出")
                 directToViewController()
             }else
             {
-                Log.i("不登出")
+                Log.v("不登出")
             }
         }
         popVC.start(viewController: self)
@@ -267,10 +267,10 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         case 0:
             switch indexPath.row {
             case 0:
-                Log.i("currency")
+                Log.v("currency")
                 //currency
             case 1:
-                Log.i("security")
+                Log.v("security")
                 let securityVC = SecurityViewController.share
                 self.navigationController?.pushViewController(securityVC, animated: true)
                 //security
@@ -284,7 +284,7 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
                 if KeychainManager.share.getWhiteListModeEnable() == true
                 {
                     // MC524 打開白名單
-                    Log.i("addressBook")
+                    Log.v("addressBook")
                     let addressBookVC = AddressBookViewController.loadNib()
                     self.navigationController?.pushViewController(addressBookVC, animated: true)
                 }else
@@ -298,11 +298,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
         case 1:
             switch indexPath.row {
             case 0:
-                Log.i("language")
+                Log.v("language")
                 //language
             // MC524 暫時隱藏
             case (0 + faceIDRowDiff):
-                Log.i("faceID")
+                Log.v("faceID")
                 //faceID
 //            case 3:
 //                Log.i("helpSupport")
@@ -319,11 +319,11 @@ extension UserMenuViewController:UITableViewDelegate,UITableViewDataSource
 //                showLogotConfirmAlert()
 //                //logout
             case (3 + faceIDRowDiff):// MC524 暫時隱藏 原本3
-                Log.i("about")
+                Log.v("about")
                 socketEmit()
                 //about
             case (5 + faceIDRowDiff):// MC524 暫時隱藏 原本5
-                Log.i("logout")
+                Log.v("logout")
                 showLogotConfirmAlert()
                 //logout
             default:

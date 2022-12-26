@@ -160,7 +160,10 @@ class WalletViewController: BaseViewController {
     func bindViewModel()
     {
         viewModel.rxFetchWalletBalancesSuccess().subscribeSuccess { [self]dto in
-            Log.v("取得Balances\n\(dto)")
+            for subData in dto
+            {
+                Log.v("取得Balances : \(subData.currency)\n amount : \(subData.amount.stringValue ?? "")")
+            }
             _ = LoadingViewController.dismiss()
             // 主要理念是 將TRX 錢包濾掉
             // Asset Allocation 依據balance有無 出現漸層或單色
@@ -262,7 +265,7 @@ class WalletViewController: BaseViewController {
         })
     }
     func pushToProfile(withCellData : UserMenuCellData = .currency) {
-        Log.i("推到個人清單")
+        Log.v("推到個人清單")
 //        let userVC = UserMenuViewController.loadNib()
 //        self.navigationController?.pushViewController(userVC, animated: true)
         if withCellData == .addressBook
@@ -281,7 +284,7 @@ class WalletViewController: BaseViewController {
     }
     
     @objc func pushToBell() {
-        Log.i("推到通知")
+        Log.v("推到通知")
         checkSocket()
         let notiVC = NotiViewController.loadNib()
         notiVC.setData(dtos: [NotificationDto()])
@@ -289,7 +292,7 @@ class WalletViewController: BaseViewController {
     }
     
     @objc func pushToBoard() {
-        Log.i("推到業務清單")
+        Log.v("推到業務清單")
         let boardVC = BoardViewController.loadNib()
         self.navigationController?.pushViewController(boardVC, animated: true)
     }

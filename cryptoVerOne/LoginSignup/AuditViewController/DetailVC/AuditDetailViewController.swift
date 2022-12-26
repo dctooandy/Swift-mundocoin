@@ -157,7 +157,7 @@ class AuditDetailViewController: BaseViewController {
         let alertBottomSheet = AuditTriggerBottomSheet(alertMode: accept) {[self](acceptValue , memoString) in
             
             if acceptValue == true , let firstChainData = data.chain?.first {
-                Log.i("Confirm or Reject")
+                Log.v("Confirm or Reject")
                 let approvalId = data.id ?? ""
                 let approvalNodeId = firstChainData.id
                 let approvalState = (accept == .accept ? "APPROVED" : "REJECT")
@@ -165,7 +165,7 @@ class AuditDetailViewController: BaseViewController {
                 viewModel.goApproval(approvalId: approvalId, approvalNodeId: approvalNodeId, approvalState: approvalState, memo: memo)
             }else
             {
-                Log.i("Cancel")
+                Log.v("Cancel")
             }
         }
         alertBottomSheet.start(viewController: self ,height: 360)

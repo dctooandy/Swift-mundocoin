@@ -68,11 +68,11 @@ class TwoFAVerifyViewController: BaseViewController {
             onThirdSendVerifyClick.onNext(())
         }.disposed(by: dpg)
         self.verifyView.rxSubmitOnlyEmailAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送submit請求 ,onlyEmail:\(stringData)")
+            Log.v("發送submit請求 ,onlyEmail:\(stringData)")
             onSubmitOnlyEmailClick.onNext(stringData)
         }.disposed(by: dpg)
         self.verifyView.rxSubmitOnlyTwoFAAction().subscribeSuccess {[self](stringData) in
-            Log.i("發送submit請求 ,onlyTwoFA:\(stringData)")
+            Log.v("發送submit請求 ,onlyTwoFA:\(stringData)")
             onSubmitOnlyTwoFAClick.onNext(stringData)
         }.disposed(by: dpg)
     }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,14 +14,14 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tabbar-bg" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-F0-HVV">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="status-send" translatesAutoresizingMaskIntoConstraints="NO" id="Y7t-F0-HVV">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="i5N-HV-Gvh">
                     <rect key="frame" x="0.0" y="5" width="83" height="95"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home" translatesAutoresizingMaskIntoConstraints="NO" id="YLR-5X-BHG">
-                            <rect key="frame" x="26.5" y="0.0" width="30" height="47.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Arrow" translatesAutoresizingMaskIntoConstraints="NO" id="YLR-5X-BHG">
+                            <rect key="frame" x="23.5" y="0.0" width="36" height="47.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="首页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGr-91-EeT">
                             <rect key="frame" x="29" y="47.5" width="25" height="47.5"/>
@@ -34,8 +34,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="5aR-FR-uQi">
                     <rect key="frame" x="83" y="5" width="82.5" height="95"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" translatesAutoresizingMaskIntoConstraints="NO" id="f9Z-s1-Tuc">
-                            <rect key="frame" x="26" y="0.0" width="30" height="47.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gift" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="f9Z-s1-Tuc">
+                            <rect key="frame" x="31" y="0.0" width="20" height="47"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="优惠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2n-Ry-uwl">
                             <rect key="frame" x="28.5" y="47.5" width="25" height="47.5"/>
@@ -48,8 +48,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ufK-Jb-DdU">
                     <rect key="frame" x="248.5" y="5" width="82.5" height="95"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coins" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-DK-s1i">
-                            <rect key="frame" x="26.5" y="0.0" width="30" height="47.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Account-Icon" translatesAutoresizingMaskIntoConstraints="NO" id="QtW-DK-s1i">
+                            <rect key="frame" x="27.5" y="0.0" width="28" height="47.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="存提" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9R8-na-0gv">
                             <rect key="frame" x="29" y="47.5" width="25" height="47.5"/>
@@ -62,8 +62,8 @@
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="oEC-mC-VFi">
                     <rect key="frame" x="331" y="5" width="83" height="95"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="user-alt" translatesAutoresizingMaskIntoConstraints="NO" id="ESh-td-tet">
-                            <rect key="frame" x="26.5" y="0.0" width="30" height="47.5"/>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-user" translatesAutoresizingMaskIntoConstraints="NO" id="ESh-td-tet">
+                            <rect key="frame" x="29.5" y="0.0" width="24" height="47.5"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Wn-H6-NeJ">
                             <rect key="frame" x="29" y="47.5" width="25" height="47.5"/>
@@ -74,11 +74,11 @@
                     </subviews>
                 </stackView>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Ad-lg-eMN">
-                    <rect key="frame" x="177" y="-5" width="60" height="60"/>
+                    <rect key="frame" x="195.5" y="13.5" width="23" height="23"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="0Ad-lg-eMN" secondAttribute="height" multiplier="1:1" id="hew-pk-xPl"/>
                     </constraints>
-                    <state key="normal" image="tabbar-betlead"/>
+                    <state key="normal" image="backpack" catalog="system"/>
                 </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="cux-wZ-4oE"/>
@@ -128,11 +128,11 @@
         </view>
     </objects>
     <resources>
-        <image name="coins" width="30" height="30"/>
-        <image name="gift" width="30" height="30"/>
-        <image name="home" width="30" height="30"/>
-        <image name="tabbar-betlead" width="60" height="60"/>
-        <image name="tabbar-bg" width="375" height="48"/>
-        <image name="user-alt" width="30" height="30"/>
+        <image name="Account-Icon" width="28" height="28"/>
+        <image name="Arrow" width="36" height="28"/>
+        <image name="backpack" catalog="system" width="100" height="128"/>
+        <image name="gift" catalog="system" width="128" height="125"/>
+        <image name="icon-user" width="24" height="24"/>
+        <image name="status-send" width="99" height="80"/>
     </resources>
 </document>

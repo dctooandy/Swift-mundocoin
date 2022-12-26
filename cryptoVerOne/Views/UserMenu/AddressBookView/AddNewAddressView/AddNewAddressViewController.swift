@@ -377,7 +377,7 @@ class AddNewAddressViewController: BaseViewController {
         let mobileMessage = "The Mobile Code is incorrect. Please re-enter."
         if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
         {
-            Log.i("驗證碼錯誤 :\(reason)")
+            Log.e("驗證碼錯誤 :\(reason)")
             if twoWayVC.securityViewMode == .onlyEmail
             {
                 twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
@@ -436,7 +436,7 @@ class AddNewAddressViewController: BaseViewController {
     func bindSacnVC()
     {
         addressStyleView.rxScanImagePressed().subscribeSuccess {[self] _ in
-            Log.i("開鏡頭")
+            Log.v("開鏡頭")
             if AuthorizeService.share.authorizeAVCapture()
             {
                 isScanVCByAVCapture = true

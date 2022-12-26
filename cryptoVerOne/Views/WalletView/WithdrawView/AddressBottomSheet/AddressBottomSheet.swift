@@ -59,7 +59,7 @@ class AddressBottomSheet: BaseBottomSheet {
             }
         }.disposed(by: dpg)
         addressView.rxAddNewAddressClick().subscribeSuccess { [self] _ in
-            Log.i("增加錢包地址")
+            Log.v("增加錢包地址")
             dismissToTopVC(animation: false)
             onAddNewAddressClick.onNext(())
 //            let addVC = AddNewAddressViewController.loadNib()
@@ -71,7 +71,7 @@ class AddressBottomSheet: BaseBottomSheet {
 //            self.navigationController?.pushViewController(addVC, animated: true)
         }.disposed(by: dpg)
         addressView.rxAddressBookClick().subscribeSuccess { [self] _ in
-            Log.i("前往錢包地址")
+            Log.v("前往錢包地址")
             onCleanDataClick.onNext(())
             DeepLinkManager.share.handleDeeplink(navigation: .addressBook)
         }.disposed(by: dpg)

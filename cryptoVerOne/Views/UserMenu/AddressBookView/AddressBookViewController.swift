@@ -119,7 +119,7 @@ class AddressBookViewController: BaseViewController {
         viewModel.fetchAddressBooks()
     }
     @objc func whiteListAction() {
-        Log.i("開啟白名單警告Sheet")
+        Log.v("開啟白名單警告Sheet")
         sheetDpg = DisposeBag()
         let whiteListBottomSheet = WhiteListBottomSheet()
         whiteListBottomSheet.rxChangeWhiteListMode().subscribeSuccess { [self] _ in
@@ -194,7 +194,7 @@ class AddressBookViewController: BaseViewController {
                     {
                         if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                         {
-                            Log.i("驗證碼錯誤 :\(reason)")
+                            Log.e("驗證碼錯誤 :\(reason)")
                             if twoWayVC.securityViewMode == .onlyEmail
                             {
                                 twoWayVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
@@ -236,7 +236,7 @@ class AddressBookViewController: BaseViewController {
         }.disposed(by: vcDpg)
     }
     @objc func addAddressBookAction() {
-        Log.i("增加錢包地址")
+        Log.v("增加錢包地址")
         let addVC = AddNewAddressViewController.loadNib()
         self.navigationController?.pushViewController(addVC, animated: true)
     }
@@ -248,7 +248,7 @@ class AddressBookViewController: BaseViewController {
                                       message: "Are you sure you want to delete this address?") { [self] isOK in
 
             if isOK {
-                Log.i("刪除此行 \(indexpath)")
+                Log.v("刪除此行 \(indexpath)")
                 let addressData = addresBookDtos[indexpath.item]
                 Beans.addressBookServer.deleteAddressBookStatus(addressBookID: addressData.id).subscribeSuccess { [self] _ in
                     _ = AddressBookListDto.update { [self] in
@@ -259,7 +259,7 @@ class AddressBookViewController: BaseViewController {
 
             }else
             {
-                Log.i("不刪除")
+                Log.v("不刪除")
             }
         }
         popVC.start(viewController: self)
@@ -272,7 +272,7 @@ class AddressBookViewController: BaseViewController {
             {
                 twoWayVC.securityViewMode = type
                 twoWayVC.rxVerifySuccessClick().subscribeSuccess { [self] (codeData) in
-                    Log.i("返回Security並打API")
+                    Log.v("返回Security並打API")
                     // 需要填入修改白名單API
                     changeCellWhiteListType(addressData: data , code: codeData.0,withMode: codeData.1, done: { isOnValue in
                         if isOnValue == true
@@ -293,7 +293,7 @@ class AddressBookViewController: BaseViewController {
                 if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
                 {
                     twoWayVC.rxSelectedModeSuccessClick().subscribeSuccess { [self](stringData) in
-                        Log.i("返回Security並打API")
+                        Log.v("返回Security並打API")
                         // 需要填入修改白名單API
                         changeCellWhiteListType(addressData: data , code: stringData.0,withMode: stringData.1, done: { isOnValue in
                             if isOnValue == true
@@ -371,7 +371,7 @@ class AddressBookViewController: BaseViewController {
                     {
                         if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                         {
-                            Log.i("驗證碼錯誤 :\(reason)")
+                            Log.e("驗證碼錯誤 :\(reason)")
                             var showAlert = true
                             if twoWayVC.securityViewMode == .onlyEmail
                             {
@@ -402,7 +402,7 @@ class AddressBookViewController: BaseViewController {
                             }
                         }else if reason == "PARAMETER_INVALID"
                         {
-                            Log.i("參數錯誤 :\(reason)")
+                            Log.e("參數錯誤 :\(reason)")
                             let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: dto.errors)
                             ErrorHandler.show(error: ApiServiceError.errorDto(results))
                         }else
@@ -461,11 +461,11 @@ extension AddressBookViewController:UITableViewDelegate,UITableViewDataSource
         cell.setData(data: addresBookDtos[indexPath.item])
         cell.shouldIndentWhileEditing = false
         cell.rxChangeWhiteListClickWhenOpen().subscribeSuccess {[self] cellData in
-            Log.i("發送驗證碼並呼叫修改API")
+            Log.v("發送驗證碼並呼叫修改API")
             toSecurityByType(data: cellData)
         }.disposed(by: cellDpg)
         cell.rxChangeWhiteListClickWhenClose().subscribeSuccess {[self] cellData in
-            Log.i("呼叫修改API")
+            Log.v("呼叫修改API")
             changeCellWhiteListType(addressData: cellData) { isOnValue in
                 if isOnValue == false
                 {

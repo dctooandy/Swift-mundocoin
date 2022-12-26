@@ -393,10 +393,10 @@ class VerifyViewController: BaseViewController {
                                       account: accountString,
                                       verificationCode: codeString)
         case .emailAuthenVerity:
-            Log.i("要去打 email authentication API")
+            Log.v("要去打 email authentication API")
             fetchEmailAuthenticationData(withEmail: accountString, verificationCode: codeString)
         case .mobileAuthenVerity:
-            Log.i("要去打 mobile authentication API")
+            Log.v("要去打 mobile authentication API")
             fetchSMSAuthenticationData(phone: accountString, verificationCode: codeString)
         }
     }
@@ -504,7 +504,7 @@ class VerifyViewController: BaseViewController {
         Beans.loginServer.customerForgotPasswordVerify(mode:mode ,accountString: account.localizedLowercase, verificationCode: verificationCode).subscribe { [self] dto in
             if let currentData = dto
             {
-                Log.i("成功回傳 \(currentData)")
+                Log.v("成功回傳 \(currentData)")
                 let codeString = currentData.code
                 directToResetPWVC(codeString)                
             }
@@ -520,21 +520,21 @@ class VerifyViewController: BaseViewController {
     func fetchSMSAuthenticationData(phone:String ,
                                     verificationCode:String)
     {
-        Log.i("執行SMS Authen")
+        Log.v("執行SMS Authen")
         gotoVerifyCodeWithNewBindAccount(idString: phone, codeString: verificationCode ,withEmail: false)
     }
     // Email Authentication
     func fetchEmailAuthenticationData(withEmail emailString:String ,
                                  verificationCode:String)
     {
-        Log.i("執行Email Authen")
+        Log.v("執行Email Authen")
         gotoVerifyCodeWithNewBindAccount(idString: emailString, codeString: verificationCode,withEmail: true)
     }
     
     func gotoVerifyCodeWithNewBindAccount(idString: String, codeString: String, withEmail:Bool = false)
     {
         Beans.loginServer.customerSettingsAuthentication(idString: idString, codeString: codeString).subscribe { [self] dataDto in
-            Log.i("已將帳號綁定")
+            Log.v("已將帳號綁定")
             if let lastDto = KeychainManager.share.getLastAccountDto()
             {
                 if let email = dataDto?.email as? String , let phone = dataDto?.phone?.stringValue

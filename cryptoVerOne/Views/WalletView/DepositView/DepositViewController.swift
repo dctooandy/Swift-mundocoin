@@ -131,14 +131,14 @@ class DepositViewController: BaseViewController {
             shareInfo()
         }.disposed(by: dpg)
         methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
-            Log.i("點到選network sheet")
+            Log.v("點到選network sheet")
             self.showNetWorkBottomSheet()
         }.disposed(by: dpg)
     }
     func bindSelectVC()
     {
         searchVC.rxSelectedCryptoClick().subscribeSuccess { [self] selectedCrypto in
-            Log.i("Open Select Crypto: \(selectedCrypto)")
+            Log.v("Open Select Crypto: \(selectedCrypto)")
             topCurrencyView.cryptoLabel.text = selectedCrypto.cryptoName
             topCurrencyView.cryptoImageView.image = UIImage(named: selectedCrypto.cryptoIconName)
         }.disposed(by: dpg)

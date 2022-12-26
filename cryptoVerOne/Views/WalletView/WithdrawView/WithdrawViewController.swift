@@ -194,7 +194,7 @@ class WithdrawViewController: BaseViewController {
     func bindAction()
     {
         withdrawToView.rxScanImagePressed().subscribeSuccess { [self](_) in
-            Log.i("開鏡頭")
+            Log.v("開鏡頭")
             if AuthorizeService.share.authorizeAVCapture()
             {
                 isScanVCByAVCapture = true
@@ -213,11 +213,11 @@ class WithdrawViewController: BaseViewController {
             }
         }.disposed(by: dpg)
         withdrawToView.rxAddressBookImagePressed().subscribeSuccess { [self](_) in
-            Log.i("開地址簿")
+            Log.v("開地址簿")
             showAddressBottomSheet()
         }.disposed(by: dpg)
         continueButton.rx.tap.subscribeSuccess { [self](_) in
-            Log.i("開confirm")
+            Log.v("開confirm")
             continueAction()
         }.disposed(by: dpg)
         withdrawToView.rxChooseClick().subscribeSuccess { [self](isChoose) in
@@ -230,7 +230,7 @@ class WithdrawViewController: BaseViewController {
         }.disposed(by: dpg)
         
         methodView.rxSelectNetworkMethodSheetClick().subscribeSuccess { _ in
-            Log.i("點到選network sheet")
+            Log.v("點到選network sheet")
             self.showNetWorkBottomSheet()
         }.disposed(by: dpg)
     }
@@ -377,7 +377,7 @@ class WithdrawViewController: BaseViewController {
             
             confirmBottomSheet = ConfirmBottomSheet(confirmData:confirmData)
             confirmBottomSheet.rxSecondConfirmAction().subscribeSuccess { [self](_) in
-                Log.i("開驗證")
+                Log.v("開驗證")
                 showSecurityVC()
             }.disposed(by: dpg)
             DispatchQueue.main.async { [self] in
@@ -397,7 +397,7 @@ class WithdrawViewController: BaseViewController {
             securityVerifyVC.securityViewMode = type
             securityVerifyVC.rxVerifySuccessClick().subscribeSuccess { [self](verifyStringOne,verifyStringTwo) in
                 // 開啟驗證流程
-                Log.i("驗證成功,開取款單")
+                Log.v("驗證成功,開取款單")
                 toCreateWithdrawal(verifyValueOne: verifyStringOne , verifyValueTwo:verifyStringTwo)
             }.disposed(by: dpg)
             if KeychainManager.share.getMundoCoinTwoWaySecurityEnable() == false
@@ -483,7 +483,7 @@ class WithdrawViewController: BaseViewController {
                                 {
                                     if reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND"
                                     {
-                                        Log.i("驗證碼錯誤 :\(reason)")
+                                        Log.e("驗證碼錯誤 :\(reason)")
                                         if securityVerifyVC.securityViewMode == .onlyEmail
                                         {
                                             securityVerifyVC.twoWayVerifyView.emailInputView.invalidLabel.isHidden = false
@@ -516,7 +516,7 @@ class WithdrawViewController: BaseViewController {
                                         ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                     }else if reason == "INSUFFICIENT_FUND"
                                     {
-                                        Log.i("資金不足 :\(reason)")
+                                        Log.e("資金不足 :\(reason)")
                                         securityVCPopAction(animated: true)
                                         ErrorHandler.show(error: error)
                                     }else if reason == "T0_ADDRESS_NOT_IN_WHITE_LIST"
@@ -546,7 +546,7 @@ class WithdrawViewController: BaseViewController {
         else
         {
             securityVCPopAction(animated: true)
-            Log.i("輸入資訊有誤")
+            Log.e("輸入資訊有誤")
         }
     }
     func securityVCPopAction(animated:Bool)

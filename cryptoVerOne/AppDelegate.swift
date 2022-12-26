@@ -218,7 +218,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: 延伸 背景執行
 extension AppDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
-        Log.i("背景執行 app退到背景")
+        Log.v("背景執行 app退到背景")
         cancelAllPandingBGTask()
         submitBackgroundTasks()
         // 消除倒數
@@ -293,7 +293,7 @@ extension AppDelegate {
     }
     func endBackgroundTasksWillEnterForeground(_ application: UIApplication)
     {
-        Log.i("背景執行 結束於進入前景")
+        Log.v("背景執行 結束於進入前景")
 
         if let indentifier = self.backgroundTaskIdentifier
         {
@@ -302,7 +302,7 @@ extension AppDelegate {
 
         if #available(iOS 13.0, *) {
             BGTaskScheduler.shared.cancel(taskRequestWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier)
-            Log.i("背景執行 part2 :Cancel task request")
+            Log.v("背景執行 part2 :Cancel task request")
         } else {
             // Fallback on earlier versions
         }
@@ -316,9 +316,9 @@ extension AppDelegate {
                 let backgroundAppRefreshTaskRequest = BGAppRefreshTaskRequest(identifier: backgroundAppRefreshTaskSchedulerIdentifier)
                 backgroundAppRefreshTaskRequest.earliestBeginDate = Date(timeIntervalSinceNow: timeDelay)
                 try BGTaskScheduler.shared.submit(backgroundAppRefreshTaskRequest)
-                Log.i("背景執行 part2 :Submitted task request")
+                Log.v("背景執行 part2 :Submitted task request")
             } catch {
-                Log.i("背景執行 part2 :Failed to submit BGTask")
+                Log.v("背景執行 part2 :Failed to submit BGTask")
             }
         } else {
             // Fallback on earlier versions
@@ -330,8 +330,8 @@ extension AppDelegate {
             // Declared at the "Permitted background task scheduler identifiers" in info.plist
             // Use the identifier which represents your needs
             BGTaskScheduler.shared.register(forTaskWithIdentifier: backgroundAppRefreshTaskSchedulerIdentifier, using: nil) { (task) in
-                Log.i("背景執行 part2 :BackgroundAppRefreshTaskScheduler is executed NOW!")
-                Log.i("背景執行 part2 :Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
+                Log.v("背景執行 part2 :BackgroundAppRefreshTaskScheduler is executed NOW!")
+                Log.v("背景執行 part2 :Background time remaining: \(UIApplication.shared.backgroundTimeRemaining)s")
                 task.expirationHandler = {
                     task.setTaskCompleted(success: false)
                 }
@@ -358,7 +358,7 @@ extension AppDelegate
                                       message: textString) { isOK in
 
             if isOK {
-                Log.i("越獄機器")
+                Log.e("越獄機器")
                 UIControl().sendAction(#selector(URLSessionTask.suspend), to: UIApplication.shared, for: nil)
             }else
             {

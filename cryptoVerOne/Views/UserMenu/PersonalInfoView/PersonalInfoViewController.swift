@@ -70,7 +70,6 @@ class PersonalInfoViewController: BaseViewController {
         tableView.separatorStyle = .none
         if let nickName = MemberAccountDto.share?.nickName
         {
-            Log.i("nickName:\(nickName)")
             userNameTextField.text = nickName
         }
         calculateTextWidth()
@@ -158,10 +157,10 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
         let cell = tableView.cellForRow(at: indexPath) as! UserMenuTableViewCell
         switch indexPath.row {
         case 0:
-            Log.i("registrationInfo")
+            Log.v("registrationInfo")
         //registrationInfo
         case 1:
-            Log.i("email")
+            Log.v("email")
             if cell.cellData.arrowHidden == false
             {
                 authVC = AuthenticationViewController.loadNib()
@@ -169,7 +168,7 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
                 self.navigationController?.pushViewController(authVC, animated: true)
             }
         case 2:
-            Log.i("mobile")
+            Log.v("mobile")
             if cell.cellData.arrowHidden == false
             {
                 authVC = AuthenticationViewController.loadNib()
@@ -177,7 +176,7 @@ extension PersonalInfoViewController:UITableViewDelegate,UITableViewDataSource
                 self.navigationController?.pushViewController(authVC, animated: true)
             }
         case 3:
-            Log.i("memberSince")
+            Log.v("memberSince")
         //memberSince
         default:
             break
@@ -273,7 +272,7 @@ extension PersonalInfoViewController: UITextFieldDelegate
                         if let dto = feedback , let nickname = dto.nickName
                         {
                             MemberAccountDto.share?.nickName = nickname
-                            Log.i("feedback : \(dto)")
+                            Log.v("feedback : \(dto)")
                         }
                     } onError: { error in
                         _ = LoadingViewController.dismiss().subscribeSuccess { _ in
@@ -291,7 +290,6 @@ extension PersonalInfoViewController: UITextFieldDelegate
             turnOnImageView(editFlag: false)
             if let nickName = MemberAccountDto.share?.nickName
             {
-                Log.i("nickName:\(nickName)")
                 userNameTextField.text = nickName
             }
             calculateTextWidth()
