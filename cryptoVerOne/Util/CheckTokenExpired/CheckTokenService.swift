@@ -34,6 +34,7 @@ class CheckTokenService{
     // 檢查 token 是否過期
     func checkTokenExpired(complete:CheckScetionCompletionBlock? = nil)
     {
+        KeychainManager.share.saveLightLogoutMode(false)
         let token = KeychainManager.share.getToken()
         // 準備好 id 資料
         var jwtValue :JWT!
@@ -83,25 +84,13 @@ class CheckTokenService{
 #else
         let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0") ?? 0
         let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0") ?? 0
-        if jwtValue != nil , let isExpired = jwtValue?.expired,
-           let isExpiredInMins = jwtValue?.expiresAt?.isInMins(min: sectionMin),
-           let isExpiredInDays = jwtValue?.expiresAt?.isInDays(day: sectionDay)
+        let lastEnterBGDate = getEnterBGtime()
+        let isExpiredInMins = lastEnterBGDate.isInMins(min: sectionMin)
+        let isExpiredInDays = lastEnterBGDate.isInDays(day: sectionDay)
+        let isfirstLuanch = UserDefaults.isFirstLaunch()
+        if jwtValue != nil , let _ = jwtValue?.expired
         {
-            if isExpiredInMins == false , isExpiredInDays == true
-            {
-                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內")
-                if let accountString = KeychainManager.share.getLastAccount()
-                {
-                    Log.v("上次帳號 : \(accountString)")
-                    if let successBlock = complete
-                    {
-                        successBlock(.lightLogout)
-                    }else
-                    {
-                        // 去淺登入
-                    }
-                }
-            }else if isExpiredInDays == false
+            if isExpiredInDays == false || isfirstLuanch == true
             {
                 Log.v("在 \(sectionDay) 天後")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
@@ -113,6 +102,28 @@ class CheckTokenService{
                     {
                         //過期去登入頁面
                         goToLoginVC()
+                    }
+                }
+            }else if isExpiredInMins == false , isExpiredInDays == true
+            {
+                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內")
+                if let accountString = KeychainManager.share.getLastAccount()
+                {
+                    Log.v("上次帳號 : \(accountString)")
+                    KeychainManager.share.saveLightLogoutMode(true)
+                    if let successBlock = complete
+                    {
+                        successBlock(.lightLogout)
+                    }else
+                    {
+                        // 去淺登出
+                        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+                        {
+                            let vc = LaunchReciprocalViewController.loadNib()
+                            vc.waitForGotoWallet = .lightLogout
+                            mainWindow.rootViewController = vc
+                            mainWindow.makeKeyAndVisible()
+                        }
                     }
                 }
             }else
@@ -134,6 +145,31 @@ class CheckTokenService{
             }
         }
 #endif
+    }
+    func getEnterBGtime() -> Date
+    {
+        let today = Date()
+        let formatter1 = DateFormatter()
+        formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter1.timeZone = .current
+        formatter1.locale = .current
+        let todayTimeString = formatter1.string(from: today)
+        Log.i(todayTimeString)
+        
+        let currentTimeString = KeychainManager.share.getEnterBGtime()!.isEmpty ? todayTimeString : KeychainManager.share.getEnterBGtime()
+        let formatter2 = DateFormatter()
+        formatter2.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        formatter2.timeZone = .current
+        formatter2.locale = .current
+        let currentDate = formatter2.date(from:currentTimeString!)
+        
+        var calendar = Calendar.current
+        calendar.timeZone = .current
+
+        let componentsEnterBG = calendar.dateComponents([.year, .month, .day, .hour,.minute,.second], from: currentDate!)
+        let enterBGDate = calendar.date(from:componentsEnterBG)!
+        Log.i(enterBGDate)
+        return enterBGDate
     }
     // 下載資料
     func fetchCurrencyInfo()

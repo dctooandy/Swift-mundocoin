@@ -21,10 +21,11 @@ class TemplateVC: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
@@ -37,3 +38,6 @@ class TemplateVC: BaseViewController {
 }
 // MARK: -
 // MARK: 延伸
+extension TemplateVC {
+    
+}

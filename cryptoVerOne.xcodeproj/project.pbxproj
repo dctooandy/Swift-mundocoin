@@ -2161,6 +2161,30 @@
 		A1E72A9428EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
 		A1E72A9528EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
 		A1E72A9628EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1F0F7F0295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F1295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F2295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F3295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F4295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F5295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
+		A1F0F7F7295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7F8295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7F9295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7FA295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7FB295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7FC295A905900C02382 /* LoginQuicklyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */; };
+		A1F0F7FE295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F7FF295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F800295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F801295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F802295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F803295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */; };
+		A1F0F805295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
+		A1F0F806295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
+		A1F0F807295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
+		A1F0F808295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
+		A1F0F809295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
+		A1F0F80A295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -2558,6 +2582,10 @@
 		A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressCell.swift; sourceTree = "<group>"; };
 		A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressCell.xib; sourceTree = "<group>"; };
+		A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuicklyViewController.swift; sourceTree = "<group>"; };
+		A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginQuicklyViewController.xib; sourceTree = "<group>"; };
+		A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuicklyPasswordViewController.swift; sourceTree = "<group>"; };
+		A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginQuicklyPasswordViewController.xib; sourceTree = "<group>"; };
 		AD8E52DA6E6EB7487BCF958B /* Pods_cryptoVerOne.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_cryptoVerOne.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B928B8429867F4964B1660EA /* Pods-Approval_stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Approval_stage.release.xcconfig"; path = "Target Support Files/Pods-Approval_stage/Pods-Approval_stage.release.xcconfig"; sourceTree = "<group>"; };
 		DD74FE76EBADF5EB742DFEB5 /* Pods-cryptoVerOne_stage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cryptoVerOne_stage.release.xcconfig"; path = "Target Support Files/Pods-cryptoVerOne_stage/Pods-cryptoVerOne_stage.release.xcconfig"; sourceTree = "<group>"; };
@@ -3193,6 +3221,7 @@
 				A19C70352822325A000AFC3F /* Constants */,
 				A19C702628222D30000AFC3F /* Manager */,
 				A19C6FEA28221C2F000AFC3F /* LoginSignup */,
+				A1F0F7EE295A8EA100C02382 /* LightLogout */,
 				A19C705E282234F5000AFC3F /* Tabbar */,
 				0909C8AF2851EA50003E2F58 /* ApprovalViews */,
 				A19C70632822356D000AFC3F /* Views */,
@@ -3650,6 +3679,17 @@
 			path = AuthenticationView;
 			sourceTree = "<group>";
 		};
+		A1F0F7EE295A8EA100C02382 /* LightLogout */ = {
+			isa = PBXGroup;
+			children = (
+				A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */,
+				A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */,
+				A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */,
+				A1F0F804295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib */,
+			);
+			path = LightLogout;
+			sourceTree = "<group>";
+		};
 		C1D87ED3CABD1D00F989E28E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -3855,6 +3895,7 @@
 				09954C2328893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7FB295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574F293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -3903,6 +3944,7 @@
 				09905B0B2851A02B00BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905B0C2851A02B00BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905B0D2851A02B00BAEE78 /* ConfirmBottomView.xib in Resources */,
+				A1F0F809295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				09905B0E2851A02B00BAEE78 /* VerifyViewController.xib in Resources */,
 				09905B0F2851A02B00BAEE78 /* WalletViewController.xib in Resources */,
 				09B7C215292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -3967,6 +4009,7 @@
 				09954C2428893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7FC295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D05750293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -4015,6 +4058,7 @@
 				09905BFD2851A08500BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905BFE2851A08500BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905BFF2851A08500BAEE78 /* ConfirmBottomView.xib in Resources */,
+				A1F0F80A295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				09905C002851A08500BAEE78 /* VerifyViewController.xib in Resources */,
 				09905C012851A08500BAEE78 /* WalletViewController.xib in Resources */,
 				09B7C216292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -4079,6 +4123,7 @@
 				09954C2228893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7FA295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574E293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -4127,6 +4172,7 @@
 				09905CEF2851A09600BAEE78 /* TFBeginViewController.xib in Resources */,
 				09905CF02851A09600BAEE78 /* AddNewAddressViewController.xib in Resources */,
 				09905CF12851A09600BAEE78 /* ConfirmBottomView.xib in Resources */,
+				A1F0F808295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				09905CF22851A09600BAEE78 /* VerifyViewController.xib in Resources */,
 				09905CF32851A09600BAEE78 /* WalletViewController.xib in Resources */,
 				09B7C214292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -4191,6 +4237,7 @@
 				09954C2028893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7F8295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574C293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -4239,6 +4286,7 @@
 				09CAF4E3283C77ED00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA3284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF4E4283C77ED00D7B19B /* ConfirmBottomView.xib in Resources */,
+				A1F0F806295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				09CAF4E5283C77ED00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF4E6283C77ED00D7B19B /* WalletViewController.xib in Resources */,
 				09B7C212292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -4303,6 +4351,7 @@
 				09954C2128893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7F9295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574D293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -4351,6 +4400,7 @@
 				09CAF5A4283C7BBE00D7B19B /* TFBeginViewController.xib in Resources */,
 				09056DA4284EFF7B00038BF8 /* AddNewAddressViewController.xib in Resources */,
 				09CAF5A5283C7BBE00D7B19B /* ConfirmBottomView.xib in Resources */,
+				A1F0F807295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				09CAF5A6283C7BBE00D7B19B /* VerifyViewController.xib in Resources */,
 				09CAF5A7283C7BBE00D7B19B /* WalletViewController.xib in Resources */,
 				09B7C213292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -4415,6 +4465,7 @@
 				09954C1F28893B8900E5E2BE /* PlusJakartaSans-Regular.ttf in Resources */,
 				0995748A2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3052856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
+				A1F0F7F7295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
 				A16F6204282E3F9000D9CCE5 /* AddressBottomCell.xib in Resources */,
 				099B5F0D288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574B293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
@@ -4463,6 +4514,7 @@
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
 				A16F620F282E500900D9CCE5 /* ConfirmBottomView.xib in Resources */,
 				A1B051CF2823782E00056183 /* VerifyViewController.xib in Resources */,
+				A1F0F805295AA4D400C02382 /* LoginQuicklyPasswordViewController.xib in Resources */,
 				A19739EA2828C5B5009932D8 /* WalletViewController.xib in Resources */,
 				A16F621E2832279F00D9CCE5 /* AmountInputView.xib in Resources */,
 				09B7C211292739DD00A5E2DC /* ForgotPasswordViewController.xib in Resources */,
@@ -4804,6 +4856,7 @@
 				099574872876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905A602851A02B00BAEE78 /* AppDelegate.swift in Sources */,
 				09905A612851A02B00BAEE78 /* PushNotiViewController.swift in Sources */,
+				A1F0F7F4295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09905A622851A02B00BAEE78 /* MundoResponseDto.swift in Sources */,
 				09905A632851A02B00BAEE78 /* FilterBottomView.swift in Sources */,
 				09DB05FC289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -4815,6 +4868,7 @@
 				A1B2008728CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905A682851A02B00BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EE28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F802295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20E292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905A692851A02B00BAEE78 /* RegexHelper.swift in Sources */,
 				09905A6A2851A02B00BAEE78 /* UserStatus.swift in Sources */,
@@ -5064,6 +5118,7 @@
 				099574882876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905B522851A08500BAEE78 /* AppDelegate.swift in Sources */,
 				09905B532851A08500BAEE78 /* PushNotiViewController.swift in Sources */,
+				A1F0F7F5295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09905B542851A08500BAEE78 /* MundoResponseDto.swift in Sources */,
 				09905B552851A08500BAEE78 /* FilterBottomView.swift in Sources */,
 				09DB05FD289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -5075,6 +5130,7 @@
 				A1B2008828CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905B5A2851A08500BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47EF28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F803295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20F292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905B5B2851A08500BAEE78 /* RegexHelper.swift in Sources */,
 				09905B5C2851A08500BAEE78 /* UserStatus.swift in Sources */,
@@ -5324,6 +5380,7 @@
 				099574862876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09905C442851A09600BAEE78 /* AppDelegate.swift in Sources */,
 				09905C452851A09600BAEE78 /* PushNotiViewController.swift in Sources */,
+				A1F0F7F3295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09905C462851A09600BAEE78 /* MundoResponseDto.swift in Sources */,
 				09905C472851A09600BAEE78 /* FilterBottomView.swift in Sources */,
 				09DB05FB289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -5335,6 +5392,7 @@
 				A1B2008628CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09905C4C2851A09600BAEE78 /* WalletAddressDto.swift in Sources */,
 				09CA47ED28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F801295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20D292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09905C4D2851A09600BAEE78 /* RegexHelper.swift in Sources */,
 				09905C4E2851A09600BAEE78 /* UserStatus.swift in Sources */,
@@ -5584,6 +5642,7 @@
 				099574842876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09CAF461283C77ED00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF462283C77ED00D7B19B /* PushNotiViewController.swift in Sources */,
+				A1F0F7F1295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09CAF5C6283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
 				09947B96284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09DB05F9289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -5595,6 +5654,7 @@
 				A1B2008428CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF603283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EB28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F7FF295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20B292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09CAF467283C77ED00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF468283C77ED00D7B19B /* UserStatus.swift in Sources */,
@@ -5844,6 +5904,7 @@
 				099574852876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				09CAF522283C7BBE00D7B19B /* AppDelegate.swift in Sources */,
 				09CAF523283C7BBE00D7B19B /* PushNotiViewController.swift in Sources */,
+				A1F0F7F2295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09CAF5C7283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
 				09947B97284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09DB05FA289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -5855,6 +5916,7 @@
 				A1B2008528CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF604283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EC28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F800295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20C292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				09CAF528283C7BBE00D7B19B /* RegexHelper.swift in Sources */,
 				09CAF529283C7BBE00D7B19B /* UserStatus.swift in Sources */,
@@ -6104,6 +6166,7 @@
 				099574832876DCA5005D44E2 /* AuditTwoFACheckViewController.swift in Sources */,
 				A19C6FD2282218D6000AFC3F /* AppDelegate.swift in Sources */,
 				A1DD13B5282C08E100AB2E0A /* PushNotiViewController.swift in Sources */,
+				A1F0F7F0295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */,
 				09CAF5C5283C86BB00D7B19B /* MundoResponseDto.swift in Sources */,
 				09947B95284D9CF0004F7FD7 /* FilterBottomView.swift in Sources */,
 				09DB05F8289B6AE3003C53ED /* UpToDownIneraction.swift in Sources */,
@@ -6115,6 +6178,7 @@
 				A1B2008328CF158C00AC4795 /* EnableAddressListWhiteDto.swift in Sources */,
 				09CAF602283F8B0300D7B19B /* WalletAddressDto.swift in Sources */,
 				09CA47EA28C9BB1100CFE231 /* AddressBookListDto.swift in Sources */,
+				A1F0F7FE295AA49900C02382 /* LoginQuicklyPasswordViewController.swift in Sources */,
 				09B7C20A292739B400A5E2DC /* ForgotPasswordViewController.swift in Sources */,
 				A19C71CA282264E0000AFC3F /* RegexHelper.swift in Sources */,
 				A19C703728223275000AFC3F /* UserStatus.swift in Sources */,

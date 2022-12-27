@@ -38,6 +38,10 @@ class KeychainManager {
         case sectionMinSetting = "section_Min_Setting"
         // 閒置時間 天
         case sectionDaySetting = "section_Day_Setting"
+        // 當下退背景時間
+        case currentEnterBGtime = "current_Enter_BGtime"
+        // 是否淺登出模式
+        case isLightLogoutMode = "is_Light_Logout_Mode"
     }
     
     static let share = KeychainManager()
@@ -590,5 +594,33 @@ class KeychainManager {
     func getSectionDay() -> String? {
         guard let accInKeychain = self.getString(from: .sectionDaySetting) else { return "" }
         return accInKeychain
+    }
+    func setEnterBGtime() -> Bool {
+        if self.getLightLogoutMode() == false
+        {
+            let today = Date()
+            let formatter1 = DateFormatter()
+            formatter1.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            formatter1.timeZone = .current
+            formatter1.locale = .current
+            let currentTimeString = formatter1.string(from: today)
+            Log.i("進入背景時間 : \(currentTimeString)")
+            let success = self.setString(currentTimeString.lowercased(), at: .currentEnterBGtime)
+            return success
+        }else
+        {
+            return true
+        }
+    }
+    func getEnterBGtime() -> String? {
+        guard let accInKeychain = self.getString(from: .currentEnterBGtime) else { return "" }
+        return accInKeychain
+    }
+    func saveLightLogoutMode(_ isOn :Bool )
+    {
+        _ = setString(isOn == true ? "true":"false", at: .isLightLogoutMode)
+    }
+    func getLightLogoutMode() -> Bool {
+        return getString(from: .isLightLogoutMode) == "true" ? true:false
     }
 }

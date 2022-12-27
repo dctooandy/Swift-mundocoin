@@ -533,7 +533,9 @@ extension LoginSignupViewController {
                          password:String ,
                          verificationCode:String = "",
                          loginDto : LoginPostDto? = nil,
-                         signupDto : SignupPostDto? = nil)
+                         signupDto : SignupPostDto? = nil,
+                         withQuicklyLoginPassword:Bool = false,
+                         errorPassBlock:PasswordLoginErrorBlock? = nil)
     {
         if let loginData = loginDto ,loginData.currentShowMode == .forgotEmailPW || loginData.currentShowMode == .forgotPhonePW
         {
@@ -545,6 +547,7 @@ extension LoginSignupViewController {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
 //                    verifyVC.timer?.invalidate()
+                    KeychainManager.share.saveLightLogoutMode(false)
                     if let data = authDto
                     {
                         KeychainManager.share.setToken(data.token)
@@ -552,7 +555,13 @@ extension LoginSignupViewController {
                         CheckTokenService.share.fetchCurrencyInfo()
                         if let loginData = loginDto
                         {
-                            directToNextPage(authDto: data ,loginDto: loginData)
+                            if let completeBlock = errorPassBlock
+                            {
+                                completeBlock(ApiServiceError.noData)
+                            }
+                            directToNextPage(authDto: data ,
+                                             loginDto: loginData,
+                                             withQuicklyLoginPassword: withQuicklyLoginPassword)
                         }else if let signupData = signupDto
                         {
                             directToNextPage(authDto: data ,signupDto: signupData)
@@ -563,38 +572,47 @@ extension LoginSignupViewController {
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     _ = LoadingViewController.dismiss()
 //                    verifyVC.timer?.invalidate()
-                    if let error = error as? ApiServiceError
+                    if withQuicklyLoginPassword == false
                     {
-                        switch error {
-                        case .errorDto(let dto):
-                            let reason = dto.reason
-                            var verifyString = "Email"
-                            if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" )
-                            {
-                                if let loginData = loginDto
+                        if let error = error as? ApiServiceError
+                        {
+                            switch error {
+                            case .errorDto(let dto):
+                                let reason = dto.reason
+                                var verifyString = "Email"
+                                if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" )
                                 {
-                                    verifyString = loginData.loginMode == .emailPage ? "Email" : "Mobile"
-                                }else if let signupData = signupDto
-                                {
-                                    verifyString = signupData.signupMode == .emailPage ? "Email" : "Mobile"
-                                }
-                                if verifyVC != nil
-                                {
-                                    verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
+                                    if let loginData = loginDto
+                                    {
+                                        verifyString = loginData.loginMode == .emailPage ? "Email" : "Mobile"
+                                    }else if let signupData = signupDto
+                                    {
+                                        verifyString = signupData.signupMode == .emailPage ? "Email" : "Mobile"
+                                    }
+                                    if verifyVC != nil
+                                    {
+                                        verifyVC.verifyInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
+                                    }else
+                                    {
+                                        let results = ErrorDefaultDto(code: dto.code, reason: "The \(verifyString) Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: [])
+                                        ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                                    }
                                 }else
                                 {
-                                    let results = ErrorDefaultDto(code: dto.code, reason: "The \(verifyString) Code is incorrect. Please re-enter.", timestamp: 0, httpStatus: "", errors: [])
+                                    let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
                                     ErrorHandler.show(error: ApiServiceError.errorDto(results))
                                 }
-                            }else
-                            {
-                                let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
-                                ErrorHandler.show(error: ApiServiceError.errorDto(results))
+                            case .noData:
+                                Log.v("登入返回沒有資料")
+                            default:
+                                ErrorHandler.show(error: error)
                             }
-                        case .noData:
-                            Log.v("登入返回沒有資料")
-                        default:
-                            ErrorHandler.show(error: error)
+                        }
+                    }else
+                    {
+                        if let completeBlock = errorPassBlock , let errorData = error as? ApiServiceError
+                        {
+                            completeBlock(errorData)
                         }
                     }
                 }
@@ -671,7 +689,8 @@ extension LoginSignupViewController {
     }
     func directToNextPage(authDto:AuthenticationDto,
                           loginDto : LoginPostDto? = nil,
-                          signupDto : SignupPostDto? = nil)
+                          signupDto : SignupPostDto? = nil,
+                          withQuicklyLoginPassword:Bool = false)
     {
         // 登入 驗證完畢直接登入
         // 註冊 驗證完畢跳出國碼選擇
@@ -682,8 +701,14 @@ extension LoginSignupViewController {
             {
                 Log.v("登入驗證完畢,直接登入")
                 Log.v("得到 Token 轉去 Login ")
-                popVC()
-                directToSaveDataAndLogin(authDto:authDto,loginDto: loginData)
+                if withQuicklyLoginPassword == false
+                {
+                    popVC()
+                    directToSaveDataAndLogin(authDto:authDto,loginDto: loginData)
+                }else
+                {
+                    directToSaveDataAndLogin(authDto:authDto,loginDto: loginData,withQuicklyLoginPassword: withQuicklyLoginPassword)
+                }
             }
 //            else
 //            {
@@ -719,7 +744,8 @@ extension LoginSignupViewController {
     }
     func directToSaveDataAndLogin(authDto:AuthenticationDto,
                                   loginDto : LoginPostDto? = nil,
-                                  signupDto : SignupPostDto? = nil)
+                                  signupDto : SignupPostDto? = nil,
+                                  withQuicklyLoginPassword:Bool = false)
     {
         // 開始倒數
         if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
@@ -764,16 +790,24 @@ extension LoginSignupViewController {
                                              phone: MemberAccountDto.share?.phone ?? "")
             BioVerifyManager.share.applyMemberInBIOList(account)
         }
-        // 1025 FaceID 功能狀態
-        var showBioView = false
-        if KeychainManager.share.getFaceIDStatus() == true
+        if withQuicklyLoginPassword == false
         {
-            let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
-            showBioView = !didAskBioLogin
+            // 1025 FaceID 功能狀態
+            var showBioView = false
+            if KeychainManager.share.getFaceIDStatus() == true
+            {
+                let didAskBioLogin = BioVerifyManager.share.didAskBioLogin()
+                showBioView = !didAskBioLogin
+            }
+            handleLoginSuccess(showLoadingView: false,
+                               showBioView: showBioView,
+                               route: .wallet)
+        }else
+        {
+            handleLoginSuccess(showLoadingView: false,
+                               showBioView: false,
+                               route: .wallet)
         }
-        handleLoginSuccess(showLoadingView: false,
-                           showBioView: showBioView,
-                           route: .wallet)
     }
     
     func postPushDevice() {
@@ -798,7 +832,7 @@ extension LoginSignupViewController {
                          route: route)
     }
     
-    func navigateToRouter(showBioView: Bool, route: SuccessViewAction.Route = .main , isDev : Bool = true) {
+    func navigateToRouter(showBioView: Bool, route: SuccessViewAction.Route = .main , isDev : Bool = false) {
         if showBioView {  // 第一次登入，詢問是否要用臉部或指紋驗證登入
             showBioConfirmView()
             if isDev
@@ -1143,7 +1177,7 @@ extension LoginSignupViewController {
     }
     func fetchAddressBookList()
     {
-        Log.e("更新地址簿")
+        Log.i("更新地址簿")
         _ = AddressBookListDto.update(done: {})
     }
 }

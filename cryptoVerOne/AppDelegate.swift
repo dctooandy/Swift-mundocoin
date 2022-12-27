@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK:Life cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 //        setupAppearance()
+        
         registerBackgroundTasks()
         if detectIsJialbrokenDevice()
         {
@@ -222,12 +223,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 // MARK: -
 // MARK: 延伸 背景執行
 extension AppDelegate {
+    func applicationWillTerminate(_ application: UIApplication) {
+        Log.v("背景執行 app即將結束")
+        _ = KeychainManager.share.setEnterBGtime()
+    }
     func applicationDidEnterBackground(_ application: UIApplication) {
         Log.v("背景執行 app退到背景")
         cancelAllPandingBGTask()
         submitBackgroundTasks()
         // 消除倒數
         CheckTokenService.share.stopRETimer()
+        _ = KeychainManager.share.setEnterBGtime()
 //        stopRETimer()
 //        SocketIOManager.sharedInstance.closeConnection()
     }

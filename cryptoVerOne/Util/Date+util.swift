@@ -72,7 +72,7 @@ extension Date {
         return Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: d)!
     }
     func isInMins(min:Int) -> Bool {
-        let soon = Calendar.current.date(byAdding: .minute, value: (-30 + min), to: self)!
+        let soon = Calendar.current.date(byAdding: .minute, value: (min), to: self)!
         let now = Date()
         Log.v("是否在 \(min) 分時限內 : \(now < soon ? "是":"否")")
         return now < soon

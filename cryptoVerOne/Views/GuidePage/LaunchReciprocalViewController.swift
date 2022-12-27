@@ -14,7 +14,7 @@ class LaunchReciprocalViewController: BaseViewController {
     // MARK:業務設定
     private var count = 1
     private var firstStart = false
-    private var waitForGotoWallet:sectionExpired = .forceLogout
+    var waitForGotoWallet:sectionExpired = .forceLogout
     // MARK: -
     // MARK:UI 設定
     
@@ -72,6 +72,7 @@ class LaunchReciprocalViewController: BaseViewController {
                         {
                             // 淺登出
                             Log.v("淺登出")
+                            strongSelf.goToLightLogoutAction()
                         }
                     }
                 }
@@ -111,6 +112,7 @@ class LaunchReciprocalViewController: BaseViewController {
                                 {
                                     // 淺登出
                                     Log.v("淺登出")
+                                    goToLightLogoutAction()
                                 }
                             }
                         })
@@ -127,9 +129,28 @@ class LaunchReciprocalViewController: BaseViewController {
             }
         }
     }
+    func goToLightLogoutAction()
+    {
+        if BioVerifyManager.share.bioLoginSwitchState() == true ,
+            let loginPostDto = KeychainManager.share.getLastAccountDto(),
+           (BioVerifyManager.share.usedBIOVeritfy(loginPostDto.account) ||
+            BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
+        {
+            Log.i("使用FaceID")
+            let vc = LoginQuicklyViewController.loadNib()
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }else
+        {
+            Log.i("不使用FaceID")
+            let vc = LoginQuicklyPasswordViewController.instance(faceIDPrefixVC: false)
+            vc.modalPresentationStyle = .fullScreen
+            present(vc, animated: true)
+        }
+    }
     func fetchAddressBookList()
     {
-        Log.e("更新地址簿")
+        Log.i("更新地址簿")
         _ = AddressBookListDto.update(done: {})
     }
     func goToWallet()
