@@ -22,10 +22,18 @@ class LoginQuicklyViewController: BaseViewController {
     @IBOutlet weak var faceIDImageView: UIImageView!
     @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var loginPasswordButton: CornerradiusButton!
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-x-close")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
+    
     // MARK: -
     // MARK:Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupData()
         bindImageView()
     }
@@ -72,14 +80,18 @@ class LoginQuicklyViewController: BaseViewController {
             Log.i("點擊使用FaceID")
             bioVerifyCheck()
         }.disposed(by: dpg)
-        dismissImageView.rx.click.subscribeSuccess { [self] _ in
-            Log.i("去登入")
-            quicklyGoToLogin()
-        }.disposed(by: dpg)
+//        dismissImageView.rx.click.subscribeSuccess { [self] _ in
+//            Log.i("去登入")
+//            quicklyGoToLogin()
+//        }.disposed(by: dpg)
         loginPasswordButton.rx.tap.subscribeSuccess { [self] _ in
             Log.i("去密碼登入")
             quicklyGoToLoginWithPassword()
         }.disposed(by: dpg)
+    }
+    @objc override func popVC() {
+        Log.i("去登入")
+        quicklyGoToLogin()
     }
     func bioVerifyCheck()
     {
@@ -152,7 +164,8 @@ extension LoginQuicklyViewController {
     func quicklyGoToLoginWithPassword()
     {
         let vc = LoginQuicklyPasswordViewController.instance(faceIDPrefixVC: true)
-        vc.modalPresentationStyle = .fullScreen
-        present(vc, animated: true)
+//        vc.modalPresentationStyle = .fullScreen
+//        present(vc, animated: true)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }

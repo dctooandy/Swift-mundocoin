@@ -20,7 +20,7 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!
-    @IBOutlet weak var dismissImageView: UIImageView!
+//    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var passwordInputView: InputStyleView!
     let forgetPasswordLabel: UnderlinedLabel = {
@@ -37,6 +37,12 @@ class LoginQuicklyPasswordViewController: BaseViewController {
         tfLabel.text = "Forgot Password ?".localized
         return tfLabel
     }()
+    private lazy var backBtn:TopBackButton = {
+        let btn = TopBackButton(iconName: "icon-chevron-left")
+        btn.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        btn.addTarget(self, action:#selector(popVC), for:.touchUpInside)
+        return btn
+    }()
     // MARK: -
     // MARK:Life cycle
     static func instance(faceIDPrefixVC: Bool) -> LoginQuicklyPasswordViewController {
@@ -46,6 +52,7 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backBtn)
         setupData()
         bindImageView()
         setupUI()
@@ -103,18 +110,28 @@ class LoginQuicklyPasswordViewController: BaseViewController {
             make.height.equalTo(18)
         }
     }
+    @objc override func popVC() {
+        Log.i("去登入")
+        if withoutFaceIDPrefixVC == false
+        {
+            quicklyGoToLogin()
+        }else
+        {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+    }
     func bindImageView()
     {
-        dismissImageView.rx.click.subscribeSuccess { [self] _ in
-            Log.i("去登入")
-            if withoutFaceIDPrefixVC == false
-            {
-                quicklyGoToLogin()
-            }else
-            {
-                self.dismiss(animated: true)
-            }
-        }.disposed(by: dpg)
+//        dismissImageView.rx.click.subscribeSuccess { [self] _ in
+//            Log.i("去登入")
+//            if withoutFaceIDPrefixVC == false
+//            {
+//                quicklyGoToLogin()
+//            }else
+//            {
+//                self.dismiss(animated: true)
+//            }
+//        }.disposed(by: dpg)
         loginButton.rx.tap.subscribeSuccess { [self] _ in
             Log.i("去密碼登入")
             goToPasswordLogin()
@@ -124,9 +141,9 @@ class LoginQuicklyPasswordViewController: BaseViewController {
             passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
             Log.v("忘記密碼")
             let accForgot = forgotPageVC
-            accForgot.modalPresentationStyle = .fullScreen
-            present(accForgot, animated: true)
-//            self.navigationController?.pushViewController(accForgot, animated: true)
+//            accForgot.modalPresentationStyle = .fullScreen
+//            present(accForgot, animated: true)
+            self.navigationController?.pushViewController(accForgot, animated: true)
         }.disposed(by: disposeBag)
         loginButton.setTitle("Log In".localized, for: .normal)
     }
