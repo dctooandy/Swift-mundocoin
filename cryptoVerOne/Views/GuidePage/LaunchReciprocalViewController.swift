@@ -137,15 +137,23 @@ class LaunchReciprocalViewController: BaseViewController {
             BioVerifyManager.share.usedBIOVeritfy(loginPostDto.phone))
         {
             Log.i("使用FaceID")
-            let vc = LoginQuicklyViewController.loadNib()
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+            {
+                let vc = LoginQuicklyViewController.loadNib()
+                let quicklyNavVC = MDNavigationController(rootViewController: vc)
+                mainWindow.rootViewController = quicklyNavVC
+                mainWindow.makeKeyAndVisible()
+            }
         }else
         {
             Log.i("不使用FaceID")
-            let vc = LoginQuicklyPasswordViewController.instance(faceIDPrefixVC: false)
-            vc.modalPresentationStyle = .fullScreen
-            present(vc, animated: true)
+            if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+            {
+                let vc = LoginQuicklyPasswordViewController.instance(faceIDPrefixVC: false)
+                let quicklyNavVC = MDNavigationController(rootViewController: vc)
+                mainWindow.rootViewController = quicklyNavVC
+                mainWindow.makeKeyAndVisible()
+            }
         }
     }
     func fetchAddressBookList()
