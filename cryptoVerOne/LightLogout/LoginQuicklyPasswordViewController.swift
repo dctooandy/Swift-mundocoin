@@ -15,6 +15,7 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
     private var withoutFaceIDPrefixVC: Bool = false
+    fileprivate let forgotPageVC = ForgotPasswordViewController.share
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -22,6 +23,20 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var loginButton: CornerradiusButton!
     @IBOutlet weak var passwordInputView: InputStyleView!
+    let forgetPasswordLabel: UnderlinedLabel = {
+        let tfLabel = UnderlinedLabel()
+        tfLabel.contentMode = .center
+        tfLabel.backgroundColor = .clear
+        tfLabel.font = Fonts.PlusJakartaSansBold(13)
+        tfLabel.textColor = Themes.gray707EAE
+        tfLabel.numberOfLines = 0
+        tfLabel.adjustsFontSizeToFitWidth = true
+        tfLabel.minimumScaleFactor = 0.8
+        tfLabel.isUserInteractionEnabled = true
+        tfLabel.isGrayColor = true
+        tfLabel.text = "Forgot Password ?".localized
+        return tfLabel
+    }()
     // MARK: -
     // MARK:Life cycle
     static func instance(faceIDPrefixVC: Bool) -> LoginQuicklyPasswordViewController {
@@ -81,6 +96,12 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     func setupUI()
     {
         passwordInputView.setMode(mode: .password)
+        view.addSubview(forgetPasswordLabel)
+        forgetPasswordLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(passwordInputView).offset(9)
+            make.top.equalTo(passwordInputView.snp.bottom).offset(34)
+            make.height.equalTo(18)
+        }
     }
     func bindImageView()
     {
@@ -98,6 +119,16 @@ class LoginQuicklyPasswordViewController: BaseViewController {
             Log.i("去密碼登入")
             goToPasswordLogin()
         }.disposed(by: dpg)
+        forgetPasswordLabel.rx.click.subscribeSuccess { [self] _ in
+            passwordInputView.textField.sendActions(for: .valueChanged)
+            passwordInputView.changeInvalidLabelAndMaskBorderColor(with:"")
+            Log.v("忘記密碼")
+            let accForgot = forgotPageVC
+            accForgot.modalPresentationStyle = .fullScreen
+            present(accForgot, animated: true)
+//            self.navigationController?.pushViewController(accForgot, animated: true)
+        }.disposed(by: disposeBag)
+        loginButton.setTitle("Log In".localized, for: .normal)
     }
     func bindTextfield() {
         let isPasswordValid = passwordInputView.textField.rx.text
