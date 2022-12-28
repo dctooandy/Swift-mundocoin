@@ -63,13 +63,13 @@ struct TXPayloadDto : Codable {
     
     var txAmountIntWithDecimal : JSONValue?
     {
-        var difValue = 1.0
+        var difValue = 0.0
         // socket 第三次回來時,blockHeight非 nil 時給fee 1
         if stateValue == "FAILED" || stateValue == "PENDING" || blockHeight == nil
         {
             if blockHeight != nil
             {
-                difValue = 1.0
+                difValue = serviceFee ?? 0.0
             }else
             {
                 difValue = 0.0
@@ -81,11 +81,13 @@ struct TXPayloadDto : Codable {
         }
         if let amountDoubleValue = amount?.doubleValue
         {
-            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+//            let doubleValue = amountDoubleValue / pow(10, Double(decimal ?? 0))
+            let doubleValue = amountDoubleValue
             return JSONValue.double(doubleValue + difValue)
         }else if let intValue = amount?.intValue
         {
-            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+//            let doubleValue = Double(intValue) / pow(10, Double(decimal ?? 0))
+            let doubleValue = Double(intValue)
             return JSONValue.double(doubleValue + difValue)
         }else
         {

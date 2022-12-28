@@ -101,14 +101,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
-        // 閒置時間 分
+        // 1228 閒置時間 分
         _ = KeychainManager.share.setSectionMin("1")
-        // 閒置時間 天
+        // 1228 閒置時間 天
         _ = KeychainManager.share.setSectionDay("7")
         // 1215 可同時輸入兩種驗證碼的模式 暫停
         _ = KeychainManager.share.setMundoCoinTwoWaySecurityEnable(false)
         // 1206 新版本 sio反饋的 功能暫停
-        _ = KeychainManager.share.setMundoCoinSioFeedbackEnable(false)
+        _ = KeychainManager.share.setMundoCoinSioFeedbackEnable(true)
         // 1130 select crypto 功能暫停
         _ = KeychainManager.share.setMundoCoinSelectCryptoEnable(false)
         // 1128 network method 功能暫停

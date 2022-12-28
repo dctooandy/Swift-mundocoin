@@ -54,32 +54,35 @@ class CheckTokenService{
         }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         KeychainManager.share.saveFinishLaunchActive(false)
-        if isExpired == false
+        if jwtValue != nil , let isExpired = jwtValue?.expired
         {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                // 沒過期,打refresh API, 時間加30分鐘
-                //            SocketIOManager.sharedInstance.establishConnection()
-                SocketIOManager.sharedInstance.reConnection()
-                Log.v("Token 沒過期")
-                if let successBlock = complete
-                {
-                    successBlock(.inSection)
-                }else
-                {
-                    freshToken()
+            if isExpired == false
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    // 沒過期,打refresh API, 時間加30分鐘
+                    //            SocketIOManager.sharedInstance.establishConnection()
+                    SocketIOManager.sharedInstance.reConnection()
+                    Log.v("Token 沒過期")
+                    if let successBlock = complete
+                    {
+                        successBlock(.inSection)
+                    }else
+                    {
+                        freshToken()
+                    }
                 }
-            }
-        }else
-        {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
-                Log.v("Token 過期")
-                if let successBlock = complete
-                {
-                    successBlock(.forceLogout)
-                }else
-                {
-                    //過期去登入頁面
-                    goToLoginVC()
+            }else
+            {
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
+                    Log.v("Token 過期")
+                    if let successBlock = complete
+                    {
+                        successBlock(.forceLogout)
+                    }else
+                    {
+                        //過期去登入頁面
+                        goToLoginVC()
+                    }
                 }
             }
         }

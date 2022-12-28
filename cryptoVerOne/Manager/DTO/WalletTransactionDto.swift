@@ -231,12 +231,12 @@ struct ContentDto : Codable
     }
     var walletAmountIntWithDecimal : JSONValue?
     {
-        var difValue = 1.0
+        var difValue = 0.0
         if stateValue == "FAILED" || stateValue == "PENDING" || blockHeight == nil
         {
             if blockHeight != nil
             {
-                difValue = 1.0
+                difValue = serviceFee ?? 0.0
             }else
             {
                 difValue = 0.0
