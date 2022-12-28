@@ -42,6 +42,7 @@ class CheckTokenService{
             jwtValue = try decode(jwt: token)
         } catch {
             Log.v("AppDelegate - Failed to decode JWT: \(error)")
+            KeychainManager.share.saveFinishLaunchActive(false)
             if let successBlock = complete
             {
                 successBlock(.forceLogout)
@@ -52,6 +53,7 @@ class CheckTokenService{
             }
         }
 #if Approval_PRO || Approval_DEV || Approval_STAGE
+        KeychainManager.share.saveFinishLaunchActive(false)
         if isExpired == false
         {
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
@@ -95,55 +97,85 @@ class CheckTokenService{
                 Log.v("在 \(sectionDay) 天後")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     Log.v("Token 過期")
-                    if let successBlock = complete
-                    {
-                        successBlock(.forceLogout)
-                    }else
-                    {
-                        //過期去登入頁面
-                        goToLoginVC()
-                    }
+                    KeychainManager.share.saveFinishLaunchActive(false)
+                    subBlockForSection(complete:complete ,section: .forceLogout)
                 }
             }else if isExpiredInMins == false , isExpiredInDays == true
             {
-                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內")
+                KeychainManager.share.saveFinishLaunchActive(false)
+                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內" )
                 if let accountString = KeychainManager.share.getLastAccount()
                 {
                     Log.v("上次帳號 : \(accountString)")
                     KeychainManager.share.saveLightLogoutMode(true)
-                    if let successBlock = complete
-                    {
-                        successBlock(.lightLogout)
-                    }else
-                    {
-                        // 去淺登出
-                        if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
-                        {
-                            let vc = LaunchReciprocalViewController.instance(sectionflag: .lightLogout)
-                            mainWindow.rootViewController = vc
-                            mainWindow.makeKeyAndVisible()
-                        }
-                    }
+                    subBlockForSection(complete:complete ,section: .lightLogout)
                 }
             }else
             {
+                KeychainManager.share.saveFinishLaunchActive(false)
+                //使用者自己滑掉 或 重新啟動
+//                if KeychainManager.share.getTerminateByUser() == true ||
+//                    KeychainManager.share.getFinishLaunchActive() == true
+//                {
+//                    Log.v("是否使用者自己滑掉 : \(KeychainManager.share.getTerminateByUser())\n是否重新啟動 :\(KeychainManager.share.getFinishLaunchActive())" )
+//                    if let accountString = KeychainManager.share.getLastAccount()
+//                    {
+//                        Log.v("上次帳號 : \(accountString)")
+//                        KeychainManager.share.saveLightLogoutMode(true)
+//                        subBlockForSection(complete:complete ,section: .lightLogout)
+//                    }
+//                }else{
+//                }
+                
                 Log.v("在 \(sectionMin) 分內")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     // 沒過期,打refresh API, 時間加30分鐘
-                    //            SocketIOManager.sharedInstance.establishConnection()
                     SocketIOManager.sharedInstance.reConnection()
-                    Log.v("Token 沒過期")
-                    if let successBlock = complete
-                    {
-                        successBlock(.inSection)
-                    }else
-                    {
-                        freshToken()
-                    }
+                    subBlockForSection(complete:complete ,section: .inSection)
                 }
             }
         }
 #endif
+    }
+    func subBlockForSection(complete:CheckScetionCompletionBlock? = nil , section:SectionExpired)
+    {
+        if let successBlock = complete
+        {
+            successBlock(section)
+        }else
+        {
+            switch section {
+            case .forceLogout:
+                Log.v("Token 過期")
+                if let successBlock = complete
+                {
+                    successBlock(.forceLogout)
+                }else
+                {
+                    //過期去登入頁面
+                    goToLoginVC()
+                }
+            case .lightLogout:
+                // 去淺登出
+                Log.v("淺登出狀態")
+                SocketIOManager.sharedInstance.closeConnection()
+                if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
+                {
+                    let vc = LaunchReciprocalViewController.instance(sectionflag: .lightLogout)
+                    mainWindow.rootViewController = vc
+                    mainWindow.makeKeyAndVisible()
+                }
+            case .inSection:
+                Log.v("Token 沒過期")
+                if let successBlock = complete
+                {
+                    successBlock(.inSection)
+                }else
+                {
+                    freshToken()
+                }
+            }
+        }
     }
     func getEnterBGtime() -> Date
     {

@@ -42,6 +42,9 @@ class KeychainManager {
         case currentEnterBGtime = "current_Enter_BGtime"
         // 是否淺登出模式
         case isLightLogoutMode = "is_Light_Logout_Mode"
+        // 是否從背景滑掉
+        case isTerminateByUser = "is_Terminate_ByUser"
+        case isFinishLaunchActive = "is_Finish_Launch_Active"
     }
     
     static let share = KeychainManager()
@@ -89,8 +92,10 @@ class KeychainManager {
     func getLastAccountDto(loginMode : LoginMode? = nil) -> LoginPostDto? {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
         guard let accInKeychain = self.getString(from: .auditAccount) else { return nil }
+        let rememberStatus = getAuditRememberMeStatus()
 #else
         guard let accInKeychain = self.getString(from: .account) else { return nil }
+        let rememberStatus = getMundoCoinRememberMeStatus()
 #endif
         let accList = getAccList()
         var accPwdString = ""
@@ -116,12 +121,14 @@ class KeychainManager {
         let phone = (accArr.count > 3 ? accArr[3] : "")
         let loginMode:LoginMode = (phone.isEmpty ? .emailPage : .phonePage)
         let showMode:ShowMode = (loginMode == .phonePage ? .loginPhone : .loginEmail)
-        return LoginPostDto(account: acc,
-                            password: pwd,
-                            loginMode: loginMode ,
-                            showMode: showMode ,
-                            phoneCode: phoneCode ,
-                            phone: phone)
+        var loginDto = LoginPostDto(account: acc,
+                                    password: pwd,
+                                    loginMode: loginMode ,
+                                    showMode: showMode ,
+                                    phoneCode: phoneCode ,
+                                    phone: phone)
+        loginDto.rememberMeStatus = rememberStatus
+        return loginDto
     }
     /// 儲存帳號密碼電話 格式: acc.pwd.phoneCode.phone
     /// 遵循此格式： "acc.pwd.phoneCode.phone"
@@ -622,5 +629,19 @@ class KeychainManager {
     }
     func getLightLogoutMode() -> Bool {
         return getString(from: .isLightLogoutMode) == "true" ? true:false
+    }
+    func saveTerminateByUser(_ isOn :Bool )
+    {
+        _ = setString(isOn == true ? "true":"false", at: .isTerminateByUser)
+    }
+    func getTerminateByUser() -> Bool {
+        return getString(from: .isTerminateByUser) == "true" ? true:false
+    }
+    func saveFinishLaunchActive(_ isOn :Bool )
+    {
+        _ = setString(isOn == true ? "true":"false", at: .isFinishLaunchActive)
+    }
+    func getFinishLaunchActive() -> Bool {
+        return getString(from: .isFinishLaunchActive) == "true" ? true:false
     }
 }

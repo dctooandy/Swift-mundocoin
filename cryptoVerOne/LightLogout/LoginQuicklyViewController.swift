@@ -156,6 +156,17 @@ extension LoginQuicklyViewController {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
             let loginVC = LoginSignupViewController.share
+            // 依據 帳號種類 顯示 Login 頁面
+            if let lastAccount = KeychainManager.share.getLastAccount()
+            {
+                if lastAccount.components(separatedBy: "@").count > 1
+                {
+                    loginVC.loginPageVC.selectPageVC(index: 0)
+                }else
+                {
+                    loginVC.loginPageVC.selectPageVC(index: 1)
+                }
+            }
             let loginNavVC = MuLoginNavigationController(rootViewController:loginVC )
             mainWindow.rootViewController = loginNavVC
             mainWindow.makeKeyAndVisible()

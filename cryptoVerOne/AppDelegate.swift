@@ -44,8 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: -
     // MARK:Life cycle
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-//        setupAppearance()
-        
+        KeychainManager.share.saveFinishLaunchActive(true)
         registerBackgroundTasks()
         if detectIsJialbrokenDevice()
         {
@@ -99,7 +98,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
     }
     private func setupAppearance(){
-        
         KeychainManager.share.clearToken()
     }
     private func initSingleton(){
@@ -164,6 +162,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #else
 #endif
     }
+    
     func isLaunchBefore() -> Bool {
         let isLaunchBefore = UserDefaults.Verification.bool(forKey: .launchBefore)
         if !isLaunchBefore {
@@ -171,6 +170,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return isLaunchBefore
     }
+    
     func checkAppVersion() {
       
     }
@@ -225,7 +225,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         Log.v("背景執行 app即將結束")
+        KeychainManager.share.saveTerminateByUser(true)
         _ = KeychainManager.share.setEnterBGtime()
+    }
+    func applicationWillResignActive(_ application: UIApplication) {
+        Log.v("背景執行 appWillResignActive")
     }
     func applicationDidEnterBackground(_ application: UIApplication) {
         Log.v("背景執行 app退到背景")
@@ -239,6 +243,7 @@ extension AppDelegate {
     }
     func applicationWillEnterForeground(_ application: UIApplication) {
         endBackgroundTasksWillEnterForeground(application)
+        KeychainManager.share.saveTerminateByUser(false)
         if detectIsJialbrokenDevice()
         {
             if let vc = window?.rootViewController

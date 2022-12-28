@@ -166,14 +166,17 @@ class SocketIOManager: NSObject {
     func establishConnection() {
         if KeychainManager.share.getToken().isEmpty != true
         {
+            Log.socket("連上Socket")
             socket.connect()
         }
     }
      
     func closeConnection() {
+        Log.socket("結束Socket")
         socket.leaveNamespace()
     }
     func reConnection() {
+        Log.socket("重連Socket")
         self.manager.reconnect()
     }
 }

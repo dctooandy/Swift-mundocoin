@@ -35,7 +35,7 @@ enum ShowMode {
 }
 class LoginSignupViewController: BaseViewController {
     // MARK:業務設定
-    fileprivate let loginPageVC = LoginPageViewController()
+    let loginPageVC = LoginPageViewController()
     fileprivate let forgotPageVC = ForgotPasswordViewController.share
     static var share: LoginSignupViewController = LoginSignupViewController.loadNib()
     /// 显示注册或登入页面
@@ -548,6 +548,7 @@ extension LoginSignupViewController {
                     _ = LoadingViewController.dismiss()
 //                    verifyVC.timer?.invalidate()
                     KeychainManager.share.saveLightLogoutMode(false)
+                    _ = KeychainManager.share.setEnterBGtime()
                     if let data = authDto
                     {
                         KeychainManager.share.setToken(data.token)

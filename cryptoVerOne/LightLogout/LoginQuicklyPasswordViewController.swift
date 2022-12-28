@@ -16,6 +16,7 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     private let dpg = DisposeBag()
     private var withoutFaceIDPrefixVC: Bool = false
     fileprivate let forgotPageVC = ForgotPasswordViewController.share
+    var pwHeightConstraint : NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
@@ -58,6 +59,7 @@ class LoginQuicklyPasswordViewController: BaseViewController {
         setupUI()
         bindTextfield()
         bindBorderColor()
+        bindStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,12 +104,24 @@ class LoginQuicklyPasswordViewController: BaseViewController {
     }
     func setupUI()
     {
+        pwHeightConstraint = NSLayoutConstraint(item: passwordInputView!, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: CGFloat(Themes.inputViewPasswordHeight))
         passwordInputView.setMode(mode: .password)
+        passwordInputView.snp.updateConstraints { (make) in
+            make.height.equalTo(pwHeightConstraint.constant)
+//                make.height.equalTo(Themes.inputViewPasswordHeight)
+        }
+        passwordInputView.addConstraint(pwHeightConstraint)
         view.addSubview(forgetPasswordLabel)
         forgetPasswordLabel.snp.makeConstraints { (make) in
             make.left.equalTo(passwordInputView).offset(9)
-            make.top.equalTo(passwordInputView.snp.bottom).offset(34)
+            make.top.equalTo(passwordInputView.snp.bottom).offset(16)
             make.height.equalTo(18)
+        }
+        loginButton.snp.makeConstraints { make in
+            make.top.equalTo(forgetPasswordLabel.snp.bottom).offset(30)
+            make.left.equalToSuperview().offset(37)
+            make.right.equalToSuperview().offset(-37)
+            make.height.equalTo(47)
         }
     }
     @objc override func popVC() {
@@ -119,6 +133,10 @@ class LoginQuicklyPasswordViewController: BaseViewController {
         {
             self.navigationController?.popToRootViewController(animated: true)
         }
+    }
+    func bindStyle()
+    {
+        InputViewStyleThemes.pwInputHeightType.bind(to: pwHeightConstraint.rx.constant).disposed(by: dpg)
     }
     func bindImageView()
     {
@@ -220,17 +238,26 @@ extension LoginQuicklyPasswordViewController {
     func goToPasswordLogin()
     {
         if let loginPostDto = KeychainManager.share.getLastAccountDto(),
+           let lastAccountString = KeychainManager.share.getLastAccount(),
            let passwordString = passwordInputView.textField.text
         {
-            let idString = loginPostDto.toAccountString
-            LoginSignupViewController.share.gotoLoginAction(with: idString, password: passwordString,loginDto: loginPostDto ,withQuicklyLoginPassword: true) { [self] errorData in
+            let idString = lastAccountString
+            var newLoginDto = loginPostDto
+            if idString.components(separatedBy: "@").count > 1
+            {
+                newLoginDto.loginMode = .emailPage
+            }else
+            {
+                newLoginDto.loginMode = .phonePage
+            }
+            LoginSignupViewController.share.gotoLoginAction(with: idString, password: passwordString,loginDto: newLoginDto ,withQuicklyLoginPassword: true) { [self] errorData in
                 switch errorData {
                 case .errorDto(let dto):
                     let reason = dto.reason
                     var verifyString = "Email"
                     if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" || reason == "BAD_CREDENTIAL" )
                     {
-                        verifyString = loginPostDto.loginMode == .emailPage ? "Email" : "Mobile"
+                        verifyString = newLoginDto.loginMode == .emailPage ? "Email" : "Mobile"
                         passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
                     }else
                     {

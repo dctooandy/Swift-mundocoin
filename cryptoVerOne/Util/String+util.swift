@@ -227,12 +227,12 @@ extension String {
     func hidePhoneAccount() -> String {
         if !self.isEmpty
         {
-            let middleStringCount = (self.count - 4)
+            let middleStringCount = (self.count - 8)
             var xString = ""
             for _ in 1...middleStringCount {
                 xString.append(contentsOf: "*")
             }
-            return String(prefix(2) + "\(xString)" + suffix(2))
+            return String(prefix(6) + "\(xString)" + suffix(2))
         }else
         {
             return ""

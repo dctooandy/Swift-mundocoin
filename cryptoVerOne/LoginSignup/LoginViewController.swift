@@ -244,7 +244,7 @@ class LoginViewController: BaseViewController {
         
         forgetPasswordLabel.snp.makeConstraints { (make) in
             make.left.equalTo(accountInputView!).offset(32)
-            make.top.equalTo(accountInputView!.passwordInputView.snp.bottom).offset(34)
+            make.top.equalTo(accountInputView!.passwordInputView.snp.bottom).offset(40)
             make.height.equalTo(18)
         }
 

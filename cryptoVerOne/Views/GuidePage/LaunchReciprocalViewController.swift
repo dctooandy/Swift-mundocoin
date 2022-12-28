@@ -118,7 +118,6 @@ class LaunchReciprocalViewController: BaseViewController {
         }else
         {
             // 淺登出
-            Log.v("淺登出")
             goToLightLogoutAction()
         }
     }
@@ -219,14 +218,7 @@ class LaunchReciprocalViewController: BaseViewController {
         }, completion: nil)
         
     }
-    
-    func isLaunchBefore() -> Bool {
-        let isLaunchBefore = UserDefaults.Verification.bool(forKey: .launchBefore)
-        if !isLaunchBefore {
-            UserDefaults.Verification.set(value: true, forKey: .launchBefore)
-        }
-        return isLaunchBefore
-    }
+
     private var showUpdateAlert = false
     func checkVersion() {
 #if Approval_PRO || Approval_DEV || Approval_STAGE
