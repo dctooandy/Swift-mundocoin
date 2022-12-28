@@ -15,12 +15,13 @@ class LoginQuicklyViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     private let dpg = DisposeBag()
+    @IBOutlet weak var backImageViewTopCons:NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var accountLabel: UILabel!
     @IBOutlet weak var faceIDImageView: UIImageView!
-    @IBOutlet weak var dismissImageView: UIImageView!
+//    @IBOutlet weak var dismissImageView: UIImageView!
     @IBOutlet weak var loginPasswordButton: CornerradiusButton!
     private lazy var backBtn:TopBackButton = {
         let btn = TopBackButton(iconName: "icon-x-close")
@@ -40,6 +41,13 @@ class LoginQuicklyViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if Views.isIPhoneWithNotch()
+        {
+            backImageViewTopCons.constant = 40
+        }else
+        {
+            backImageViewTopCons.constant = 20
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
