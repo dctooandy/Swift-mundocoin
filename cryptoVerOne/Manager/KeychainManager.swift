@@ -119,7 +119,17 @@ class KeychainManager {
         let pwd = (accArr.count > 1 ? accArr[1] : "")
         let phoneCode = (accArr.count > 2 ? accArr[2] : "")
         let phone = (accArr.count > 3 ? accArr[3] : "")
-        let loginMode:LoginMode = (phone.isEmpty ? .emailPage : .phonePage)
+        var loginMode:LoginMode = .emailPage
+        if let lastAccount = getLastAccount()
+        {
+            if lastAccount.components(separatedBy: "@").count > 1
+            {
+                loginMode = .emailPage
+            }else
+            {
+                loginMode = .phonePage
+            }
+        }
         let showMode:ShowMode = (loginMode == .phonePage ? .loginPhone : .loginEmail)
         var loginDto = LoginPostDto(account: acc,
                                     password: pwd,
