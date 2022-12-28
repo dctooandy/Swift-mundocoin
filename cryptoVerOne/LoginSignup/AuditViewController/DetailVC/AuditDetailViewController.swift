@@ -77,6 +77,12 @@ class AuditDetailViewController: BaseViewController {
         resetTabbarHeight(toLeave: true)
         dpg = DisposeBag()
     }
+    static func instance(cellData:WalletWithdrawDto ,showMode:AuditShowMode) -> AuditDetailViewController
+    {
+        let vc = AuditDetailViewController.loadNib()
+        vc.setupDate(cellData: cellData, showMode: showMode)
+        return vc
+    }
     // MARK: -
     // MARK:業務方法
     func setupBackUI()

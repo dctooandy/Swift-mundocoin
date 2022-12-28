@@ -14,7 +14,7 @@ class LaunchReciprocalViewController: BaseViewController {
     // MARK:業務設定
     private var count = 1
     private var firstStart = false
-    var waitForGotoWallet:sectionExpired = .forceLogout
+    var sectionflag:SectionExpired = .forceLogout
     // MARK: -
     // MARK:UI 設定
     
@@ -41,39 +41,28 @@ class LaunchReciprocalViewController: BaseViewController {
         startToCountDown()
         startAnimation()
     }
+    static func instance(sectionflag : SectionExpired ) -> LaunchReciprocalViewController {
+        let vc = LaunchReciprocalViewController.loadNib()
+        vc.sectionflag = sectionflag
+        return vc
+    }
     // MARK: -
     // MARK:業務方法
     func startToCountDown() {
         checkForDirectAndWait()
-        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] (timer) in
-            guard let strongSelf = self else { return }
-            strongSelf.count -= 1
-            DispatchQueue.main.async {
-                print("倒數： \(strongSelf.count)")
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [self] (timer) in
+            count -= 1
+            DispatchQueue.main.async { [self] in
+                print("倒數： \(count)")
 //                strongSelf.reciprocalLabel.text = "\(strongSelf.count) 秒"
-                if strongSelf.count == 0 {
+                if count == 0 {
                     timer.invalidate()
-                    if strongSelf.firstStart == false
+                    if firstStart == false
                     {
-                        strongSelf.checkForDirectAndWait(immediately: true)
+                        checkForDirectAndWait(immediately: true)
                     }else
                     {
-                        if strongSelf.waitForGotoWallet == .inSection
-                        {
-                            #if Approval_PRO || Approval_DEV || Approval_STAGE
-                            strongSelf.goToAuditMainVC()
-                            #else
-                            strongSelf.goToWallet()
-                            #endif
-                        }else if strongSelf.waitForGotoWallet == .forceLogout
-                        {
-                            strongSelf.goToLogin()
-                        }else
-                        {
-                            // 淺登出
-                            Log.v("淺登出")
-                            strongSelf.goToLightLogoutAction()
-                        }
+                        subClassForSectionExpired(sectionflag: sectionflag)
                     }
                 }
             }
@@ -93,27 +82,12 @@ class LaunchReciprocalViewController: BaseViewController {
                     // 自動登入
                     // 檢查token動作
                     if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appdelegate.checkTime(complete: { [self] flag in
+                        appdelegate.checkTime(complete: { [self] sectionResult in
                             firstStart = true
-                            waitForGotoWallet = flag
+                            sectionflag = sectionResult
                             if immediately == true
                             {
-                                if waitForGotoWallet == .inSection
-                                {
-                                    #if Approval_PRO || Approval_DEV || Approval_STAGE
-                                    goToAuditMainVC()
-                                    #else
-                                    goToWallet()
-                                    #endif
-                                }else if waitForGotoWallet == .forceLogout
-                                {
-                                    goToLogin()
-                                }else
-                                {
-                                    // 淺登出
-                                    Log.v("淺登出")
-                                    goToLightLogoutAction()
-                                }
+                                subClassForSectionExpired(sectionflag: sectionflag)
                             }
                         })
                     }
@@ -127,6 +101,25 @@ class LaunchReciprocalViewController: BaseViewController {
                     }
                 }
             }
+        }
+    }
+    func subClassForSectionExpired(sectionflag:SectionExpired)
+    {
+        if sectionflag == .inSection
+        {
+            #if Approval_PRO || Approval_DEV || Approval_STAGE
+            goToAuditMainVC()
+            #else
+            goToWallet()
+            #endif
+        }else if sectionflag == .forceLogout
+        {
+            goToLogin()
+        }else
+        {
+            // 淺登出
+            Log.v("淺登出")
+            goToLightLogoutAction()
         }
     }
     func goToLightLogoutAction()

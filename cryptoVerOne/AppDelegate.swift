@@ -13,7 +13,7 @@ import JWTDecode
 import Firebase
 import BackgroundTasks
 
-public typealias CheckScetionCompletionBlock = (sectionExpired) -> Void
+public typealias CheckScetionCompletionBlock = (SectionExpired) -> Void
 public typealias CheckCompletionBlock = (Bool) -> Void
 let backgroundAppRefreshTaskSchedulerIdentifier = "com.example.fooBackgroundAppRefreshIdentifier"
 //@main

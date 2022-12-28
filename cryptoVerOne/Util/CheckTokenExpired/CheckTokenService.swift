@@ -12,7 +12,7 @@ import RxCocoa
 import DropDown
 import JWTDecode
 
-public enum sectionExpired {
+public enum SectionExpired {
     case inSection
     case lightLogout
     case forceLogout
@@ -119,8 +119,7 @@ class CheckTokenService{
                         // 去淺登出
                         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
                         {
-                            let vc = LaunchReciprocalViewController.loadNib()
-                            vc.waitForGotoWallet = .lightLogout
+                            let vc = LaunchReciprocalViewController.instance(sectionflag: .lightLogout)
                             mainWindow.rootViewController = vc
                             mainWindow.makeKeyAndVisible()
                         }

@@ -224,26 +224,23 @@ extension LoginQuicklyPasswordViewController {
         {
             let idString = loginPostDto.toAccountString
             LoginSignupViewController.share.gotoLoginAction(with: idString, password: passwordString,loginDto: loginPostDto ,withQuicklyLoginPassword: true) { [self] errorData in
-                if let error = errorData as? ApiServiceError
-                {
-                    switch error {
-                    case .errorDto(let dto):
-                        let reason = dto.reason
-                        var verifyString = "Email"
-                        if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" || reason == "BAD_CREDENTIAL" )
-                        {
-                            verifyString = loginPostDto.loginMode == .emailPage ? "Email" : "Mobile"
-                            passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
-                        }else
-                        {
-                            let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
-                            ErrorHandler.show(error: ApiServiceError.errorDto(results))
-                        }
-                    case .noData:
-                        dismiss(animated: true)
-                    default:
-                        ErrorHandler.show(error: error)
+                switch errorData {
+                case .errorDto(let dto):
+                    let reason = dto.reason
+                    var verifyString = "Email"
+                    if (reason == "CODE_MISMATCH" || reason == "CODE_NOT_FOUND" || reason == "BAD_CREDENTIAL" )
+                    {
+                        verifyString = loginPostDto.loginMode == .emailPage ? "Email" : "Mobile"
+                        passwordInputView.changeInvalidLabelAndMaskBorderColor(with: "The \(verifyString) Code is incorrect. Please re-enter.")
+                    }else
+                    {
+                        let results = ErrorDefaultDto(code: dto.code, reason: reason, timestamp: 0, httpStatus: "", errors: [])
+                        ErrorHandler.show(error: ApiServiceError.errorDto(results))
                     }
+                case .noData:
+                    dismiss(animated: true)
+                default:
+                    ErrorHandler.show(error: errorData)
                 }
             }
             

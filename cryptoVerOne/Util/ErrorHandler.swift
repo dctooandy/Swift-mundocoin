@@ -22,7 +22,7 @@ class ErrorHandler {
             case .networkError(let code ,let message):
                 Log.e("\(code)\(message)")
                 showAlert(title: "Network failed", message: "\(message)")
-            case .unknownError(_ ,let title ,let msg):
+            case .unknownError(_ , _ ,let msg):
                 Log.e(msg )
                 showAlert(title: "", message: msg )
             case .tokenError:
@@ -43,7 +43,7 @@ class ErrorHandler {
                 default:
                     break
                 }
-            case .showKnownError(let statusInt , let urlString , let errorMessage ):
+            case .showKnownError( _ , let urlString , let errorMessage ):
                 showAlert(title: "", message: "\(BuildConfig.Domain)\(urlString)\n\(errorMessage)")
             case .errorDto(let dto):
                 let status = dto.httpStatus ?? ""

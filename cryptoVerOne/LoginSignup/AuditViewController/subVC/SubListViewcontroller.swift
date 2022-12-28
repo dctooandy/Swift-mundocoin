@@ -195,8 +195,7 @@ extension SubListViewcontroller:UITableViewDelegate,UITableViewDataSource
         if dataArray.count > indexPath.item
         {
             let data = dataArray[indexPath.item]
-            let detailVC = AuditDetailViewController.loadNib()
-            detailVC.setupDate(cellData: data, showMode: showMode)
+            let detailVC = AuditDetailViewController.instance(cellData: data, showMode: showMode)
             navigationController?.pushViewController(detailVC, animated: true)
         }
     }

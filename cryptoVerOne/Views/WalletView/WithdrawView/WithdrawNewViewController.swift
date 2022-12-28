@@ -271,7 +271,7 @@ class WithdrawNewViewController: BaseViewController {
     {
         let networkBottomSheet = NetworkBottomSheet()
         networkBottomSheet.dataArray = transDataSourceToNetworkDto()
-        networkBottomSheet.rxCellSecondClick().subscribeSuccess { [self](dataDto) in
+        networkBottomSheet.rxCellSecondClick().subscribeSuccess { (dataDto) in
 //            methodView.textField.text = dataDto.name
         }.disposed(by: dpg)
     
