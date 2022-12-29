@@ -55,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             self.showAlertForJillbreakDevice(withVC: vc)
         }else
         {
+            fetchLanguage()
             initSingleton()
             launchFromNotification(options: launchOptions)
             askForLocalNotification(application: application)
@@ -99,6 +100,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     private func setupAppearance(){
         KeychainManager.share.clearToken()
+    }
+    private func fetchLanguage()
+    {
+        // 取得目前語系環境
+        let userLanguage   = (UserDefaults.standard.object(forKey: "AppleLanguages") as! NSArray).object(at: 0) //返回的也是数组
+        let appLanguages   = Locale.preferredLanguages // 返回一个数组
+        let deviceLanguage = Locale.current.languageCode ?? ""
+        let bundleLanguages = Bundle.main.preferredLocalizations // 返回一个数组
+        Log.i("Current userLanguage: \(userLanguage)\nCurrent appLanguages: \(appLanguages)\nCurrent deviceLanguage: \(deviceLanguage)\nCurrent bundleLanguages: \(bundleLanguages)")
     }
     private func initSingleton(){
         // 1228 閒置時間 分
