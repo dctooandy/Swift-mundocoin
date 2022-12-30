@@ -283,9 +283,8 @@ extension LoginSignupViewController {
     }
     @objc func changeDomain()
     {
-        #if Mundo_PRO || Mundo_STAGE
-        #elseif Approval_PRO
-        #else
+#if Mundo_PRO || Approval_PRO || Approval_STAGE || Mundo_STAGE
+#else
         let versionString = Bundle.main.releaseVersionNumber ?? ""
         let buildString = Bundle.main.buildVersionNumber ?? ""
         let version = "\(versionString) b-\(buildString)"
@@ -316,6 +315,7 @@ extension LoginSignupViewController {
         Toast.show(msg: "版本號 : \(version)\n切換到 \(envirment)\n 域名:\(BuildConfig.Domain)")
         BuildConfig().resetDomain()
         ApiService.host = BuildConfig.MUNDO_SITE_API_HOST
+        DeepLinkManager.share.cleanDataForLogout()
         #endif
     }
     func showBioAlert(error:NSError)
@@ -1054,7 +1054,7 @@ extension LoginSignupViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         backgroundImageView.snp.updateConstraints { (make) in
-            make.top.equalToSuperview().offset(Views.topOffset + 12.0)
+            make.top.equalToSuperview().offset(Views.topOffset + 22.0)
         }
         backgroundImageView.layer.cornerRadius = 20
         backgroundImageView.layer.contents = UIImage(color: .white)?.cgImage

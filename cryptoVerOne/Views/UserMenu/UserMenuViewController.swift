@@ -8,6 +8,7 @@
 import Foundation
 import RxCocoa
 import RxSwift
+import Toaster
 
 class UserMenuViewController: BaseViewController {
     // MARK:業務設定
@@ -15,6 +16,7 @@ class UserMenuViewController: BaseViewController {
     private let dpg = DisposeBag()
     private let viewModel = UserMenuViewModel()
     var targetCellData :UserMenuCellData?
+    let refresher = UIRefreshControl()
     // MARK: -
     // MARK:UI 設定
     
@@ -93,6 +95,12 @@ class UserMenuViewController: BaseViewController {
         tableView.registerXibCell(type: UserMenuWhiteLineCell.self)
         tableView.separatorStyle = .none
         
+        refresher.attributedTitle = NSAttributedString(string: "",
+                                                            attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+        refresher.rx.controlEvent(.valueChanged).subscribeSuccess { [weak self] (_) in
+            self?.startRefresh()
+        }.disposed(by: disposeBag)
+        tableView?.addSubview(refresher)
 //        let loginDto = KeychainManager.share.getLastAccountDto()
 //        if let userEmail = loginDto?.account , UserStatus.share.isLogin
 //        {
@@ -160,7 +168,16 @@ class UserMenuViewController: BaseViewController {
     func directToViewController() {
         DeepLinkManager.share.handleDeeplink(navigation: .login)
     }
-
+    private func startRefresh() {
+        if KeychainManager.share.getDomainMode() == .Dev || KeychainManager.share.getDomainMode() == .Qa
+        {
+            let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0") ?? 0
+            let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0") ?? 0
+            let devInMinsForDay = (sectionDay == 0 ? sectionMin + 1 : 0)
+            Toast.show(msg:"在\(sectionMin)分後 淺登出\n在\(devInMinsForDay)分後 強制登出")
+        }
+        refresher.endRefreshing()
+    }
 }
 // MARK: -
 // MARK: 延伸

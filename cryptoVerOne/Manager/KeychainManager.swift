@@ -621,7 +621,7 @@ class KeychainManager {
             formatter1.timeZone = .current
             formatter1.locale = .current
             let currentTimeString = formatter1.string(from: today)
-            Log.i("進入背景時間 : \(currentTimeString)")
+            Log.i("LightOut-進入背景時間 : \(currentTimeString)")
             let success = self.setString(currentTimeString.lowercased(), at: .currentEnterBGtime)
             return success
         }else

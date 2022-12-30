@@ -74,15 +74,16 @@ extension Date {
     func isInMins(min:Int) -> Bool {
         let soon = Calendar.current.date(byAdding: .minute, value: (min), to: self)!
         let now = Date()
-        Log.v("是否在 \(min) 分時限內 : \(now < soon ? "是":"否")")
+        Log.v("LightOut-是否在 \(min) 分時限內 : \(now < soon ? "是":"否")")
         return now < soon
     }
-    func isInDays(day: Int) -> Bool {
-        let last = Calendar.current.date(byAdding: .minute, value: -30, to: self)!
-        let d = Calendar.current.date(byAdding: .day, value: day, to: last)!
-        let now = Calendar.current.date(byAdding: .day, value: 0, to: Date())!
-        Log.v("是否在 \(day) 天時限內 : \(now < d ? "是":"否")")
-        return now < d
+    func isInDays(day: Int,min:Int = 0) -> Bool {
+        let last = Calendar.current.date(byAdding: .minute, value: 0, to: self)!
+        let firstInDays = Calendar.current.date(byAdding: .day, value: day, to: last)!
+        let secondInMins = Calendar.current.date(byAdding: .minute, value: min, to: firstInDays)!
+        let now = Date()
+        Log.v("LightOut-是否在 \(day) 天 \(min) 分時限內 : \(now < secondInMins ? "是":"否")")
+        return now < secondInMins
     }
     func addEndOfDay() -> Date {
         let d = Calendar.current.date(byAdding: .day, value: 0, to: self)!

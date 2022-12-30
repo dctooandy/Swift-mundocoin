@@ -89,15 +89,16 @@ class CheckTokenService{
 #else
         let sectionMin = Int(KeychainManager.share.getSectionMin() ?? "0") ?? 0
         let sectionDay = Int(KeychainManager.share.getSectionDay() ?? "0") ?? 0
+        let devInMinsForDay = (sectionDay == 0 ? sectionMin + 1 : 0)
         let lastEnterBGDate = getEnterBGtime()
         let isExpiredInMins = lastEnterBGDate.isInMins(min: sectionMin)
-        let isExpiredInDays = lastEnterBGDate.isInDays(day: sectionDay)
+        let isExpiredInDays = lastEnterBGDate.isInDays(day: sectionDay,min: devInMinsForDay)
         let isfirstLuanch = UserDefaults.isFirstLaunch()
         if jwtValue != nil , let _ = jwtValue?.expired
         {
             if isExpiredInDays == false || isfirstLuanch == true
             {
-                Log.v("在 \(sectionDay) 天後")
+                Log.v("LightOut-在 \(sectionDay) 天後")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     Log.v("Token 過期")
                     KeychainManager.share.saveFinishLaunchActive(false)
@@ -106,7 +107,7 @@ class CheckTokenService{
             }else if isExpiredInMins == false , isExpiredInDays == true
             {
                 KeychainManager.share.saveFinishLaunchActive(false)
-                Log.v("在 \(sectionMin) 分後, \(sectionDay) 天內" )
+                Log.v("LightOut-在 \(sectionMin) 分後, \(sectionDay) 天內" )
                 if let accountString = KeychainManager.share.getLastAccount()
                 {
                     Log.v("上次帳號 : \(accountString)")
@@ -130,7 +131,7 @@ class CheckTokenService{
 //                }else{
 //                }
                 
-                Log.v("在 \(sectionMin) 分內")
+                Log.v("LightOut-在 \(sectionMin) 分內")
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) { [self] in
                     // 沒過期,打refresh API, 時間加30分鐘
                     SocketIOManager.sharedInstance.reConnection()
