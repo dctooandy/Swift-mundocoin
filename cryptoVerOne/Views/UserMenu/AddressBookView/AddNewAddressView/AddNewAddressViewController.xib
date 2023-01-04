@@ -137,7 +137,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BGF-Xu-Ziy">
                                 <rect key="frame" x="0.0" y="43" width="414" height="50"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-chevron-left" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-bx-23P">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-x-close" translatesAutoresizingMaskIntoConstraints="NO" id="TO3-bx-23P">
                                         <rect key="frame" x="12" y="14" width="24" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="24" id="QXY-dh-EbV"/>
@@ -177,6 +177,11 @@
                                     <constraint firstAttribute="bottom" secondItem="2wp-G8-KBR" secondAttribute="bottom" constant="14" id="s1X-fm-tPW"/>
                                     <constraint firstAttribute="bottom" secondItem="TO3-bx-23P" secondAttribute="bottom" constant="12" id="yYQ-vI-SNg"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="jlO-CO-BtR"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -222,7 +227,7 @@
         </viewController>
     </objects>
     <resources>
-        <image name="icon-chevron-left" width="24" height="24"/>
+        <image name="icon-x-close" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -382,7 +382,7 @@ class WithdrawNewViewController: BaseViewController {
         {
             let totleAmountText = amountInputStyleView.amountTextView.text ?? ""
             let tetherText = "\(cryptoString)"
-            let networkText = "\(networkString)"
+            let networkText = "Tron(\(networkString))"
             let feeText = feeAmountLabel.text ?? ""
             let addressText = withdrawToView.textView.text.transWithoutSpace() ?? ""
             let confirmData = ConfirmWithdrawDto(totalAmount: totleAmountText,

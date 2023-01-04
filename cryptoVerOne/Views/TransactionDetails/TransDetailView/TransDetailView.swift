@@ -336,7 +336,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
             withdrawToInputView.setVisibleString(string: withdrawToAddress)
             txidInputView.setVisibleString(string: dto.txid.isEmpty ? "--":dto.txid)
             let flagAmount = (dto.type == "DEPOSIT" ? "+" : "-")
-            let withdrawAmountString = dto.amount.numberFormatter(.decimal, dto.decimal)
+            let withdrawAmountString = dto.amount
             let depositAmountString = dto.actualAmount.numberFormatter(.decimal, dto.decimal)
             // 原本是要分deposit 用actualAmount,但此處api返回0
 //            let amountString = (dto.type == "DEPOSIT" ? depositAmountString : withdrawAmountString)
