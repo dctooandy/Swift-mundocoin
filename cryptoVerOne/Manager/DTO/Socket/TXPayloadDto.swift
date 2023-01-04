@@ -69,7 +69,8 @@ struct TXPayloadDto : Codable {
         {
             if blockHeight != nil
             {
-                difValue = serviceFee ?? 0.0
+                // 暫時不加入fee,依照amount給值
+//                difValue = serviceFee ?? 0.0
             }else
             {
                 difValue = 0.0
