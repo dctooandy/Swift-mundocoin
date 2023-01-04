@@ -188,7 +188,7 @@ class AuditDetailViewController: BaseViewController {
             auditorLabel.text = approver.email
             userIDLabel.text = userDto.email
             cryptoLabel.text = transDto.currency
-            networkLabel.text = "TRC20"
+            networkLabel.text = "TRC-20"
 //            if let transAmountString = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             if let withdrawAmountString = transDto.walletAmountIntWithDecimal?.stringValue?.numberFormatter(.decimal,8)
             {
@@ -201,7 +201,7 @@ class AuditDetailViewController: BaseViewController {
                 actualAmountLabel.text = "\(actualAmountValue)".numberFormatter(.decimal,8)
             }
             addressLabel.text = transDto.toAddress
-            dateLabel.text = transDto.createdDateString
+            dateLabel.text = transDto.createdAuditDateString
             self.showMode = showMode
             
             finishedView.isHidden = (showMode == .pending ? true : false)

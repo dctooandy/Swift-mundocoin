@@ -87,7 +87,7 @@ extension DataRequest
                 case 401:
                     self.decodeForData(type:"Unauthorized",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 403:
-                    self.decodeForData(type:"ACCESS_DENIED",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
+                    self.decodeForData(type:"Unauthorized",requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 case 404:
                     self.decodeForData(requestURLString: requestURLString, data: data, decoder: decoder, statusCode: statusCode, onError: onError)
                 default:
@@ -137,7 +137,7 @@ extension DataRequest
                 onError?(apiError)
             }else
             {
-                apiError = ApiServiceError.showKnownError(statusCode,requestURLString,"cannot be parsed-\(keyContext.0)-:-\(keyContext.1)-")
+                apiError = ApiServiceError.showKnownError(statusCode,type,"")
                 let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue\n          :May be null, cannot be parsed"
                 Log.e("\(message)")
                 onError?(apiError)

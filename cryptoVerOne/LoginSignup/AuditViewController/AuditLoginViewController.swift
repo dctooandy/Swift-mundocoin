@@ -16,6 +16,7 @@ class AuditLoginViewController: BaseViewController {
     // MARK:業務設定
     private let onClick = PublishSubject<Any>()
     var isPopBySubVC = false
+    private var isNetWorkConnectIng = false
     private let dpg = DisposeBag()
 //    static let share: AuditLoginViewController = AuditLoginViewController.loadNib()
     // MARK: -
@@ -182,7 +183,12 @@ class AuditLoginViewController: BaseViewController {
     {
         loginButton.rx.tap.subscribeSuccess { [self](_) in
             Log.v("Audit登入")
-            goTodoViewController()
+            loginButton.isEnabled = false
+            if isNetWorkConnectIng != true
+            {
+                isNetWorkConnectIng = true
+                goTodoViewController()
+            }
         }.disposed(by: dpg)
     }
     func bindCheckBox()
@@ -241,7 +247,7 @@ class AuditLoginViewController: BaseViewController {
         let idString = accountInputView.textField.text!
         let password = passwordInputView.textField.text!
         Beans.auditServer.auditAuthentication(with: idString, password: password)
-            .subscribeSuccess { [self] (dto) in
+            .subscribe { [self] (dto) in
                 _ = LoadingViewController.dismiss()
                 if let data = dto
                 {
@@ -261,7 +267,12 @@ class AuditLoginViewController: BaseViewController {
                     }
                     showAuditBioConfirmView(didShow: didAskBioLogin)
                 }
-            }.disposed(by: dpg)
+            } onError: { [self] error in
+                isNetWorkConnectIng = false
+                if let error = error as? ApiServiceError {
+                    ErrorHandler.show(error: error)
+                }
+            }.disposed(by: disposeBag)
     }
     // Confirm Touch/Face ID
     private func showAuditBioConfirmView(didShow:Bool) {
@@ -290,6 +301,7 @@ class AuditLoginViewController: BaseViewController {
     {
 //         socket
         SocketIOManager.sharedInstance.establishConnection()
+        isNetWorkConnectIng = false
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window
         {
             DispatchQueue.main.async {
