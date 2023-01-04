@@ -164,7 +164,7 @@ class AuditLoginViewController: BaseViewController {
         let isAccountValid = accountInputView.textField.rx.text
             .map {  (str) -> Bool in
                 guard let acc = str else { return false  }
-                return RegexHelper.match(pattern:.mail , input: acc)
+                return RegexHelper.match(pattern:.delegateName , input: acc) ||  RegexHelper.match(pattern:.mail , input: acc)
         }
         let isPWValid = passwordInputView.textField.rx.text
             .map {  (str) -> Bool in
