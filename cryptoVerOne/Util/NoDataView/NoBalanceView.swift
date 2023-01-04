@@ -54,17 +54,17 @@ class NoBalanceView: UIView {
         super.init(coder: aDecoder)
     }
     
-    init(image: UIImage?, title: String , subTitle:String) {
+    init(image: UIImage?, title: String , subTitle:String , forAddressBook : Bool = false) {
         super.init(frame: .zero)
         imv.image = image
         titleLabel.text = title
         subLabel.text = subTitle
-        setup()
+        setup(forAddressBook: forAddressBook)
         bindLabel()
     }
     // MARK: -
     // MARK:業務方法
-    private func setup() {
+    private func setup(forAddressBook : Bool = false) {
         addSubview(imv)
         addSubview(titleLabel)
         addSubview(subLabel)
@@ -74,9 +74,14 @@ class NoBalanceView: UIView {
 //            let s = sizeFrom(scale: 0.44)
 //            make.size.equalTo(s)
             make.centerX.equalToSuperview()
-            make.top.equalToSuperview().offset(45)
-            make.width.equalTo(130)
-            make.height.equalTo(86)
+            make.top.equalToSuperview().offset(forAddressBook ? 0 : 45)
+            make.width.equalTo(forAddressBook ? 82:130)
+            make.height.equalTo(forAddressBook ? 54:86)
+        }
+        if forAddressBook
+        {
+            titleLabel.font = Fonts.PlusJakartaSansRegular(12)
+            titleLabel.textColor = Themes.grayA3AED0
         }
         titleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(imv.snp.bottom).offset(12)

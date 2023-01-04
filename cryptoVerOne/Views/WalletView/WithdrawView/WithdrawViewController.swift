@@ -278,7 +278,7 @@ class WithdrawViewController: BaseViewController {
     }
     func addressViewSheetHeight() -> CGFloat
     {
-        var sheetHeight = 251.0
+        var sheetHeight = 300.0
         var cellCount = 0.0
         let isOn = KeychainManager.share.getWhiteListOnOff()
         var allAddressList:[AddressBookDto] = []
@@ -291,7 +291,13 @@ class WithdrawViewController: BaseViewController {
             allAddressList = KeychainManager.share.getAddressBookList()
         }
         cellCount = (allAddressList.count >= 3 ? 3 :(allAddressList.count == 2 ? 2:1))
-        sheetHeight += 92.0 * (cellCount - 1)
+        if cellCount != 0
+        {
+            sheetHeight += 92.0 * (cellCount - 1)
+        }else
+        {
+            sheetHeight = 340.0
+        }
         return sheetHeight
     }
     func networkViewSheetHeight() -> CGFloat

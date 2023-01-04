@@ -22,8 +22,7 @@ class AddressBottomView: UIView {
     // MARK:UI 設定
     @IBOutlet weak var topLabel: UILabel!
     @IBOutlet weak var subLabel: UILabel!
-    @IBOutlet weak var addNewAddressLabel: UILabel!
-    @IBOutlet weak var addressBookLabel: UILabel!
+    @IBOutlet weak var addAddressBookView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var addressBookTextLabel: UILabel!
     // MARK: -
@@ -50,10 +49,15 @@ class AddressBottomView: UIView {
         subLabel.text = "The method must match the network.".localized
 //        addNewAddressLabel.text = "+ Add new address".localized
 //        addressBookLabel.text = "Address book".localized
+        let noDataView = NoBalanceView(image: UIImage(named: "empty-list"), title: "No available address" , subTitle: "" , forAddressBook: true)
+        tableView.backgroundView = noDataView
+        tableView.backgroundView?.isHidden = true
         tableView.tableFooterView = nil
         tableView.registerXibCell(type: AddressBottomCell.self)
         tableView.registerXibCell(type: AddNewAddressCell.self)
         tableView.separatorStyle = .none
+        addAddressBookView.layer.borderColor = Themes.grayE0E5F2.cgColor
+        addAddressBookView.layer.borderWidth = 1
     }
     func setupData()
     {
@@ -67,13 +71,13 @@ class AddressBottomView: UIView {
         {
             allAddressList = KeychainManager.share.getAddressBookList()
         }
-        if allAddressList.count == 0
-        {
-            addressBookTextLabel.text = "Address book"
-        }else
-        {
-            addressBookTextLabel.text = "+ Add new address | Address book"
-        }
+//        if allAddressList.count == 0
+//        {
+//            addressBookTextLabel.text = "Address book"
+//        }else
+//        {
+//            addressBookTextLabel.text = "+ Add new address | Address book"
+//        }
         if allAddressList.count > 3
         {
             tableView.isScrollEnabled = true
@@ -82,14 +86,15 @@ class AddressBottomView: UIView {
             tableView.isScrollEnabled = false
         }
         dataArray = allAddressList
+        tableView.backgroundView?.isHidden = dataArray.count > 0 ? true : false
         tableView.reloadData()
     }
     func bindLabel()
     {
-        addNewAddressLabel.rx.click.subscribeSuccess { [self] _ in
+        addAddressBookView.rx.click.subscribeSuccess { [self] _ in
             dataArray.count == 0 ? onAddressBookClick.onNext(()) : onAddNewAddressClick.onNext(())
         }.disposed(by: dpg)
-        addressBookLabel.rx.click.subscribeSuccess { [self] _ in
+        addressBookTextLabel.rx.click.subscribeSuccess { [self] _ in
             onAddressBookClick.onNext(())
         }.disposed(by: dpg)
     }
@@ -114,30 +119,30 @@ extension AddressBottomView:UITableViewDelegate,UITableViewDataSource
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (dataArray.count == 0 ? 1 : dataArray.count)
+        return (dataArray.count == 0 ? 0 : dataArray.count)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if dataArray.count == 0
-        {
-            let cell = tableView.dequeueCell(type: AddNewAddressCell.self, indexPath: indexPath)
-            return cell
-        }else
-        {
-            let cell = tableView.dequeueCell(type: AddressBottomCell.self, indexPath: indexPath)
-            cell.setAccountData(data: dataArray[indexPath.item])
-            return cell
-        }
+//        if dataArray.count == 0
+//        {
+//            let cell = tableView.dequeueCell(type: AddNewAddressCell.self, indexPath: indexPath)
+//            return cell
+//        }else
+//        {
+//        }
+        let cell = tableView.dequeueCell(type: AddressBottomCell.self, indexPath: indexPath)
+        cell.setAccountData(data: dataArray[indexPath.item])
+        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if dataArray.count == 0
-        {
-            onAddNewAddressClick.onNext(())
-        }else
-        {
-            let data = dataArray[indexPath.item]
-            onCellClick.onNext(data)
-        }
+//        if dataArray.count == 0
+//        {
+//            onAddNewAddressClick.onNext(())
+//        }else
+//        {
+//        }
+        let data = dataArray[indexPath.item]
+        onCellClick.onNext(data)
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 92
