@@ -143,4 +143,21 @@ class MemberAccountDto {
             return 0.0
         }
     }
+    func currentWithdrawLimit(withCurrency currency:String) -> Int
+    {
+        if self.currencySettings.count > 0
+        {
+            let currentSetting = self.currencySettings.filter({ $0.currency == currency}).first
+            if let withdrawLimit = currentSetting?.withdrawLimit
+            {
+                return withdrawLimit
+            }else
+            {
+                return 0
+            }
+        }else
+        {
+            return 0
+        }
+    }
 }

@@ -128,7 +128,11 @@ class WithdrawViewController: BaseViewController {
     func setupUI()
     {
         view.backgroundColor = Themes.grayF4F7FE
-        let minString = "1"
+        var minString = "1"
+        if let withdrawLimit = MemberAccountDto.share?.currentWithdrawLimit(withCurrency: currencyLabel.text ?? "USDT")
+        {
+            minString = "\(withdrawLimit)"
+        }
         let maxString = "1000000"
         // 設定幣種
         amountInputView.setData(data: currencyLabel.text ?? "USDT")

@@ -173,7 +173,12 @@ class WithdrawNewViewController: BaseViewController {
     }
     func setUPData(withdrawDatas : [WalletBalancesDto])
     {
-        let minString = "1"
+        var minString = "1"
+        if let currentCurrency = currencyLabel.text!.split(separator: "-").first ,
+           let withdrawLimit = MemberAccountDto.share?.currentWithdrawLimit(withCurrency: "\(currentCurrency)")
+        {
+            minString = "\(withdrawLimit)"
+        }
         let maxString = "1000000"
         amountInputStyleView.rangeLabel.text = "Min: \(minString) USDT - Max: \(maxString.numberFormatter(.decimal, 0)) USDT".localized
         if let data = withdrawDatas.filter({ $0.currency == "USDT" }).first
