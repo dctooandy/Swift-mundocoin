@@ -306,7 +306,7 @@ class AddNewAddressViewController: BaseViewController {
                 }
             }
         }
-        _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: address.label ,enabled: address.enabled ,verificationCodes: codePara,
+        _ = AddressBookListDto.addNewAddress(address: address.address, name: address.name, label: (address.label ?? "") ,enabled: address.enabled ,verificationCodes: codePara,
                                              done: { [self] in
             if ((self.presentingViewController?.isKind(of: AddressBottomSheet.self)) != nil)
             {

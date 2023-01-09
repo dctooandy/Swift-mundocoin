@@ -17,11 +17,11 @@ class AddressBookDto :Codable {
     var chain: String = ""
     var address: String = ""
     var name: String = ""
-    var label: String = ""
+    var label: String? = ""
     var enabled:Bool = false
     var network: String? = "TRC20"
     
-    init(id: String = "",createdDate: String = "", updatedDate: String = "" , currency: String = "", chain: String = "", address: String = "" , name: String = "", label: String = "", enabled: Bool = false , network: String? = "") {
+    init(id: String = "",createdDate: String = "", updatedDate: String = "" , currency: String = "", chain: String = "", address: String = "" , name: String = "", label: String? = "", enabled: Bool = false , network: String? = "") {
         self.id = id
         self.createdDate = createdDate
         self.updatedDate = updatedDate
