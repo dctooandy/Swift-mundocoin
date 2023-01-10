@@ -634,7 +634,7 @@ class InputStyleView: UIView {
         
         if showMobileCodeView == true
         {
-            bindMobileTypeAction()
+            bindMobileTypeAction(isForgotPhone: inputViewMode == .forgotPhone)
         }else
         {
             mobileCodeAnchorView.removeFromSuperview()
@@ -840,9 +840,9 @@ class InputStyleView: UIView {
         }
         self.sendSubviewToBack(textField)
     }
-    func bindMobileTypeAction()
+    func bindMobileTypeAction(isForgotPhone:Bool = false)
     {
-        addDoneCancelToolbar()
+        addDoneCancelToolbar(isForgotPhone:isForgotPhone)
         mobileCodeAnchorView.rx.click.subscribeSuccess { [self] in
             onChoosePhoneCodeClick.onNext(mobileCodeLabel.text ?? "")
         }.disposed(by: dpg)
@@ -1090,24 +1090,40 @@ class InputStyleView: UIView {
         countTime = seconds
     }
     
-    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil) {
-        let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
-        let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
-        
+    func addDoneCancelToolbar(onDone: (target: Any, action: Selector)? = nil, onCancel: (target: Any, action: Selector)? = nil ,isForgotPhone:Bool = false) {
         let toolbar: UIToolbar = UIToolbar()
-        let cancelItem = UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action)
-        let nextItem = UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
-//        cancelItem.tintColor = .white
-//        nextItem.tintColor = .white
-        toolbar.barStyle = .default
-        toolbar.items = [
-            cancelItem,
-            UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
-            nextItem
-        ]
-//        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
-        toolbar.sizeToFit()
-        
+        if isForgotPhone == false
+        {
+            let onCancel = onCancel ?? (target: self, action: #selector(cancelButtonTapped))
+            let onDone = onDone ?? (target: self, action: #selector(nextButtonTapped))
+            
+            let cancelItem = UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action)
+            let nextItem = UIBarButtonItem(title: "Next", style: .done, target: onDone.target, action: onDone.action)
+            //        cancelItem.tintColor = .white
+            //        nextItem.tintColor = .white
+            toolbar.barStyle = .default
+            toolbar.items = [
+                cancelItem,
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+                nextItem
+            ]
+            //        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
+            toolbar.sizeToFit()
+        }else
+        {
+            let onDone = onDone ?? (target: self, action: #selector(cancelButtonTapped))
+            let doneItem = UIBarButtonItem(image: UIImage(named: "icon-chevron-down"), style: .done, target: onDone.target, action: onDone.action)
+            //        doneItem.tintColor = .white
+            
+            toolbar.barStyle = .default
+            toolbar.items = [
+                //            UIBarButtonItem(title: "Cancel", style: .plain, target: onCancel.target, action: onCancel.action),
+                UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil),
+                doneItem
+            ]
+            //        toolbar.setBackgroundImage(UIImage().imageWithColor(color: Themes.gray2B3674), forToolbarPosition: .bottom, barMetrics: .default)
+            toolbar.sizeToFit()
+        }
         self.textField.inputAccessoryView = toolbar
     }
     // Default actions:

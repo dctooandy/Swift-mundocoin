@@ -203,7 +203,7 @@ class AccountInputView: UIView {
     }
     func bindTextfieldReturnKey()
     {
-        accountInputView.textField.keyboardType = (currentShowMode == .signupPhone || currentShowMode == .loginPhone) ? .numberPad :.emailAddress
+        accountInputView.textField.keyboardType = (currentShowMode == .signupPhone || currentShowMode == .loginPhone || currentShowMode == .forgotPhonePW) ? .numberPad :.emailAddress
         accountInputView.textField.returnKeyType = .next
 //        accountInputView.textField.textContentType = .emailAddress
         if currentShowMode == .loginEmail || currentShowMode == .loginPhone

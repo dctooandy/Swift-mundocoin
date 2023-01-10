@@ -187,7 +187,7 @@ class WithdrawNewViewController: BaseViewController {
             amountInputStyleView.availableBalanceAmountLabel.text = "\(amountValue)".numberFormatter(.decimal, 8)
             
             // 設定最高額度
-            let availableString = amountInputStyleView.availableBalanceAmountLabel.text ?? "0"
+            let availableString = "\(amountValue)".numberFormatter(.none, 8)
             amountInputStyleView.maxAmount = ( (availableString.toDouble() > maxString.toDouble()) ? maxString :availableString)
         }else
         {

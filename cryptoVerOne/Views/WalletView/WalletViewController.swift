@@ -149,6 +149,7 @@ class WalletViewController: BaseViewController {
             if KeychainManager.share.getMundoCoinSioFeedbackEnable() == true
             {
                 withdrawNewVC.setUPData(withdrawDatas: walletsDto)
+                withdrawNewVC.clearAllData()
                 self.navigationController?.pushViewController(withdrawNewVC, animated: true)
             }else
             {
