@@ -43,8 +43,8 @@ class ErrorHandler {
                 default:
                     break
                 }
-            case .showKnownError( _ , let urlString , let errorMessage ):
-                showAlert(title: "", message: "\(urlString)\n\(errorMessage)")
+            case .showKnownError( _ , _ , let errorMessage ):
+                showAlert(title: "", message: "\(errorMessage)")
             case .errorDto(let dto):
                 let status = dto.httpStatus ?? ""
 //                let code = dto.code
