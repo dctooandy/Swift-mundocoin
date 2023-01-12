@@ -109,6 +109,7 @@ class TDetailViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        resetScrollViewContentSize()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -124,6 +125,13 @@ class TDetailViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func resetScrollViewContentSize()
+    {
+        let scrollViewHeight:Double = dataListView.frame.size.height + 20.0
+        var currentContentSize = contentScrollView.contentSize
+        currentContentSize.height = scrollViewHeight
+        contentScrollView.contentSize = currentContentSize
+    }
     func setupUI()
     {
 //        checkButton.setTitle("Check History".localized, for: .normal)

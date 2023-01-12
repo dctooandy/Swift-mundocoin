@@ -147,7 +147,7 @@ class TransDetailView: UIStackView ,NibOwnerLoadable{
 //        }
 //        lineViewTwo.text = "----------------------------------------------------------"
         dataListView.layer.cornerRadius = 16
-        dataListView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMinXMaxYCorner]
+//        dataListView.layer.maskedCorners = [.layerMaxXMaxYCorner , .layerMinXMaxYCorner]
         dataListView.layer.masksToBounds = true
     }
     func resetAddressInputView(isAuto:Bool = true ,detailType:DetailType = .done)
