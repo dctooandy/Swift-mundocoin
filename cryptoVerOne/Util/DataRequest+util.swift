@@ -137,8 +137,8 @@ extension DataRequest
                 onError?(apiError)
             }else
             {
-                apiError = ApiServiceError.showKnownError(statusCode,type,"")
-                let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue\n          :May be null, cannot be parsed"
+                apiError = ApiServiceError.showKnownError(statusCode,"",type)
+                let message = "Error Response API:\n\(BuildConfig.MUNDO_SITE_API_HOST)\(requestURLString)\n Status   :\(statusCode)\(type)\nFeedbackValue:\nMay be null, cannot be parsed"
                 Log.e("\(message)")
                 onError?(apiError)
             }
