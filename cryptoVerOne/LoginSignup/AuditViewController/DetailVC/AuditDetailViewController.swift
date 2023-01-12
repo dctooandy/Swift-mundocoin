@@ -70,6 +70,7 @@ class AuditDetailViewController: BaseViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        resetScrollViewContentSize()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -85,6 +86,13 @@ class AuditDetailViewController: BaseViewController {
     }
     // MARK: -
     // MARK:業務方法
+    func resetScrollViewContentSize()
+    {
+        let scrollViewHeight:Double = stackView.frame.size.height + 100.0
+        var currentContentSize = scrollView.contentSize
+        currentContentSize.height = scrollViewHeight
+        scrollView.contentSize = currentContentSize
+    }
     func setupBackUI()
     {
         title = "Detail".localized
