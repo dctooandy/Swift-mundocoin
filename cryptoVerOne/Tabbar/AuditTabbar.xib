@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +36,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Todo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pYi-kO-hjY">
-                                    <rect key="frame" x="85.5" y="40.5" width="24.5" height="14"/>
+                                    <rect key="frame" x="86.5" y="40.5" width="22.5" height="12"/>
                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="10"/>
                                     <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
@@ -44,7 +44,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="jxe-Rk-y94" firstAttribute="centerY" secondItem="f8q-4D-9sJ" secondAttribute="centerY" constant="-21" id="COC-FE-NKU"/>
+                                <constraint firstItem="jxe-Rk-y94" firstAttribute="top" secondItem="f8q-4D-9sJ" secondAttribute="top" constant="12.5" id="CCm-FX-CgU"/>
                                 <constraint firstItem="jxe-Rk-y94" firstAttribute="centerX" secondItem="f8q-4D-9sJ" secondAttribute="centerX" constant="-6" id="Dcs-we-ci3"/>
                                 <constraint firstItem="pYi-kO-hjY" firstAttribute="top" secondItem="jxe-Rk-y94" secondAttribute="bottom" id="Dhj-U8-T0r"/>
                                 <constraint firstItem="pYi-kO-hjY" firstAttribute="centerX" secondItem="jxe-Rk-y94" secondAttribute="centerX" id="Vvk-4X-l2F"/>
@@ -60,7 +60,7 @@
                                     </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfp-Cw-rc5">
-                                    <rect key="frame" x="77" y="40.5" width="41" height="14"/>
+                                    <rect key="frame" x="79" y="40.5" width="37.5" height="12"/>
                                     <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="10"/>
                                     <color key="textColor" red="0.10588235294117647" green="0.14509803921568626" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                     <nil key="highlightedColor"/>
@@ -69,9 +69,9 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerX" secondItem="gSe-9f-Mtf" secondAttribute="centerX" constant="-6" id="1FN-Ug-34A"/>
-                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="centerY" secondItem="gSe-9f-Mtf" secondAttribute="centerY" constant="-21" id="9X1-8I-Frk"/>
                                 <constraint firstItem="nfp-Cw-rc5" firstAttribute="centerX" secondItem="Bin-DV-3Tv" secondAttribute="centerX" id="JDp-lm-BSv"/>
                                 <constraint firstItem="nfp-Cw-rc5" firstAttribute="top" secondItem="Bin-DV-3Tv" secondAttribute="bottom" id="NQo-oV-4PJ"/>
+                                <constraint firstItem="Bin-DV-3Tv" firstAttribute="top" secondItem="gSe-9f-Mtf" secondAttribute="top" constant="12.5" id="gWc-Dh-f2j"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -133,10 +133,8 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="qHW-Im-5ru" secondAttribute="trailing" id="GDR-tP-bcW"/>
                 <constraint firstItem="qHW-Im-5ru" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="HNc-wU-Y4P"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hpn-Ma-222"/>
-                <constraint firstItem="jxe-Rk-y94" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" constant="-12.000035000000004" id="I8u-bK-St1"/>
                 <constraint firstItem="cD6-Pa-Eer" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="IMq-E4-czd"/>
                 <constraint firstAttribute="bottom" secondItem="h8U-AU-KAm" secondAttribute="bottom" id="LRx-Qx-DLO"/>
-                <constraint firstItem="Bin-DV-3Tv" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" multiplier="0.421053" constant="-12.000035000000004" id="NbA-XG-ARb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="cD6-Pa-Eer" secondAttribute="trailing" id="QLZ-od-gwZ"/>
                 <constraint firstItem="h8U-AU-KAm" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="S3i-aE-OMB"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="h8U-AU-KAm" secondAttribute="trailing" id="Uav-vY-paF"/>
