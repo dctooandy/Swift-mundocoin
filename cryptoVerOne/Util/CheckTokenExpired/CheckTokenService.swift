@@ -345,7 +345,7 @@ class CheckTokenService{
         }
         if jwtValue != nil , let permissions = jwtValue.body["permissions"] as? Array<[String:Any]>
         {
-            Log.e("\(permissions)")
+            Log.i("\(permissions)")
             for permissionData in permissions
             {
                 if permissionData["name"] as! String == "APP" ,

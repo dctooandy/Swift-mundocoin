@@ -20,7 +20,8 @@ class AccountViewController: BaseViewController {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var detailView: UIView!
+    @IBOutlet weak var topDetailView: UIView!
+    @IBOutlet weak var bottomDetailView: UIView!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var appVersionLabel: UILabel!
     private lazy var logoBtn:UIButton = {
@@ -98,12 +99,18 @@ class AccountViewController: BaseViewController {
         backView.backgroundColor = Themes.grayF7F8FC
         userImageView.layer.cornerRadius = 18
         userImageView.layer.masksToBounds = true
-        detailView.layer.cornerRadius = 12
-        detailView.layer.masksToBounds = true
-        detailView.layer.shadowColor = UIColor.black.cgColor
-        detailView.layer.shadowRadius = 35
-        detailView.layer.shadowOffset = .zero
-        detailView.layer.shadowOpacity = 0.2
+        topDetailView.layer.cornerRadius = 12
+        topDetailView.layer.masksToBounds = true
+        topDetailView.layer.shadowColor = UIColor.black.cgColor
+        topDetailView.layer.shadowRadius = 35
+        topDetailView.layer.shadowOffset = .zero
+        topDetailView.layer.shadowOpacity = 0.2
+        bottomDetailView.layer.cornerRadius = 12
+        bottomDetailView.layer.masksToBounds = true
+        bottomDetailView.layer.shadowColor = UIColor.black.cgColor
+        bottomDetailView.layer.shadowRadius = 35
+        bottomDetailView.layer.shadowOffset = .zero
+        bottomDetailView.layer.shadowOpacity = 0.2
         var version = ""
         var build = ""
         if let versionString = Bundle.main.releaseVersionNumber
@@ -125,7 +132,8 @@ class AccountViewController: BaseViewController {
         let appVersionString = "A \(version).\(build)"
         appVersionLabel.text = appVersionString
         emailLabel.text = KeychainManager.share.getLastAccountDto()?.account
-        detailView.applyCornerAndShadow(radius: 12)
+        topDetailView.applyCornerAndShadow(radius: 12)
+        bottomDetailView.applyCornerAndShadow(radius: 12)
     }
   
     @objc func logoutAction()
