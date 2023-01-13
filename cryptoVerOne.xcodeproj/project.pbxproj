@@ -6522,7 +6522,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
@@ -6553,7 +6553,7 @@
 				CODE_SIGN_ENTITLEMENTS = cryptoVerOne/Approval.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = CT246B3GUV;
 				INFOPLIST_FILE = cryptoVerOne/Info_Approval.plist;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
