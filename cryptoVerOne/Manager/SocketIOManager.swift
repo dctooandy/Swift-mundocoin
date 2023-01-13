@@ -35,6 +35,8 @@ class SocketIOManager: NSObject {
             jwtValue = try decode(jwt: token)
         } catch {
             Log.socket("Socket.io - Failed to decode JWT: \(error)")
+            let error = ApiServiceError.unknownError(0,"Error","\(error)")
+            ErrorHandler.show(error: error)
             idValue = "123"
         }
         if jwtValue != nil , let idString = jwtValue.body["Id"] as? String
@@ -101,15 +103,19 @@ class SocketIOManager: NSObject {
     }
     func socketOffEvents()
     {
-        socket.off("notification")
-        socket.off("joinResult")
-        socket.off("echoResult")
-        socket.off(self.idValue)
-        socket.off("message")
-        socket.off("APPROVAL_DONE")
-        socket.off("APPROVAL_PENDING")
-        socket.off("APPROVAL_PROCESSING")
-        socket.off("APPROVAL_FAILED")
+        if socket != nil
+        {
+            socket.off("notification")
+            socket.off("joinResult")
+            socket.off("echoResult")
+            socket.off(self.idValue)
+            socket.off("message")
+            socket.off("APPROVAL_DONE")
+            socket.off("APPROVAL_PENDING")
+            socket.off("APPROVAL_PROCESSING")
+            socket.off("APPROVAL_FAILED")
+            socket = nil
+        }
     }
     func socketOnEvents()
     {
@@ -167,7 +173,14 @@ class SocketIOManager: NSObject {
         if KeychainManager.share.getToken().isEmpty != true
         {
             Log.socket("連上Socket")
-            socket.connect()
+            if socket != nil
+            {
+                socket.connect()
+            }else
+            {
+                self.setup()
+                socket.connect()
+            }
         }
     }
      
@@ -178,6 +191,7 @@ class SocketIOManager: NSObject {
     func reConnection() {
         Log.socket("重連Socket")
         self.manager.reconnect()
+        self.setup()
     }
 }
 extension SocketIOManager
