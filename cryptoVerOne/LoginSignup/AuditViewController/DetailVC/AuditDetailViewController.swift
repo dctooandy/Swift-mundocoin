@@ -67,6 +67,7 @@ class AuditDetailViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.SFProDisplayBold(20)]
+        checkEditable()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -117,6 +118,9 @@ class AuditDetailViewController: BaseViewController {
         rejectBtn.layer.masksToBounds = true
 //        acceptBtn.setTitleColor(.gray, for: .disabled)
 //        rejectBtn.setTitleColor(.gray, for: .disabled)
+    }
+    func checkEditable()
+    {
         let editable = KeychainManager.share.getEditable()
         if editable == ""
         {

@@ -343,6 +343,7 @@ class CheckTokenService{
                 gotoAuditLoginVC()
             }
         }
+        AuditMemberAccountDto.share = AuditMemberAccountDto()
         if jwtValue != nil , let permissions = jwtValue.body["permissions"] as? Array<[String:Any]>
         {
             Log.i("\(permissions)")

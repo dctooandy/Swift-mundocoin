@@ -2161,6 +2161,12 @@
 		A1E72A9428EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
 		A1E72A9528EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
 		A1E72A9628EC236A006EB767 /* AddNewAddressCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */; };
+		A1E94E382974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
+		A1E94E392974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
+		A1E94E3A2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
+		A1E94E3B2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
+		A1E94E3C2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
+		A1E94E3D2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */; };
 		A1F0F7F0295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
 		A1F0F7F1295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
 		A1F0F7F2295A8FB000C02382 /* LoginQuicklyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */; };
@@ -2582,6 +2588,7 @@
 		A1DFBCB3292CB754008EE739 /* AuthenticationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthenticationViewController.xib; sourceTree = "<group>"; };
 		A1E72A8928EC233D006EB767 /* AddNewAddressCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewAddressCell.swift; sourceTree = "<group>"; };
 		A1E72A9028EC236A006EB767 /* AddNewAddressCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddNewAddressCell.xib; sourceTree = "<group>"; };
+		A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuditMemberAccountDto.swift; sourceTree = "<group>"; };
 		A1F0F7EF295A8FB000C02382 /* LoginQuicklyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuicklyViewController.swift; sourceTree = "<group>"; };
 		A1F0F7F6295A905900C02382 /* LoginQuicklyViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginQuicklyViewController.xib; sourceTree = "<group>"; };
 		A1F0F7FD295AA49900C02382 /* LoginQuicklyPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuicklyPasswordViewController.swift; sourceTree = "<group>"; };
@@ -3500,6 +3507,7 @@
 				09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */,
 				09A8539328AF18140088D843 /* ForgotPWVerifyDto.swift */,
 				09A54F8128409A8A00164B27 /* MemberAccountDto.swift */,
+				A1E94E372974FF7400282514 /* AuditMemberAccountDto.swift */,
 				09F7A7662840CC9E00E33C57 /* ResendDto.swift */,
 				095F680828473BE3009AFEBB /* UpdatePasswordDto.swift */,
 				092E76012850488700221997 /* AddressBookDto.swift */,
@@ -4973,6 +4981,7 @@
 				A1DFBCB1292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905AAE2851A02B00BAEE78 /* BaseViewModel.swift in Sources */,
 				09905AAF2851A02B00BAEE78 /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E3C2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				09905AB02851A02B00BAEE78 /* Views.swift in Sources */,
 				A1D0577A293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				09905AB12851A02B00BAEE78 /* DetailDto.swift in Sources */,
@@ -5235,6 +5244,7 @@
 				A1DFBCB2292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905BA02851A08500BAEE78 /* BaseViewModel.swift in Sources */,
 				09905BA12851A08500BAEE78 /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E3D2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				09905BA22851A08500BAEE78 /* Views.swift in Sources */,
 				A1D0577B293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				09905BA32851A08500BAEE78 /* DetailDto.swift in Sources */,
@@ -5497,6 +5507,7 @@
 				A1DFBCB0292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09905C922851A09600BAEE78 /* BaseViewModel.swift in Sources */,
 				09905C932851A09600BAEE78 /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E3B2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				09905C942851A09600BAEE78 /* Views.swift in Sources */,
 				A1D05779293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				09905C952851A09600BAEE78 /* DetailDto.swift in Sources */,
@@ -5759,6 +5770,7 @@
 				A1DFBCAE292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09CAF499283C77ED00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF49A283C77ED00D7B19B /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E392974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				09CAF49B283C77ED00D7B19B /* Views.swift in Sources */,
 				A1D05777293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				09CAF49C283C77ED00D7B19B /* DetailDto.swift in Sources */,
@@ -6021,6 +6033,7 @@
 				A1DFBCAF292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				09CAF55A283C7BBE00D7B19B /* BaseViewModel.swift in Sources */,
 				09CAF55B283C7BBE00D7B19B /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E3A2974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				09CAF55C283C7BBE00D7B19B /* Views.swift in Sources */,
 				A1D05778293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				09CAF55D283C7BBE00D7B19B /* DetailDto.swift in Sources */,
@@ -6283,6 +6296,7 @@
 				A1DFBCAD292CB71E008EE739 /* AuthenticationViewController.swift in Sources */,
 				A19C70FE28224D78000AFC3F /* BaseViewModel.swift in Sources */,
 				A19C70F928224D4F000AFC3F /* BaseDismissAnimationController.swift in Sources */,
+				A1E94E382974FF7400282514 /* AuditMemberAccountDto.swift in Sources */,
 				A19C70D12822475B000AFC3F /* Views.swift in Sources */,
 				A1D05776293748EB00DCFB0B /* NetworkBottomSheet.swift in Sources */,
 				A1559E06283739D700755783 /* DetailDto.swift in Sources */,

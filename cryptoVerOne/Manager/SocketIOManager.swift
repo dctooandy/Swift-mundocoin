@@ -186,7 +186,10 @@ class SocketIOManager: NSObject {
      
     func closeConnection() {
         Log.socket("結束Socket")
-        socket.leaveNamespace()
+        if socket != nil
+        {
+            socket.leaveNamespace()            
+        }
     }
     func reConnection() {
         Log.socket("重連Socket")
