@@ -233,7 +233,6 @@
 		09905A952851A02B00BAEE78 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
 		09905A962851A02B00BAEE78 /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
 		09905A972851A02B00BAEE78 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
-		09905A982851A02B00BAEE78 /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
 		09905A992851A02B00BAEE78 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		09905A9A2851A02B00BAEE78 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
 		09905A9B2851A02B00BAEE78 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
@@ -324,7 +323,6 @@
 		09905AF32851A02B00BAEE78 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
 		09905AF42851A02B00BAEE78 /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
 		09905AF52851A02B00BAEE78 /* AddressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */; };
-		09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09905AF72851A02B00BAEE78 /* TFFinishReViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C9282CBC2E00D9CCE5 /* TFFinishReViewController.xib */; };
 		09905AF82851A02B00BAEE78 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
 		09905AF92851A02B00BAEE78 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
@@ -462,7 +460,6 @@
 		09905B872851A08500BAEE78 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
 		09905B882851A08500BAEE78 /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
 		09905B892851A08500BAEE78 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
-		09905B8A2851A08500BAEE78 /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
 		09905B8B2851A08500BAEE78 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		09905B8C2851A08500BAEE78 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
 		09905B8D2851A08500BAEE78 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
@@ -553,7 +550,6 @@
 		09905BE52851A08500BAEE78 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
 		09905BE62851A08500BAEE78 /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
 		09905BE72851A08500BAEE78 /* AddressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */; };
-		09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09905BE92851A08500BAEE78 /* TFFinishReViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C9282CBC2E00D9CCE5 /* TFFinishReViewController.xib */; };
 		09905BEA2851A08500BAEE78 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
 		09905BEB2851A08500BAEE78 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
@@ -691,7 +687,6 @@
 		09905C792851A09600BAEE78 /* WhiteListBottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09C20FAF2846010900E70654 /* WhiteListBottomSheet.swift */; };
 		09905C7A2851A09600BAEE78 /* SubPageCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1973A3C28291353009932D8 /* SubPageCollectionCell.swift */; };
 		09905C7B2851A09600BAEE78 /* UserAddressDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A16F622028323EE900D9CCE5 /* UserAddressDto.swift */; };
-		09905C7C2851A09600BAEE78 /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
 		09905C7D2851A09600BAEE78 /* WalletTransPostDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09056D98284EF80300038BF8 /* WalletTransPostDto.swift */; };
 		09905C7E2851A09600BAEE78 /* WalletCellDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1559DFB2835EFDE00755783 /* WalletCellDto.swift */; };
 		09905C7F2851A09600BAEE78 /* DepositViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099371B52844B66500D55E55 /* DepositViewModel.swift */; };
@@ -782,7 +777,6 @@
 		09905CD72851A09600BAEE78 /* DepositViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1973A1D2828F35E009932D8 /* DepositViewController.xib */; };
 		09905CD82851A09600BAEE78 /* PushNotiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1DD13B7282C090400AB2E0A /* PushNotiViewController.xib */; };
 		09905CD92851A09600BAEE78 /* AddressBottomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F6203282E3F9000D9CCE5 /* AddressBottomCell.xib */; };
-		09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09905CDB2851A09600BAEE78 /* TFFinishReViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A16F61C9282CBC2E00D9CCE5 /* TFFinishReViewController.xib */; };
 		09905CDC2851A09600BAEE78 /* AddressBookViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20F9E2845D87100E70654 /* AddressBookViewController.xib */; };
 		09905CDD2851A09600BAEE78 /* WhiteListBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C20FB72846014B00E70654 /* WhiteListBottomView.xib */; };
@@ -1521,12 +1515,6 @@
 		09CAF5F1283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
 		09CAF5F2283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
 		09CAF5F3283E048B00D7B19B /* WalletService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F0283E048B00D7B19B /* WalletService.swift */; };
-		09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
-		09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
-		09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */; };
-		09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
-		09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
-		09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */; };
 		09CAF5FE283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
 		09CAF5FF283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
 		09CAF600283F8A8000D7B19B /* WalletViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */; };
@@ -2308,8 +2296,6 @@
 		09CAF5E0283CE58E00D7B19B /* OtherValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OtherValue.swift; sourceTree = "<group>"; };
 		09CAF5EC283DFF4800D7B19B /* AuthenticationDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDto.swift; sourceTree = "<group>"; };
 		09CAF5F0283E048B00D7B19B /* WalletService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletService.swift; sourceTree = "<group>"; };
-		09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecaptchaViewController.swift; sourceTree = "<group>"; };
-		09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecaptchaViewController.xib; sourceTree = "<group>"; };
 		09CAF5FD283F8A8000D7B19B /* WalletViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletViewModel.swift; sourceTree = "<group>"; };
 		09CAF601283F8B0300D7B19B /* WalletAddressDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WalletAddressDto.swift; sourceTree = "<group>"; };
 		09DB05E6289B5D95003C53ED /* BaseDismissInteration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseDismissInteration.swift; sourceTree = "<group>"; };
@@ -2873,15 +2859,6 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		09CAF5F4283F542800D7B19B /* ReCaptchaView */ = {
-			isa = PBXGroup;
-			children = (
-				09CAF5F5283F544F00D7B19B /* RecaptchaViewController.swift */,
-				09CAF5F9283F550C00D7B19B /* RecaptchaViewController.xib */,
-			);
-			path = ReCaptchaView;
-			sourceTree = "<group>";
-		};
 		09DB05ED289B6AB7003C53ED /* CustomTransition */ = {
 			isa = PBXGroup;
 			children = (
@@ -3257,7 +3234,6 @@
 			children = (
 				A1B59F1529237B51005D9006 /* SelectViewController */,
 				0909C8DC28532DFE003E2F58 /* AuditViewController */,
-				09CAF5F4283F542800D7B19B /* ReCaptchaView */,
 				A19739C528251B65009932D8 /* ChangedPasswordView */,
 				A19739C128251AFB009932D8 /* ResetPasswordView */,
 				A1B051C428236C5600056183 /* VerifyView */,
@@ -3904,7 +3880,6 @@
 				0995748E2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3092856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A1F0F7FB295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
-				09905AF62851A02B00BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F11288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574F293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				A1B15064293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
@@ -4018,7 +3993,6 @@
 				0995748F2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED30A2856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A1F0F7FC295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
-				09905BE82851A08500BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F12288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D05750293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				A1B15065293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
@@ -4132,7 +4106,6 @@
 				0995748D2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3082856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A1F0F7FA295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
-				09905CDA2851A09600BAEE78 /* RecaptchaViewController.xib in Resources */,
 				099B5F10288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574E293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				A1B15063293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
@@ -4246,7 +4219,6 @@
 				0995748B2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3062856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A1F0F7F8295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
-				09CAF5FB283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0E288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574C293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				A1B15061293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
@@ -4360,7 +4332,6 @@
 				0995748C2876DD1C005D44E2 /* AuditTwoFACheckViewController.xib in Resources */,
 				09EED3072856EA6400CB4A64 /* AuditDetailViewController.xib in Resources */,
 				A1F0F7F9295A905900C02382 /* LoginQuicklyViewController.xib in Resources */,
-				09CAF5FC283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				099B5F0F288A6DEF00148FD9 /* Inter-Bold.otf in Resources */,
 				A1D0574D293723D500DCFB0B /* SelectCryptoCell.xib in Resources */,
 				A1B15062293EF107008AD911 /* WithdrawNewViewController.xib in Resources */,
@@ -4516,7 +4487,6 @@
 				09EED32F2857229900CB4A64 /* SubListTableViewCell.xib in Resources */,
 				A1CC4EAB292B460900BF5EB5 /* TwoWayVerifyViewController.xib in Resources */,
 				A1ADAE0F28562E2F00B07B12 /* AccountViewController.xib in Resources */,
-				09CAF5FA283F550C00D7B19B /* RecaptchaViewController.xib in Resources */,
 				A1B59F2C29238467005D9006 /* SearchAreaTableViewCell.xib in Resources */,
 				09AA372F28F910800034333D /* ProCICD.md in Resources */,
 				A16F61C4282CBB9900D9CCE5 /* TFBeginViewController.xib in Resources */,
@@ -4947,7 +4917,6 @@
 				09905A952851A02B00BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905A962851A02B00BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905A972851A02B00BAEE78 /* UserAddressDto.swift in Sources */,
-				09905A982851A02B00BAEE78 /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE42907823700C87B3A /* arm_syscall.c in Sources */,
 				09905A992851A02B00BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905A9A2851A02B00BAEE78 /* WalletCellDto.swift in Sources */,
@@ -5210,7 +5179,6 @@
 				09905B872851A08500BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905B882851A08500BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905B892851A08500BAEE78 /* UserAddressDto.swift in Sources */,
-				09905B8A2851A08500BAEE78 /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE52907823700C87B3A /* arm_syscall.c in Sources */,
 				09905B8B2851A08500BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905B8C2851A08500BAEE78 /* WalletCellDto.swift in Sources */,
@@ -5473,7 +5441,6 @@
 				09905C792851A09600BAEE78 /* WhiteListBottomSheet.swift in Sources */,
 				09905C7A2851A09600BAEE78 /* SubPageCollectionCell.swift in Sources */,
 				09905C7B2851A09600BAEE78 /* UserAddressDto.swift in Sources */,
-				09905C7C2851A09600BAEE78 /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE32907823700C87B3A /* arm_syscall.c in Sources */,
 				09905C7D2851A09600BAEE78 /* WalletTransPostDto.swift in Sources */,
 				09905C7E2851A09600BAEE78 /* WalletCellDto.swift in Sources */,
@@ -5736,7 +5703,6 @@
 				09C20FB12846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF487283C77ED00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF488283C77ED00D7B19B /* UserAddressDto.swift in Sources */,
-				09CAF5F7283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE12907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D9A284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF489283C77ED00D7B19B /* WalletCellDto.swift in Sources */,
@@ -5999,7 +5965,6 @@
 				09C20FB22846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				09CAF548283C7BBE00D7B19B /* SubPageCollectionCell.swift in Sources */,
 				09CAF549283C7BBE00D7B19B /* UserAddressDto.swift in Sources */,
-				09CAF5F8283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE22907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D9B284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				09CAF54A283C7BBE00D7B19B /* WalletCellDto.swift in Sources */,
@@ -6262,7 +6227,6 @@
 				09C20FB02846010900E70654 /* WhiteListBottomSheet.swift in Sources */,
 				A1973A3D28291353009932D8 /* SubPageCollectionCell.swift in Sources */,
 				A16F622128323EE900D9CCE5 /* UserAddressDto.swift in Sources */,
-				09CAF5F6283F544F00D7B19B /* RecaptchaViewController.swift in Sources */,
 				A1BE2DE02907823700C87B3A /* arm_syscall.c in Sources */,
 				09056D99284EF80300038BF8 /* WalletTransPostDto.swift in Sources */,
 				A1559DFC2835EFDF00755783 /* WalletCellDto.swift in Sources */,

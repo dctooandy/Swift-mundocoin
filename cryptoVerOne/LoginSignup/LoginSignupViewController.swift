@@ -90,7 +90,6 @@ class LoginSignupViewController: BaseViewController {
     // MARK:UI 設定
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var topLabel: UILabel!
-//    var recaptchaVC = RecaptchaViewController.loadNib()
     var verifyVC : VerifyViewController!
     private lazy var switchButton:UIButton = {
         let rightBtn = UIButton()
@@ -1019,18 +1018,7 @@ extension LoginSignupViewController {
         //                }
         //                imageVerifyView.removeFromSuperview()
         //            }.disposed(by: disposeBag)
-        // 顯示 Google Recaotcha 驗證
-//        let recaptchaVC = RecaptchaViewController.loadNib()
-//        recaptchaVC.rxSuccessClick().subscribeSuccess { [self]tokenString in
-//            if !tokenString.isEmpty
-//            {
-//                if let dto = postDto as? SignupPostDto {
-//                    // 開啟驗證頁面
-//                    showVerifyVCWithSignUpData(dto)
-//                }
-//            }
-//        }.disposed(by: disposeBag)
-//        self.navigationController?.pushViewController(recaptchaVC, animated: true)
+
         if let dto = postDto as? SignupPostDto {
             //                    // 開啟驗證頁面
             showVerifyVCWithSignUpData(dto)

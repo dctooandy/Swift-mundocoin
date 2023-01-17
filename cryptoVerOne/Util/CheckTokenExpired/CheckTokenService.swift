@@ -325,7 +325,7 @@ class CheckTokenService{
         }
     }
     // 檢查 白名單 isAddressBookWhiteListEnabled
-    func checkAuth(complete:CheckCompletionBlock? = nil)
+    func checkAuditAuth(complete:CheckCompletionBlock? = nil)
     {
         let token = KeychainManager.share.getToken()
         // 準備好 id 資料
@@ -343,7 +343,7 @@ class CheckTokenService{
                 gotoAuditLoginVC()
             }
         }
-        AuditMemberAccountDto.share = AuditMemberAccountDto()
+        
         if jwtValue != nil , let permissions = jwtValue.body["permissions"] as? Array<[String:Any]>
         {
             Log.i("\(permissions)")
@@ -375,6 +375,11 @@ class CheckTokenService{
                 }
             }
         }
+        if jwtValue != nil , let name = jwtValue.body["name"] as? String,
+           let email = jwtValue.body["email"] as? String
+        {
+            AuditMemberAccountDto.share = AuditMemberAccountDto(account: name,email: email)
+        }
     }
     func gotoAuditLoginVC()
     {
@@ -399,7 +404,7 @@ class CheckTokenService{
         Log.v("刷新Token")
         #if Approval_PRO || Approval_DEV || Approval_STAGE
         Log.v("查詢權限")
-        checkAuth()
+        checkAuditAuth()
         #else
         Beans.loginServer.refreshToken().subscribeSuccess { [self] dto in
             if let dataDto = dto

@@ -61,6 +61,7 @@ class AccountViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white,.font: Fonts.SFProDisplayBold(20)]
         setupNavigation()
+        resetUserData()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -135,7 +136,11 @@ class AccountViewController: BaseViewController {
         topDetailView.applyCornerAndShadow(radius: 12)
         bottomDetailView.applyCornerAndShadow(radius: 12)
     }
-  
+  func resetUserData()
+    {
+        userLabel.text = AuditMemberAccountDto.share?.account ?? "User Name"
+        emailLabel.text = AuditMemberAccountDto.share?.email ?? KeychainManager.share.getLastAccountDto()?.account
+    }
     @objc func logoutAction()
     {
         if let appDelegate = (UIApplication.shared.delegate as? AppDelegate), let mainWindow = appDelegate.window

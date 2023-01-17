@@ -137,6 +137,7 @@ class DeepLinkManager {
         WalletAddressDto.share = nil
         UserInfoDto.share = nil
         RegistrationDto.share = nil
+        AuditMemberAccountDto.share = nil
         SocketIOManager.sharedInstance.closeConnection()
         if let appdelegate = UIApplication.shared.delegate as? AppDelegate {
             appdelegate.stopRETimer()
