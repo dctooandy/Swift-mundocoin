@@ -433,6 +433,7 @@
                 <outlet property="dateLabel" destination="gm9-OF-GVp" id="qJa-cf-zzs"/>
                 <outlet property="feeLabel" destination="mEP-Gq-RkV" id="B2O-u6-1PB"/>
                 <outlet property="finishedView" destination="BF2-FT-0VI" id="KoM-R4-Nfz"/>
+                <outlet property="finishedViewHeightConstant" destination="i1d-00-mfO" id="crc-EE-MGP"/>
                 <outlet property="networkLabel" destination="3RG-g0-0IJ" id="zpO-jG-Jma"/>
                 <outlet property="normalView" destination="uhr-7w-xmF" id="FkY-EV-j60"/>
                 <outlet property="rejectBtn" destination="ulf-Fi-I8B" id="sfe-h4-sGe"/>

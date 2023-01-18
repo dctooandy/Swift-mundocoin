@@ -22,6 +22,7 @@ class AuditDetailViewController: BaseViewController {
             self.buttonView.isHidden = (self.showMode == .finished ? true : false)
         }
     }
+    @IBOutlet weak var finishedViewHeightConstant: NSLayoutConstraint!
     // MARK: -
     // MARK:UI 設定
     private lazy var backBtn:TopBackButton = {
@@ -222,6 +223,13 @@ class AuditDetailViewController: BaseViewController {
 //            commentTitleLabel.isHidden = (showMode == .pending ? true : (chainDto.memo?.isEmpty == nil || chainDto.memo?.isEmpty == true))
             commentLabel.text = chainDto.memo?.filter({$0 != "\n"})
             txidTitleLabel.isHidden = (showMode == .pending ? true : (transDto.txId?.isEmpty == nil || transDto.txId?.isEmpty == true))
+            if txidTitleLabel.isHidden
+            {
+                finishedViewHeightConstant.constant = 218.0 - 22.0 - 30.0
+            }else
+            {
+                finishedViewHeightConstant.constant = 218.0
+            }
             txidLabel.text = transDto.txId ?? ""
         }
     }
