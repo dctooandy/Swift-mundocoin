@@ -188,7 +188,7 @@ class SocketIOManager: NSObject {
         Log.socket("結束Socket")
         if socket != nil
         {
-            socket.leaveNamespace()            
+            socket.leaveNamespace()
         }
     }
     func reConnection() {
@@ -341,8 +341,10 @@ extension SocketIOManager
 #if Approval_PRO || Approval_DEV || Approval_STAGE
                     let bodyArray = ["\(currentChain.state)","\(currentChain.memo)"]
                     Log.v("TriggerLocalNotification:\n\(userData.email ?? ""),\(bodyArray)")
-                    _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
-                    _ = AuditApprovalDto.finishUpdate() // 更新清單列表
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+                        _ = AuditApprovalDto.pendingUpdate() // 更新清單列表
+                        _ = AuditApprovalDto.finishUpdate() // 更新清單列表                        
+                    }
                     if initFlag == true
                     {
                         self.onTriggerLocalNotification(subtitle: userData.email ?? "", body: bodyArray)
